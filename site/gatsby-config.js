@@ -1,3 +1,5 @@
+const queries = require("./src/algolia")
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -6,12 +8,24 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-theme-ui",
-    // {
-    //   resolve: `gatsby-plugin-typography`,
-    //   options: {
-    //     pathToConfigModule: `src/utils/typography`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_API_KEY,
+        indexName: process.env.ALGOLIA_INDEX_NAME, // for all queries
+        queries,
+      },
+    },
+    {
+      resolve: "gatsby-source-sanity",
+      options: {
+        projectId: "0jt5x7hu",
+        dataset: "dev",
+        token: process.env.SANITY_TOKEN,
+        watchMode: true,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

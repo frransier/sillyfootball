@@ -67,3 +67,14 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+studio/dist/
+studio/node_modules/
+yarn.lock
+site/.env.development
+site/.env.production
+site/yarn.lock
+.vscode/
+
+studio/yarn.lock
+site/package-lock.json
