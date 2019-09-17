@@ -10,11 +10,11 @@ import TextLoop from "react-text-loop"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <Box p={[4, 5, 6]} mx="auto">
-      <Heading my={3} fontSize={[3, 4, 5]}>
+    <Box p={[3, 4, 5]} mx="auto">
+      <Heading textAlign="center" my={2} fontSize={[3, 4, 5]}>
         Som{" "}
         <TextLoop
-          interval={2000}
+          interval={5000}
           springConfig={{ stiffness: 180, damping: 20 }}
         >
           <Text>Drömelvan</Text>
@@ -23,18 +23,24 @@ const IndexPage = () => (
         </TextLoop>{" "}
         fast 1000x{" "}
         <TextLoop
-          interval={1000}
+          interval={4000}
           springConfig={{ stiffness: 400, damping: 20 }}
         >
           <Text>bättre</Text>
-          <Text>snabbare</Text>
           <Text>enklare</Text>
           <Text>roligare</Text>
         </TextLoop>
       </Heading>
-      <Link to="/game/">
-        <Button fontSize={[2, 4, 6]}>Spela nu</Button>
-      </Link>
+      <Box textAlign="center" mt={4}>
+        <Link to="/game/">
+          <Button mr={2} fontSize={[2, 4, 6]}>
+            Spela nu
+          </Button>
+        </Link>
+        <Link to="/faq/">
+          <Button fontSize={[2, 4, 6]}>FAQ</Button>
+        </Link>
+      </Box>
     </Box>
   </Layout>
 )

@@ -13,6 +13,7 @@ const algoliaQuery = `
             name
             nickName
             index
+            active
             id
             logo {
             asset {

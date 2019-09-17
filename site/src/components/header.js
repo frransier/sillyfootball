@@ -1,20 +1,31 @@
 import { Link } from "gatsby"
 import React from "react"
 import { Flex, Heading, Text, Box } from "rebass"
-import { FaBars, FaBasketballBall } from "react-icons/fa"
+import { motion } from "framer-motion"
+import { GiSoccerBall } from "react-icons/gi"
 
 const Header = () => (
   <Flex
     sx={{
       fontFamily: "heading",
-      px: 2,
-      background: "white",
       alignItems: "center",
+      px: 5,
     }}
   >
-    <Box fontSize={[5, 6, 7]}>
-      <FaBasketballBall></FaBasketballBall>
-    </Box>
+    <motion.div
+      alignItems="center"
+      initial={{ scale: 0.7 }}
+      animate={{ scale: 1 }}
+      transition={{
+        yoyo: 6,
+        duration: 1,
+        stiffness: 200,
+      }}
+    >
+      <Box mr={0} fontSize={[5, 6, 7]}>
+        <GiSoccerBall></GiSoccerBall>
+      </Box>
+    </motion.div>
     <Link style={{ textDecoration: "none" }} to="/">
       <Heading color="primary" fontSize={[5, 6, 7]} fontWeight="display" p={2}>
         sillyfootball
@@ -23,12 +34,6 @@ const Header = () => (
     <Text color="primary" fontSize={1}>
       beta
     </Text>
-    <Box mx="auto" />
-    <Link to="/page-2/">
-      <Heading color="primary" fontSize={[4, 5, 6]} p={2}>
-        <FaBars></FaBars>
-      </Heading>
-    </Link>
   </Flex>
 )
 

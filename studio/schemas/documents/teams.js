@@ -13,10 +13,14 @@ export default {
       title: "Nickname",
       type: "string"
     },
-
+    {
+      name: "active",
+      title: "Active",
+      type: "boolean"
+    },
     {
       name: "index",
-      title: "Match number",
+      title: "Index",
       type: "number"
     },
     {
