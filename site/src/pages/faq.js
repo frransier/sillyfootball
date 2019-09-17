@@ -8,12 +8,8 @@ import SEO from "../components/seo"
 const SecondPage = () => (
   <Layout>
     <SEO title="FAQ" />
-
-    <Box width={9 / 10} px={2}>
-      <Heading my={4} textAlign="center">
-        FAQ
-      </Heading>
-      <Text my={4}>
+    <Box width={9 / 10} mx="auto">
+      <Text my={4} mx={3}>
         <b>Sillyfootball</b> är ett enkelt <b>fantasy football</b> spel som
         spelas över en omgång på <b>12 matcher</b> från Premier Leauge, La Liga,
         Bundesliga och Serie A. Du väljer ut <b>5 valfria spelare</b> från
@@ -21,7 +17,7 @@ const SecondPage = () => (
         över summeras dina spelares poäng och deltagarna som samlar flest poäng
         delar på prispotten.
       </Text>
-      <Text my={4}>
+      <Text my={4} mx={3}>
         Lämna in ditt lag innan deadline day och tävla mot andra om att ta hem
         beta-prispotten på 1000kr. Under betaperioden är det fritt fram att
         registrera hur många lag man vill utan kostnad. Potten fördelas mellan
@@ -29,7 +25,7 @@ const SecondPage = () => (
         större vinst a la Stryktipset. Följ ditt lag i realtid på leaderboarden
         under spelomgången.
       </Text>
-      <Text my={4}>
+      <Text my={4} mx={3}>
         Vinster betalas endast ut till de som anger giltiga Swish-anslutna
         telefonnummer.
       </Text>

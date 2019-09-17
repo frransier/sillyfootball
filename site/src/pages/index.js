@@ -38,7 +38,7 @@ const IndexPage = () => (
           </Button>
         </Link>
         <Link to="/faq/">
-          <Button fontSize={[2, 4, 6]}>FAQ</Button>
+          <Button fontSize={[2, 4, 6]}>Så funkar det</Button>
         </Link>
       </Box>
     </Box>

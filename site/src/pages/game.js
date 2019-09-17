@@ -55,7 +55,8 @@ const GamePage = () => {
                   >
                     <Flex>
                       <Image
-                        width="15px"
+                        width="18px"
+                        height="18px"
                         src={player.team.logo.asset.url}
                       ></Image>
                       <Text mx="auto">{player.name}</Text>
