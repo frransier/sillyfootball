@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import { Flex, Card, Heading, Text, Box, Image, Button } from "rebass"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -45,7 +44,7 @@ const GamePage = () => {
                         title: `${player.name} togs bort från ditt lag`,
                         intent: "warning",
                         duration: 1000,
-                        // eslint-disable-next-line})
+                        // eslint-disable-next-line
                       }),
                       dispatch({ type: "remove", index })
                     )}

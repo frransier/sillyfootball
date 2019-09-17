@@ -51,7 +51,7 @@ const Player = props => {
                   title: `${hit.name} lades till i ditt lag`,
                   intent: "success",
                   duration: 1000,
-                  // eslint-disable-next-line})
+                  // eslint-disable-next-line
                 }),
             dispatch({
               type: "add",

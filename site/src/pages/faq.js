@@ -1,7 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
-import { Card, Box, Text, Heading } from "rebass"
-
+import { Box, Text } from "rebass"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
