@@ -65,7 +65,7 @@ const GamePage = () => {
               })
             )}
           </Card>
-          {state.length < 5 ? (
+          {state && state.length < 5 ? (
             <Box>
               <Heading fontSize={2} px={2} my={3}>
                 Spelschema
