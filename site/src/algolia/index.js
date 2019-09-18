@@ -3,6 +3,7 @@ const algoliaQuery = `
   allSanityPlayer (filter: {team: {index: {ne: null} }}) {
     edges {
       node {
+        _id
         name
         games
         goals

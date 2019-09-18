@@ -7,9 +7,11 @@
   "dependencies": {
     "@emotion/core": "^10.0.17",
     "@mdx-js/react": "^1.4.5",
+    "@rebass/forms": "^4.0.5",
     "@rebass/preset": "^4.0.5",
     "@theme-ui/presets": "^0.2.42",
     "algoliasearch": "^3.34.0",
+    "axios": "^0.19.0",
     "dotenv": "^8.1.0",
     "framer-motion": "^1.6.7",
     "gatsby": "^2.15.15",

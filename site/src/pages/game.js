@@ -1,5 +1,8 @@
-import React from "react"
+import React, { useState } from "react"
+import { navigate } from "@reach/router"
+import axios from "axios"
 import { Flex, Card, Heading, Text, Box, Image, Button } from "rebass"
+import { Label, Input } from "@rebass/forms"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PlayerList from "../components/playerList"
@@ -14,9 +17,27 @@ const searchClient = algoliasearch(
   "cc596e105e36167542f65e83e4b04b1a"
 )
 const GamePage = () => {
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState()
+  const [loading, setLoading] = useState(false)
   const state = useStateContext()
   const dispatch = useDispatchContext()
   const toast = useToast()
+
+  async function register() {
+    setLoading(true)
+    const squad = state.map(player => player._id)
+
+    await axios
+      .post("/.netlify/functions/play", { params: { squad, email, phone } })
+      .then(res => {
+        res.data === "OK" ? navigate("/welcome/") : navigate("/asdf/")
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
   return (
     <Layout>
       <SEO title="Page two" />
@@ -79,7 +100,27 @@ const GamePage = () => {
               <PlayerList />
             </Box>
           ) : (
-            <Button my={3}>Lämna in</Button>
+            <Box>
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="glenn@gbg.nu"
+                onChange={event => setEmail(event.target.value)}
+              />
+              <Label htmlFor="phone">Telefon</Label>
+              <Input
+                id="phone"
+                name="phone"
+                type="number"
+                placeholder="0701234567"
+                onChange={event => setPhone(event.target.value)}
+              />
+              <Button onSubmit={register()} my={3}>
+                Lämna in
+              </Button>
+            </Box>
           )}
         </Box>
       </InstantSearch>
