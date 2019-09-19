@@ -26,7 +26,7 @@ const GamePage = () => {
 
   async function register() {
     setLoading(true)
-    const squad = state.map(player => player._id)
+    const squad = state && state.map(player => player._id)
 
     await axios
       .post("/.netlify/functions/play", { params: { squad, email, phone } })
@@ -117,7 +117,7 @@ const GamePage = () => {
                 placeholder="0701234567"
                 onChange={event => setPhone(event.target.value)}
               />
-              <Button onSubmit={register()} my={3}>
+              <Button onSubmit={register} my={3}>
                 Lämna in
               </Button>
             </Box>
