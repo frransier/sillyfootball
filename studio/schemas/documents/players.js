@@ -19,6 +19,8 @@ export default {
     { name: "points", type: "number", title: "Points" },
     { name: "minutes", type: "number", title: "Minutes" },
     { name: "games", type: "number", title: "Games" },
-    { name: "id", type: "number", title: "Identifier" }
+    { name: "matchGoals", type: "number", title: "Match goals" },
+    { name: "matchAssists", type: "number", title: "Match assists" },
+    { name: "matchPoints", type: "number", title: "Match points" }
   ]
 };
