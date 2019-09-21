@@ -1,9 +1,9 @@
-[dev]
-  command="gatsby develop"
-  port=8000
-
 [build]
-    base="site"
-    functions="functions"
-    publish="public"
-    command="gatsby build"
+
+  functions = "functions"
+  publish = "public"
+  command = "gatsby build"
+
+ [dev]
+    command = "yarn start"
+    port = 8000
