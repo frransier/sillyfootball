@@ -78,3 +78,5 @@ site/yarn.lock
 
 studio/yarn.lock
 site/package-lock.json
+# Local Netlify folder
+.netlify
