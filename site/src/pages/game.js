@@ -29,7 +29,7 @@ const GamePage = () => {
     const squad = state && state.map(player => player._id)
 
     axios
-      .post("/.netlify/functions/play", { params: { squad, email, phone } })
+      .post("/.netlify/functions/register", { params: { squad, email, phone } })
       .then(res => {
         res.data === "OK" ? navigate("/thanks/") : navigate("/404/")
       })
