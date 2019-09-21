@@ -25,7 +25,7 @@ exports.handler = (event, _, callback) => {
 
   try {
     sanity.create(doc)
-    console.log("Player registered")
+    console.log("Player registered ")
 
     callback(null, {
       statusCode: 200,
