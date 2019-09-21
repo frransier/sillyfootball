@@ -8,8 +8,7 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import settings from "./documents/settings";
 import players from "./documents/players";
 import teams from "./documents/teams";
-import matches from "./documents/matches";
-import playmakers from "./documents/playmakers";
+import users from "./documents/users";
 
 //objects
 import logo from "./objects/logo";
@@ -25,7 +24,7 @@ export default createSchema({
     players,
     teams,
     logo,
-    matches,
-    playmakers
+
+    users
   ])
 });

@@ -1,7 +1,7 @@
 export default {
-  name: "playmaker",
+  name: "user",
   type: "document",
-  title: "Playmaker",
+  title: "Users",
   fields: [
     {
       name: "phone",

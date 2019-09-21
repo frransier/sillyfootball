@@ -24,14 +24,14 @@ const GamePage = () => {
   const dispatch = useDispatchContext()
   const toast = useToast()
 
-  async function register() {
+  const register = () => {
     setLoading(true)
     const squad = state && state.map(player => player._id)
 
-    await axios
+    axios
       .post("/.netlify/functions/play", { params: { squad, email, phone } })
       .then(res => {
-        res.data === "OK" ? navigate("/welcome/") : navigate("/asdf/")
+        res.data === "OK" ? navigate("/thanks/") : navigate("/404/")
       })
       .catch(error => {
         console.log(error)
@@ -117,7 +117,7 @@ const GamePage = () => {
                 placeholder="0701234567"
                 onChange={event => setPhone(event.target.value)}
               />
-              <Button onSubmit={register} my={3}>
+              <Button onClick={register} my={3}>
                 Lämna in
               </Button>
             </Box>

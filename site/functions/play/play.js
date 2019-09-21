@@ -1,8 +1,14 @@
 const sanityClient = require("@sanity/client")
-
+const sanity = sanityClient({
+  projectId: "0jt5x7hu",
+  dataset: "dev",
+  token: process.env.SANITY_WRITE_TOKEN,
+  useCdn: false,
+})
 exports.handler = (event, _, callback) => {
   var body = JSON.parse(event.body)
   var data = body.params
+  console.log(JSON.stringify(body))
 
   const players = data.squad.map(player => {
     const p = { _ref: player, _key: player, _type: "reference" }
@@ -18,13 +24,6 @@ exports.handler = (event, _, callback) => {
   }
 
   try {
-    const sanity = sanityClient({
-      projectId: "0jt5x7hu",
-      dataset: "dev",
-      token: process.env.SANITY_WRITE_TOKEN,
-      useCdn: false,
-    })
-
     sanity.create(doc)
     console.log("Player registered")
 
