@@ -63,8 +63,10 @@ const GamePage = () => {
                     onClick={() => (
                       toast({
                         title: `${player.name} togs bort från ditt lag`,
+                        position: "bottom",
                         intent: "warning",
                         duration: 1000,
+
                         // eslint-disable-next-line
                       }),
                       dispatch({ type: "remove", index })

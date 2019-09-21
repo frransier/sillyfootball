@@ -43,12 +43,14 @@ const Player = props => {
             state.filter(x => x.name === hit.name).length > 0
               ? toast({
                   title: `${hit.name} är redan med i ditt lag`,
+                  position: "bottom",
                   intent: "danger",
                   duration: 1000,
                   // eslint-disable-next-line
                 })
               : toast({
                   title: `${hit.name} lades till i ditt lag`,
+                  position: "bottom",
                   intent: "success",
                   duration: 1000,
                   // eslint-disable-next-line
