@@ -1,0 +1,73 @@
+import React from "react"
+import { graphql } from "gatsby"
+import Image from "gatsby-image"
+import { useGraphQL } from "@brightleaf/react-hooks"
+import { mapEdgesToNodes } from "../helpers"
+
+export const query = graphql`
+  query Logos {
+    teamLogos: allSanityTeam(filter: { index: { ne: null } }) {
+      edges {
+        node {
+          _id
+          logo {
+            asset {
+              fixed {
+                ...GatsbySanityImageFixed
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+const LeaderboardPage = props => {
+  const images = mapEdgesToNodes(props.data.teamLogos)
+  console.log(images)
+  const getLogo = id => {
+    const logo = images.filter(x => x._id === id)
+    const fixed = logo[0].logo.asset.fixed
+    return fixed
+  }
+
+  const { data, loading, error } = useGraphQL(
+    "https://0jt5x7hu.api.sanity.io/v1/graphql/dev/default",
+    `query Leaderboard {
+  players: allUsers {
+    _id
+    players {
+      name
+      _id
+      matchGoals
+      matchAssists
+      matchPoints
+      team {
+          _id
+      }
+    }
+  }
+}`
+  )
+  if (loading) {
+    return <div>Loading Data</div>
+  }
+  if (error) {
+    return <div>Error getting graphql data</div>
+  }
+  return (
+    <div>
+      {data.players.map(p => (
+        <>
+          <pre>{JSON.stringify(p, null, 2)}</pre>
+          {p.players.map(player => {
+            return <Image fixed={getLogo(player.team._id)}></Image>
+          })}
+        </>
+      ))}
+    </div>
+  )
+}
+
+export default LeaderboardPage

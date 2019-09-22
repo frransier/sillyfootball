@@ -13,6 +13,8 @@ function playerReducer(state, action) {
       }
     case "remove":
       return state.filter((_, index) => index !== action.index)
+    case "clear-state":
+      return []
     default:
       return state
   }
