@@ -72,9 +72,8 @@ const LeaderboardPage = props => {
   }
   return (
     <Layout>
-      <Card>
+      <Card textAlign="center">
         <Heading>Leaderboard</Heading>
-        <Text></Text>
       </Card>
       {data.players.map(p => (
         <Card key={p._id} width="100%">
