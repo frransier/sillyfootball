@@ -23,48 +23,54 @@ const Player = props => {
   return (
     <>
       <Flex>
-        <Card mx="auto" my={2} width="75%" sx={{ borderRadius: 10 }}>
+        <Card mx="auto" my={2} width="85%" sx={{ borderRadius: 10 }}>
           <Flex>
-            <Box>
-              <Image width="40px" src={team.logo.asset.url}></Image>
-            </Box>
-            <Box ml={2} width={6 / 8}>
-              <Text textAlign="left" mt={1} fontSize={4}>
-                {hit.name}
-              </Text>
-            </Box>
-            <Box mt={2}>
-              <Text textAlign="center">{hit.points}p</Text>
-            </Box>
+            <Card width="80%">
+              <Flex>
+                <Box>
+                  <Image width="40px" src={team.logo.asset.url}></Image>
+                </Box>
+                <Box ml={2} width={8 / 8}>
+                  <Text textAlign="left" mt={1} fontSize={3}>
+                    {hit.name}
+                  </Text>
+                </Box>
+                <Box mt={2} mr={2}>
+                  <Text textAlign="center">{hit.points}p</Text>
+                </Box>
+              </Flex>
+            </Card>
+            <Card>
+              <Flex
+                onClick={() => (
+                  state.filter(x => x.name === hit.name).length > 0
+                    ? toast({
+                        title: `${hit.name} är redan med i ditt lag`,
+                        position: "bottom",
+                        intent: "danger",
+                        duration: 1000,
+                        // eslint-disable-next-line
+                      })
+                    : toast({
+                        title: `${hit.name} lades till i ditt lag`,
+                        position: "bottom",
+                        intent: "success",
+                        duration: 1000,
+                        // eslint-disable-next-line
+                      }),
+                  dispatch({
+                    type: "add",
+                    hit,
+                  })
+                )}
+              >
+                <Box color="primary" mt={1} mx={1}>
+                  <FaPlus size={30} />
+                </Box>
+              </Flex>
+            </Card>
           </Flex>
         </Card>
-        <Box
-          onClick={() => (
-            state.filter(x => x.name === hit.name).length > 0
-              ? toast({
-                  title: `${hit.name} är redan med i ditt lag`,
-                  position: "bottom",
-                  intent: "danger",
-                  duration: 1000,
-                  // eslint-disable-next-line
-                })
-              : toast({
-                  title: `${hit.name} lades till i ditt lag`,
-                  position: "bottom",
-                  intent: "success",
-                  duration: 1000,
-                  // eslint-disable-next-line
-                }),
-            dispatch({
-              type: "add",
-              hit,
-            })
-          )}
-          color="primary"
-          mt="19px"
-        >
-          <FaPlus size={30} />
-        </Box>
       </Flex>
     </>
   )

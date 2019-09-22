@@ -19,13 +19,12 @@ const searchClient = algoliasearch(
 const GamePage = () => {
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState()
-  const [loading, setLoading] = useState(false)
+
   const state = useStateContext()
   const dispatch = useDispatchContext()
   const toast = useToast()
 
   const register = () => {
-    setLoading(true)
     const squad = state && state.map(player => player._id)
 
     axios

@@ -41,6 +41,11 @@ const IndexPage = () => (
           <Button fontSize={[2, 4, 6]}>Så funkar det</Button>
         </Link>
       </Box>
+      <Box textAlign="center" mt={2}>
+        <Link to="/leaderboard/">
+          <Button fontSize={[2, 4, 6]}>Leaderboard</Button>
+        </Link>
+      </Box>
     </Box>
   </Layout>
 )
