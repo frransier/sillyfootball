@@ -23,7 +23,7 @@ const ThanksPage = () => {
           <Link to="/game/">
             <Button mr={2}>Skapa nytt lag</Button>
           </Link>
-          <Link to="leaderboard">
+          <Link to="/leaderboard/">
             <Button>Leaderboard</Button>
           </Link>
         </Flex>
