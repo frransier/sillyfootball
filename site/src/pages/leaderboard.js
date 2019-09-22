@@ -12,7 +12,7 @@ export const query = graphql`
           _id
           logo {
             asset {
-              fixed {
+              fixed(width: 70) {
                 ...GatsbySanityImageFixed
               }
             }
@@ -25,10 +25,11 @@ export const query = graphql`
 
 const LeaderboardPage = props => {
   const images = mapEdgesToNodes(props.data.teamLogos)
-  console.log(images)
   const getLogo = id => {
     const logo = images.filter(x => x._id === id)
     const fixed = logo[0].logo.asset.fixed
+    console.log(fixed)
+
     return fixed
   }
 
@@ -59,12 +60,14 @@ const LeaderboardPage = props => {
   return (
     <div>
       {data.players.map(p => (
-        <>
-          <pre>{JSON.stringify(p, null, 2)}</pre>
+        <div key={p._id}>
+          <div>{p._id.substring(0, 8)}</div>
           {p.players.map(player => {
-            return <Image fixed={getLogo(player.team._id)}></Image>
+            return (
+              <Image key={player._id} fixed={getLogo(player.team._id)}></Image>
+            )
           })}
-        </>
+        </div>
       ))}
     </div>
   )
