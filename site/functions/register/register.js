@@ -1,7 +1,7 @@
 const sanityClient = require("@sanity/client")
 const sanity = sanityClient({
   projectId: "0jt5x7hu",
-  dataset: "dev",
+  dataset: process.env.SANITY_ENV,
   token: process.env.SANITY_WRITE_TOKEN,
   useCdn: false,
 })

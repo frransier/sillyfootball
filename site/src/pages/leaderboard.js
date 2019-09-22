@@ -109,7 +109,7 @@ const LeaderboardPage = props => {
           <Card fontSize={0} textAlign="right">
             <Flex>
               {[...Array(getPoints(p.players))].map((_, i) => (
-                <Box key={i} mx={1} mt={0} color="primary">
+                <Box key={i} mx={1} color="primary">
                   <GiSoccerBall size={25}></GiSoccerBall>
                 </Box>
               ))}
