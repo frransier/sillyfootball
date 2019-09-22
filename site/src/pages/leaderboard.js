@@ -35,7 +35,7 @@ const LeaderboardPage = props => {
   }
 
   const { data, loading, error } = useGraphQL(
-    "https://0jt5x7hu.api.sanity.io/v1/graphql/dev/default",
+    "https://0jt5x7hu.api.sanity.io/v1/graphql/even/default",
     `query Leaderboard {
   players: allUsers {
     _id
