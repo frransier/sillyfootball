@@ -61,7 +61,7 @@ const LeaderboardPage = props => {
     <div>
       {data.players.map(p => (
         <div key={p._id}>
-          <div>{p._id.substring(0, 8)}</div>
+          <div>{p._id.substring(16, 25)}</div>
           {p.players.map(player => {
             return (
               <Image key={player._id} fixed={getLogo(player.team._id)}></Image>
