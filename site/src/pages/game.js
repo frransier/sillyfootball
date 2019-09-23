@@ -48,11 +48,13 @@ const GamePage = () => {
                 <Heading textAlign="left" my={1}>
                   Välj 5 spelare
                 </Heading>
-                <Heading my={3}>1 poäng per mål / assist</Heading>
-                <Text textAlign="right" mt={3}>
+                <Heading textAlign="left" my={3}>
+                  1 poäng per mål / assist
+                </Heading>
+                <Text textAlign="left" mt={3}>
                   Deadline day
                 </Text>
-                <Text textAlign="right">Lördag 21/9 kl 13:25</Text>
+                <Text textAlign="left">Lördag 28/9 kl 13:25</Text>
               </Box>
             ) : (
               state &&
