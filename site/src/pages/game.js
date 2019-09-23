@@ -11,6 +11,7 @@ import { InstantSearch } from "react-instantsearch-dom"
 import Matches from "../components/matches"
 import { useDispatchContext, useStateContext } from "../state"
 import { useToast } from "sancho"
+import { FaWindowClose } from "react-icons/fa"
 
 const searchClient = algoliasearch(
   "C1ICPA4UBZ",
@@ -83,6 +84,9 @@ const GamePage = () => {
                         src={player.team.logo.asset.url}
                       ></Image>
                       <Text mx="auto">{player.name}</Text>
+                      <Box color="primary">
+                        <FaWindowClose></FaWindowClose>
+                      </Box>
                     </Flex>
                   </Card>
                 )
@@ -103,8 +107,10 @@ const GamePage = () => {
               <PlayerList />
             </Box>
           ) : (
-            <Box>
-              <Label htmlFor="email">Email</Label>
+            <Box my={4}>
+              <Label color="darkgrey" htmlFor="email">
+                Email
+              </Label>
               <Input
                 id="email"
                 name="email"
@@ -112,12 +118,14 @@ const GamePage = () => {
                 placeholder="glenn@gbg.nu"
                 onChange={event => setEmail(event.target.value)}
               />
-              <Label htmlFor="phone">Telefon</Label>
+              <Label color="darkgrey" mt={4} htmlFor="phone">
+                Telefon
+              </Label>
               <Input
                 id="phone"
                 name="phone"
                 type="number"
-                placeholder="0701234567"
+                placeholder="Vinster betalas ut med Swish"
                 onChange={event => setPhone(event.target.value)}
               />
               <Button onClick={register} my={3}>
