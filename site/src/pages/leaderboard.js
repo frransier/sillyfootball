@@ -27,13 +27,6 @@ export const query = graphql`
 `
 
 const LeaderboardPage = props => {
-  const images = mapEdgesToNodes(props.data.teamLogos)
-  const getLogo = id => {
-    const logo = images.filter(x => x._id === id)
-    const fixed = logo[0].logo.asset.fixed
-    return fixed
-  }
-
   const { data, loading, error } = useGraphQL(
     "https://0jt5x7hu.api.sanity.io/v1/graphql/even/default",
     `query Leaderboard {
@@ -53,6 +46,13 @@ const LeaderboardPage = props => {
 }`
   )
 
+  const images = mapEdgesToNodes(props.data.teamLogos)
+  const getLogo = id => {
+    const logo = images.find(x => x._id === id)
+    const fixed = logo.logo.asset.fixed
+    return fixed
+  }
+
   const getPoints = playerList => {
     const points = playerList.map(p => p.matchPoints)
     const total = points.reduce((a, b) => a + b, 0)
@@ -63,7 +63,10 @@ const LeaderboardPage = props => {
   if (loading) {
     return (
       <Layout>
-        <Box>Loading Data</Box>
+        <Card textAlign="center">
+          <Heading>Leaderboard</Heading>
+        </Card>
+        <Box>Loading</Box>
       </Layout>
     )
   }
