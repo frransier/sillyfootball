@@ -4,28 +4,25 @@ import { Flex, Heading, Text, Box } from "rebass"
 import { motion } from "framer-motion"
 import { GiSoccerBall } from "react-icons/gi"
 
+const icon = {
+  hidden: {
+    pathLength: 0,
+    strokeWidth: 0,
+  },
+  visible: {
+    pathLength: 1,
+    strokeWidth: 9.9174,
+  },
+}
+
 const Header = () => (
   <Flex
     sx={{
       fontFamily: "heading",
       alignItems: "center",
-      px: 5,
+      justifyContent: "center",
     }}
   >
-    <motion.div
-      alignItems="center"
-      initial={{ scale: 0.7 }}
-      animate={{ scale: 1 }}
-      transition={{
-        yoyo: 6,
-        duration: 1,
-        stiffness: 200,
-      }}
-    >
-      <Box mr={0} fontSize={[5, 6, 7]}>
-        <GiSoccerBall></GiSoccerBall>
-      </Box>
-    </motion.div>
     <Link style={{ textDecoration: "none" }} to="/">
       <Heading color="primary" fontSize={[5, 6, 7]} fontWeight="display" p={2}>
         sillyfootball

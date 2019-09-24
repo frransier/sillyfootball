@@ -22,20 +22,20 @@ const Player = props => {
 
   return (
     <>
-      <Flex>
-        <Card mx="auto" my={2} width="85%" sx={{ borderRadius: 10 }}>
+      <Flex height="70px">
+        <Card mx="auto" my={1} width="80%" sx={{ borderRadius: 10 }}>
           <Flex>
-            <Card width="80%">
+            <Card width="85%">
               <Flex>
                 <Box>
                   <Image width="40px" src={team.logo.asset.url}></Image>
                 </Box>
                 <Box ml={2} width={8 / 8}>
-                  <Text textAlign="left" mt={1} fontSize={3}>
+                  <Text textAlign="left" mt={1} ml={2} fontSize={2}>
                     {hit.name}
                   </Text>
                 </Box>
-                <Box mt={2} mr={2}>
+                <Box mt={1} mr={2}>
                   <Text textAlign="center">{hit.points}p</Text>
                 </Box>
               </Flex>
@@ -46,14 +46,14 @@ const Player = props => {
                   state.filter(x => x.name === hit.name).length > 0
                     ? toast({
                         title: `${hit.name} är redan med i ditt lag`,
-                        position: "bottom",
+                        position: "top",
                         intent: "danger",
                         duration: 1000,
                         // eslint-disable-next-line
                       })
                     : toast({
                         title: `${hit.name} lades till i ditt lag`,
-                        position: "bottom",
+                        position: "top",
                         intent: "success",
                         duration: 1000,
                         // eslint-disable-next-line
@@ -65,7 +65,7 @@ const Player = props => {
                 )}
               >
                 <Box color="primary" mt={1} mx={1}>
-                  <FaPlus size={30} />
+                  <FaPlus size={20} />
                 </Box>
               </Flex>
             </Card>

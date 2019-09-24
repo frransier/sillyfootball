@@ -7,6 +7,7 @@ import { Flex, Box, Text, Card, Heading } from "rebass"
 import { GiSoccerBall } from "react-icons/gi"
 import Layout from "../components/layout"
 import userReducer from "../state/userReducer"
+import { motion } from "framer-motion"
 
 export const query = graphql`
   query Logos {
@@ -64,9 +65,17 @@ const LeaderboardPage = props => {
     return (
       <Layout>
         <Card textAlign="center">
-          <Heading>Leaderboard</Heading>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              duration: 2,
+              stiffness: 200,
+            }}
+          >
+            <Heading>Leaderboard</Heading>
+          </motion.div>
         </Card>
-        <Box>Loading</Box>
       </Layout>
     )
   }
@@ -81,50 +90,59 @@ const LeaderboardPage = props => {
       </Card>
       {state &&
         state.map(p => (
-          <Card key={p._id} width="100%">
-            <Flex key={p._id}>
-              {p.players.map(player => {
-                return (
-                  <Card
-                    sx={{
-                      width: "20%",
-                      mx: "auto",
-                    }}
-                    key={player._id}
-                    fontSize="0"
-                  >
-                    <Text textAlign="center" height="30px" mt={1}>
-                      {player.name}
-                    </Text>
-                    <Box textAlign="center">
-                      <Image
-                        key={player._id}
-                        fixed={getLogo(player.team._id)}
-                      ></Image>
-                    </Box>
-                    <Box textAlign="center" mt={2}>
-                      <Text>{player.matchGoals || 0} Mål</Text>
-                      <Text>{player.matchAssists || 0} Ass</Text>
-                    </Box>
-                  </Card>
-                )
-              })}
-            </Flex>
-            <Card fontSize={0} textAlign="right">
-              <Flex>
-                {[...Array(p.score)].map((_, i) => (
-                  <Box key={i} mx={1} color="primary">
-                    <GiSoccerBall size={25}></GiSoccerBall>
-                  </Box>
-                ))}
-                <Box mx="auto"></Box>
-                <Box textAlign="right">
-                  <Text>{`id: ${p._id.substring(16, 25)}`}</Text>
-                  <Text>{`points: ${p.score}`}</Text>
-                </Box>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              duration: 1,
+              stiffness: 200,
+            }}
+          >
+            <Card key={p._id} width="100%">
+              <Flex key={p._id}>
+                {p.players.map(player => {
+                  return (
+                    <Card
+                      sx={{
+                        width: "20%",
+                        mx: "auto",
+                      }}
+                      key={player._id}
+                      fontSize="0"
+                    >
+                      <Text textAlign="center" height="30px" mt={1}>
+                        {player.name}
+                      </Text>
+                      <Box textAlign="center">
+                        <Image
+                          key={player._id}
+                          fixed={getLogo(player.team._id)}
+                        ></Image>
+                      </Box>
+                      <Box textAlign="center" mt={2}>
+                        <Text>{player.matchGoals || 0} Mål</Text>
+                        <Text>{player.matchAssists || 0} Ass</Text>
+                      </Box>
+                    </Card>
+                  )
+                })}
               </Flex>
+              <Card fontSize={0} textAlign="right">
+                <Flex>
+                  {[...Array(p.score)].map((_, i) => (
+                    <Box key={i} mx={1} color="primary">
+                      <GiSoccerBall size={25}></GiSoccerBall>
+                    </Box>
+                  ))}
+                  <Box mx="auto"></Box>
+                  <Box textAlign="right">
+                    <Text>{`id: ${p._id.substring(16, 25)}`}</Text>
+                    <Text>{`points: ${p.score}`}</Text>
+                  </Box>
+                </Flex>
+              </Card>
             </Card>
-          </Card>
+          </motion.div>
         ))}
     </Layout>
   )

@@ -12,6 +12,7 @@ import Matches from "../components/matches"
 import { useDispatchContext, useStateContext } from "../state"
 import { useToast } from "sancho"
 import { FaWindowClose } from "react-icons/fa"
+import { motion } from "framer-motion"
 
 const searchClient = algoliasearch(
   "C1ICPA4UBZ",
@@ -42,10 +43,17 @@ const GamePage = () => {
     <Layout>
       <SEO title="Page two" />
       <InstantSearch searchClient={searchClient} indexName="players">
-        <Box textAlign="center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.5,
+            stiffness: 200,
+          }}
+        >
           <Card mx="auto" width={345} height={188} sx={{ borderRadius: 12 }}>
             {state && state.length < 1 ? (
-              <Box p={2}>
+              <Box p={3}>
                 <Heading textAlign="left" my={1}>
                   Välj 5 spelare
                 </Heading>
@@ -65,7 +73,7 @@ const GamePage = () => {
                     onClick={() => (
                       toast({
                         title: `${player.name} togs bort från ditt lag`,
-                        position: "bottom",
+                        position: "top",
                         intent: "warning",
                         duration: 1000,
 
@@ -93,47 +101,56 @@ const GamePage = () => {
               })
             )}
           </Card>
-          {state && state.length < 5 ? (
+        </motion.div>
+        {state && state.length < 5 ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              duration: 1,
+              stiffness: 200,
+            }}
+          >
             <Box>
-              <Heading fontSize={2} px={2} my={3}>
+              <Heading textAlign="center" fontSize={2} my={3}>
                 Spelschema
               </Heading>
-              <Box mb={2}>
+              <Box height="225px">
                 <Matches limit={28} attribute="team.index" />
               </Box>
-              <Heading fontSize={2} px={2} my={3}>
+              <Heading textAlign="center" fontSize={2} my={3}>
                 Välj spelare
               </Heading>
               <PlayerList />
             </Box>
-          ) : (
-            <Box my={4}>
-              <Label color="darkgrey" htmlFor="email">
-                Email
-              </Label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="glenn@gbg.nu"
-                onChange={event => setEmail(event.target.value)}
-              />
-              <Label color="darkgrey" mt={4} htmlFor="phone">
-                Telefon
-              </Label>
-              <Input
-                id="phone"
-                name="phone"
-                type="number"
-                placeholder="Vinster betalas ut med Swish"
-                onChange={event => setPhone(event.target.value)}
-              />
-              <Button onClick={register} my={3}>
-                Lämna in
-              </Button>
-            </Box>
-          )}
-        </Box>
+          </motion.div>
+        ) : (
+          <Box my={4}>
+            <Label color="darkgrey" htmlFor="email">
+              Email
+            </Label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="glenn@gbg.nu"
+              onChange={event => setEmail(event.target.value)}
+            />
+            <Label color="darkgrey" mt={4} htmlFor="phone">
+              Telefon
+            </Label>
+            <Input
+              id="phone"
+              name="phone"
+              type="number"
+              placeholder="Vinster betalas ut med Swish"
+              onChange={event => setPhone(event.target.value)}
+            />
+            <Button onClick={register} my={3}>
+              Lämna in
+            </Button>
+          </Box>
+        )}
       </InstantSearch>
     </Layout>
   )
