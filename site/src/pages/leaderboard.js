@@ -32,20 +32,20 @@ const LeaderboardPage = props => {
   const { data, loading, error } = useGraphQL(
     "https://0jt5x7hu.api.sanity.io/v1/graphql/even/default",
     `query Leaderboard {
-  players: allUsers {
-    _id
-    players {
-      name
-      _id
-      matchGoals
-      matchAssists
-      matchPoints
-      team {
+      players: allUsers {
+        _id
+        players {
+          name
           _id
+          matchGoals
+          matchAssists
+          matchPoints
+          team {
+              _id
+          }
+        }
       }
-    }
-  }
-}`
+    }`
   )
   const [state, dispatch] = useReducer(userReducer, null)
   useEffect(() => {

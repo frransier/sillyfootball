@@ -6,12 +6,10 @@ import { GiSoccerBall } from "react-icons/gi"
 
 const icon = {
   hidden: {
-    pathLength: 0,
     strokeWidth: 0,
   },
   visible: {
-    pathLength: 1,
-    strokeWidth: 9.9174,
+    strokeWidth: 8,
   },
 }
 
@@ -24,13 +22,51 @@ const Header = () => (
     }}
   >
     <Link style={{ textDecoration: "none" }} to="/">
-      <Heading color="primary" fontSize={[5, 6, 7]} fontWeight="display" p={2}>
-        sillyfootball
-      </Heading>
+      <motion.div
+        animate={{
+          rotate: 360,
+        }}
+      >
+        <svg width="150" height="150">
+          <motion.circle
+            fill="none"
+            stroke="#3cf"
+            variants={icon}
+            initial="hidden"
+            animate="visible"
+            transition={{
+              default: { duration: 1 },
+            }}
+            cx="75"
+            cy="75"
+            r="50"
+            fill="white"
+          />
+          <text
+            x="50%"
+            y="50%"
+            text-anchor="middle"
+            fill="black"
+            font-size="14px"
+            font-family="Arial"
+            dy=".3em"
+          >
+            Sillyfootball
+          </text>
+          <text
+            x="50%"
+            y="60%"
+            text-anchor="middle"
+            fill="#3cf"
+            font-size="10px"
+            font-family="Arial"
+            dy=".3em"
+          >
+            beta
+          </text>
+        </svg>
+      </motion.div>
     </Link>
-    <Text color="primary" fontSize={1}>
-      beta
-    </Text>
   </Flex>
 )
 

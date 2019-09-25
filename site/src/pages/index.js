@@ -12,35 +12,27 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <Box p={[3, 4, 5]} mx="auto">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          duration: 1,
-          stiffness: 200,
-        }}
-      >
-        <Heading textAlign="center" my={2} fontSize={[3, 4, 5]}>
-          Som{" "}
-          <TextLoop
-            interval={5000}
-            springConfig={{ stiffness: 180, damping: 20 }}
-          >
-            <Text>Drömelvan</Text>
-            <Text>Fantasy PL</Text>
-            <Text>Draftkings</Text>
-          </TextLoop>{" "}
-          fast 1000x{" "}
-          <TextLoop
-            interval={4000}
-            springConfig={{ stiffness: 400, damping: 20 }}
-          >
-            <Text>bättre</Text>
-            <Text>enklare</Text>
-            <Text>roligare</Text>
-          </TextLoop>
-        </Heading>
-      </motion.div>
+      <Heading textAlign="center" my={2} fontSize={[3, 4, 5]}>
+        Som{" "}
+        <TextLoop
+          interval={5000}
+          springConfig={{ stiffness: 180, damping: 20 }}
+        >
+          <Text>Drömelvan</Text>
+          <Text>Fantasy PL</Text>
+          <Text>Draftkings</Text>
+        </TextLoop>{" "}
+        fast 1000x{" "}
+        <TextLoop
+          interval={4000}
+          springConfig={{ stiffness: 400, damping: 20 }}
+        >
+          <Text>bättre</Text>
+          <Text>enklare</Text>
+          <Text>roligare</Text>
+        </TextLoop>
+      </Heading>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
