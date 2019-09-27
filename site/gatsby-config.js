@@ -1,4 +1,3 @@
-const logo = require("./src/images/logo.png")
 const queries = require("./src/algolia")
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -49,7 +48,7 @@ module.exports = {
         background_color: `#3cf`,
         theme_color: `#3cf`,
         display: `standalone`,
-        icon: logo, // This path is relative to the root of the site.
+        icon: "./src/images/logo.png", // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
