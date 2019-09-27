@@ -141,6 +141,7 @@ const LeaderboardPage = props => {
                         <Image
                           key={player._id}
                           fixed={getLogo(player.team._id)}
+                          alt={player.name}
                         ></Image>
                       </Box>
                       <Box textAlign="center" mt={2}>

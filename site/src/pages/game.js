@@ -97,6 +97,7 @@ const GamePage = () => {
                         width="18px"
                         height="18px"
                         src={player.team.logo.asset.url}
+                        alt={player.name}
                       ></Image>
                       <Text mx="auto">{player.name}</Text>
                       <Box color="primary">

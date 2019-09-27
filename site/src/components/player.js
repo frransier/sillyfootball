@@ -27,7 +27,11 @@ const Player = props => {
           <Card mx={2} width="80%">
             <Flex>
               <Box>
-                <Image width="45px" src={team.logo.asset.url}></Image>
+                <Image
+                  width="45px"
+                  src={team.logo.asset.url}
+                  alt={team.name}
+                ></Image>
               </Box>
               <Box ml={2} width={1}>
                 <Text textAlign="left" mt={2} ml={2} fontSize={4}>
