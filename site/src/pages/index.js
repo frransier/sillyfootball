@@ -32,7 +32,6 @@ const IndexPage = () => (
           <Text>roligare</Text>
         </TextLoop>
       </Heading>
-
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -42,18 +41,22 @@ const IndexPage = () => (
         }}
       >
         <Box textAlign="center" mt={4}>
-          <Link to="/game/">
-            <Button mr={2} fontSize={[2, 4, 6]}>
-              Spela nu
+          <Link to="/faq/">
+            <Button variant="outline" color="black" mx={2} fontSize={[2, 4, 6]}>
+              Så funkar det
             </Button>
           </Link>
-          <Link to="/faq/">
-            <Button fontSize={[2, 4, 6]}>Så funkar det</Button>
+          <Link to="/game/">
+            <Button mx={1} fontSize={[2, 4, 6]}>
+              Spela
+            </Button>
           </Link>
         </Box>
-        <Box textAlign="center" mt={2}>
+        <Box textAlign="center" mt={3}>
           <Link to="/leaderboard/">
-            <Button fontSize={[2, 4, 6]}>Leaderboard</Button>
+            <Button variant="outline" color="black" fontSize={[2, 4, 6]}>
+              Leaderboard
+            </Button>
           </Link>
         </Box>
       </motion.div>

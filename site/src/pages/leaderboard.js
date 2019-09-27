@@ -75,18 +75,6 @@ const LeaderboardPage = props => {
     return (
       <Layout>
         <SEO title="Leaderboard" />
-        {/* <Card textAlign="center">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 2,
-              stiffness: 200,
-            }}
-          >
-            <Heading>Leaderboard</Heading>
-          </motion.div>
-        </Card> */}
       </Layout>
     )
   }
@@ -99,10 +87,14 @@ const LeaderboardPage = props => {
       <SEO title="Leaderboard" />
       <Card textAlign="left">
         {state && state.length > 0 && (
-          <>
-            <Text fontWeight="bold">Omsättning: 1000 kr</Text>
+          <Flex>
+            <Box>
+              <Text fontWeight="bold">Omsättning: 1000 kr</Text>
+              <Text fontWeight="bold">{state.length} deltagare</Text>
+            </Box>
+            <Box mx="auto"></Box>
             {state[0].score > 0 && (
-              <>
+              <Box>
                 <Text fontWeight="bold">
                   Utdelning {state[0].score}p:{" "}
                   {Math.round((0.7 * 1000) / getHighscorers())} kr
@@ -111,9 +103,9 @@ const LeaderboardPage = props => {
                   Utdelning {state[0].score - 1}p:{" "}
                   {Math.round((0.3 * 1000) / getHighscorers())} kr
                 </Text>
-              </>
+              </Box>
             )}
-          </>
+          </Flex>
         )}
       </Card>
       {state &&

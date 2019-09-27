@@ -1,4 +1,7 @@
+import rebass from "@rebass/preset"
+
 export default {
+  ...rebass,
   colors: {
     text: "#fff",
     background: "#060606",
