@@ -45,8 +45,8 @@ module.exports = {
         name: `Sillyfootball`,
         short_name: `Sillyfootball`,
         start_url: `/`,
-        background_color: `"#3cf"`,
-        theme_color: `"#3cf"`,
+        background_color: `#3cf`,
+        theme_color: `#3cf`,
         display: `standalone`,
         icon: `src/images/sillyfootball.png`, // This path is relative to the root of the site.
       },
