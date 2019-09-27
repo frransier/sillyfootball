@@ -4,6 +4,7 @@ import { Flex, Box, Text, Card } from "rebass"
 import { useStaticQuery, graphql } from "gatsby"
 import { mapEdgesToNodes } from "../helpers"
 import { motion } from "framer-motion"
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io"
 
 const Matches = ({ items, refine }) => {
   const site = useStaticQuery(
@@ -47,17 +48,15 @@ const Matches = ({ items, refine }) => {
       animate={{ opacity: 1 }}
       transition={{
         duration: 1,
-
         stiffness: 200,
       }}
     >
-      <Flex mx="auto" flexWrap="wrap" width={375}>
+      <Flex width={1} flexWrap="wrap">
         {schema.map((item, index) => {
           return (
             <Flex
-              width="45%"
-              // alignItems="center"
-              // justifyContent="center"
+              p={[1, 2]}
+              width={1 / 2}
               onClick={event => {
                 event.preventDefault()
                 refine(item.isRefined ? null : item.homeTeam.index)
@@ -65,10 +64,24 @@ const Matches = ({ items, refine }) => {
               key={item.label}
             >
               <Box width="100%">
-                <Card textAlign="center" sx={{ borderRadius: 6, margin: 1 }}>
-                  <Text color={item.isRefined ? "primary" : ""} fontSize={0}>
-                    {`${item.homeTeam.nickName} - ${item.awayTeam.nickName}`}
-                  </Text>
+                <Card sx={{ borderRadius: 6 }}>
+                  <Flex>
+                    <Box color="primary">
+                      {item.isRefined ? (
+                        <IoIosArrowDown />
+                      ) : (
+                        <IoIosArrowForward />
+                      )}
+                    </Box>
+                    <Box mx="auto">
+                      <Text
+                        color={item.isRefined ? "primary" : ""}
+                        fontSize={[1, 2, 3]}
+                      >
+                        {`${item.homeTeam.nickName} - ${item.awayTeam.nickName}`}
+                      </Text>
+                    </Box>
+                  </Flex>
                 </Card>
               </Box>
             </Flex>

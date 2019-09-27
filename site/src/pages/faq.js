@@ -15,8 +15,8 @@ const SecondPage = () => (
         stiffness: 200,
       }}
     >
-      <Box maxWidth="500px" width={9 / 10} mx="auto">
-        <Text my={4} mx={3}>
+      <Box width={[1, 4 / 5, 3 / 5]} mx="auto">
+        <Text my={2} mx={3}>
           <b>Sillyfootball</b> är ett enkelt <b>fantasy football</b> spel som
           spelas över en omgång på <b>12 matcher</b> från Premier Leauge, La
           Liga, Bundesliga och Serie A. Du väljer ut <b>5 valfria spelare</b>{" "}

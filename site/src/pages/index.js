@@ -10,7 +10,7 @@ import { motion } from "framer-motion"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="Start" />
     <Box p={[3, 4, 5]} mx="auto">
       <Heading textAlign="center" my={2} fontSize={[3, 4, 5]}>
         Som{" "}

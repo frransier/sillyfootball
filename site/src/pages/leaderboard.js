@@ -6,6 +6,7 @@ import { mapEdgesToNodes } from "../helpers"
 import { Flex, Box, Text, Card, Heading } from "rebass"
 import { GiSoccerBall } from "react-icons/gi"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 import userReducer from "../state/userReducer"
 import { motion } from "framer-motion"
 
@@ -64,6 +65,7 @@ const LeaderboardPage = props => {
   if (loading) {
     return (
       <Layout>
+        <SEO title="Leaderboard" />
         <Card textAlign="center">
           <motion.div
             initial={{ opacity: 0 }}
@@ -85,6 +87,7 @@ const LeaderboardPage = props => {
 
   return (
     <Layout>
+      <SEO title="Leaderboard" />
       <Card textAlign="center">
         <Heading>Leaderboard</Heading>
       </Card>

@@ -41,7 +41,7 @@ const GamePage = () => {
 
   return (
     <Layout>
-      <SEO title="Page two" />
+      <SEO title="Spela" />
       <InstantSearch searchClient={searchClient} indexName="players">
         <motion.div
           initial={{ opacity: 0 }}
@@ -51,7 +51,12 @@ const GamePage = () => {
             stiffness: 200,
           }}
         >
-          <Card mx="auto" width={345} height={188} sx={{ borderRadius: 12 }}>
+          <Card
+            width={[1, 4 / 5, 3 / 5]}
+            mx="auto"
+            height={188}
+            sx={{ borderRadius: 12 }}
+          >
             {state && state.length < 1 ? (
               <Box p={3}>
                 <Heading textAlign="left" my={1}>
@@ -111,11 +116,11 @@ const GamePage = () => {
               stiffness: 200,
             }}
           >
-            <Box>
+            <Box width={[1, 4 / 5, 3 / 5]} mx="auto">
               <Heading textAlign="center" fontSize={2} my={3}>
                 Spelschema
               </Heading>
-              <Box height="225px">
+              <Box height="auto">
                 <Matches limit={28} attribute="team.index" />
               </Box>
               <Heading textAlign="center" fontSize={2} my={3}>
