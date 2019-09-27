@@ -131,9 +131,7 @@ const GamePage = () => {
           </motion.div>
         ) : (
           <Box my={4}>
-            <Label color="darkgrey" htmlFor="email">
-              Email
-            </Label>
+            <Label htmlFor="email">Email</Label>
             <Input
               id="email"
               name="email"
@@ -141,7 +139,7 @@ const GamePage = () => {
               placeholder="glenn@gbg.nu"
               onChange={event => setEmail(event.target.value)}
             />
-            <Label color="darkgrey" mt={4} htmlFor="phone">
+            <Label mt={2} htmlFor="phone">
               Telefon
             </Label>
             <Input
@@ -151,9 +149,11 @@ const GamePage = () => {
               placeholder="Vinster betalas ut med Swish"
               onChange={event => setPhone(event.target.value)}
             />
-            <Button onClick={register} my={3}>
-              Lämna in
-            </Button>
+            <Box textAlign="center">
+              <Button onClick={register} my={3}>
+                Lämna in
+              </Button>
+            </Box>
           </Box>
         )}
       </InstantSearch>
