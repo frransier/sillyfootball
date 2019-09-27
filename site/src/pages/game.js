@@ -35,10 +35,8 @@ const GamePage = () => {
       .post("/.netlify/functions/register", { params: { squad, email } })
       .then(res => {
         res.data === "OK" ? navigate("/thanks/") : navigate("/404/")
-        setLoading(false)
       })
       .catch(error => {
-        setLoading(false)
         console.log(error)
       })
   }
