@@ -64,7 +64,7 @@ const Player = props => {
                 })
               )}
             >
-              <Box mx="auto" pt={0}>
+              <Box mx="auto" pt={1}>
                 {state.filter(x => x.name === hit.name).length > 0 ? (
                   <IoIosCheckmark size={35} />
                 ) : (

@@ -54,7 +54,7 @@ const GamePage = () => {
           <Card
             width={[1, 4 / 5, 3 / 5]}
             mx="auto"
-            height={188}
+            height={200}
             sx={{ borderRadius: 12 }}
           >
             {state && state.length < 1 ? (

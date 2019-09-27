@@ -1,15 +1,14 @@
 import { Link } from "gatsby"
 import React from "react"
-import { Flex, Heading, Text, Box } from "rebass"
+import { Flex } from "rebass"
 import { motion } from "framer-motion"
-import { GiSoccerBall } from "react-icons/gi"
 
 const icon = {
   hidden: {
-    strokeWidth: 0,
+    strokeWidth: 19,
   },
   visible: {
-    strokeWidth: 8,
+    strokeWidth: 4,
   },
 }
 
@@ -40,7 +39,6 @@ const Header = () => (
             cx="75"
             cy="75"
             r="50"
-            fill="white"
           />
           <text
             x="50%"
