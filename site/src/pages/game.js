@@ -20,7 +20,6 @@ const searchClient = algoliasearch(
 )
 const GamePage = () => {
   const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState()
 
   const state = useStateContext()
   const dispatch = useDispatchContext()
@@ -30,7 +29,7 @@ const GamePage = () => {
     const squad = state && state.map(player => player._id)
 
     axios
-      .post("/.netlify/functions/register", { params: { squad, email, phone } })
+      .post("/.netlify/functions/register", { params: { squad, email } })
       .then(res => {
         res.data === "OK" ? navigate("/thanks/") : navigate("/404/")
       })
@@ -139,16 +138,7 @@ const GamePage = () => {
               placeholder="glenn@gbg.nu"
               onChange={event => setEmail(event.target.value)}
             />
-            <Label mt={2} htmlFor="phone">
-              Telefon
-            </Label>
-            <Input
-              id="phone"
-              name="phone"
-              type="number"
-              placeholder="Vinster betalas ut med Swish"
-              onChange={event => setPhone(event.target.value)}
-            />
+
             <Box textAlign="center">
               <Button onClick={register} my={3}>
                 Lämna in

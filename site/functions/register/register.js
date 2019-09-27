@@ -17,7 +17,7 @@ exports.handler = (event, _, callback) => {
 
   const doc = {
     _type: "user",
-    phone: data.phone,
+
     email: data.email,
     createdAt: new Date(),
     players: players,
