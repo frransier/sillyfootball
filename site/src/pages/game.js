@@ -13,6 +13,7 @@ import { useDispatchContext, useStateContext } from "../state"
 import { useToast } from "sancho"
 import { FaWindowClose } from "react-icons/fa"
 import { motion } from "framer-motion"
+import { PacmanLoader } from "react-spinners"
 
 const searchClient = algoliasearch(
   "C1ICPA4UBZ",
@@ -20,20 +21,24 @@ const searchClient = algoliasearch(
 )
 const GamePage = () => {
   const [email, setEmail] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const state = useStateContext()
   const dispatch = useDispatchContext()
   const toast = useToast()
 
   const register = () => {
+    setLoading(true)
     const squad = state && state.map(player => player._id)
 
     axios
       .post("/.netlify/functions/register", { params: { squad, email } })
       .then(res => {
         res.data === "OK" ? navigate("/thanks/") : navigate("/404/")
+        setLoading(false)
       })
       .catch(error => {
+        setLoading(false)
         console.log(error)
       })
   }
@@ -140,9 +145,15 @@ const GamePage = () => {
             />
 
             <Box textAlign="center">
-              <Button onClick={register} my={3}>
-                Lämna in
-              </Button>
+              {loading ? (
+                <Box my={3} mx="auto" color="primary">
+                  <PacmanLoader color={"#3cf"}></PacmanLoader>
+                </Box>
+              ) : (
+                <Button onClick={register} my={3}>
+                  Lämna in
+                </Button>
+              )}
             </Box>
           </Box>
         )}
