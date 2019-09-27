@@ -1,4 +1,4 @@
-import { logo } from "./src/images/logo.png"
+const logo = require("./src/images/logo.png")
 const queries = require("./src/algolia")
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
