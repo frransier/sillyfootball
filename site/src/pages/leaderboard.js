@@ -94,6 +94,7 @@ const LeaderboardPage = props => {
       {state &&
         state.map(p => (
           <motion.div
+            key={p._id}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
@@ -101,8 +102,8 @@ const LeaderboardPage = props => {
               stiffness: 200,
             }}
           >
-            <Card key={p._id} width="100%">
-              <Flex key={p._id}>
+            <Card width="100%">
+              <Flex>
                 {p.players.map(player => {
                   return (
                     <Card
