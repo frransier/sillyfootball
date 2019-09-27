@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Image from "gatsby-image"
 import { useGraphQL } from "@brightleaf/react-hooks"
 import { mapEdgesToNodes } from "../helpers"
-import { Flex, Box, Text, Card, Heading } from "rebass"
+import { Flex, Box, Text, Card } from "rebass"
 import { GiSoccerBall } from "react-icons/gi"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -62,11 +62,20 @@ const LeaderboardPage = props => {
     return fixed
   }
 
+  const getHighscorers = () => {
+    if (state.length > 0) {
+      const topScorers = state.filter(x => x.score === state[0].score)
+      console.log(topScorers.length)
+
+      return topScorers.length
+    }
+  }
+
   if (loading) {
     return (
       <Layout>
         <SEO title="Leaderboard" />
-        <Card textAlign="center">
+        {/* <Card textAlign="center">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -77,7 +86,7 @@ const LeaderboardPage = props => {
           >
             <Heading>Leaderboard</Heading>
           </motion.div>
-        </Card>
+        </Card> */}
       </Layout>
     )
   }
@@ -88,8 +97,24 @@ const LeaderboardPage = props => {
   return (
     <Layout>
       <SEO title="Leaderboard" />
-      <Card textAlign="center">
-        <Heading>Leaderboard</Heading>
+      <Card textAlign="left">
+        {state && state.length > 0 && (
+          <>
+            <Text fontWeight="bold">Omsättning: 1000 kr</Text>
+            {state[0].score > 0 && (
+              <>
+                <Text fontWeight="bold">
+                  Utdelning {state[0].score}p:{" "}
+                  {Math.round((0.7 * 1000) / getHighscorers())} kr
+                </Text>
+                <Text fontWeight="bold">
+                  Utdelning {state[0].score - 1}p:{" "}
+                  {Math.round((0.3 * 1000) / getHighscorers())} kr
+                </Text>
+              </>
+            )}
+          </>
+        )}
       </Card>
       {state &&
         state.map(p => (
@@ -103,6 +128,9 @@ const LeaderboardPage = props => {
             }}
           >
             <Card width="100%">
+              <Text my={1} fontSize={1} fontWeight="bold">
+                ID: {p._id.substring(16, 25)}
+              </Text>
               <Flex>
                 {p.players.map(player => {
                   return (
@@ -139,10 +167,11 @@ const LeaderboardPage = props => {
                     </Box>
                   ))}
                   <Box mx="auto"></Box>
-                  <Box textAlign="right">
-                    <Text>{`id: ${p._id.substring(16, 25)}`}</Text>
-                    <Text>{`points: ${p.score}`}</Text>
-                  </Box>
+                  <Flex textAlign="right">
+                    <Box mx={2} fontWeight="bold" fontSize={2}>
+                      <Text>{`Poäng: ${p.score}`}</Text>
+                    </Box>
+                  </Flex>
                 </Flex>
               </Card>
             </Card>
