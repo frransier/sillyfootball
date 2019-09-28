@@ -1,3 +1,5 @@
+import { FaUser } from "react-icons/fa";
+
 export default {
   name: "user",
   type: "document",
@@ -24,5 +26,18 @@ export default {
       type: "datetime",
       title: "Created at"
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: "email"
+    },
+    prepare(selection) {
+      const { title } = selection;
+      return {
+        title: title,
+        media: FaUser,
+        subtitle: "User"
+      };
+    }
+  }
 };
