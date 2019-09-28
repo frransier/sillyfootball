@@ -10,7 +10,6 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import userReducer from "../state/userReducer"
 import { motion } from "framer-motion"
-import { push_uniq } from "terser"
 
 export const query = graphql`
   query Logos {
@@ -130,8 +129,8 @@ const LeaderboardPage = props => {
             placeholder="glenn@gbg.nu"
             onChange={event => setEmail(event.target.value)}
           />
-          <Button ml={2} onClick={trackTeams}>
-            Go
+          <Button color="white" ml={2} onClick={trackTeams}>
+            >
           </Button>
         </Flex>
       </Card>
