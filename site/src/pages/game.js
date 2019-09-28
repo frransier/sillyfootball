@@ -149,9 +149,10 @@ const GamePage = () => {
                   <PacmanLoader color={"#3cf"}></PacmanLoader>
                 </Box>
               ) : (
-                <Button onClick={register} my={3}>
-                  Lämna in
-                </Button>
+                <Heading>OMGÅNG PÅGÅR</Heading>
+                // <Button onClick={register} my={3}>
+                //   Lämna in
+                // </Button>
               )}
             </Box>
           </Box>
