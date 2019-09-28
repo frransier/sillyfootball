@@ -140,7 +140,7 @@ const GamePage = () => {
               name="email"
               type="email"
               placeholder="glenn@gbg.nu"
-              onChange={event => setEmail(event.target.value)}
+              onChange={event => setEmail(event.target.value.toLower())}
             />
 
             <Box textAlign="center">

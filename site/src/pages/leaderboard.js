@@ -119,15 +119,15 @@ const LeaderboardPage = props => {
       </Card>
       <Card>
         <Flex alignItems="center" justifyContent="center" width={1}>
-          <Label mx={1} width={1 / 3} htmlFor="trackTeams">
+          <Label mx={1} width={1 / 3} htmlFor="email">
             Visa dina lag
           </Label>
           <Input
-            id="trackTeams"
-            name="trackTeams"
-            type="trackTeams"
+            id="email"
+            name="email"
+            type="email"
             placeholder="glenn@gbg.nu"
-            onChange={event => setEmail(event.target.value)}
+            onChange={event => setEmail(event.target.value.toLower())}
           />
           <Button color="white" ml={2} onClick={trackTeams}>
             >
