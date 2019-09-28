@@ -131,7 +131,7 @@ const LeaderboardPage = props => {
             name="email"
             type="email"
             placeholder="glenn@gbg.nu"
-            onChange={event => setEmail(event.target.value.toLower())}
+            onChange={event => setEmail(event.target.value.toLowerCase())}
           />
           <Button color="white" ml={2} onClick={trackTeams}>
             >
