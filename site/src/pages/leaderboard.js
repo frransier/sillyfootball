@@ -60,6 +60,7 @@ const LeaderboardPage = props => {
   }, [data])
 
   const images = mapEdgesToNodes(props.data.teamLogos)
+
   const getLogo = id => {
     const logo = images.find(x => x._id === id)
     const fixed = logo.logo.asset.fixed
