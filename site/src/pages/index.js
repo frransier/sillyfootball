@@ -32,6 +32,18 @@ const IndexPage = () => (
           <Text>roligare</Text>
         </TextLoop>
       </Heading>
+      <Heading textAlign="center" pt={4} my={2} fontSize={[3, 4, 5]}>
+        Omgång 1 är nu klar
+      </Heading>
+      <Heading textAlign="center" pt={4} my={2} fontSize={[3, 4, 5]}>
+        Vinnarna har kontaktats via mail
+      </Heading>
+      <Heading textAlign="center" my={2} fontSize={[3, 4, 5]}>
+        Nästa omgång presenteras
+      </Heading>
+      <Heading textAlign="center" my={2} fontSize={[3, 4, 5]}>
+        Onsdag 2 oktober kl 21.00
+      </Heading>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

@@ -203,7 +203,7 @@ const LeaderboardPage = props => {
         <Heading>Highscore</Heading>
       </Card>
       {state &&
-        state.map(p => (
+        state.slice(0, 10).map(p => (
           <motion.div
             key={p._id}
             initial={{ opacity: 0 }}
