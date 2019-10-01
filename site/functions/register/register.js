@@ -48,7 +48,7 @@ exports.handler = (event, _, callback) => {
     console.log("Player registered ")
 
     intercom.users.create({ email: data.email }).then(function(r) {
-      console.log("Intercom user created", r)
+      console.log("Intercom user created", r.length)
     })
     intercom.events.create(
       {
@@ -64,7 +64,7 @@ exports.handler = (event, _, callback) => {
         },
       },
       function(d) {
-        console.log(`Team created ${data.email}`, d)
+        console.log(`Team created ${data.email}`, d.length)
       }
     )
     console.log("did it work?")
