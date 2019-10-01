@@ -7,7 +7,7 @@ const sanity = sanityClient({
   useCdn: false,
 })
 
-const intercom = new Intercom.Client({ token: "entknhmw" })
+const intercom = new Intercom.Client({ token: process.env.INTERCOM_TOKEN })
 
 exports.handler = (event, _, callback) => {
   var body = JSON.parse(event.body)
