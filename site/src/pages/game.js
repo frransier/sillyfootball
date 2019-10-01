@@ -14,6 +14,7 @@ import { useToast } from "sancho"
 import { FaWindowClose } from "react-icons/fa"
 import { motion } from "framer-motion"
 import { PacmanLoader } from "react-spinners"
+import Intercom from "react-intercom"
 
 const searchClient = algoliasearch(
   "C1ICPA4UBZ",
@@ -40,10 +41,10 @@ const GamePage = () => {
         console.log(error)
       })
   }
-
   return (
     <Layout>
       <SEO title="Spela" />
+      <Intercom appId="entknhmw" />
       <InstantSearch searchClient={searchClient} indexName="players">
         <motion.div
           initial={{ opacity: 0 }}
