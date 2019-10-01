@@ -26,22 +26,6 @@ exports.handler = (event, _, callback) => {
     createdAt: new Date(),
     players: players,
   }
-  const user = {
-    email: data.email,
-  }
-
-  const ev = {
-    event_name: "Team created",
-    created_at: Date.now(),
-    email: data.email,
-    metadata: {
-      player_1: players[0],
-      player_2: players[1],
-      player_3: players[2],
-      player_4: players[3],
-      player_5: players[4],
-    },
-  }
 
   try {
     sanity.create(doc)
@@ -51,7 +35,7 @@ exports.handler = (event, _, callback) => {
       intercom.events
         .create({
           event_name: "Team created",
-          created_at: Date.now(),
+          created_at: new Date(),
           email: data.email,
           metadata: {
             player_1: players[0],
