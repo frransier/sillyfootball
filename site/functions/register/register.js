@@ -54,7 +54,7 @@ exports.handler = (event, _, callback) => {
       {
         event_name: "Team created",
         created_at: Date.now(),
-        email: email,
+        email: data.email,
         metadata: {
           player_1: players[0],
           player_2: players[1],
