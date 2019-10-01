@@ -1,5 +1,5 @@
 const sanityClient = require("@sanity/client")
-// const Intercom = require("intercom-client")
+const Intercom = require("intercom-client")
 const sanity = sanityClient({
   projectId: "0jt5x7hu",
   dataset: process.env.SANITY_ENV,
@@ -7,7 +7,7 @@ const sanity = sanityClient({
   useCdn: false,
 })
 
-// const intercom = new Intercom.Client({ token: "entknhmw" })
+const intercom = new Intercom.Client({ token: "entknhmw" })
 
 exports.handler = (event, _, callback) => {
   var body = JSON.parse(event.body)
