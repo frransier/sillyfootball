@@ -14,7 +14,6 @@ import { useToast } from "sancho"
 import { FaWindowClose } from "react-icons/fa"
 import { motion } from "framer-motion"
 import { PacmanLoader } from "react-spinners"
-import Intercom from "react-intercom"
 
 const searchClient = algoliasearch(
   "C1ICPA4UBZ",
@@ -23,7 +22,6 @@ const searchClient = algoliasearch(
 const GamePage = () => {
   const [email, setEmail] = useState("")
   const [loading, setLoading] = useState(false)
-
   const state = useStateContext()
   const dispatch = useDispatchContext()
   const toast = useToast()
@@ -44,7 +42,6 @@ const GamePage = () => {
   return (
     <Layout>
       <SEO title="Spela" />
-      <Intercom appId="entknhmw" />
       <InstantSearch searchClient={searchClient} indexName="players">
         <motion.div
           initial={{ opacity: 0 }}
@@ -150,10 +147,9 @@ const GamePage = () => {
                   <PacmanLoader color={"#3cf"}></PacmanLoader>
                 </Box>
               ) : (
-                <Heading>OMGÅNG PÅGÅR</Heading>
-                // <Button onClick={register} my={3}>
-                //   Lämna in
-                // </Button>
+                <Button onClick={register} my={3}>
+                  Lämna in
+                </Button>
               )}
             </Box>
           </Box>
