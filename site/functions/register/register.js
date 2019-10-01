@@ -50,7 +50,7 @@ exports.handler = (event, _, callback) => {
     intercom.users.create({ email: data.email }).then(function(r) {
       console.log("Intercom user created", r)
     })
-    client.events.create(
+    intercom.events.create(
       {
         event_name: "Team created",
         created_at: Date.now(),
