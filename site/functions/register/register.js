@@ -47,9 +47,9 @@ exports.handler = (event, _, callback) => {
     sanity.create(doc)
     console.log("Player registered ")
 
-    intercom.users.create({ email: data.email }).then(
-      intercom.events.create(
-        {
+    intercom.users.create({ email: data.email }).then(() => {
+      intercom.events
+        .create({
           event_name: "Team created",
           created_at: Date.now(),
           email: data.email,
@@ -60,12 +60,11 @@ exports.handler = (event, _, callback) => {
             player_4: players[3],
             player_5: players[4],
           },
-        },
-        function(d) {
-          console.log(`Team created ${data.email}`, d.length)
-        }
-      )
-    )
+        })
+        .then(() => {
+          console.log("Success")
+        })
+    })
 
     console.log("did it work?")
 
