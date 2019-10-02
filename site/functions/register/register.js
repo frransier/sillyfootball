@@ -14,7 +14,6 @@ exports.handler = (event, _, callback) => {
   var data = body.params
   console.log(JSON.stringify(data.email))
   const datum = Date.now()
-  console.log(datum)
 
   const players = data.squad.map(player => {
     const p = { _ref: player, _key: player, _type: "reference" }
@@ -37,7 +36,7 @@ exports.handler = (event, _, callback) => {
       intercom.events
         .create({
           event_name: "Team created",
-          created_at: datum,
+          created_at: datum / 1000,
           email: data.email,
           metadata: {
             player_1: players[0],
