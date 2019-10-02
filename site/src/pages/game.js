@@ -28,7 +28,12 @@ const GamePage = () => {
 
   const register = () => {
     setLoading(true)
-    const squad = state && state.map(player => player._id)
+    const squad =
+      state &&
+      state.map(player => {
+        const p = { id: player._id, name: player.name }
+        return p
+      })
 
     axios
       .post("/.netlify/functions/register", { params: { squad, email } })

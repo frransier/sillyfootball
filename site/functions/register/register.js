@@ -39,11 +39,11 @@ exports.handler = (event, _, callback) => {
           created_at: datum,
           email: data.email,
           metadata: {
-            player_1: players[0],
-            player_2: players[1],
-            player_3: players[2],
-            player_4: players[3],
-            player_5: players[4],
+            player_1: data.squad[0].name,
+            player_2: data.squad[1].name,
+            player_3: data.squad[2].name,
+            player_4: data.squad[3].name,
+            player_5: data.squad[4].name,
           },
         })
         .then(() => {
