@@ -35,7 +35,7 @@ exports.handler = (event, _, callback) => {
       intercom.events
         .create({
           event_name: "Team created",
-          created_at: new Date(),
+          created_at: Date.now(),
           email: data.email,
           metadata: {
             player_1: players[0],
