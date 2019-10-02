@@ -34,11 +34,13 @@ const Matches = ({ items, refine }) => {
       const teams = rawTeams.filter(
         x => x.index.toString() === i.value.toString()
       )
+      console.log(teams)
+      if (teams.length > 0) {
+        const homeTeam = teams.find(x => x.active)
+        const awayTeam = teams.find(x => !x.active)
 
-      const homeTeam = teams.find(x => x.active)
-      const awayTeam = teams.find(x => !x.active)
-
-      return { ...i, homeTeam, awayTeam }
+        return { ...i, homeTeam, awayTeam }
+      }
     })
     .sort((a, b) => a.label - b.label)
 
@@ -53,39 +55,41 @@ const Matches = ({ items, refine }) => {
     >
       <Flex width={1} flexWrap="wrap">
         {schema.map((item, index) => {
-          return (
-            <Flex
-              p={[1, 2]}
-              width={1 / 2}
-              onClick={event => {
-                event.preventDefault()
-                refine(item.isRefined ? null : item.homeTeam.index)
-              }}
-              key={item.label}
-            >
-              <Box width="100%">
-                <Card sx={{ borderRadius: 6 }}>
-                  <Flex>
-                    <Box color="primary">
-                      {item.isRefined ? (
-                        <IoIosArrowDown />
-                      ) : (
-                        <IoIosArrowForward />
-                      )}
-                    </Box>
-                    <Box mx="auto">
-                      <Text
-                        color={item.isRefined ? "primary" : ""}
-                        fontSize={[1, 2, 3]}
-                      >
-                        {`${item.homeTeam.nickName} - ${item.awayTeam.nickName}`}
-                      </Text>
-                    </Box>
-                  </Flex>
-                </Card>
-              </Box>
-            </Flex>
-          )
+          if (item) {
+            return (
+              <Flex
+                p={[1, 2]}
+                width={1 / 2}
+                onClick={event => {
+                  event.preventDefault()
+                  refine(item.isRefined ? null : item.homeTeam.index)
+                }}
+                key={item.label}
+              >
+                <Box width="100%">
+                  <Card sx={{ borderRadius: 6 }}>
+                    <Flex>
+                      <Box color="primary">
+                        {item.isRefined ? (
+                          <IoIosArrowDown />
+                        ) : (
+                          <IoIosArrowForward />
+                        )}
+                      </Box>
+                      <Box mx="auto">
+                        <Text
+                          color={item.isRefined ? "primary" : ""}
+                          fontSize={[1, 2, 3]}
+                        >
+                          {`${item.homeTeam.nickName} - ${item.awayTeam.nickName}`}
+                        </Text>
+                      </Box>
+                    </Flex>
+                  </Card>
+                </Box>
+              </Flex>
+            )
+          }
         })}
       </Flex>
     </motion.div>
