@@ -100,6 +100,7 @@ exports.handler = (event, _, callback) => {
                 console.log("Sent email to: ", data.email)
               })
           })
+          .catch(err => console.log(err))
       })
     callback(null, {
       statusCode: 200,
