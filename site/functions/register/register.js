@@ -55,11 +55,11 @@ exports.handler = (event, _, callback) => {
       "</html>",
     from: {
       type: "admin",
-      email: "welcome@sillyfootball.intercom-mail.com",
+      email: "frransier@gmail.com",
     },
     to: {
       type: "user",
-      email: JSON.stringify(data.email),
+      email: data.email,
     },
   }
 
