@@ -12,7 +12,7 @@ const intercom = new Intercom.Client({ token: process.env.INTERCOM_TOKEN })
 exports.handler = (event, _, callback) => {
   var body = JSON.parse(event.body)
   var data = body.params
-  console.log(JSON.stringify(data.squad))
+  console.log("Starting registration for: ", JSON.stringify(data.email))
   const datum = Math.floor(Date.now() / 1000)
 
   const players = data.squad.map(player => {
@@ -70,7 +70,6 @@ exports.handler = (event, _, callback) => {
     intercom.users
       .create({
         email: data.email,
-        last_seen: datum,
       })
       .then(() => {
         intercom.events
