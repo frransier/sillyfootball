@@ -1,3 +1,4 @@
+const short = require("short-uuid")
 const sanityClient = require("@sanity/client")
 const Intercom = require("intercom-client")
 const sanity = sanityClient({
@@ -14,6 +15,7 @@ exports.handler = (event, _, callback) => {
   var data = body.params
   console.log("Starting registration for: ", JSON.stringify(data.email))
   const datum = Math.floor(Date.now() / 1000)
+  const userId = short.generate()
 
   const players = data.squad.map(player => {
     const p = { _ref: player.id, _key: player.id, _type: "reference" }
@@ -59,7 +61,7 @@ exports.handler = (event, _, callback) => {
     },
     to: {
       type: "user",
-      email: data.email,
+      id: userId,
     },
   }
 
@@ -70,6 +72,7 @@ exports.handler = (event, _, callback) => {
     intercom.users
       .create({
         email: data.email,
+        id: userId,
       })
       .then(() => {
         intercom.events

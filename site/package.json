@@ -42,6 +42,7 @@
     "react-typography": "^0.16.19",
     "rebass": "^4.0.5",
     "sancho": "^3.5.4",
+    "short-uuid": "^3.1.1",
     "theme-ui": "^0.2.42",
     "typography": "^0.16.19",
     "typography-theme-de-young": "^0.16.19",
