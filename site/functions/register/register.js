@@ -70,7 +70,7 @@ exports.handler = (event, _, callback) => {
     intercom.users
       .create({
         email: data.email,
-        lastSeen: datum,
+        last_seen: datum,
       })
       .then(() => {
         intercom.events
