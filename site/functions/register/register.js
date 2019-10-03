@@ -55,7 +55,7 @@ exports.handler = (event, _, callback) => {
       "</html>",
     from: {
       type: "admin",
-      email: "hello@sillyfootball.se",
+      email: "frransier@gmail.com",
     },
     to: {
       type: "user",
