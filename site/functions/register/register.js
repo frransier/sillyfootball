@@ -96,11 +96,11 @@ exports.handler = (event, _, callback) => {
               .create({
                 message,
               })
+              .catch(err => console.log(err))
               .then(() => {
                 console.log("Sent email to: ", data.email)
               })
           })
-          .catch(err => console.log(err))
       })
     callback(null, {
       statusCode: 200,
