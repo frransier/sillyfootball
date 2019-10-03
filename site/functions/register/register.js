@@ -59,7 +59,7 @@ exports.handler = (event, _, callback) => {
     },
     to: {
       type: "user",
-      email: data.email,
+      email: JSON.stringify(data.email),
     },
   }
 
