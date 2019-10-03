@@ -65,7 +65,7 @@ exports.handler = (event, _, callback) => {
 
   try {
     sanity.create(doc)
-    console.log("Player registered ")
+    console.log("Player registered in Sanity ")
 
     intercom.users
       .create({
