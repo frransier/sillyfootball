@@ -55,7 +55,7 @@ exports.handler = (event, _, callback) => {
       "</html>",
     from: {
       type: "admin",
-      email: "frransier@gmail.com",
+      email: "welcome@sillyfootball.intercom-mail.com",
     },
     to: {
       type: "user",
