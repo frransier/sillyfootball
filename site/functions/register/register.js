@@ -67,45 +67,74 @@ exports.handler = (event, _, callback) => {
 
   try {
     sanity.create(doc)
-    console.log("Player registered in Sanity ")
+    console.log("Player registered in Sanity")
 
     intercom.users.find({ email: data.email }, function(res) {
-      console.log(res)
+      const usr = JSON.parse(res.body.users)
+      console.log(JSON.stringify(usr))
+
+      res.body.users.length > 0
+        ? intercom.events
+            .create({
+              event_name: "Team created",
+              created_at: datum,
+              email: data.email,
+              metadata: {
+                player_1: data.squad[0].name,
+                player_2: data.squad[1].name,
+                player_3: data.squad[2].name,
+                player_4: data.squad[3].name,
+                player_5: data.squad[4].name,
+              },
+            })
+            .then(() => {
+              console.log("Team created in Intercom")
+            })
+            .then(() => {
+              intercom.messages
+                .create({
+                  message,
+                })
+                .then(() => {
+                  console.log("Sent email to: ", data.email)
+                })
+                .catch(err => console.log(err))
+            })
+        : intercom.users
+            .create({
+              email: data.email,
+              id: userId,
+            })
+            .then(() => {
+              intercom.events
+                .create({
+                  event_name: "Team created",
+                  created_at: datum,
+                  email: data.email,
+                  metadata: {
+                    player_1: data.squad[0].name,
+                    player_2: data.squad[1].name,
+                    player_3: data.squad[2].name,
+                    player_4: data.squad[3].name,
+                    player_5: data.squad[4].name,
+                  },
+                })
+                .then(() => {
+                  console.log("Success")
+                })
+                .then(() => {
+                  intercom.messages
+                    .create({
+                      message,
+                    })
+                    .then(() => {
+                      console.log("Sent email to: ", data.email)
+                    })
+                    .catch(err => console.log(err))
+                })
+            })
     })
 
-    intercom.users
-      .create({
-        email: data.email,
-        id: userId,
-      })
-      .then(() => {
-        intercom.events
-          .create({
-            event_name: "Team created",
-            created_at: datum,
-            email: data.email,
-            metadata: {
-              player_1: data.squad[0].name,
-              player_2: data.squad[1].name,
-              player_3: data.squad[2].name,
-              player_4: data.squad[3].name,
-              player_5: data.squad[4].name,
-            },
-          })
-          .then(() => {
-            console.log("Success")
-          })
-          .then(() => {
-            intercom.messages
-              .create({
-                message,
-              })
-              .then(() => {
-                console.log("Sent email to: ", data.email)
-              })
-              .catch(err => console.log(err))
-          })
-      })
     callback(null, {
       statusCode: 200,
       body: `OK`,
