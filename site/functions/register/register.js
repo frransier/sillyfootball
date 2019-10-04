@@ -30,7 +30,7 @@ exports.handler = (event, _, callback) => {
   }
 
   const mailToExistingUser = id => {
-    console.log(id.id)
+    console.log(id)
 
     const msg = {
       message_type: "email",
