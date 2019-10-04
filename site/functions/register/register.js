@@ -70,7 +70,7 @@ exports.handler = (event, _, callback) => {
     console.log("Player registered in Sanity")
 
     intercom.users.find({ email: data.email }, function(res) {
-      const usr = JSON.parse(res.body.users)
+      const usr = res.body.users
       console.log(JSON.stringify(usr))
 
       res.body.users.length > 0
