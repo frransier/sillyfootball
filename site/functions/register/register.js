@@ -86,7 +86,7 @@ exports.handler = (event, _, callback) => {
       if (usr.length > 0) {
         console.log(usr[0])
         console.log(usr[0].user_id)
-        mailToExistingUser(usr[0].user_id)
+        mailToExistingUser(usr[0].id)
         intercom.events
           .create({
             event_name: "Team created",
