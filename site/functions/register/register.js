@@ -64,7 +64,7 @@ exports.handler = (event, _, callback) => {
       },
       to: {
         type: "user",
-        id: id.toString(),
+        id: JSON.stringify(id),
       },
     }
 
