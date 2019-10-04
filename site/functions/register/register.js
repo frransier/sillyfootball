@@ -62,7 +62,7 @@ exports.handler = (event, _, callback) => {
       },
       to: {
         type: "user",
-        id: id,
+        id: id.toString(),
       },
     }
 
