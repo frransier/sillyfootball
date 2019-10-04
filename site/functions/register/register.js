@@ -61,7 +61,7 @@ exports.handler = (event, _, callback) => {
     },
     to: {
       type: "user",
-      id: userId,
+      user_id: userId,
     },
   }
 
@@ -103,7 +103,7 @@ exports.handler = (event, _, callback) => {
         : intercom.users
             .create({
               email: data.email,
-              id: userId,
+              user_id: userId,
             })
             .then(() => {
               intercom.events
