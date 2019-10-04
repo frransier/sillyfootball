@@ -62,7 +62,7 @@ exports.handler = (event, _, callback) => {
       },
       to: {
         type: "user",
-        user_id: id,
+        id: id,
       },
     }
 
@@ -84,6 +84,7 @@ exports.handler = (event, _, callback) => {
       const usr = res.body.users
 
       if (usr.length > 0) {
+        console.log(usr[0])
         console.log(usr[0].user_id)
         mailToExistingUser(usr[0].user_id)
         intercom.events
