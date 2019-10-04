@@ -29,40 +29,51 @@ exports.handler = (event, _, callback) => {
     players: players,
   }
 
-  const message = {
-    message_type: "email",
-    subject: "Du är reggad",
-    template: "personal",
-    body:
-      " " +
-      "<html>  " +
-      "<body>  " +
-      "<h1>  " +
-      "<b> Spelstart <mark>Lördag kl 13.25</mark> </b> " +
-      "</h1> " +
-      "<p>Brighton - Tottenham<br>  " +
-      "</p>  " +
-      "<h2>  " +
-      "Ditt lag:" +
-      "</h2>  " +
-      "<ul>  " +
-      `<li>${data.squad[0].name}</li>  ` +
-      `<li>${data.squad[1].name}</li>  ` +
-      `<li>${data.squad[2].name}</li>  ` +
-      `<li>${data.squad[3].name}</li>  ` +
-      `<li>${data.squad[4].name}</li>  ` +
-      "</ul>  " +
-      "<h2>  " +
-      "</body>  " +
-      "</html>",
-    from: {
-      type: "admin",
-      id: 3501419,
-    },
-    to: {
-      type: "user",
-      user_id: userId,
-    },
+  const mailToExistingUser = id => {
+    const msg = {
+      message_type: "email",
+      subject: "Du är reggad",
+      template: "personal",
+      body:
+        " " +
+        "<html>  " +
+        "<body>  " +
+        "<h1>  " +
+        "<b> Spelstart <mark>Lördag kl 13.25</mark> </b> " +
+        "</h1> " +
+        "<p>Brighton - Tottenham<br>  " +
+        "</p>  " +
+        "<h2>  " +
+        "Ditt lag:" +
+        "</h2>  " +
+        "<ul>  " +
+        `<li>${data.squad[0].name}</li>  ` +
+        `<li>${data.squad[1].name}</li>  ` +
+        `<li>${data.squad[2].name}</li>  ` +
+        `<li>${data.squad[3].name}</li>  ` +
+        `<li>${data.squad[4].name}</li>  ` +
+        "</ul>  " +
+        "<h2>  " +
+        "</body>  " +
+        "</html>",
+      from: {
+        type: "admin",
+        id: 3501419,
+      },
+      to: {
+        type: "user",
+        user_id: id,
+      },
+    }
+
+    intercom.messages
+      .create({
+        msg,
+      })
+      .then(() => {
+        console.log("Sent email to: ", data.email)
+      })
+      .catch(err => console.log(err))
   }
 
   try {
@@ -73,66 +84,56 @@ exports.handler = (event, _, callback) => {
       const usr = res.body.users
       console.log(JSON.stringify(usr))
 
-      res.body.users.length > 0
-        ? intercom.events
-            .create({
-              event_name: "Team created",
-              created_at: datum,
-              email: data.email,
-              metadata: {
-                player_1: data.squad[0].name,
-                player_2: data.squad[1].name,
-                player_3: data.squad[2].name,
-                player_4: data.squad[3].name,
-                player_5: data.squad[4].name,
-              },
-            })
-            .then(() => {
-              console.log("Team created in Intercom")
-            })
-            .then(() => {
-              intercom.messages
-                .create({
-                  message,
-                })
-                .then(() => {
-                  console.log("Sent email to: ", data.email)
-                })
-                .catch(err => console.log(err))
-            })
-        : intercom.users
-            .create({
-              email: data.email,
-              user_id: userId,
-            })
-            .then(() => {
-              intercom.events
-                .create({
-                  event_name: "Team created",
-                  created_at: datum,
-                  email: data.email,
-                  metadata: {
-                    player_1: data.squad[0].name,
-                    player_2: data.squad[1].name,
-                    player_3: data.squad[2].name,
-                    player_4: data.squad[3].name,
-                    player_5: data.squad[4].name,
-                  },
-                })
-                .then(() => {
-                  console.log("Success")
-                })
-                .then(() => {
-                  intercom.messages
-                    .create({
-                      message,
-                    })
-                    .then(() => {
-                      console.log("Sent email to: ", data.email)
-                    })
-                    .catch(err => console.log(err))
-                })
-            })
+      if (usr.length > 0) {
+        mailToExistingUser(usr[0].id)
+        intercom.events
+          .create({
+            event_name: "Team created",
+            created_at: datum,
+            email: data.email,
+            metadata: {
+              player_1: data.squad[0].name,
+              player_2: data.squad[1].name,
+              player_3: data.squad[2].name,
+              player_4: data.squad[3].name,
+              player_5: data.squad[4].name,
+            },
+          })
+          .then(() => {
+            console.log("Team created in Intercom")
+          })
+      } else {
+        intercom.users
+          .create({
+            email: data.email,
+            user_id: userId,
+            custom_attributes: {
+              player_1: data.squad[0].name,
+              player_2: data.squad[1].name,
+              player_3: data.squad[2].name,
+              player_4: data.squad[3].name,
+              player_5: data.squad[4].name,
+            },
+          })
+          .then(() => {
+            intercom.events
+              .create({
+                event_name: "Team created",
+                created_at: datum,
+                email: data.email,
+                metadata: {
+                  player_1: data.squad[0].name,
+                  player_2: data.squad[1].name,
+                  player_3: data.squad[2].name,
+                  player_4: data.squad[3].name,
+                  player_5: data.squad[4].name,
+                },
+              })
+              .then(() => {
+                console.log("User created: ", data.email)
+              })
+          })
+      }
     })
 
     callback(null, {
