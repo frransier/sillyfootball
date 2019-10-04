@@ -83,12 +83,12 @@ exports.handler = (event, _, callback) => {
     console.log("Player registered in Sanity")
 
     intercom.users.find({ email: data.email }, function(res) {
-      const usr = JSON.parse(res.body.users)
+      const body = JSON.parse(res.body)
 
-      if (usr.length > 0) {
-        console.log(usr[0])
-        console.log(usr[0].user_id)
-        mailToExistingUser(usr[0].id)
+      if (body.users.length > 0) {
+        console.log(body.users[0])
+        console.log(body.users[0].user_id)
+        mailToExistingUser(body.users[0].id)
         intercom.events
           .create({
             event_name: "Team created",
