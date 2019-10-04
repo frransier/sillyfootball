@@ -86,7 +86,7 @@ exports.handler = (event, _, callback) => {
       const body = res.body
 
       if (body.users.length > 0) {
-        mailToExistingUser(JSON.stringify(body.users[0].user_id))
+        mailToExistingUser(JSON.stringify(body.users[0].id))
         intercom.events
           .create({
             event_name: "Team created",
