@@ -73,7 +73,7 @@ exports.handler = (event, _, callback) => {
       .then(() => {
         console.log("Sent email to: ", data.email)
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err.body.errors[0]))
   }
 
   try {
