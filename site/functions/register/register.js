@@ -82,9 +82,9 @@ exports.handler = (event, _, callback) => {
 
     intercom.users.find({ email: data.email }, function(res) {
       const usr = res.body.users
-      console.log(JSON.stringify(usr))
 
       if (usr.length > 0) {
+        console.log(usr[0].user_id)
         mailToExistingUser(usr[0].user_id)
         intercom.events
           .create({
