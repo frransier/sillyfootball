@@ -11,8 +11,8 @@ const sanity = sanityClient({
 const intercom = new Intercom.Client({ token: process.env.INTERCOM_TOKEN })
 
 exports.handler = (event, _, callback) => {
-  var body = JSON.parse(event.body)
-  var data = body.params
+  const body = JSON.parse(event.body)
+  const data = body.params
   console.log("Starting registration for: ", JSON.stringify(data.email))
   const datum = Math.floor(Date.now() / 1000)
   const userId = short.generate()
@@ -69,6 +69,10 @@ exports.handler = (event, _, callback) => {
     sanity.create(doc)
     console.log("Player registered in Sanity ")
 
+    intercom.users.find({ email: data.email }, function(res) {
+      console.log(res)
+    })
+
     intercom.users
       .create({
         email: data.email,
@@ -96,10 +100,10 @@ exports.handler = (event, _, callback) => {
               .create({
                 message,
               })
-              .catch(err => console.log(err))
               .then(() => {
                 console.log("Sent email to: ", data.email)
               })
+              .catch(err => console.log(err))
           })
       })
     callback(null, {
