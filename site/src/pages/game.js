@@ -14,6 +14,7 @@ import { useToast } from "sancho"
 import { FaWindowClose } from "react-icons/fa"
 import { motion } from "framer-motion"
 import { PacmanLoader } from "react-spinners"
+import { Link } from "gatsby"
 
 const searchClient = algoliasearch(
   "C1ICPA4UBZ",
@@ -75,7 +76,7 @@ const GamePage = () => {
                 <Text textAlign="left" mt={3}>
                   Deadline day
                 </Text>
-                <Text textAlign="left">Lördag 28/9 kl 13:25</Text>
+                <Text textAlign="left">Lördag 5/10 kl 13:25</Text>
               </Box>
             ) : (
               state &&
@@ -131,10 +132,18 @@ const GamePage = () => {
               <Box height="auto">
                 <Matches limit={28} attribute="team.index" />
               </Box>
-              <Heading textAlign="center" fontSize={2} my={3}>
-                Välj spelare
-              </Heading>
-              <PlayerList />
+              <Box textAlign="center" fontSize={2} my={3}>
+                <Heading>
+                  <Link
+                    style={{ textDecoration: "underline", color: "black" }}
+                    to="/leaderboard"
+                  >
+                    Omgång 2 pågår
+                  </Link>
+                </Heading>
+              </Box>
+
+              {/* <PlayerList /> */}
             </Box>
           </motion.div>
         ) : (
