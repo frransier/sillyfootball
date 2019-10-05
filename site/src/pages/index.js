@@ -33,9 +33,6 @@ const IndexPage = () => (
         </TextLoop>
       </Heading>
       <Heading textAlign="center" pt={4} my={2} fontSize={[3, 4, 5]}>
-        Omgång 2 är öppen
-      </Heading>
-      <Heading textAlign="center" pt={4} my={2} fontSize={[3, 4, 5]}>
         Spelstopp: Lördag kl 13.25
       </Heading>
       <motion.div
