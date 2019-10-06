@@ -58,8 +58,12 @@ const Matches = ({ items, refine }) => {
           if (item) {
             return (
               <Flex
+                bg={item.isRefined && "black"}
                 p={[1, 2]}
                 width={1 / 2}
+                sx={{
+                  borderRadius: 3,
+                }}
                 onClick={event => {
                   event.preventDefault()
                   refine(item.isRefined ? null : item.homeTeam.index)
@@ -69,14 +73,23 @@ const Matches = ({ items, refine }) => {
                 <Box width="100%">
                   <Card sx={{ borderRadius: 6 }}>
                     <Flex>
-                      <Box color="primary">
+                      <Box>
                         {item.isRefined ? (
                           <IoIosArrowDown />
                         ) : (
                           <IoIosArrowForward />
                         )}
                       </Box>
-                      <Box mx="auto">
+                      <Box
+                        width="75%"
+                        mx="auto"
+                        sx={{
+                          borderRadius: 1,
+                          borderWidth: "0px 0px 2px 0px",
+                          borderStyle: "solid",
+                          borderColor: "primary",
+                        }}
+                      >
                         <Text
                           color={item.isRefined ? "primary" : ""}
                           fontSize={[1, 2, 3]}

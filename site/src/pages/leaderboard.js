@@ -77,6 +77,7 @@ const LeaderboardPage = props => {
     if (state.length > 0) {
       const runnersUp = state.filter(x => x.score === state[0].score - 1)
       const backup = state.filter(x => x.score === state[1].score)
+      console.log(state)
 
       if (runnersUp > 0) {
         return runnersUp.length

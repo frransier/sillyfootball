@@ -19,7 +19,14 @@ const PlayerList = ({ hits, hasMore, refineNext }) => {
           <Player key={index} index={index} hit={hit} />
         ))}
         <Box textAlign="center" py={2}>
-          <Button height="30px" disabled={!hasMore} onClick={refineNext}>
+          <Button
+            width={1}
+            fontSize={3}
+            bg="black"
+            color="primary"
+            disabled={!hasMore}
+            onClick={refineNext}
+          >
             Visa fler
           </Button>
         </Box>

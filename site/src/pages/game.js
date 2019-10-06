@@ -59,24 +59,49 @@ const GamePage = () => {
             stiffness: 200,
           }}
         >
-          <Card
+          <Box
+            bg="primary"
             width={[1, 4 / 5, 3 / 5]}
             mx="auto"
             height={200}
-            sx={{ borderRadius: 12 }}
+            sx={{
+              borderColor: "white",
+              borderStyle: "solid",
+              borderRadius: "0px 0px 10px 10px",
+            }}
           >
             {state && state.length < 1 ? (
-              <Box p={3}>
-                <Heading textAlign="left" my={1}>
+              <Box>
+                <Box
+                  width={1 / 2}
+                  mx="auto"
+                  bg="primary"
+                  height={50}
+                  sx={{
+                    borderWidth: "6px",
+                    borderColor: "white",
+                    borderStyle: "solid",
+                    borderTop: "none",
+                  }}
+                ></Box>
+                <Heading
+                  textAlign="center"
+                  mt={2}
+                  sx={{ fontWeight: "normal" }}
+                >
                   Välj 5 spelare
                 </Heading>
-                <Heading textAlign="left" my={3}>
-                  1 poäng per mål / assist
+                <Heading
+                  fontSize={2}
+                  fontWeight="normal"
+                  textAlign="center"
+                  mt={0}
+                >
+                  1 poäng per mål el assist
                 </Heading>
-                <Text textAlign="left" mt={3}>
-                  Deadline day
+                <Text textAlign="center" mt={3}>
+                  Deadline Lördag 13:30
                 </Text>
-                <Text textAlign="left">Lördag 5/10 kl 13:25</Text>
               </Box>
             ) : (
               state &&
@@ -114,7 +139,7 @@ const GamePage = () => {
                 )
               })
             )}
-          </Card>
+          </Box>
         </motion.div>
         {state && state.length < 5 ? (
           <motion.div
@@ -126,24 +151,25 @@ const GamePage = () => {
             }}
           >
             <Box width={[1, 4 / 5, 3 / 5]} mx="auto">
-              <Heading textAlign="center" fontSize={2} my={3}>
-                Spelschema
+              <Heading textAlign="left" fontSize={2} fontWeight="normal">
+                Matcher
               </Heading>
               <Box height="auto">
                 <Matches limit={28} attribute="team.index" />
               </Box>
-              <Box textAlign="center" fontSize={2} my={3}>
-                <Heading>
-                  <Link
+              <Box textAlign="left" fontSize={2}>
+                <Heading fontWeight="normal">
+                  {/* <Link
                     style={{ textDecoration: "underline", color: "black" }}
                     to="/leaderboard"
                   >
                     Omgång 2 pågår
-                  </Link>
+                  </Link> */}
+                  Spelare
                 </Heading>
               </Box>
 
-              {/* <PlayerList /> */}
+              <PlayerList />
             </Box>
           </motion.div>
         ) : (
