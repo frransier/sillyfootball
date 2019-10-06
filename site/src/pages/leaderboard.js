@@ -120,9 +120,9 @@ const LeaderboardPage = props => {
                 </Text>
                 <Text fontWeight="bold">
                   Utdelning{" "}
-                  {state[1].score + 1 === state[0].score
-                    ? state[0].score - 1
-                    : state[1].score}
+                  {state[1].score + 2 === state[0].score
+                    ? state[0].score - 2
+                    : state[0].score - 1}
                   p: {Math.round((0.3 * 1000) / getRunnersUp())} kr
                 </Text>
               </Box>
