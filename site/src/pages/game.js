@@ -51,62 +51,58 @@ const GamePage = () => {
     <Layout>
       <SEO title="Spela" />
       <InstantSearch searchClient={searchClient} indexName="players">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 0.5,
-            stiffness: 200,
+        <Box
+          bg="primary"
+          width={[1, 4 / 5, 3 / 5]}
+          mx="auto"
+          height={200}
+          sx={{
+            borderColor: "white",
+            borderStyle: "solid",
+            borderRadius: "0px 0px 10px 10px",
           }}
         >
-          <Box
-            bg="primary"
-            width={[1, 4 / 5, 3 / 5]}
-            mx="auto"
-            height={200}
-            sx={{
-              borderColor: "white",
-              borderStyle: "solid",
-              borderRadius: "0px 0px 10px 10px",
-            }}
-          >
-            {state && state.length < 1 ? (
-              <Box>
-                <Box
-                  width={1 / 2}
-                  mx="auto"
-                  bg="primary"
-                  height={50}
-                  sx={{
-                    borderWidth: "6px",
-                    borderColor: "white",
-                    borderStyle: "solid",
-                    borderTop: "none",
+          {state && state.length < 1 ? (
+            <Box>
+              <Box
+                width={1 / 2}
+                mx="auto"
+                bg="primary"
+                height={50}
+                sx={{
+                  borderWidth: "6px",
+                  borderColor: "white",
+                  borderStyle: "solid",
+                  borderTop: "none",
+                }}
+              ></Box>
+              <Heading textAlign="center" mt={2} sx={{ fontWeight: "normal" }}>
+                Välj 5 spelare
+              </Heading>
+              <Heading
+                fontSize={2}
+                fontWeight="normal"
+                textAlign="center"
+                mt={0}
+              >
+                1 poäng per mål el assist
+              </Heading>
+              <Heading textAlign="center" mt={2} fontSize={[1, 2]}>
+                Lördag 13:30
+              </Heading>
+            </Box>
+          ) : (
+            state &&
+            state.map((player, index) => {
+              return (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{
+                    duration: 0.5,
+                    stiffness: 200,
                   }}
-                ></Box>
-                <Heading
-                  textAlign="center"
-                  mt={2}
-                  sx={{ fontWeight: "normal" }}
                 >
-                  Välj 5 spelare
-                </Heading>
-                <Heading
-                  fontSize={2}
-                  fontWeight="normal"
-                  textAlign="center"
-                  mt={0}
-                >
-                  1 poäng per mål el assist
-                </Heading>
-                <Text textAlign="center" mt={3}>
-                  Deadline Lördag 13:30
-                </Text>
-              </Box>
-            ) : (
-              state &&
-              state.map((player, index) => {
-                return (
                   <Card
                     onClick={() => (
                       toast({
@@ -136,11 +132,11 @@ const GamePage = () => {
                       </Box>
                     </Flex>
                   </Card>
-                )
-              })
-            )}
-          </Box>
-        </motion.div>
+                </motion.div>
+              )
+            })
+          )}
+        </Box>
         {state && state.length < 5 ? (
           <motion.div
             initial={{ opacity: 0 }}

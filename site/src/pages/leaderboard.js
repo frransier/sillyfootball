@@ -134,7 +134,7 @@ const LeaderboardPage = props => {
       <Card>
         <Flex alignItems="center" justifyContent="center" width={1}>
           <Label mx={1} width={1 / 3} htmlFor="email">
-            Visa dina lag
+            Rättning
           </Label>
           <Input
             id="email"
@@ -168,13 +168,13 @@ const LeaderboardPage = props => {
                     <Text textAlign="center" height="30px" mt={1}>
                       {player.name}
                     </Text>
-                    <Box textAlign="center">
+                    {/* <Box textAlign="center">
                       <Image
                         key={player._id}
                         fixed={getLogo(player.team._id)}
                         alt={player.name}
                       ></Image>
-                    </Box>
+                    </Box> */}
                     <Box textAlign="center" mt={2}>
                       <Text>{player.matchGoals || 0} Mål</Text>
                       <Text>{player.matchAssists || 0} Ass</Text>
@@ -214,54 +214,63 @@ const LeaderboardPage = props => {
               stiffness: 200,
             }}
           >
-            <Card width="100%">
-              <Text my={1} fontSize={1} fontWeight="bold">
-                ID: {p._id.substring(16, 25)}
-              </Text>
+            <Card
+              width="100%"
+              sx={{ borderStyle: "solid", borderWidth: "0px 0px 2px 0px" }}
+            >
               <Flex>
                 {p.players.map(player => {
                   return (
                     <Card
                       sx={{
-                        width: "20%",
                         mx: "auto",
                       }}
                       key={player._id}
                       fontSize="0"
                     >
-                      <Text textAlign="center" height="30px" mt={1}>
+                      <Text
+                        textAlign="center"
+                        fontWeight={player.matchPoints && "bold"}
+                      >
                         {player.name}
                       </Text>
-                      <Box textAlign="center">
+                      {/* <Box textAlign="center">
                         <Image
                           key={player._id}
                           fixed={getLogo(player.team._id)}
                           alt={player.name}
                         ></Image>
-                      </Box>
-                      <Box textAlign="center" mt={2}>
-                        <Text>{player.matchGoals || 0} Mål</Text>
-                        <Text>{player.matchAssists || 0} Ass</Text>
+                      </Box> */}
+                      <Box textAlign="center">
+                        <Text fontWeight={player.matchGoals > 0 && "bold"}>
+                          {player.matchGoals || 0} Mål
+                        </Text>
+                        <Text fontWeight={player.matchAssists > 0 && "bold"}>
+                          {player.matchAssists || 0} Ass
+                        </Text>
                       </Box>
                     </Card>
                   )
                 })}
               </Flex>
-              <Card fontSize={0} textAlign="right">
+
+              <Flex mt={1}>
                 <Flex>
-                  {[...Array(p.score)].map((_, i) => (
-                    <Box key={i} mx={1} color="primary">
-                      <GiSoccerBall size={25}></GiSoccerBall>
-                    </Box>
-                  ))}
-                  <Box mx="auto"></Box>
-                  <Flex textAlign="right">
-                    <Box mx={2} fontWeight="bold" fontSize={2}>
-                      <Text>{`Poäng: ${p.score}`}</Text>
-                    </Box>
-                  </Flex>
+                  <Box
+                    p={1}
+                    sx={{ borderRadius: 5 }}
+                    fontWeight="bold"
+                    bg="primary"
+                  >
+                    <Heading fontSize={3}>{`${p.score}p`}</Heading>
+                  </Box>
                 </Flex>
-              </Card>
+
+                <Box mx="auto"></Box>
+                {/* <Text textAlign="right" my={1} fontSize={0}>
+                          Team id: {p._id.substring(16, 25)}
+                        </Text> */}
+              </Flex>
             </Card>
           </motion.div>
         ))}
