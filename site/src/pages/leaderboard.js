@@ -107,29 +107,6 @@ const LeaderboardPage = props => {
     <Layout>
       <SEO title="Leaderboard" />
       <Box mx="auto" width={[1, 4 / 5, 3 / 5]}>
-        {/* <Box
-          bg="primary"
-          height={200}
-          sx={{
-            borderColor: "white",
-            borderStyle: "solid",
-            borderRadius: "0px 0px 10px 10px",
-          }}
-        >
-          <Box>
-            <Box
-              width={1 / 2}
-              mx="auto"
-              bg="primary"
-              height={50}
-              sx={{
-                borderWidth: "6px",
-                borderColor: "white",
-                borderStyle: "solid",
-                borderTop: "none",
-              }}
-            ></Box>
-          </Box> */}
         <Box textAlign="center" verticalAlign="center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -186,148 +163,147 @@ const LeaderboardPage = props => {
             </Box>
           </motion.div>
         </Box>
-      </Box>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          duration: 1,
-          delay: 0.7,
-          stiffness: 200,
-        }}
-      >
-        {trackedTeams.length > 0 &&
-          trackedTeams.map(p => (
-            <motion.div
-              key={p._id}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                duration: 1,
-                stiffness: 200,
-              }}
-            >
-              <Box
-                width="100%"
-                sx={{ borderStyle: "solid", borderWidth: "0px 0px 2px 0px" }}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 1,
+            delay: 0.7,
+            stiffness: 200,
+          }}
+        >
+          {trackedTeams.length > 0 &&
+            trackedTeams.map(p => (
+              <motion.div
+                key={p._id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 1,
+                  stiffness: 200,
+                }}
               >
-                <Table fixed={["15%", "45%", "20%", "20%"]}>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell align="center">
-                        <Box sx={{ borderRadius: 5 }} p={1} bg="primary">
-                          <FaUser size={25}></FaUser>
-                        </Box>
-                      </TableCell>
-                      <TableCell>{p.email}</TableCell>
-                      <TableCell align="center">Mål</TableCell>
-                      <TableCell align="center">Assist</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {p.players.map(player => {
-                      return (
-                        <TableRow>
-                          <TableCell component="th" scope="row" align="center">
-                            {player.matchPoints && <FaStar></FaStar>}
-                          </TableCell>
-                          <TableCell align="left">{player.name}</TableCell>
-                          <TableCell align="center">
-                            {player.matchGoals}
-                          </TableCell>
-                          <TableCell align="center">
-                            {player.matchAssists}
-                          </TableCell>
-                        </TableRow>
-                      )
-                    })}
-                  </TableBody>
-                </Table>
-
                 <Box
-                  p={1}
-                  sx={{ borderRadius: 5 }}
-                  fontWeight="bold"
-                  bg="primary"
-                  textAlign="center"
+                  width="100%"
+                  sx={{ borderStyle: "solid", borderWidth: "0px 0px 2px 0px" }}
                 >
-                  <Heading fontSize={3}>{`${p.score}p`}</Heading>
+                  <Table fixed={["15%", "45%", "20%", "20%"]}>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell align="center">
+                          <Box sx={{ borderRadius: 5 }} p={1} bg="primary">
+                            <FaUser size={25}></FaUser>
+                          </Box>
+                        </TableCell>
+                        <TableCell>{p.email}</TableCell>
+                        <TableCell align="center">Mål</TableCell>
+                        <TableCell align="center">Assist</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {p.players.map(player => {
+                        return (
+                          <TableRow>
+                            <TableCell
+                              component="th"
+                              scope="row"
+                              align="center"
+                            >
+                              {player.matchPoints && <FaStar></FaStar>}
+                            </TableCell>
+                            <TableCell align="left">{player.name}</TableCell>
+                            <TableCell align="center">
+                              {player.matchGoals}
+                            </TableCell>
+                            <TableCell align="center">
+                              {player.matchAssists}
+                            </TableCell>
+                          </TableRow>
+                        )
+                      })}
+                    </TableBody>
+                  </Table>
+
+                  <Box
+                    p={1}
+                    sx={{ borderRadius: 5 }}
+                    fontWeight="bold"
+                    bg="primary"
+                    textAlign="center"
+                  >
+                    <Heading fontSize={3}>{`${p.score}p`}</Heading>
+                  </Box>
                 </Box>
+              </motion.div>
+            ))}
 
-                {/* <Text textAlign="right" my={1} fontSize={0}>
-                          Team id: {p._id.substring(16, 25)}
-                        </Text> */}
-              </Box>
-            </motion.div>
-          ))}
+          <Heading my={2} textAlign="center">
+            Leaderboard
+          </Heading>
 
-        <Heading my={2} textAlign="center">
-          Leaderboard
-        </Heading>
-
-        {state &&
-          state.slice(0, 10).map(p => (
-            <motion.div
-              key={p._id}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                duration: 1,
-                stiffness: 200,
-              }}
-            >
-              <Box
-                width="100%"
-                sx={{ borderStyle: "solid", borderWidth: "0px 0px 2px 0px" }}
+          {state &&
+            state.slice(0, 10).map(p => (
+              <motion.div
+                key={p._id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 1,
+                  stiffness: 200,
+                }}
               >
-                <Table fixed={["15%", "50%", "20%", "20%"]}>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell align="center">
-                        <Box
-                          p={1}
-                          sx={{ borderRadius: 5 }}
-                          fontWeight="bold"
-                          bg="primary"
-                          textAlign="center"
-                        >
-                          <Heading fontSize={3}>{`${p.score}p`}</Heading>
-                        </Box>
-                      </TableCell>
-                      <TableCell>{p._id.substr(p._id.length - 5)}</TableCell>
-                      <TableCell align="center">Mål</TableCell>
-                      <TableCell align="center">Assist</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {p.players.map(player => {
-                      return (
-                        <TableRow key={player._id}>
-                          <TableCell component="th" scope="row" align="center">
-                            {player.matchPoints && <FaStar></FaStar>}
-                          </TableCell>
-                          <TableCell align="left">{player.name}</TableCell>
-                          <TableCell align="center">
-                            {player.matchGoals}
-                          </TableCell>
-                          <TableCell align="center">
-                            {player.matchAssists}
-                          </TableCell>
-                        </TableRow>
-                      )
-                    })}
-                  </TableBody>
-                </Table>
-
-                {/* <Text textAlign="right" my={1} fontSize={0}>
-                          Team id: {p._id.substring(16, 25)}
-                        </Text> */}
-              </Box>
-            </motion.div>
-          ))}
-      </motion.div>
-      {/* </Box> */}
+                <Box
+                  width="100%"
+                  sx={{ borderStyle: "solid", borderWidth: "0px 0px 2px 0px" }}
+                >
+                  <Table fixed={["15%", "50%", "20%", "20%"]}>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell align="center">
+                          <Box
+                            p={1}
+                            sx={{ borderRadius: 5 }}
+                            fontWeight="bold"
+                            bg="primary"
+                            textAlign="center"
+                          >
+                            <Heading fontSize={3}>{`${p.score}p`}</Heading>
+                          </Box>
+                        </TableCell>
+                        <TableCell>{p._id.substr(p._id.length - 5)}</TableCell>
+                        <TableCell align="center">Mål</TableCell>
+                        <TableCell align="center">Assist</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {p.players.map(player => {
+                        return (
+                          <TableRow key={player._id}>
+                            <TableCell
+                              component="th"
+                              scope="row"
+                              align="center"
+                            >
+                              {player.matchPoints && <FaStar></FaStar>}
+                            </TableCell>
+                            <TableCell align="left">{player.name}</TableCell>
+                            <TableCell align="center">
+                              {player.matchGoals}
+                            </TableCell>
+                            <TableCell align="center">
+                              {player.matchAssists}
+                            </TableCell>
+                          </TableRow>
+                        )
+                      })}
+                    </TableBody>
+                  </Table>
+                </Box>
+              </motion.div>
+            ))}
+        </motion.div>
+      </Box>
     </Layout>
   )
 }
