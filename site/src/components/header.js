@@ -1,18 +1,8 @@
 import { Link } from "gatsby"
 import React from "react"
-import { Flex, Heading, Box, Text } from "rebass"
+import { Flex, Heading, Box } from "rebass"
 import { FaBars } from "react-icons/fa"
 import { Sheet } from "sancho"
-import { motion } from "framer-motion"
-
-const icon = {
-  hidden: {
-    strokeWidth: 19,
-  },
-  visible: {
-    strokeWidth: 4,
-  },
-}
 
 const Header = () => {
   const [open, setOpen] = React.useState(false)
@@ -31,19 +21,25 @@ const Header = () => {
       <Box onClick={() => setOpen(!open)} fontSize={[5, 6]} mt={[1, 2]}>
         <FaBars></FaBars>
       </Box>
-      <Sheet onRequestClose={() => setOpen(!open)} isOpen={open}>
-        <Link to="/leaderboard/">
-          <Heading fontWeight={1} mx={2}>
-            Leaderboard
-          </Heading>
-        </Link>
-        <Heading fontWeight={1} mx={2}>
-          FAQ
-        </Heading>
-        <Heading fontWeight={1} mx={2}>
-          White paper
-        </Heading>
-      </Sheet>
+      <Box>
+        <Sheet onRequestClose={() => setOpen(!open)} isOpen={open}>
+          <Link style={{ textDecoration: "none" }} to="/rules/">
+            <Heading color="black" fontWeight={1} mx={2}>
+              Rules >>
+            </Heading>
+          </Link>
+          <Link style={{ textDecoration: "none" }} to="/white-paper/">
+            <Heading color="black" fontWeight={1} mx={2}>
+              White paper >>
+            </Heading>
+          </Link>
+          <Link style={{ textDecoration: "none" }} to="/leaderboard/">
+            <Heading color="black" fontWeight={1} mx={2}>
+              Leaderboard >>
+            </Heading>
+          </Link>
+        </Sheet>
+      </Box>
     </Flex>
   )
 }

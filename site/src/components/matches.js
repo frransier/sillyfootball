@@ -41,6 +41,7 @@ const Matches = ({ items, refine }) => {
 
         return { ...i, homeTeam, awayTeam }
       }
+      return null
     })
     .sort((a, b) => a.label - b.label)
 
@@ -54,7 +55,7 @@ const Matches = ({ items, refine }) => {
       }}
     >
       <Flex width={1} flexWrap="wrap">
-        {schema.map((item, index) => {
+        {schema.map(item => {
           if (item) {
             return (
               <Flex
@@ -103,6 +104,7 @@ const Matches = ({ items, refine }) => {
               </Flex>
             )
           }
+          return null
         })}
       </Flex>
     </motion.div>

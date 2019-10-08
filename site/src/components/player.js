@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Flex, Image, Text, Card } from "rebass"
+import { Box, Flex, Image, Text } from "rebass"
 import { GoPlusSmall } from "react-icons/go"
 import { IoIosCheckmark } from "react-icons/io"
 import { useDispatchContext, useStateContext } from "../state"

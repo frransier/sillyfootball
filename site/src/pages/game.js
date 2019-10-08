@@ -14,7 +14,7 @@ import { useToast } from "sancho"
 import { FaWindowClose } from "react-icons/fa"
 import { motion } from "framer-motion"
 import { PacmanLoader } from "react-spinners"
-import { Link } from "gatsby"
+//import { Link } from "gatsby"
 
 const searchClient = algoliasearch(
   "C1ICPA4UBZ",
