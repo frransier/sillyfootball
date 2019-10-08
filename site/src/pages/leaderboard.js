@@ -135,14 +135,14 @@ const LeaderboardPage = props => {
         </Box>
         <Box my={3}>
           <Flex alignItems="center" justifyContent="center" width={1}>
-            <Label mx={1} width={1 / 3} htmlFor="email">
-              Rättning
+            <Label mx={1} width={1 / 7} htmlFor="email">
+              <Heading fontSize={1}>Rättning</Heading>
             </Label>
             <Input
               id="email"
               name="email"
               type="email"
-              placeholder="glenn@gbg.nu"
+              placeholder="din@email.nu"
               onChange={event => setEmail(event.target.value.toLowerCase())}
             />
             <Button color="white" ml={2} onClick={trackTeams}>
