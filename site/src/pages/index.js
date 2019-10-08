@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Heading, Button, Box } from "rebass"
 import { motion } from "framer-motion"
-import { GiSoccerBall } from "react-icons/gi"
+
 import { FaStar } from "react-icons/fa"
 
 const IndexPage = () => {
@@ -37,12 +37,16 @@ const IndexPage = () => {
             }}
           ></Box>
         </Box>
-        <Box textAlign="center" verticalAlign="center">
-          <motion.div
-            animate={{
-              scale: [0.8, 1.1, 0.9],
-            }}
-          >
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 1,
+            delay: 0.2,
+            stiffness: 200,
+          }}
+        >
+          <Box textAlign="center" verticalAlign="center">
             <Heading textAlign="center" mt={2} sx={{ fontWeight: 1 }}>
               FANTASY FOOTBALL
             </Heading>
@@ -59,14 +63,15 @@ const IndexPage = () => {
             >
               Lördag 13:30
             </Heading>
-          </motion.div>
-        </Box>
+          </Box>
+        </motion.div>
       </Box>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{
           duration: 1,
+          delay: 0.4,
           stiffness: 200,
         }}
       >

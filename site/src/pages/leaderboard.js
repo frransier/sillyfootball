@@ -2,10 +2,10 @@ import React, { useReducer, useEffect, useState } from "react"
 import { graphql } from "gatsby"
 
 import { useGraphQL } from "@brightleaf/react-hooks"
-import { FaStar } from "react-icons/fa"
-import { Button, Flex, Box, Text, Card, Heading } from "rebass"
+import { FaStar, FaUser } from "react-icons/fa"
+import { Button, Flex, Box, Text, Heading } from "rebass"
 import { Label, Input } from "@rebass/forms"
-import { GiSoccerBall } from "react-icons/gi"
+
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import userReducer from "../state/userReducer"
@@ -107,106 +107,98 @@ const LeaderboardPage = props => {
     <Layout>
       <SEO title="Leaderboard" />
       <Box mx="auto" width={[1, 4 / 5, 3 / 5]}>
-        <Box>
-          {state && state.length > 0 && (
-            <Flex my={3}>
-              <Box>
-                <Text fontWeight="bold">Omsättning: 1000 kr</Text>
-                <Text fontWeight="bold">{state.length} deltagare</Text>
+        {/* <Box
+          bg="primary"
+          height={200}
+          sx={{
+            borderColor: "white",
+            borderStyle: "solid",
+            borderRadius: "0px 0px 10px 10px",
+          }}
+        >
+          <Box>
+            <Box
+              width={1 / 2}
+              mx="auto"
+              bg="primary"
+              height={50}
+              sx={{
+                borderWidth: "6px",
+                borderColor: "white",
+                borderStyle: "solid",
+                borderTop: "none",
+              }}
+            ></Box>
+          </Box> */}
+        <Box textAlign="center" verticalAlign="center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 0.9 }}
+            transition={{
+              duration: 1,
+              delay: 0.4,
+              stiffness: 200,
+            }}
+          >
+            {state && state.length > 0 && (
+              <Box textAlign="center" mt={-1}>
+                <Heading textAlign="left" fontSize={2} fontWeight="normal">
+                  {state.length} deltagare
+                </Heading>
+                {state[0].score > 0 && (
+                  <Box p={2} bg="primary" sx={{ borderRadius: 5 }}>
+                    <Heading fontWeight="normal">
+                      <Box>
+                        {state[0].score}p{" "}
+                        {Math.round((0.7 * 1000) / getWinners())} kr
+                      </Box>
+                    </Heading>
+                    <Heading fontWeight="normal">
+                      <Box>
+                        {state[1].score + 2 === state[0].score
+                          ? state[0].score - 2
+                          : state[0].score - 1}
+                        p {Math.round((0.3 * 1000) / getRunnersUp())} kr
+                      </Box>
+                    </Heading>
+                  </Box>
+                )}
               </Box>
-              <Box mx="auto"></Box>
-              {state[0].score > 0 && (
-                <Box>
-                  <Text fontWeight="bold">
-                    Utdelning {state[0].score}p:{" "}
-                    {Math.round((0.7 * 1000) / getWinners())} kr
-                  </Text>
-                  <Text fontWeight="bold">
-                    Utdelning{" "}
-                    {state[1].score + 2 === state[0].score
-                      ? state[0].score - 2
-                      : state[0].score - 1}
-                    p: {Math.round((0.3 * 1000) / getRunnersUp())} kr
-                  </Text>
-                </Box>
-              )}
-            </Flex>
-          )}
+            )}
+
+            <Box my={3}>
+              <Flex alignItems="center" justifyContent="center" width={1}>
+                <Label width={1 / 100} htmlFor="email" name="email"></Label>
+                <Input
+                  bg="white"
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="din@email.nu"
+                  onChange={event => setEmail(event.target.value.toLowerCase())}
+                />
+                <Button bg="white" width={1 / 4} mx={2} onClick={trackTeams}>
+                  <Heading color="#5F6872" sx={{ fontWeight: 1 }} fontSize={1}>
+                    Rätta
+                  </Heading>
+                </Button>
+              </Flex>
+            </Box>
+          </motion.div>
         </Box>
-        <Box my={3}>
-          <Flex alignItems="center" justifyContent="center" width={1}>
-            <Label mx={1} width={1 / 7} htmlFor="email">
-              <Heading fontSize={1}>Rättning</Heading>
-            </Label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="din@email.nu"
-              onChange={event => setEmail(event.target.value.toLowerCase())}
-            />
-            <Button color="white" ml={2} onClick={trackTeams}>
-              >
-            </Button>
-          </Flex>
-        </Box>
+      </Box>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 1,
+          delay: 0.7,
+          stiffness: 200,
+        }}
+      >
         {trackedTeams.length > 0 &&
           trackedTeams.map(p => (
-            <Card key={p._id} width="100%">
-              <Text my={1} fontSize={1} fontWeight="bold">
-                Ditt lag: {p.email}
-              </Text>
-              <Flex>
-                {p.players.map(player => {
-                  return (
-                    <Card
-                      sx={{
-                        width: "20%",
-                        mx: "auto",
-                      }}
-                      key={player._id}
-                      fontSize="0"
-                    >
-                      <Text textAlign="center" height="30px" mt={1}>
-                        {player.name}
-                      </Text>
-                      {/* <Box textAlign="center">
-                      <Image
-                        key={player._id}
-                        fixed={getLogo(player.team._id)}
-                        alt={player.name}
-                      ></Image>
-                    </Box> */}
-                      <Box textAlign="center" mt={2}>
-                        <Text>{player.matchGoals || 0} Mål</Text>
-                        <Text>{player.matchAssists || 0} Ass</Text>
-                      </Box>
-                    </Card>
-                  )
-                })}
-              </Flex>
-              <Card fontSize={0} textAlign="right">
-                <Flex>
-                  {[...Array(p.score)].map((_, i) => (
-                    <Box key={i} mx={1} color="primary">
-                      <GiSoccerBall size={25}></GiSoccerBall>
-                    </Box>
-                  ))}
-                  <Box mx="auto"></Box>
-                  <Flex textAlign="right">
-                    <Box mx={2} fontWeight="bold" fontSize={2}>
-                      <Text>{`Poäng: ${p.score}`}</Text>
-                    </Box>
-                  </Flex>
-                </Flex>
-              </Card>
-            </Card>
-          ))}
-
-        <Heading textAlign="center">Leaderboard</Heading>
-
-        {state &&
-          state.slice(0, 10).map((p, index) => (
             <motion.div
               key={p._id}
               initial={{ opacity: 0 }}
@@ -220,15 +212,17 @@ const LeaderboardPage = props => {
                 width="100%"
                 sx={{ borderStyle: "solid", borderWidth: "0px 0px 2px 0px" }}
               >
-                <Table fixed={["13%", "47%", "20%", "20%"]}>
+                <Table fixed={["15%", "45%", "20%", "20%"]}>
                   <TableHead>
                     <TableRow>
                       <TableCell align="center">
-                        <Heading>{index + 1}.</Heading>
+                        <Box sx={{ borderRadius: 5 }} p={1} bg="primary">
+                          <FaUser size={25}></FaUser>
+                        </Box>
                       </TableCell>
-                      <TableCell>Player</TableCell>
-                      <TableCell align="center">Goals</TableCell>
-                      <TableCell align="center">Assists</TableCell>
+                      <TableCell>{p.email}</TableCell>
+                      <TableCell align="center">Mål</TableCell>
+                      <TableCell align="center">Assist</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -267,7 +261,73 @@ const LeaderboardPage = props => {
               </Box>
             </motion.div>
           ))}
-      </Box>
+
+        <Heading my={2} textAlign="center">
+          Leaderboard
+        </Heading>
+
+        {state &&
+          state.slice(0, 10).map(p => (
+            <motion.div
+              key={p._id}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: 1,
+                stiffness: 200,
+              }}
+            >
+              <Box
+                width="100%"
+                sx={{ borderStyle: "solid", borderWidth: "0px 0px 2px 0px" }}
+              >
+                <Table fixed={["15%", "50%", "20%", "20%"]}>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell align="center">
+                        <Box
+                          p={1}
+                          sx={{ borderRadius: 5 }}
+                          fontWeight="bold"
+                          bg="primary"
+                          textAlign="center"
+                        >
+                          <Heading fontSize={3}>{`${p.score}p`}</Heading>
+                        </Box>
+                      </TableCell>
+                      <TableCell>{p._id.substr(p._id.length - 5)}</TableCell>
+                      <TableCell align="center">Mål</TableCell>
+                      <TableCell align="center">Assist</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {p.players.map(player => {
+                      return (
+                        <TableRow key={player._id}>
+                          <TableCell component="th" scope="row" align="center">
+                            {player.matchPoints && <FaStar></FaStar>}
+                          </TableCell>
+                          <TableCell align="left">{player.name}</TableCell>
+                          <TableCell align="center">
+                            {player.matchGoals}
+                          </TableCell>
+                          <TableCell align="center">
+                            {player.matchAssists}
+                          </TableCell>
+                        </TableRow>
+                      )
+                    })}
+                  </TableBody>
+                </Table>
+
+                {/* <Text textAlign="right" my={1} fontSize={0}>
+                          Team id: {p._id.substring(16, 25)}
+                        </Text> */}
+              </Box>
+            </motion.div>
+          ))}
+      </motion.div>
+      {/* </Box> */}
     </Layout>
   )
 }

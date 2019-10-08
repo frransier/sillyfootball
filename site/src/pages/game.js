@@ -63,7 +63,7 @@ const GamePage = () => {
           }}
         >
           {state && state.length < 1 ? (
-            <Box>
+            <>
               <Box
                 width={1 / 2}
                 mx="auto"
@@ -76,21 +76,35 @@ const GamePage = () => {
                   borderTop: "none",
                 }}
               ></Box>
-              <Heading textAlign="center" mt={2} sx={{ fontWeight: "normal" }}>
-                Välj 5 spelare
-              </Heading>
-              <Heading
-                fontSize={2}
-                fontWeight="normal"
-                textAlign="center"
-                mt={0}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 1,
+                  delay: 0.3,
+                  stiffness: 200,
+                }}
               >
-                1 poäng per mål el assist
-              </Heading>
-              <Heading textAlign="center" mt={2} fontSize={[1, 2]}>
-                Lördag 13:30
-              </Heading>
-            </Box>
+                <Heading
+                  textAlign="center"
+                  mt={2}
+                  sx={{ fontWeight: "normal" }}
+                >
+                  Välj 5 spelare
+                </Heading>
+                <Heading
+                  fontSize={2}
+                  fontWeight="normal"
+                  textAlign="center"
+                  mt={0}
+                >
+                  1 poäng per mål el assist
+                </Heading>
+                <Heading textAlign="center" mt={2} fontSize={[1, 2]}>
+                  Lördag 13:30
+                </Heading>
+              </motion.div>
+            </>
           ) : (
             state &&
             state.map((player, index) => {
@@ -99,7 +113,7 @@ const GamePage = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{
-                    duration: 0.5,
+                    duration: 0.4,
                     stiffness: 200,
                   }}
                 >
@@ -137,12 +151,14 @@ const GamePage = () => {
             })
           )}
         </Box>
+
         {state && state.length < 5 ? (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
               duration: 1,
+              delay: 0.5,
               stiffness: 200,
             }}
           >
