@@ -1,15 +1,16 @@
 import React, { useReducer, useEffect, useState } from "react"
 import { graphql } from "gatsby"
-import Image from "gatsby-image"
+
 import { useGraphQL } from "@brightleaf/react-hooks"
-import { mapEdgesToNodes } from "../helpers"
-import { Button, Flex, Box, Text, Card, Heading } from "rebass"
+import { FaStar, FaUser } from "react-icons/fa"
+import { Button, Flex, Box, Heading } from "rebass"
 import { Label, Input } from "@rebass/forms"
-import { GiSoccerBall } from "react-icons/gi"
+
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import userReducer from "../state/userReducer"
 import { motion } from "framer-motion"
+import { Table, TableHead, TableRow, TableCell, TableBody } from "sancho"
 
 export const query = graphql`
   query Logos {
@@ -34,7 +35,7 @@ const LeaderboardPage = props => {
   const [email, setEmail] = useState()
   const [trackedTeams, setTrackedTeams] = useState([])
   const { data, loading, error } = useGraphQL(
-    "https://0jt5x7hu.api.sanity.io/v1/graphql/even/default",
+    "https://0jt5x7hu.api.sanity.io/v1/graphql/odd/default",
     `query Leaderboard {
       players: allUsers {
         _id
@@ -59,13 +60,13 @@ const LeaderboardPage = props => {
     }
   }, [data])
 
-  const images = mapEdgesToNodes(props.data.teamLogos)
+  //const images = mapEdgesToNodes(props.data.teamLogos)
 
-  const getLogo = id => {
-    const logo = images.find(x => x._id === id)
-    const fixed = logo.logo.asset.fixed
-    return fixed
-  }
+  // const getLogo = id => {
+  //   const logo = images.find(x => x._id === id)
+  //   const fixed = logo.logo.asset.fixed
+  //   return fixed
+  // }
 
   const getWinners = () => {
     if (state.length > 0) {
@@ -104,166 +105,212 @@ const LeaderboardPage = props => {
   return (
     <Layout>
       <SEO title="Leaderboard" />
-      <Card textAlign="left">
-        {state && state.length > 0 && (
-          <Flex>
-            <Box>
-              <Text fontWeight="bold">Omsättning: 1000 kr</Text>
-              <Text fontWeight="bold">{state.length} deltagare</Text>
-            </Box>
-            <Box mx="auto"></Box>
-            {state[0].score > 0 && (
-              <Box>
-                <Text fontWeight="bold">
-                  Utdelning {state[0].score}p:{" "}
-                  {Math.round((0.7 * 1000) / getWinners())} kr
-                </Text>
-                <Text fontWeight="bold">
-                  Utdelning{" "}
-                  {state[1].score + 2 === state[0].score
-                    ? state[0].score - 2
-                    : state[0].score - 1}
-                  p: {Math.round((0.3 * 1000) / getRunnersUp())} kr
-                </Text>
-              </Box>
-            )}
-          </Flex>
-        )}
-      </Card>
-      <Card>
-        <Flex alignItems="center" justifyContent="center" width={1}>
-          <Label mx={1} width={1 / 3} htmlFor="email">
-            Visa dina lag
-          </Label>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="glenn@gbg.nu"
-            onChange={event => setEmail(event.target.value.toLowerCase())}
-          />
-          <Button color="white" ml={2} onClick={trackTeams}>
-            >
-          </Button>
-        </Flex>
-      </Card>
-      {trackedTeams.length > 0 &&
-        trackedTeams.map(p => (
-          <Card key={p._id} width="100%">
-            <Text my={1} fontSize={1} fontWeight="bold">
-              Ditt lag: {p.email}
-            </Text>
-            <Flex>
-              {p.players.map(player => {
-                return (
-                  <Card
-                    sx={{
-                      width: "20%",
-                      mx: "auto",
-                    }}
-                    key={player._id}
-                    fontSize="0"
-                  >
-                    <Text textAlign="center" height="30px" mt={1}>
-                      {player.name}
-                    </Text>
-                    <Box textAlign="center">
-                      <Image
-                        key={player._id}
-                        fixed={getLogo(player.team._id)}
-                        alt={player.name}
-                      ></Image>
-                    </Box>
-                    <Box textAlign="center" mt={2}>
-                      <Text>{player.matchGoals || 0} Mål</Text>
-                      <Text>{player.matchAssists || 0} Ass</Text>
-                    </Box>
-                  </Card>
-                )
-              })}
-            </Flex>
-            <Card fontSize={0} textAlign="right">
-              <Flex>
-                {[...Array(p.score)].map((_, i) => (
-                  <Box key={i} mx={1} color="primary">
-                    <GiSoccerBall size={25}></GiSoccerBall>
-                  </Box>
-                ))}
-                <Box mx="auto"></Box>
-                <Flex textAlign="right">
-                  <Box mx={2} fontWeight="bold" fontSize={2}>
-                    <Text>{`Poäng: ${p.score}`}</Text>
-                  </Box>
-                </Flex>
-              </Flex>
-            </Card>
-          </Card>
-        ))}
-      <Card>
-        <Heading>Highscore</Heading>
-      </Card>
-      {state &&
-        state.slice(0, 10).map(p => (
+      <Box mx="auto" width={[1, 4 / 5, 3 / 5]}>
+        <Box textAlign="center" verticalAlign="center">
           <motion.div
-            key={p._id}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 0.9 }}
             transition={{
               duration: 1,
+
               stiffness: 200,
             }}
           >
-            <Card width="100%">
-              <Text my={1} fontSize={1} fontWeight="bold">
-                ID: {p._id.substring(16, 25)}
-              </Text>
-              <Flex>
-                {p.players.map(player => {
-                  return (
-                    <Card
-                      sx={{
-                        width: "20%",
-                        mx: "auto",
-                      }}
-                      key={player._id}
-                      fontSize="0"
-                    >
-                      <Text textAlign="center" height="30px" mt={1}>
-                        {player.name}
-                      </Text>
-                      <Box textAlign="center">
-                        <Image
-                          key={player._id}
-                          fixed={getLogo(player.team._id)}
-                          alt={player.name}
-                        ></Image>
+            {state && state.length > 0 && (
+              <Box textAlign="center" mt={-1}>
+                <Heading textAlign="left" fontSize={2} fontWeight="normal">
+                  {state.length} deltagare
+                </Heading>
+                {state[0].score > 0 && (
+                  <Box
+                    color="#5F6871"
+                    p={2}
+                    bg="primary"
+                    sx={{ borderRadius: 5 }}
+                  >
+                    <Heading fontWeight="normal">
+                      <Box>
+                        {state[0].score}p{" "}
+                        {Math.round((0.7 * 1000) / getWinners())} kr
                       </Box>
-                      <Box textAlign="center" mt={2}>
-                        <Text>{player.matchGoals || 0} Mål</Text>
-                        <Text>{player.matchAssists || 0} Ass</Text>
+                    </Heading>
+                    <Heading fontWeight="normal">
+                      <Box>
+                        {state[1].score + 2 === state[0].score
+                          ? state[0].score - 2
+                          : state[0].score - 1}
+                        p {Math.round((0.3 * 1000) / getRunnersUp())} kr
                       </Box>
-                    </Card>
-                  )
-                })}
+                    </Heading>
+                  </Box>
+                )}
+              </Box>
+            )}
+
+            <Box my={3}>
+              <Flex alignItems="center" justifyContent="center" width={1}>
+                <Label width={1 / 100} htmlFor="email" name="email"></Label>
+                <Input
+                  bg="white"
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="din@email.nu"
+                  onChange={event => setEmail(event.target.value.toLowerCase())}
+                />
+                <Button bg="white" width={1 / 4} mx={2} onClick={trackTeams}>
+                  <Heading color="#5F6872" sx={{ fontWeight: 1 }} fontSize={1}>
+                    Rätta
+                  </Heading>
+                </Button>
               </Flex>
-              <Card fontSize={0} textAlign="right">
-                <Flex>
-                  {[...Array(p.score)].map((_, i) => (
-                    <Box key={i} mx={1} color="primary">
-                      <GiSoccerBall size={25}></GiSoccerBall>
-                    </Box>
-                  ))}
-                  <Box mx="auto"></Box>
-                  <Flex textAlign="right">
-                    <Box mx={2} fontWeight="bold" fontSize={2}>
-                      <Text>{`Poäng: ${p.score}`}</Text>
-                    </Box>
-                  </Flex>
-                </Flex>
-              </Card>
-            </Card>
+            </Box>
           </motion.div>
-        ))}
+        </Box>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 1,
+            delay: 0.3,
+            stiffness: 200,
+          }}
+        >
+          {trackedTeams.length > 0 &&
+            trackedTeams.map(p => (
+              <motion.div
+                key={p._id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 1,
+                  stiffness: 200,
+                }}
+              >
+                <Box
+                  width="100%"
+                  sx={{ borderStyle: "solid", borderWidth: "0px 0px 2px 0px" }}
+                >
+                  <Table fixed={["15%", "45%", "20%", "20%"]}>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell align="center">
+                          <Box sx={{ borderRadius: 5 }} p={1} bg="primary">
+                            <FaUser size={25}></FaUser>
+                          </Box>
+                        </TableCell>
+                        <TableCell>{p.email}</TableCell>
+                        <TableCell align="center">Mål</TableCell>
+                        <TableCell align="center">Assist</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {p.players.map(player => {
+                        return (
+                          <TableRow>
+                            <TableCell
+                              component="th"
+                              scope="row"
+                              align="center"
+                            >
+                              {player.matchPoints && <FaStar></FaStar>}
+                            </TableCell>
+                            <TableCell align="left">{player.name}</TableCell>
+                            <TableCell align="center">
+                              {player.matchGoals}
+                            </TableCell>
+                            <TableCell align="center">
+                              {player.matchAssists}
+                            </TableCell>
+                          </TableRow>
+                        )
+                      })}
+                    </TableBody>
+                  </Table>
+
+                  <Box
+                    p={1}
+                    sx={{ borderRadius: 5 }}
+                    fontWeight="bold"
+                    bg="primary"
+                    textAlign="center"
+                  >
+                    <Heading
+                      color="#5F6871"
+                      fontSize={3}
+                    >{`Du fick ${p.score}p`}</Heading>
+                  </Box>
+                </Box>
+              </motion.div>
+            ))}
+
+          <Heading my={2} textAlign="center">
+            Leaderboard
+          </Heading>
+
+          {state &&
+            state.slice(0, 10).map(p => (
+              <motion.div
+                key={p._id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 1,
+                  stiffness: 200,
+                }}
+              >
+                <Box
+                  width="100%"
+                  sx={{ borderStyle: "solid", borderWidth: "0px 0px 2px 0px" }}
+                >
+                  <Table fixed={["20%", "40%", "20%", "20%"]}>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell align="center">
+                          <Box
+                            p={1}
+                            sx={{ borderRadius: 5 }}
+                            fontWeight="bold"
+                            bg="primary"
+                            textAlign="center"
+                          >
+                            <Heading fontSize={3}>{`${p.score}p`}</Heading>
+                          </Box>
+                        </TableCell>
+                        <TableCell>{p._id.substr(p._id.length - 5)}</TableCell>
+                        <TableCell align="center">Mål</TableCell>
+                        <TableCell align="center">Assist</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {p.players.map(player => {
+                        return (
+                          <TableRow key={player._id}>
+                            <TableCell
+                              component="th"
+                              scope="row"
+                              align="center"
+                            >
+                              {player.matchPoints && <FaStar></FaStar>}
+                            </TableCell>
+                            <TableCell align="left">{player.name}</TableCell>
+                            <TableCell align="center">
+                              {player.matchGoals}
+                            </TableCell>
+                            <TableCell align="center">
+                              {player.matchAssists}
+                            </TableCell>
+                          </TableRow>
+                        )
+                      })}
+                    </TableBody>
+                  </Table>
+                </Box>
+              </motion.div>
+            ))}
+        </motion.div>
+      </Box>
     </Layout>
   )
 }

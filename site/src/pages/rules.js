@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { motion } from "framer-motion"
 
-const SecondPage = () => (
+const RulesPage = () => (
   <Layout>
     <SEO title="FAQ" />
     <motion.div
@@ -41,4 +41,4 @@ const SecondPage = () => (
   </Layout>
 )
 
-export default SecondPage
+export default RulesPage

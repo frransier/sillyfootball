@@ -34,13 +34,14 @@ const Matches = ({ items, refine }) => {
       const teams = rawTeams.filter(
         x => x.index.toString() === i.value.toString()
       )
-      console.log(teams)
+
       if (teams.length > 0) {
         const homeTeam = teams.find(x => x.active)
         const awayTeam = teams.find(x => !x.active)
 
         return { ...i, homeTeam, awayTeam }
       }
+      return null
     })
     .sort((a, b) => a.label - b.label)
 
@@ -54,12 +55,16 @@ const Matches = ({ items, refine }) => {
       }}
     >
       <Flex width={1} flexWrap="wrap">
-        {schema.map((item, index) => {
+        {schema.map(item => {
           if (item) {
             return (
               <Flex
-                p={[1, 2]}
+                bg={item.isRefined && "black"}
+                p={[1, 1]}
                 width={1 / 2}
+                sx={{
+                  borderRadius: 3,
+                }}
                 onClick={event => {
                   event.preventDefault()
                   refine(item.isRefined ? null : item.homeTeam.index)
@@ -69,14 +74,22 @@ const Matches = ({ items, refine }) => {
                 <Box width="100%">
                   <Card sx={{ borderRadius: 6 }}>
                     <Flex>
-                      <Box color="primary">
+                      <Box>
                         {item.isRefined ? (
                           <IoIosArrowDown />
                         ) : (
                           <IoIosArrowForward />
                         )}
                       </Box>
-                      <Box mx="auto">
+                      <Box
+                        width="85%"
+                        mx="auto"
+                        sx={{
+                          borderWidth: "0px 0px 2px 0px",
+                          borderStyle: "solid",
+                          borderColor: "primary",
+                        }}
+                      >
                         <Text
                           color={item.isRefined ? "primary" : ""}
                           fontSize={[1, 2, 3]}
@@ -90,6 +103,7 @@ const Matches = ({ items, refine }) => {
               </Flex>
             )
           }
+          return null
         })}
       </Flex>
     </motion.div>

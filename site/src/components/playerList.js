@@ -7,23 +7,31 @@ import { motion } from "framer-motion"
 const PlayerList = ({ hits, hasMore, refineNext }) => {
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          duration: 2,
-          stiffness: 200,
-        }}
-      >
-        {hits.map((hit, index) => (
+      {hits.map((hit, index) => (
+        <motion.div
+          key={index}
+          initial={{ y: 20 }}
+          animate={{ y: 0 }}
+          transition={{
+            duration: 0.5,
+            stiffness: 200,
+          }}
+        >
           <Player key={index} index={index} hit={hit} />
-        ))}
-        <Box textAlign="center" py={2}>
-          <Button height="30px" disabled={!hasMore} onClick={refineNext}>
-            Visa fler
-          </Button>
-        </Box>
-      </motion.div>
+        </motion.div>
+      ))}
+      <Box textAlign="center" py={2}>
+        <Button
+          width={1}
+          fontSize={3}
+          bg="black"
+          color="primary"
+          disabled={!hasMore}
+          onClick={refineNext}
+        >
+          Visa fler
+        </Button>
+      </Box>
     </>
   )
 }

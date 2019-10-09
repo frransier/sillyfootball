@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { navigate } from "@reach/router"
 import axios from "axios"
-import { Flex, Card, Heading, Text, Box, Image, Button } from "rebass"
+import { Flex, Heading, Box, Image, Button } from "rebass"
 import { Label, Input } from "@rebass/forms"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -11,10 +11,10 @@ import { InstantSearch } from "react-instantsearch-dom"
 import Matches from "../components/matches"
 import { useDispatchContext, useStateContext } from "../state"
 import { useToast } from "sancho"
-import { FaWindowClose } from "react-icons/fa"
+import { FaRegTimesCircle } from "react-icons/fa"
 import { motion } from "framer-motion"
 import { PacmanLoader } from "react-spinners"
-import { Link } from "gatsby"
+//import { Link } from "gatsby"
 
 const searchClient = algoliasearch(
   "C1ICPA4UBZ",
@@ -32,8 +32,6 @@ const GamePage = () => {
     const squad =
       state &&
       state.map(player => {
-        console.log(player)
-
         const p = { id: player._id, name: player.name }
         return p
       })
@@ -51,109 +49,150 @@ const GamePage = () => {
     <Layout>
       <SEO title="Spela" />
       <InstantSearch searchClient={searchClient} indexName="players">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 0.5,
-            stiffness: 200,
+        <Box
+          bg="primary"
+          width={[1, 4 / 5, 3 / 5]}
+          mx="auto"
+          height={200}
+          sx={{
+            borderColor: "white",
+            borderStyle: "solid",
+            borderRadius: "0px 0px 10px 10px",
           }}
         >
-          <Card
-            width={[1, 4 / 5, 3 / 5]}
+          <Box
+            width={1 / 2}
             mx="auto"
-            height={200}
-            sx={{ borderRadius: 12 }}
-          >
-            {state && state.length < 1 ? (
-              <Box p={3}>
-                <Heading textAlign="left" my={1}>
-                  Välj 5 spelare
-                </Heading>
-                <Heading textAlign="left" my={3}>
-                  1 poäng per mål / assist
-                </Heading>
-                <Text textAlign="left" mt={3}>
-                  Deadline day
-                </Text>
-                <Text textAlign="left">Lördag 5/10 kl 13:25</Text>
-              </Box>
-            ) : (
-              state &&
-              state.map((player, index) => {
-                return (
-                  <Card
-                    onClick={() => (
-                      toast({
-                        title: `${player.name} togs bort från ditt lag`,
-                        position: "top",
-                        intent: "warning",
-                        duration: 1000,
+            bg="primary"
+            height={50}
+            sx={{
+              borderWidth: "6px",
+              borderColor: "white",
+              borderStyle: "solid",
+              borderTop: "none",
+            }}
+          ></Box>
+          {state && state.length < 1 ? (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: 1,
+                stiffness: 200,
+              }}
+            >
+              <Heading textAlign="center" mt={2} sx={{ fontWeight: "normal" }}>
+                Välj 5 spelare
+              </Heading>
+              <Heading
+                fontSize={2}
+                fontWeight="normal"
+                textAlign="center"
+                mt={0}
+              >
+                1 poäng per mål el assist
+              </Heading>
+              <Heading textAlign="center" mt={2} fontSize={[1, 2]}>
+                Lördag 13:30
+              </Heading>
+            </motion.div>
+          ) : (
+            <Flex flexWrap="wrap" my={[-4, 3]}>
+              {state &&
+                state.map((player, index) => {
+                  return (
+                    <Box key={index} mx="auto" width={[1 / 3, 1 / 5]}>
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{
+                          duration: 0.4,
+                          stiffness: 200,
+                        }}
+                      >
+                        <Box
+                          onClick={() => (
+                            toast({
+                              title: `${player.name} togs bort från ditt lag`,
+                              position: "top",
+                              intent: "warning",
+                              duration: 1000,
 
-                        // eslint-disable-next-line
-                      }),
-                      dispatch({ type: "remove", index })
-                    )}
-                    sx={{ borderRadius: 12 }}
-                    key={index}
-                    textAlign="center"
-                  >
-                    <Flex>
-                      <Image
-                        width="18px"
-                        height="18px"
-                        src={player.team.logo.asset.url}
-                        alt={player.name}
-                      ></Image>
-                      <Text mx="auto">{player.name}</Text>
-                      <Box color="primary">
-                        <FaWindowClose></FaWindowClose>
-                      </Box>
-                    </Flex>
-                  </Card>
-                )
-              })
-            )}
-          </Card>
-        </motion.div>
+                              // eslint-disable-next-line
+                            }),
+                            dispatch({ type: "remove", index })
+                          )}
+                          sx={{ borderRadius: 12 }}
+                          key={index}
+                          textAlign="center"
+                        >
+                          <Box>
+                            <Image
+                              width="45px"
+                              height="45px"
+                              src={player.team.logo.asset.url}
+                              alt={player.name}
+                            ></Image>
+                            <Heading fontWeight="normal" fontSize={0} mx="auto">
+                              {player.name}
+                            </Heading>
+                            <Box mt={1} color="black">
+                              <FaRegTimesCircle></FaRegTimesCircle>
+                            </Box>
+                          </Box>
+                        </Box>
+                      </motion.div>
+                    </Box>
+                  )
+                })}
+            </Flex>
+          )}
+        </Box>
+
         {state && state.length < 5 ? (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
               duration: 1,
+              delay: 0.3,
               stiffness: 200,
             }}
           >
             <Box width={[1, 4 / 5, 3 / 5]} mx="auto">
-              <Heading textAlign="center" fontSize={2} my={3}>
-                Spelschema
+              <Heading textAlign="left" fontSize={2} fontWeight="normal">
+                Matcher
               </Heading>
               <Box height="auto">
                 <Matches limit={28} attribute="team.index" />
               </Box>
-              <Box textAlign="center" fontSize={2} my={3}>
-                <Heading>
-                  <Link
+              <Box textAlign="left" fontSize={2}>
+                <Heading fontWeight="normal">
+                  {/* <Link
                     style={{ textDecoration: "underline", color: "black" }}
                     to="/leaderboard"
                   >
                     Omgång 2 pågår
-                  </Link>
+                  </Link> */}
+                  Spelare
                 </Heading>
               </Box>
 
-              {/* <PlayerList /> */}
+              <PlayerList />
             </Box>
           </motion.div>
         ) : (
-          <Box my={4}>
-            <Label htmlFor="email">Email</Label>
+          <Box my={2} width={[1, 4 / 5, 3 / 5]} mx="auto">
+            <Label htmlFor="email">
+              <Heading fontSize={0} fontWeight="normal">
+                Email
+              </Heading>
+            </Label>
             <Input
               id="email"
               name="email"
               type="email"
-              placeholder="glenn@gbg.nu"
+              placeholder="din@email.nu"
               onChange={event => setEmail(event.target.value.toLowerCase())}
             />
 
@@ -163,8 +202,10 @@ const GamePage = () => {
                   <PacmanLoader color={"#3cf"}></PacmanLoader>
                 </Box>
               ) : (
-                <Button onClick={register} my={3}>
-                  Lämna in
+                <Button mx={1} my={3} fontSize={[5, 6]} onClick={register}>
+                  <Heading fontWeight="normal" color="black">
+                    Spela
+                  </Heading>
                 </Button>
               )}
             </Box>
