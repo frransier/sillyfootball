@@ -101,7 +101,7 @@ const GamePage = () => {
               {state &&
                 state.map((player, index) => {
                   return (
-                    <Box mx="auto" width={[1 / 3, 1 / 5]}>
+                    <Box key={index} mx="auto" width={[1 / 3, 1 / 5]}>
                       <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
