@@ -5,7 +5,7 @@
   },
   "api": {
     "projectId": "0jt5x7hu",
-    "dataset": "even"
+    "dataset": "odd"
   },
   "plugins": [
     "@sanity/base",
