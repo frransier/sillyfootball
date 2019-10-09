@@ -12,7 +12,7 @@ const PlayerList = ({ hits, hasMore, refineNext }) => {
           initial={{ y: 20 }}
           animate={{ y: 0 }}
           transition={{
-            duration: 2,
+            duration: 0.5,
             stiffness: 200,
           }}
         >

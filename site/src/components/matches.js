@@ -60,7 +60,7 @@ const Matches = ({ items, refine }) => {
             return (
               <Flex
                 bg={item.isRefined && "black"}
-                p={[1, 2]}
+                p={[1, 1]}
                 width={1 / 2}
                 sx={{
                   borderRadius: 3,
@@ -82,10 +82,9 @@ const Matches = ({ items, refine }) => {
                         )}
                       </Box>
                       <Box
-                        width="75%"
+                        width="85%"
                         mx="auto"
                         sx={{
-                          borderRadius: 1,
                           borderWidth: "0px 0px 2px 0px",
                           borderStyle: "solid",
                           borderColor: "primary",

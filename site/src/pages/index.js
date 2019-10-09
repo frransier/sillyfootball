@@ -42,7 +42,7 @@ const IndexPage = () => {
           animate={{ opacity: 1 }}
           transition={{
             duration: 1,
-            delay: 0.2,
+
             stiffness: 200,
           }}
         >
@@ -71,7 +71,7 @@ const IndexPage = () => {
         animate={{ opacity: 1 }}
         transition={{
           duration: 1,
-          delay: 0.4,
+          delay: 0.3,
           stiffness: 200,
         }}
       >

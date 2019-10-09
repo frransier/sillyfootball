@@ -1,7 +1,7 @@
 import React from "react"
 import { Box, Flex, Image, Text } from "rebass"
-import { GoPlusSmall } from "react-icons/go"
-import { IoIosCheckmark } from "react-icons/io"
+import { FaRegHeart, FaRegThumbsUp } from "react-icons/fa"
+
 import { useDispatchContext, useStateContext } from "../state"
 import { useToast } from "sancho"
 
@@ -31,7 +31,15 @@ const Player = props => {
                 ></Image>
               </Box>
               <Box ml={2} width={1}>
-                <Text textAlign="left" fontSize={3}>
+                <Text
+                  textAlign="left"
+                  fontSize={3}
+                  fontWeight={
+                    state.filter(x => x.name === hit.name).length > 0
+                      ? "bold"
+                      : "normal"
+                  }
+                >
                   {hit.name}
                 </Text>
               </Box>
@@ -65,9 +73,9 @@ const Player = props => {
                 )}
               >
                 {state.filter(x => x.name === hit.name).length > 0 ? (
-                  <IoIosCheckmark size={30} />
+                  <FaRegThumbsUp color="black" size={20} />
                 ) : (
-                  <GoPlusSmall size={30} />
+                  <FaRegHeart size={20} />
                 )}
               </Box>
             </Flex>

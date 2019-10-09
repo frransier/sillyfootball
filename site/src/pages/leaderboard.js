@@ -112,7 +112,7 @@ const LeaderboardPage = props => {
             animate={{ opacity: 1, scale: 0.9 }}
             transition={{
               duration: 1,
-              delay: 0.4,
+
               stiffness: 200,
             }}
           >
@@ -122,7 +122,12 @@ const LeaderboardPage = props => {
                   {state.length} deltagare
                 </Heading>
                 {state[0].score > 0 && (
-                  <Box p={2} bg="primary" sx={{ borderRadius: 5 }}>
+                  <Box
+                    color="#5F6871"
+                    p={2}
+                    bg="primary"
+                    sx={{ borderRadius: 5 }}
+                  >
                     <Heading fontWeight="normal">
                       <Box>
                         {state[0].score}p{" "}
@@ -168,7 +173,7 @@ const LeaderboardPage = props => {
           animate={{ opacity: 1 }}
           transition={{
             duration: 1,
-            delay: 0.7,
+            delay: 0.3,
             stiffness: 200,
           }}
         >
@@ -231,7 +236,10 @@ const LeaderboardPage = props => {
                     bg="primary"
                     textAlign="center"
                   >
-                    <Heading fontSize={3}>{`${p.score}p`}</Heading>
+                    <Heading
+                      color="#5F6871"
+                      fontSize={3}
+                    >{`Du fick ${p.score}p`}</Heading>
                   </Box>
                 </Box>
               </motion.div>
@@ -256,7 +264,7 @@ const LeaderboardPage = props => {
                   width="100%"
                   sx={{ borderStyle: "solid", borderWidth: "0px 0px 2px 0px" }}
                 >
-                  <Table fixed={["15%", "50%", "20%", "20%"]}>
+                  <Table fixed={["20%", "40%", "20%", "20%"]}>
                     <TableHead>
                       <TableRow>
                         <TableCell align="center">
