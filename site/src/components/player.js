@@ -50,7 +50,7 @@ const Player = props => {
                 ml={3}
                 pt="5px"
                 color="primary"
-                onClick={() => (
+                onClick={() =>
                   state.filter(x => x.name === hit.name).length > 0
                     ? toast({
                         title: `${hit.name} är redan med i ditt lag`,
@@ -59,18 +59,18 @@ const Player = props => {
                         duration: 1000,
                         // eslint-disable-next-line
                       })
-                    : toast({
+                    : (toast({
                         title: `${hit.name} lades till i ditt lag`,
                         position: "top",
                         intent: "success",
                         duration: 1000,
                         // eslint-disable-next-line
                       }),
-                  dispatch({
-                    type: "add",
-                    hit,
-                  })
-                )}
+                      dispatch({
+                        type: "add",
+                        hit,
+                      }))
+                }
               >
                 {state.filter(x => x.name === hit.name).length > 0 ? (
                   <FaRegThumbsUp color="black" size={20} />
