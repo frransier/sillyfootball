@@ -34,7 +34,7 @@ const Matches = ({ items, refine }) => {
       const teams = rawTeams.filter(
         x => x.index.toString() === i.value.toString()
       )
-      console.log(teams)
+
       if (teams.length > 0) {
         const homeTeam = teams.find(x => x.active)
         const awayTeam = teams.find(x => !x.active)

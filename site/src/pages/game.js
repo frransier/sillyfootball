@@ -32,8 +32,6 @@ const GamePage = () => {
     const squad =
       state &&
       state.map(player => {
-        console.log(player)
-
         const p = { id: player._id, name: player.name }
         return p
       })
