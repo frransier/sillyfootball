@@ -9,6 +9,7 @@ const PlayerList = ({ hits, hasMore, refineNext }) => {
     <>
       {hits.map((hit, index) => (
         <motion.div
+          key={index}
           initial={{ y: 20 }}
           animate={{ y: 0 }}
           transition={{

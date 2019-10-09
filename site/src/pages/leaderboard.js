@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 
 import { useGraphQL } from "@brightleaf/react-hooks"
 import { FaStar, FaUser } from "react-icons/fa"
-import { Button, Flex, Box, Text, Heading } from "rebass"
+import { Button, Flex, Box, Heading } from "rebass"
 import { Label, Input } from "@rebass/forms"
 
 import Layout from "../components/layout"

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { navigate } from "@reach/router"
 import axios from "axios"
-import { Flex, Card, Heading, Text, Box, Image, Button } from "rebass"
+import { Flex, Heading, Box, Image, Button } from "rebass"
 import { Label, Input } from "@rebass/forms"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
