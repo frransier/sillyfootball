@@ -5,7 +5,7 @@ import Header from "./header"
 const Layout = ({ children }) => {
   return (
     <>
-      <Box mx="auto" maxWidth={960} p={2}>
+      <Box mx="auto" maxWidth={960} p={1}>
         <Header />
         <main>{children}</main>
       </Box>

@@ -99,7 +99,7 @@ const GamePage = () => {
                 sx={{ fontFamily: "body" }}
                 fontSize={[1, 2]}
               >
-                Lördag 13:30
+                Lördag 19 oktober kl 13:00
               </Text>
             </motion.div>
           ) : (
