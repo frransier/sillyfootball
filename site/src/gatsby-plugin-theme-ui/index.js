@@ -32,7 +32,7 @@ export default {
   //   },
   // },
   fonts: {
-    body: "system-ui, sans-serif",
+    body: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
     heading: "Alfa Slab One, sans",
     monospace: "Menlo, monospace",
   },

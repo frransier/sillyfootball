@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { navigate } from "@reach/router"
 import axios from "axios"
-import { Flex, Heading, Box, Image, Button } from "rebass"
+import { Flex, Heading, Box, Image, Button, Text } from "rebass"
 import { Label, Input } from "@rebass/forms"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -84,17 +84,23 @@ const GamePage = () => {
               <Heading textAlign="center" mt={2} sx={{ fontWeight: "normal" }}>
                 Välj 5 spelare
               </Heading>
-              <Heading
+              <Text
                 fontSize={2}
                 fontWeight="normal"
                 textAlign="center"
                 mt={0}
+                sx={{ fontFamily: "body" }}
               >
                 1 poäng per mål el assist
-              </Heading>
-              <Heading textAlign="center" mt={2} fontSize={[1, 2]}>
+              </Text>
+              <Text
+                textAlign="center"
+                mt={2}
+                sx={{ fontFamily: "body" }}
+                fontSize={[1, 2]}
+              >
                 Lördag 13:30
-              </Heading>
+              </Text>
             </motion.div>
           ) : (
             <Flex flexWrap="wrap" my={[-4, 3]}>
@@ -128,14 +134,18 @@ const GamePage = () => {
                         >
                           <Box>
                             <Image
-                              width="45px"
-                              height="45px"
+                              width="40px"
+                              height="40px"
                               src={player.team.logo.asset.url}
                               alt={player.name}
                             ></Image>
-                            <Heading fontWeight="normal" fontSize={0} mx="auto">
+                            <Text
+                              sx={{ fontFamily: "body" }}
+                              fontSize={[1]}
+                              mx="auto"
+                            >
                               {player.name}
-                            </Heading>
+                            </Text>
                             <Box mt={1} color="black">
                               <FaRegTimesCircle></FaRegTimesCircle>
                             </Box>
@@ -160,14 +170,23 @@ const GamePage = () => {
             }}
           >
             <Box width={[1, 4 / 5, 3 / 5]} mx="auto">
-              <Heading textAlign="left" fontSize={2} fontWeight="normal">
+              <Text
+                sx={{ fontFamily: "heading" }}
+                textAlign="left"
+                fontSize={3}
+                fontWeight="normal"
+              >
                 Matcher
-              </Heading>
+              </Text>
               <Box height="auto">
                 <Matches limit={28} attribute="team.index" />
               </Box>
               <Box textAlign="left" fontSize={2}>
-                <Heading fontWeight="normal">
+                <Text
+                  fontSize={4}
+                  sx={{ fontFamily: "heading" }}
+                  fontWeight="normal"
+                >
                   {/* <Link
                     style={{ textDecoration: "underline", color: "black" }}
                     to="/leaderboard"
@@ -175,7 +194,7 @@ const GamePage = () => {
                     Omgång 2 pågår
                   </Link> */}
                   Spelare
-                </Heading>
+                </Text>
               </Box>
 
               <PlayerList />
