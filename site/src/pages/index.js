@@ -78,7 +78,7 @@ const IndexPage = () => {
           <Link to="/game/">
             <Button mx={1} fontSize={[5, 6]}>
               <Heading fontWeight="normal" color="black">
-                Spela
+                Till spelet
               </Heading>
             </Button>
           </Link>

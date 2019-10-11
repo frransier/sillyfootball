@@ -10,8 +10,8 @@ import algoliasearch from "algoliasearch/lite"
 import { InstantSearch } from "react-instantsearch-dom"
 import Matches from "../components/matches"
 import { useDispatchContext, useStateContext } from "../state"
-import { useToast } from "sancho"
-import { FaRegTimesCircle } from "react-icons/fa"
+import { useToast, Spinner } from "sancho"
+import { FaRegTimesCircle, FaCheck } from "react-icons/fa"
 import { motion } from "framer-motion"
 import { PacmanLoader } from "react-spinners"
 //import { Link } from "gatsby"
@@ -202,6 +202,14 @@ const GamePage = () => {
           </motion.div>
         ) : (
           <Box my={2} width={[1, 4 / 5, 3 / 5]} mx="auto">
+            <Flex>
+              <Flex mx="auto">
+                <Heading fontSize={3}>Fullt lag</Heading>
+                <Box mx={2}>
+                  <FaCheck size={25}></FaCheck>
+                </Box>
+              </Flex>
+            </Flex>
             <Label htmlFor="email">
               <Heading fontSize={0} fontWeight="normal">
                 Email
@@ -218,12 +226,12 @@ const GamePage = () => {
             <Box textAlign="center">
               {loading ? (
                 <Box my={3} mx="auto" color="primary">
-                  <PacmanLoader color={"#3cf"}></PacmanLoader>
+                  <Spinner label="Creating project..." center />
                 </Box>
               ) : (
                 <Button mx={1} my={3} fontSize={[5, 6]} onClick={register}>
                   <Heading fontWeight="normal" color="black">
-                    Spela
+                    Lämna in
                   </Heading>
                 </Button>
               )}
