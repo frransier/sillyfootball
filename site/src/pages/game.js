@@ -13,7 +13,6 @@ import { useDispatchContext, useStateContext } from "../state"
 import { useToast, Spinner } from "sancho"
 import { FaRegTimesCircle, FaCheck } from "react-icons/fa"
 import { motion } from "framer-motion"
-import { PacmanLoader } from "react-spinners"
 //import { Link } from "gatsby"
 
 const searchClient = algoliasearch(
@@ -226,7 +225,7 @@ const GamePage = () => {
             <Box textAlign="center">
               {loading ? (
                 <Box my={3} mx="auto" color="primary">
-                  <Spinner label="Creating project..." center />
+                  <Spinner label="Registrerar..." center />
                 </Box>
               ) : (
                 <Button mx={1} my={3} fontSize={[5, 6]} onClick={register}>

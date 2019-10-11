@@ -41,9 +41,9 @@ exports.handler = (event, _, callback) => {
         "<html>  " +
         "<body>  " +
         "<h1>  " +
-        "<b> Spelstart <mark>Lördag kl 13.25</mark> </b> " +
+        "<b> Spelstart <mark>Lördag kl 13.00</mark> </b> " +
         "</h1> " +
-        "<p>Brighton - Tottenham<br>  " +
+        "<p>Eibar - Barcelona<br>  " +
         "</p>  " +
         "<h2>  " +
         "Ditt lag:" +
@@ -69,9 +69,7 @@ exports.handler = (event, _, callback) => {
     }
 
     intercom.messages
-      .create({
-        msg,
-      })
+      .create(msg)
       .then(() => {
         console.log("Sent email to: ", data.email)
       })

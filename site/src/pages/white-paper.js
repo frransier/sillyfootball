@@ -80,7 +80,7 @@ const WhitePaperPage = () => (
           om 1000kr som delas ut till vinnarna. Allt du behöver göra är att
           välja dina 5 spelare och lämna in ditt lag genom att ange din email.
         </Text>
-        <Box textAlign="center" mt={3}>
+        <Box textAlign="center" my={4}>
           <Link to="/game/">
             <Button mx={1} fontSize={[5, 6]}>
               <Heading fontWeight="normal" color="black">
