@@ -23,18 +23,14 @@ const Header = () => {
       </Box>
       <Box>
         <Sheet onRequestClose={() => setOpen(!open)} isOpen={open}>
-          <Link style={{ textDecoration: "none" }} to="/rules/">
-            <Heading color="black" fontWeight={1} pt={4} mx={4}>
-              Rules
-            </Heading>
-          </Link>
           <Link style={{ textDecoration: "none" }} to="/white-paper/">
-            <Heading color="black" fontWeight={1} mx={4}>
-              White paper
+            <Heading color="black" fontWeight={1} pt={4} mx={4}>
+              White Paper
             </Heading>
           </Link>
+
           <Link style={{ textDecoration: "none" }} to="/leaderboard/">
-            <Heading color="black" fontWeight={1} mx={4}>
+            <Heading color="black" fontWeight={1} mt={2} mx={4}>
               Leaderboard
             </Heading>
           </Link>

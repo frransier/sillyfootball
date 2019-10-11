@@ -50,11 +50,9 @@ const IndexPage = () => {
             <Heading textAlign="center" mt={2} sx={{ fontWeight: 1 }}>
               FANTASY FOOTBALL
             </Heading>
-            <FaStar size={20}></FaStar>
-            <FaStar size={20}></FaStar>
-            <FaStar size={20}></FaStar>
-            <FaStar size={20}></FaStar>
-            <FaStar size={20}></FaStar>
+            <FaStar size={15}></FaStar>
+            <FaStar size={15}></FaStar>
+            <FaStar size={15}></FaStar>
             <Text
               my={[2, 3]}
               textAlign="center"
