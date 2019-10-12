@@ -1,5 +1,4 @@
 import React, { useReducer, useContext, createContext } from "react"
-import Intercom from "react-intercom"
 
 const StateContext = createContext()
 const DispatchContext = createContext()
@@ -26,7 +25,6 @@ function Provider(props) {
   return (
     <StateContext.Provider value={state}>
       <DispatchContext.Provider value={dispatch}>
-        <Intercom appId="entknhmw" />
         {props.children}
       </DispatchContext.Provider>
     </StateContext.Provider>
