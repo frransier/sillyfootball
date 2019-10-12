@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { navigate } from "@reach/router"
 import axios from "axios"
-import { Flex, Heading, Box, Image, Button } from "rebass"
+import { Flex, Heading, Box, Image, Button, Text } from "rebass"
 import { Label, Input } from "@rebass/forms"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -10,10 +10,9 @@ import algoliasearch from "algoliasearch/lite"
 import { InstantSearch } from "react-instantsearch-dom"
 import Matches from "../components/matches"
 import { useDispatchContext, useStateContext } from "../state"
-import { useToast } from "sancho"
-import { FaRegTimesCircle } from "react-icons/fa"
+import { useToast, Spinner } from "sancho"
+import { FaRegTimesCircle, FaCheck } from "react-icons/fa"
 import { motion } from "framer-motion"
-import { PacmanLoader } from "react-spinners"
 //import { Link } from "gatsby"
 
 const searchClient = algoliasearch(
@@ -84,17 +83,23 @@ const GamePage = () => {
               <Heading textAlign="center" mt={2} sx={{ fontWeight: "normal" }}>
                 Välj 5 spelare
               </Heading>
-              <Heading
+              <Text
                 fontSize={2}
                 fontWeight="normal"
                 textAlign="center"
                 mt={0}
+                sx={{ fontFamily: "body" }}
               >
                 1 poäng per mål el assist
-              </Heading>
-              <Heading textAlign="center" mt={2} fontSize={[1, 2]}>
-                Lördag 13:30
-              </Heading>
+              </Text>
+              <Text
+                textAlign="center"
+                mt={2}
+                sx={{ fontFamily: "body" }}
+                fontSize={[1, 2]}
+              >
+                Lördag 19 oktober kl 13:00
+              </Text>
             </motion.div>
           ) : (
             <Flex flexWrap="wrap" my={[-4, 3]}>
@@ -128,14 +133,18 @@ const GamePage = () => {
                         >
                           <Box>
                             <Image
-                              width="45px"
-                              height="45px"
+                              width="40px"
+                              height="40px"
                               src={player.team.logo.asset.url}
                               alt={player.name}
                             ></Image>
-                            <Heading fontWeight="normal" fontSize={0} mx="auto">
+                            <Text
+                              sx={{ fontFamily: "body" }}
+                              fontSize={[1]}
+                              mx="auto"
+                            >
                               {player.name}
-                            </Heading>
+                            </Text>
                             <Box mt={1} color="black">
                               <FaRegTimesCircle></FaRegTimesCircle>
                             </Box>
@@ -160,14 +169,23 @@ const GamePage = () => {
             }}
           >
             <Box width={[1, 4 / 5, 3 / 5]} mx="auto">
-              <Heading textAlign="left" fontSize={2} fontWeight="normal">
+              <Text
+                sx={{ fontFamily: "heading" }}
+                textAlign="left"
+                fontSize={3}
+                fontWeight="normal"
+              >
                 Matcher
-              </Heading>
+              </Text>
               <Box height="auto">
                 <Matches limit={28} attribute="team.index" />
               </Box>
               <Box textAlign="left" fontSize={2}>
-                <Heading fontWeight="normal">
+                <Text
+                  fontSize={4}
+                  sx={{ fontFamily: "heading" }}
+                  fontWeight="normal"
+                >
                   {/* <Link
                     style={{ textDecoration: "underline", color: "black" }}
                     to="/leaderboard"
@@ -175,7 +193,7 @@ const GamePage = () => {
                     Omgång 2 pågår
                   </Link> */}
                   Spelare
-                </Heading>
+                </Text>
               </Box>
 
               <PlayerList />
@@ -183,6 +201,14 @@ const GamePage = () => {
           </motion.div>
         ) : (
           <Box my={2} width={[1, 4 / 5, 3 / 5]} mx="auto">
+            <Flex>
+              <Flex mx="auto">
+                <Heading fontSize={3}>Fullt lag</Heading>
+                <Box mx={2}>
+                  <FaCheck size={25}></FaCheck>
+                </Box>
+              </Flex>
+            </Flex>
             <Label htmlFor="email">
               <Heading fontSize={0} fontWeight="normal">
                 Email
@@ -199,12 +225,12 @@ const GamePage = () => {
             <Box textAlign="center">
               {loading ? (
                 <Box my={3} mx="auto" color="primary">
-                  <PacmanLoader color={"#3cf"}></PacmanLoader>
+                  <Spinner label="Registrerar..." center />
                 </Box>
               ) : (
                 <Button mx={1} my={3} fontSize={[5, 6]} onClick={register}>
                   <Heading fontWeight="normal" color="black">
-                    Spela
+                    Lämna in
                   </Heading>
                 </Button>
               )}

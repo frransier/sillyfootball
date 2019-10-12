@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Heading, Button, Box } from "rebass"
+import { Heading, Button, Box, Text } from "rebass"
 import { motion } from "framer-motion"
 
 import { FaStar } from "react-icons/fa"
@@ -50,19 +50,18 @@ const IndexPage = () => {
             <Heading textAlign="center" mt={2} sx={{ fontWeight: 1 }}>
               FANTASY FOOTBALL
             </Heading>
-            <FaStar size={20}></FaStar>
-            <FaStar size={20}></FaStar>
-            <FaStar size={20}></FaStar>
-            <FaStar size={20}></FaStar>
-            <FaStar size={20}></FaStar>
-            <Heading
+            <FaStar size={15}></FaStar>
+            <FaStar size={15}></FaStar>
+            <FaStar size={15}></FaStar>
+            <Text
               my={[2, 3]}
               textAlign="center"
               fontSize={[1, 2]}
               mx={[2, 3]}
+              sx={{ fontFamily: "body" }}
             >
-              Lördag 13:30
-            </Heading>
+              Lördag 19 oktober kl 13:00
+            </Text>
           </Box>
         </motion.div>
       </Box>
@@ -79,7 +78,7 @@ const IndexPage = () => {
           <Link to="/game/">
             <Button mx={1} fontSize={[5, 6]}>
               <Heading fontWeight="normal" color="black">
-                Spela
+                Till spelet
               </Heading>
             </Button>
           </Link>

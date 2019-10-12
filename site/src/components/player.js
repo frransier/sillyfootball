@@ -17,7 +17,11 @@ const Player = props => {
     <>
       <Flex>
         <Flex
-          sx={{ borderWidth: "0px 0px 1px 0px", borderStyle: "dotted" }}
+          sx={{
+            borderWidth: "0px 0px 1px 0px",
+            borderStyle: "dotted",
+            fontFamily: `body`,
+          }}
           width="100%"
         >
           <Box mx={2} width={1}>

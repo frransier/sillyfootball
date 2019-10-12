@@ -54,7 +54,7 @@ const Matches = ({ items, refine }) => {
         stiffness: 200,
       }}
     >
-      <Flex width={1} flexWrap="wrap">
+      <Flex width={1} flexWrap="wrap" sx={{ fontFamily: "body" }}>
         {schema.map(item => {
           if (item) {
             return (
@@ -92,7 +92,7 @@ const Matches = ({ items, refine }) => {
                       >
                         <Text
                           color={item.isRefined ? "primary" : ""}
-                          fontSize={[1, 2, 3]}
+                          fontSize={[0, 2]}
                         >
                           {`${item.homeTeam.nickName} - ${item.awayTeam.nickName}`}
                         </Text>

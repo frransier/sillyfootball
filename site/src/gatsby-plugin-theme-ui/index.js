@@ -32,19 +32,20 @@ export default {
   //   },
   // },
   fonts: {
-    body: "system-ui, sans-serif",
+    body: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
     heading: "Alfa Slab One, sans",
     monospace: "Menlo, monospace",
   },
-  // fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
-  // fontWeights: {
-  //   body: 400,
-  //   heading: 700,
-  //   display: 900,
-  // },
-  // lineHeights: {
-  //   body: 1.5,
-  //   heading: 1.25,
+  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
+  fontWeights: {
+    body: 400,
+    heading: 700,
+    display: 900,
+  },
+  lineHeights: {
+    body: 1.5,
+    heading: 1.25,
+  },
   // },
   // textStyles: {
   //   heading: {
