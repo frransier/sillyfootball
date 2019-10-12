@@ -6,8 +6,8 @@ import Intercom from "react-intercom"
 const Layout = ({ children }) => {
   return (
     <>
+      <Intercom appId="entknhmw" />
       <Box mx="auto" maxWidth={960} p={1}>
-        <Intercom appId="entknhmw"></Intercom>
         <Header />
         <main>{children}</main>
       </Box>
