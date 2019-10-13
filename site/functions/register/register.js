@@ -41,7 +41,7 @@ exports.handler = (event, _, callback) => {
         "<html>  " +
         "<body>  " +
         "<h1>  " +
-        "<b> Spelstart <mark>Lördag kl 13.00</mark> </b> " +
+        "<b> Start <mark>Lördag kl 13.00</mark> </b> " +
         "</h1> " +
         "<p>Eibar - Barcelona<br>  " +
         "</p>  " +
@@ -56,6 +56,7 @@ exports.handler = (event, _, callback) => {
         `<li>${data.squad[4].name}</li>  ` +
         "</ul>  " +
         "<h2>  " +
+        `<a href="https://www.sillyfootball.se/leaderboard/">Följ ditt lag på leaderboarden</a>` +
         "</body>  " +
         "</html>",
       from: {
