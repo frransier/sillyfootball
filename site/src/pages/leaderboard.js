@@ -250,7 +250,7 @@ const LeaderboardPage = props => {
                       fontFamily="body"
                       color="white"
                       fontSize={3}
-                    >{`Du fick ${p.score}p`}</Text>
+                    >{`Du har ${p.score}p`}</Text>
                   </Box>
                 </Box>
               </motion.div>

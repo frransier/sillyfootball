@@ -59,7 +59,7 @@ const Matches = ({ items, refine }) => {
           if (item) {
             return (
               <Flex
-                bg={item.isRefined && "black"}
+                bg={item.isRefined && "primary"}
                 p={[1, 1]}
                 width={1 / 2}
                 sx={{
@@ -76,7 +76,7 @@ const Matches = ({ items, refine }) => {
                     <Flex>
                       <Box>
                         {item.isRefined ? (
-                          <IoIosArrowDown />
+                          <IoIosArrowDown color="white" />
                         ) : (
                           <IoIosArrowForward />
                         )}
@@ -87,7 +87,7 @@ const Matches = ({ items, refine }) => {
                         sx={{
                           borderWidth: "0px 0px 2px 0px",
                           borderStyle: "solid",
-                          borderColor: "primary",
+                          borderColor: item.isRefined ? "white" : "primary",
                         }}
                       >
                         <Text

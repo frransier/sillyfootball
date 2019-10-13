@@ -85,7 +85,8 @@ const GamePage = () => {
                 <Heading
                   textAlign="center"
                   mt={2}
-                  sx={{ fontWeight: "normal" }}
+                  sx={{ color: "white" }}
+                  fontWeight="thin"
                 >
                   Välj 5 spelare
                 </Heading>
@@ -93,8 +94,8 @@ const GamePage = () => {
                   <Text
                     textAlign="center"
                     sx={{
-                      fontWeight: "normal",
-                      fontSize: 3,
+                      fontWeight: "thin",
+                      fontSize: 2,
                       fontFamily: "body",
                     }}
                   >
@@ -162,6 +163,7 @@ const GamePage = () => {
                             <Text
                               color="white"
                               sx={{ fontFamily: "body" }}
+                              fontWeight="thin"
                               fontSize={[1]}
                               mx="auto"
                             >
@@ -192,21 +194,23 @@ const GamePage = () => {
           >
             <Box width={[1, 4 / 5, 3 / 5]} mx="auto">
               <Text
+                my={2}
                 sx={{ fontFamily: "heading" }}
-                textAlign="left"
+                textAlign="center"
                 fontSize={3}
-                fontWeight="normal"
+                fontWeight="heading"
               >
                 Matcher
               </Text>
               <Box height="auto">
                 <Matches limit={28} attribute="team.index" />
               </Box>
-              <Box textAlign="left" fontSize={2}>
+              <Box textAlign="center" fontSize={2}>
                 <Text
+                  my={2}
                   fontSize={4}
                   sx={{ fontFamily: "heading" }}
-                  fontWeight="normal"
+                  fontWeight="heading"
                 >
                   {/* <Link
                     style={{ textDecoration: "underline", color: "black" }}

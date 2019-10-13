@@ -53,7 +53,12 @@ const ThanksPage = () => {
             }}
           >
             <Box textAlign="center" verticalAlign="center">
-              <Heading textAlign="center" mt={1} sx={{ fontWeight: "normal" }}>
+              <Heading
+                color="white"
+                textAlign="center"
+                mt={1}
+                sx={{ fontWeight: "thin" }}
+              >
                 Du är reggad för
               </Heading>
               <Text
@@ -63,7 +68,7 @@ const ThanksPage = () => {
                 mt={2}
                 sx={{ fontWeight: "normal" }}
               >
-                1000 kr FREEROLL
+                1000 kr free roll
               </Text>
 
               <Text
@@ -105,7 +110,7 @@ const ThanksPage = () => {
           <Box textAlign="center" my={4}>
             <Link to="/leaderboard/">
               <Button mx={1}>
-                <Heading fontSize={[2, 3]} fontWeight="normal" color="black">
+                <Heading fontSize={[2, 3]} fontWeight="normal" color="white">
                   Leaderboard
                 </Heading>
               </Button>

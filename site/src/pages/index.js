@@ -45,14 +45,19 @@ const IndexPage = () => {
           }}
         >
           <Box textAlign="center" verticalAlign="center">
-            <Heading textAlign="center" mt={2} sx={{ fontWeight: "normal" }}>
+            <Heading
+              color="white"
+              textAlign="center"
+              mt={2}
+              sx={{ fontWeight: "thin" }}
+            >
               Enkel Fantasy Football
             </Heading>
             <Box color="white">
               <Text
                 textAlign="center"
                 mt={2}
-                sx={{ fontWeight: "normal", fontSize: 3, fontFamily: "body" }}
+                sx={{ fontWeight: "thin", fontSize: 3, fontFamily: "body" }}
               >
                 Tävla om 1000 kr
               </Text>

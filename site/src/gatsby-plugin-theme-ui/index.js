@@ -6,7 +6,7 @@ export default {
   colors: {
     text: "#fff",
     background: "#060606",
-    primary: "#2ecc71",
+    primary: "#2c3e50",
     secondary: "#e0f",
     muted: "#191919",
     highlight: "#29112c",
@@ -32,11 +32,11 @@ export default {
   //   },
   // },
   fonts: {
-    body: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
-    heading: "Alfa Slab One, sans",
+    body: `Merriweather`,
+    heading: "Open Sans",
     monospace: "Menlo, monospace",
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
+  fontSizes: [10, 12, 14, 16, 20, 24, 32, 48, 64, 72],
   fontWeights: {
     thin: 200,
     body: 400,
