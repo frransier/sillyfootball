@@ -92,11 +92,16 @@ const GamePage = () => {
               >
                 1 poäng per mål el assist
               </Text>
+              <Heading textAlign="center" mt={2} sx={{ fontWeight: "normal" }}>
+                1000 kr FREEROLL
+              </Heading>
+
               <Text
+                my={[1, 2]}
                 textAlign="center"
-                mt={2}
-                sx={{ fontFamily: "body" }}
                 fontSize={[1, 2]}
+                mx={[2, 3]}
+                sx={{ fontFamily: "body" }}
               >
                 Lördag 19 oktober kl 13:00
               </Text>

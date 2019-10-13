@@ -47,14 +47,15 @@ const IndexPage = () => {
           }}
         >
           <Box textAlign="center" verticalAlign="center">
-            <Heading textAlign="center" mt={2} sx={{ fontWeight: 1 }}>
-              FANTASY FOOTBALL
+            <Heading textAlign="center" mt={1} sx={{ fontWeight: "normal" }}>
+              Simple Fantasy Football
             </Heading>
-            <FaStar size={15}></FaStar>
-            <FaStar size={15}></FaStar>
-            <FaStar size={15}></FaStar>
+            <Heading textAlign="center" mt={4} sx={{ fontWeight: "normal" }}>
+              1000 kr FREEROLL
+            </Heading>
+
             <Text
-              my={[2, 3]}
+              my={[1, 2]}
               textAlign="center"
               fontSize={[1, 2]}
               mx={[2, 3]}
