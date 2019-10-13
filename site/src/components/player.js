@@ -22,7 +22,7 @@ const Player = props => {
             borderStyle: "dotted",
             fontFamily: `body`,
           }}
-          width={[2 / 3, 1]}
+          width={[3 / 4, 1]}
           mx="auto"
         >
           <Box mx={2} width={1}>
