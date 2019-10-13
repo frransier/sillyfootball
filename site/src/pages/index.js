@@ -5,8 +5,6 @@ import SEO from "../components/seo"
 import { Heading, Button, Box, Text } from "rebass"
 import { motion } from "framer-motion"
 
-import { FaStar } from "react-icons/fa"
-
 const IndexPage = () => {
   return (
     <Layout>

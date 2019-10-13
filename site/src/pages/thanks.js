@@ -83,7 +83,7 @@ const ThanksPage = () => {
             </Link>
           </Box>
           <Box textAlign="center" my={4}>
-            <Link to="/game/">
+            <Link to="/leaderboard/">
               <Button mx={1}>
                 <Heading fontSize={[2, 3]} fontWeight="normal" color="black">
                   Leaderboard

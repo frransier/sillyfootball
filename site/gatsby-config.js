@@ -55,7 +55,7 @@ module.exports = {
       resolve: "gatsby-plugin-intercom-spa",
       options: {
         app_id: "entknhmw",
-        include_in_development: true,
+        include_in_development: false,
         delay_timeout: 0,
       },
     }, // this (optional) plugin enables Progressive Web App + Offline functionality
