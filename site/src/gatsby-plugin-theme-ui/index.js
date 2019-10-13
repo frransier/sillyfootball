@@ -6,7 +6,7 @@ export default {
   colors: {
     text: "#fff",
     background: "#060606",
-    primary: "#7BED9F",
+    primary: "#2ecc71",
     secondary: "#e0f",
     muted: "#191919",
     highlight: "#29112c",
@@ -38,6 +38,7 @@ export default {
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
   fontWeights: {
+    thin: 200,
     body: 400,
     heading: 700,
     display: 900,

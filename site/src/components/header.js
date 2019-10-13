@@ -18,11 +18,11 @@ const Header = () => {
           Sillyfootball
         </Heading>
       </Link>
-      <motion.div animate={{ rotate: 45 }} transition={{ duration: 0.4 }}>
-        <Text fontWeight="bold" color="tomato">
-          beta
-        </Text>
-      </motion.div>
+
+      <Text mx={2} fontWeight="bold" color="tomato">
+        beta
+      </Text>
+
       <Box mx="auto"></Box>
       <Box onClick={() => setOpen(!open)} fontSize={[5, 6]} mt={[1, 2]}>
         <FaBars></FaBars>

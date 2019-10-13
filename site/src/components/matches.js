@@ -91,7 +91,7 @@ const Matches = ({ items, refine }) => {
                         }}
                       >
                         <Text
-                          color={item.isRefined ? "primary" : ""}
+                          color={item.isRefined ? "white" : ""}
                           fontSize={[0, 2]}
                         >
                           {`${item.homeTeam.nickName} - ${item.awayTeam.nickName}`}

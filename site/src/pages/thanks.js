@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { useDispatchContext } from "../state"
 import { motion } from "framer-motion"
+import { IoMdArrowDroprightCircle } from "react-icons/io"
 
 const ThanksPage = () => {
   const dispatch = useDispatchContext()
@@ -16,7 +17,7 @@ const ThanksPage = () => {
   return (
     <Layout>
       <SEO title="FAQ" />
-      <Box width={9 / 10} mx="auto">
+      <Box mx="auto">
         <Box
           bg="primary"
           width={[1, 4 / 5, 3 / 5]}
@@ -53,11 +54,17 @@ const ThanksPage = () => {
           >
             <Box textAlign="center" verticalAlign="center">
               <Heading textAlign="center" mt={1} sx={{ fontWeight: "normal" }}>
-                Du är reggad!
+                Du är reggad för
               </Heading>
-              <Heading textAlign="center" mt={2} sx={{ fontWeight: "normal" }}>
+              <Text
+                fontFamily="body"
+                color="white"
+                textAlign="center"
+                mt={2}
+                sx={{ fontWeight: "normal" }}
+              >
                 1000 kr FREEROLL
-              </Heading>
+              </Text>
 
               <Text
                 my={[1, 2]}
@@ -65,6 +72,7 @@ const ThanksPage = () => {
                 fontSize={[1, 2]}
                 mx={[2, 3]}
                 sx={{ fontFamily: "body" }}
+                color="white"
               >
                 Lördag 19 oktober kl 13:00
               </Text>
@@ -72,14 +80,26 @@ const ThanksPage = () => {
           </motion.div>
         </Box>
 
-        <Flex alignItems="center" justifyContent="center">
-          <Box textAlign="center" my={4}>
-            <Link to="/game/">
-              <Button mx={1}>
-                <Heading fontSize={[2, 3]} fontWeight="normal" color="black">
-                  Skapa fler lag
-                </Heading>
-              </Button>
+        <Box alignItems="center" justifyContent="center">
+          <Box mt={3}>
+            <Link style={{ textDecoration: "none" }} to="/game/">
+              <Flex fontSize={5}>
+                <Flex mx="auto">
+                  <Text
+                    mt={1}
+                    fontFamily="body"
+                    fontWeight="thin"
+                    color="black"
+                  >
+                    Spela igen
+                  </Text>
+                  <Box color="primary" mx={2}>
+                    <IoMdArrowDroprightCircle
+                      size={50}
+                    ></IoMdArrowDroprightCircle>
+                  </Box>
+                </Flex>
+              </Flex>
             </Link>
           </Box>
           <Box textAlign="center" my={4}>
@@ -91,7 +111,7 @@ const ThanksPage = () => {
               </Button>
             </Link>
           </Box>
-        </Flex>
+        </Box>
       </Box>
     </Layout>
   )

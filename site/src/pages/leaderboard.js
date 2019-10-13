@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 
 import { useGraphQL } from "@brightleaf/react-hooks"
 import { FaStar, FaUser } from "react-icons/fa"
-import { Button, Flex, Box, Heading } from "rebass"
+import { Button, Flex, Box, Heading, Text } from "rebass"
 import { Label, Input } from "@rebass/forms"
 
 import Layout from "../components/layout"
@@ -118,12 +118,17 @@ const LeaderboardPage = props => {
           >
             {state && state.length > 0 && (
               <Box textAlign="center" mt={-1}>
-                <Heading textAlign="left" fontSize={2} fontWeight="normal">
+                <Heading
+                  textAlign="left"
+                  fontSize={2}
+                  my={2}
+                  fontWeight="normal"
+                >
                   {state.length} deltagare
                 </Heading>
                 {state[0].score > 0 && (
                   <Box
-                    color="#5F6871"
+                    color="white"
                     p={2}
                     bg="primary"
                     sx={{ borderRadius: 5 }}
@@ -159,7 +164,7 @@ const LeaderboardPage = props => {
                   onChange={event => setEmail(event.target.value.toLowerCase())}
                 />
                 <Button bg="white" width={1 / 4} mx={2} onClick={trackTeams}>
-                  <Heading color="#5F6872" sx={{ fontWeight: 1 }} fontSize={1}>
+                  <Heading color="black" sx={{ fontWeight: 1 }} fontSize={1}>
                     Rätta
                   </Heading>
                 </Button>
@@ -178,9 +183,9 @@ const LeaderboardPage = props => {
           }}
         >
           {trackedTeams.length > 0 &&
-            trackedTeams.map(p => (
+            trackedTeams.map((p, index) => (
               <motion.div
-                key={p._id}
+                key={index}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{
@@ -196,7 +201,12 @@ const LeaderboardPage = props => {
                     <TableHead>
                       <TableRow>
                         <TableCell align="center">
-                          <Box sx={{ borderRadius: 5 }} p={1} bg="primary">
+                          <Box
+                            sx={{ borderRadius: 5 }}
+                            p={1}
+                            bg="primary"
+                            color="white"
+                          >
                             <FaUser size={25}></FaUser>
                           </Box>
                         </TableCell>
@@ -236,10 +246,11 @@ const LeaderboardPage = props => {
                     bg="primary"
                     textAlign="center"
                   >
-                    <Heading
-                      color="#5F6871"
+                    <Text
+                      fontFamily="body"
+                      color="white"
                       fontSize={3}
-                    >{`Du fick ${p.score}p`}</Heading>
+                    >{`Du fick ${p.score}p`}</Text>
                   </Box>
                 </Box>
               </motion.div>
@@ -274,8 +285,9 @@ const LeaderboardPage = props => {
                             fontWeight="bold"
                             bg="primary"
                             textAlign="center"
+                            color="white"
                           >
-                            <Heading fontSize={3}>{`${p.score}p`}</Heading>
+                            <Heading fontSize={3}>{`${p.score} p`}</Heading>
                           </Box>
                         </TableCell>
                         <TableCell>{p._id.substr(p._id.length - 5)}</TableCell>

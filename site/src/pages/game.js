@@ -13,7 +13,8 @@ import { useDispatchContext, useStateContext } from "../state"
 import { useToast, Spinner } from "sancho"
 import { FaRegTimesCircle, FaCheck } from "react-icons/fa"
 import { motion } from "framer-motion"
-//import { Link } from "gatsby"
+import { Link } from "gatsby"
+import { IoMdArrowDroprightCircle } from "react-icons/io"
 
 const searchClient = algoliasearch(
   "C1ICPA4UBZ",
@@ -80,31 +81,46 @@ const GamePage = () => {
                 stiffness: 200,
               }}
             >
-              <Heading textAlign="center" mt={2} sx={{ fontWeight: "normal" }}>
-                Välj 5 spelare
-              </Heading>
-              <Text
-                fontSize={2}
-                fontWeight="normal"
-                textAlign="center"
-                mt={0}
-                sx={{ fontFamily: "body" }}
-              >
-                1 poäng per mål el assist
-              </Text>
-              <Heading textAlign="center" mt={2} sx={{ fontWeight: "normal" }}>
-                1000 kr FREEROLL
-              </Heading>
+              <Box textAlign="center" verticalAlign="center">
+                <Heading
+                  textAlign="center"
+                  mt={2}
+                  sx={{ fontWeight: "normal" }}
+                >
+                  Välj 5 spelare
+                </Heading>
+                <Box color="white">
+                  <Text
+                    textAlign="center"
+                    sx={{
+                      fontWeight: "normal",
+                      fontSize: 3,
+                      fontFamily: "body",
+                    }}
+                  >
+                    1 poäng per mål eller assist
+                  </Text>
 
-              <Text
-                my={[1, 2]}
-                textAlign="center"
-                fontSize={[1, 2]}
-                mx={[2, 3]}
-                sx={{ fontFamily: "body" }}
-              >
-                Lördag 19 oktober kl 13:00
-              </Text>
+                  <Text
+                    mt={4}
+                    textAlign="center"
+                    fontSize={[1, 2]}
+                    mx={[2, 3]}
+                    sx={{ fontFamily: "body" }}
+                  >
+                    1000 kr free roll
+                  </Text>
+                  <Text
+                    my={[1, 2]}
+                    textAlign="center"
+                    fontSize={[1, 2]}
+                    mx={[2, 3]}
+                    sx={{ fontFamily: "body" }}
+                  >
+                    Lördag 19 oktober kl 13:00
+                  </Text>
+                </Box>
+              </Box>
             </motion.div>
           ) : (
             <Flex flexWrap="wrap" my={[-4, 3]}>
@@ -144,13 +160,14 @@ const GamePage = () => {
                               alt={player.name}
                             ></Image>
                             <Text
+                              color="white"
                               sx={{ fontFamily: "body" }}
                               fontSize={[1]}
                               mx="auto"
                             >
                               {player.name}
                             </Text>
-                            <Box mt={1} color="black">
+                            <Box mt={1} color="white">
                               <FaRegTimesCircle></FaRegTimesCircle>
                             </Box>
                           </Box>
@@ -233,11 +250,25 @@ const GamePage = () => {
                   <Spinner label="Registrerar..." center />
                 </Box>
               ) : (
-                <Button mx={1} my={3} fontSize={[5, 6]} onClick={register}>
-                  <Heading fontWeight="normal" color="black">
-                    Lämna in
-                  </Heading>
-                </Button>
+                <Box mt={3} onClick={register}>
+                  <Flex fontSize={5}>
+                    <Flex mx="auto">
+                      <Text
+                        mt={1}
+                        fontFamily="body"
+                        fontWeight="thin"
+                        color="black"
+                      >
+                        Lämna in
+                      </Text>
+                      <Box color="primary" mx={2}>
+                        <IoMdArrowDroprightCircle
+                          size={50}
+                        ></IoMdArrowDroprightCircle>
+                      </Box>
+                    </Flex>
+                  </Flex>
+                </Box>
               )}
             </Box>
           </Box>
