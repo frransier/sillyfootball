@@ -20,9 +20,9 @@ const PlayerList = ({ hits, hasMore, refineNext }) => {
           <Player key={index} index={index} hit={hit} />
         </motion.div>
       ))}
-      <Box textAlign="center" py={2}>
+      <Box textAlign="center" py={3}>
         <Button
-          width={1}
+          width={[1 / 2, 1]}
           fontSize={3}
           bg="black"
           color="primary"

@@ -22,7 +22,8 @@ const Player = props => {
             borderStyle: "dotted",
             fontFamily: `body`,
           }}
-          width="100%"
+          width={[2 / 3, 1]}
+          mx="auto"
         >
           <Box mx={2} width={1}>
             <Flex alignItems="center" justifyContent="center">

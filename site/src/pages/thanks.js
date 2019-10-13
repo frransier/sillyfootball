@@ -75,8 +75,8 @@ const ThanksPage = () => {
         <Flex alignItems="center" justifyContent="center">
           <Box textAlign="center" my={4}>
             <Link to="/game/">
-              <Button mx={1} fontSize={[5, 6]}>
-                <Heading fontWeight="normal" color="black">
+              <Button mx={1}>
+                <Heading fontSize={[2, 3]} fontWeight="normal" color="black">
                   Skapa fler lag
                 </Heading>
               </Button>
@@ -84,8 +84,8 @@ const ThanksPage = () => {
           </Box>
           <Box textAlign="center" my={4}>
             <Link to="/game/">
-              <Button mx={1} fontSize={[5, 6]}>
-                <Heading fontWeight="normal" color="black">
+              <Button mx={1}>
+                <Heading fontSize={[2, 3]} fontWeight="normal" color="black">
                   Leaderboard
                 </Heading>
               </Button>
