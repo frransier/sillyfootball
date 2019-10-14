@@ -54,7 +54,7 @@ const ThanksPage = () => {
           >
             <Box textAlign="center" verticalAlign="center">
               <Heading
-                color="white"
+                color="black"
                 textAlign="center"
                 mt={1}
                 sx={{ fontWeight: "thin" }}
@@ -63,7 +63,7 @@ const ThanksPage = () => {
               </Heading>
               <Text
                 fontFamily="body"
-                color="white"
+                color="black"
                 textAlign="center"
                 mt={2}
                 sx={{ fontWeight: "normal" }}
@@ -77,7 +77,7 @@ const ThanksPage = () => {
                 fontSize={[1, 2]}
                 mx={[2, 3]}
                 sx={{ fontFamily: "body" }}
-                color="white"
+                color="black"
               >
                 Lördag 19 oktober kl 13:00
               </Text>
@@ -91,7 +91,7 @@ const ThanksPage = () => {
               <Flex fontSize={5}>
                 <Flex mx="auto">
                   <Text
-                    mt={1}
+                    mt={2}
                     fontFamily="body"
                     fontWeight="thin"
                     color="black"
@@ -107,11 +107,20 @@ const ThanksPage = () => {
               </Flex>
             </Link>
           </Box>
-          <Box textAlign="center" my={4}>
+          <Box textAlign="center" my={3}>
             <Link to="/leaderboard/">
               <Button mx={1}>
-                <Heading fontSize={[2, 3]} fontWeight="normal" color="white">
+                <Heading fontSize={[2, 3]} fontWeight="normal" color="black">
                   Leaderboard
+                </Heading>
+              </Button>
+            </Link>
+          </Box>
+          <Box textAlign="center" my={3}>
+            <Link to="/white-paper/">
+              <Button mx={1}>
+                <Heading fontSize={[2, 3]} fontWeight="normal" color="black">
+                  White Paper
                 </Heading>
               </Button>
             </Link>

@@ -86,12 +86,12 @@ const GamePage = () => {
                   textAlign="center"
                   mt={2}
                   fontSize={(4, 5)}
-                  sx={{ color: "white" }}
+                  sx={{ color: "black" }}
                   fontWeight="thin"
                 >
                   Välj 5 spelare
                 </Heading>
-                <Box color="white">
+                <Box color="black">
                   <Text
                     textAlign="center"
                     sx={{
@@ -162,7 +162,7 @@ const GamePage = () => {
                               alt={player.name}
                             ></Image>
                             <Text
-                              color="white"
+                              color="black"
                               sx={{ fontFamily: "body" }}
                               fontWeight="thin"
                               fontSize={[1]}
@@ -170,7 +170,7 @@ const GamePage = () => {
                             >
                               {player.name}
                             </Text>
-                            <Box mt={1} color="white">
+                            <Box mt={1} color="black">
                               <FaRegTimesCircle></FaRegTimesCircle>
                             </Box>
                           </Box>

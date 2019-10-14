@@ -46,7 +46,7 @@ const IndexPage = () => {
         >
           <Box textAlign="center" verticalAlign="center">
             <Heading
-              color="white"
+              color="black"
               textAlign="center"
               mt={2}
               fontSize={(4, 5)}
@@ -54,7 +54,7 @@ const IndexPage = () => {
             >
               Enkel Fantasy Football
             </Heading>
-            <Box color="white">
+            <Box color="black">
               <Text
                 textAlign="center"
                 mt={2}

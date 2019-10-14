@@ -25,7 +25,7 @@ const PlayerList = ({ hits, hasMore, refineNext }) => {
           width={[1 / 2, 1]}
           fontSize={3}
           bg="primary"
-          color="white"
+          color="black"
           disabled={!hasMore}
           onClick={refineNext}
         >

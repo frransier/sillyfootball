@@ -6,7 +6,7 @@ export default {
   colors: {
     text: "#fff",
     background: "#060606",
-    primary: "#00b894",
+    primary: "#7bed9f",
     secondary: "#e0f",
     muted: "#191919",
     highlight: "#29112c",
