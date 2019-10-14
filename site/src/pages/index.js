@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Heading, Button, Box, Text, Flex } from "rebass"
+import { Heading, Box, Text, Flex } from "rebass"
 import { motion } from "framer-motion"
 import { IoMdArrowDroprightCircle } from "react-icons/io"
 

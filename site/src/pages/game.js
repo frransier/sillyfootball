@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { navigate } from "@reach/router"
 import axios from "axios"
-import { Flex, Heading, Box, Image, Button, Text } from "rebass"
+import { Flex, Heading, Box, Image, Text } from "rebass"
 import { Label, Input } from "@rebass/forms"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -13,7 +13,7 @@ import { useDispatchContext, useStateContext } from "../state"
 import { useToast, Spinner } from "sancho"
 import { FaRegTimesCircle, FaCheck } from "react-icons/fa"
 import { motion } from "framer-motion"
-import { Link } from "gatsby"
+
 import { IoMdArrowDroprightCircle } from "react-icons/io"
 
 const searchClient = algoliasearch(

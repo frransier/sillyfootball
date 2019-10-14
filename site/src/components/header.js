@@ -1,7 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
 import { Flex, Heading, Box, Text } from "rebass"
-import { motion } from "framer-motion"
 import { FaBars } from "react-icons/fa"
 import { Sheet } from "sancho"
 

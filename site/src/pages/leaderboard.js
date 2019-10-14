@@ -126,7 +126,7 @@ const LeaderboardPage = props => {
                 >
                   {state.length} deltagare
                 </Heading>
-                {state[0].score > 0 ? (
+                {state[0].score > 1 ? (
                   <Box
                     color="black"
                     p={2}
