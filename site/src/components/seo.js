@@ -54,7 +54,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:image`,
-          content: logo,
+          content: `https://www.sillyfootball.se${logo}`,
         },
         {
           name: `twitter:card`,
@@ -70,7 +70,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:image`,
-          content: logo,
+          content: `https://www.sillyfootball.se${logo}`,
         },
         {
           name: `twitter:description`,
