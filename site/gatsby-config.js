@@ -7,7 +7,7 @@ module.exports = {
   siteMetadata: {
     title: `Sillyfootball`,
     description: `A fantasy football game`,
-    author: `@sillyfootballs`,
+    author: `@sillyfootballse`,
   },
   plugins: [
     "gatsby-plugin-theme-ui",
