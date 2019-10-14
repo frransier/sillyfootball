@@ -122,7 +122,7 @@ const LeaderboardPage = props => {
                   textAlign="left"
                   fontSize={2}
                   my={2}
-                  fontWeight="normal"
+                  fontWeight="display"
                 >
                   {state.length} deltagare
                 </Heading>
@@ -153,8 +153,10 @@ const LeaderboardPage = props => {
             )}
 
             <Box my={3}>
+              <Label width={1 / 100} fontSize={0} htmlFor="email" name="email">
+                Email
+              </Label>
               <Flex alignItems="center" justifyContent="center" width={1}>
-                <Label width={1 / 100} htmlFor="email" name="email"></Label>
                 <Input
                   bg="white"
                   id="email"
@@ -164,7 +166,11 @@ const LeaderboardPage = props => {
                   onChange={event => setEmail(event.target.value.toLowerCase())}
                 />
                 <Button bg="white" width={1 / 4} mx={2} onClick={trackTeams}>
-                  <Heading color="black" sx={{ fontWeight: 1 }} fontSize={1}>
+                  <Heading
+                    color="black"
+                    sx={{ fontWeight: "heading" }}
+                    fontSize={1}
+                  >
                     Rätta
                   </Heading>
                 </Button>

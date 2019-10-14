@@ -14,7 +14,12 @@ const Header = () => {
       sx={{ borderWidth: "0px 0px 3px 0px", borderStyle: "solid" }}
     >
       <Link style={{ textDecoration: "none" }} to="/">
-        <Heading fontSize={[5, 6]} fontWeight="heading" color="black">
+        <Heading
+          fontFamily="logo"
+          fontSize={[6, 7]}
+          fontWeight="heading"
+          color="black"
+        >
           Sillyfootball
         </Heading>
       </Link>

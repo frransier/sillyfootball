@@ -24,8 +24,8 @@ const PlayerList = ({ hits, hasMore, refineNext }) => {
         <Button
           width={[1 / 2, 1]}
           fontSize={3}
-          bg="black"
-          color="primary"
+          bg="primary"
+          color="white"
           disabled={!hasMore}
           onClick={refineNext}
         >

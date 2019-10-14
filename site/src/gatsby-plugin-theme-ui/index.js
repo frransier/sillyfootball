@@ -6,7 +6,7 @@ export default {
   colors: {
     text: "#fff",
     background: "#060606",
-    primary: "#2c3e50",
+    primary: "#00b894",
     secondary: "#e0f",
     muted: "#191919",
     highlight: "#29112c",
@@ -34,6 +34,7 @@ export default {
   fonts: {
     body: `Merriweather`,
     heading: "Open Sans",
+    logo: "Alfa Slab One, sans",
     monospace: "Menlo, monospace",
   },
   fontSizes: [10, 12, 14, 16, 20, 24, 32, 48, 64, 72],

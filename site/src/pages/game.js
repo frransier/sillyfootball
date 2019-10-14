@@ -85,6 +85,7 @@ const GamePage = () => {
                 <Heading
                   textAlign="center"
                   mt={2}
+                  fontSize={(4, 5)}
                   sx={{ color: "white" }}
                   fontWeight="thin"
                 >
@@ -258,10 +259,11 @@ const GamePage = () => {
                   <Flex fontSize={5}>
                     <Flex mx="auto">
                       <Text
-                        mt={1}
+                        mt={2}
                         fontFamily="body"
                         fontWeight="thin"
                         color="black"
+                        css={{ textDecoration: "underline" }}
                       >
                         Lämna in
                       </Text>

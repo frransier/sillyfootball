@@ -49,6 +49,7 @@ const IndexPage = () => {
               color="white"
               textAlign="center"
               mt={2}
+              fontSize={(4, 5)}
               sx={{ fontWeight: "thin" }}
             >
               Enkel Fantasy Football
@@ -90,7 +91,7 @@ const IndexPage = () => {
               <Flex fontSize={5}>
                 <Flex mx="auto">
                   <Text
-                    mt={1}
+                    mt={2}
                     fontFamily="body"
                     fontWeight="thin"
                     color="black"
