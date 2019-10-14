@@ -126,9 +126,9 @@ const LeaderboardPage = props => {
                 >
                   {state.length} deltagare
                 </Heading>
-                {state[0].score > 0 && (
+                {state[0].score > 0 ? (
                   <Box
-                    color="white"
+                    color="black"
                     p={2}
                     bg="primary"
                     sx={{ borderRadius: 5 }}
@@ -146,6 +146,20 @@ const LeaderboardPage = props => {
                           : state[0].score - 1}
                         p {Math.round((0.3 * 1000) / getRunnersUp())} kr
                       </Box>
+                    </Heading>
+                  </Box>
+                ) : (
+                  <Box
+                    color="black"
+                    p={2}
+                    bg="primary"
+                    sx={{ borderRadius: 5 }}
+                  >
+                    <Heading fontWeight="normal">
+                      <Box>Start</Box>
+                    </Heading>
+                    <Heading fontWeight="normal">
+                      <Box>Lördag 19 oktober kl 13:00</Box>
                     </Heading>
                   </Box>
                 )}
