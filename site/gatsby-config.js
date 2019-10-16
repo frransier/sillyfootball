@@ -48,7 +48,7 @@ module.exports = {
         background_color: `#3cf`,
         theme_color: `#3cf`,
         display: `standalone`,
-        icon: "./src/images/logo.webp", // This path is relative to the root of the site.
+        icon: "./src/images/logos.jpg", // This path is relative to the root of the site.
       },
     },
     {

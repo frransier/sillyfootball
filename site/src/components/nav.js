@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
-import { Flex, Heading, Box, Text, Image, Button } from "rebass"
+import { Flex, Box, Button } from "rebass"
 
 const Nav = () => {
   return (

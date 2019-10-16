@@ -1,6 +1,6 @@
 import React from "react"
 import { connectMenu } from "react-instantsearch-dom"
-import { Flex, Box, Text, Card } from "rebass"
+import { Flex, Box, Text } from "rebass"
 import { useStaticQuery, graphql } from "gatsby"
 import { mapEdgesToNodes } from "../helpers"
 import { motion } from "framer-motion"

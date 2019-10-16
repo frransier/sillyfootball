@@ -1,11 +1,9 @@
 import React, { useEffect } from "react"
-import { Link } from "gatsby"
-import { Flex, Box, Text, Button, Heading } from "rebass"
+import { Box, Heading } from "rebass"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { useDispatchContext } from "../state"
 import { motion } from "framer-motion"
-import { IoMdArrowDroprightCircle } from "react-icons/io"
 import Nav from "../components/nav"
 
 const ThanksPage = () => {

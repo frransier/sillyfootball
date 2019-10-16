@@ -1,9 +1,7 @@
 import { Link } from "gatsby"
 import React from "react"
-import { Flex, Heading, Box, Text, Image } from "rebass"
-import { FaBars } from "react-icons/fa"
-import { Sheet } from "sancho"
-import header from "../images/logo.webp"
+import { Flex, Heading, Box, Image } from "rebass"
+import header from "../images/logos.jpg"
 
 const Header = () => {
   return (
