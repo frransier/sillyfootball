@@ -22,7 +22,8 @@ const Player = props => {
             borderStyle: "dotted",
             fontFamily: `body`,
           }}
-          width="100%"
+          width={[7 / 10, 1]}
+          mx="auto"
         >
           <Box mx={2} width={1}>
             <Flex alignItems="center" justifyContent="center">
@@ -37,7 +38,7 @@ const Player = props => {
               <Box ml={2} width={1}>
                 <Text
                   textAlign="left"
-                  fontSize={3}
+                  fontSize={2}
                   fontWeight={
                     state.filter(x => x.name === hit.name).length > 0
                       ? "bold"

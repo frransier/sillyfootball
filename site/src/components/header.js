@@ -1,9 +1,9 @@
 import { Link } from "gatsby"
 import React from "react"
-import { Flex, Heading, Box, Text } from "rebass"
-import { motion } from "framer-motion"
+import { Flex, Heading, Box, Text, Image } from "rebass"
 import { FaBars } from "react-icons/fa"
 import { Sheet } from "sancho"
+import header from "../images/header.webp"
 
 const Header = () => {
   const [open, setOpen] = React.useState(false)
@@ -14,15 +14,10 @@ const Header = () => {
       sx={{ borderWidth: "0px 0px 3px 0px", borderStyle: "solid" }}
     >
       <Link style={{ textDecoration: "none" }} to="/">
-        <Heading fontSize={[5, 6]} fontWeight="normal" color="black">
-          Sillyfootball
-        </Heading>
+        <Box width={250} height={50}>
+          <Image src={header}></Image>
+        </Box>
       </Link>
-      <motion.div animate={{ rotate: 45 }} transition={{ duration: 0.4 }}>
-        <Text fontWeight="bold" color="tomato">
-          beta
-        </Text>
-      </motion.div>
       <Box mx="auto"></Box>
       <Box onClick={() => setOpen(!open)} fontSize={[5, 6]} mt={[1, 2]}>
         <FaBars></FaBars>

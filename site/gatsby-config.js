@@ -7,7 +7,7 @@ module.exports = {
   siteMetadata: {
     title: `Sillyfootball`,
     description: `A fantasy football game`,
-    author: `@sillyfootballs`,
+    author: `@sillyfootballse`,
   },
   plugins: [
     "gatsby-plugin-theme-ui",
@@ -48,10 +48,17 @@ module.exports = {
         background_color: `#3cf`,
         theme_color: `#3cf`,
         display: `standalone`,
-        icon: "./src/images/logo.png", // This path is relative to the root of the site.
+        icon: "./src/images/logo.webp", // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
+    {
+      resolve: "gatsby-plugin-intercom-spa",
+      options: {
+        app_id: "entknhmw",
+        include_in_development: false,
+        delay_timeout: 0,
+      },
+    }, // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
   ],

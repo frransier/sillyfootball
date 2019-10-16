@@ -9,7 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-import logo from "../images/logo.png"
+import logo from "../images/logo.jpg"
 
 function SEO({ description, lang, meta, title }) {
   const { site } = useStaticQuery(
@@ -54,7 +54,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:image`,
-          content: logo,
+          content: `https://www.sillyfootball.se${logo}`,
         },
         {
           name: `twitter:card`,
@@ -70,7 +70,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:image`,
-          content: logo,
+          content: `https://www.sillyfootball.se${logo}`,
         },
         {
           name: `twitter:description`,

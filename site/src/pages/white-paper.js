@@ -17,7 +17,7 @@ const WhitePaperPage = () => (
       }}
     >
       <Box width={[1, 4 / 5, 3 / 5]} mx="auto">
-        <Heading m={3} fontWeight="normal">
+        <Heading m={3} fontWeight="heading">
           Fantasy football ska vara enkelt
         </Heading>
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
@@ -38,7 +38,7 @@ const WhitePaperPage = () => (
           lördag varje vecka. Sillyfootball är lätt att lära sig och svårt att
           bemästra.
         </Text>
-        <Heading m={3} fontWeight="normal">
+        <Heading m={3} fontWeight="heading">
           Reglerna är enkla
         </Heading>
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} mt={3} ml={3}>
@@ -52,7 +52,7 @@ const WhitePaperPage = () => (
           och Bundesliga och pågår från lördag till söndag varje helg. De
           deltagare som samlar ihop flest poäng delar på prispotten
         </Text>
-        <Heading m={3} fontWeight="normal">
+        <Heading m={3} fontWeight="heading">
           Easy to learn, hard to master
         </Heading>
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
@@ -71,7 +71,7 @@ const WhitePaperPage = () => (
           möjligt och genom att fokusera på lag och spelare från topplagen i de
           största ligorna i Europa.
         </Text>
-        <Heading m={3} fontWeight="normal">
+        <Heading m={3} fontWeight="heading">
           Sillyfootball beta
         </Heading>
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
@@ -83,7 +83,7 @@ const WhitePaperPage = () => (
         <Box textAlign="center" my={4}>
           <Link to="/game/">
             <Button mx={1} fontSize={[5, 6]}>
-              <Heading fontWeight="normal" color="black">
+              <Heading fontWeight="heading" color="white">
                 Spela nu
               </Heading>
             </Button>
