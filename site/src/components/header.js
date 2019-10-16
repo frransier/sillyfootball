@@ -10,13 +10,22 @@ const Header = () => {
     <Flex width={[1, 4 / 5, 3 / 5]} mx="auto">
       <Flex mx="auto">
         <Link style={{ textDecoration: "none" }} to="/">
-          <Box ml={-1} mr={1} my={2} width={50} height={50} borderRadius={1000}>
-            <Image src={header}></Image>
-          </Box>
+          <Flex mx="auto">
+            <Box
+              ml={-1}
+              mr={1}
+              my={2}
+              width={50}
+              height={50}
+              borderRadius={1000}
+            >
+              <Image src={header}></Image>
+            </Box>
+            <Heading color="black" mt={2} fontSize={7} fontFamily="logo">
+              illyfootball
+            </Heading>
+          </Flex>
         </Link>
-        <Heading mt={2} fontSize={7} fontFamily="logo">
-          illyfootball
-        </Heading>
       </Flex>
 
       {/* <Box>
