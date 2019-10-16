@@ -44,34 +44,41 @@ const IndexPage = () => {
             stiffness: 200,
           }}
         >
-          <Box textAlign="center" verticalAlign="center">
-            <Heading
-              color="black"
-              textAlign="center"
-              mt={2}
-              fontSize={(4, 5)}
-              sx={{ fontWeight: "thin" }}
-            >
-              Enkel Fantasy Football
-            </Heading>
-            <Box color="black">
-              <Text
+          <Box
+            mx="auto"
+            p={2}
+            width={3 / 4}
+            sx={{ borderRadius: 10 }}
+            bg="#3D7650"
+          >
+            <Box textAlign="center" verticalAlign="center">
+              <Heading
+                color="white"
                 textAlign="center"
-                mt={2}
-                sx={{ fontWeight: "thin", fontSize: 3, fontFamily: "body" }}
+                fontSize={(4, 5)}
+                sx={{ fontWeight: "thin" }}
               >
-                Tävla om 1000 kr
-              </Text>
+                Enkel Fantasy Football
+              </Heading>
+              <Box color="white">
+                <Text
+                  textAlign="center"
+                  mt={2}
+                  sx={{ fontWeight: "thin", fontSize: 3, fontFamily: "body" }}
+                >
+                  Tävla om 1000 kr
+                </Text>
 
-              <Text
-                my={[1, 2]}
-                textAlign="center"
-                fontSize={[1, 2]}
-                mx={[2, 3]}
-                sx={{ fontFamily: "body" }}
-              >
-                Lördag 19 oktober kl 13:00
-              </Text>
+                <Text
+                  my={[1, 2]}
+                  textAlign="center"
+                  fontSize={[1, 2]}
+                  mx={[2, 3]}
+                  sx={{ fontFamily: "body" }}
+                >
+                  Lördag 19 oktober kl 13:00
+                </Text>
+              </Box>
             </Box>
           </Box>
         </motion.div>
