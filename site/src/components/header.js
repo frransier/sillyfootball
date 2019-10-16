@@ -3,26 +3,23 @@ import React from "react"
 import { Flex, Heading, Box, Text, Image } from "rebass"
 import { FaBars } from "react-icons/fa"
 import { Sheet } from "sancho"
-import header from "../images/header.webp"
+import header from "../images/logo.webp"
 
 const Header = () => {
-  const [open, setOpen] = React.useState(false)
   return (
-    <Flex
-      width={[1, 4 / 5, 3 / 5]}
-      mx="auto"
-      sx={{ borderWidth: "0px 0px 3px 0px", borderStyle: "solid" }}
-    >
-      <Link style={{ textDecoration: "none" }} to="/">
-        <Box width={250} height={50}>
-          <Image src={header}></Image>
-        </Box>
-      </Link>
-      <Box mx="auto"></Box>
-      <Box onClick={() => setOpen(!open)} fontSize={[5, 6]} mt={[1, 2]}>
-        <FaBars></FaBars>
-      </Box>
-      <Box>
+    <Flex width={[1, 4 / 5, 3 / 5]} mx="auto">
+      <Flex mx="auto">
+        <Link style={{ textDecoration: "none" }} to="/">
+          <Box ml={-1} mr={1} my={2} width={50} height={50} borderRadius={1000}>
+            <Image src={header}></Image>
+          </Box>
+        </Link>
+        <Heading mt={2} fontSize={7} fontFamily="logo">
+          illyfootball
+        </Heading>
+      </Flex>
+
+      {/* <Box>
         <Sheet onRequestClose={() => setOpen(!open)} isOpen={open}>
           <Link style={{ textDecoration: "none" }} to="/white-paper/">
             <Heading color="black" fontWeight={1} pt={4} mx={4}>
@@ -36,7 +33,7 @@ const Header = () => {
             </Heading>
           </Link>
         </Sheet>
-      </Box>
+      </Box> */}
     </Flex>
   )
 }

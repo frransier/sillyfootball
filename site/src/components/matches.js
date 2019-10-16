@@ -72,7 +72,7 @@ const Matches = ({ items, refine }) => {
                 key={item.label}
               >
                 <Box width="100%">
-                  <Card sx={{ borderRadius: 6 }}>
+                  <Box sx={{ borderRadius: 6 }}>
                     <Flex>
                       <Box>
                         {item.isRefined ? (
@@ -92,13 +92,13 @@ const Matches = ({ items, refine }) => {
                       >
                         <Text
                           color={item.isRefined ? "black" : ""}
-                          fontSize={[0, 2]}
+                          fontSize={[2, 2]}
                         >
                           {`${item.homeTeam.nickName} - ${item.awayTeam.nickName}`}
                         </Text>
                       </Box>
                     </Flex>
-                  </Card>
+                  </Box>
                 </Box>
               </Flex>
             )

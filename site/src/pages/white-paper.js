@@ -25,18 +25,13 @@ const WhitePaperPage = () => (
           football kan vara onödigt krångligt och tidskrävande. Det tar tid att
           ta ut sin elva, poängsystemet är jobbigt att lära sig och man tvingas
           välja spelare från blåbärslag för att få plats med sina stjärnor.
-          Dessutom tvingas du att committa dig till spelet tills det avslutas
-          flera månader senare.
         </Text>
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
           Sillyfootball vill ändra på det. Vi tror att fantasy football är som
           roligast när det är enkelt. Det ska gå fort att skapa sitt lag och det
           ska gå fort att veta om man har vunnit. Det ska vara enkelt att förstå
           när man får poäng och man ska ha full frihet att ta ut de spelare man
-          tror på. Den som är sent ute kan kasta ihop ett lag på ett par minuter
-          och den som gillar att värpa kan fila på sitt lag från måndag till
-          lördag varje vecka. Sillyfootball är lätt att lära sig och svårt att
-          bemästra.
+          tror på.
         </Text>
         <Heading m={3} fontWeight="heading">
           Reglerna är enkla
@@ -50,40 +45,36 @@ const WhitePaperPage = () => (
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
           En omgång består av 12 matcher från Premier League, La Liga, Serie A
           och Bundesliga och pågår från lördag till söndag varje helg. De
-          deltagare som samlar ihop flest poäng delar på prispotten
+          deltagare som samlar ihop flest poäng delar på prispotten.
         </Text>
         <Heading m={3} fontWeight="heading">
           Easy to learn, hard to master
         </Heading>
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
           Din uppgift som deltagare är både enkel och svår: välj de 5 spelarna
-          som du tror gör flest mål och assist. Om många deltagare vinner blir
-          utdelningen lägre, om du är ensam vinnare vinner du stort - därför kan
-          det löna sig att tänka utanför boxen och träffa poäng på spelare som
-          få deltagare har valt.
+          som du tror gör flest mål och assist under omgången. Om många
+          deltagare vinner blir utdelningen lägre, om du är ensam vinnare vinner
+          du stort.
         </Text>
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
-          Det behöver inte vara krångligare än så. Du behöver inte välja en full
-          elva plus avbytarbänk, behöver inte bry dig om att välja försvarare
-          eller målvakter och du behöver inte slänga in spelare du egentligen
-          inte tror på för att hålla dig till en budget. Sillyfootball skiljer
-          sig från andra fantasy football-spel genom att vara så enkelt som
-          möjligt och genom att fokusera på lag och spelare från topplagen i de
-          största ligorna i Europa.
+          Du behöver inte välja en full elva plus avbytarbänk, och du behöver
+          inte slänga in spelare du egentligen inte tror på för att hålla dig
+          till en budget. Sillyfootball skiljer sig från andra fantasy
+          football-spel genom att vara så enkelt som möjligt.
         </Text>
         <Heading m={3} fontWeight="heading">
           Sillyfootball beta
         </Heading>
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
-          Bäst av allt är att Sillyfootball är helt gratis att spela under
-          betaperioden som pågår just nu. Varje vecka kan du vara med och tävla
-          om 1000kr som delas ut till vinnarna. Allt du behöver göra är att
-          välja dina 5 spelare och lämna in ditt lag genom att ange din email.
+          Sillyfootball är helt gratis att spela under betaperioden som pågår.
+          Varje vecka kan du vara med och tävla om 1000kr som delas ut till
+          vinnarna. Allt du behöver göra är att välja dina 5 spelare och lämna
+          in ditt lag innan deadline på lördagar.
         </Text>
         <Box textAlign="center" my={4}>
           <Link to="/game/">
-            <Button mx={1} fontSize={[5, 6]}>
-              <Heading fontWeight="heading" color="white">
+            <Button mx={1} fontSize={[5, 6]} bg="primary">
+              <Heading fontWeight="heading" color="black">
                 Spela nu
               </Heading>
             </Button>

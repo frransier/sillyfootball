@@ -1,13 +1,13 @@
 import { Link } from "gatsby"
 import React from "react"
-import { Flex, Heading, Box, Text, Image } from "rebass"
+import { Flex, Heading, Box, Text, Image, Button } from "rebass"
 
 const Nav = () => {
   return (
     <Flex width={[1, 4 / 5, 3 / 5]} mx="auto">
-      <Flex mx="auto">
+      <Flex mx="auto" fontSize={2} p={2}>
         <Box
-          mr={3}
+          mx={1}
           sx={{
             textAlign: "center",
             fontFamily: "heading",
@@ -16,16 +16,26 @@ const Nav = () => {
           <Link
             style={{ textDecoration: "none", color: "black" }}
             activeStyle={{
-              fontWeight: 700,
+              fontWeight: 450,
               color: "tomato",
             }}
             to="/game/"
           >
-            <Text my={1}>Spela</Text>
+            <Button
+              sx={{
+                fontWeight: "heading",
+                fontFamily: "heading",
+              }}
+              bg="primary"
+              fontSize={3}
+            >
+              Spela
+            </Button>
           </Link>
         </Box>
+
         <Box
-          mr={3}
+          mx={1}
           sx={{
             textAlign: "center",
             fontFamily: "heading",
@@ -34,34 +44,25 @@ const Nav = () => {
           <Link
             style={{ textDecoration: "none", color: "black" }}
             activeStyle={{
-              fontWeight: 700,
-              color: "tomato",
-            }}
-            to="/thanks/"
-          >
-            <Text my={1}>Regler</Text>
-          </Link>
-        </Box>
-        <Box
-          mr={3}
-          sx={{
-            textAlign: "center",
-            fontFamily: "heading",
-          }}
-        >
-          <Link
-            style={{ textDecoration: "none", color: "black" }}
-            activeStyle={{
-              fontWeight: 700,
+              fontWeight: 450,
               color: "tomato",
             }}
             to="/leaderboard/"
           >
-            <Text my={1}>Leaderboard</Text>
+            <Button
+              sx={{
+                fontWeight: "heading",
+                fontFamily: "heading",
+              }}
+              bg="primary"
+              fontSize={3}
+            >
+              Leaderboard
+            </Button>
           </Link>
         </Box>
         <Box
-          mr={3}
+          mx={1}
           sx={{
             textAlign: "center",
             fontFamily: "heading",
@@ -70,12 +71,22 @@ const Nav = () => {
           <Link
             style={{ textDecoration: "none", color: "black" }}
             activeStyle={{
-              fontWeight: 700,
+              fontWeight: 450,
               color: "tomato",
             }}
             to="/white-paper/"
           >
-            <Text my={1}>White Paper</Text>
+            <Button
+              sx={{
+                fontWeight: "heading",
+                fontFamily: "heading",
+              }}
+              bg="primary"
+              fontSize={3}
+              variant="primary"
+            >
+              White Paper
+            </Button>
           </Link>
         </Box>
       </Flex>

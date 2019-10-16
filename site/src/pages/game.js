@@ -5,6 +5,7 @@ import { Flex, Heading, Box, Image, Text } from "rebass"
 import { Label, Input } from "@rebass/forms"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Nav from "../components/nav"
 import PlayerList from "../components/playerList"
 import algoliasearch from "algoliasearch/lite"
 import { InstantSearch } from "react-instantsearch-dom"
@@ -81,46 +82,49 @@ const GamePage = () => {
                 stiffness: 200,
               }}
             >
-              <Box textAlign="center" verticalAlign="center">
-                <Heading
-                  textAlign="center"
-                  mt={2}
-                  fontSize={(4, 5)}
-                  sx={{ color: "black" }}
-                  fontWeight="thin"
-                >
-                  Välj 5 spelare
-                </Heading>
-                <Box color="black">
-                  <Text
+              <Box
+                mx="auto"
+                p={2}
+                width={3 / 4}
+                sx={{ borderRadius: 10 }}
+                bg="#3D7650"
+              >
+                <Box textAlign="center" verticalAlign="center">
+                  <Heading
+                    color="white"
                     textAlign="center"
-                    sx={{
-                      fontWeight: "thin",
-                      fontSize: 2,
-                      fontFamily: "body",
-                    }}
+                    fontSize={(4, 5)}
+                    sx={{ fontWeight: "normal" }}
                   >
-                    1 poäng per mål eller assist
-                  </Text>
+                    Välj 5 spelare
+                  </Heading>
+                  <Box color="white">
+                    <Heading
+                      textAlign="center"
+                      sx={{ fontWeight: "normal", fontSize: 3 }}
+                    >
+                      1 poäng per mål el assist
+                    </Heading>
 
-                  <Text
-                    mt={4}
-                    textAlign="center"
-                    fontSize={[1, 2]}
-                    mx={[2, 3]}
-                    sx={{ fontFamily: "body" }}
-                  >
-                    1000 kr free roll
-                  </Text>
-                  <Text
-                    my={[1, 2]}
-                    textAlign="center"
-                    fontSize={[1, 2]}
-                    mx={[2, 3]}
-                    sx={{ fontFamily: "body" }}
-                  >
-                    Lördag 19 oktober kl 13:00
-                  </Text>
+                    <Heading
+                      fontWeight="normal"
+                      my={[1, 2]}
+                      textAlign="center"
+                      fontSize={[1, 2]}
+                      mx={[2, 3]}
+                    >
+                      1000 kr free roll
+                    </Heading>
+                    <Heading
+                      fontWeight="normal"
+                      my={[1, 2]}
+                      textAlign="center"
+                      fontSize={[1, 2]}
+                      mx={[2, 3]}
+                    >
+                      Lördag 19 oktober kl 13:00
+                    </Heading>
+                  </Box>
                 </Box>
               </Box>
             </motion.div>
@@ -182,7 +186,7 @@ const GamePage = () => {
             </Flex>
           )}
         </Box>
-
+        <Nav></Nav>
         {state && state.length < 5 ? (
           <motion.div
             initial={{ opacity: 0 }}
@@ -197,7 +201,7 @@ const GamePage = () => {
               <Text
                 my={2}
                 sx={{ fontFamily: "heading" }}
-                textAlign="center"
+                textAlign="left"
                 fontSize={3}
                 fontWeight="heading"
               >
@@ -206,8 +210,9 @@ const GamePage = () => {
               <Box height="auto">
                 <Matches limit={28} attribute="team.index" />
               </Box>
-              <Box textAlign="center" fontSize={2}>
+              <Box textAlign="left" fontSize={2}>
                 <Text
+                  ml={[4, 0]}
                   my={2}
                   fontSize={4}
                   sx={{ fontFamily: "heading" }}

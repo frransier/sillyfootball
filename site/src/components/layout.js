@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
     <>
       <Box mx="auto" maxWidth={960} p={1}>
         <Header />
-        <Nav />
+
         <main>{children}</main>
       </Box>
     </>
