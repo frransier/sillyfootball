@@ -1,37 +1,32 @@
 import { Link } from "gatsby"
 import React from "react"
-import { Flex, Heading, Box, Text } from "rebass"
-import { FaBars } from "react-icons/fa"
-import { Sheet } from "sancho"
+import { Flex, Heading, Box, Image } from "rebass"
+import header from "../images/logos.jpg"
 
 const Header = () => {
-  const [open, setOpen] = React.useState(false)
   return (
-    <Flex
-      width={[1, 4 / 5, 3 / 5]}
-      mx="auto"
-      sx={{ borderWidth: "0px 0px 3px 0px", borderStyle: "solid" }}
-    >
-      <Link style={{ textDecoration: "none" }} to="/">
-        <Heading
-          fontFamily="logo"
-          fontSize={[6, 7]}
-          fontWeight="heading"
-          color="black"
-        >
-          Sillyfootball
-        </Heading>
-      </Link>
+    <Flex width={[1, 4 / 5, 3 / 5]} mx="auto">
+      <Flex mx="auto">
+        <Link style={{ textDecoration: "none" }} to="/">
+          <Flex mx="auto">
+            <Box
+              ml={-1}
+              mr={1}
+              my={2}
+              width={50}
+              height={50}
+              borderRadius={1000}
+            >
+              <Image src={header}></Image>
+            </Box>
+            <Heading color="black" mt={2} fontSize={7} fontFamily="logo">
+              illyfootball
+            </Heading>
+          </Flex>
+        </Link>
+      </Flex>
 
-      <Text mx={2} fontWeight="bold" color="tomato">
-        beta
-      </Text>
-
-      <Box mx="auto"></Box>
-      <Box onClick={() => setOpen(!open)} fontSize={[5, 6]} mt={[1, 2]}>
-        <FaBars></FaBars>
-      </Box>
-      <Box>
+      {/* <Box>
         <Sheet onRequestClose={() => setOpen(!open)} isOpen={open}>
           <Link style={{ textDecoration: "none" }} to="/white-paper/">
             <Heading color="black" fontWeight={1} pt={4} mx={4}>
@@ -45,7 +40,7 @@ const Header = () => {
             </Heading>
           </Link>
         </Sheet>
-      </Box>
+      </Box> */}
     </Flex>
   )
 }

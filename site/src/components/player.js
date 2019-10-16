@@ -38,7 +38,7 @@ const Player = props => {
               <Box ml={2} width={1}>
                 <Text
                   textAlign="left"
-                  fontSize={2}
+                  fontSize={4}
                   fontWeight={
                     state.filter(x => x.name === hit.name).length > 0
                       ? "bold"

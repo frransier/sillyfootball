@@ -1,7 +1,7 @@
-//import rebass from "@rebass/preset"
+import rebass from "@rebass/preset"
 
 export default {
-  // ...rebass,
+  ...rebass,
   //...bootstrap,
   colors: {
     text: "#fff",
@@ -32,8 +32,8 @@ export default {
   //   },
   // },
   fonts: {
-    body: `Merriweather`,
-    heading: "Open Sans",
+    body: `Yrsa`,
+    heading: "Exo",
     logo: "Alfa Slab One, sans",
     monospace: "Menlo, monospace",
   },
@@ -47,6 +47,14 @@ export default {
   lineHeights: {
     body: 1.5,
     heading: 1.25,
+  },
+  buttons: {
+    primary: {
+      color: "black",
+      bg: "white",
+      py: 1,
+      px: 2,
+    },
   },
   // },
   // textStyles: {
