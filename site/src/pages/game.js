@@ -16,8 +16,6 @@ import { FaRegTimesCircle, FaCheck } from "react-icons/fa"
 import { motion } from "framer-motion"
 import { Link } from "gatsby"
 
-import { IoMdArrowDroprightCircle } from "react-icons/io"
-
 const searchClient = algoliasearch(
   "C1ICPA4UBZ",
   "cc596e105e36167542f65e83e4b04b1a"
