@@ -76,8 +76,9 @@ const IndexPage = () => {
             </Box>
           </Box>
         </motion.div>
+
+        <Nav />
       </Box>
-      <Nav />
     </Layout>
   )
 }

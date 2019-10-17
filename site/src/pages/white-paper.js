@@ -4,10 +4,13 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { motion } from "framer-motion"
+import Nav from "../components/nav"
 
 const WhitePaperPage = () => (
   <Layout>
     <SEO title="White paper" />
+    <Nav />
+
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

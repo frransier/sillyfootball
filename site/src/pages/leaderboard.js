@@ -5,6 +5,7 @@ import { useGraphQL } from "@brightleaf/react-hooks"
 import { FaStar, FaUser } from "react-icons/fa"
 import { Button, Flex, Box, Heading, Text } from "rebass"
 import { Label, Input } from "@rebass/forms"
+import Nav from "../components/nav"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -95,6 +96,7 @@ const LeaderboardPage = props => {
     return (
       <Layout>
         <SEO title="Leaderboard" />
+        <Nav />
       </Layout>
     )
   }
@@ -105,6 +107,8 @@ const LeaderboardPage = props => {
   return (
     <Layout>
       <SEO title="Leaderboard" />
+      <Nav />
+
       <Box mx="auto" width={[1, 4 / 5, 3 / 5]}>
         <Box textAlign="center" verticalAlign="center">
           <motion.div

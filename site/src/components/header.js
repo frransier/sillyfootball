@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import React from "react"
 import { Flex, Heading, Box, Image } from "rebass"
 import header from "../images/logos.jpg"
+import { motion } from "framer-motion"
 
 const Header = () => {
   return (
@@ -9,16 +10,25 @@ const Header = () => {
       <Flex mx="auto">
         <Link style={{ textDecoration: "none" }} to="/">
           <Flex mx="auto">
-            <Box
-              ml={-1}
-              mr={1}
-              my={2}
-              width={50}
-              height={50}
-              borderRadius={1000}
+            <motion.div
+              initial={{ scale: 0.7 }}
+              animate={{ scale: 1 }}
+              transition={{
+                duration: 1,
+                stiffness: 200,
+              }}
             >
-              <Image src={header}></Image>
-            </Box>
+              <Box
+                ml={-1}
+                mr={1}
+                my={2}
+                width={50}
+                height={50}
+                borderRadius={1000}
+              >
+                <Image src={header}></Image>
+              </Box>
+            </motion.div>
             <Heading color="black" mt={2} fontSize={7} fontFamily="logo">
               illyfootball
             </Heading>

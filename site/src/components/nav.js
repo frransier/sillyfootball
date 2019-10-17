@@ -85,7 +85,7 @@ const Nav = () => {
               fontSize={3}
               variant="primary"
             >
-              White Paper
+              Så funkar det
             </Button>
           </Link>
         </Box>

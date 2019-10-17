@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { navigate } from "@reach/router"
 import axios from "axios"
-import { Flex, Heading, Box, Image, Text } from "rebass"
+import { Flex, Heading, Box, Image, Text, Button } from "rebass"
 import { Label, Input } from "@rebass/forms"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -14,6 +14,7 @@ import { useDispatchContext, useStateContext } from "../state"
 import { useToast, Spinner } from "sancho"
 import { FaRegTimesCircle, FaCheck } from "react-icons/fa"
 import { motion } from "framer-motion"
+import { Link } from "gatsby"
 
 import { IoMdArrowDroprightCircle } from "react-icons/io"
 
@@ -168,8 +169,8 @@ const GamePage = () => {
                             <Text
                               color="black"
                               sx={{ fontFamily: "body" }}
-                              fontWeight="thin"
-                              fontSize={[1]}
+                              fontWeight="normal"
+                              fontSize={[3]}
                               mx="auto"
                             >
                               {player.name}
@@ -186,7 +187,7 @@ const GamePage = () => {
             </Flex>
           )}
         </Box>
-        <Nav></Nav>
+
         {state && state.length < 5 ? (
           <motion.div
             initial={{ opacity: 0 }}
@@ -232,11 +233,11 @@ const GamePage = () => {
             </Box>
           </motion.div>
         ) : (
-          <Box my={2} width={[1, 4 / 5, 3 / 5]} mx="auto">
+          <Box my={1} width={[1, 4 / 5, 3 / 5]} mx="auto">
             <Flex>
               <Flex mx="auto">
                 <Heading fontSize={3}>Fullt lag</Heading>
-                <Box mx={2}>
+                <Box mx={2} my={-1}>
                   <FaCheck size={25}></FaCheck>
                 </Box>
               </Flex>
@@ -260,31 +261,42 @@ const GamePage = () => {
                   <Spinner label="Registrerar..." center />
                 </Box>
               ) : (
-                <Box mt={3} onClick={register}>
-                  <Flex fontSize={5}>
-                    <Flex mx="auto">
-                      <Text
-                        mt={2}
-                        fontFamily="body"
-                        fontWeight="thin"
-                        color="black"
-                        css={{ textDecoration: "underline" }}
-                      >
-                        Lämna in
-                      </Text>
-                      <Box color="primary" mx={2}>
-                        <IoMdArrowDroprightCircle
-                          size={50}
-                        ></IoMdArrowDroprightCircle>
-                      </Box>
-                    </Flex>
-                  </Flex>
+                <Box
+                  mt={2}
+                  sx={{
+                    textAlign: "left",
+                    fontFamily: "heading",
+                  }}
+                  onClick={register}
+                >
+                  <Link
+                    style={{ textDecoration: "none", color: "black" }}
+                    activeStyle={{
+                      fontWeight: 450,
+                      color: "tomato",
+                    }}
+                    to="/white-paper/"
+                  >
+                    <Button
+                      width="100%"
+                      sx={{
+                        fontWeight: "heading",
+                        fontFamily: "heading",
+                      }}
+                      bg="primary"
+                      fontSize={4}
+                      variant="primary"
+                    >
+                      Lämna in
+                    </Button>
+                  </Link>
                 </Box>
               )}
             </Box>
           </Box>
         )}
       </InstantSearch>
+      <Nav></Nav>
     </Layout>
   )
 }
