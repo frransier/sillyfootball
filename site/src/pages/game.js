@@ -158,8 +158,8 @@ const GamePage = () => {
                         >
                           <Box>
                             <Image
-                              width="40px"
-                              height="40px"
+                              width="35px"
+                              height="35px"
                               src={player.team.logo.asset.url}
                               alt={player.name}
                             ></Image>
