@@ -81,16 +81,16 @@ const IndexPage = () => {
 
           <Nav />
         </Box>
-        <Flex color="tomato" my={2} mx={3}>
-          <TextLoop>
-            <Heading textAlign="center">Gratis att spela</Heading>
-            <Heading textAlign="center">Cash money på kontot</Heading>
-            <Heading textAlign="center">Enkelt att lära sig</Heading>
-            <Heading textAlign="center">Går fort att skapa ett lag</Heading>
-            <Heading textAlign="center">Ingen registrering</Heading>
-          </TextLoop>
-          <Box mx={3} textAlign="center" mt={1}>
-            <FaCheck></FaCheck>
+        <Box height="50px"></Box>
+        <Flex color="tomato" mx="auto">
+          <Box fontSize={6} mx="auto">
+            <TextLoop>
+              <Heading fontSize={5}>Gratis att spela</Heading>
+              <Heading fontSize={5}>Cash money på kontot</Heading>
+              <Heading fontSize={5}>Enkelt att lära sig</Heading>
+              <Heading fontSize={5}>Går fort att skapa ett lag</Heading>
+              <Heading fontSize={5}>Ingen registrering</Heading>
+            </TextLoop>
           </Box>
         </Flex>
       </Box>
