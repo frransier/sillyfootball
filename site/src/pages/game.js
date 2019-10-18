@@ -14,7 +14,6 @@ import { useDispatchContext, useStateContext } from "../state"
 import { Spinner } from "sancho"
 import { FaRegTimesCircle, FaCheck, FaRegHeart } from "react-icons/fa"
 import { motion } from "framer-motion"
-import { Link } from "gatsby"
 
 const searchClient = algoliasearch(
   "C1ICPA4UBZ",
@@ -261,12 +260,12 @@ const GamePage = () => {
                 onChange={event => setEmail(event.target.value.toLowerCase())}
               />
 
-              <Box textAlign="center">
+              <Box textAlign="left">
                 {loading ? (
                   <Box my={3} mx="auto" color="primary">
                     <Spinner label="Registrerar..." center />
                   </Box>
-                ) : (
+                ) : email.length > 0 ? (
                   <Box
                     mt={2}
                     sx={{
@@ -275,13 +274,14 @@ const GamePage = () => {
                     }}
                     onClick={register}
                   >
-                    <Link
-                      style={{ textDecoration: "none", color: "black" }}
-                      activeStyle={{
-                        fontWeight: 450,
-                        color: "tomato",
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{
+                        duration: 1,
+                        delay: 0.3,
+                        stiffness: 200,
                       }}
-                      to="/white-paper/"
                     >
                       <Button
                         width="100%"
@@ -295,11 +295,15 @@ const GamePage = () => {
                       >
                         Lämna in
                       </Button>
-                    </Link>
+                    </motion.div>
                   </Box>
+                ) : (
+                  <Heading height="43px" color="tomato">
+                    Email saknas
+                  </Heading>
                 )}
               </Box>
-              <Nav></Nav>
+              {loading ? null : <Nav></Nav>}
             </motion.div>
           </Box>
         )}
