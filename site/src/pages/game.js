@@ -12,7 +12,7 @@ import { InstantSearch } from "react-instantsearch-dom"
 import Matches from "../components/matches"
 import { useDispatchContext, useStateContext } from "../state"
 import { useToast, Spinner } from "sancho"
-import { FaRegTimesCircle, FaCheck } from "react-icons/fa"
+import { FaRegTimesCircle, FaCheck, FaRegHeart } from "react-icons/fa"
 import { motion } from "framer-motion"
 import { Link } from "gatsby"
 
@@ -59,6 +59,8 @@ const GamePage = () => {
             borderStyle: "solid",
             borderRadius: "0px 0px 10px 10px",
           }}
+          // eslint-disable-next-line
+          css={{ position: "-webkit-sticky", position: "sticky", top: 0 }}
         >
           <Box
             width={1 / 2}
@@ -86,44 +88,52 @@ const GamePage = () => {
                 p={2}
                 width={3 / 4}
                 sx={{ borderRadius: 10 }}
-                bg="#3D7650"
+                bg="white"
               >
-                <Box textAlign="center" verticalAlign="center">
-                  <Heading
-                    color="white"
-                    textAlign="center"
-                    fontSize={(4, 5)}
-                    sx={{ fontWeight: "normal" }}
-                  >
-                    Välj 5 spelare
-                  </Heading>
-                  <Box color="white">
+                <Flex mx="auto">
+                  <Box mx="auto">
                     <Heading
+                      color="black"
                       textAlign="center"
-                      sx={{ fontWeight: "normal", fontSize: 3 }}
+                      fontSize={(4, 5)}
+                      sx={{ fontWeight: "normal" }}
                     >
-                      1 poäng per mål el assist
-                    </Heading>
-
-                    <Heading
-                      fontWeight="normal"
-                      my={[1, 2]}
-                      textAlign="center"
-                      fontSize={[1, 2]}
-                      mx={[2, 3]}
-                    >
-                      1000 kr free roll
-                    </Heading>
-                    <Heading
-                      fontWeight="normal"
-                      my={[1, 2]}
-                      textAlign="center"
-                      fontSize={[1, 2]}
-                      mx={[2, 3]}
-                    >
-                      Lördag 19 oktober kl 13:00
+                      Välj 5 spelare
                     </Heading>
                   </Box>
+                  <Box mt={1} color="primary">
+                    <FaRegHeart size={20} />
+                  </Box>
+                </Flex>
+
+                <Box color="black">
+                  <Heading
+                    textAlign="center"
+                    sx={{ fontWeight: "normal", fontSize: 3 }}
+                  >
+                    1 poäng per mål el assist
+                  </Heading>
+
+                  <Heading
+                    fontWeight="normal"
+                    my={[1, 2]}
+                    textAlign="center"
+                    fontSize={[3, 2]}
+                    mx={[2, 3]}
+                    color="tomato"
+                  >
+                    1000 kr free roll
+                  </Heading>
+                  <Heading
+                    fontWeight="normal"
+                    my={[1, 2]}
+                    textAlign="center"
+                    fontSize={[3, 2]}
+                    mx={[2, 3]}
+                    color="tomato"
+                  >
+                    Lördag 19 oktober kl 13:00
+                  </Heading>
                 </Box>
               </Box>
             </motion.div>
@@ -134,8 +144,8 @@ const GamePage = () => {
                   return (
                     <Box key={index} mx="auto" width={[1 / 3, 1 / 5]}>
                       <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
+                        initial={{ y: 50, scale: 2 }}
+                        animate={{ y: 0, scale: 1 }}
                         transition={{
                           duration: 0.4,
                           stiffness: 200,

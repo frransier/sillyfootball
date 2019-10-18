@@ -84,6 +84,7 @@ const Nav = () => {
               bg="primary"
               fontSize={3}
               variant="primary"
+              width="120px"
             >
               Så funkar det
             </Button>
