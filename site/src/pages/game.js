@@ -231,69 +231,79 @@ const GamePage = () => {
           </motion.div>
         ) : (
           <Box my={1} width={[1, 4 / 5, 3 / 5]} mx="auto">
-            <Flex>
-              <Flex mx="auto">
-                <Heading fontSize={3}>Fullt lag</Heading>
-                <Box mx={2} my={-1}>
-                  <FaCheck size={25}></FaCheck>
-                </Box>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: 2,
+                delay: 0.3,
+                stiffness: 200,
+              }}
+            >
+              <Flex>
+                <Flex mx="auto">
+                  <Heading fontSize={3}>Fullt lag</Heading>
+                  <Box mx={2} my={-1}>
+                    <FaCheck size={25}></FaCheck>
+                  </Box>
+                </Flex>
               </Flex>
-            </Flex>
-            <Label htmlFor="email">
-              <Heading fontSize={0} fontWeight="normal">
-                Email
-              </Heading>
-            </Label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="din@email.nu"
-              onChange={event => setEmail(event.target.value.toLowerCase())}
-            />
+              <Label htmlFor="email">
+                <Heading fontSize={0} fontWeight="normal">
+                  Email
+                </Heading>
+              </Label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="din@email.nu"
+                onChange={event => setEmail(event.target.value.toLowerCase())}
+              />
 
-            <Box textAlign="center">
-              {loading ? (
-                <Box my={3} mx="auto" color="primary">
-                  <Spinner label="Registrerar..." center />
-                </Box>
-              ) : (
-                <Box
-                  mt={2}
-                  sx={{
-                    textAlign: "left",
-                    fontFamily: "heading",
-                  }}
-                  onClick={register}
-                >
-                  <Link
-                    style={{ textDecoration: "none", color: "black" }}
-                    activeStyle={{
-                      fontWeight: 450,
-                      color: "tomato",
+              <Box textAlign="center">
+                {loading ? (
+                  <Box my={3} mx="auto" color="primary">
+                    <Spinner label="Registrerar..." center />
+                  </Box>
+                ) : (
+                  <Box
+                    mt={2}
+                    sx={{
+                      textAlign: "left",
+                      fontFamily: "heading",
                     }}
-                    to="/white-paper/"
+                    onClick={register}
                   >
-                    <Button
-                      width="100%"
-                      sx={{
-                        fontWeight: "heading",
-                        fontFamily: "heading",
+                    <Link
+                      style={{ textDecoration: "none", color: "black" }}
+                      activeStyle={{
+                        fontWeight: 450,
+                        color: "tomato",
                       }}
-                      bg="primary"
-                      fontSize={4}
-                      variant="primary"
+                      to="/white-paper/"
                     >
-                      Lämna in
-                    </Button>
-                  </Link>
-                </Box>
-              )}
-            </Box>
+                      <Button
+                        width="100%"
+                        sx={{
+                          fontWeight: "heading",
+                          fontFamily: "heading",
+                        }}
+                        bg="primary"
+                        fontSize={4}
+                        variant="primary"
+                      >
+                        Lämna in
+                      </Button>
+                    </Link>
+                  </Box>
+                )}
+              </Box>
+              <Nav></Nav>
+            </motion.div>
           </Box>
         )}
       </InstantSearch>
-      <Nav></Nav>
     </Layout>
   )
 }
