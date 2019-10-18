@@ -4,7 +4,6 @@ import SEO from "../components/seo"
 import Nav from "../components/nav"
 import { Heading, Box, Flex } from "rebass"
 import { motion } from "framer-motion"
-import { FaCheck } from "react-icons/fa"
 import TextLoop from "react-text-loop"
 
 const IndexPage = () => {

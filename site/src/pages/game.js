@@ -11,7 +11,7 @@ import algoliasearch from "algoliasearch/lite"
 import { InstantSearch } from "react-instantsearch-dom"
 import Matches from "../components/matches"
 import { useDispatchContext, useStateContext } from "../state"
-import { useToast, Spinner } from "sancho"
+import { Spinner } from "sancho"
 import { FaRegTimesCircle, FaCheck, FaRegHeart } from "react-icons/fa"
 import { motion } from "framer-motion"
 import { Link } from "gatsby"
@@ -25,7 +25,6 @@ const GamePage = () => {
   const [loading, setLoading] = useState(false)
   const state = useStateContext()
   const dispatch = useDispatchContext()
-  const toast = useToast()
 
   const register = () => {
     setLoading(true)
@@ -152,17 +151,7 @@ const GamePage = () => {
                         }}
                       >
                         <Box
-                          onClick={() => (
-                            toast({
-                              title: `${player.name} togs bort från ditt lag`,
-                              position: "top",
-                              intent: "warning",
-                              duration: 1000,
-
-                              // eslint-disable-next-line
-                            }),
-                            dispatch({ type: "remove", index })
-                          )}
+                          onClick={() => dispatch({ type: "remove", index })}
                           sx={{ borderRadius: 12 }}
                           key={index}
                           textAlign="center"

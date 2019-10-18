@@ -3,12 +3,10 @@ import { Box, Flex, Image, Text } from "rebass"
 import { FaRegHeart, FaRegThumbsUp } from "react-icons/fa"
 
 import { useDispatchContext, useStateContext } from "../state"
-import { useToast } from "sancho"
 
 const Player = props => {
   const dispatch = useDispatchContext()
   const state = useStateContext()
-  const toast = useToast()
 
   const hit = props.hit
   const team = props.hit.team
@@ -56,25 +54,11 @@ const Player = props => {
                 pt="5px"
                 color="primary"
                 onClick={() =>
-                  state.filter(x => x.name === hit.name).length > 0
-                    ? toast({
-                        title: `${hit.name} är redan med i ditt lag`,
-                        position: "top",
-                        intent: "danger",
-                        duration: 1000,
-                        // eslint-disable-next-line
-                      })
-                    : (toast({
-                        title: `${hit.name} lades till i ditt lag`,
-                        position: "top",
-                        intent: "success",
-                        duration: 1000,
-                        // eslint-disable-next-line
-                      }),
-                      dispatch({
-                        type: "add",
-                        hit,
-                      }))
+                  state.filter(x => x.name === hit.name).length < 1 &&
+                  dispatch({
+                    type: "add",
+                    hit,
+                  })
                 }
               >
                 {state.filter(x => x.name === hit.name).length > 0 ? (
