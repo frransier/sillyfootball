@@ -79,11 +79,12 @@ const LeaderboardPage = props => {
     if (state.length > 0) {
       const runnersUp = state.filter(x => x.score === state[0].score - 1)
       const backup = state.filter(x => x.score === state[1].score)
+      console.log()
 
-      if (runnersUp > 0) {
-        return runnersUp.length
+      if (runnersUp.length > 0) {
+        return Math.round((0.3 * 1000) / runnersUp.length)
       }
-      return backup.length
+      return Math.round((0.3 * 1000) / backup.length)
     }
   }
 
@@ -148,7 +149,7 @@ const LeaderboardPage = props => {
                         {state[1].score + 2 === state[0].score
                           ? state[0].score - 2
                           : state[0].score - 1}
-                        p {Math.round((0.3 * 1000) / getRunnersUp())} kr
+                        p {getRunnersUp()} kr
                       </Box>
                     </Heading>
                   </Box>
