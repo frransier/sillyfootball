@@ -265,7 +265,7 @@ const GamePage = () => {
                   <Box my={3} mx="auto" color="primary">
                     <Spinner label="Registrerar..." center />
                   </Box>
-                ) : email.length > 0 ? (
+                ) : email.length > 3 ? (
                   <Box
                     mt={2}
                     sx={{
@@ -303,7 +303,7 @@ const GamePage = () => {
                   </Heading>
                 )}
               </Box>
-              {loading ? null : <Nav></Nav>}
+              {email.length < 4 ? <Nav /> : null}
             </motion.div>
           </Box>
         )}
