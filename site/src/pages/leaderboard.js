@@ -79,7 +79,6 @@ const LeaderboardPage = props => {
     if (state.length > 0) {
       const runnersUp = state.filter(x => x.score === state[0].score - 1)
       const backup = state.filter(x => x.score === state[1].score)
-      console.log()
 
       if (runnersUp.length > 0) {
         return Math.round((0.3 * 1000) / runnersUp.length)
