@@ -229,7 +229,7 @@ const LeaderboardPage = props => {
                             sx={{ borderRadius: 5 }}
                             p={1}
                             bg="primary"
-                            color="white"
+                            color="black"
                           >
                             <FaUser size={25}></FaUser>
                           </Box>
@@ -272,7 +272,7 @@ const LeaderboardPage = props => {
                   >
                     <Text
                       fontFamily="body"
-                      color="white"
+                      color="black"
                       fontSize={3}
                     >{`Du har ${p.score}p`}</Text>
                   </Box>
@@ -309,7 +309,7 @@ const LeaderboardPage = props => {
                             fontWeight="bold"
                             bg="primary"
                             textAlign="center"
-                            color="white"
+                            color="black"
                           >
                             <Heading fontSize={3}>{`${p.score} p`}</Heading>
                           </Box>

@@ -14,6 +14,7 @@ import { useDispatchContext, useStateContext } from "../state"
 import { Spinner } from "sancho"
 import { FaRegTimesCircle, FaCheck, FaRegHeart } from "react-icons/fa"
 import { motion } from "framer-motion"
+import { Link } from "gatsby"
 
 const searchClient = algoliasearch(
   "C1ICPA4UBZ",
@@ -207,25 +208,24 @@ const GamePage = () => {
               <Box height="auto">
                 <Matches limit={28} attribute="team.index" />
               </Box>
-              <Box textAlign="left" fontSize={2}>
-                <Text
+              <Box fontFamily="heading" textAlign="center" fontSize={6} mt={3}>
+                {/* <Text
                   ml={[4, 0]}
                   my={2}
                   fontSize={4}
                   sx={{ fontFamily: "heading" }}
                   fontWeight="heading"
                 >
-                  {/* <Link
-                    style={{ textDecoration: "underline", color: "black" }}
-                    to="/leaderboard"
-                  >
-                    Omgång 2 pågår
-                  </Link> */}
                   Spelare
                 </Text>
+              <PlayerList /> */}
+                <Link
+                  style={{ textDecoration: "none", color: "tomato" }}
+                  to="/leaderboard"
+                >
+                  Omgång 3 pågår >
+                </Link>
               </Box>
-
-              <PlayerList />
             </Box>
           </motion.div>
         ) : (
