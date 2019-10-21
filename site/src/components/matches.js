@@ -28,6 +28,7 @@ const Matches = ({ items, refine }) => {
     `
   )
   const rawTeams = mapEdgesToNodes(site.teams)
+  console.log(rawTeams)
 
   const schema = items
     .map(i => {

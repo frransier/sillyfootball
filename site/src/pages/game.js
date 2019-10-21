@@ -209,7 +209,7 @@ const GamePage = () => {
                 <Matches limit={28} attribute="team.index" />
               </Box>
               <Box fontFamily="heading" textAlign="center" fontSize={6} mt={3}>
-                {/* <Text
+                <Text
                   ml={[4, 0]}
                   my={2}
                   fontSize={4}
@@ -218,13 +218,13 @@ const GamePage = () => {
                 >
                   Spelare
                 </Text>
-              <PlayerList /> */}
-                <Link
+                <PlayerList />
+                {/* <Link
                   style={{ textDecoration: "none", color: "tomato" }}
                   to="/leaderboard"
                 >
                   Omgång 3 pågår >
-                </Link>
+                </Link> */}
               </Box>
             </Box>
           </motion.div>
