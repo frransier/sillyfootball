@@ -119,7 +119,7 @@ const GamePage = () => {
                     textAlign="center"
                     fontSize={[3, 2]}
                     mx={[2, 3]}
-                    color="tomato"
+                    color="black"
                   >
                     1000 kr free roll
                   </Heading>
@@ -129,9 +129,9 @@ const GamePage = () => {
                     textAlign="center"
                     fontSize={[3, 2]}
                     mx={[2, 3]}
-                    color="tomato"
+                    color="black"
                   >
-                    Lördag 19 oktober kl 13:00
+                    Tis 22 oktober kl 21:00
                   </Heading>
                 </Box>
               </Box>

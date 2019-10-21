@@ -47,7 +47,9 @@ const Player = props => {
                 </Text>
               </Box>
               <Box>
-                <Text textAlign="center">{hit.points}p</Text>
+                <Text fontSize={3} textAlign="center">
+                  {hit.points}p
+                </Text>
               </Box>
               <Box
                 ml={3}

@@ -54,7 +54,7 @@ const IndexPage = () => {
                   fontSize={(4, 5)}
                   sx={{ fontWeight: "normal" }}
                 >
-                  Fantasy Football
+                  Fantasy CL Edition
                 </Heading>
                 <Box color="black">
                   <Heading
@@ -71,7 +71,7 @@ const IndexPage = () => {
                     fontSize={[1, 2]}
                     mx={[2, 3]}
                   >
-                    Lördag 19 oktober kl 13:00
+                    Tisdag 22 oktober kl 21:00
                   </Heading>
                 </Box>
               </Box>
