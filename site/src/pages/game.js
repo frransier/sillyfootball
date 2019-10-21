@@ -210,7 +210,6 @@ const GamePage = () => {
               </Box>
               <Box fontFamily="heading" textAlign="center" fontSize={6} mt={3}>
                 <Text
-                  ml={[4, 0]}
                   my={2}
                   fontSize={4}
                   sx={{ fontFamily: "heading" }}
