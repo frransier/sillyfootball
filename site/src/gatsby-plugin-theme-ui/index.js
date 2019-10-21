@@ -34,7 +34,7 @@ export default {
   fonts: {
     body: `Yrsa`,
     heading: "Exo",
-    logo: "Alfa Slab One, sans",
+    logo: "Asap",
     monospace: "Menlo, monospace",
   },
   fontSizes: [10, 12, 14, 16, 20, 24, 32, 48, 64, 72],

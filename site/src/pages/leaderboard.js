@@ -36,7 +36,7 @@ const LeaderboardPage = props => {
   const [email, setEmail] = useState()
   const [trackedTeams, setTrackedTeams] = useState([])
   const { data, loading, error } = useGraphQL(
-    "https://0jt5x7hu.api.sanity.io/v1/graphql/odd/default",
+    "https://0jt5x7hu.api.sanity.io/v1/graphql/even/default",
     `query Leaderboard {
       players: allUsers {
         _id

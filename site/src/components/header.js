@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import React from "react"
 import { Flex, Heading, Box, Image } from "rebass"
-import header from "../images/logos.jpg"
+import header from "../images/LOGO.png"
 import { motion } from "framer-motion"
 
 const Header = () => {
@@ -29,7 +29,7 @@ const Header = () => {
                 <Image src={header}></Image>
               </Box>
             </motion.div>
-            <Heading color="black" mt={2} fontSize={7} fontFamily="heading">
+            <Heading color="black" mt={1} fontSize={7} fontFamily="logo">
               illyfootball
             </Heading>
           </Flex>
