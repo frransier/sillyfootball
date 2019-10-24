@@ -29,7 +29,7 @@ const Header = () => {
                 <Image src={header}></Image>
               </Box>
             </motion.div>
-            <Heading color="black" mt={1} fontSize={7} fontFamily="logo">
+            <Heading color="black" mt={1} fontSize={7} fontFamily="heading">
               illyfootball
             </Heading>
           </Flex>
