@@ -71,7 +71,7 @@ const IndexPage = () => {
                     fontSize={[1, 2]}
                     mx={[2, 3]}
                   >
-                    Tisdag 22 oktober kl 21:00
+                    Lördag 26 oktober kl 13:30
                   </Heading>
                 </Box>
               </Box>

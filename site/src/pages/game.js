@@ -131,7 +131,7 @@ const GamePage = () => {
                     mx={[2, 3]}
                     color="black"
                   >
-                    Tis 22 oktober kl 21:00
+                    Lör 26 oktober kl 13:30
                   </Heading>
                 </Box>
               </Box>
