@@ -54,7 +54,7 @@ const IndexPage = () => {
                   fontSize={(4, 5)}
                   sx={{ fontWeight: "normal" }}
                 >
-                  Fantasy CL Edition
+                  Fantasy Football
                 </Heading>
                 <Box color="black">
                   <Heading
