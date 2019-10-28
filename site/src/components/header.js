@@ -29,12 +29,20 @@ const Header = () => {
                 <Image src={header}></Image>
               </Box>
             </motion.div>
-            <Heading color="black" mt={1} fontSize={7} fontFamily="heading">
-              illyfootball
-            </Heading>
-            <Heading fontSize={2} fontWeight="heading" color="tomato">
-              JACKPOT
-            </Heading>
+            <Box>
+              <Heading color="black" mt={1} fontSize={7} fontFamily="heading">
+                illyfootball
+              </Heading>
+              <Heading
+                textAlign="right"
+                fontSize={2}
+                fontWeight="heading"
+                color="tomato"
+                mt={-2}
+              >
+                JACKPOT
+              </Heading>
+            </Box>
           </Flex>
         </Link>
       </Flex>
