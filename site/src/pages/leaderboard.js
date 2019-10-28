@@ -60,15 +60,6 @@ const LeaderboardPage = props => {
       dispatch({ type: "sort", data: data.players })
     }
   }, [data])
-
-  //const images = mapEdgesToNodes(props.data.teamLogos)
-
-  // const getLogo = id => {
-  //   const logo = images.find(x => x._id === id)
-  //   const fixed = logo.logo.asset.fixed
-  //   return fixed
-  // }
-
   const getWinners = () => {
     if (state.length > 0) {
       const winners = state.filter(x => x.score === state[0].score)
