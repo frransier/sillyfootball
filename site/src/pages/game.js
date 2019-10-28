@@ -119,9 +119,10 @@ const GamePage = () => {
                     textAlign="center"
                     fontSize={[3, 2]}
                     mx={[2, 3]}
-                    color="black"
+                    color="tomato"
+                    fontWeight="heading"
                   >
-                    1000 kr free roll
+                    JACKPOT 1500 kr
                   </Heading>
                   <Heading
                     fontWeight="normal"

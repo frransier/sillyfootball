@@ -70,9 +70,9 @@ const ThanksPage = () => {
                 <Box color="white">
                   <Heading
                     textAlign="center"
-                    sx={{ fontWeight: "normal", fontSize: 3 }}
+                    sx={{ fontWeight: "heading", color: "tomato", fontSize: 3 }}
                   >
-                    1000 kr free roll
+                    Jackpot 1500 kr
                   </Heading>
 
                   <Heading

@@ -59,9 +59,9 @@ const IndexPage = () => {
                 <Box color="black">
                   <Heading
                     textAlign="center"
-                    sx={{ fontWeight: "normal", fontSize: 3 }}
+                    sx={{ fontWeight: "heading", fontSize: 3, color: "tomato" }}
                   >
-                    Tävla om 1000 kr
+                    Jackpot 1500 kr
                   </Heading>
 
                   <Heading

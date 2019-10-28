@@ -25,9 +25,10 @@ const WhitePaperPage = () => (
         </Heading>
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
           Alla som har spelat Drömelvan eller Fantasy PL vet att fantasy
-          football kan vara onödigt krångligt och tidskrävande. Det tar tid att
-          ta ut sin elva, poängsystemet är jobbigt att lära sig och man tvingas
-          välja spelare från blåbärslag för att få plats med sina stjärnor.
+          football kan vara krångligt och tidskrävande. Det tar tid att ta ut
+          sin elva, poängsystemet är jobbigt att lära sig och man tvingas välja
+          spelare från bonkgäng som Everton för att få plats med sina
+          Liverpool-stjärnor.
         </Text>
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
           Sillyfootball vill ändra på det. Vi tror att fantasy football är som
@@ -51,7 +52,7 @@ const WhitePaperPage = () => (
           deltagare som samlar ihop flest poäng delar på prispotten.
         </Text>
         <Heading m={3} fontWeight="heading">
-          Easy to learn, hard to master
+          Lätt att lära sig, svårt att bemästra
         </Heading>
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
           Din uppgift som deltagare är både enkel och svår: välj de 5 spelarna
@@ -59,20 +60,14 @@ const WhitePaperPage = () => (
           deltagare vinner blir utdelningen lägre, om du är ensam vinnare vinner
           du stort.
         </Text>
-        <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
-          Du behöver inte välja en full elva plus avbytarbänk, och du behöver
-          inte slänga in spelare du egentligen inte tror på för att hålla dig
-          till en budget. Sillyfootball skiljer sig från andra fantasy
-          football-spel genom att vara så enkelt som möjligt.
-        </Text>
+
         <Heading m={3} fontWeight="heading">
-          Sillyfootball beta
+          Gratis
         </Heading>
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
-          Sillyfootball är helt gratis att spela under betaperioden som pågår.
-          Varje vecka kan du vara med och tävla om 1000kr som delas ut till
-          vinnarna. Allt du behöver göra är att välja dina 5 spelare och lämna
-          in ditt lag innan deadline på lördagar.
+          Sillyfootball är helt gratis att spela. Varje vecka kan du vara med
+          och tävla om 1000kr. Allt du behöver göra är att välja 5 spelare och
+          lämna in ditt lag innan deadline på lördagar.
         </Text>
         <Box textAlign="center" my={4}>
           <Link to="/game/">
