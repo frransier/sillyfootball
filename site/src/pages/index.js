@@ -9,7 +9,7 @@ import TextLoop from "react-text-loop"
 const IndexPage = () => {
   return (
     <Layout>
-      <SEO title="Start" />
+      <SEO title="Fantasy Football" />
       <Box width={[1, 4 / 5, 3 / 5]} mx="auto">
         <Box
           bg="white"
@@ -71,7 +71,7 @@ const IndexPage = () => {
                     fontSize={[1, 2]}
                     mx={[2, 3]}
                   >
-                    Lör 2 november kl 16:00
+                    Spelstopp Lör 2 november kl 16:00
                   </Heading>
                 </Box>
               </Box>

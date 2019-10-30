@@ -132,7 +132,7 @@ const GamePage = () => {
                     mx={[2, 3]}
                     color="black"
                   >
-                    Lör 2 november kl 16:00
+                    Spelstopp Lör 2 november kl 16:00
                   </Heading>
                 </Box>
               </Box>
@@ -196,6 +196,35 @@ const GamePage = () => {
               stiffness: 200,
             }}
           >
+            <Box
+              m={2}
+              sx={{
+                textAlign: "center",
+                fontFamily: "heading",
+              }}
+            >
+              <Link
+                style={{ textDecoration: "none", color: "black" }}
+                activeStyle={{
+                  fontWeight: 450,
+                  color: "tomato",
+                }}
+                to="/white-paper/"
+              >
+                <Button
+                  sx={{
+                    fontWeight: "heading",
+                    fontFamily: "heading",
+                  }}
+                  bg="primary"
+                  fontSize={3}
+                  variant="primary"
+                  width="120px"
+                >
+                  Så funkar det
+                </Button>
+              </Link>
+            </Box>
             <Box width={[1, 4 / 5, 3 / 5]} mx="auto">
               <Text
                 my={2}

@@ -66,8 +66,17 @@ const WhitePaperPage = () => (
         </Heading>
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
           Sillyfootball är helt gratis att spela. Varje vecka kan du vara med
-          och tävla om 1000kr. Allt du behöver göra är att välja 5 spelare och
-          lämna in ditt lag innan deadline på lördagar.
+          och tävla minst 1000kr. Allt du behöver göra är att välja 5 spelare
+          och lämna in ditt lag innan deadline på lördagar.
+        </Text>
+        <Heading m={3} fontWeight="heading">
+          Utdelning
+        </Heading>
+        <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
+          Prispotten är som standard 1000 kronor och fördelas 70% till de
+          deltagarna som får högst poäng samt 30% till de som får näst högst
+          poäng. Om ingen samlar ihop minst 5p halveras utdelningen och sparas
+          till nästa omgång som Jackpot.
         </Text>
         <Box textAlign="center" my={4}>
           <Link to="/game/">

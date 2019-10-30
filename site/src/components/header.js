@@ -34,7 +34,7 @@ const Header = () => {
                 illyfootball
               </Heading>
               <Heading
-                textAlign="right"
+                textAlign="center"
                 fontSize={2}
                 fontWeight="heading"
                 color="tomato"
