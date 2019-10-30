@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
-import { Flex, Heading, Box, Image, Text } from "rebass"
+import { Flex, Heading, Box, Image } from "rebass"
 import header from "../images/logo.png"
 import { motion } from "framer-motion"
 

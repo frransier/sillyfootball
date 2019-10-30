@@ -27,8 +27,7 @@ const WhitePaperPage = () => (
           Alla som har spelat Drömelvan eller Fantasy PL vet att fantasy
           football kan vara krångligt och tidskrävande. Det tar tid att ta ut
           sin elva, poängsystemet är jobbigt att lära sig och man tvingas välja
-          spelare från bonkgäng som Everton för att få plats med sina
-          Liverpool-stjärnor.
+          spelare från bonkgäng för att få plats med sina stjärnor.
         </Text>
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
           Sillyfootball vill ändra på det. Vi tror att fantasy football är som
@@ -66,8 +65,8 @@ const WhitePaperPage = () => (
         </Heading>
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
           Sillyfootball är helt gratis att spela. Varje vecka kan du vara med
-          och tävla minst 1000kr. Allt du behöver göra är att välja 5 spelare
-          och lämna in ditt lag innan deadline på lördagar.
+          och tävla om minst 1000kr. Allt du behöver göra är att välja 5 spelare
+          och lämna in ditt lag innan spelstopp på lördagar.
         </Text>
         <Heading m={3} fontWeight="heading">
           Utdelning

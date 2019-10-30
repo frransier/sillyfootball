@@ -82,7 +82,7 @@ const ThanksPage = () => {
                     fontSize={[1, 2]}
                     mx={[2, 3]}
                   >
-                    Spelstopp Lör 2 november kl 16:00
+                    Spelstopp Lör 2 nov kl 16:00
                   </Heading>
                   <Heading
                     fontWeight="normal"

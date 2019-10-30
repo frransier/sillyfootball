@@ -2,24 +2,29 @@ import React from "react"
 import { connectInfiniteHits } from "react-instantsearch-dom"
 import Player from "../components/player"
 import { Button, Box } from "rebass"
-import { motion } from "framer-motion"
+
+import { Table, TableHead, TableRow, TableCell, TableBody } from "sancho"
 
 const PlayerList = ({ hits, hasMore, refineNext }) => {
   return (
     <>
-      {hits.map((hit, index) => (
-        <motion.div
-          key={index}
-          initial={{ y: 20 }}
-          animate={{ y: 0 }}
-          transition={{
-            duration: 0.5,
-            stiffness: 200,
-          }}
-        >
-          <Player key={index} index={index} hit={hit} />
-        </motion.div>
-      ))}
+      <Table fixed={["11%", "45%", "15%", "15%", "14%"]}>
+        <TableHead>
+          <TableRow>
+            <TableCell>Spelare</TableCell>
+            <TableCell></TableCell>
+            <TableCell align="center">Mål</TableCell>
+            <TableCell align="center">Ass</TableCell>
+            <TableCell align="center">Välj</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {hits.map(player => {
+            return <Player key={player.name} hit={player}></Player>
+          })}
+        </TableBody>
+      </Table>
+
       <Box textAlign="center" py={3}>
         <Button
           width={[1 / 2, 1]}

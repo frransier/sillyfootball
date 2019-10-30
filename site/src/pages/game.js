@@ -57,6 +57,7 @@ const GamePage = () => {
             borderColor: "white",
             borderStyle: "solid",
             borderRadius: "0px 0px 10px 10px",
+            zIndex: 5000,
           }}
           // eslint-disable-next-line
           css={{ position: "-webkit-sticky", position: "sticky", top: 0 }}
@@ -114,7 +115,6 @@ const GamePage = () => {
                   </Heading>
 
                   <Heading
-                    fontWeight="normal"
                     my={[1, 2]}
                     textAlign="center"
                     fontSize={[3, 2]}
@@ -132,7 +132,7 @@ const GamePage = () => {
                     mx={[2, 3]}
                     color="black"
                   >
-                    Spelstopp Lör 2 november kl 16:00
+                    Spelstopp Lör 2 nov kl 16:00
                   </Heading>
                 </Box>
               </Box>

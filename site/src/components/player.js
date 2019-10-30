@@ -1,6 +1,7 @@
 import React from "react"
-import { Box, Flex, Image, Text } from "rebass"
-import { FaRegHeart, FaRegThumbsUp } from "react-icons/fa"
+import { Box, Image, Text } from "rebass"
+import { FaRegHeart, FaHeart } from "react-icons/fa"
+import { TableCell, TableRow } from "sancho"
 
 import { useDispatchContext, useStateContext } from "../state"
 
@@ -13,7 +14,51 @@ const Player = props => {
 
   return (
     <>
-      <Flex>
+      <TableRow>
+        <TableCell component="th" scope="row" align="center">
+          <Image
+            width="30px"
+            mt={1}
+            src={team.logo.asset.url}
+            alt={team.name}
+          ></Image>
+        </TableCell>
+        <TableCell align="left">
+          <Text
+            textAlign="left"
+            fontSize={3}
+            fontWeight={
+              state.filter(x => x.name === hit.name).length > 0
+                ? "bold"
+                : "normal"
+            }
+          >
+            {hit.name}
+          </Text>
+        </TableCell>
+        <TableCell align="center">{hit.goals}</TableCell>
+        <TableCell align="center">{hit.assists}</TableCell>
+        <TableCell align="center">
+          <Box
+            pt={1}
+            color="black"
+            onClick={() =>
+              state.filter(x => x.name === hit.name).length < 1 &&
+              dispatch({
+                type: "add",
+                hit,
+              })
+            }
+          >
+            {state.filter(x => x.name === hit.name).length > 0 ? (
+              <FaHeart color="tomato" size={20} />
+            ) : (
+              <FaRegHeart size={20} />
+            )}
+          </Box>
+        </TableCell>
+      </TableRow>
+      {/* <Flex>
         <Flex
           sx={{
             borderWidth: "0px 0px 1px 0px",
@@ -52,8 +97,6 @@ const Player = props => {
                 </Text>
               </Box>
               <Box
-                ml={3}
-                pt="5px"
                 color="primary"
                 onClick={() =>
                   state.filter(x => x.name === hit.name).length < 1 &&
@@ -72,7 +115,7 @@ const Player = props => {
             </Flex>
           </Box>
         </Flex>
-      </Flex>
+      </Flex> */}
     </>
   )
 }
