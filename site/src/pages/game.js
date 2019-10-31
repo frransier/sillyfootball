@@ -168,7 +168,8 @@ const GamePage = () => {
                               color="black"
                               sx={{ fontFamily: "body" }}
                               fontWeight="normal"
-                              fontSize={[3]}
+                              fontSize={[1, 2]}
+                              fontFamily="heading"
                               mx="auto"
                             >
                               {player.name}

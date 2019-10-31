@@ -49,6 +49,7 @@ const Player = props => {
                 hit,
               })
             }
+            css={{ cursor: "pointer" }}
           >
             {state.filter(x => x.name === hit.name).length > 0 ? (
               <FaHeart color="tomato" size={20} />

@@ -71,7 +71,7 @@ const Matches = ({ items, refine }) => {
                 }}
                 key={item.label}
               >
-                <Box width="100%">
+                <Box width="100%" css={{ cursor: "pointer" }}>
                   <Box sx={{ borderRadius: 6 }}>
                     <Flex>
                       <Box>
@@ -92,7 +92,8 @@ const Matches = ({ items, refine }) => {
                       >
                         <Text
                           color={item.isRefined ? "black" : ""}
-                          fontSize={[2, 2]}
+                          fontSize={[1, 2]}
+                          fontFamily="heading"
                         >
                           {`${item.homeTeam.nickName} - ${item.awayTeam.nickName}`}
                         </Text>
