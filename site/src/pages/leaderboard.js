@@ -72,9 +72,9 @@ const LeaderboardPage = props => {
       const backup = state.filter(x => x.score === state[1].score)
 
       if (runnersUp.length > 0) {
-        return Math.round((0.3 * 1000) / runnersUp.length)
+        return Math.round((0.3 * 1500) / runnersUp.length)
       }
-      return Math.round((0.3 * 1000) / backup.length)
+      return Math.round((0.3 * 1500) / backup.length)
     }
   }
 
@@ -131,7 +131,7 @@ const LeaderboardPage = props => {
                     <Heading fontWeight="normal">
                       <Box>
                         {state[0].score}p{" "}
-                        {Math.round((0.7 * 1000) / getWinners())} kr
+                        {Math.round((0.7 * 1500) / getWinners())} kr
                       </Box>
                     </Heading>
                     <Heading fontWeight="normal">
@@ -154,7 +154,7 @@ const LeaderboardPage = props => {
                       <Box>Start</Box>
                     </Heading>
                     <Heading fontWeight="normal">
-                      <Box>Spelstopp Lör 2 nov kl 16:00</Box>
+                      <Box>Lör 2 nov kl 16:00</Box>
                     </Heading>
                   </Box>
                 )}
