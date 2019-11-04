@@ -11,7 +11,7 @@ const Header = () => {
         <Link style={{ textDecoration: "none" }} to="/">
           <Flex mx="auto">
             <motion.div
-              initial={{ scale: 0.7 }}
+              initial={{ scale: 1.4 }}
               animate={{ scale: 1 }}
               transition={{
                 duration: 1,
