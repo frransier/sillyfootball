@@ -154,7 +154,7 @@ const LeaderboardPage = props => {
                       <Box>Start</Box>
                     </Heading>
                     <Heading fontWeight="normal">
-                      <Box>Lör 2 nov kl 16:00</Box>
+                      <Box>Lör 9 nov kl 13:30</Box>
                     </Heading>
                   </Box>
                 )}

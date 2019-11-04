@@ -61,7 +61,7 @@ const IndexPage = () => {
                     textAlign="center"
                     sx={{ fontWeight: "heading", fontSize: 3, color: "tomato" }}
                   >
-                    Jackpot 1500 kr
+                    2x Jackpot 2000 kr
                   </Heading>
 
                   <Heading
@@ -71,7 +71,7 @@ const IndexPage = () => {
                     fontSize={[1, 2]}
                     mx={[2, 3]}
                   >
-                    Spelstopp Lör 2 nov kl 16:00
+                    Spelstopp Lör 9 nov kl 13:30
                   </Heading>
                 </Box>
               </Box>

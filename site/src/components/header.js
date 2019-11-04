@@ -33,15 +33,6 @@ const Header = () => {
               <Heading color="black" mt={1} fontSize={7} fontFamily="heading">
                 illyfootball
               </Heading>
-              <Heading
-                textAlign="center"
-                fontSize={2}
-                fontWeight="heading"
-                color="tomato"
-                mt={-2}
-              >
-                JACKPOT
-              </Heading>
             </Box>
           </Flex>
         </Link>

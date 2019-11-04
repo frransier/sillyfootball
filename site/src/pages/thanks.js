@@ -72,7 +72,7 @@ const ThanksPage = () => {
                     textAlign="center"
                     sx={{ fontWeight: "heading", color: "tomato", fontSize: 3 }}
                   >
-                    Jackpot 1500 kr
+                    2x Jackpot 2000 kr
                   </Heading>
 
                   <Heading
@@ -82,7 +82,7 @@ const ThanksPage = () => {
                     fontSize={[1, 2]}
                     mx={[2, 3]}
                   >
-                    Spelstopp Lör 2 nov kl 16:00
+                    Spelstopp Lör 9 nov kl 13:30
                   </Heading>
                   <Heading
                     fontWeight="normal"
