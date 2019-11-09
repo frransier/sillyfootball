@@ -62,7 +62,7 @@ const LeaderboardPage = props => {
   }, [data])
   const getWinners = () => {
     if (state.length > 0) {
-      // console.log(state.slice(0, 25))
+      console.log(state.slice(0, 25))
       const winners = state.filter(x => x.score === state[0].score)
       return winners.length
     }
@@ -133,8 +133,8 @@ const LeaderboardPage = props => {
                       <Box>
                         {state[0].score}p{" "}
                         {state[0].score < 5
-                          ? 0.5 * Math.round((0.7 * 1500) / getWinners())
-                          : Math.round((0.7 * 1500) / getWinners())}{" "}
+                          ? 0.5 * Math.round((0.7 * 2000) / getWinners())
+                          : Math.round((0.7 * 2000) / getWinners())}{" "}
                         kr
                       </Box>
                     </Heading>
