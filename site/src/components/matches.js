@@ -56,6 +56,8 @@ const Matches = ({ items, refine }) => {
     >
       <Flex width={1} flexWrap="wrap" sx={{ fontFamily: "body" }}>
         {schema.map(item => {
+          console.log(item)
+
           if (item) {
             return (
               <Flex

@@ -122,7 +122,7 @@ const GamePage = () => {
                     color="tomato"
                     fontWeight="heading"
                   >
-                    2x JACKPOT 2000 kr
+                    500 kr
                   </Heading>
                   <Heading
                     fontWeight="normal"
@@ -132,7 +132,7 @@ const GamePage = () => {
                     mx={[2, 3]}
                     color="black"
                   >
-                    Spelstopp Lör 9 nov kl 13:30
+                    Spelstopp Lör 23 nov kl 15:00
                   </Heading>
                 </Box>
               </Box>
@@ -240,7 +240,7 @@ const GamePage = () => {
                 <Matches limit={28} attribute="team.index" />
               </Box>
               <Box fontFamily="heading" textAlign="center" fontSize={6} mt={3}>
-                {/* <Text
+                <Text
                   my={2}
                   fontSize={4}
                   sx={{ fontFamily: "heading" }}
@@ -248,13 +248,13 @@ const GamePage = () => {
                 >
                   Spelare
                 </Text>
-                <PlayerList /> */}
-                <Link
+                <PlayerList />
+                {/* <Link
                   style={{ textDecoration: "none", color: "tomato" }}
                   to="/leaderboard"
                 >
                   Omgång 6 pågår >
-                </Link>
+                </Link> */}
               </Box>
             </Box>
           </motion.div>

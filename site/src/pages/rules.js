@@ -26,7 +26,7 @@ const RulesPage = () => (
         </Text>
         <Text my={4} mx={3}>
           Lämna in ditt lag innan deadline day och tävla mot andra om att ta hem
-          beta-prispotten på 1000kr. Under betaperioden är det fritt fram att
+          beta-prispotten på 500kr. Under betaperioden är det fritt fram att
           registrera hur många lag man vill utan kostnad. Potten fördelas mellan
           de lag som samlar högst och näst högst poäng. Ju färre vinnare, desto
           större vinst a la Stryktipset. Följ ditt lag i realtid på
