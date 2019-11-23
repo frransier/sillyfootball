@@ -72,10 +72,9 @@ const WhitePaperPage = () => (
           Utdelning
         </Heading>
         <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
-          Prispotten är som standard 500 kronor och fördelas 70% till de
-          deltagarna som får högst poäng samt 30% till de som får näst högst
-          poäng. Om ingen samlar ihop minst 5p halveras utdelningen och sparas
-          till nästa omgång som Jackpot.
+          Prispotten är som standard 500 kronor och fördelas jämnt mellan de
+          deltagarna som får högst poäng. Om ingen samlar ihop minst 5p flyttas
+          potten till nästa omgång som Jackpot.
         </Text>
         <Box textAlign="center" my={4}>
           <Link to="/game/">

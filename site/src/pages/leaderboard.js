@@ -62,22 +62,22 @@ const LeaderboardPage = props => {
   }, [data])
   const getWinners = () => {
     if (state.length > 0) {
-      console.log(state.slice(0, 25))
+      // console.log(state.slice(0, 25))
       const winners = state.filter(x => x.score === state[0].score)
       return winners.length
     }
   }
-  const getRunnersUp = () => {
-    if (state.length > 0) {
-      const runnersUp = state.filter(x => x.score === state[0].score - 1)
-      const backup = state.filter(x => x.score === state[1].score)
+  // const getRunnersUp = () => {
+  //   if (state.length > 0) {
+  //     const runnersUp = state.filter(x => x.score === state[0].score - 1)
+  //     const backup = state.filter(x => x.score === state[1].score)
 
-      if (runnersUp.length > 0) {
-        return Math.round((0.3 * 2000) / runnersUp.length)
-      }
-      return Math.round((0.3 * 2000) / backup.length)
-    }
-  }
+  //     if (runnersUp.length > 0) {
+  //       return Math.round((0.3 * 2000) / runnersUp.length)
+  //     }
+  //     return Math.round((0.3 * 2000) / backup.length)
+  //   }
+  // }
 
   const trackTeams = () => {
     const filter = state.filter(x => x.email === email)
@@ -122,7 +122,7 @@ const LeaderboardPage = props => {
                 >
                   {state.length} deltagare
                 </Heading>
-                {state[0].score > 1 ? (
+                {state[0].score > 0 ? (
                   <Box
                     color="black"
                     p={2}
@@ -130,15 +130,12 @@ const LeaderboardPage = props => {
                     sx={{ borderRadius: 5 }}
                   >
                     <Heading fontWeight="normal">
+                      <Box>Preliminär utdelning</Box>
                       <Box>
-                        {state[0].score}p{" "}
-                        {state[0].score < 5
-                          ? 0.5 * Math.round((0.7 * 2000) / getWinners())
-                          : Math.round((0.7 * 2000) / getWinners())}{" "}
-                        kr
+                        {state[0].score}p {Math.round(500 / getWinners())} kr
                       </Box>
                     </Heading>
-                    <Heading fontWeight="normal">
+                    {/* <Heading fontWeight="normal">
                       <Box>
                         {state[1].score + 2 === state[0].score
                           ? state[0].score - 2
@@ -149,7 +146,7 @@ const LeaderboardPage = props => {
                           : getRunnersUp()}{" "}
                         kr
                       </Box>
-                    </Heading>
+                    </Heading> */}
                   </Box>
                 ) : (
                   <Box
