@@ -71,7 +71,7 @@ const IndexPage = () => {
                     fontSize={[1, 2]}
                     mx={[2, 3]}
                   >
-                    Spelstopp Lör 23 nov kl 15:00
+                    Spelstopp Tis 26 nov kl 21:00
                   </Heading>
                 </Box>
               </Box>
