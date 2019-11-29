@@ -62,7 +62,7 @@ const LeaderboardPage = props => {
   }, [data])
   const getWinners = () => {
     if (state.length > 0) {
-      // console.log(state.slice(0, 25))
+      //console.log(state.slice(0, 25))
       const winners = state.filter(x => x.score === state[0].score)
       return winners.length
     }
@@ -159,7 +159,7 @@ const LeaderboardPage = props => {
                       <Box>Start</Box>
                     </Heading>
                     <Heading fontWeight="normal">
-                      <Box>Tis 26 nov kl 21:00</Box>
+                      <Box>Lör 30 nov kl 13:00</Box>
                     </Heading>
                   </Box>
                 )}
