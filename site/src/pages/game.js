@@ -240,7 +240,7 @@ const GamePage = () => {
                 <Matches limit={28} attribute="team.index" />
               </Box>
               <Box fontFamily="heading" textAlign="center" fontSize={6} mt={3}>
-                <Text
+                {/* <Text
                   my={2}
                   fontSize={4}
                   sx={{ fontFamily: "heading" }}
@@ -248,13 +248,13 @@ const GamePage = () => {
                 >
                   Spelare
                 </Text>
-                <PlayerList />
-                {/* <Link
+                <PlayerList /> */}
+                <Link
                   style={{ textDecoration: "none", color: "tomato" }}
                   to="/leaderboard"
                 >
-                  Omgång 9 pågår >
-                </Link> */}
+                  Omgång 10 pågår >
+                </Link>
               </Box>
             </Box>
           </motion.div>
