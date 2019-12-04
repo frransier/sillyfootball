@@ -132,7 +132,7 @@ const LeaderboardPage = props => {
                     <Heading fontWeight="normal">
                       <Box>Preliminär utdelning</Box>
                       <Box>
-                        {state[0].score}p {Math.round(500 / getWinners())} kr
+                        {state[0].score}p {Math.round(1000 / getWinners())} kr
                       </Box>
                     </Heading>
                     {/* <Heading fontWeight="normal">
