@@ -82,7 +82,7 @@ const ThanksPage = () => {
                     fontSize={[1, 2]}
                     mx={[2, 3]}
                   >
-                    Tis 3 dec kl 21:00
+                    Lördag 7 december kl 15:30
                   </Heading>
                   <Heading
                     fontWeight="normal"
