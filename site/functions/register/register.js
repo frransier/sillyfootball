@@ -41,9 +41,9 @@ exports.handler = (event, _, callback) => {
         "<html>  " +
         "<body>  " +
         "<h1>  " +
-        "<b> Start <mark>Lördag kl 15:30</mark> </b> " +
+        "<b> Start <mark>Tis kl 21:00</mark> </b> " +
         "</h1> " +
-        "<p>Mönchengladbach - Bayern München<br>  " +
+        "<p>Inter - Barcelona<br>  " +
         "</p>  " +
         "<h2>  " +
         "Ditt lag:" +

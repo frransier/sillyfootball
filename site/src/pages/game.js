@@ -132,7 +132,7 @@ const GamePage = () => {
                     mx={[2, 3]}
                     color="black"
                   >
-                    Spelstopp Lördag 7 december kl 15:30
+                    Spelstopp Tisdag 10 dec kl 21:00
                   </Heading>
                 </Box>
               </Box>
