@@ -253,7 +253,7 @@ const GamePage = () => {
                   style={{ textDecoration: "none", color: "tomato" }}
                   to="/leaderboard"
                 >
-                  Omgång 13 pågår >
+                  Omgång 14 pågår >
                 </Link>
               </Box>
             </Box>
