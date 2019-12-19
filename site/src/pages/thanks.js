@@ -72,7 +72,7 @@ const ThanksPage = () => {
                     textAlign="center"
                     sx={{ fontWeight: "heading", color: "tomato", fontSize: 3 }}
                   >
-                    500 kronor
+                    500 kronor i potten
                   </Heading>
 
                   <Heading
@@ -82,7 +82,7 @@ const ThanksPage = () => {
                     fontSize={[1, 2]}
                     mx={[2, 3]}
                   >
-                    Lördag 14 dec kl 15:30
+                    Lördag 21 dec kl 15:30
                   </Heading>
                   <Heading
                     fontWeight="normal"

@@ -61,7 +61,7 @@ const IndexPage = () => {
                     textAlign="center"
                     sx={{ fontWeight: "heading", fontSize: 3, color: "tomato" }}
                   >
-                    500 kr - gratis!
+                    Vinn 500 kr - gratis att spela!
                   </Heading>
 
                   <Heading
@@ -71,7 +71,7 @@ const IndexPage = () => {
                     fontSize={[1, 2]}
                     mx={[2, 3]}
                   >
-                    Spelstopp Lördag 14 dec kl 15:30
+                    Spelstopp Lördag 21 dec kl 15:30
                   </Heading>
                 </Box>
               </Box>
