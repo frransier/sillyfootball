@@ -26,7 +26,7 @@ module.exports = {
         projectId: "0jt5x7hu",
         dataset: process.env.SANITY_ENV,
         token: process.env.SANITY_TOKEN,
-        watchMode: true,
+        //watchMode: true,
       },
     },
     `gatsby-plugin-react-helmet`,
