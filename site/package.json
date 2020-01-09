@@ -10,6 +10,7 @@
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/client": "^0.147.3",
     "@theme-ui/components": "^0.2.50",
+    "axios": "^0.19.1",
     "gatsby": "^2.18.12",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-manifest": "^2.2.31",
