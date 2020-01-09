@@ -8,7 +8,7 @@ import Footer from "../components/footer"
 import Match from "../components/livescore/match"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
-  projectId: "pqn91l0l",
+  projectId: "0jt5x7hu",
   dataset: "main",
   useCdn: true,
 })
