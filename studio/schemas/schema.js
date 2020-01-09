@@ -1,30 +1,40 @@
-// First, we must import the schema creator
 import createSchema from "part:@sanity/base/schema-creator";
-
-// Then import schema types from any plugins that might expose them
 import schemaTypes from "all:part:@sanity/base/schema-type";
 
-//documents
-import settings from "./documents/settings";
-import players from "./documents/players";
-import teams from "./documents/teams";
-import users from "./documents/users";
+import matchday from "./documents/matchday";
+import player from "./documents/player";
+import team from "./documents/team";
+import user from "./documents/user";
+import news from "./documents/news";
+import tag from "./documents/tag";
+import page from "./documents/page";
 
-//objects
-import logo from "./objects/logo";
+import event from "./objects/event";
+import score from "./objects/score";
+import entry from "./objects/entry";
+import match from "./objects/match";
+import matchTeam from "./objects/matchTeam";
+import matchScore from "./objects/matchScore";
+import season from "./objects/season";
+import blockContent from "./objects/blockContent";
 
-// Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   name: "default",
-  // Then proceed to concatenate our our document type
-  // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
-    /* Your types here! */
-    settings,
-    players,
-    teams,
-    logo,
-
-    users
+    page,
+    tag,
+    news,
+    blockContent,
+    season,
+    matchScore,
+    matchTeam,
+    matchday,
+    player,
+    team,
+    event,
+    score,
+    user,
+    entry,
+    match
   ])
 });

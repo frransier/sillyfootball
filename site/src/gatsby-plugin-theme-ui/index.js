@@ -1,183 +1,137 @@
-import rebass from "@rebass/preset"
-
 export default {
-  ...rebass,
-  //...bootstrap,
-  colors: {
-    text: "#fff",
-    background: "#060606",
-    primary: "#7bed9f",
-    secondary: "#e0f",
-    muted: "#191919",
-    highlight: "#29112c",
-    gray: "#999",
-    purple: "#c0f",
-  },
-  shadows: {
-    card: "0 0 4px rgba(0, 0, 0, 0.125)",
-  },
-  // variants: {
-  //   card: {
-  //     p: 2,
-  //     //bg: "background",
-  //     boxShadow: "card",
-  //     borderRadius: 2,
-  //   },
-  //   badge: {
-  //     display: "inline-block",
-  //     p: 1,
-  //     color: "white",
-  //     bg: "primary",
-  //     borderRadius: 2,
-  //   },
-  // },
+  space: [0, 1, 2, 4, 6, 8, 12, 16, 32, 64, 128, 256, 512],
   fonts: {
-    body: `Yrsa`,
-    heading: "Exo",
-    logo: "Asap",
-    monospace: "Menlo, monospace",
+    body: "Cabin",
+    heading: "Roboto Condensed",
+    display: "Alfa Slab One",
   },
-  fontSizes: [10, 12, 14, 16, 20, 24, 32, 48, 64, 72],
+  fontSizes: [8, 10, 12, 14, 16, 20, 24, 32, 48, 64, 96],
   fontWeights: {
-    thin: 200,
     body: 400,
     heading: 700,
-    display: 900,
+    bold: 700,
   },
   lineHeights: {
     body: 1.5,
-    heading: 1.25,
+    heading: 1.125,
+  },
+  colors: {
+    text: "#212121",
+    background: "#fff",
+    primary: "#FF5252",
+    secondary: "#C7C7C7",
+    muted: "#F7F7F7",
+    dark: "#6C6C6C",
+    modes: {
+      dark: {
+        text: "#F0F0F0",
+        background: "#2F2F2F",
+        primary: "#67FFBF",
+        secondary: "#C7C7C7",
+        muted: "#414141",
+        dark: "#2C2C2C",
+      },
+    },
   },
   buttons: {
     primary: {
-      color: "black",
-      bg: "white",
-      py: 1,
-      px: 2,
+      color: "background",
+      bg: "primary",
+      "&:hover": {
+        bg: "text",
+      },
+    },
+    secondary: {
+      color: "background",
+      bg: "secondary",
     },
   },
-  // },
-  // textStyles: {
-  //   heading: {
-  //     fontFamily: "heading",
-  //     fontWeight: "heading",
-  //     lineHeight: "heading",
-  //   },
-  //   display: {
-  //     variant: "textStyles.heading",
-  //     fontSize: [5, 6],
-  //     fontWeight: "display",
-  //     letterSpacing: "-0.03em",
-  //     mt: 3,
-  //   },
-  // },
-  // styles: {
-  //   Container: {
-  //     p: 3,
-  //     maxWidth: 1024,
-  //   },
-  //   root: {
-  //     fontFamily: "body",
-  //     lineHeight: "body",
-  //     fontWeight: "body",
-  //   },
-  //   h1: {
-  //     variant: "textStyles.display",
-  //   },
-  //   h2: {
-  //     variant: "textStyles.heading",
-  //     fontSize: 5,
-  //   },
-  //   h3: {
-  //     variant: "textStyles.heading",
-  //     fontSize: 4,
-  //   },
-  //   h4: {
-  //     variant: "textStyles.heading",
-  //     fontSize: 3,
-  //   },
-  //   h5: {
-  //     variant: "textStyles.heading",
-  //     fontSize: 2,
-  //   },
-  //   h6: {
-  //     variant: "textStyles.heading",
-  //     fontSize: 1,
-  //   },
-  //   a: {
-  //     color: "primary",
-  //     "&:hover": {
-  //       color: "secondary",
-  //     },
-  //   },
-  //   pre: {
-  //     variant: "prism",
-  //     fontFamily: "monospace",
-  //     fontSize: 1,
-  //     p: 3,
-  //     color: "text",
-  //     bg: "muted",
-  //     overflow: "auto",
-  //     code: {
-  //       color: "inherit",
-  //     },
-  //   },
-  //   code: {
-  //     fontFamily: "monospace",
-  //     color: "secondary",
-  //     fontSize: 1,
-  //   },
-  //   inlineCode: {
-  //     fontFamily: "monospace",
-  //     color: "secondary",
-  //     bg: "muted",
-  //   },
-  //   table: {
-  //     width: "100%",
-  //     my: 4,
-  //     borderCollapse: "separate",
-  //     borderSpacing: 0,
-  //     "th,td": {
-  //       textAlign: "left",
-  //       py: "4px",
-  //       pr: "4px",
-  //       pl: 0,
-  //       borderColor: "muted",
-  //       borderBottomStyle: "solid",
-  //     },
-  //   },
-  //   th: {
-  //     verticalAlign: "bottom",
-  //     borderBottomWidth: "2px",
-  //   },
-  //   td: {
-  //     verticalAlign: "top",
-  //     borderBottomWidth: "1px",
-  //   },
-  //   hr: {
-  //     border: 0,
-  //     borderBottom: "1px solid",
-  //     borderColor: "muted",
-  //   },
-  //   img: {
-  //     maxWidth: "100%",
-  //   },
-  // },
-  // prism: {
-  //   ".comment,.prolog,.doctype,.cdata,.punctuation,.operator,.entity,.url": {
-  //     color: "gray",
-  //   },
-  //   ".comment": {
-  //     fontStyle: "italic",
-  //   },
-  //   ".property,.tag,.boolean,.number,.constant,.symbol,.deleted,.function,.class-name,.regex,.important,.variable": {
-  //     color: "purple",
-  //   },
-  //   ".atrule,.attr-value,.keyword": {
-  //     color: "primary",
-  //   },
-  //   ".selector,.attr-name,.string,.char,.builtin,.inserted": {
-  //     color: "secondary",
-  //   },
-  //},
+  styles: {
+    root: {
+      fontFamily: "body",
+      lineHeight: "body",
+      fontWeight: "body",
+    },
+    h1: {
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
+      fontSize: 5,
+    },
+    h2: {
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
+      fontSize: 4,
+      // pb: 2,
+      // borderBottom: "solid 2px",
+      // borderBottomColor: "primary",
+    },
+    h3: {
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
+      fontSize: 3,
+    },
+    h4: {
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
+      fontSize: 2,
+    },
+    h5: {
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
+      fontSize: 1,
+    },
+    h6: {
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
+      fontSize: 0,
+    },
+    p: {
+      color: "text",
+      fontFamily: "body",
+      fontWeight: "body",
+      lineHeight: "body",
+    },
+    a: {
+      color: "primary",
+    },
+    pre: {
+      fontFamily: "monospace",
+      overflowX: "auto",
+      code: {
+        color: "inherit",
+      },
+    },
+    code: {
+      fontFamily: "monospace",
+      fontSize: "inherit",
+    },
+    table: {
+      width: "100%",
+      borderCollapse: "separate",
+      borderSpacing: 0,
+    },
+    th: {
+      textAlign: "left",
+      borderBottomStyle: "solid",
+    },
+    td: {
+      textAlign: "left",
+      borderBottomStyle: "solid",
+    },
+    img: {
+      maxWidth: "100%",
+    },
+  },
 }

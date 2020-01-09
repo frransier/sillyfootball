@@ -1,11 +1,17 @@
-import React from "react"
-import { Box } from "rebass"
+/**
+ * Layout component that queries for data
+ * with Gatsby's useStaticQuery component
+ *
+ * See: https://www.gatsbyjs.org/docs/use-static-query/
+ */
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 import Header from "./header"
 import { Global, css } from "@emotion/core"
 
 const Layout = ({ children }) => {
   return (
-    <>
+    <div sx={{ mx: "auto", maxWidth: 700 }}>
       <Global
         styles={css`
           html {
@@ -13,11 +19,10 @@ const Layout = ({ children }) => {
           }
         `}
       />
-      <Box mx="auto" maxWidth={960} p={1}>
-        <Header />
-        <main>{children}</main>
-      </Box>
-    </>
+      <Header />
+
+      <div sx={{ width: ["100%"], mx: "auto" }}>{children}</div>
+    </div>
   )
 }
 

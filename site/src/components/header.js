@@ -1,59 +1,71 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 import { Link } from "gatsby"
-import React from "react"
-import { Flex, Heading, Box, Image } from "rebass"
-import header from "../images/logo.png"
-import { motion } from "framer-motion"
+import icon from "../images/icon.svg"
+import iconDark from "../images/icon-dark.svg"
+import { useColorMode } from "theme-ui"
+import { useAuth } from "react-use-auth"
+import { FaUserAlt } from "react-icons/fa"
+import { FiSun } from "react-icons/fi"
+import { IoMdMoon } from "react-icons/io"
 
 const Header = () => {
+  const [colorMode, setColorMode] = useColorMode()
+  const { login } = useAuth()
   return (
-    <Flex width={[1, 4 / 5, 3 / 5]} mx="auto">
-      <Flex mx="auto">
-        <Link style={{ textDecoration: "none" }} to="/">
-          <Flex mx="auto">
-            <motion.div
-              initial={{ scale: 1.4 }}
-              animate={{ scale: 1 }}
-              transition={{
-                duration: 1,
-                stiffness: 200,
-              }}
-            >
-              <Box
-                ml={-1}
-                mr={1}
-                my={2}
-                width={50}
-                height={50}
-                borderRadius={1000}
-              >
-                <Image src={header}></Image>
-              </Box>
-            </motion.div>
-            <Box>
-              <Heading color="black" mt={1} fontSize={7} fontFamily="heading">
-                illyfootball
-              </Heading>
-            </Box>
-          </Flex>
-        </Link>
-      </Flex>
-
-      {/* <Box>
-        <Sheet onRequestClose={() => setOpen(!open)} isOpen={open}>
-          <Link style={{ textDecoration: "none" }} to="/white-paper/">
-            <Heading color="black" fontWeight={1} pt={4} mx={4}>
-              White Paper
-            </Heading>
-          </Link>
-
-          <Link style={{ textDecoration: "none" }} to="/leaderboard/">
-            <Heading color="black" fontWeight={1} mt={2} mx={4}>
-              Leaderboard
-            </Heading>
-          </Link>
-        </Sheet>
-      </Box> */}
-    </Flex>
+    <div
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr 1fr",
+        height: 38,
+        alignItems: "center",
+        justifyItems: "center",
+        zIndex: 1000,
+        bg: "background",
+        position: "sticky",
+        top: 0,
+        pt: 5,
+        pb: 5,
+      }}
+    >
+      <button
+        sx={{
+          bg: "background",
+          color: "primary",
+          border: "none",
+          fontSize: 4,
+          mx: 4,
+        }}
+        aria-label="Color Mode"
+        onClick={() =>
+          setColorMode(colorMode === "default" ? "dark" : "default")
+        }
+      >
+        {colorMode === "default" ? <IoMdMoon></IoMdMoon> : <FiSun></FiSun>}
+      </button>
+      {/* <div sx={{ mx: "auto" }}></div> */}
+      <Link to="/">
+        <img
+          sx={{ height: 40, mx: "auto" }}
+          src={colorMode === "default" ? icon : iconDark}
+          alt="Sillyfootball Logo"
+        />
+      </Link>
+      {/* <div sx={{ mx: "auto" }}></div> */}
+      <button
+        sx={{
+          bg: "background",
+          color: "text",
+          border: "none",
+          fontSize: 4,
+          mx: 4,
+        }}
+        aria-label="Login"
+        onClick={login}
+      >
+        <FaUserAlt></FaUserAlt>
+      </button>
+    </div>
   )
 }
 

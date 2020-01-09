@@ -1,100 +1,122 @@
-import React from "react"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
+import { graphql } from "gatsby"
+import Hero from "../components/index/hero"
+import News from "../components/index/news"
+import Card from "../components/index/card"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
+import { useColorMode } from "theme-ui"
+import fantasy from "../images/fantasy.svg"
+import fantasyDark from "../images/fantasy-dark.svg"
+import { GiMining, GiDiamondHard } from "react-icons/gi"
+import Footer from "../components/footer"
 import Nav from "../components/nav"
-import { Heading, Box, Flex } from "rebass"
-import { motion } from "framer-motion"
-import TextLoop from "react-text-loop"
+const IndexPage = props => {
+  const [colorMode] = useColorMode()
+  const news = mapEdgesToNodes(props.data.news)
 
-const IndexPage = () => {
   return (
     <Layout>
-      <SEO title="Fantasy Football" />
-      <Box width={[1, 4 / 5, 3 / 5]} mx="auto">
-        <Box
-          bg="white"
-          mx="auto"
-          height={200}
-          sx={{
-            borderColor: "black",
-            borderStyle: "solid",
-            borderRadius: "0px 0px 10px 10px",
-            borderWidth: "0px 1px 1px 1px",
-          }}
-        >
-          <Box>
-            <Box
-              width={1 / 2}
-              mx="auto"
-              bg="white"
-              height={50}
-              sx={{
-                borderWidth: "6px",
-                borderColor: "primary",
-                borderStyle: "solid",
-                borderTop: "none",
-                borderRadius: "0px 0px 10px 10px",
-              }}
-            ></Box>
-          </Box>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 1,
+      <SEO title="Fotboll | Nyheter | Fantasy | Livescore" />
+      <Nav />
+      <Hero content={news[0]} />
+      <div
+        sx={{
+          display: "grid",
+          gridTemplateColumns: ["100%", "55% 45%"],
+        }}
+      >
+        <div sx={{ mr: 3 }}>
+          {news.map(
+            (content, index) =>
+              index > 0 && <News key={index} content={content} />
+          )}
+        </div>
 
-              stiffness: 200,
+        <div sx={{ display: "grid", gridTemplateColumns: "100%" }}>
+          <div
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            <Box mx="auto" p={2} width={3 / 4} sx={{ borderRadius: 10 }}>
-              <Box textAlign="center" verticalAlign="center">
-                <Heading
-                  color="black"
-                  textAlign="center"
-                  fontSize={(4, 5)}
-                  sx={{ fontWeight: "normal" }}
-                >
-                  Fantasy Football
-                </Heading>
-                <Box color="black">
-                  <Heading
-                    textAlign="center"
-                    sx={{ fontWeight: "heading", fontSize: 3, color: "tomato" }}
-                  >
-                    Vinn 500 kr - gratis att spela!
-                  </Heading>
-
-                  <Heading
-                    fontWeight="normal"
-                    my={[1, 2]}
-                    textAlign="center"
-                    fontSize={[1, 2]}
-                    mx={[2, 3]}
-                  >
-                    Spelstopp Tors 26 dec kl 13:30
-                  </Heading>
-                </Box>
-              </Box>
-            </Box>
-          </motion.div>
-
-          <Nav />
-        </Box>
-        <Box height="50px"></Box>
-        <Flex color="tomato" mx="auto">
-          <Box fontSize={6} mx="auto">
-            <TextLoop>
-              <Heading fontSize={5}>Gratis att spela</Heading>
-              <Heading fontSize={5}>Cash money på kontot</Heading>
-              <Heading fontSize={5}>Enkelt att lära sig</Heading>
-              <Heading fontSize={5}>Går fort att skapa ett lag</Heading>
-              <Heading fontSize={5}>Ingen registrering</Heading>
-            </TextLoop>
-          </Box>
-        </Flex>
-      </Box>
+            <img
+              sx={{
+                width: 250,
+                height: 35,
+              }}
+              src={colorMode === "default" ? fantasy : fantasyDark}
+              alt="Fantasy Football"
+            />
+          </div>
+          <div
+            sx={{ display: "grid", gridTemplateColumns: "50% 50%", mx: "auto" }}
+          >
+            <Card
+              icon={<GiMining />}
+              title="Easy to learn"
+              body="Välj 5 spelare från 10 matcher. Få 1 poäng per mål/assist."
+              cta="Så funkar det"
+              slug="/white-paper/"
+            />
+            <Card
+              icon={<GiDiamondHard />}
+              title="Hard to master"
+              body="Bli ensam vinnare och ta hem 500 friska kronor."
+              cta="Spela nu"
+              slug="/fantasy/"
+            />
+          </div>
+        </div>
+      </div>
+      <Footer />
     </Layout>
   )
 }
 
 export default IndexPage
+
+export const query = graphql`
+  query IndexPageQuery {
+    news: allSanityNews {
+      edges {
+        node {
+          _createdAt
+          title
+          intro
+          tags {
+            title
+            slug {
+              current
+            }
+          }
+          slug {
+            current
+          }
+          image {
+            asset {
+              fluid(maxWidth: 700) {
+                ...GatsbySanityImageFluid
+              }
+            }
+          }
+          thumbnail: image {
+            asset {
+              fixed(width: 110, height: 80) {
+                ...GatsbySanityImageFixed
+              }
+            }
+          }
+        }
+      }
+    }
+    matchday: sanityMatchday(status: { eq: "current" }) {
+      start
+      prize
+      jackpot
+    }
+  }
+`

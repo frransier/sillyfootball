@@ -5,15 +5,14 @@
   },
   "api": {
     "projectId": "0jt5x7hu",
-    "dataset": "even"
+    "dataset": "main"
   },
   "plugins": [
     "@sanity/base",
     "@sanity/components",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/desk-tool",
-    "nyancat-spinner"
+    "@sanity/desk-tool"
   ],
   "parts": [
     {

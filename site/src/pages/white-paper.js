@@ -1,93 +1,68 @@
-import React from "react"
-import { Box, Text, Heading, Button } from "rebass"
-import { Link } from "gatsby"
+/** @jsx jsx */
+import { jsx, Styled, useColorMode } from "theme-ui"
+import BlockContent from "@sanity/block-content-to-react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { motion } from "framer-motion"
+import { graphql } from "gatsby"
+import { serializers } from "../utils/serializers"
 import Nav from "../components/nav"
+import Footer from "../components/footer"
+import { Link } from "gatsby"
+import icon from "../images/icon.svg"
+import iconDark from "../images/icon-dark.svg"
 
-const WhitePaperPage = () => (
-  <Layout>
-    <SEO title="White paper" />
-    <Nav />
+const ManifestoPage = ({ data }) => {
+  const [colorMode] = useColorMode()
 
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{
-        duration: 1,
-        stiffness: 200,
-      }}
-    >
-      <Box width={[1, 4 / 5, 3 / 5]} mx="auto">
-        <Heading m={3} fontWeight="heading">
-          Fantasy football ska vara enkelt
-        </Heading>
-        <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
-          Alla som har spelat Drömelvan eller Fantasy PL vet att fantasy
-          football kan vara krångligt och tidskrävande. Det tar tid att ta ut
-          sin elva, poängsystemet är jobbigt att lära sig och man tvingas välja
-          spelare från bonkgäng för att få plats med sina stjärnor.
-        </Text>
-        <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
-          Sillyfootball vill ändra på det. Vi tror att fantasy football är som
-          roligast när det är enkelt. Det ska gå fort att skapa sitt lag och det
-          ska gå fort att veta om man har vunnit. Det ska vara enkelt att förstå
-          när man får poäng och man ska ha full frihet att ta ut de spelare man
-          tror på.
-        </Text>
-        <Heading m={3} fontWeight="heading">
-          Reglerna är enkla
-        </Heading>
-        <Text sx={{ fontFamily: "body", lineHeight: "body" }} mt={3} ml={3}>
-          - Välj 5 spelare
-        </Text>
-        <Text sx={{ fontFamily: "body", lineHeight: "body" }} ml={3}>
-          - Få 1 poäng per mål eller assist
-        </Text>
-        <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
-          En omgång består av 12 matcher från Premier League, La Liga, Serie A
-          och Bundesliga och pågår från lördag till söndag varje helg. De
-          deltagare som samlar ihop flest poäng delar på prispotten.
-        </Text>
-        <Heading m={3} fontWeight="heading">
-          Lätt att lära sig, svårt att bemästra
-        </Heading>
-        <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
-          Din uppgift som deltagare är både enkel och svår: välj de 5 spelarna
-          som du tror gör flest mål och assist under omgången. Om många
-          deltagare vinner blir utdelningen lägre, om du är ensam vinnare vinner
-          du stort.
-        </Text>
+  return (
+    <Layout>
+      <SEO title="Profile" />
+      <Nav />
+      <div
+        sx={{
+          display: "grid",
+          alignItems: "center",
+          justifyItems: "center",
+          mx: 5,
+          my: 5,
+        }}
+      >
+        <img
+          sx={{ width: ["30%", "20%"] }}
+          src={colorMode === "default" ? icon : iconDark}
+          alt="Sillyfootball Logo"
+        />
+        <Styled.h1
+          sx={{ borderBottom: "solid 2px", borderBottomColor: "primary" }}
+        >
+          Sillyfootball Fantasy Football
+        </Styled.h1>
+        <BlockContent blocks={data.page._rawBody} serializers={serializers} />
+        <Link to="/fantasy/" style={{ textDecoration: "none" }}>
+          <Styled.h1
+            sx={{
+              color: "text",
+              borderBottom: "solid 3px",
+              borderBottomColor: "primary",
+              fontSize: 7,
+            }}
+          >
+            Spela
+          </Styled.h1>
+        </Link>
+      </div>
+      <Footer />
+    </Layout>
+  )
+}
+export default ManifestoPage
 
-        <Heading m={3} fontWeight="heading">
-          Gratis
-        </Heading>
-        <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
-          Sillyfootball är helt gratis att spela. Varje vecka kan du vara med
-          och tävla om minst 500kr. Allt du behöver göra är att välja 5 spelare
-          och lämna in ditt lag innan spelstopp på lördagar.
-        </Text>
-        <Heading m={3} fontWeight="heading">
-          Utdelning
-        </Heading>
-        <Text sx={{ fontFamily: "body", lineHeight: "body" }} m={3}>
-          Prispotten är som standard 500 kronor och fördelas jämnt mellan de
-          deltagarna som får högst poäng. Om ingen samlar ihop minst 5p flyttas
-          potten till nästa omgång som Jackpot.
-        </Text>
-        <Box textAlign="center" my={4}>
-          <Link to="/game/">
-            <Button mx={1} fontSize={[5, 6]} bg="primary">
-              <Heading fontWeight="heading" color="black">
-                Spela nu
-              </Heading>
-            </Button>
-          </Link>
-        </Box>
-      </Box>
-    </motion.div>
-  </Layout>
-)
-
-export default WhitePaperPage
+export const query = graphql`
+  query ManifestoQuery {
+    page: sanityPage(slug: { current: { eq: "white-paper" } }) {
+      _rawBody
+      title
+      intro
+    }
+  }
+`

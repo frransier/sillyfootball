@@ -9,7 +9,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-import logo from "../images/logo.jpg"
 
 function SEO({ description, lang, meta, title }) {
   const { site } = useStaticQuery(
@@ -34,15 +33,15 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={`${site.siteMetadata.title} | %s`}
+      titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
-        {
-          property: `og:title`,
-          content: title,
-        },
         {
           name: `description`,
           content: metaDescription,
+        },
+        {
+          property: `og:title`,
+          content: title,
         },
         {
           property: `og:description`,
@@ -51,10 +50,6 @@ function SEO({ description, lang, meta, title }) {
         {
           property: `og:type`,
           content: `website`,
-        },
-        {
-          property: `og:image`,
-          content: `https://www.sillyfootball.se${logo}`,
         },
         {
           name: `twitter:card`,
@@ -66,15 +61,11 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:title`,
-          content: site.siteMetadata.title,
-        },
-        {
-          name: `twitter:image`,
-          content: `https://www.sillyfootball.se${logo}`,
+          content: title,
         },
         {
           name: `twitter:description`,
-          content: `Ett superenkelt och roligt fantasy football-spel`,
+          content: metaDescription,
         },
       ].concat(meta)}
     />
