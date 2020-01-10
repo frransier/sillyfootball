@@ -14,7 +14,7 @@ const Card = ({ icon, title, body, cta, slug }) => {
         borderColor: "muted",
         mx: 2,
         my: 7,
-        borderRadius: 8,
+        borderRadius: 4,
       }}
     >
       <div sx={{ fontSize: 7, pt: 6, textAlign: "center" }}>{icon}</div>

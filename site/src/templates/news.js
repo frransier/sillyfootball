@@ -32,11 +32,11 @@ const NewsTemplate = ({ data }) => {
             width: "100%",
             border: "solid 2px",
             borderColor: "muted",
-            borderRadius: 9,
+            borderRadius: 4,
           }}
         >
           <Image
-            sx={{ width: "100%", borderRadius: 8 }}
+            sx={{ width: "100%", borderRadius: 4 }}
             fluid={news.image.asset.fluid}
           />
         </div>

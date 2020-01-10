@@ -3,34 +3,43 @@ import { navigate } from "gatsby"
 import { AuthProvider } from "react-use-auth"
 
 const PlayerStateContext = createContext()
+const UserStateContext = createContext()
 const GameStateContext = createContext()
 const PlayerDispatchContext = createContext()
+const UserDispatchContext = createContext()
 const GameDispatchContext = createContext()
 
 function Provider(props) {
   const [players, playerDispatch] = useReducer(playerReducer, [])
   const [game, gameDispatch] = useReducer(gameReducer, [])
+  const [user, userDispatch] = useReducer(userReducer, [])
   return (
     <AuthProvider
       navigate={navigate}
       auth0_domain="dev-h964wuhp.eu.auth0.com"
       auth0_client_id="OoBQxwqQpTL7KW38wKH0t0bFDwwXvXYs"
     >
-      <PlayerStateContext.Provider value={players}>
-        <PlayerDispatchContext.Provider value={playerDispatch}>
-          <GameStateContext.Provider value={game}>
-            <GameDispatchContext.Provider value={gameDispatch}>
-              {props.children}
-            </GameDispatchContext.Provider>
-          </GameStateContext.Provider>
-        </PlayerDispatchContext.Provider>
-      </PlayerStateContext.Provider>
+      <UserStateContext.Provider value={user}>
+        <UserDispatchContext.Provider value={userDispatch}>
+          <PlayerStateContext.Provider value={players}>
+            <PlayerDispatchContext.Provider value={playerDispatch}>
+              <GameStateContext.Provider value={game}>
+                <GameDispatchContext.Provider value={gameDispatch}>
+                  {props.children}
+                </GameDispatchContext.Provider>
+              </GameStateContext.Provider>
+            </PlayerDispatchContext.Provider>
+          </PlayerStateContext.Provider>
+        </UserDispatchContext.Provider>
+      </UserStateContext.Provider>
     </AuthProvider>
   )
 }
 
 const usePlayerState = () => useContext(PlayerStateContext)
 const useGameState = () => useContext(GameStateContext)
+const useUserState = () => useContext(UserStateContext)
+const useUserDispatch = () => useContext(UserDispatchContext)
 const usePlayerDispatch = () => useContext(PlayerDispatchContext)
 const useGameDispatch = () => useContext(GameDispatchContext)
 
@@ -40,6 +49,8 @@ export {
   usePlayerDispatch,
   useGameState,
   useGameDispatch,
+  useUserState,
+  useUserDispatch,
 }
 
 function playerReducer(state, action) {
@@ -70,6 +81,19 @@ function gameReducer(state, action) {
     case "remove":
       const filter = state.filter(x => x.id !== action.player)
       return filter
+    default:
+      return state
+  }
+}
+
+function userReducer(state, action) {
+  switch (action.type) {
+    case "init":
+      console.log("init")
+      return action.user[0]
+    case "reset":
+      console.log("reset")
+      return state
     default:
       return state
   }

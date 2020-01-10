@@ -8,6 +8,7 @@ import { useAuth } from "react-use-auth"
 import { Input, Spinner } from "@theme-ui/components"
 import { navigate } from "gatsby"
 import axios from "axios"
+import { useUserDispatch } from "../state"
 
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
@@ -20,23 +21,26 @@ const AuthPage = () => {
   const [show, setShow] = useState(false)
   const [name, setName] = useState("")
   const { user, handleAuthentication } = useAuth()
+  const userDispatch = useUserDispatch()
 
   useEffect(() => {
-    const query = `*[_type == "user" && id == $id]`
-    const params = { id: user.sub }
-    client.fetch(query, params).then(x => {
-      if (x && x.length > 0)
-        handleAuthentication({ postLoginRoute: "/account/" })
-      else {
-        setShow(true)
-      }
-    })
+    if (user.sub) {
+      const query = `*[_type == "user" && id == $id]`
+      const params = { id: user.sub }
+      client.fetch(query, params).then(x => {
+        if (x && x.length > 0) {
+          userDispatch({ type: "init", user: x })
+          handleAuthentication({ postLoginRoute: "/account/" })
+        } else {
+          setShow(true)
+        }
+      })
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [user])
   function register(userId, name) {
     const user = { _id: userId, name: name }
-    console.log(user)
 
     axios
       .post("/.netlify/functions/sign-up", { user: user })
