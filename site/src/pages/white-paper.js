@@ -8,8 +8,8 @@ import { serializers } from "../utils/serializers"
 import Nav from "../components/nav"
 import Footer from "../components/footer"
 import { Link } from "gatsby"
-import icon from "../images/icon.svg"
-import iconDark from "../images/icon-dark.svg"
+import icon from "../images/fantasy.svg"
+import iconDark from "../images/fantasy-dark.svg"
 
 const ManifestoPage = ({ data }) => {
   const [colorMode] = useColorMode()
@@ -28,15 +28,11 @@ const ManifestoPage = ({ data }) => {
         }}
       >
         <img
-          sx={{ width: ["30%", "20%"] }}
+          sx={{ width: ["80%", "40%"], mb: 8 }}
           src={colorMode === "default" ? icon : iconDark}
-          alt="Sillyfootball Logo"
+          alt="Fantasy Football"
         />
-        <Styled.h1
-          sx={{ borderBottom: "solid 2px", borderBottomColor: "primary" }}
-        >
-          Sillyfootball Fantasy Football
-        </Styled.h1>
+
         <BlockContent blocks={data.page._rawBody} serializers={serializers} />
         <Link to="/fantasy/" style={{ textDecoration: "none" }}>
           <Styled.h1
