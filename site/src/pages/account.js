@@ -1,15 +1,14 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { graphql, Link } from "gatsby"
+import { graphql, Link, navigate } from "gatsby"
 import { useAuth } from "react-use-auth"
-import { useUserState } from "../state"
+import { useUserState, useUserDispatch } from "../state"
 import { useEffect, useState } from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Entry from "../components/account/entry"
 import Heading from "../components/account/heading"
 import Matchday from "../components/account/matchday"
-import { Label, Input } from "@theme-ui/components"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
@@ -19,36 +18,43 @@ const client = sanityClient({
 
 const AccountPage = ({ data }) => {
   const userState = useUserState()
-  const { logout } = useAuth()
+  const userDispatch = useUserDispatch()
   const [matchdays, setMatchdays] = useState([])
   const scores = [
     ...new Set(data.users.edges.map(x => x.node.season[0].points)),
   ]
 
+  console.log(data.users.edges)
+
   useEffect(() => {
     if (userState._id) {
       const query = `*[_type == "matchday"]{ index,_id, gold, silver, bronze, entries[]{user, players[]->{"fullName": fullName,"name": name, "_id": _id, "scores": scores}, }}`
       client.fetch(query).then(matchdays => {
-        const results = matchdays.map(matchday => {
-          const result = matchday.entries.find(
-            entry => entry.user._ref === userState._id
-          )
-          const id = matchday._id
-          const index = matchday.index
-          const gold = matchday.gold
-          const silver = matchday.silver
-          const bronze = matchday.bronze
+        const results = matchdays
+          .map(matchday => {
+            console.log(matchday)
 
-          if (result)
-            return {
-              entry: result,
-              id: id,
-              index: index,
-              gold: gold,
-              silver: silver,
-              bronze: bronze,
-            }
-        })
+            const result = matchday.entries.find(
+              entry => entry.user._ref === userState._id
+            )
+            const id = matchday._id
+            const index = matchday.index
+            const gold = matchday.gold
+            const silver = matchday.silver
+            const bronze = matchday.bronze
+
+            if (result)
+              return {
+                entry: result,
+                id: id,
+                index: index,
+                gold: gold,
+                silver: silver,
+                bronze: bronze,
+              }
+            else return null
+          })
+          .filter(Boolean)
         setMatchdays(results)
       })
     }
@@ -57,6 +63,10 @@ const AccountPage = ({ data }) => {
   useEffect(() => {
     console.log(matchdays)
   }, [matchdays])
+  function Logout() {
+    userDispatch({ type: "reset" })
+    navigate("/")
+  }
 
   return (
     <Layout>
@@ -64,7 +74,7 @@ const AccountPage = ({ data }) => {
       {userState ? (
         <div>
           <Styled.h1>Välkommen {userState.name}</Styled.h1>
-          <button onClick={logout}>logout</button>
+          <button onClick={() => Logout()}>logout</button>
           <Link to="/fantasy/">Spela</Link>
           <Heading />
           {data.users.edges.map(({ node }, i) => (
@@ -72,6 +82,7 @@ const AccountPage = ({ data }) => {
           ))}
           <Styled.h1>Stats</Styled.h1>
           {matchdays &&
+            matchdays.length > 0 &&
             matchdays.map((matchday, i) => (
               <Matchday
                 matchday={matchday.entry}

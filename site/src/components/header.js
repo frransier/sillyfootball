@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import icon from "../images/icon.svg"
 import iconDark from "../images/icon-dark.svg"
 import { useColorMode } from "theme-ui"
@@ -8,10 +8,20 @@ import { useAuth } from "react-use-auth"
 import { FaUserAlt } from "react-icons/fa"
 import { FiSun } from "react-icons/fi"
 import { IoMdMoon } from "react-icons/io"
+import { useUserState } from "../state"
 
 const Header = () => {
+  const userState = useUserState()
   const [colorMode, setColorMode] = useColorMode()
   const { login } = useAuth()
+
+  function Login() {
+    if (userState.length === 0) {
+      login()
+    } else {
+      navigate("/account/")
+    }
+  }
   return (
     <div
       sx={{
@@ -61,7 +71,7 @@ const Header = () => {
           mx: 4,
         }}
         aria-label="Login"
-        onClick={login}
+        onClick={() => Login()}
       >
         <FaUserAlt></FaUserAlt>
       </button>

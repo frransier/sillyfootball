@@ -2,6 +2,12 @@ import React, { useReducer, useContext, createContext } from "react"
 import { navigate } from "gatsby"
 import { AuthProvider } from "react-use-auth"
 
+var initialUser = []
+typeof window !== "undefined"
+  ? (initialUser =
+      JSON.parse(localStorage.getItem("sillyfootball-user-1")) || [])
+  : (initialUser = [])
+
 const PlayerStateContext = createContext()
 const UserStateContext = createContext()
 const GameStateContext = createContext()
@@ -12,7 +18,7 @@ const GameDispatchContext = createContext()
 function Provider(props) {
   const [players, playerDispatch] = useReducer(playerReducer, [])
   const [game, gameDispatch] = useReducer(gameReducer, [])
-  const [user, userDispatch] = useReducer(userReducer, [])
+  const [user, userDispatch] = useReducer(userReducer, initialUser)
   return (
     <AuthProvider
       navigate={navigate}
@@ -90,10 +96,17 @@ function userReducer(state, action) {
   switch (action.type) {
     case "init":
       console.log("init")
+      console.log(action.user)
+      if (action.user)
+        localStorage.setItem(
+          "sillyfootball-user-1",
+          JSON.stringify(action.user[0])
+        )
       return action.user[0]
     case "reset":
       console.log("reset")
-      return state
+      localStorage.setItem("sillyfootball-user-1", JSON.stringify([]))
+      return []
     default:
       return state
   }
