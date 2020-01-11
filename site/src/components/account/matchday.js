@@ -7,8 +7,6 @@ import { FaStar } from "react-icons/fa"
 import { useUserState } from "../../state"
 
 const Matchday = ({ matchday, id, index, gold, silver, bronze }) => {
-  console.log(gold)
-
   const userState = useUserState()
   const [show, setShow] = useState(false)
   const scores = matchday.players.map(p => {

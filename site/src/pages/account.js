@@ -32,8 +32,6 @@ const AccountPage = ({ data }) => {
       client.fetch(query).then(matchdays => {
         const results = matchdays
           .map(matchday => {
-            console.log(matchday)
-
             const result = matchday.entries.find(
               entry => entry.user._ref === userState._id
             )
@@ -61,9 +59,6 @@ const AccountPage = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  useEffect(() => {
-    console.log(matchdays)
-  }, [matchdays])
   function Logout() {
     userDispatch({ type: "reset" })
     navigate("/")

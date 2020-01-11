@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Sillyfootball`,
-    description: `Senaste fotbollsnyheter, livescore, resultat, transfers och rykten från den europeiska toppfotbollen. Snabbast växande fantasy i Sverige.`,
+    description: `Senaste fotbollsnyheter, livescore, resultat, transfers och rykten från europeisk toppfotboll.`,
     author: `@sillyfootballse`,
   },
   plugins: [
@@ -19,8 +19,6 @@ module.exports = {
       options: {
         projectId: "0jt5x7hu",
         dataset: "main",
-        // token: "",
-        // watchMode: true,
       },
     },
     `gatsby-transformer-sharp`,

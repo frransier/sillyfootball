@@ -3,8 +3,6 @@ import { jsx, Styled } from "theme-ui"
 import { AiTwotoneCrown, AiOutlineMeh } from "react-icons/ai"
 
 const Entry = ({ entry, scores }) => {
-  console.log(entry.season[0].bronze)
-
   return (
     <div
       sx={{

@@ -95,8 +95,6 @@ function gameReducer(state, action) {
 function userReducer(state, action) {
   switch (action.type) {
     case "init":
-      console.log("init")
-      console.log(action.user)
       if (action.user)
         localStorage.setItem(
           "sillyfootball-user-1",
@@ -104,7 +102,6 @@ function userReducer(state, action) {
         )
       return action.user[0]
     case "reset":
-      console.log("reset")
       localStorage.setItem("sillyfootball-user-1", JSON.stringify([]))
       return []
     default:
