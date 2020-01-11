@@ -13,6 +13,7 @@ const Portrait = ({ player }) => {
         bg: "background",
         border: "none",
         mx: [3, 6, 8],
+        cursor: "pointer",
       }}
       aria-label="Player Avatar"
     >
@@ -38,7 +39,7 @@ const Portrait = ({ player }) => {
           sx={{
             fontWeight: "body",
             fontFamily: "heading",
-            fontSize: [2, 3, 4],
+            fontSize: [2, 3],
             py: 2,
             my: 0,
             color: "text",

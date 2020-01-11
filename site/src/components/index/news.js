@@ -12,7 +12,7 @@ const News = ({ content }) => {
         alignItems: "center",
         justifyItems: "center",
         height: 90,
-        width: "98%",
+        width: "99%",
       }}
     >
       <Link

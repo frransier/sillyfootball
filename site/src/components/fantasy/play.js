@@ -41,61 +41,26 @@ const Play = ({ entries }) => {
   ) {
     return (
       <div sx={{ display: "grid", justifyItems: "center" }}>
-        <Styled.h2 sx={{ mb: 2, mt: 7 }}>Fullt lag!</Styled.h2>
+        <Styled.h1 sx={{ mb: 2, mt: 7 }}>
+          Fullt lag{" "}
+          <span role="img" aria-label="Ready">
+            ✔️
+          </span>
+        </Styled.h1>
         <Styled.h3 sx={{ mb: 2, mt: 7 }}>
           Lämna in eller ta bort en spelare för att se spelarlistan igen
         </Styled.h3>
-        <Button text="Lämna in" action="post" />
+        <Button text="Lämna in" action="play" />
       </div>
     )
   }
 
-  return <div>test</div>
-
-  //   return (
-  //     <button
-
-  //       sx={{
-  //         appearance: "none",
-  //         bg: "background",
-  //         border: "none",
-  //         mx: [3, 6, 8],
-  //       }}
-  //       aria-label="Player Avatar"
-  //     >
-  //       <div
-  //         sx={{
-  //           maxWidth: 35,
-  //           mx: "auto",
-  //           py: 2,
-  //         }}
-  //       >
-  //         <Image fluid={player.logo} />
-  //       </div>
-  //       <div
-  //         sx={{
-  //           borderBottom: "solid 3px",
-  //           borderBottomColor: "primary",
-  //           p: 2,
-  //           mt: 4,
-  //           width: [90, 100, 110],
-  //         }}
-  //       >
-  //         <Styled.h4
-  //           sx={{
-  //             fontWeight: "body",
-  //             fontFamily: "heading",
-  //             fontSize: [2, 3, 4],
-  //             py: 2,
-  //             my: 0,
-  //             color: "text",
-  //           }}
-  //         >
-  //           {player.name}
-  //         </Styled.h4>
-  //       </div>
-  //     </button>
-  //   )
+  return (
+    <div>
+      Hmm. Refresha sidan eller kontakta supporten på hello@sillyfootball.se om
+      problemet kvarstår
+    </div>
+  )
 }
 
 export default Play

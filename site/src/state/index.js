@@ -7,6 +7,11 @@ typeof window !== "undefined"
   ? (initialUser =
       JSON.parse(localStorage.getItem("sillyfootball-user-1")) || [])
   : (initialUser = [])
+var initialGame = []
+typeof window !== "undefined"
+  ? (initialGame =
+      JSON.parse(localStorage.getItem("sillyfootball-game-1")) || [])
+  : (initialGame = [])
 
 const PlayerStateContext = createContext()
 const UserStateContext = createContext()
@@ -17,7 +22,7 @@ const GameDispatchContext = createContext()
 
 function Provider(props) {
   const [players, playerDispatch] = useReducer(playerReducer, [])
-  const [game, gameDispatch] = useReducer(gameReducer, [])
+  const [game, gameDispatch] = useReducer(gameReducer, initialGame)
   const [user, userDispatch] = useReducer(userReducer, initialUser)
   return (
     <AuthProvider
@@ -81,12 +86,20 @@ function gameReducer(state, action) {
           team: action.player.team._id,
           logo: action.img,
         }
+        localStorage.setItem(
+          "sillyfootball-game-1",
+          JSON.stringify([...state, player])
+        )
         return [...state, player]
       }
       return state
     case "remove":
       const filter = state.filter(x => x.id !== action.player)
+      localStorage.setItem("sillyfootball-game-1", JSON.stringify(filter))
       return filter
+    case "reset":
+      localStorage.setItem("sillyfootball-game-1", JSON.stringify([]))
+      return []
     default:
       return state
   }

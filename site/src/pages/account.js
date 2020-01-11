@@ -2,7 +2,7 @@
 import { jsx, Styled } from "theme-ui"
 import { graphql, Link, navigate } from "gatsby"
 // import { useAuth } from "react-use-auth"
-import { useUserState, useUserDispatch } from "../state"
+import { useUserState, useUserDispatch, useGameDispatch } from "../state"
 import { useEffect, useState } from "react"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
 import Layout from "../components/layout"
@@ -10,6 +10,8 @@ import SEO from "../components/seo"
 import Entry from "../components/account/entry"
 import Heading from "../components/account/heading"
 import Matchday from "../components/account/matchday"
+import Button from "../components/button"
+import Footer from "../components/footer"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
@@ -20,6 +22,7 @@ const client = sanityClient({
 const AccountPage = ({ data }) => {
   const userState = useUserState()
   const userDispatch = useUserDispatch()
+  const gameDispatch = useGameDispatch()
   const [matchdays, setMatchdays] = useState([])
   const users = mapEdgesToNodes(data.users).sort((a, b) =>
     b.season[0].points > a.season[0].points ? 1 : -1
@@ -61,6 +64,7 @@ const AccountPage = ({ data }) => {
 
   function Logout() {
     userDispatch({ type: "reset" })
+    gameDispatch({ type: "reset" })
     navigate("/")
   }
 
@@ -68,15 +72,67 @@ const AccountPage = ({ data }) => {
     <Layout>
       <SEO title="Account" />
       {userState ? (
-        <div>
-          <Styled.h1>Välkommen {userState.name}</Styled.h1>
-          <button onClick={() => Logout()}>logout</button>
-          <Link to="/fantasy/">Spela</Link>
+        <div sx={{ display: "grid" }}>
+          <div
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              mx: "auto",
+              width: ["100%", "70%"],
+            }}
+          >
+            <Styled.h1>Välkommen {userState.name}</Styled.h1>
+            <div sx={{ mx: "auto" }} />
+            <button
+              sx={{
+                appearance: "none",
+                border: "solid 1px",
+                borderColor: "primary",
+                bg: "background",
+                color: "text",
+                borderRadius: 4,
+                fontFamily: "body",
+              }}
+              onClick={() => Logout()}
+            >
+              Logga ut
+            </button>
+          </div>
+          <div sx={{ mx: "auto" }}>
+            <Button text="Spela" action="fantasy" />
+          </div>
+          <div sx={{ display: "flex", alignItems: "center" }}>
+            <div sx={{ mx: "auto" }}>
+              <Link to="/livescore/" style={{ textDecoration: "none" }}>
+                <Styled.h2
+                  sx={{
+                    borderBottom: "solid 1px",
+                    borderBottomColor: "primary",
+                  }}
+                >
+                  Livescore
+                </Styled.h2>
+              </Link>
+            </div>
+            <div sx={{ mx: "auto" }}>
+              <Link to="/leaderboard/" style={{ textDecoration: "none" }}>
+                <Styled.h2
+                  sx={{
+                    borderBottom: "solid 1px",
+                    borderBottomColor: "primary",
+                  }}
+                >
+                  Leaderboard
+                </Styled.h2>
+              </Link>
+            </div>
+          </div>
           <Heading />
           {users.map((node, i) => (
             <Entry key={i} entry={node} scores={scores} />
           ))}
-          <Styled.h1>Stats</Styled.h1>
+          <Styled.h1 sx={{ mb: 2 }}>Dina stats</Styled.h1>
           {matchdays &&
             matchdays.length > 0 &&
             matchdays.map((matchday, i) => (
@@ -94,6 +150,7 @@ const AccountPage = ({ data }) => {
       ) : (
         <div>hey</div>
       )}
+      <Footer />
     </Layout>
   )
 }
