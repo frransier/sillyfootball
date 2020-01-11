@@ -2,7 +2,6 @@
 import { jsx } from "theme-ui"
 import logo from "../images/sillyfootball.svg"
 import logoDark from "../images/sillyfootball-dark.svg"
-import Nav from "./nav"
 import { useColorMode } from "theme-ui"
 import { FaTwitter, FaFacebook, FaDiscord } from "react-icons/fa"
 
@@ -10,9 +9,9 @@ const Footer = () => {
   const [colorMode] = useColorMode()
   return (
     <div sx={{ my: 7 }}>
-      <div sx={{ width: "70%", mx: "auto" }}>
+      {/* <div sx={{ width: "70%", mx: "auto" }}>
         <Nav></Nav>
-      </div>
+      </div> */}
       <div sx={{ width: "50%", mx: "auto" }}>
         <div
           sx={{
