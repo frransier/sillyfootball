@@ -10,11 +10,6 @@ export default {
       title: "Name"
     },
     {
-      name: "alias",
-      title: "Alias",
-      type: "string"
-    },
-    {
       name: "id",
       title: "Id",
       type: "string"
@@ -28,7 +23,7 @@ export default {
   ],
   preview: {
     select: {
-      name: "alias"
+      name: "name"
     },
     prepare(selection) {
       const { name } = selection;

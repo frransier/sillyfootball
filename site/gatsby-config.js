@@ -17,7 +17,7 @@ module.exports = {
     {
       resolve: "gatsby-source-sanity",
       options: {
-        projectId: "pqn91l0l",
+        projectId: "0jt5x7hu",
         dataset: "main",
         // token: "",
         // watchMode: true,

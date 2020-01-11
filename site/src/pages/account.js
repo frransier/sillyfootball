@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { graphql, Link, navigate } from "gatsby"
-import { useAuth } from "react-use-auth"
+// import { useAuth } from "react-use-auth"
 import { useUserState, useUserDispatch } from "../state"
 import { useEffect, useState } from "react"
+import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Entry from "../components/account/entry"
@@ -20,11 +21,10 @@ const AccountPage = ({ data }) => {
   const userState = useUserState()
   const userDispatch = useUserDispatch()
   const [matchdays, setMatchdays] = useState([])
-  const scores = [
-    ...new Set(data.users.edges.map(x => x.node.season[0].points)),
-  ]
-
-  console.log(data.users.edges)
+  const users = mapEdgesToNodes(data.users).sort((a, b) =>
+    b.season[0].points > a.season[0].points ? 1 : -1
+  )
+  const scores = [...new Set(users.map(x => x.season[0].points))]
 
   useEffect(() => {
     if (userState._id) {
@@ -58,6 +58,7 @@ const AccountPage = ({ data }) => {
         setMatchdays(results)
       })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -77,7 +78,7 @@ const AccountPage = ({ data }) => {
           <button onClick={() => Logout()}>logout</button>
           <Link to="/fantasy/">Spela</Link>
           <Heading />
-          {data.users.edges.map(({ node }, i) => (
+          {users.map((node, i) => (
             <Entry key={i} entry={node} scores={scores} />
           ))}
           <Styled.h1>Stats</Styled.h1>
@@ -110,7 +111,6 @@ export const query = graphql`
       filter: {
         season: { elemMatch: { index: { eq: 1 }, points: { ne: null } } }
       }
-      sort: { fields: season___points, order: ASC }
     ) {
       edges {
         node {

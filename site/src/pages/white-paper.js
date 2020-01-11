@@ -28,7 +28,7 @@ const ManifestoPage = ({ data }) => {
         }}
       >
         <img
-          sx={{ width: ["80%", "40%"], mb: 8 }}
+          sx={{ width: ["90%", "60%"], mb: 6 }}
           src={colorMode === "default" ? icon : iconDark}
           alt="Fantasy Football"
         />
