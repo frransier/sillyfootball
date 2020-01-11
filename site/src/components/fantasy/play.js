@@ -4,11 +4,9 @@ import { useUserState } from "../../state"
 import Button from "../button"
 
 const Play = ({ entries }) => {
-  console.log(entries)
-
   const userState = useUserState()
 
-  if (userState.length === 0) {
+  if (userState && entries && userState.length === 0) {
     return (
       <div sx={{ display: "grid", justifyItems: "center" }}>
         <Styled.h2 sx={{ mb: 2, mt: 7 }}>Logga in för att fortsätta</Styled.h2>
@@ -20,7 +18,12 @@ const Play = ({ entries }) => {
       </div>
     )
   }
-  if (userState.length !== 0 && entries.includes(userState.name)) {
+  if (
+    userState &&
+    entries &&
+    userState.length !== 0 &&
+    entries.includes(userState.name)
+  ) {
     return (
       <div sx={{ display: "grid", justifyItems: "center" }}>
         <Styled.h2 sx={{ mb: 2, mt: 7 }}>
@@ -30,7 +33,12 @@ const Play = ({ entries }) => {
       </div>
     )
   }
-  if (userState.length !== 0 && !entries.includes(userState.name)) {
+  if (
+    userState &&
+    entries &&
+    userState.length !== 0 &&
+    !entries.includes(userState.name)
+  ) {
     return (
       <div sx={{ display: "grid", justifyItems: "center" }}>
         <Styled.h2 sx={{ mb: 2, mt: 7 }}>Fullt lag!</Styled.h2>
@@ -41,6 +49,8 @@ const Play = ({ entries }) => {
       </div>
     )
   }
+
+  return <div>test</div>
 
   //   return (
   //     <button

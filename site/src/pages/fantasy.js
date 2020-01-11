@@ -106,7 +106,7 @@ const FantasyPage = props => {
           <Players players={players} logos={logos} />
         </div>
       ) : (
-        <Play entries={entries} />
+        <Play entries={entries && entries} />
       )}
       {filters && filters.length === 0 && gameState.length < 5 && (
         <Styled.h2
