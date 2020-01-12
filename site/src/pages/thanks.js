@@ -2,10 +2,8 @@
 import { jsx, Styled } from "theme-ui"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { graphql } from "gatsby"
 import Nav from "../components/nav"
 import Footer from "../components/footer"
-import { Link } from "gatsby"
 import Button from "../components/button"
 import { useUserState, useGameDispatch } from "../state"
 import { useEffect } from "react"
@@ -15,7 +13,7 @@ const WhitePaperPage = () => {
   const gameDispatch = useGameDispatch()
   useEffect(() => {
     gameDispatch({ type: "reset" })
-  }, [])
+  }, [gameDispatch])
   return (
     <Layout>
       <SEO title="Profile" />
@@ -29,7 +27,9 @@ const WhitePaperPage = () => {
           my: 5,
         }}
       >
-        <Styled.h1>Tack för att du spelar, {userState.name}</Styled.h1>
+        <Styled.h1>
+          Tack för att du spelar, {userState && userState.name}
+        </Styled.h1>
         <Styled.h2>Sillyfootball är öppet för alla. Bjud in polarna!</Styled.h2>
         <Button text={`${userState.name}`} action="account"></Button>
       </div>

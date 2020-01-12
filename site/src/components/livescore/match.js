@@ -25,7 +25,10 @@ const Match = ({ match }) => {
           borderBottomColor: "muted",
           fontWeight: selected ? "heading" : "body",
         }}
+        role="button"
+        tabIndex="0"
         onClick={() => match.events && setSelected(!selected)}
+        onKeyDown={() => match.events && setSelected(!selected)}
       >
         <div
           sx={{
