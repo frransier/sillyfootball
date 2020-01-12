@@ -13,12 +13,11 @@ const Button = ({ text, action }) => {
       case "account":
         navigate("/account/")
         return
-      case "play":
-        console.log("play")
-
+      case "white-paper":
+        navigate(`/${action}/`)
         return
       case "fantasy":
-        navigate("/fantasy/")
+        navigate(`/${action}/`)
         return
       default:
         break
@@ -27,7 +26,7 @@ const Button = ({ text, action }) => {
   return (
     <button
       sx={{
-        fontSize: 5,
+        fontSize: 4,
         my: 7,
         px: 6,
         py: 4,

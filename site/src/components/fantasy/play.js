@@ -68,7 +68,7 @@ const Play = ({ entries, register }) => {
           }}
           onClick={register}
         >
-          asdf
+          Lämna in
         </button>
       </div>
     )

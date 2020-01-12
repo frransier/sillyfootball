@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 import { graphql } from "gatsby"
 import Hero from "../components/index/hero"
 import News from "../components/index/news"
@@ -21,37 +21,25 @@ const IndexPage = props => {
     <Layout>
       <SEO title="Fotboll | Nyheter | Fantasy | Livescore" />
       <Nav />
-      <Hero content={news[0]} />
       <div
-        sx={{
-          display: "grid",
-          gridTemplateColumns: ["100%", "55% 45%"],
-        }}
+        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
       >
-        <div sx={{ mr: 3 }}>
-          {news.map(
-            (content, index) =>
-              index > 0 && <News key={index} content={content} />
-          )}
-        </div>
-
-        <div sx={{ display: "grid", gridTemplateColumns: "100%" }}>
-          <div
+        <div
+          sx={{
+            display: "grid",
+            width: ["100%", "60%"],
+            alignItems: "center",
+            justifyItems: "center",
+          }}
+        >
+          <img
             sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              width: 250,
+              height: 35,
             }}
-          >
-            <img
-              sx={{
-                width: 250,
-                height: 35,
-              }}
-              src={colorMode === "default" ? fantasy : fantasyDark}
-              alt="Fantasy Football"
-            />
-          </div>
+            src={colorMode === "default" ? fantasy : fantasyDark}
+            alt="Fantasy Football"
+          />
           <div
             sx={{ display: "grid", gridTemplateColumns: "50% 50%", mx: "auto" }}
           >
@@ -60,18 +48,40 @@ const IndexPage = props => {
               title="Easy to learn"
               body="Välj 5 spelare från 10 matcher. Få 1 poäng per mål/assist."
               cta="Så funkar det"
-              slug="/white-paper/"
+              action="white-paper"
             />
             <Card
               icon={<GiDiamondHard />}
               title="Hard to master"
               body="Bli ensam vinnare och ta hem 500 friska kronor."
               cta="Spela nu"
-              slug="/fantasy/"
+              action="fantasy"
             />
           </div>
         </div>
       </div>
+
+      <div
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "100%",
+          alignItems: "center",
+          justifyItems: "center",
+          mx: "auto",
+        }}
+      >
+        <Styled.h1
+          sx={{ borderBottom: "solid 1px", borderBottomColor: "primary" }}
+        >
+          Fotbollsnyheter
+        </Styled.h1>
+        <div sx={{ mx: "auto" }}>
+          {news.map((content, index) => (
+            <News key={index} content={content} />
+          ))}
+        </div>
+      </div>
+
       <Footer />
     </Layout>
   )

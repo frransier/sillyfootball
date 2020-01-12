@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
+import Button from "../button"
 
-const Card = ({ icon, title, body, cta, slug }) => {
+const Card = ({ icon, title, body, cta, action }) => {
   return (
     <div
       sx={{
@@ -10,10 +11,11 @@ const Card = ({ icon, title, body, cta, slug }) => {
         gridTemplateColumns: "100%",
         justifyItems: "center",
         alignItems: "center",
+
         border: "solid 2px",
         borderColor: "muted",
-        mx: 3,
-        my: [7, 2],
+
+        my: 7,
         borderRadius: 4,
       }}
     >
@@ -30,26 +32,7 @@ const Card = ({ icon, title, body, cta, slug }) => {
       <div sx={{ fontSize: 2, mx: 5, minHeight: [0, 60] }}>
         <Styled.p sx={{ my: 3 }}>{body}</Styled.p>
       </div>
-      <div
-        sx={{
-          display: "grid",
-          justifyContent: "center",
-        }}
-      >
-        <div sx={{ mx: "auto", alignSelf: "end" }}>
-          <Link to={slug} style={{ textDecoration: "none" }}>
-            <Styled.h2
-              sx={{
-                textAlign: "center",
-                borderBottom: "solid 1px",
-                borderBottomColor: "primary",
-              }}
-            >
-              {cta}
-            </Styled.h2>
-          </Link>
-        </div>
-      </div>
+      <Button text={cta} action={action} />
     </div>
   )
 }

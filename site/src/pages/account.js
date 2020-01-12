@@ -173,7 +173,11 @@ const AccountPage = ({ data }) => {
                   />
                 )
               } else {
-                return <Styled.p sx={{ my: 2 }}>Inga träffar</Styled.p>
+                return (
+                  <Styled.p key={i} sx={{ my: 2 }}>
+                    Inga träffar
+                  </Styled.p>
+                )
               }
             })}
         </div>

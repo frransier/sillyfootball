@@ -40,7 +40,7 @@ const Match = ({ match }) => {
           {match.elapsed && selected ? <FaAngleDown /> : <FaAngleRight />}
         </div>
         <div>
-          <div sx={{ textAlign: "right", my: 4 }}>
+          <div sx={{ textAlign: "right", my: 3, fontSize: 3 }}>
             {match.home.team.name || match.home.team.fullName}
           </div>
         </div>
@@ -56,7 +56,9 @@ const Match = ({ match }) => {
             : `${hours}:${minutes}`}
         </div>
         <div>
-          <div>{match.away.team.name || match.away.team.fullName}</div>
+          <div sx={{ fontSize: 3 }}>
+            {match.away.team.name || match.away.team.fullName}
+          </div>
         </div>
         <div sx={{ textAlign: "center" }}>
           {match.status === "ft" ? (
