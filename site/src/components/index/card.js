@@ -12,8 +12,8 @@ const Card = ({ icon, title, body, cta, slug }) => {
         alignItems: "center",
         border: "solid 2px",
         borderColor: "muted",
-        mx: 2,
-        my: 7,
+        mx: 3,
+        my: [7, 2],
         borderRadius: 4,
       }}
     >

@@ -98,7 +98,7 @@ const Matchday = ({ matchday, id, index, gold, silver, bronze }) => {
                 const points = { goals: goals, assists: assists }
                 return points
               }
-              return
+              return null
             })
             .filter(Boolean)
           return (

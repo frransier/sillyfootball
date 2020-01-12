@@ -100,34 +100,36 @@ const AccountPage = ({ data }) => {
               Logga ut
             </button>
           </div>
-          <div sx={{ mx: "auto" }}>
-            <Button text="Spela" action="fantasy" />
-          </div>
-          <div sx={{ display: "flex", alignItems: "center" }}>
-            <div sx={{ mx: "auto" }}>
+          <div sx={{ display: "flex", width: ["100%", "70%"], mx: "auto" }}>
+            <div sx={{}}>
               <Link to="/livescore/" style={{ textDecoration: "none" }}>
                 <Styled.h2
                   sx={{
                     borderBottom: "solid 1px",
                     borderBottomColor: "primary",
+                    my: 1,
                   }}
                 >
                   Livescore
                 </Styled.h2>
               </Link>
             </div>
-            <div sx={{ mx: "auto" }}>
+            <div sx={{ mx: 7 }}>
               <Link to="/leaderboard/" style={{ textDecoration: "none" }}>
                 <Styled.h2
                   sx={{
                     borderBottom: "solid 1px",
                     borderBottomColor: "primary",
+                    my: 1,
                   }}
                 >
                   Leaderboard
                 </Styled.h2>
               </Link>
             </div>
+          </div>
+          <div sx={{ mx: "auto", my: 7 }}>
+            <Button text="Spela" action="fantasy" />
           </div>
           <Heading />
           {users.map((node, i) => (
@@ -149,7 +151,10 @@ const AccountPage = ({ data }) => {
             ))}
         </div>
       ) : (
-        <div>hey</div>
+        <div>
+          Hmm. Nånting är fel. Prova att refresh:a sidan eller logga in igen. Om
+          problemet kvarstår kontakta hello@sillyfootball.se{" "}
+        </div>
       )}
       <Footer />
     </Layout>
