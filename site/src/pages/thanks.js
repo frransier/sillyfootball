@@ -31,7 +31,7 @@ const WhitePaperPage = () => {
           Tack för att du spelar, {userState && userState.name}
         </Styled.h1>
         <Styled.h2>Sillyfootball är öppet för alla. Bjud in polarna!</Styled.h2>
-        <Button text={`${userState.name}`} action="account"></Button>
+        <Button text={`${userState && userState.name}`} action="account" />
       </div>
       <Footer />
     </Layout>
