@@ -3,7 +3,7 @@ import { jsx, Styled } from "theme-ui"
 import { useUserState } from "../../state"
 import Button from "../button"
 
-const Play = ({ entries }) => {
+const Play = ({ entries, register }) => {
   const userState = useUserState()
 
   if (userState && entries && userState.length === 0) {
@@ -50,7 +50,26 @@ const Play = ({ entries }) => {
         <Styled.h3 sx={{ mb: 2, mt: 7 }}>
           Lämna in eller ta bort en spelare för att se spelarlistan igen
         </Styled.h3>
-        <Button text="Lämna in" action="play" />
+        <button
+          sx={{
+            fontSize: 5,
+            my: 7,
+            px: 6,
+            py: 4,
+            bg: "background",
+            border: "solid 1px",
+            borderColor: "primary",
+            color: "text",
+            borderRadius: 4,
+            fontFamily: "heading",
+            fontWeight: "heading",
+            appearance: "none",
+            cursor: "pointer",
+          }}
+          onClick={register}
+        >
+          asdf
+        </button>
       </div>
     )
   }

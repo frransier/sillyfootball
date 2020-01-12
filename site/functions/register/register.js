@@ -1,140 +1,40 @@
-const short = require("short-uuid")
+const nanoid = require("nanoid")
 const sanityClient = require("@sanity/client")
-const Intercom = require("intercom-client")
 const sanity = sanityClient({
   projectId: "0jt5x7hu",
-  dataset: process.env.SANITY_ENV,
-  token: process.env.SANITY_WRITE_TOKEN,
+  dataset: "main",
+  token:
+    "skyWdtvEER4gzvlIRY3aX9iK7Zt6zpa4OjD4q6Sv9X2Vq1RW734doH8aaAs9sGpqkWGyaCdmBx4sDP5SVF40V5FBWv9jYtQBHKQ0Sk38KbUbuHhN9qTU6gDsENy4iXuEaDYdtvoHF7FZ2YXN06DGJEAgiZTxjWsdO6FEyrDFCojjBtOJxHBm",
   useCdn: false,
 })
-
-const intercom = new Intercom.Client({ token: process.env.INTERCOM_TOKEN })
 
 exports.handler = (event, _, callback) => {
   const body = JSON.parse(event.body)
   const data = body.params
-  console.log("Starting registration for: ", JSON.stringify(data.email))
-  const datum = Math.floor(Date.now() / 1000)
-  const userId = short.generate()
-
+  console.log("Starting registration for: ", JSON.stringify(data.user.name))
   const players = data.squad.map(player => {
-    const p = { _ref: player.id, _key: player.id, _type: "reference" }
+    const p = { _ref: player.id, _type: "reference", _key: nanoid() }
     return p
   })
+  const user = { _ref: data.user.id, _type: "reference" }
 
-  const doc = {
-    _type: "user",
-    email: data.email,
+  const entry = {
+    _type: "entry",
+    _key: nanoid(),
     createdAt: new Date(),
     players: players,
+    user: user,
   }
 
-  const mailToExistingUser = id => {
-    console.log(id)
-
-    const msg = {
-      message_type: "email",
-      subject: "Du är reggad",
-      template: "personal",
-      body:
-        " " +
-        "<html>  " +
-        "<body>  " +
-        "<h1>  " +
-        "<b> Start <mark>Tors kl 13:30</mark> </b> " +
-        "</h1> " +
-        // "<p>Inter - Barcelona<br>  " +
-        // "</p>  " +
-        "<h2>  " +
-        "Ditt lag:" +
-        "</h2>  " +
-        "<ul>  " +
-        `<li>${data.squad[0].name}</li>  ` +
-        `<li>${data.squad[1].name}</li>  ` +
-        `<li>${data.squad[2].name}</li>  ` +
-        `<li>${data.squad[3].name}</li>  ` +
-        `<li>${data.squad[4].name}</li>  ` +
-        "</ul>  " +
-        "<h2>  " +
-        `<a href="https://www.sillyfootball.se/leaderboard/">Följ ditt lag på leaderboarden</a>` +
-        "</body>  " +
-        "</html>",
-      from: {
-        type: "admin",
-        id: 3501419,
-      },
-      to: {
-        type: "user",
-        id: id,
-      },
-    }
-
-    intercom.messages
-      .create(msg)
-      .then(() => {
-        console.log("Sent email to: ", data.email)
-      })
-      .catch(err => console.log(err.body.errors[0]))
-  }
+  const matchday = data.matchday
 
   try {
-    sanity.create(doc)
+    sanity
+      .patch(matchday)
+      .setIfMissing({ entries: [] })
+      .append("entries", [entry])
+      .commit()
     console.log("Player registered in Sanity")
-
-    intercom.users.find({ email: data.email }, function(res) {
-      const body = res.body
-
-      if (body.users.length > 0) {
-        mailToExistingUser(body.users[0].id)
-        intercom.events
-          .create({
-            event_name: "Team created",
-            created_at: datum,
-            email: data.email,
-            metadata: {
-              player_1: data.squad[0].name,
-              player_2: data.squad[1].name,
-              player_3: data.squad[2].name,
-              player_4: data.squad[3].name,
-              player_5: data.squad[4].name,
-            },
-          })
-          .then(() => {
-            console.log("Team created in Intercom")
-          })
-      } else {
-        intercom.users
-          .create({
-            email: data.email,
-            user_id: userId,
-            custom_attributes: {
-              player_1: data.squad[0].name,
-              player_2: data.squad[1].name,
-              player_3: data.squad[2].name,
-              player_4: data.squad[3].name,
-              player_5: data.squad[4].name,
-            },
-          })
-          .then(() => {
-            intercom.events
-              .create({
-                event_name: "Team created",
-                created_at: datum,
-                email: data.email,
-                metadata: {
-                  player_1: data.squad[0].name,
-                  player_2: data.squad[1].name,
-                  player_3: data.squad[2].name,
-                  player_4: data.squad[3].name,
-                  player_5: data.squad[4].name,
-                },
-              })
-              .then(() => {
-                console.log("User created: ", data.email)
-              })
-          })
-      }
-    })
 
     callback(null, {
       statusCode: 200,

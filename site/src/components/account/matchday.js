@@ -9,11 +9,16 @@ import { useUserState } from "../../state"
 const Matchday = ({ matchday, id, index, gold, silver, bronze }) => {
   const userState = useUserState()
   const [show, setShow] = useState(false)
-  const scores = matchday.players.map(p => {
-    const pt = p.scores.find(q => q.matchday._ref === id) || []
-    return pt
-  })
-  const points = scores.map(x => x.points).reduce((a, b) => a + b, 0)
+  const scores = matchday.players
+    .map(p => {
+      const pt = (p.scores && p.scores.find(q => q.matchday._ref === id)) || []
+      const player = p._id
+      if (pt.length !== 0) return { scores: pt, player: player }
+      return null
+    })
+    .filter(Boolean)
+
+  const points = scores.map(x => x.scores.points).reduce((a, b) => a + b, 0)
 
   return (
     <div
@@ -84,43 +89,56 @@ const Matchday = ({ matchday, id, index, gold, silver, bronze }) => {
         </Styled.h3>
       </div>
       {show &&
-        matchday.players.map((x, i) => (
-          <div
-            key={i}
-            sx={{
-              display: "grid",
-              ml: 6,
-              gridTemplateColumns: "10% 59% 10% 10% 10%",
-              borderBottom: "solid 3px",
-              borderBottomColor: "muted",
-            }}
-          >
+        matchday.players.map((x, i) => {
+          const points = scores
+            .map(y => {
+              if (y.player === x._id) {
+                const goals = y.scores.goals
+                const assists = y.scores.assists
+                const points = { goals: goals, assists: assists }
+                return points
+              }
+              return
+            })
+            .filter(Boolean)
+          return (
             <div
+              key={i}
               sx={{
-                textAlign: "center",
-                fontSize: 2,
-                my: 3,
-                color: "primary",
+                display: "grid",
+                ml: 6,
+                gridTemplateColumns: "10% 59% 10% 10% 10%",
+                borderBottom: "solid 3px",
+                borderBottomColor: "muted",
               }}
             >
-              {scores[i] && (scores[i].goals || scores[i].assists) ? (
-                <FaStar />
-              ) : (
-                ""
-              )}
+              <div
+                sx={{
+                  textAlign: "center",
+                  fontSize: 2,
+                  my: 3,
+                  color: "primary",
+                }}
+              >
+                {points[0] && (points[0].goals || points[0].assists) ? (
+                  <FaStar />
+                ) : (
+                  ""
+                )}
+              </div>
+              <Styled.p sx={{ textAlign: "left", mx: 4, my: 0 }}>
+                {x.name || x.fullName}
+              </Styled.p>
+              <Styled.p sx={{ textAlign: "center", my: 0 }}>
+                {(points[0] && points[0].goals) || ""}
+              </Styled.p>
+              <Styled.p sx={{ textAlign: "center", my: 0 }}>
+                {(points[0] && points[0].assists) || ""}
+              </Styled.p>
+              <div></div>
             </div>
-            <Styled.p sx={{ textAlign: "left", mx: 4, my: 0 }}>
-              {x.name || x.fullName}
-            </Styled.p>
-            <Styled.p sx={{ textAlign: "center", my: 0 }}>
-              {(scores[i] && scores[i].goals) || ""}
-            </Styled.p>
-            <Styled.p sx={{ textAlign: "center", my: 0 }}>
-              {(scores[i] && scores[i].assists) || ""}
-            </Styled.p>
-            <div></div>
-          </div>
-        ))}
+          )
+        })}
     </div>
   )
 }

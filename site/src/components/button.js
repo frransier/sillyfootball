@@ -15,6 +15,7 @@ const Button = ({ text, action }) => {
         return
       case "play":
         console.log("play")
+
         return
       case "fantasy":
         navigate("/fantasy/")

@@ -2,8 +2,9 @@
 import { jsx, Styled } from "theme-ui"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
 import { useEffect, useState } from "react"
-import { usePlayerState, useGameState } from "../state"
-import { graphql, Link } from "gatsby"
+import { usePlayerState, useGameState, useUserState } from "../state"
+import { graphql, Link, navigate } from "gatsby"
+import axios from "axios"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Board from "../components/fantasy/board"
@@ -21,7 +22,9 @@ const client = sanityClient({
 
 const FantasyPage = props => {
   const gameState = useGameState()
+  const userState = useUserState()
   const filters = usePlayerState()
+  const [loading, setLoading] = useState(false)
   const [players, setPlayers] = useState([])
   const [entries, setEntries] = useState([])
   const matches = props.data.matches.edges[0].node.matches
@@ -53,6 +56,28 @@ const FantasyPage = props => {
     const length = players.length + increment
     const slicer = initialState.slice(0, length)
     setPlayers(slicer)
+  }
+  function register() {
+    setLoading(true)
+    const squad =
+      gameState &&
+      gameState.map(player => {
+        const p = { id: player.id, name: player.name }
+        return p
+      })
+    const user = userState && { id: userState._id, name: userState.name }
+    const matchday = props.data.matches.edges[0].node._id
+
+    axios
+      .post("/.netlify/functions/register", {
+        params: { squad, user, matchday },
+      })
+      .then(res => {
+        res.data === "OK" ? navigate("/thanks/") : navigate("/404/")
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   return (
@@ -106,7 +131,8 @@ const FantasyPage = props => {
           <Players players={players} logos={logos} />
         </div>
       ) : (
-        <Play entries={entries && entries} />
+        <Play entries={entries && entries} register={register} />
+        // <button onClick={register}>hej</button>
       )}
       {filters && filters.length === 0 && gameState.length < 5 && (
         <Styled.h2
@@ -134,6 +160,7 @@ export const query = graphql`
     matches: allSanityMatchday {
       edges {
         node {
+          _id
           matches {
             start
             home {

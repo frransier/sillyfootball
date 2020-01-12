@@ -93,6 +93,7 @@ const AccountPage = ({ data }) => {
                 color: "text",
                 borderRadius: 4,
                 fontFamily: "body",
+                p: 3,
               }}
               onClick={() => Logout()}
             >
