@@ -1,15 +1,17 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { useState, useEffect } from "react"
-import { usePlayerState, usePlayerDispatch } from "../../state"
+import { useFilterState, useFilterDispatch } from "../../state"
 
 const weekdays = ["Sön", "Mån", "Tis", "Ons", "Tors", "Fre", "Lör"]
 
-const Match = ({ index, match }) => {
-  const filters = usePlayerState()
-  const playerDispatch = usePlayerDispatch()
+const Match = ({ match }) => {
+  const filters = useFilterState()
+  const filterDispatch = useFilterDispatch()
   const [selected, setSelected] = useState(false)
   const date = new Date(match.start)
+  const minutes = date.getMinutes() === 0 ? "00" : `${date.getMinutes()}`
+  const hours = `${date.getHours()}`
   const weekday = weekdays[date.getDay()]
 
   useEffect(() => {
@@ -18,15 +20,15 @@ const Match = ({ index, match }) => {
   }, [filters, match.home.team._id])
   useEffect(() => {
     return () => {
-      playerDispatch({ type: "reset" })
+      filterDispatch({ type: "reset" })
     }
-  }, [playerDispatch])
+  }, [filterDispatch])
 
   function toggleSelected() {
     if (selected) {
-      playerDispatch({ type: "reset" })
+      filterDispatch({ type: "reset" })
     } else {
-      playerDispatch({
+      filterDispatch({
         type: "filter",
         homeTeamId: match.home.team._id,
         awayTeamId: match.away.team._id,
@@ -69,7 +71,7 @@ const Match = ({ index, match }) => {
         }}
       >
         <div>
-          <div sx={{ fontSize: 2 }}>{match.start.substr(11, 5)}</div>
+          <div sx={{ fontSize: 2 }}>{`${hours}:${minutes}`}</div>
           <div sx={{ fontSize: 1 }}>{weekday}</div>
         </div>
       </td>

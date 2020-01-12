@@ -13,15 +13,15 @@ typeof window !== "undefined"
       JSON.parse(localStorage.getItem("sillyfootball-game-1")) || [])
   : (initialGame = [])
 
-const PlayerStateContext = createContext()
+const FilterStateContext = createContext()
 const UserStateContext = createContext()
 const GameStateContext = createContext()
-const PlayerDispatchContext = createContext()
+const FilterDispatchContext = createContext()
 const UserDispatchContext = createContext()
 const GameDispatchContext = createContext()
 
 function Provider(props) {
-  const [players, playerDispatch] = useReducer(playerReducer, [])
+  const [filters, filterDispatch] = useReducer(filterReducer, [])
   const [game, gameDispatch] = useReducer(gameReducer, initialGame)
   const [user, userDispatch] = useReducer(userReducer, initialUser)
   return (
@@ -32,39 +32,39 @@ function Provider(props) {
     >
       <UserStateContext.Provider value={user}>
         <UserDispatchContext.Provider value={userDispatch}>
-          <PlayerStateContext.Provider value={players}>
-            <PlayerDispatchContext.Provider value={playerDispatch}>
+          <FilterStateContext.Provider value={filters}>
+            <FilterDispatchContext.Provider value={filterDispatch}>
               <GameStateContext.Provider value={game}>
                 <GameDispatchContext.Provider value={gameDispatch}>
                   {props.children}
                 </GameDispatchContext.Provider>
               </GameStateContext.Provider>
-            </PlayerDispatchContext.Provider>
-          </PlayerStateContext.Provider>
+            </FilterDispatchContext.Provider>
+          </FilterStateContext.Provider>
         </UserDispatchContext.Provider>
       </UserStateContext.Provider>
     </AuthProvider>
   )
 }
 
-const usePlayerState = () => useContext(PlayerStateContext)
+const useFilterState = () => useContext(FilterStateContext)
 const useGameState = () => useContext(GameStateContext)
 const useUserState = () => useContext(UserStateContext)
 const useUserDispatch = () => useContext(UserDispatchContext)
-const usePlayerDispatch = () => useContext(PlayerDispatchContext)
+const useFilterDispatch = () => useContext(FilterDispatchContext)
 const useGameDispatch = () => useContext(GameDispatchContext)
 
 export {
   Provider,
-  usePlayerState,
-  usePlayerDispatch,
+  useFilterState,
+  useFilterDispatch,
   useGameState,
   useGameDispatch,
   useUserState,
   useUserDispatch,
 }
 
-function playerReducer(state, action) {
+function filterReducer(state, action) {
   switch (action.type) {
     case "init":
       return action.players

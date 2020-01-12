@@ -1,95 +1,145 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { Box } from "@theme-ui/components"
-import Circle from "./circle"
 import { useState } from "react"
+import { GiSoccerBall } from "react-icons/gi"
+import { IoIosReturnLeft, IoIosReturnRight } from "react-icons/io"
+import { FaAngleDown, FaAngleRight, FaRegCalendarCheck } from "react-icons/fa"
 
 const Match = ({ match }) => {
-  const [selected] = useState(false)
-  return (
-    <div
-      sx={{
-        display: "grid",
-        gridTemplateColumns: "1fr 4fr 2fr 4fr 1fr",
-        alignItems: "center",
+  const [selected, setSelected] = useState(false)
+  const date = new Date(match.start)
+  const minutes = date.getMinutes() === 0 ? "00" : `${date.getMinutes()}`
+  const hours = `${date.getHours()}`
 
-        fontFamily: "body",
-        fontSize: 3,
-        borderBottom: "solid 2px",
-        borderBottomColor: "muted",
-      }}
-    >
-      <div>
-        {match.status && match.status === "ft" ? (
-          <Circle color="red" />
-        ) : match.status ? (
-          <Circle color="#67FFBF" />
-        ) : (
-          <Circle color="background" />
-        )}
-      </div>
-      <div>
-        <div sx={{ textAlign: "right", my: 4 }}>
-          {match.home.team.name || match.home.team.fullName}
-        </div>
-        {selected &&
-          match.events &&
-          match.events
-            .filter(y => y.team._ref === match.home.team.id)
-            .map((x, i) => (
-              <Box
-                key={i}
-                sx={{
-                  textAlign: "right",
-                }}
-              >
-                <Box>
-                  {x.elapsed}' {x.player && x.player.name} ⚽
-                </Box>
-                <Box>{(x.assist && x.assist.name) || `No assist`} ➡</Box>
-              </Box>
-            ))}
-      </div>
+  return (
+    <div>
       <div
         sx={{
-          textAlign: "center",
-          fontWeight: "bold",
-          fontSize: match.status ? 4 : 2,
+          display: "grid",
+          gridTemplateColumns: "10% 30% 20% 30% 10%",
+          alignItems: "center",
+
+          fontFamily: "body",
+          fontSize: 4,
+          borderBottom: "solid 2px",
+          borderBottomColor: "muted",
+          fontWeight: selected ? "heading" : "body",
         }}
+        onClick={() => match.events && setSelected(!selected)}
       >
-        {match.status
-          ? `${match.home.goals || 0} - ${match.away.goals || 0}`
-          : match.start.substr(11, 5)}
+        <div
+          sx={{
+            pt: 3,
+            color: match.elapsed ? "primary" : "muted",
+            textAlign: "center",
+          }}
+        >
+          {match.elapsed && selected ? <FaAngleDown /> : <FaAngleRight />}
+        </div>
+        <div>
+          <div sx={{ textAlign: "right", my: 4 }}>
+            {match.home.team.name || match.home.team.fullName}
+          </div>
+        </div>
+        <div
+          sx={{
+            textAlign: "center",
+            fontWeight: "bold",
+            fontSize: match.status ? 4 : 2,
+          }}
+        >
+          {match.status
+            ? `${match.home.goals || 0} - ${match.away.goals || 0}`
+            : `${hours}:${minutes}`}
+        </div>
+        <div>
+          <div>{match.away.team.name || match.away.team.fullName}</div>
+        </div>
+        <div sx={{ textAlign: "center" }}>
+          {match.status === "ft" ? (
+            <FaRegCalendarCheck />
+          ) : match.status === "ht" ? (
+            match.status
+          ) : match.elapsed ? (
+            match.elapsed + `'`
+          ) : (
+            ``
+          )}
+        </div>
       </div>
-      <div>
-        <div>{match.away.team.name || match.away.team.fullName}</div>
-        {selected &&
-          match.events &&
-          match.events
-            .filter(y => y.team._ref === match.away.team.id)
-            .map((x, i) => (
-              <Box
-                key={i}
+      {selected &&
+        match.events &&
+        match.events.map((x, i) => {
+          const home = x.team._ref === match.home.team.id
+          return (
+            <div key={i}>
+              <div
                 sx={{
-                  textAlign: "right",
+                  display: "grid",
+                  gridTemplateColumns: "10% 30% 20% 30% 10%",
+                  alignItems: "center",
+
+                  fontFamily: "body",
+                  fontSize: 3,
                 }}
               >
-                <Box>
-                  {x.elapsed}' {x.player && x.player.name} ⚽
-                </Box>
-                <Box>{(x.assist && x.assist.name) || `No assist`} ➡</Box>
-              </Box>
-            ))}
-      </div>
-      <div sx={{ textAlign: "center" }}>
-        {match.status === "ft"
-          ? ""
-          : match.status === "ht"
-          ? match.status
-          : match.elapsed
-          ? match.elapsed + `'`
-          : ``}
-      </div>
+                <div sx={{ textAlign: "center" }}>
+                  {home ? `${x.elapsed} '` : ""}
+                </div>
+                <div sx={{ textAlign: "right" }}>
+                  {home ? `${x.player.name || x.player.fullName}` : ""}
+                </div>
+                <div
+                  sx={{
+                    textAlign: "center",
+                    pt: 4,
+                    fontSize: 4,
+                    color: "text",
+                  }}
+                >
+                  <GiSoccerBall />
+                </div>
+                <div sx={{ textAlign: "left" }}>
+                  {home ? `` : `${x.player.name || x.player.fullName}`}
+                </div>
+                <div sx={{ textAlign: "center" }}>
+                  {" "}
+                  {home ? `` : `${x.elapsed} '`}
+                </div>
+              </div>
+              <div
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: "10% 30% 20% 30% 10%",
+                  alignItems: "center",
+
+                  fontFamily: "body",
+                  fontSize: 3,
+                  borderBottom: "solid 2px",
+                  borderBottomColor:
+                    i + 1 === match.events.length ? "primary" : "muted",
+                }}
+              >
+                <div sx={{ textAlign: "center" }}>{""}</div>
+                <div sx={{ textAlign: "right" }}>
+                  {home
+                    ? `${x.assist && (x.assist.name || x.assist.fullName)}`
+                    : ""}
+                </div>
+                <div sx={{ textAlign: "center", pt: 3, fontSize: 5 }}>
+                  {home ? <IoIosReturnLeft /> : <IoIosReturnRight />}
+                </div>
+                <div sx={{ textAlign: "left" }}>
+                  {home
+                    ? ``
+                    : `${(x.assist && (x.assist.name || x.assist.fullName)) ||
+                        "-"}`}
+                </div>
+                <div sx={{ textAlign: "center" }}> </div>
+              </div>
+            </div>
+          )
+        })}
     </div>
   )
 }

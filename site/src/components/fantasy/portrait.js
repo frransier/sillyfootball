@@ -2,53 +2,63 @@
 import { jsx, Styled } from "theme-ui"
 import Image from "gatsby-image"
 import { useGameDispatch } from "../../state"
+import { motion } from "framer-motion"
 
 const Portrait = ({ player }) => {
   const gameDispatch = useGameDispatch()
   return (
-    <button
-      onClick={() => gameDispatch({ type: "remove", player: player.id })}
-      sx={{
-        appearance: "none",
-        bg: "background",
-        border: "none",
-        mx: [3, 6, 8],
-        cursor: "pointer",
+    <motion.div
+      initial={{ y: 50 }}
+      animate={{ y: 0, scale: [1, 1.1, 1] }}
+      transition={{
+        duration: 0.4,
+        stiffness: 200,
       }}
-      aria-label="Player Avatar"
     >
-      <div
+      <button
+        onClick={() => gameDispatch({ type: "remove", player: player.id })}
         sx={{
-          maxWidth: 35,
-          mx: "auto",
-          py: 2,
+          appearance: "none",
+          bg: "background",
+          border: "none",
+          mx: [3, 6, 8],
+          cursor: "pointer",
         }}
+        aria-label="Player Avatar"
       >
-        <Image fluid={player.logo} />
-      </div>
-      <div
-        sx={{
-          borderBottom: "solid 3px",
-          borderBottomColor: "primary",
-          p: 2,
-          mt: 4,
-          width: [90, 100, 110],
-        }}
-      >
-        <Styled.h4
+        <div
           sx={{
-            fontWeight: "body",
-            fontFamily: "heading",
-            fontSize: [2, 3],
+            maxWidth: 35,
+            mx: "auto",
             py: 2,
-            my: 0,
-            color: "text",
           }}
         >
-          {player.name}
-        </Styled.h4>
-      </div>
-    </button>
+          <Image fluid={player.logo} />
+        </div>
+        <div
+          sx={{
+            borderBottom: "solid 3px",
+            borderBottomColor: "primary",
+            p: 2,
+            mt: 4,
+            width: [90, 100, 110],
+          }}
+        >
+          <Styled.h4
+            sx={{
+              fontWeight: "body",
+              fontFamily: "heading",
+              fontSize: [2, 3],
+              py: 2,
+              my: 0,
+              color: "text",
+            }}
+          >
+            {player.name}
+          </Styled.h4>
+        </div>
+      </button>
+    </motion.div>
   )
 }
 

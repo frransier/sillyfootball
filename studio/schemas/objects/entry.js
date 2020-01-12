@@ -15,7 +15,8 @@ export default {
       name: "players",
       type: "array",
       of: [{ type: "reference", to: { type: "player" } }]
-    }
+    },
+    { name: "createdAt", type: "datetime", title: "Created at" }
   ],
   preview: {
     select: {

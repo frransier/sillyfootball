@@ -154,7 +154,7 @@ const Players = ({ players, logos }) => {
               </td>
               <td
                 sx={{
-                  fontSize: selected ? 5 : 4,
+                  fontSize: selected ? 4 : 3,
                   color: selected ? "primary" : "text",
                   pt: 4,
                   borderBottom: selected ? "solid 1px" : "solid 2px",

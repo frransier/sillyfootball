@@ -24,6 +24,7 @@ const AccountPage = ({ data }) => {
   const userDispatch = useUserDispatch()
   const gameDispatch = useGameDispatch()
   const [matchdays, setMatchdays] = useState([])
+  const [currentMatchday, setCurrentMatchday] = useState()
   const users = mapEdgesToNodes(data.users).sort((a, b) =>
     b.season[0].points > a.season[0].points ? 1 : -1
   )
@@ -31,7 +32,7 @@ const AccountPage = ({ data }) => {
 
   useEffect(() => {
     if (userState._id) {
-      const query = `*[_type == "matchday"]{ index,_id, gold, silver, bronze, entries[]{user, players[]->{"fullName": fullName,"name": name, "_id": _id, "scores": scores}, }}`
+      const query = `*[_type == "matchday"]{ status, index, _id, gold, silver, bronze, entries[]{user, players[]->{"fullName": fullName,"name": name, "_id": _id, "scores": scores}, }}`
       client.fetch(query).then(matchdays => {
         const results = matchdays
           .map(matchday => {
@@ -43,6 +44,7 @@ const AccountPage = ({ data }) => {
             const gold = matchday.gold
             const silver = matchday.silver
             const bronze = matchday.bronze
+            const status = matchday.status
 
             if (result)
               return {
@@ -52,10 +54,13 @@ const AccountPage = ({ data }) => {
                 gold: gold,
                 silver: silver,
                 bronze: bronze,
+                status: status,
               }
             else return null
           })
           .filter(Boolean)
+
+        setCurrentMatchday(results.find(x => x.status === "current"))
         setMatchdays(results)
       })
     }
@@ -114,7 +119,7 @@ const AccountPage = ({ data }) => {
                 </Styled.h2>
               </Link>
             </div>
-            <div sx={{ mx: 7 }}>
+            <div sx={{ mx: 7, mb: 6 }}>
               <Link to="/leaderboard/" style={{ textDecoration: "none" }}>
                 <Styled.h2
                   sx={{
@@ -128,27 +133,49 @@ const AccountPage = ({ data }) => {
               </Link>
             </div>
           </div>
-          <div sx={{ mx: "auto", my: 7 }}>
-            <Button text="Spela" action="fantasy" />
+
+          {currentMatchday ? (
+            <Matchday
+              matchday={currentMatchday.entry}
+              id={currentMatchday.id}
+              index={currentMatchday.index}
+              gold={currentMatchday.gold}
+              silver={currentMatchday.silver}
+              bronze={currentMatchday.bronze}
+              current={true}
+            />
+          ) : (
+            <div sx={{ mx: "auto" }}>
+              <Button text="Spela" action="fantasy" />
+            </div>
+          )}
+
+          <div sx={{ mt: 8 }}>
+            <Heading />
           </div>
-          <Heading />
           {users.map((node, i) => (
             <Entry key={i} entry={node} scores={scores} />
           ))}
-          <Styled.h1 sx={{ mb: 2 }}>Dina stats</Styled.h1>
+          <Styled.h1 sx={{ mt: 8 }}>Tidigare omgångar</Styled.h1>
           {matchdays &&
             matchdays.length > 0 &&
-            matchdays.map((matchday, i) => (
-              <Matchday
-                matchday={matchday.entry}
-                id={matchday.id}
-                index={matchday.index}
-                gold={matchday.gold}
-                silver={matchday.silver}
-                bronze={matchday.bronze}
-                key={i}
-              />
-            ))}
+            matchdays.map((matchday, i) => {
+              if (matchday.status !== "current") {
+                return (
+                  <Matchday
+                    matchday={matchday.entry}
+                    id={matchday.id}
+                    index={matchday.index}
+                    gold={matchday.gold}
+                    silver={matchday.silver}
+                    bronze={matchday.bronze}
+                    key={i}
+                  />
+                )
+              } else {
+                return <Styled.p sx={{ my: 2 }}>Inga träffar</Styled.p>
+              }
+            })}
         </div>
       ) : (
         <div>

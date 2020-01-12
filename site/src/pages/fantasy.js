@@ -2,8 +2,9 @@
 import { jsx, Styled } from "theme-ui"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
 import { useEffect, useState } from "react"
-import { usePlayerState, useGameState, useUserState } from "../state"
+import { useFilterState, useGameState, useUserState } from "../state"
 import { graphql, Link, navigate } from "gatsby"
+import { Spinner } from "@theme-ui/components"
 import axios from "axios"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -23,11 +24,11 @@ const client = sanityClient({
 const FantasyPage = props => {
   const gameState = useGameState()
   const userState = useUserState()
-  const filters = usePlayerState()
+  const filters = useFilterState()
   const [loading, setLoading] = useState(false)
   const [players, setPlayers] = useState([])
   const [entries, setEntries] = useState([])
-  const matches = props.data.matches.edges[0].node.matches
+  const matches = props.data.matchday.matches
   const initialState = mapEdgesToNodes(props.data.players)
   const initSlice = initialState.slice(0, 25)
   const logos = mapEdgesToNodes(props.data.logos)
@@ -66,7 +67,7 @@ const FantasyPage = props => {
         return p
       })
     const user = userState && { id: userState._id, name: userState.name }
-    const matchday = props.data.matches.edges[0].node._id
+    const matchday = props.data.matchday._id
 
     axios
       .post("/.netlify/functions/register", {
@@ -84,46 +85,60 @@ const FantasyPage = props => {
     <Layout>
       <SEO title="Fantasy" />
       <Nav />
-      <div
-        sx={{
-          display: "grid",
-          alignItems: "center",
-          justifyContent: "center",
-          gridTemplateColumns: "50% 50%",
-        }}
-      >
+      {loading ? (
         <div
           sx={{
-            mx: "auto",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            my: 8,
           }}
         >
-          <Link to="/white-paper/" style={{ textDecoration: "none" }}>
-            <Styled.h2
-              sx={{
-                textAlign: "center",
-                borderBottom: "solid 1px",
-                borderBottomColor: "primary",
-              }}
-            >
-              Så funkar det
-            </Styled.h2>
-          </Link>
+          <Spinner size={60} />
         </div>
+      ) : (
+        <div
+          sx={{
+            display: "grid",
+            alignItems: "center",
+            justifyContent: "center",
+            gridTemplateColumns: "50% 50%",
+          }}
+        >
+          <div
+            sx={{
+              mx: "auto",
+            }}
+          >
+            <Link to="/white-paper/" style={{ textDecoration: "none" }}>
+              <Styled.h2
+                sx={{
+                  textAlign: "center",
+                  borderBottom: "solid 1px",
+                  borderBottomColor: "primary",
+                }}
+              >
+                Så funkar det
+              </Styled.h2>
+            </Link>
+          </div>
 
-        <div sx={{ mx: "auto" }}>
-          <Link to="/leaderboard/" style={{ textDecoration: "none" }}>
-            <Styled.h2
-              sx={{
-                textAlign: "center",
-                borderBottom: "solid 1px",
-                borderBottomColor: "primary",
-              }}
-            >
-              Leaderboard
-            </Styled.h2>
-          </Link>
+          <div sx={{ mx: "auto" }}>
+            <Link to="/leaderboard/" style={{ textDecoration: "none" }}>
+              <Styled.h2
+                sx={{
+                  textAlign: "center",
+                  borderBottom: "solid 1px",
+                  borderBottomColor: "primary",
+                }}
+              >
+                Leaderboard
+              </Styled.h2>
+            </Link>
+          </div>
         </div>
-      </div>
+      )}
+
       <Board />
       {gameState && gameState.length < 5 ? (
         <div>
@@ -157,26 +172,22 @@ export default FantasyPage
 
 export const query = graphql`
   query MatchesQuery {
-    matches: allSanityMatchday {
-      edges {
-        node {
-          _id
-          matches {
-            start
-            home {
-              team {
-                _id
-                name
-                fullName
-              }
-            }
-            away {
-              team {
-                _id
-                name
-                fullName
-              }
-            }
+    matchday: sanityMatchday(status: { eq: "current" }) {
+      _id
+      matches {
+        start
+        home {
+          team {
+            _id
+            name
+            fullName
+          }
+        }
+        away {
+          team {
+            _id
+            name
+            fullName
           }
         }
       }

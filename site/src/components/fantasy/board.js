@@ -17,7 +17,16 @@ const Board = () => {
       }}
     >
       {gameState && gameState.length === 0 ? (
-        <div sx={{ display: "grid", gridTemplateRows: "1fr 1fr 1fr" }}>
+        <div
+          sx={{
+            display: "grid",
+            gridTemplateRows: "1fr 1fr 1fr",
+            py: 7,
+            border: "solid 2px",
+            borderColor: "muted",
+            borderRadius: 4,
+          }}
+        >
           <Styled.h1 sx={{ my: 3, mx: "auto" }}>Välj 5 spelare</Styled.h1>
           <Styled.h1 sx={{ my: 3, mx: "auto" }}>Vinn 500 kronor</Styled.h1>
           <div sx={{ mx: "auto", my: 0 }}>

@@ -46,17 +46,8 @@ const query = `*[_type == "matchday" && index == 1]{..., matches[]
 
 const LivescorePage = () => {
   const [matches, setMatches] = useState([])
-  const [updated, setUpdated] = useState([])
   const [dates, setDates] = useState([])
-  useEffect(() => {
-    const newMatches = updated.map((x, i) => {
-      x.away.team = matches[i].away.team
-      x.home.team = matches[i].home.team
-      return x
-    })
-    setMatches(newMatches)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [updated])
+
   useEffect(() => {
     client.fetch(query).then(matches => {
       const start = new Date(matches[0].start)
@@ -82,7 +73,10 @@ const LivescorePage = () => {
       setMatches(matches[0].matches)
     })
     const subscription = client.listen(query).subscribe(updater => {
-      setUpdated(updater.result.matches)
+      setTimeout(async function() {
+        const matches = await client.fetch(query)
+        setMatches(matches[0].matches)
+      }, 15000)
     })
     return () => {
       subscription.unsubscribe()

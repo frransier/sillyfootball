@@ -11,7 +11,7 @@ import { Link } from "gatsby"
 import icon from "../images/fantasy.svg"
 import iconDark from "../images/fantasy-dark.svg"
 
-const ManifestoPage = ({ data }) => {
+const WhitePaperPage = ({ data }) => {
   const [colorMode] = useColorMode()
 
   return (
@@ -51,7 +51,7 @@ const ManifestoPage = ({ data }) => {
     </Layout>
   )
 }
-export default ManifestoPage
+export default WhitePaperPage
 
 export const query = graphql`
   query ManifestoQuery {
