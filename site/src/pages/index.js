@@ -67,13 +67,13 @@ const IndexPage = props => {
           display: "grid",
           gridTemplateColumns: "100%",
           alignItems: "center",
-          justifyItems: "center",
-          mx: "auto",
+          // justifyItems: "center",
+          // mx: "auto",
         }}
       >
         <img
           sx={{
-            width: 250,
+            width: 110,
             height: 14,
             mt: 3,
             mb: 7,
