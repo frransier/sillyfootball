@@ -8,7 +8,7 @@ import { useUserState } from "../../state"
 
 const Matchday = ({ matchday, id, index, gold, silver, bronze, current }) => {
   const userState = useUserState()
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(current ? true : false)
   const scores = matchday.players
     .map(p => {
       const pt = (p.scores && p.scores.find(q => q.matchday._ref === id)) || []

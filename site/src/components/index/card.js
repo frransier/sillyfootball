@@ -11,8 +11,8 @@ const Card = ({ icon, title, body, cta, action }) => {
         justifyItems: "center",
         alignItems: "center",
 
-        border: "solid 2px",
-        borderColor: "muted",
+        // border: "solid 2px",
+        // borderColor: "muted",
         mx: [0, 8],
         my: 7,
         borderRadius: 4,
@@ -30,7 +30,7 @@ const Card = ({ icon, title, body, cta, action }) => {
       >
         {title}
       </Styled.h2>
-      <div sx={{ fontSize: 2, mx: 5, minHeight: [0, 45] }}>
+      <div sx={{ fontSize: 2, ml: 6, mr: 4, minHeight: [0, 45] }}>
         <Styled.p sx={{ my: 3 }}>{body}</Styled.p>
       </div>
       <Button text={cta} action={action} />
