@@ -105,7 +105,7 @@ const FantasyPage = props => {
             display: "grid",
           }}
         >
-          {gameState.length !== 5 ? (
+          {gameState && gameState.length !== 5 ? (
             <div
               sx={{
                 display: "grid",
@@ -167,19 +167,36 @@ const FantasyPage = props => {
         <Play entries={entries && entries} register={register} />
         // <button onClick={register}>hej</button>
       )}
-      {filters && filters.length === 0 && gameState.length < 5 && (
-        <Styled.h2
+      {filters && filters.length === 0 && gameState && gameState.length < 5 && (
+        <div
           sx={{
-            textAlign: "center",
-            width: ["17%", "10%"],
-            mx: "auto",
-            borderBottom: "solid 1px",
-            borderBottomColor: "primary",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
-          onClick={() => showMore(40)}
         >
-          Visa fler
-        </Styled.h2>
+          <button
+            sx={{
+              fontSize: 5,
+              width: 120,
+              my: 7,
+              px: 6,
+              py: 4,
+              bg: "primary",
+              border: "solid 2px",
+              borderColor: "lightgrey",
+              color: "background",
+              borderRadius: 4,
+              fontFamily: "heading",
+              fontWeight: "heading",
+              appearance: "none",
+              cursor: "pointer",
+            }}
+            onClick={() => showMore(40)}
+          >
+            Visa fler
+          </button>
+        </div>
       )}
       <Footer />
     </Layout>
