@@ -159,7 +159,7 @@ const FantasyPage = props => {
 
       <Board />
       {gameState && gameState.length < 5 ? (
-        <div>
+        <div sx={{ display: "grid" }}>
           <Matches matches={matches} />
           <Players players={players} logos={logos} />
         </div>

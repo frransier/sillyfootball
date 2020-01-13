@@ -7,7 +7,13 @@ const Matches = ({ matches }) => {
   const [show, setShow] = useState(true)
   return (
     <div sx={{ display: "grid" }}>
-      <table
+      {show ? (
+        <Match index={2} match={matches[0]} />
+      ) : (
+        matches.map((x, i) => <Match index={i} match={x} key={i} />)
+      )}
+
+      {/* <table
         sx={{
           width: ["100%"],
           borderSpacing: 0,
@@ -39,7 +45,7 @@ const Matches = ({ matches }) => {
             matches.map((x, i) => <Match index={i} match={x} key={i} />)
           )}
         </tbody>
-      </table>
+      </table> */}
       <div sx={{ mx: "auto" }}>
         <Styled.h2
           sx={{

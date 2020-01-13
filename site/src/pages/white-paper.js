@@ -10,6 +10,7 @@ import Footer from "../components/footer"
 import { Link } from "gatsby"
 import icon from "../images/fantasy.svg"
 import iconDark from "../images/fantasy-dark.svg"
+import Button from "../components/button"
 
 const WhitePaperPage = ({ data }) => {
   const [colorMode] = useColorMode()
@@ -34,18 +35,7 @@ const WhitePaperPage = ({ data }) => {
         />
 
         <BlockContent blocks={data.page._rawBody} serializers={serializers} />
-        <Link to="/fantasy/" style={{ textDecoration: "none" }}>
-          <Styled.h1
-            sx={{
-              color: "text",
-              borderBottom: "solid 3px",
-              borderBottomColor: "primary",
-              fontSize: 7,
-            }}
-          >
-            Spela
-          </Styled.h1>
-        </Link>
+        <Button text="Spela" action="fantasy" />
       </div>
       <Footer />
     </Layout>

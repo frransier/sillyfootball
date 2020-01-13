@@ -2,6 +2,7 @@
 import { jsx } from "theme-ui"
 import { useState, useEffect } from "react"
 import { useFilterState, useFilterDispatch } from "../../state"
+import { FaAngleDown, FaAngleRight } from "react-icons/fa"
 
 const weekdays = ["Sön", "Mån", "Tis", "Ons", "Tors", "Fre", "Lör"]
 
@@ -36,59 +37,117 @@ const Match = ({ match }) => {
     }
   }
   return (
-    <tr
+    <button
       sx={{
-        fontWeight: "body",
-        fontFamily: "body",
-        textAlign: "center",
-        borderBottom: "solid 1px",
-        borderBottomColor: "muted",
-        height: 30,
+        border: "none",
+        appearance: "none",
+        bg: "background",
+        height: 28,
+        my: 2,
+        cursor: "pointer",
       }}
       onClick={() => toggleSelected()}
     >
-      <td
+      <div
         sx={{
-          width: "40%",
+          display: "grid",
+          gridTemplateColumns: "10% 30% 20% 30% 10%",
+          alignItems: "center",
           fontSize: 3,
-          textAlign: "right",
-          mx: "auto",
-          fontWeight: selected ? "heading" : "body",
-          borderBottom: selected ? "solid 1px" : "solid 2px",
-          borderBottomColor: selected ? "primary" : "muted",
+          // borderBottom: selected ? "solid 1px" : "none",
+          // borderBottomColor: "primary",
         }}
       >
-        {match.home.team.name || match.home.team.fullName}
-      </td>
-      <td
-        sx={{
-          width: "20%",
-          textAlign: "center",
-          fontFamily: "heading",
-          fontWeight: "heading",
-          borderBottom: selected ? "solid 1px" : "solid 2px",
-          borderBottomColor: selected ? "primary" : "muted",
-        }}
-      >
-        <div>
-          <div sx={{ fontSize: 2 }}>{`${hours}:${minutes}`}</div>
+        <div sx={{ fontFamily: "body", fontWeight: "body", color: "darkgrey" }}>
+          {selected ? <FaAngleDown /> : <FaAngleRight />}
+        </div>
+        <div
+          sx={{
+            fontFamily: "body",
+            fontWeight: selected ? "heading" : "body",
+            textAlign: "right",
+            color: "text",
+          }}
+        >
+          {match.home.team.name || match.home.team.fullName}
+        </div>
+        <div
+          sx={{
+            fontFamily: "body",
+            fontWeight: selected ? "heading" : "body",
+            textAlign: "center",
+            color: "text",
+          }}
+        >
+          <div sx={{ fontSize: 1 }}>{`${hours}:${minutes}`}</div>
           <div sx={{ fontSize: 1 }}>{weekday}</div>
         </div>
-      </td>
-      <td
-        sx={{
-          width: "40%",
-          fontSize: 3,
-          textAlign: "left",
-          mx: "auto",
-          fontWeight: selected ? "heading" : "body",
-          borderBottom: selected ? "solid 1px" : "solid 2px",
-          borderBottomColor: selected ? "primary" : "muted",
-        }}
-      >
-        {match.away.team.name || match.away.team.fullName}
-      </td>
-    </tr>
+        <div
+          sx={{
+            fontFamily: "body",
+            fontWeight: selected ? "heading" : "body",
+            textAlign: "left",
+            color: "text",
+          }}
+        >
+          {match.away.team.name || match.away.team.fullName}
+        </div>
+        <div></div>
+      </div>
+    </button>
+    // <tr
+    //   sx={{
+    //     fontWeight: "body",
+    //     fontFamily: "body",
+    //     textAlign: "center",
+    //     borderBottom: "solid 1px",
+    //     borderBottomColor: "muted",
+    //     height: 30,
+    //   }}
+    //   onClick={() => toggleSelected()}
+    // >
+    //   <td
+    //     sx={{
+    //       width: "40%",
+    //       fontSize: 3,
+    //       textAlign: "right",
+    //       mx: "auto",
+    //       fontWeight: selected ? "heading" : "body",
+    //       borderBottom: selected ? "solid 1px" : "solid 2px",
+    //       borderBottomColor: selected ? "primary" : "muted",
+    //     }}
+    //   >
+    //     {match.home.team.name || match.home.team.fullName}
+    //   </td>
+    //   <td
+    //     sx={{
+    //       width: "20%",
+    //       textAlign: "center",
+    //       fontFamily: "heading",
+    //       fontWeight: "heading",
+    //       borderBottom: selected ? "solid 1px" : "solid 2px",
+    //       borderBottomColor: selected ? "primary" : "muted",
+    //     }}
+    //   >
+    //     <div>
+    //       <div sx={{ fontSize: 2 }}>{`${hours}:${minutes}`}</div>
+    //       <div sx={{ fontSize: 1 }}>{weekday}</div>
+    //     </div>
+    //   </td>
+    //   <td
+    //     sx={{
+    //       width: "40%",
+    //       fontSize: 3,
+    //       textAlign: "left",
+    //       mx: "auto",
+    //       fontWeight: selected ? "heading" : "body",
+    //       borderBottom: selected ? "solid 1px" : "solid 2px",
+    //       borderBottomColor: selected ? "primary" : "muted",
+    //     }}
+    //   >
+    //     {match.away.team.name || match.away.team.fullName}
+    //   </td>
+    // </tr>
   )
 }
 
