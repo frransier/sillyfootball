@@ -27,7 +27,7 @@ const Matchday = ({ matchday, id, index, gold, silver, bronze, current }) => {
         borderBottomColor: show ? "primary" : "muted",
       }}
     >
-      <Styled.h2>{current ? "Denna omgången" : `Omgång ${index}`}</Styled.h2>
+      <Styled.h2>{current ? "Aktuell omgång" : `Omgång ${index}`}</Styled.h2>
       <div
         sx={{
           display: "grid",

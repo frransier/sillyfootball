@@ -74,7 +74,7 @@ const TagTemplate = ({ data }) => {
         <div
           sx={{
             display: "grid",
-            width: ["100%", "60%"],
+            width: "100%",
             alignItems: "center",
             justifyItems: "center",
           }}
@@ -100,7 +100,7 @@ const TagTemplate = ({ data }) => {
             <Card
               icon={<GiDiamondHard />}
               title="Hard to master"
-              body="Bli ensam vinnare och ta hem 500 kronor."
+              body="Bli ensam vinnare och plocka hem 500 kronor."
               cta="Läs mer"
               action="white-paper"
             />

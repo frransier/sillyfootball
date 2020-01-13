@@ -23,12 +23,11 @@ const WhitePaperPage = ({ data }) => {
           display: "grid",
           alignItems: "center",
           justifyItems: "center",
-          mx: 5,
-          my: 5,
+          mx: 3,
         }}
       >
         <img
-          sx={{ width: ["90%", "60%"], mb: 6 }}
+          sx={{ width: 290, height: 35, mb: 6 }}
           src={colorMode === "default" ? icon : iconDark}
           alt="Fantasy Football"
         />
