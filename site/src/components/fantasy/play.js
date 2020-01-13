@@ -41,12 +41,6 @@ const Play = ({ entries, register }) => {
   ) {
     return (
       <div sx={{ display: "grid", justifyItems: "center" }}>
-        <Styled.h1 sx={{ mb: 2, mt: 7 }}>
-          Fullt lag{" "}
-          <span role="img" aria-label="Ready">
-            ✔️
-          </span>
-        </Styled.h1>
         <Styled.h3 sx={{ mb: 2, mt: 7 }}>
           Lämna in eller ta bort en spelare för att se spelarlistan igen
         </Styled.h3>
@@ -56,10 +50,10 @@ const Play = ({ entries, register }) => {
             my: 7,
             px: 6,
             py: 4,
-            bg: "background",
+            bg: "primary",
             border: "solid 1px",
-            borderColor: "primary",
-            color: "text",
+            borderColor: "darkgrey",
+            color: "background",
             borderRadius: 4,
             fontFamily: "heading",
             fontWeight: "heading",

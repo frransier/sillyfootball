@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { Link } from "gatsby"
 import Button from "../button"
 
 const Card = ({ icon, title, body, cta, action }) => {
@@ -19,7 +18,9 @@ const Card = ({ icon, title, body, cta, action }) => {
         borderRadius: 4,
       }}
     >
-      <div sx={{ fontSize: 7, pt: 6, textAlign: "center" }}>{icon}</div>
+      <div sx={{ fontSize: 7, pt: 6, textAlign: "center", color: "darkgrey" }}>
+        {icon}
+      </div>
       <Styled.h2
         sx={{
           textAlign: "center",

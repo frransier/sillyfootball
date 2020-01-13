@@ -91,7 +91,7 @@ const LivescorePage = () => {
         dates.map((d, i) => (
           <div key={i} sx={{ display: "grid" }}>
             <div sx={{ mx: "auto" }}>
-              <Styled.h1
+              <Styled.h2
                 sx={{
                   borderBottom: "solid 2px",
                   borderBottomColor: "primary",
@@ -99,7 +99,7 @@ const LivescorePage = () => {
                 }}
               >
                 {d[0]} {d[1]} {d[2]}
-              </Styled.h1>
+              </Styled.h2>
             </div>
             {matches.map((x, xi) => {
               const xdate = new Date(x.start)

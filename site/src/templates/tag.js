@@ -59,11 +59,7 @@ const TagTemplate = ({ data }) => {
           mx: 3,
         }}
       >
-        <Styled.h1
-          sx={{ borderBottom: "solid 2px", borderBottomColor: "primary" }}
-        >
-          Nyheter {tag.title}
-        </Styled.h1>
+        <Styled.h1>Nyheter {tag.title}</Styled.h1>
         {allNews.edges.map(({ node }, index) => (
           <News key={index} content={node}></News>
         ))}

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx, Styled, useColorMode } from "theme-ui"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
 import { useEffect, useState } from "react"
 import { useFilterState, useGameState, useUserState } from "../state"
@@ -14,6 +14,8 @@ import Players from "../components/fantasy/players"
 import Footer from "../components/footer"
 import Nav from "../components/nav"
 import Play from "../components/fantasy/play"
+import full from "../images/full.svg"
+import fullDark from "../images/full-dark.svg"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
@@ -25,6 +27,7 @@ const FantasyPage = props => {
   const gameState = useGameState()
   const userState = useUserState()
   const filters = useFilterState()
+  const [colorMode] = useColorMode()
   const [loading, setLoading] = useState(false)
   const [players, setPlayers] = useState([])
   const [entries, setEntries] = useState([])
@@ -100,42 +103,57 @@ const FantasyPage = props => {
         <div
           sx={{
             display: "grid",
-            alignItems: "center",
-            justifyContent: "center",
-            gridTemplateColumns: "50% 50%",
           }}
         >
-          <div
-            sx={{
-              mx: "auto",
-            }}
-          >
-            <Link to="/white-paper/" style={{ textDecoration: "none" }}>
-              <Styled.h2
-                sx={{
-                  textAlign: "center",
-                  borderBottom: "solid 1px",
-                  borderBottomColor: "primary",
-                }}
-              >
-                Så funkar det
-              </Styled.h2>
-            </Link>
-          </div>
+          {gameState.length !== 5 ? (
+            <div
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "50% 50%",
+                justifyItems: "center",
+                alignItems: "center",
+              }}
+            >
+              <div sx={{ mx: "auto" }}>
+                <Link to="/white-paper/" style={{ textDecoration: "none" }}>
+                  <Styled.h2
+                    sx={{
+                      textAlign: "center",
+                      borderBottom: "solid 1px",
+                      borderBottomColor: "primary",
+                    }}
+                  >
+                    Så funkar det
+                  </Styled.h2>
+                </Link>
+              </div>
 
-          <div sx={{ mx: "auto" }}>
-            <Link to="/leaderboard/" style={{ textDecoration: "none" }}>
-              <Styled.h2
-                sx={{
-                  textAlign: "center",
-                  borderBottom: "solid 1px",
-                  borderBottomColor: "primary",
-                }}
-              >
-                Leaderboard
-              </Styled.h2>
-            </Link>
-          </div>
+              <div sx={{ alignSelf: "end" }}>
+                <Link to="/leaderboard/" style={{ textDecoration: "none" }}>
+                  <Styled.h2
+                    sx={{
+                      textAlign: "center",
+                      borderBottom: "solid 1px",
+                      borderBottomColor: "primary",
+                    }}
+                  >
+                    Leaderboard
+                  </Styled.h2>
+                </Link>
+              </div>
+            </div>
+          ) : (
+            <img
+              sx={{
+                width: 200,
+                height: 35,
+                mx: "auto",
+                my: 5,
+              }}
+              src={colorMode === "default" ? full : fullDark}
+              alt="Fantasy Football"
+            />
+          )}
         </div>
       )}
 

@@ -26,14 +26,15 @@ const Button = ({ text, action }) => {
   return (
     <button
       sx={{
-        fontSize: 4,
+        fontSize: 5,
+        width: 120,
         my: 7,
         px: 6,
         py: 4,
-        bg: "background",
-        border: "solid 1px",
-        borderColor: "primary",
-        color: "text",
+        bg: "primary",
+        border: "solid 2px",
+        borderColor: "lightgrey",
+        color: "background",
         borderRadius: 4,
         fontFamily: "heading",
         fontWeight: "heading",

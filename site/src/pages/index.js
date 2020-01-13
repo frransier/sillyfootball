@@ -1,7 +1,6 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
-import Hero from "../components/index/hero"
 import News from "../components/index/news"
 import Card from "../components/index/card"
 import Layout from "../components/layout"
@@ -9,6 +8,8 @@ import SEO from "../components/seo"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
 import { useColorMode } from "theme-ui"
 import fantasy from "../images/fantasy.svg"
+import nyheter from "../images/nyheter.svg"
+import nyheterDark from "../images/nyheter-dark.svg"
 import fantasyDark from "../images/fantasy-dark.svg"
 import { GiMining, GiDiamondHard } from "react-icons/gi"
 import Footer from "../components/footer"
@@ -47,15 +48,15 @@ const IndexPage = props => {
               icon={<GiMining />}
               title="Easy to learn"
               body="Välj 5 spelare från 10 matcher. Få 1 poäng per mål/assist."
-              cta="Så funkar det"
-              action="white-paper"
+              cta="Spela"
+              action="fantasy"
             />
             <Card
               icon={<GiDiamondHard />}
               title="Hard to master"
-              body="Bli ensam vinnare och ta hem 500 friska kronor."
-              cta="Spela nu"
-              action="fantasy"
+              body="Bli ensam vinnare och ta hem 500 kronor."
+              cta="Läs mer"
+              action="white-paper"
             />
           </div>
         </div>
@@ -70,11 +71,16 @@ const IndexPage = props => {
           mx: "auto",
         }}
       >
-        <Styled.h1
-          sx={{ borderBottom: "solid 1px", borderBottomColor: "primary" }}
-        >
-          Fotbollsnyheter
-        </Styled.h1>
+        <img
+          sx={{
+            width: 250,
+            height: 14,
+            mt: 3,
+            mb: 7,
+          }}
+          src={colorMode === "default" ? nyheter : nyheterDark}
+          alt="Fantasy Football"
+        />
         <div sx={{ mx: "auto" }}>
           {news.map((content, index) => (
             <News key={index} content={content} />

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx, useColorMode } from "theme-ui"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -7,7 +7,10 @@ import News from "../components/news/news"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
 import Footer from "../components/footer"
 import Nav from "../components/nav"
+import newsImg from "../images/news.svg"
+import newsDark from "../images/news-dark.svg"
 const NewsPage = ({ data }) => {
+  const [colorMode] = useColorMode()
   const news = mapEdgesToNodes(data.news)
   return (
     <Layout>
@@ -21,11 +24,16 @@ const NewsPage = ({ data }) => {
           mx: 3,
         }}
       >
-        <Styled.h1
-          sx={{ borderBottom: "solid 2px", borderBottomColor: "primary" }}
-        >
-          Fotbollsnyheter
-        </Styled.h1>
+        <img
+          sx={{
+            width: 230,
+            height: 40,
+            my: 3,
+          }}
+          src={colorMode === "default" ? newsImg : newsDark}
+          alt="Fantasy Football"
+        />
+
         {news.map((n, index) => (
           <News key={index} content={n}></News>
         ))}
