@@ -1,10 +1,15 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx, Styled, useColorMode } from "theme-ui"
 import { useGameState } from "../../state"
 import Portrait from "./portrait"
+import pick from "../../images/pick.svg"
+import pickDark from "../../images/pick-dark.svg"
+import winDark from "../../images/win-dark.svg"
+import win from "../../images/win.svg"
 
 const Board = () => {
   const gameState = useGameState()
+  const [colorMode] = useColorMode()
 
   return (
     <div
@@ -22,17 +27,32 @@ const Board = () => {
             display: "grid",
             gridTemplateRows: "1fr 1fr 1fr",
             py: 7,
-            border: "solid 2px",
-            borderColor: "muted",
-            borderRadius: 4,
           }}
         >
-          <Styled.h1 sx={{ my: 3, mx: "auto" }}>Välj 5 spelare</Styled.h1>
-          <Styled.h1 sx={{ my: 3, mx: "auto" }}>Vinn 500 kronor</Styled.h1>
+          <img
+            sx={{
+              width: 200,
+              height: 35,
+              mx: "auto",
+              mt: 3,
+            }}
+            src={colorMode === "default" ? pick : pickDark}
+            alt="Fantasy Football"
+          />
+          <img
+            sx={{
+              width: 220,
+              height: 35,
+              mx: "auto",
+            }}
+            src={colorMode === "default" ? win : winDark}
+            alt="Fantasy Football"
+          />
+
           <div sx={{ mx: "auto", my: 0 }}>
             <Styled.h1
               sx={{
-                borderBottom: "solid 1px",
+                borderBottom: "solid 3px",
                 borderBottomColor: "primary",
                 my: 3,
               }}

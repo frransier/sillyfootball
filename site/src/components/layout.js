@@ -11,7 +11,7 @@ import { Global, css } from "@emotion/core"
 
 const Layout = ({ children }) => {
   return (
-    <div sx={{ mx: "auto", maxWidth: 700 }}>
+    <div sx={{ mx: "auto", maxWidth: 500 }}>
       <Global
         styles={css`
           html {

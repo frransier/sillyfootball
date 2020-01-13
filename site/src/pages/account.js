@@ -84,7 +84,7 @@ const AccountPage = ({ data }) => {
               alignItems: "center",
               justifyContent: "center",
               mx: "auto",
-              width: ["100%", "70%"],
+              width: "100%",
             }}
           >
             <Styled.h1>Välkommen {userState.name}</Styled.h1>
@@ -105,7 +105,7 @@ const AccountPage = ({ data }) => {
               Logga ut
             </button>
           </div>
-          <div sx={{ display: "flex", width: ["100%", "70%"], mx: "auto" }}>
+          <div sx={{ display: "flex", mx: "auto", width: "100%" }}>
             <div sx={{}}>
               <Link to="/livescore/" style={{ textDecoration: "none" }}>
                 <Styled.h2
