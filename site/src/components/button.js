@@ -31,7 +31,9 @@ const Button = ({ text, action }) => {
         my: 7,
         px: 6,
         py: 4,
-        bg: "primary",
+        bg: "rgb(255,82,82)",
+        background:
+          "radial-gradient(circle, rgba(255,82,82,1) 0%, rgba(255,82,82,1) 25%, rgba(255,82,82,1) 72%, rgba(230,68,68,1) 100%)",
         border: "solid 2px",
         borderColor: "lightgrey",
         color: "background",

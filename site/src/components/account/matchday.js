@@ -68,6 +68,7 @@ const Matchday = ({ matchday, id, index, gold, silver, bronze, current }) => {
               fontSize: 5,
               display: "flex",
               alignItems: "center",
+              color: "text",
             }}
           >
             <Styled.h2
