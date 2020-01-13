@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import { jsx, Styled, useColorMode } from "theme-ui"
+import { jsx, useColorMode } from "theme-ui"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
 import { useEffect, useState } from "react"
 import { useFilterState, useGameState, useUserState } from "../state"
-import { graphql, Link, navigate } from "gatsby"
+import { graphql, navigate } from "gatsby"
 import { Spinner } from "@theme-ui/components"
 import axios from "axios"
 import Layout from "../components/layout"

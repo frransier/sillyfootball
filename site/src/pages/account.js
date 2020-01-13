@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { graphql, Link, navigate } from "gatsby"
-// import { useAuth } from "react-use-auth"
 import { useUserState, useUserDispatch, useGameDispatch } from "../state"
 import { useEffect, useState } from "react"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
+import { motion } from "framer-motion"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Entry from "../components/account/entry"
@@ -135,19 +135,38 @@ const AccountPage = ({ data }) => {
           </div>
 
           {currentMatchday ? (
-            <Matchday
-              matchday={currentMatchday.entry}
-              id={currentMatchday.id}
-              index={currentMatchday.index}
-              gold={currentMatchday.gold}
-              silver={currentMatchday.silver}
-              bronze={currentMatchday.bronze}
-              current={true}
-            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 0.5, 1] }}
+              transition={{
+                duration: 1,
+                stiffness: 200,
+              }}
+            >
+              <Matchday
+                matchday={currentMatchday.entry}
+                id={currentMatchday.id}
+                index={currentMatchday.index}
+                gold={currentMatchday.gold}
+                silver={currentMatchday.silver}
+                bronze={currentMatchday.bronze}
+                current={true}
+              />
+            </motion.div>
           ) : (
-            <div sx={{ mx: "auto" }}>
-              <Button text="Spela" action="fantasy" />
-            </div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 0.5, 1] }}
+              transition={{
+                delay: 1,
+                duration: 1,
+                stiffness: 200,
+              }}
+            >
+              <div sx={{ mx: "auto" }}>
+                <Button text="Spela" action="fantasy" />
+              </div>
+            </motion.div>
           )}
 
           <div sx={{ mt: 8 }}>
