@@ -35,7 +35,7 @@ const IndexPage = props => {
         >
           <img
             sx={{
-              width: 250,
+              width: 290,
               height: 35,
             }}
             src={colorMode === "default" ? fantasy : fantasyDark}
