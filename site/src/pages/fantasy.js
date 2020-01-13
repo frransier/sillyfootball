@@ -105,44 +105,7 @@ const FantasyPage = props => {
             display: "grid",
           }}
         >
-          {gameState && gameState.length !== 5 ? (
-            <div
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "50% 50%",
-                justifyItems: "center",
-                alignItems: "center",
-              }}
-            >
-              <div sx={{ mx: "auto" }}>
-                <Link to="/white-paper/" style={{ textDecoration: "none" }}>
-                  <Styled.h2
-                    sx={{
-                      textAlign: "center",
-                      borderBottom: "solid 1px",
-                      borderBottomColor: "primary",
-                    }}
-                  >
-                    Så funkar det
-                  </Styled.h2>
-                </Link>
-              </div>
-
-              <div sx={{ alignSelf: "end" }}>
-                <Link to="/leaderboard/" style={{ textDecoration: "none" }}>
-                  <Styled.h2
-                    sx={{
-                      textAlign: "center",
-                      borderBottom: "solid 1px",
-                      borderBottomColor: "primary",
-                    }}
-                  >
-                    Leaderboard
-                  </Styled.h2>
-                </Link>
-              </div>
-            </div>
-          ) : (
+          {gameState && gameState.length !== 5 ? null : (
             <img
               sx={{
                 width: 200,

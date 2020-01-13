@@ -24,7 +24,7 @@ const Nav = () => {
         <img
           sx={{
             width: 70,
-            height: 25,
+            height: 15,
             mx: "auto",
             my: 5,
           }}
@@ -38,7 +38,7 @@ const Nav = () => {
           <img
             sx={{
               width: 90,
-              height: 25,
+              height: 15,
               mx: "auto",
               my: 5,
             }}
@@ -52,7 +52,7 @@ const Nav = () => {
         <img
           sx={{
             width: 70,
-            height: 25,
+            height: 15,
             mx: "auto",
             my: 5,
           }}

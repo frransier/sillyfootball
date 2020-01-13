@@ -6,6 +6,7 @@ import pick from "../../images/pick.svg"
 import pickDark from "../../images/pick-dark.svg"
 import winDark from "../../images/win-dark.svg"
 import win from "../../images/win.svg"
+import { Link } from "gatsby"
 
 const Board = () => {
   const gameState = useGameState()
@@ -14,7 +15,7 @@ const Board = () => {
   return (
     <div
       sx={{
-        height: ["160px", "170px", "180px"],
+        height: ["170px", "180px", "180px"],
         width: ["100%"],
         borderBottom: "solid 2px",
         borderBottomColor: "muted",
@@ -25,25 +26,63 @@ const Board = () => {
         <div
           sx={{
             display: "grid",
-            gridTemplateRows: "1fr 1fr 1fr",
-            py: 7,
+            gridTemplateRows: "20% 30% 30% 20%",
+            alignItems: "center",
+            justifyItems: "center",
           }}
         >
+          <div
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              mb: 6,
+            }}
+          >
+            <div sx={{ mx: 8 }}>
+              <Link to="/white-paper/" style={{ textDecoration: "none" }}>
+                <Styled.h2
+                  sx={{
+                    textAlign: "center",
+                    borderBottom: "solid 1px",
+                    borderBottomColor: "primary",
+                  }}
+                >
+                  Så funkar det
+                </Styled.h2>
+              </Link>
+            </div>
+
+            <div sx={{ mx: 8 }}>
+              <Link to="/leaderboard/" style={{ textDecoration: "none" }}>
+                <Styled.h2
+                  sx={{
+                    textAlign: "center",
+                    borderBottom: "solid 1px",
+                    borderBottomColor: "primary",
+                  }}
+                >
+                  Leaderboard
+                </Styled.h2>
+              </Link>
+            </div>
+          </div>
           <img
             sx={{
-              width: 200,
-              height: 35,
+              width: 250,
+              height: 23,
               mx: "auto",
-              mt: 3,
+              mt: 6,
             }}
             src={colorMode === "default" ? pick : pickDark}
             alt="Fantasy Football"
           />
           <img
             sx={{
-              width: 220,
-              height: 35,
+              width: 250,
+              height: 20,
               mx: "auto",
+              mt: 4,
             }}
             src={colorMode === "default" ? win : winDark}
             alt="Fantasy Football"
