@@ -1,11 +1,14 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { useState } from "react"
-
-import { AiTwotoneCrown, AiOutlineMeh } from "react-icons/ai"
+import { AiOutlineMeh } from "react-icons/ai"
 import { FaStar } from "react-icons/fa"
+import gold from "../../images/gold.svg"
+import silver from "../../images/silver.svg"
+import bronze from "../../images/bronze.svg"
+import { FaAngleDown, FaAngleRight } from "react-icons/fa"
 
-const Entry = ({ x, scores }) => {
+const Entry = ({ x, scores, start }) => {
   const [show, setShow] = useState(false)
 
   return (
@@ -24,17 +27,15 @@ const Entry = ({ x, scores }) => {
       >
         <div sx={{ textAlign: "center", pt: 3, fontSize: 5 }}>
           {x.points === scores[0] ? (
-            <div sx={{ color: "gold" }}>
-              <AiTwotoneCrown />
-            </div>
+            <img
+              sx={{ width: "50%", mx: "auto", my: 5 }}
+              src={gold}
+              alt="Gold"
+            />
           ) : x.points === scores[1] ? (
-            <div sx={{ color: "silver" }}>
-              <AiTwotoneCrown />
-            </div>
+            <img sx={{ width: "50%", mx: "auto" }} src={silver} alt="Silver" />
           ) : x.points === scores[2] ? (
-            <div sx={{ color: "#CD7F32" }}>
-              <AiTwotoneCrown />
-            </div>
+            <img sx={{ width: "50%", mx: "auto" }} src={bronze} alt="Bronze" />
           ) : (
             <AiOutlineMeh />
           )}
@@ -47,9 +48,32 @@ const Entry = ({ x, scores }) => {
             bg: "background",
             cursor: "pointer",
           }}
-          onClick={() => setShow(!show)}
+          onClick={() => (start ? setShow(!show) : setShow(false))}
         >
-          <Styled.h3
+          <div
+            sx={{
+              textAlign: "left",
+              fontSize: 5,
+              display: "flex",
+              alignItems: "center",
+              color: "text",
+            }}
+          >
+            <Styled.h2
+              sx={{
+                textAlign: "left",
+                my: 5,
+                fontSize: 5,
+                fontWeight: show ? "heading" : "body",
+              }}
+            >
+              {x.user.name}
+            </Styled.h2>
+            <div sx={{ color: start ? "text" : "darkgrey", mt: 4 }}>
+              {show ? <FaAngleDown /> : <FaAngleRight />}
+            </div>
+          </div>
+          {/* <Styled.h3
             sx={{
               textAlign: "left",
               mx: 4,
@@ -60,7 +84,7 @@ const Entry = ({ x, scores }) => {
             }}
           >
             {x.user.name}
-          </Styled.h3>
+          </Styled.h3> */}
         </button>
 
         <Styled.p sx={{ textAlign: "center", my: 0, fontSize: 3 }}>

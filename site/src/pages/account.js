@@ -4,7 +4,7 @@ import { graphql, Link, navigate } from "gatsby"
 import { useUserState, useUserDispatch, useGameDispatch } from "../state"
 import { useEffect, useState } from "react"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
-import { motion } from "framer-motion"
+import { FiRefreshCw } from "react-icons/fi"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Entry from "../components/account/entry"
@@ -12,6 +12,7 @@ import Heading from "../components/account/heading"
 import Matchday from "../components/account/matchday"
 import Button from "../components/button"
 import Footer from "../components/footer"
+import { Spinner } from "@theme-ui/components"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
@@ -24,6 +25,7 @@ const AccountPage = ({ data }) => {
   const userDispatch = useUserDispatch()
   const gameDispatch = useGameDispatch()
   const [matchdays, setMatchdays] = useState([])
+  const [loading, setLoading] = useState(true)
   const [currentMatchday, setCurrentMatchday] = useState()
   const users = mapEdgesToNodes(data.users).sort((a, b) =>
     b.season[0].points > a.season[0].points ? 1 : -1
@@ -61,6 +63,7 @@ const AccountPage = ({ data }) => {
           .filter(Boolean)
 
         setCurrentMatchday(results.find(x => x.status === "current"))
+        setLoading(false)
         setMatchdays(results)
       })
     }
@@ -134,15 +137,12 @@ const AccountPage = ({ data }) => {
             </div>
           </div>
 
-          {currentMatchday ? (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.5, 1] }}
-              transition={{
-                duration: 1,
-                stiffness: 200,
-              }}
-            >
+          <div sx={{ height: 240, display: "grid" }}>
+            {loading ? (
+              <div sx={{ mx: "auto", my: 9 }}>
+                <Spinner size={60} />
+              </div>
+            ) : currentMatchday ? (
               <Matchday
                 matchday={currentMatchday.entry}
                 id={currentMatchday.id}
@@ -152,22 +152,25 @@ const AccountPage = ({ data }) => {
                 bronze={currentMatchday.bronze}
                 current={true}
               />
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.5, 1] }}
-              transition={{
-                delay: 1,
-                duration: 1,
-                stiffness: 200,
-              }}
-            >
-              <div sx={{ mx: "auto" }}>
+            ) : (
+              <div sx={{ mx: "auto", my: 8 }}>
+                <div sx={{ textAlign: "center" }}>
+                  <button
+                    sx={{
+                      appearance: "none",
+                      border: "none",
+                      bg: "background",
+                    }}
+                    onClick={() => window && window.location.reload()}
+                  >
+                    <FiRefreshCw size={30} />
+                  </button>
+                </div>
+                <br />
                 <Button text="Spela" action="fantasy" />
               </div>
-            </motion.div>
-          )}
+            )}
+          </div>
 
           <div sx={{ mt: 8 }}>
             <Heading />

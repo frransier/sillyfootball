@@ -1,10 +1,13 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { useState } from "react"
-
-import { AiTwotoneCrown, AiOutlineMeh } from "react-icons/ai"
+import { AiOutlineMeh } from "react-icons/ai"
 import { FaStar, FaAngleDown, FaAngleRight } from "react-icons/fa"
+import { FiRefreshCw } from "react-icons/fi"
 import { useUserState } from "../../state"
+import goldLogo from "../../images/gold.svg"
+import silverLogo from "../../images/silver.svg"
+import bronzeLogo from "../../images/bronze.svg"
 
 const Matchday = ({ matchday, id, index, gold, silver, bronze, current }) => {
   const userState = useUserState()
@@ -27,7 +30,18 @@ const Matchday = ({ matchday, id, index, gold, silver, bronze, current }) => {
         borderBottomColor: show ? "primary" : "muted",
       }}
     >
-      <Styled.h2>{current ? "Aktuell omgång" : `Omgång ${index}`}</Styled.h2>
+      <div sx={{ display: "flex", alignItems: "center" }}>
+        <Styled.h2>{current ? "Aktuell omgång" : `Omgång ${index}`}</Styled.h2>
+        <div sx={{ mx: "auto" }} />
+        <div sx={{ mx: 3 }}>
+          <button
+            sx={{ appearance: "none", border: "none", bg: "background" }}
+            onClick={() => window && window.location.reload()}
+          >
+            <FiRefreshCw size={20} />
+          </button>
+        </div>
+      </div>
       <div
         sx={{
           display: "grid",
@@ -37,17 +51,19 @@ const Matchday = ({ matchday, id, index, gold, silver, bronze, current }) => {
       >
         <div sx={{ textAlign: "center", fontSize: 6 }}>
           {points === gold ? (
-            <div sx={{ color: "gold" }}>
-              <AiTwotoneCrown />
-            </div>
+            <img sx={{ width: "50%", mx: "auto" }} src={goldLogo} alt="Gold" />
           ) : points === silver ? (
-            <div sx={{ color: "silver" }}>
-              <AiTwotoneCrown />
-            </div>
+            <img
+              sx={{ width: "50%", mx: "auto" }}
+              src={silverLogo}
+              alt="Silver"
+            />
           ) : points === bronze ? (
-            <div sx={{ color: "#CD7F32" }}>
-              <AiTwotoneCrown />
-            </div>
+            <img
+              sx={{ width: "50%", mx: "auto" }}
+              src={bronzeLogo}
+              alt="Bronze"
+            />
           ) : (
             <AiOutlineMeh />
           )}

@@ -19,9 +19,14 @@ const LeaderboardPage = () => {
   const [matchday, setMatchday] = useState({})
   const [entries, setEntries] = useState([])
   const [scores, setScores] = useState([])
+  const [start, setStart] = useState(false)
   useEffect(() => {
     client.fetch(sanityQuery).then(matchday => {
-      setMatchday({ _id: matchday[0]._id, index: matchday[0].index })
+      setMatchday({
+        _id: matchday[0]._id,
+        index: matchday[0].index,
+        start: matchday[0].start,
+      })
       const entries = matchday[0].entries
         .map(x => ({
           user: { _id: x.user.id, name: x.user.name },
@@ -32,17 +37,25 @@ const LeaderboardPage = () => {
               y.scores.find(z => z.matchday._ref === matchday[0]._id),
           })),
           points: x.players
-            .map(
-              p =>
-                (p.scores &&
-                  p.scores.find(q => q.matchday._ref === matchday[0]._id)
-                    .points) ||
-                0
-            )
+            .map(p => {
+              if (
+                p.scores &&
+                p.scores.find(q => q.matchday._ref === matchday[0]._id) &&
+                p.scores.points
+              ) {
+                return p.scores.points
+              } else {
+                return 0
+              }
+            })
             .reduce((a, b) => a + b, 0),
         }))
         .sort((a, b) => (b.points > a.points ? 1 : -1))
       const scores = [...new Set(entries.map(x => x.points))]
+      const now = Date.now()
+      const start = Date.parse(matchday[0].start)
+
+      setStart(start > now ? false : true)
       setScores(scores)
       setEntries(entries)
     })
@@ -66,7 +79,7 @@ const LeaderboardPage = () => {
             borderBottomColor: "primary",
           }}
         >
-          Leaderboard
+          Omgång {matchday.index} av 3 | Säsong 1
         </Styled.h1>
       </div>
       <div
@@ -77,22 +90,23 @@ const LeaderboardPage = () => {
           borderBottomColor: "primary",
         }}
       >
+        <div></div>
+
         <Styled.p
           sx={{
-            textAlign: "left",
-            mx: 4,
-            my: 2,
+            textAlign: "right",
+            my: 1,
             gridColumn: "span 4",
             fontWeight: "body",
           }}
         >
-          Omgång {matchday.index} av 5 | Säsong 1
+          Score
         </Styled.p>
-
-        <Styled.p sx={{ textAlign: "center", my: 2 }}>Score</Styled.p>
       </div>
       {entries.length > 0 &&
-        entries.map((x, i) => <Entry key={i} x={x} scores={scores} />)}
+        entries.map((x, i) => (
+          <Entry key={i} x={x} scores={scores} start={start} />
+        ))}
       {entries.length > 0 && <Footer></Footer>}
     </Layout>
   )
@@ -100,7 +114,7 @@ const LeaderboardPage = () => {
 
 export default LeaderboardPage
 
-const sanityQuery = `*[_type == "matchday" && status == 'current']{_id, index, entries[]
+const sanityQuery = `*[_type == "matchday" && status == 'current']{_id, index, start, entries[]
     {..., 
     user->{"name": name, "id": _id},    
     players[]->{"name": fullName, "scores": scores}}

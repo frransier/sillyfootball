@@ -1,29 +1,43 @@
 const sanityClient = require("@sanity/client")
+const Intercom = require("intercom-client")
 const sanity = sanityClient({
   projectId: "0jt5x7hu",
   dataset: "main",
-  token:
-    "skyWdtvEER4gzvlIRY3aX9iK7Zt6zpa4OjD4q6Sv9X2Vq1RW734doH8aaAs9sGpqkWGyaCdmBx4sDP5SVF40V5FBWv9jYtQBHKQ0Sk38KbUbuHhN9qTU6gDsENy4iXuEaDYdtvoHF7FZ2YXN06DGJEAgiZTxjWsdO6FEyrDFCojjBtOJxHBm",
+  token: process.env.SANITY,
   useCdn: false,
+})
+const intercom = new Intercom.Client({
+  token: process.env.INTERCOM,
 })
 
 exports.handler = (event, _, callback) => {
   const body = JSON.parse(event.body)
   const user = body.user
-  console.log(user)
-
   console.log("Starting registration for: ", JSON.stringify(user.name))
 
-  const doc = {
+  const sanityUser = {
     _type: "user",
     name: user.name,
-    id: user._id,
+    id: user.id,
+  }
+  const intercomUser = {
+    email: user.email,
+    user_id: user.id,
+    name: `${user.firstName} ${user.lastName}`,
+    custom_attributes: {
+      nickname: user.name,
+    },
   }
 
   try {
     sanity
-      .create(doc)
-      .then(x => console.log(`${user.name} registered in Sanity`))
+      .create(sanityUser)
+      .then(x => {
+        intercom.users
+          .create(intercomUser)
+          .then(x => console.log(`${user.name} registered in Intercom`))
+          .catch(e => console.log(e))
+      })
       .catch(e => console.log(e))
 
     callback(null, {

@@ -24,6 +24,8 @@ const AuthPage = () => {
   const userDispatch = useUserDispatch()
 
   useEffect(() => {
+    console.log(user)
+
     if (user.sub) {
       const query = `*[_type == "user" && id == $id]`
       const params = { id: user.sub }
@@ -39,8 +41,14 @@ const AuthPage = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
-  function register(userId, name) {
-    const user = { _id: userId, name: name }
+  function register(userId, name, firstName, lastName, email) {
+    const user = {
+      id: userId,
+      name: name,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+    }
 
     axios
       .post("/.netlify/functions/sign-up", { user: user })
@@ -92,7 +100,15 @@ const AuthPage = () => {
                 fontFamily: "heading",
                 fontWeight: "heading",
               }}
-              onClick={() => register(user.sub, name)}
+              onClick={() =>
+                register(
+                  user.sub,
+                  name,
+                  user.given_name,
+                  user.family_name,
+                  user.email
+                )
+              }
               disabled={name.length > 3 ? false : true}
             >
               Slutför registrering
@@ -100,8 +116,8 @@ const AuthPage = () => {
           </div>
         </div>
       ) : (
-        <div sx={{ textAlign: "center" }}>
-          <Spinner />
+        <div sx={{ textAlign: "center", my: 8 }}>
+          <Spinner size={60} />
         </div>
       )}
     </Layout>

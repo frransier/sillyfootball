@@ -77,6 +77,7 @@ const IndexPage = props => {
             height: 14,
             mt: 3,
             mb: 7,
+            mx: "auto",
           }}
           src={colorMode === "default" ? nyheter : nyheterDark}
           alt="Fantasy Football"

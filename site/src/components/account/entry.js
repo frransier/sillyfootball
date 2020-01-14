@@ -1,6 +1,9 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { AiTwotoneCrown, AiOutlineMeh } from "react-icons/ai"
+import { AiOutlineMeh } from "react-icons/ai"
+import gold from "../../images/gold.svg"
+import silver from "../../images/silver.svg"
+import bronze from "../../images/bronze.svg"
 
 const Entry = ({ entry, scores }) => {
   return (
@@ -19,17 +22,11 @@ const Entry = ({ entry, scores }) => {
       >
         <div sx={{ textAlign: "center", pt: 3, fontSize: 5 }}>
           {entry.season[0].points === scores[0] ? (
-            <div sx={{ color: "gold" }}>
-              <AiTwotoneCrown />
-            </div>
+            <img sx={{ width: "50%", mx: "auto" }} src={gold} alt="Gold" />
           ) : entry.season[0].points === scores[1] ? (
-            <div sx={{ color: "silver" }}>
-              <AiTwotoneCrown />
-            </div>
+            <img sx={{ width: "50%", mx: "auto" }} src={silver} alt="Silver" />
           ) : entry.season[0].points === scores[2] ? (
-            <div sx={{ color: "#CD7F32" }}>
-              <AiTwotoneCrown />
-            </div>
+            <img sx={{ width: "50%", mx: "auto" }} src={bronze} alt="Bronze" />
           ) : (
             <AiOutlineMeh />
           )}

@@ -23,6 +23,22 @@ const client = sanityClient({
   useCdn: true,
 })
 
+const months = [
+  "januari",
+  "februari",
+  "mars",
+  "april",
+  "maj",
+  "juni",
+  "juli",
+  "augusti",
+  "september",
+  "oktober",
+  "november",
+  "december",
+]
+const weekdays = ["Sön", "Mån", "Tis", "Ons", "Tors", "Fre", "Lör"]
+
 const FantasyPage = props => {
   const gameState = useGameState()
   const userState = useUserState()
@@ -35,6 +51,13 @@ const FantasyPage = props => {
   const initialState = mapEdgesToNodes(props.data.players)
   const initSlice = initialState.slice(0, 25)
   const logos = mapEdgesToNodes(props.data.logos)
+  const date = new Date(props.data.matchday.start)
+  const minutes = date.getMinutes() === 0 ? "00" : `${date.getMinutes()}`
+  const hours = `${date.getHours()}`
+  const day = `${date.getDate()}`
+  const weekday = weekdays[date.getDay()]
+  const month = months[date.getMonth()]
+  const deadline = `${weekday} ${day} ${month} kl ${hours}:${minutes}`
 
   useEffect(() => {
     setPlayers(initSlice)
@@ -69,8 +92,16 @@ const FantasyPage = props => {
         const p = { id: player.id, name: player.name }
         return p
       })
-    const user = userState && { id: userState._id, name: userState.name }
-    const matchday = props.data.matchday._id
+    const user = userState && {
+      _id: userState._id,
+      id: userState.id,
+      name: userState.name,
+    }
+    const matchday = {
+      id: props.data.matchday._id,
+      index: props.data.matchday.index,
+      date: deadline,
+    }
 
     axios
       .post("/.netlify/functions/register", {
@@ -172,6 +203,8 @@ export const query = graphql`
   query MatchesQuery {
     matchday: sanityMatchday(status: { eq: "current" }) {
       _id
+      index
+      start
       matches {
         start
         home {

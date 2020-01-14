@@ -1,15 +1,8 @@
 /** @jsx jsx */
-import { jsx, useColorMode } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
-import nyheter from "../images/nyheter.svg"
-import livescore from "../images/livescore.svg"
-import fantasy from "../images/fantasyNav.svg"
-import nyheterDark from "../images/nyheter-dark.svg"
-import livescoreDark from "../images/livescore-dark.svg"
-import fantasyDark from "../images/fantasyNav-dark.svg"
 
 const Nav = () => {
-  const [colorMode] = useColorMode()
   return (
     <div
       sx={{
@@ -21,44 +14,17 @@ const Nav = () => {
     >
       <div sx={{ width: "auto", mx: "auto" }} />
       <Link to="/nyheter" style={{ textDecoration: "none" }}>
-        <img
-          sx={{
-            width: 70,
-            height: 15,
-            mx: "auto",
-            my: 5,
-          }}
-          src={colorMode === "default" ? nyheter : nyheterDark}
-          alt="News"
-        />
+        <Styled.h3>Nyheter</Styled.h3>
       </Link>
 
       <div sx={{ mx: [8, 9] }}>
         <Link to="/livescore" style={{ textDecoration: "none" }}>
-          <img
-            sx={{
-              width: 90,
-              height: 15,
-              mx: "auto",
-              my: 5,
-            }}
-            src={colorMode === "default" ? livescore : livescoreDark}
-            alt="Livescore"
-          />
+          <Styled.h3>Livescore</Styled.h3>
         </Link>
       </div>
 
       <Link to="/fantasy" style={{ textDecoration: "none" }}>
-        <img
-          sx={{
-            width: 70,
-            height: 15,
-            mx: "auto",
-            my: 5,
-          }}
-          src={colorMode === "default" ? fantasy : fantasyDark}
-          alt="Fantasy Football"
-        />
+        <Styled.h3>Fantasy</Styled.h3>
       </Link>
       <div sx={{ width: "auto", mx: "auto" }} />
     </div>

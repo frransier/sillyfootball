@@ -8,7 +8,7 @@ import Button from "../components/button"
 import { useUserState, useGameDispatch } from "../state"
 import { useEffect } from "react"
 
-const WhitePaperPage = () => {
+const ThanksPage = () => {
   const userState = useUserState()
   const gameDispatch = useGameDispatch()
   useEffect(() => {
@@ -37,4 +37,4 @@ const WhitePaperPage = () => {
     </Layout>
   )
 }
-export default WhitePaperPage
+export default ThanksPage
