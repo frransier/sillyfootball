@@ -148,7 +148,34 @@ const AccountPage = ({ data }) => {
               <div>
                 <br></br>
               </div>
-            ) : currentMatchday ? (
+            ) : !currentMatchday ? (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  delay: 1.5,
+                  duration: 0.2,
+                }}
+              >
+                <div sx={{ mx: "auto", my: 8 }}>
+                  <div sx={{ textAlign: "center" }}>
+                    <button
+                      sx={{
+                        appearance: "none",
+                        border: "none",
+                        bg: "background",
+                        color: "text",
+                      }}
+                      onClick={() => setLoading(true)}
+                    >
+                      <FiRefreshCw size={30} />
+                    </button>
+                  </div>
+                  <br />
+                  <Button text="Spela" action="fantasy" />
+                </div>
+              </motion.div>
+            ) : (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -167,24 +194,6 @@ const AccountPage = ({ data }) => {
                   refresh={refresh}
                 />
               </motion.div>
-            ) : (
-              <div sx={{ mx: "auto", my: 8 }}>
-                <div sx={{ textAlign: "center" }}>
-                  <button
-                    sx={{
-                      appearance: "none",
-                      border: "none",
-                      bg: "background",
-                      color: "text",
-                    }}
-                    onClick={() => setLoading(true)}
-                  >
-                    <FiRefreshCw size={30} />
-                  </button>
-                </div>
-                <br />
-                <Button text="Spela" action="fantasy" />
-              </div>
             )}
           </div>
 
