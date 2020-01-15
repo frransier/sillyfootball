@@ -13,7 +13,6 @@ import Heading from "../components/account/heading"
 import Matchday from "../components/account/matchday"
 import Button from "../components/button"
 import Footer from "../components/footer"
-import { Spinner } from "@theme-ui/components"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
@@ -146,7 +145,7 @@ const AccountPage = ({ data }) => {
 
           <div sx={{ height: 240, display: "grid" }}>
             {loading ? (
-              <div sx={{ mx: "auto", my: 9 }}>
+              <div>
                 <br></br>
               </div>
             ) : currentMatchday ? (
