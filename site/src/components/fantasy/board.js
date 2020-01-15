@@ -126,8 +126,8 @@ const Board = () => {
               {gameState.map((x, i) => {
                 if (i > 2)
                   return (
-                    <div sx={{ my: 6 }}>
-                      <Portrait key={i} player={x} />
+                    <div key={i} sx={{ my: 6 }}>
+                      <Portrait player={x} />
                     </div>
                   )
                 return null

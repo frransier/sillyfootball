@@ -1,5 +1,5 @@
 export default {
-  space: [0, 1, 2, 4, 6, 8, 12, 16, 32, 64, 128, 256, 512],
+  space: [0, 1, 2, 4, 6, 8, 12, 16, 32, 36, 64, 128, 256, 512],
   fonts: {
     body: "Cabin",
     heading: "Roboto Condensed",

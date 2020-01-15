@@ -71,7 +71,7 @@ const AccountPage = ({ data }) => {
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading])
+  }, [loading, userState])
 
   function Logout() {
     userDispatch({ type: "reset" })

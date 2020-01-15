@@ -24,8 +24,6 @@ const AuthPage = () => {
   const userDispatch = useUserDispatch()
 
   useEffect(() => {
-    console.log(user)
-
     if (user.sub) {
       const query = `*[_type == "user" && id == $id]`
       const params = { id: user.sub }
@@ -116,7 +114,7 @@ const AuthPage = () => {
           </div>
         </div>
       ) : (
-        <div sx={{ textAlign: "center", my: 8 }}>
+        <div sx={{ textAlign: "center", my: 11 }}>
           <Spinner size={60} />
         </div>
       )}

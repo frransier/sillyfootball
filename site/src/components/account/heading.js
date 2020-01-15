@@ -11,8 +11,6 @@ const Heading = () => {
         display: "grid",
         gridTemplateColumns: "10% 49% 10% 10% 10% 10%",
         alignItems: "center",
-        borderBottom: "solid 1px",
-        borderBottomColor: "primary",
       }}
     >
       <div
@@ -23,11 +21,43 @@ const Heading = () => {
         <Styled.h2 sx={{ my: 0 }}>Säsong 1</Styled.h2>
       </div>
 
-      <img sx={{ width: "40%", mx: "auto" }} src={gold} alt="Gold" />
-      <img sx={{ width: "40%", mx: "auto" }} src={silver} alt="Silver" />
-      <img sx={{ width: "40%", mx: "auto" }} src={bronze} alt="Bronze" />
+      <div
+        sx={{
+          borderBottom: "solid 1px",
+          borderBottomColor: "primary",
+          textAlign: "center",
+        }}
+      >
+        <img sx={{ width: "40%", mx: "auto" }} src={gold} alt="Gold" />
+      </div>
+      <div
+        sx={{
+          borderBottom: "solid 1px",
+          borderBottomColor: "primary",
+          textAlign: "center",
+        }}
+      >
+        <img sx={{ width: "40%", mx: "auto" }} src={silver} alt="Silver" />
+      </div>
+      <div
+        sx={{
+          borderBottom: "solid 1px",
+          borderBottomColor: "primary",
+          textAlign: "center",
+        }}
+      >
+        <img sx={{ width: "40%", mx: "auto" }} src={bronze} alt="Bronze" />
+      </div>
 
-      <Styled.h2 sx={{ my: 0, textAlign: "center" }}>Score</Styled.h2>
+      <div
+        sx={{
+          borderBottom: "solid 1px",
+          borderBottomColor: "primary",
+          textAlign: "center",
+        }}
+      >
+        <Styled.h2 sx={{ my: 0, textAlign: "center" }}>Score</Styled.h2>
+      </div>
     </div>
   )
 }
