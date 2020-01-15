@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Nav from "../components/nav"
@@ -87,29 +88,38 @@ const LivescorePage = () => {
     <Layout>
       <SEO title="Livescore" />
       <Nav />
-      {matches.length > 0 &&
-        dates.map((d, i) => (
-          <div key={i} sx={{ display: "grid" }}>
-            <div sx={{ mx: "auto" }}>
-              <Styled.h2
-                sx={{
-                  borderBottom: "solid 2px",
-                  borderBottomColor: "primary",
-                  textAlign: "center",
-                }}
-              >
-                {d[0]} {d[1]} {d[2]}
-              </Styled.h2>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          delay: 0.3,
+          duration: 0.4,
+        }}
+      >
+        {matches.length > 0 &&
+          dates.map((d, i) => (
+            <div key={i} sx={{ display: "grid" }}>
+              <div sx={{ mx: "auto" }}>
+                <Styled.h2
+                  sx={{
+                    borderBottom: "solid 2px",
+                    borderBottomColor: "primary",
+                    textAlign: "center",
+                  }}
+                >
+                  {d[0]} {d[1]} {d[2]}
+                </Styled.h2>
+              </div>
+              {matches.map((x, xi) => {
+                const xdate = new Date(x.start)
+                const day = xdate.getDate().toString()
+                if (d[1] === day) return <Match key={xi} index={xi} match={x} />
+                return null
+              })}
             </div>
-            {matches.map((x, xi) => {
-              const xdate = new Date(x.start)
-              const day = xdate.getDate().toString()
-              if (d[1] === day) return <Match key={xi} index={xi} match={x} />
-              return null
-            })}
-          </div>
-        ))}
-      {matches.length > 0 && <Footer />}
+          ))}
+        {matches.length > 0 && <Footer />}
+      </motion.div>
     </Layout>
   )
 }

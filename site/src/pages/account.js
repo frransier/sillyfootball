@@ -35,37 +35,40 @@ const AccountPage = ({ data }) => {
   useEffect(() => {
     if (userState._id) {
       const query = `*[_type == "matchday"]{ status, index, _id, gold, silver, bronze, entries[]{user, players[]->{"fullName": fullName,"name": name, "_id": _id, "scores": scores}, }}`
-      client.fetch(query).then(matchdays => {
-        const results = matchdays
-          .map(matchday => {
-            const result = matchday.entries.find(
-              entry => entry.user._ref === userState._id
-            )
-            const id = matchday._id
-            const index = matchday.index
-            const gold = matchday.gold
-            const silver = matchday.silver
-            const bronze = matchday.bronze
-            const status = matchday.status
 
-            if (result)
-              return {
-                entry: result,
-                id: id,
-                index: index,
-                gold: gold,
-                silver: silver,
-                bronze: bronze,
-                status: status,
-              }
-            else return null
-          })
-          .filter(Boolean)
+      setTimeout(() => {
+        client.fetch(query).then(matchdays => {
+          const results = matchdays
+            .map(matchday => {
+              const result = matchday.entries.find(
+                entry => entry.user._ref === userState._id
+              )
+              const id = matchday._id
+              const index = matchday.index
+              const gold = matchday.gold
+              const silver = matchday.silver
+              const bronze = matchday.bronze
+              const status = matchday.status
 
-        setCurrentMatchday(results.find(x => x.status === "current"))
-        setLoading(false)
-        setMatchdays(results)
-      })
+              if (result)
+                return {
+                  entry: result,
+                  id: id,
+                  index: index,
+                  gold: gold,
+                  silver: silver,
+                  bronze: bronze,
+                  status: status,
+                }
+              else return null
+            })
+            .filter(Boolean)
+
+          setCurrentMatchday(results.find(x => x.status === "current"))
+          setLoading(false)
+          setMatchdays(results)
+        })
+      }, 500)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -160,6 +163,7 @@ const AccountPage = ({ data }) => {
                       appearance: "none",
                       border: "none",
                       bg: "background",
+                      color: "text",
                     }}
                     onClick={() => window && window.location.reload()}
                   >

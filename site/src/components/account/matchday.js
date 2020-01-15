@@ -35,7 +35,12 @@ const Matchday = ({ matchday, id, index, gold, silver, bronze, current }) => {
         <div sx={{ mx: "auto" }} />
         <div sx={{ mx: 3 }}>
           <button
-            sx={{ appearance: "none", border: "none", bg: "background" }}
+            sx={{
+              appearance: "none",
+              border: "none",
+              bg: "background",
+              color: "text",
+            }}
             onClick={() => window && window.location.reload()}
           >
             <FiRefreshCw size={20} />

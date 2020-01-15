@@ -12,21 +12,19 @@ const Nav = () => {
         textAlign: "center",
       }}
     >
-      <div sx={{ width: "auto", mx: "auto" }} />
       <Link to="/nyheter" style={{ textDecoration: "none" }}>
-        <Styled.h3>Nyheter</Styled.h3>
+        <Styled.h2 sx={{ mx: 7 }}>Nyheter</Styled.h2>
       </Link>
-
-      <div sx={{ mx: [8, 9] }}>
+      <div sx={{ mx: "auto" }}></div>
+      <div sx={{ mx: [6, 10] }}>
         <Link to="/livescore" style={{ textDecoration: "none" }}>
-          <Styled.h3>Livescore</Styled.h3>
+          <Styled.h2>Livescore</Styled.h2>
         </Link>
       </div>
-
+      <div sx={{ mx: "auto" }}></div>
       <Link to="/fantasy" style={{ textDecoration: "none" }}>
-        <Styled.h3>Fantasy</Styled.h3>
+        <Styled.h2 sx={{ mx: 7 }}>Fantasy</Styled.h2>
       </Link>
-      <div sx={{ width: "auto", mx: "auto" }} />
     </div>
   )
 }

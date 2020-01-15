@@ -80,7 +80,8 @@ exports.handler = (event, _, callback) => {
       .setIfMissing({ entries: [] })
       .append("entries", [entry])
       .commit()
-    console.log("Entry registered in Sanity")
+      .then(x => console.log("Entry registered in Sanity"))
+      .catch(e => console.log(e.message))
     intercom.tags
       .create({ name: `s01m0${matchday.index}` })
       .catch(e => console.log(e))

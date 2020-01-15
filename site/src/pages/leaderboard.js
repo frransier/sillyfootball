@@ -97,7 +97,7 @@ const LeaderboardPage = () => {
             textAlign: "right",
             my: 1,
             gridColumn: "span 4",
-            fontWeight: "body",
+            fontWeight: "heading",
           }}
         >
           Score

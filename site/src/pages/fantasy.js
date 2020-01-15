@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { useFilterState, useGameState, useUserState } from "../state"
 import { graphql, navigate } from "gatsby"
 import { Spinner } from "@theme-ui/components"
+import { motion } from "framer-motion"
 import axios from "axios"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -153,9 +154,18 @@ const FantasyPage = props => {
 
       <Board />
       {gameState && gameState.length < 5 ? (
-        <div sx={{ display: "grid" }}>
-          <Matches matches={matches} />
-          <Players players={players} logos={logos} />
+        <div sx={{ display: "grid", minHeight: 970 }}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.4,
+            }}
+          >
+            <Matches matches={matches} />
+            <Players players={players} logos={logos} />
+          </motion.div>
         </div>
       ) : (
         <Play entries={entries && entries} register={register} />
