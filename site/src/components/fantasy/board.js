@@ -39,7 +39,7 @@ const Board = () => {
               mb: 6,
             }}
           >
-            <div sx={{ mx: 8 }}>
+            <div sx={{ mx: [8, 9] }}>
               <Link to="/white-paper/" style={{ textDecoration: "none" }}>
                 <Styled.h2
                   sx={{
@@ -53,7 +53,7 @@ const Board = () => {
               </Link>
             </div>
 
-            <div sx={{ mx: 8 }}>
+            <div sx={{ mx: [8, 9] }}>
               <Link to="/leaderboard/" style={{ textDecoration: "none" }}>
                 <Styled.h2
                   sx={{
