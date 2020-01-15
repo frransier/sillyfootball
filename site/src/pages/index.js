@@ -133,7 +133,6 @@ export const query = graphql`
     matchday: sanityMatchday(status: { eq: "current" }) {
       start
       prize
-      jackpot
     }
   }
 `

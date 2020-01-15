@@ -1,9 +1,10 @@
-import { GiPapers } from "react-icons/gi";
+import { FaFile, FaFileAlt } from "react-icons/fa";
 
 export default {
   name: "page",
   title: "Pages",
   type: "document",
+  icon: FaFileAlt,
   fields: [
     {
       name: "title",
@@ -52,7 +53,7 @@ export default {
       const { title } = selection;
       return {
         title: title,
-        media: GiPapers,
+        media: FaFileAlt,
         subtitle: "Page"
       };
     }

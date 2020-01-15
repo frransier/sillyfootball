@@ -4,6 +4,7 @@ export default {
   name: "player",
   type: "document",
   title: "Players",
+  icon: FaUserCircle,
   fields: [
     {
       name: "name",

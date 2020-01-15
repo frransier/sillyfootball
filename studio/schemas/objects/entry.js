@@ -20,7 +20,7 @@ export default {
   ],
   preview: {
     select: {
-      name: "user.alias"
+      name: "user.name"
     },
     prepare(selection) {
       const { name } = selection;

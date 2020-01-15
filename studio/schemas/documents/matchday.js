@@ -3,6 +3,7 @@ export default {
   name: "matchday",
   type: "document",
   title: "Match days",
+  icon: FaGamepad,
   fields: [
     {
       name: "index",
@@ -19,7 +20,7 @@ export default {
           { title: "Next", value: "next" },
           { title: "Last", value: "last" },
           { title: "Finished", value: "finished" }
-        ], // <-- predefined values
+        ],
         layout: "radio",
         direction: "horizontal"
       }
@@ -28,11 +29,6 @@ export default {
       name: "prize",
       type: "number",
       title: "Prize"
-    },
-    {
-      name: "jackpot",
-      type: "boolean",
-      title: "Jackpot"
     },
     {
       name: "entries",

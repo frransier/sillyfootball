@@ -14,31 +14,10 @@ export default {
       type: "matchTeam",
       title: "Away team"
     },
-    {
-      name: "competition",
-      type: "string",
-      title: "Competition",
-      options: {
-        list: [
-          { title: "Premier League", value: "en" },
-          { title: "Serie A", value: "it" },
-          { title: "Bundesliga", value: "de" },
-          { title: "La Liga", value: "es" },
-          { title: "Ligue 1", value: "fr" },
-          { title: "Champions League", value: "cl" },
-          { title: "Europa League", value: "el" },
-          { title: "Allsvenskan", value: "se" },
-          { title: "Eredivisie", value: "nl" }
-        ], // <-- predefined values
-        layout: "radio",
-        direction: "horizontal"
-      }
-    },
     { name: "events", type: "array", of: [{ type: "event" }] },
 
     { name: "elapsed", type: "number", title: "Elapsed" },
     { name: "status", type: "string", title: "Status" },
-    { name: "score", type: "matchScore", title: "Score" },
     {
       name: "start",
       type: "datetime",

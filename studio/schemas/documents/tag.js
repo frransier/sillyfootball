@@ -4,6 +4,7 @@ export default {
   name: "tag",
   title: "Tags",
   type: "document",
+  icon: FaTag,
   fields: [
     {
       name: "title",

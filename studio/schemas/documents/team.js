@@ -1,7 +1,10 @@
+import { FaShieldAlt } from "react-icons/fa";
+
 export default {
   name: "team",
   type: "document",
   title: "Teams",
+  icon: FaShieldAlt,
   fields: [
     {
       name: "name",

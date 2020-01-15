@@ -3,6 +3,7 @@ export default {
   name: "user",
   type: "document",
   title: "Users",
+  icon: FaUserAstronaut,
   fields: [
     {
       name: "name",

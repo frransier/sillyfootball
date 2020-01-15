@@ -4,6 +4,7 @@ export default {
   name: "news",
   title: "News",
   type: "document",
+  icon: GiPapers,
   fields: [
     {
       name: "title",

@@ -18,7 +18,7 @@ const Match = ({ match }) => {
           display: "grid",
           gridTemplateColumns: "10% 30% 20% 30% 10%",
           alignItems: "center",
-
+          cursor: match.events && match.events.length > 0 ? "pointer" : null,
           fontFamily: "body",
           fontSize: 4,
           borderBottom: "solid 2px",
@@ -27,12 +27,14 @@ const Match = ({ match }) => {
         }}
         role="button"
         tabIndex="0"
-        onClick={() => match.events && setSelected(!selected)}
+        onClick={() =>
+          match.events && match.events.length > 0 && setSelected(!selected)
+        }
         onKeyDown={() => match.events && setSelected(!selected)}
       >
         <div
           sx={{
-            pt: 3,
+            py: 5,
             color: match.elapsed ? "primary" : "muted",
             textAlign: "center",
           }}
