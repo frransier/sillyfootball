@@ -132,76 +132,81 @@ const FantasyPage = props => {
           <Spinner size={60} />
         </div>
       ) : (
-        <div
-          sx={{
-            display: "grid",
-          }}
-        >
-          {gameState && gameState.length !== 5 ? null : (
-            <img
-              sx={{
-                width: 200,
-                height: 35,
-                mx: "auto",
-                my: 5,
-              }}
-              src={colorMode === "default" ? full : fullDark}
-              alt="Fantasy Football"
-            />
+        <div>
+          <div
+            sx={{
+              display: "grid",
+            }}
+          >
+            {gameState && gameState.length !== 5 ? null : (
+              <img
+                sx={{
+                  width: 200,
+                  height: 35,
+                  mx: "auto",
+                  my: 5,
+                }}
+                src={colorMode === "default" ? full : fullDark}
+                alt="Fantasy Football"
+              />
+            )}
+          </div>
+          <Board />
+          {gameState && gameState.length < 5 ? (
+            <div sx={{ display: "grid", minHeight: 970 }}>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  delay: 0.3,
+                  duration: 0.4,
+                }}
+              >
+                <Matches matches={matches} />
+                <Players players={players} logos={logos} />
+              </motion.div>
+            </div>
+          ) : (
+            <Play entries={entries && entries} register={register} />
+            // <button onClick={register}>hej</button>
           )}
+          {filters &&
+            filters.length === 0 &&
+            gameState &&
+            gameState.length < 5 && (
+              <div
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <button
+                  sx={{
+                    fontSize: 5,
+                    width: 120,
+                    my: 7,
+                    px: 6,
+                    py: 4,
+                    bg: "background",
+                    border: "solid 2px",
+                    borderColor: "primary",
+                    color: "text",
+                    borderRadius: 4,
+                    fontFamily: "heading",
+                    fontWeight: "heading",
+                    appearance: "none",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => showMore(40)}
+                >
+                  Visa fler
+                </button>
+              </div>
+            )}
         </div>
       )}
 
-      <Board />
-      {gameState && gameState.length < 5 ? (
-        <div sx={{ display: "grid", minHeight: 970 }}>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              delay: 0.3,
-              duration: 0.4,
-            }}
-          >
-            <Matches matches={matches} />
-            <Players players={players} logos={logos} />
-          </motion.div>
-        </div>
-      ) : (
-        <Play entries={entries && entries} register={register} />
-        // <button onClick={register}>hej</button>
-      )}
-      {filters && filters.length === 0 && gameState && gameState.length < 5 && (
-        <div
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <button
-            sx={{
-              fontSize: 5,
-              width: 120,
-              my: 7,
-              px: 6,
-              py: 4,
-              bg: "background",
-              border: "solid 2px",
-              borderColor: "primary",
-              color: "text",
-              borderRadius: 4,
-              fontFamily: "heading",
-              fontWeight: "heading",
-              appearance: "none",
-              cursor: "pointer",
-            }}
-            onClick={() => showMore(40)}
-          >
-            Visa fler
-          </button>
-        </div>
-      )}
       <Footer />
     </Layout>
   )
