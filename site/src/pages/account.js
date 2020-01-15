@@ -153,21 +153,7 @@ const AccountPage = ({ data }) => {
                   duration: 0.2,
                 }}
               >
-                <div sx={{ mx: "auto", my: 8 }}>
-                  <div sx={{ textAlign: "center" }}>
-                    <button
-                      sx={{
-                        appearance: "none",
-                        border: "none",
-                        bg: "background",
-                        color: "text",
-                      }}
-                      onClick={() => setLoading(true)}
-                    >
-                      <IoIosRefresh size={30} />
-                    </button>
-                  </div>
-                  <br />
+                <div sx={{ mx: "auto", my: 10 }}>
                   <div sx={{ textAlign: "center" }}>
                     <Button text="Spela" action="fantasy" />
                   </div>
