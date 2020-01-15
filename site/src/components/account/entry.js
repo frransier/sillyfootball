@@ -18,9 +18,10 @@ const Entry = ({ entry, scores }) => {
           display: "grid",
           gridTemplateColumns: "10% 49% 10% 10% 10% 10%",
           alignItems: "center",
+          py: 3,
         }}
       >
-        <div sx={{ textAlign: "center", pt: 3, fontSize: 5 }}>
+        <div sx={{ textAlign: "center", fontSize: 5 }}>
           {entry.season[0].points === scores[0] ? (
             <img sx={{ width: "50%", mx: "auto" }} src={gold} alt="Gold" />
           ) : entry.season[0].points === scores[1] ? (
@@ -37,26 +38,25 @@ const Entry = ({ entry, scores }) => {
             textAlign: "left",
             mx: 4,
             my: 0,
-            pt: 3,
-            fontSize: 4,
-            fontWeight: "body",
+            fontSize: 5,
+            fontWeight: "heading",
           }}
         >
           {entry.name}
         </Styled.h3>
 
-        <Styled.p sx={{ textAlign: "center", my: 0, fontSize: 3 }}>
+        <Styled.p sx={{ textAlign: "center", my: 0, fontSize: 4 }}>
           {entry.season[0].gold}
         </Styled.p>
 
-        <Styled.p sx={{ textAlign: "center", my: 0, fontSize: 3 }}>
+        <Styled.p sx={{ textAlign: "center", my: 0, fontSize: 4 }}>
           {entry.season[0].silver}
         </Styled.p>
         <Styled.p sx={{ textAlign: "center", my: 0, fontSize: 3 }}>
           {entry.season[0].bronze}
         </Styled.p>
 
-        <Styled.h3 sx={{ textAlign: "center", my: 0, pt: 2, fontSize: 4 }}>
+        <Styled.h3 sx={{ textAlign: "center", my: 0, fontSize: 5 }}>
           {entry.season[0].points}p
         </Styled.h3>
       </div>

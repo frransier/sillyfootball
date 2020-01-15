@@ -8,11 +8,10 @@ const Portrait = ({ player }) => {
   const gameDispatch = useGameDispatch()
   return (
     <motion.div
-      initial={{ y: 50 }}
-      animate={{ y: 0, scale: [1, 1.1, 1] }}
+      initial={{ opacity: 0, scale: 1.2 }}
+      animate={{ opacity: 1, scale: 1 }}
       transition={{
-        duration: 0.4,
-        stiffness: 200,
+        duration: 0.5,
       }}
     >
       <button

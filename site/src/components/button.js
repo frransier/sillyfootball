@@ -2,8 +2,10 @@
 import { jsx } from "theme-ui"
 import { useAuth } from "react-use-auth"
 import { navigate } from "gatsby"
+import { useGameDispatch } from "../state"
 
 const Button = ({ text, action }) => {
+  const gameDispatch = useGameDispatch()
   const { login } = useAuth()
   function actionPicker(action) {
     switch (action) {
@@ -18,6 +20,10 @@ const Button = ({ text, action }) => {
         return
       case "fantasy":
         navigate(`/${action}/`)
+        return
+      case "reset":
+        gameDispatch({ type: "reset" })
+        navigate("/account/")
         return
       default:
         break

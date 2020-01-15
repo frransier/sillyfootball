@@ -3,7 +3,7 @@ import { jsx, Styled } from "theme-ui"
 import { useUserState } from "../../state"
 import Button from "../button"
 
-const Play = ({ entries, register }) => {
+const Play = ({ entries, register, deadline }) => {
   const userState = useUserState()
 
   if (userState && entries && userState.length === 0) {
@@ -18,6 +18,16 @@ const Play = ({ entries, register }) => {
       </div>
     )
   }
+  if (deadline) {
+    return (
+      <div sx={{ display: "grid", justifyItems: "center" }}>
+        <Styled.h3 sx={{ mb: 2, mt: 7 }}>
+          Deadline har passerat. Nästa omgång kommer ut inom 36h.
+        </Styled.h3>
+        <Button text="Livescore" action="livescore" />
+      </div>
+    )
+  }
   if (
     userState &&
     entries &&
@@ -29,7 +39,7 @@ const Play = ({ entries, register }) => {
         <Styled.h2 sx={{ mb: 2, mt: 7 }}>
           Du är redan anmäld till den här omgången
         </Styled.h2>
-        <Button text={userState.name} action="account" />
+        <Button text={userState.name} action="reset" />
       </div>
     )
   }

@@ -20,7 +20,7 @@ const Heading = () => {
           gridColumn: "span 2",
         }}
       >
-        <Styled.h2 sx={{ my: 0 }}>Season 1 Leaderboard</Styled.h2>
+        <Styled.h2 sx={{ my: 0 }}>Säsong 1</Styled.h2>
       </div>
 
       <img sx={{ width: "40%", mx: "auto" }} src={gold} alt="Gold" />

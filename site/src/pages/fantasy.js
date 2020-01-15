@@ -16,7 +16,9 @@ import Footer from "../components/footer"
 import Nav from "../components/nav"
 import Play from "../components/fantasy/play"
 import full from "../images/full.svg"
+import tooLate from "../images/tooLate.svg"
 import fullDark from "../images/full-dark.svg"
+import tooLateDark from "../images/tooLate-dark.svg"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
@@ -59,6 +61,10 @@ const FantasyPage = props => {
   const weekday = weekdays[date.getDay()]
   const month = months[date.getMonth()]
   const deadline = `${weekday} ${day} ${month} kl ${hours}:${minutes}`
+  const now = Date.now()
+  const start = Date.parse(props.data.matchday.start)
+  const deadlineDay = now > start ? true : false
+  // const deadlineDay = true
 
   useEffect(() => {
     setPlayers(initSlice)
@@ -138,7 +144,18 @@ const FantasyPage = props => {
               display: "grid",
             }}
           >
-            {gameState && gameState.length !== 5 ? null : (
+            {gameState && gameState.length !== 5 ? null : deadlineDay ? (
+              <img
+                sx={{
+                  width: 200,
+                  height: 35,
+                  mx: "auto",
+                  my: 5,
+                }}
+                src={colorMode === "default" ? tooLate : tooLateDark}
+                alt="Fantasy Football"
+              />
+            ) : (
               <img
                 sx={{
                   width: 200,
@@ -167,7 +184,11 @@ const FantasyPage = props => {
               </motion.div>
             </div>
           ) : (
-            <Play entries={entries && entries} register={register} />
+            <Play
+              entries={entries && entries}
+              register={register}
+              deadline={deadlineDay}
+            />
             // <button onClick={register}>hej</button>
           )}
           {filters &&

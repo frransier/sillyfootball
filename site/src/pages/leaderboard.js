@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Nav from "../components/nav"
@@ -65,49 +66,57 @@ const LeaderboardPage = () => {
     <Layout>
       <SEO title="Livescore" />
       <Nav />
-      <div
-        sx={{
-          display: "grid",
-          alignItems: "center",
-          justifyItems: "center",
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          delay: 0.1,
+          duration: 0.2,
         }}
       >
-        <Styled.h1
+        <div
           sx={{
-            textAlign: "center",
-            borderBottom: "solid 2px",
+            display: "grid",
+            alignItems: "center",
+            justifyItems: "center",
+          }}
+        >
+          <Styled.h1
+            sx={{
+              textAlign: "center",
+              borderBottom: "solid 2px",
+              borderBottomColor: "primary",
+            }}
+          >
+            Omgång {matchday.index} av 3 | Säsong 1
+          </Styled.h1>
+        </div>
+        <div
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "10% 59% 10% 10% 10%",
+            borderBottom: "solid 1px",
             borderBottomColor: "primary",
           }}
         >
-          Omgång {matchday.index} av 3 | Säsong 1
-        </Styled.h1>
-      </div>
-      <div
-        sx={{
-          display: "grid",
-          gridTemplateColumns: "10% 59% 10% 10% 10%",
-          borderBottom: "solid 1px",
-          borderBottomColor: "primary",
-        }}
-      >
-        <div></div>
-
-        <Styled.p
-          sx={{
-            textAlign: "right",
-            my: 1,
-            gridColumn: "span 4",
-            fontWeight: "heading",
-          }}
-        >
-          Score
-        </Styled.p>
-      </div>
-      {entries.length > 0 &&
-        entries.map((x, i) => (
-          <Entry key={i} x={x} scores={scores} start={start} />
-        ))}
-      {entries.length > 0 && <Footer></Footer>}
+          <Styled.p
+            sx={{
+              textAlign: "right",
+              my: 1,
+              mx: [0, 4],
+              gridColumn: "span 5",
+              fontWeight: "heading",
+            }}
+          >
+            Score
+          </Styled.p>
+        </div>
+        {entries.length > 0 &&
+          entries.map((x, i) => (
+            <Entry key={i} x={x} scores={scores} start={start} />
+          ))}
+        {entries.length > 0 && <Footer></Footer>}
+      </motion.div>
     </Layout>
   )
 }

@@ -29,8 +29,7 @@ const Players = ({ players, logos }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{
-        delay: 0.3,
-        duration: 0.4,
+        duration: 0.1,
       }}
     >
       <table
@@ -163,7 +162,7 @@ const Players = ({ players, logos }) => {
                 </td>
                 <td
                   sx={{
-                    fontSize: selected ? 4 : 3,
+                    fontSize: selected ? 5 : 4,
                     color: selected ? "primary" : "text",
                     pt: 4,
                     borderBottom: selected ? "solid 1px" : "solid 2px",

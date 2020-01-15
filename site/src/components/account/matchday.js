@@ -9,7 +9,16 @@ import goldLogo from "../../images/gold.svg"
 import silverLogo from "../../images/silver.svg"
 import bronzeLogo from "../../images/bronze.svg"
 
-const Matchday = ({ matchday, id, index, gold, silver, bronze, current }) => {
+const Matchday = ({
+  matchday,
+  id,
+  index,
+  gold,
+  silver,
+  bronze,
+  current,
+  refresh,
+}) => {
   const userState = useUserState()
   const [show, setShow] = useState(current ? true : false)
   const scores = matchday.players
@@ -41,7 +50,7 @@ const Matchday = ({ matchday, id, index, gold, silver, bronze, current }) => {
               bg: "background",
               color: "text",
             }}
-            onClick={() => window && window.location.reload()}
+            onClick={refresh}
           >
             <FiRefreshCw size={20} />
           </button>

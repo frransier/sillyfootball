@@ -5,6 +5,7 @@ import { useUserState, useUserDispatch, useGameDispatch } from "../state"
 import { useEffect, useState } from "react"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
 import { FiRefreshCw } from "react-icons/fi"
+import { motion } from "framer-motion"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Entry from "../components/account/entry"
@@ -17,7 +18,8 @@ const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
   dataset: "main",
-  useCdn: true,
+  token: process.env.SANITY,
+  useCdn: false,
 })
 
 const AccountPage = ({ data }) => {
@@ -33,50 +35,52 @@ const AccountPage = ({ data }) => {
   const scores = [...new Set(users.map(x => x.season[0].points))]
 
   useEffect(() => {
-    if (userState._id) {
+    if (userState._id && loading) {
       const query = `*[_type == "matchday"]{ status, index, _id, gold, silver, bronze, entries[]{user, players[]->{"fullName": fullName,"name": name, "_id": _id, "scores": scores}, }}`
 
-      setTimeout(() => {
-        client.fetch(query).then(matchdays => {
-          const results = matchdays
-            .map(matchday => {
-              const result = matchday.entries.find(
-                entry => entry.user._ref === userState._id
-              )
-              const id = matchday._id
-              const index = matchday.index
-              const gold = matchday.gold
-              const silver = matchday.silver
-              const bronze = matchday.bronze
-              const status = matchday.status
+      client.fetch(query).then(matchdays => {
+        const results = matchdays
+          .map(matchday => {
+            const result = matchday.entries.find(
+              entry => entry.user._ref === userState._id
+            )
+            const id = matchday._id
+            const index = matchday.index
+            const gold = matchday.gold
+            const silver = matchday.silver
+            const bronze = matchday.bronze
+            const status = matchday.status
 
-              if (result)
-                return {
-                  entry: result,
-                  id: id,
-                  index: index,
-                  gold: gold,
-                  silver: silver,
-                  bronze: bronze,
-                  status: status,
-                }
-              else return null
-            })
-            .filter(Boolean)
+            if (result)
+              return {
+                entry: result,
+                id: id,
+                index: index,
+                gold: gold,
+                silver: silver,
+                bronze: bronze,
+                status: status,
+              }
+            else return null
+          })
+          .filter(Boolean)
 
-          setCurrentMatchday(results.find(x => x.status === "current"))
-          setLoading(false)
-          setMatchdays(results)
-        })
-      }, 500)
+        setCurrentMatchday(results.find(x => x.status === "current"))
+        setLoading(false)
+        setMatchdays(results)
+      })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [loading])
 
   function Logout() {
     userDispatch({ type: "reset" })
     gameDispatch({ type: "reset" })
     navigate("/")
+  }
+
+  function refresh() {
+    setLoading(true)
   }
 
   return (
@@ -146,15 +150,24 @@ const AccountPage = ({ data }) => {
                 <Spinner size={60} />
               </div>
             ) : currentMatchday ? (
-              <Matchday
-                matchday={currentMatchday.entry}
-                id={currentMatchday.id}
-                index={currentMatchday.index}
-                gold={currentMatchday.gold}
-                silver={currentMatchday.silver}
-                bronze={currentMatchday.bronze}
-                current={true}
-              />
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 0.2,
+                }}
+              >
+                <Matchday
+                  matchday={currentMatchday.entry}
+                  id={currentMatchday.id}
+                  index={currentMatchday.index}
+                  gold={currentMatchday.gold}
+                  silver={currentMatchday.silver}
+                  bronze={currentMatchday.bronze}
+                  current={true}
+                  refresh={refresh}
+                />
+              </motion.div>
             ) : (
               <div sx={{ mx: "auto", my: 8 }}>
                 <div sx={{ textAlign: "center" }}>
@@ -165,7 +178,7 @@ const AccountPage = ({ data }) => {
                       bg: "background",
                       color: "text",
                     }}
-                    onClick={() => window && window.location.reload()}
+                    onClick={() => setLoading(true)}
                   >
                     <FiRefreshCw size={30} />
                   </button>
