@@ -73,7 +73,7 @@ const Header = () => {
         aria-label="Login"
         onClick={() => Login()}
       >
-        {userState.id ? (
+        {userstate && userState.id ? (
           <FaUserCheck size={22}></FaUserCheck>
         ) : (
           <FaUserAlt></FaUserAlt>
