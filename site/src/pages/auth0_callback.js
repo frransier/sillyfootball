@@ -14,12 +14,15 @@ const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
   dataset: "main",
-  useCdn: true,
+  token: process.env.SANITY,
+  useCdn: false,
 })
 
 const AuthPage = () => {
   const [show, setShow] = useState(false)
   const [name, setName] = useState("")
+  const [loading, setLoading] = useState(false)
+
   const { user, handleAuthentication } = useAuth()
   const userDispatch = useUserDispatch()
 
@@ -40,6 +43,7 @@ const AuthPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
   function register(userId, name, firstName, lastName, email) {
+    setLoading(true)
     const user = {
       id: userId,
       name: name,
@@ -81,37 +85,42 @@ const AuthPage = () => {
           <div sx={{ width: "50%", mx: "auto", fontSize: 5 }}>
             <Input onChange={e => setName(e.target.value)} />
           </div>
-
-          <div sx={{ mx: " auto" }}>
-            <button
-              sx={{
-                fontSize: 5,
-                my: 7,
-                px: 6,
-                py: 4,
-                bg: "primary",
-                border: "solid 4px",
-                borderColor: "secondary",
-                opacity: name.length > 3 ? 1 : 0.5,
-                color: "background",
-                borderRadius: 8,
-                fontFamily: "heading",
-                fontWeight: "heading",
-              }}
-              onClick={() =>
-                register(
-                  user.sub,
-                  name,
-                  user.given_name,
-                  user.family_name,
-                  user.email
-                )
-              }
-              disabled={name.length > 3 ? false : true}
-            >
-              Slutför registrering
-            </button>
-          </div>
+          {loading ? (
+            <div sx={{ mx: "auto" }}>
+              <Spinner size={60} />
+            </div>
+          ) : (
+            <div sx={{ mx: " auto" }}>
+              <button
+                sx={{
+                  fontSize: 5,
+                  my: 7,
+                  px: 6,
+                  py: 4,
+                  bg: "primary",
+                  border: "solid 4px",
+                  borderColor: "secondary",
+                  opacity: name.length > 3 ? 1 : 0.5,
+                  color: "background",
+                  borderRadius: 8,
+                  fontFamily: "heading",
+                  fontWeight: "heading",
+                }}
+                onClick={() =>
+                  register(
+                    user.sub,
+                    name,
+                    user.given_name,
+                    user.family_name,
+                    user.email
+                  )
+                }
+                disabled={name.length > 3 ? false : true}
+              >
+                Slutför registrering
+              </button>
+            </div>
+          )}
         </div>
       ) : (
         <div sx={{ textAlign: "center", my: 11 }}>

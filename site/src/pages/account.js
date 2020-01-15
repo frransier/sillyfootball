@@ -144,11 +144,7 @@ const AccountPage = ({ data }) => {
           </div>
 
           <div sx={{ height: 240, display: "grid" }}>
-            {loading ? (
-              <div>
-                <br></br>
-              </div>
-            ) : !currentMatchday ? (
+            {!currentMatchday ? (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
