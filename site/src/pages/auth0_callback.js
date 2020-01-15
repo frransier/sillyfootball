@@ -86,7 +86,7 @@ const AuthPage = () => {
             <Input onChange={e => setName(e.target.value)} />
           </div>
           {loading ? (
-            <div sx={{ mx: "auto" }}>
+            <div sx={{ mx: "auto", my: 6 }}>
               <Spinner size={60} />
             </div>
           ) : (

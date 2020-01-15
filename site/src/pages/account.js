@@ -173,6 +173,10 @@ const AccountPage = ({ data }) => {
                   </div>
                 </div>
               </motion.div>
+            ) : loading ? (
+              <div>
+                <br></br>
+              </div>
             ) : (
               <motion.div
                 initial={{ opacity: 0 }}
