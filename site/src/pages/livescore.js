@@ -94,8 +94,8 @@ const LivescorePage = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{
-          delay: 0.1,
-          duration: 0.2,
+          delay: 0.2,
+          duration: 0.3,
         }}
       >
         {matches.length > 0 &&

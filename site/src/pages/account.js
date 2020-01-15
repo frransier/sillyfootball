@@ -147,7 +147,7 @@ const AccountPage = ({ data }) => {
           <div sx={{ height: 240, display: "grid" }}>
             {loading ? (
               <div sx={{ mx: "auto", my: 9 }}>
-                <Spinner size={60} />
+                <br></br>
               </div>
             ) : currentMatchday ? (
               <motion.div
@@ -195,30 +195,32 @@ const AccountPage = ({ data }) => {
           {users.map((node, i) => (
             <Entry key={i} entry={node} scores={scores} />
           ))}
-          <Styled.h1 sx={{ mt: 8 }}>Tidigare omgångar</Styled.h1>
-          {matchdays &&
-            matchdays.length > 0 &&
-            matchdays.map((matchday, i) => {
-              if (matchday.status !== "current") {
-                return (
-                  <Matchday
-                    matchday={matchday.entry}
-                    id={matchday.id}
-                    index={matchday.index}
-                    gold={matchday.gold}
-                    silver={matchday.silver}
-                    bronze={matchday.bronze}
-                    key={i}
-                  />
-                )
-              } else {
-                return (
-                  <Styled.p key={i} sx={{ my: 2 }}>
-                    Inga träffar
-                  </Styled.p>
-                )
-              }
-            })}
+          <div sx={{ minHeight: 93 }}>
+            <Styled.h1 sx={{ mt: 8 }}>Tidigare omgångar</Styled.h1>
+            {matchdays &&
+              matchdays.length > 0 &&
+              matchdays.map((matchday, i) => {
+                if (matchday.status !== "current") {
+                  return (
+                    <Matchday
+                      matchday={matchday.entry}
+                      id={matchday.id}
+                      index={matchday.index}
+                      gold={matchday.gold}
+                      silver={matchday.silver}
+                      bronze={matchday.bronze}
+                      key={i}
+                    />
+                  )
+                } else {
+                  return (
+                    <Styled.p key={i} sx={{ my: 2 }}>
+                      Inga träffar
+                    </Styled.p>
+                  )
+                }
+              })}
+          </div>
         </div>
       ) : (
         <div>
