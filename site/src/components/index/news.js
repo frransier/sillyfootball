@@ -37,6 +37,7 @@ const News = ({ content }) => {
               width: 110,
             }}
             fixed={content.thumbnail.asset.fixed}
+            alt={`Nyheter ${content.tags[0].title}`}
           />
         </div>
       </Link>
