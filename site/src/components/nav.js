@@ -13,7 +13,7 @@ const Nav = () => {
       }}
     >
       <Link to="/nyheter" style={{ textDecoration: "none" }}>
-        <Styled.h2 sx={{ mx: 7 }}>Nyheter</Styled.h2>
+        <Styled.h2 sx={{ mx: 8 }}>Nyheter</Styled.h2>
       </Link>
       <div sx={{ mx: "auto" }}></div>
       <div sx={{ mx: [6, 10] }}>
@@ -23,7 +23,7 @@ const Nav = () => {
       </div>
       <div sx={{ mx: "auto" }}></div>
       <Link to="/fantasy" style={{ textDecoration: "none" }}>
-        <Styled.h2 sx={{ mx: 7 }}>Fantasy</Styled.h2>
+        <Styled.h2 sx={{ mx: 8 }}>Fantasy</Styled.h2>
       </Link>
     </div>
   )
