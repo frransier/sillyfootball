@@ -54,8 +54,6 @@ const Button = ({ text, action }) => {
         ":active, :after": {
           color: "background",
           bg: "primary",
-          transform: `translateY(4px)`,
-
           opacity: 1,
           transition: `0s`,
         },

@@ -56,7 +56,6 @@ const Matchday = ({
               ":active, :after": {
                 color: "primary",
                 bg: "background",
-                transform: `translateY(4px)`,
                 opacity: 1,
                 transition: `0s`,
               },
