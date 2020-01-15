@@ -113,7 +113,7 @@ const Players = ({ players, logos }) => {
                   fontWeight: selected ? "heading" : "body",
                   fontFamily: "body",
                   textAlign: "center",
-                  height: 35,
+                  height: 40,
                   cursor: "pointer",
                 }}
                 onClick={() => toggleSelected(x, selected, img)}
