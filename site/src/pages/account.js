@@ -4,7 +4,7 @@ import { graphql, Link, navigate } from "gatsby"
 import { useUserState, useUserDispatch, useGameDispatch } from "../state"
 import { useEffect, useState } from "react"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
-import { FiRefreshCw } from "react-icons/fi"
+import { IoIosRefresh } from "react-icons/io"
 import { motion } from "framer-motion"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -143,7 +143,7 @@ const AccountPage = ({ data }) => {
             </div>
           </div>
 
-          <div sx={{ height: 240, display: "grid" }}>
+          <div sx={{ height: 220, display: "grid" }}>
             {!currentMatchday ? (
               <motion.div
                 initial={{ opacity: 0 }}
@@ -164,7 +164,7 @@ const AccountPage = ({ data }) => {
                       }}
                       onClick={() => setLoading(true)}
                     >
-                      <FiRefreshCw size={30} />
+                      <IoIosRefresh size={30} />
                     </button>
                   </div>
                   <br />

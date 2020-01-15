@@ -3,7 +3,7 @@ import { jsx, Styled } from "theme-ui"
 import { useState } from "react"
 import { AiOutlineMeh } from "react-icons/ai"
 import { FaStar, FaAngleDown, FaAngleRight } from "react-icons/fa"
-import { FiRefreshCw } from "react-icons/fi"
+import { IoIosRefresh } from "react-icons/io"
 import { useUserState } from "../../state"
 import goldLogo from "../../images/gold.svg"
 import silverLogo from "../../images/silver.svg"
@@ -47,12 +47,23 @@ const Matchday = ({
             sx={{
               appearance: "none",
               border: "none",
-              bg: "background",
-              color: "text",
+              bg: "primary",
+              color: "background",
+              ":after": {
+                color: "primary",
+                bg: "background",
+              },
+              ":active, :after": {
+                color: "primary",
+                bg: "background",
+                transform: `translateY(4px)`,
+                opacity: 1,
+                transition: `0s`,
+              },
             }}
             onClick={refresh}
           >
-            <FiRefreshCw size={20} />
+            <IoIosRefresh size={20} />
           </button>
         </div>
       </div>

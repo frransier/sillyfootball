@@ -218,6 +218,19 @@ const FantasyPage = props => {
                     fontWeight: "heading",
                     appearance: "none",
                     cursor: "pointer",
+
+                    ":after": {
+                      color: "background",
+                      bg: "primary",
+                    },
+                    ":active, :after": {
+                      color: "background",
+                      bg: "primary",
+                      transform: `translateY(4px)`,
+
+                      opacity: 1,
+                      transition: `0s`,
+                    },
                   }}
                   onClick={() => showMore(40)}
                 >

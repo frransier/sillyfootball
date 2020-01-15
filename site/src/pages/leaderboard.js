@@ -2,6 +2,7 @@
 import { jsx, Styled } from "theme-ui"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
+import { IoIosRefresh } from "react-icons/io"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Nav from "../components/nav"
@@ -21,6 +22,8 @@ const LeaderboardPage = () => {
   const [entries, setEntries] = useState([])
   const [scores, setScores] = useState([])
   const [start, setStart] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [refresh, setRefresh] = useState(false)
   useEffect(() => {
     client.fetch(sanityQuery).then(matchday => {
       setMatchday({
@@ -59,64 +62,100 @@ const LeaderboardPage = () => {
       setStart(start > now ? false : true)
       setScores(scores)
       setEntries(entries)
+      setLoading(false)
     })
-  }, [])
+  }, [refresh])
+
+  function hack() {
+    setLoading(true)
+    setRefresh(!refresh)
+  }
 
   return (
     <Layout>
       <SEO title="Livescore" />
       <Nav />
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          delay: 0.2,
-          duration: 0.3,
-        }}
-      >
-        <div
-          sx={{
-            display: "grid",
-            alignItems: "center",
-            justifyItems: "center",
+      {loading ? (
+        <div>
+          <br></br>
+        </div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            delay: 0.2,
+            duration: 0.3,
           }}
         >
-          <Styled.h1
+          <div
             sx={{
-              textAlign: "center",
-              borderBottom: "solid 2px",
+              display: "grid",
+              alignItems: "center",
+              justifyItems: "center",
+            }}
+          >
+            <Styled.h1
+              sx={{
+                textAlign: "center",
+                borderBottom: "solid 2px",
+                borderBottomColor: "primary",
+              }}
+            >
+              Omgång {matchday.index} av 3 | Säsong 1
+            </Styled.h1>
+            <div sx={{ textAlign: "center", my: 3 }}>
+              <button
+                sx={{
+                  appearance: "none",
+                  border: "none",
+                  bg: "primary",
+                  color: "background",
+                  ":after": {
+                    color: "primary",
+                    bg: "background",
+                  },
+                  ":active, :after": {
+                    color: "primary",
+                    bg: "background",
+                    transform: `translateY(4px)`,
+                    opacity: 1,
+                    transition: `0s`,
+                  },
+                }}
+                onClick={() => hack()}
+              >
+                <IoIosRefresh size={40} />
+              </button>
+            </div>
+          </div>
+          <div
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "10% 59% 10% 10% 10%",
+              borderBottom: "solid 1px",
               borderBottomColor: "primary",
             }}
           >
-            Omgång {matchday.index} av 3 | Säsong 1
-          </Styled.h1>
-        </div>
-        <div
-          sx={{
-            display: "grid",
-            gridTemplateColumns: "10% 59% 10% 10% 10%",
-            borderBottom: "solid 1px",
-            borderBottomColor: "primary",
-          }}
-        >
-          <Styled.p
-            sx={{
-              textAlign: "right",
-              my: 1,
-              mx: [0, 4],
-              gridColumn: "span 5",
-              fontWeight: "heading",
-            }}
-          >
-            Score
-          </Styled.p>
-        </div>
-        {entries.length > 0 &&
-          entries.map((x, i) => (
-            <Entry key={i} x={x} scores={scores} start={start} />
-          ))}
-        {entries.length > 0 && <Footer></Footer>}
-      </motion.div>
+            <Styled.p
+              sx={{
+                textAlign: "right",
+                my: 1,
+                mx: [0, 4],
+                gridColumn: "span 5",
+                fontWeight: "heading",
+              }}
+            >
+              Score
+            </Styled.p>
+          </div>
+          {entries.length > 0 &&
+            entries.map((x, i) => (
+              <Entry key={i} x={x} scores={scores} start={start} />
+            ))}
+          {entries.length > 0 && <Footer />}
+        </motion.div>
+      )}
     </Layout>
   )
 }

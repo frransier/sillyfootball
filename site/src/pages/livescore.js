@@ -2,6 +2,7 @@
 import { jsx, Styled } from "theme-ui"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
+import { IoIosRefresh } from "react-icons/io"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Nav from "../components/nav"
@@ -50,6 +51,8 @@ const query = `*[_type == "matchday" && index == 1]{..., matches[]
 const LivescorePage = () => {
   const [matches, setMatches] = useState([])
   const [dates, setDates] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [refresh, setRefresh] = useState(false)
 
   useEffect(() => {
     client.fetch(query).then(matches => {
@@ -74,7 +77,9 @@ const LivescorePage = () => {
         ])
       }
       setMatches(matches[0].matches)
+      setLoading(false)
     })
+
     const subscription = client.listen(query).subscribe(updater => {
       setTimeout(async function() {
         const matches = await client.fetch(query)
@@ -84,44 +89,80 @@ const LivescorePage = () => {
     return () => {
       subscription.unsubscribe()
     }
-  }, [])
+  }, [refresh])
+
+  function hack() {
+    setLoading(true)
+    setRefresh(!refresh)
+  }
 
   return (
     <Layout>
       <SEO title="Livescore" />
       <Nav />
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          delay: 0.2,
-          duration: 0.3,
-        }}
-      >
-        {matches.length > 0 &&
-          dates.map((d, i) => (
-            <div key={i} sx={{ display: "grid" }}>
-              <div sx={{ mx: "auto" }}>
-                <Styled.h2
-                  sx={{
-                    borderBottom: "solid 2px",
-                    borderBottomColor: "primary",
-                    textAlign: "center",
-                  }}
-                >
-                  {d[0]} {d[1]} {d[2]}
-                </Styled.h2>
+      {loading ? (
+        <div>
+          <br></br>
+        </div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            delay: 0.2,
+            duration: 0.3,
+          }}
+        >
+          {matches.length > 0 &&
+            dates.map((d, i) => (
+              <div key={i} sx={{ display: "grid" }}>
+                <div sx={{ mx: "auto" }}>
+                  <Styled.h2
+                    sx={{
+                      borderBottom: "solid 2px",
+                      borderBottomColor: "primary",
+                      textAlign: "center",
+                    }}
+                  >
+                    {d[0]} {d[1]} {d[2]}
+                  </Styled.h2>
+                </div>
+                {matches.map((x, xi) => {
+                  const xdate = new Date(x.start)
+                  const day = xdate.getDate().toString()
+                  if (d[1] === day)
+                    return <Match key={xi} index={xi} match={x} />
+                  return null
+                })}
               </div>
-              {matches.map((x, xi) => {
-                const xdate = new Date(x.start)
-                const day = xdate.getDate().toString()
-                if (d[1] === day) return <Match key={xi} index={xi} match={x} />
-                return null
-              })}
-            </div>
-          ))}
-        {matches.length > 0 && <Footer />}
-      </motion.div>
+            ))}
+          <div sx={{ textAlign: "center", my: 7 }}>
+            <button
+              sx={{
+                appearance: "none",
+                border: "none",
+                bg: "primary",
+                color: "background",
+                ":after": {
+                  color: "primary",
+                  bg: "background",
+                },
+                ":active, :after": {
+                  color: "primary",
+                  bg: "background",
+                  transform: `translateY(4px)`,
+                  opacity: 1,
+                  transition: `0s`,
+                },
+              }}
+              onClick={() => hack()}
+            >
+              <IoIosRefresh size={40} />
+            </button>
+          </div>
+          {matches.length > 0 && <Footer />}
+        </motion.div>
+      )}
     </Layout>
   )
 }
