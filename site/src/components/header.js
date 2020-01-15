@@ -5,7 +5,7 @@ import icon from "../images/icon.svg"
 import iconDark from "../images/icon-dark.svg"
 import { useColorMode } from "theme-ui"
 import { useAuth } from "react-use-auth"
-import { FaUserAlt } from "react-icons/fa"
+import { FaUserAlt, FaUserCheck } from "react-icons/fa"
 import { FiSun } from "react-icons/fi"
 import { IoMdMoon } from "react-icons/io"
 import { useUserState } from "../state"
@@ -73,7 +73,11 @@ const Header = () => {
         aria-label="Login"
         onClick={() => Login()}
       >
-        <FaUserAlt></FaUserAlt>
+        {userState.id ? (
+          <FaUserCheck size={22}></FaUserCheck>
+        ) : (
+          <FaUserAlt></FaUserAlt>
+        )}
       </button>
     </div>
   )
