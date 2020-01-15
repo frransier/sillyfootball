@@ -153,7 +153,7 @@ const AccountPage = ({ data }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{
-                  delay: 1.5,
+                  delay: 1,
                   duration: 0.2,
                 }}
               >
@@ -172,7 +172,9 @@ const AccountPage = ({ data }) => {
                     </button>
                   </div>
                   <br />
-                  <Button text="Spela" action="fantasy" />
+                  <div sx={{ textAlign: "center" }}>
+                    <Button text="Spela" action="fantasy" />
+                  </div>
                 </div>
               </motion.div>
             ) : (
