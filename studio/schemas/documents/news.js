@@ -11,7 +11,11 @@ export default {
       title: "Title",
       type: "string"
     },
-
+    {
+      name: "source",
+      title: "Source",
+      type: "string"
+    },
     {
       name: "intro",
       title: "Intro",

@@ -18,6 +18,9 @@ const NewsTemplate = ({ data }) => {
   const [colorMode] = useColorMode()
   const news = data && data.news
   const allNews = data && data.allNews
+  const date = new Date(news._updatedAt)
+
+  const datestring = date.toLocaleDateString("sv-SV")
 
   return (
     <Layout>
@@ -32,6 +35,7 @@ const NewsTemplate = ({ data }) => {
         }}
       >
         <Styled.h1 sx={{ justifySelf: "start" }}>{news.title}</Styled.h1>
+
         <div
           sx={{
             width: "100%",
@@ -45,8 +49,19 @@ const NewsTemplate = ({ data }) => {
             fluid={news.image.asset.fluid}
           />
         </div>
+        <Styled.h3 sx={{ my: 0, justifySelf: "start" }}>{datestring}</Styled.h3>
         <Styled.h2>{news.intro}</Styled.h2>
         <BlockContent blocks={news._rawBody} serializers={serializers} />
+        <Styled.h2 sx={{ justifySelf: "start" }}>
+          <a
+            style={{ textDecoration: "none" }}
+            href={news.source}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Källa
+          </a>
+        </Styled.h2>
         <div
           sx={{
             display: "flex",
@@ -113,6 +128,7 @@ export const query = graphql`
       _updatedAt
       title
       intro
+      source
       _rawBody(resolveReferences: { maxDepth: 10 })
       image {
         asset {

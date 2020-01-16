@@ -88,6 +88,7 @@ export const query = graphql`
       edges {
         node {
           _createdAt
+          _updatedAt
           title
           intro
           tags {
