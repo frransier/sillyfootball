@@ -23,6 +23,7 @@ const Play = ({ entries, register, deadline }) => {
           Deadline har passerat. Nästa omgång kommer ut inom 36h.
         </Styled.h3>
         <Button text="Livescore" action="livescore" />
+        <Button text="Leaderboard" action="leaderboard" />
       </div>
     )
   }

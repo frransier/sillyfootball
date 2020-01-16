@@ -21,6 +21,9 @@ const Button = ({ text, action }) => {
       case "fantasy":
         navigate(`/${action}/`)
         return
+      case "leaderboard":
+        navigate(`/${action}/`)
+        return
       case "reset":
         gameDispatch({ type: "reset" })
         navigate("/account/")
