@@ -40,7 +40,7 @@ const Board = () => {
             }}
           >
             <div sx={{ mx: [8, 9] }}>
-              <Link to="/white-paper/" style={{ textDecoration: "none" }}>
+              <Link to="/regler/" style={{ textDecoration: "none" }}>
                 <Styled.h2
                   sx={{
                     textAlign: "center",

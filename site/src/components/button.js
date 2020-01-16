@@ -16,7 +16,7 @@ const Button = ({ text, action }) => {
         navigate("/account/")
         return
       case "white-paper":
-        navigate(`/${action}/`)
+        navigate(`/regler/`)
         return
       case "fantasy":
         navigate(`/${action}/`)

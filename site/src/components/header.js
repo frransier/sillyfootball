@@ -65,7 +65,7 @@ const Header = () => {
       <button
         sx={{
           bg: "background",
-          color: "text",
+          color: userState && userState.name ? "primary" : "text",
           border: "none",
           fontSize: 4,
           mx: 4,

@@ -1,8 +1,9 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx, Styled, useColorMode } from "theme-ui"
 import { Link } from "gatsby"
 
 const Nav = () => {
+  const [colorMode] = useColorMode()
   return (
     <div
       sx={{
@@ -12,42 +13,99 @@ const Nav = () => {
         textAlign: "center",
       }}
     >
-      <Link to="/nyheter" style={{ textDecoration: "none" }}>
-        <Styled.h3
-          sx={{
-            mx: [8, 9],
-            fontWeight: "body",
-            fontFamily: "body",
+      <Styled.h3
+        sx={{
+          mx: [8, 9],
+          fontWeight: "body",
+          fontFamily: "body",
+        }}
+      >
+        <Link
+          activeStyle={{
+            background: colorMode === "default" ? "#FF5252" : "#67FFBF",
+            color: colorMode === "default" ? "#fff" : "#2F2F2F",
+            borderRadius: 4,
+            paddingLeft: 8,
+            paddingRight: 8,
+            paddingTop: 2,
+            paddingBottom: 2,
+          }}
+          to="/nyheter"
+          style={{
+            textDecoration: "none",
+            color: colorMode === "default" ? "#2F2F2F" : "#fff",
+            paddingLeft: 8,
+            paddingRight: 8,
+            paddingTop: 2,
+            paddingBottom: 2,
           }}
         >
           Nyheter
-        </Styled.h3>
-      </Link>
+        </Link>
+      </Styled.h3>
       <div sx={{ mx: "auto" }}></div>
       <div sx={{ mx: 6 }}>
-        <Link to="/livescore" style={{ textDecoration: "none" }}>
-          <Styled.h3
-            sx={{
-              fontWeight: "body",
-              fontFamily: "body",
-            }}
-          >
-            Livescore
-          </Styled.h3>
-        </Link>
-      </div>
-      <div sx={{ mx: "auto" }}></div>
-      <Link to="/fantasy" style={{ textDecoration: "none" }}>
         <Styled.h3
           sx={{
-            mx: [8, 9],
             fontWeight: "body",
             fontFamily: "body",
           }}
         >
-          Fantasy
+          <Link
+            activeStyle={{
+              background: colorMode === "default" ? "#FF5252" : "#67FFBF",
+              color: colorMode === "default" ? "#fff" : "#2F2F2F",
+              borderRadius: 4,
+              paddingLeft: 8,
+              paddingRight: 8,
+              paddingTop: 2,
+              paddingBottom: 2,
+            }}
+            to="/livescore"
+            style={{
+              textDecoration: "none",
+              color: colorMode === "default" ? "#2F2F2F" : "#fff",
+              paddingLeft: 8,
+              paddingRight: 8,
+              paddingTop: 2,
+              paddingBottom: 2,
+            }}
+          >
+            Livescore
+          </Link>
         </Styled.h3>
-      </Link>
+      </div>
+      <div sx={{ mx: "auto" }}></div>
+      <Styled.h3
+        sx={{
+          mx: [8, 9],
+          fontWeight: "body",
+          fontFamily: "body",
+        }}
+      >
+        <Link
+          to="/fantasy"
+          activeStyle={{
+            background: colorMode === "default" ? "#FF5252" : "#67FFBF",
+            color: colorMode === "default" ? "#fff" : "#2F2F2F",
+            borderRadius: 4,
+            paddingLeft: 8,
+            paddingRight: 8,
+            paddingTop: 2,
+            paddingBottom: 2,
+          }}
+          style={{
+            textDecoration: "none",
+            color: colorMode === "default" ? "#2F2F2F" : "#fff",
+            paddingLeft: 8,
+            paddingRight: 8,
+            paddingTop: 2,
+            paddingBottom: 2,
+          }}
+        >
+          Fantasy
+        </Link>
+      </Styled.h3>
     </div>
   )
 }

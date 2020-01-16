@@ -16,7 +16,7 @@ const WhitePaperPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Profile" />
+      <SEO title="Regler" />
       <Nav />
       <div
         sx={{
@@ -43,7 +43,7 @@ export default WhitePaperPage
 
 export const query = graphql`
   query ManifestoQuery {
-    page: sanityPage(slug: { current: { eq: "white-paper" } }) {
+    page: sanityPage(slug: { current: { eq: "regler" } }) {
       _rawBody
       title
       intro

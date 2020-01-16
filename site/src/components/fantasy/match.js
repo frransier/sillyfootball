@@ -58,8 +58,14 @@ const Match = ({ match }) => {
           // borderBottomColor: "primary",
         }}
       >
-        <div sx={{ fontFamily: "body", fontWeight: "body", color: "darkgrey" }}>
-          {selected ? <FaAngleDown /> : <FaAngleRight />}
+        <div
+          sx={{
+            fontFamily: "body",
+            fontWeight: "body",
+            color: selected ? "primary" : "darkgrey",
+          }}
+        >
+          {selected ? <FaAngleDown size={20} /> : <FaAngleRight size={20} />}
         </div>
         <div
           sx={{
