@@ -10,7 +10,7 @@ const Play = ({ entries, register, deadline }) => {
     return (
       <div sx={{ display: "grid", justifyItems: "center" }}>
         <Styled.h1 sx={{ mb: 2, mt: 7 }}>
-          Logga in eller bli medlem kostnadsfritt
+          Logga in eller bli medlem gratis.
         </Styled.h1>
         <Button text="Fortsätt" action="login" />
       </div>
