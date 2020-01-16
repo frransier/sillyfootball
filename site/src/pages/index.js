@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 import { graphql } from "gatsby"
 import News from "../components/index/news"
 import Card from "../components/index/card"
@@ -8,8 +8,6 @@ import SEO from "../components/seo"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
 import { useColorMode } from "theme-ui"
 import fantasy from "../images/fantasy.svg"
-import nyheter from "../images/nyheter.svg"
-import nyheterDark from "../images/nyheter-dark.svg"
 import fantasyDark from "../images/fantasy-dark.svg"
 import { GiMining, GiDiamondHard } from "react-icons/gi"
 import Footer from "../components/footer"
@@ -67,21 +65,9 @@ const IndexPage = props => {
           display: "grid",
           gridTemplateColumns: "100%",
           alignItems: "center",
-          // justifyItems: "center",
-          // mx: "auto",
         }}
       >
-        <img
-          sx={{
-            width: 110,
-            height: 14,
-            mt: 3,
-            mb: 7,
-            mx: "auto",
-          }}
-          src={colorMode === "default" ? nyheter : nyheterDark}
-          alt="Fantasy Football"
-        />
+        <Styled.h1 sx={{ textAlign: "center" }}>Nyheter</Styled.h1>
         <div sx={{ mx: "auto" }}>
           {news.map((content, index) => (
             <News key={index} content={content} />
