@@ -73,7 +73,7 @@ const LeaderboardPage = () => {
 
   return (
     <Layout>
-      <SEO title="Livescore" />
+      <SEO title="Leaderboard" />
       <Nav />
       {loading ? (
         <div>

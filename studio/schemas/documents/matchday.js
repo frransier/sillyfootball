@@ -11,6 +11,11 @@ export default {
       title: "Index"
     },
     {
+      name: "title",
+      type: "string",
+      title: "Title"
+    },
+    {
       name: "status",
       type: "string",
       title: "Status",
@@ -19,6 +24,7 @@ export default {
           { title: "Current", value: "current" },
           { title: "Next", value: "next" },
           { title: "Last", value: "last" },
+          { title: "Recent", value: "recent" },
           { title: "Finished", value: "finished" }
         ],
         layout: "radio",
