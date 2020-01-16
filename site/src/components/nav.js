@@ -13,17 +13,40 @@ const Nav = () => {
       }}
     >
       <Link to="/nyheter" style={{ textDecoration: "none" }}>
-        <Styled.h2 sx={{ mx: [8, 9] }}>Nyheter</Styled.h2>
+        <Styled.h3
+          sx={{
+            mx: [8, 9],
+            fontWeight: "body",
+            fontFamily: "body",
+          }}
+        >
+          Nyheter
+        </Styled.h3>
       </Link>
       <div sx={{ mx: "auto" }}></div>
       <div sx={{ mx: 6 }}>
         <Link to="/livescore" style={{ textDecoration: "none" }}>
-          <Styled.h2>Livescore</Styled.h2>
+          <Styled.h3
+            sx={{
+              fontWeight: "body",
+              fontFamily: "body",
+            }}
+          >
+            Livescore
+          </Styled.h3>
         </Link>
       </div>
       <div sx={{ mx: "auto" }}></div>
       <Link to="/fantasy" style={{ textDecoration: "none" }}>
-        <Styled.h2 sx={{ mx: [8, 9] }}>Fantasy</Styled.h2>
+        <Styled.h3
+          sx={{
+            mx: [8, 9],
+            fontWeight: "body",
+            fontFamily: "body",
+          }}
+        >
+          Fantasy
+        </Styled.h3>
       </Link>
     </div>
   )

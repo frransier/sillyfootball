@@ -3,15 +3,12 @@ import { jsx } from "theme-ui"
 import logo from "../images/sillyfootball.svg"
 import logoDark from "../images/sillyfootball-dark.svg"
 import { useColorMode } from "theme-ui"
-import { FaTwitter, FaFacebook, FaDiscord } from "react-icons/fa"
+import { FaTwitter } from "react-icons/fa"
 
 const Footer = () => {
   const [colorMode] = useColorMode()
   return (
     <div sx={{ my: 7 }}>
-      {/* <div sx={{ width: "70%", mx: "auto" }}>
-        <Nav></Nav>
-      </div> */}
       <div sx={{ width: "50%", mx: "auto" }}>
         <div
           sx={{
@@ -23,13 +20,15 @@ const Footer = () => {
           }}
         >
           <div sx={{ mx: "auto" }}>
-            <FaTwitter></FaTwitter>
+            <br></br>
           </div>
           <div sx={{ mx: "auto" }}>
-            <FaFacebook></FaFacebook>
+            <a href="https://twitter.com/sillyfootballse">
+              <FaTwitter></FaTwitter>
+            </a>
           </div>
           <div sx={{ mx: "auto" }}>
-            <FaDiscord></FaDiscord>
+            <br></br>
           </div>
         </div>
       </div>

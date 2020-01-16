@@ -9,12 +9,10 @@ const Play = ({ entries, register, deadline }) => {
   if (userState && entries && userState.length === 0) {
     return (
       <div sx={{ display: "grid", justifyItems: "center" }}>
-        <Styled.h2 sx={{ mb: 2, mt: 7 }}>Logga in för att fortsätta</Styled.h2>
-        <Button text="Logga in" action="login" />
-        <Styled.h2 sx={{ my: 2 }}>
-          Bli medlem kostnadsfritt med ett par klick
-        </Styled.h2>
-        <Button text="Bli medlem" action="login" />
+        <Styled.h1 sx={{ mb: 2, mt: 7 }}>
+          Logga in eller bli medlem kostnadsfritt
+        </Styled.h1>
+        <Button text="Fortsätt" action="login" />
       </div>
     )
   }

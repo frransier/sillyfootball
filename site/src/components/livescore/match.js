@@ -12,7 +12,7 @@ const Match = ({ match }) => {
   const hours = `${date.getHours()}`
 
   return (
-    <div>
+    <div sx={{ my: -1 }}>
       <div
         sx={{
           display: "grid",
