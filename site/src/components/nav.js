@@ -29,8 +29,11 @@ const Nav = () => {
             paddingRight: 8,
             paddingTop: 2,
             paddingBottom: 2,
+
+            border: "solid 1px",
+            borderColor: "darkgrey",
           }}
-          to="/nyheter"
+          to="/nyheter/"
           style={{
             textDecoration: "none",
             color: colorMode === "default" ? "#2F2F2F" : "#fff",
@@ -60,8 +63,10 @@ const Nav = () => {
               paddingRight: 8,
               paddingTop: 2,
               paddingBottom: 2,
+              border: "solid 1px",
+              borderColor: "darkgrey",
             }}
-            to="/livescore"
+            to="/livescore/"
             style={{
               textDecoration: "none",
               color: colorMode === "default" ? "#2F2F2F" : "#fff",
@@ -84,7 +89,7 @@ const Nav = () => {
         }}
       >
         <Link
-          to="/fantasy"
+          to="/fantasy/"
           activeStyle={{
             background: colorMode === "default" ? "#FF5252" : "#67FFBF",
             color: colorMode === "default" ? "#fff" : "#2F2F2F",
@@ -93,6 +98,8 @@ const Nav = () => {
             paddingRight: 8,
             paddingTop: 2,
             paddingBottom: 2,
+            border: "solid 1px",
+            borderColor: "darkgrey",
           }}
           style={{
             textDecoration: "none",
