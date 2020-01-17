@@ -49,5 +49,13 @@ module.exports = {
         // Avoids sending pageview hits from custom paths
       },
     },
+    {
+      resolve: "gatsby-plugin-intercom-spa",
+      options: {
+        app_id: "entknhmw",
+        include_in_development: true,
+        delay_timeout: 0,
+      },
+    },
   ],
 }
