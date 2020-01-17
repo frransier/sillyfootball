@@ -38,7 +38,8 @@ const NewsTemplate = ({ data }) => {
           mx: 3,
         }}
       >
-        <Styled.h1 sx={{ justifySelf: "start" }}>{news.title}</Styled.h1>
+        <Styled.h1 sx={{ justifySelf: "start", mb: 2 }}>{news.title}</Styled.h1>
+        <Styled.h3 sx={{ my: 0, justifySelf: "start" }}>{datestring}</Styled.h3>
 
         <div
           sx={{
@@ -53,7 +54,6 @@ const NewsTemplate = ({ data }) => {
             fluid={news.image.asset.fluid}
           />
         </div>
-        <Styled.h3 sx={{ my: 0, justifySelf: "start" }}>{datestring}</Styled.h3>
         <Styled.h2>{news.intro}</Styled.h2>
         <BlockContent blocks={news._rawBody} serializers={serializers} />
         <Styled.h2 sx={{ justifySelf: "start" }}>
