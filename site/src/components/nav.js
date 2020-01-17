@@ -29,7 +29,7 @@ const Nav = () => {
             paddingRight: 8,
             paddingTop: 2,
             paddingBottom: 2,
-
+            fontWeight: 700,
             border: "solid 1px",
             borderColor: "darkgrey",
           }}
@@ -65,6 +65,7 @@ const Nav = () => {
               paddingBottom: 2,
               border: "solid 1px",
               borderColor: "darkgrey",
+              fontWeight: 700,
             }}
             to="/livescore/"
             style={{
@@ -100,6 +101,7 @@ const Nav = () => {
             paddingBottom: 2,
             border: "solid 1px",
             borderColor: "darkgrey",
+            fontWeight: 700,
           }}
           style={{
             textDecoration: "none",
