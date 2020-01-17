@@ -45,13 +45,8 @@ module.exports = {
         trackingIds: [
           "UA-156458502-1", // Google Analytics / GA
         ],
-        gtagConfig: {
-          optimize_id: "OPT_CONTAINER_ID",
-          anonymize_ip: true,
-          cookie_expires: 0,
-        },
         pluginConfig: {
-          head: true,
+          head: false,
         },
       },
     },
