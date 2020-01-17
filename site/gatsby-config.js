@@ -40,14 +40,13 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     {
-      resolve: `gatsby-plugin-google-gtag`,
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingIds: [
-          "UA-156458502-1", // Google Analytics / GA
-        ],
-        pluginConfig: {
-          head: false,
-        },
+        // The property ID; the tracking code won't be generated without it
+        trackingId: "UA-156458502-1",
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: false,
+        // Avoids sending pageview hits from custom paths
       },
     },
   ],
