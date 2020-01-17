@@ -100,7 +100,7 @@ const LivescorePage = () => {
     <Layout>
       <SEO
         title="Livescore"
-        description="Följ Sillyfootball's omgångar live."
+        description="Följ Sillyfootball:s omgångar live."
       />
       <Nav />
       {loading ? (

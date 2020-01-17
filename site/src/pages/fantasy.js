@@ -124,7 +124,7 @@ const FantasyPage = props => {
 
   return (
     <Layout>
-      <SEO title="Fantasy" />
+      <SEO title="Fantasy" description="Prova på ett annorlunda fantasy-spel" />
       <Nav />
       {loading ? (
         <div

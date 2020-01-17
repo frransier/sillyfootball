@@ -53,7 +53,7 @@ const TagTemplate = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="News" />
+      <SEO title={`Nyheter ${tag.title}`} />
       <Nav />
       <div
         sx={{

@@ -18,7 +18,7 @@ const NewsPage = ({ data }) => {
   const news = mapEdgesToNodes(data.news)
   return (
     <Layout>
-      <SEO title="Nyheter" />
+      <SEO title="Nyheter Fotboll" />
       <Nav></Nav>
       <div
         sx={{

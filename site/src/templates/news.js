@@ -24,7 +24,11 @@ const NewsTemplate = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="News" />
+      <SEO
+        title={news.title}
+        description={news.intro}
+        image={news.image.asset.fluid.src}
+      />
       <Nav />
       <div
         sx={{
@@ -133,6 +137,7 @@ export const query = graphql`
       image {
         asset {
           fluid {
+            src
             ...GatsbySanityImageFluid
           }
         }

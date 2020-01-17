@@ -16,7 +16,7 @@ const ThanksPage = () => {
   }, [gameDispatch])
   return (
     <Layout>
-      <SEO title="Profile" />
+      <SEO title="Tack" />
       <Nav />
       <div
         sx={{
