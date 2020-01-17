@@ -98,7 +98,10 @@ const LivescorePage = () => {
 
   return (
     <Layout>
-      <SEO title="Livescore" />
+      <SEO
+        title="Livescore"
+        description="Följ Sillyfootball's omgångar live."
+      />
       <Nav />
       {loading ? (
         <div>

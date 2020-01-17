@@ -73,7 +73,10 @@ const LeaderboardPage = () => {
 
   return (
     <Layout>
-      <SEO title="Leaderboard" />
+      <SEO
+        title="Leaderboard"
+        description="Följ omgången live på leaderboarden"
+      />
       <Nav />
       {loading ? (
         <div>

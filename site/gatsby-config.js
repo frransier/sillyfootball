@@ -3,7 +3,7 @@ require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` })
 module.exports = {
   siteMetadata: {
     title: `Sillyfootball`,
-    description: `Fotbollsnyheter, fantasy, livescore, resultat, transfers och rykten från europeisk toppfotboll.`,
+    description: `Addera lite spänning till din fotbollsvardag, helt gratis.`,
     author: `@sillyfootballse`,
   },
   plugins: [
