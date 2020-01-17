@@ -18,7 +18,7 @@ const IndexPage = props => {
 
   return (
     <Layout>
-      <SEO title="Fotboll | Nyheter | Fantasy | Livescore" />
+      <SEO title="Fotboll, Nyheter, Fantasy, Livescore" />
       <Nav />
       <div
         sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}

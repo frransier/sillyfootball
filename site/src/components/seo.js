@@ -9,8 +9,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import logo from "../images/metaImage.png"
 
-function SEO({ description, lang, meta, title }) {
+const SEO = ({ description, meta, title, image }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -26,11 +27,14 @@ function SEO({ description, lang, meta, title }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
+  const metaTitle = title || `Fantasy Football`
+  const metaImage = image || `https://www.sillyfootball.se` + logo
+  const metaLang = `sv`
 
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        metaLang,
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
@@ -41,7 +45,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           property: `og:description`,
@@ -52,8 +56,24 @@ function SEO({ description, lang, meta, title }) {
           content: `website`,
         },
         {
+          property: `og:image`,
+          content: metaImage,
+        },
+        {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
+        },
+        {
+          name: `twitter:site`,
+          content: site.siteMetadata.author,
+        },
+        {
+          name: `twitter:image`,
+          content: metaImage,
+        },
+        {
+          name: `twitter:image:alt`,
+          content: metaDescription,
         },
         {
           name: `twitter:creator`,
@@ -61,7 +81,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           name: `twitter:description`,
@@ -73,7 +93,7 @@ function SEO({ description, lang, meta, title }) {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
+  lang: `sv`,
   meta: [],
   description: ``,
 }
