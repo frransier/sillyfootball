@@ -17,11 +17,14 @@ const Layout = ({ children }) => {
           html {
             overflow-y: scroll;
           }
+          body {
+            margin: 0;
+          }
         `}
       />
       <Header />
 
-      <div sx={{ width: ["100%"], mx: "auto" }}>{children}</div>
+      <div sx={{ mx: "auto" }}>{children}</div>
     </div>
   )
 }

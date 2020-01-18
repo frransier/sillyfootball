@@ -156,16 +156,27 @@ const FantasyPage = props => {
                 alt="Fantasy Football"
               />
             ) : (
-              <img
-                sx={{
-                  width: 200,
-                  height: 35,
-                  mx: "auto",
-                  my: 5,
-                }}
-                src={colorMode === "default" ? full : fullDark}
-                alt="Fantasy Football"
-              />
+              <div sx={{ textAlign: "center" }}>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{
+                    delay: 0.3,
+                    duration: 0.4,
+                  }}
+                >
+                  <img
+                    sx={{
+                      width: 200,
+                      height: 35,
+                      mx: "auto",
+                      my: 5,
+                    }}
+                    src={colorMode === "default" ? full : fullDark}
+                    alt="Fantasy Football"
+                  />
+                </motion.div>
+              </div>
             )}
           </div>
           <Board />
@@ -209,10 +220,10 @@ const FantasyPage = props => {
                     my: 7,
                     px: 6,
                     py: 4,
-                    bg: "background",
+                    bg: "primary",
                     border: "solid 2px",
                     borderColor: "primary",
-                    color: "text",
+                    color: "background",
                     borderRadius: 4,
                     fontFamily: "heading",
                     fontWeight: "heading",
@@ -224,8 +235,8 @@ const FantasyPage = props => {
                       bg: "primary",
                     },
                     ":active, :after": {
-                      color: "background",
-                      bg: "primary",
+                      color: "text",
+                      bg: "background",
 
                       opacity: 1,
                       transition: `0s`,

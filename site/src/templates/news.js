@@ -13,6 +13,7 @@ import { serializers } from "../utils/serializers"
 import { GiMining, GiDiamondHard } from "react-icons/gi"
 import fantasy from "../images/fantasy.svg"
 import fantasyDark from "../images/fantasy-dark.svg"
+import { Divider } from "@theme-ui/components"
 
 const NewsTemplate = ({ data }) => {
   const [colorMode] = useColorMode()
@@ -35,37 +36,49 @@ const NewsTemplate = ({ data }) => {
           display: "grid",
           alignItems: "center",
           justifyItems: "center",
-          mx: 3,
+          mx: 0,
         }}
       >
-        <Styled.h1 sx={{ justifySelf: "start", mb: 2 }}>{news.title}</Styled.h1>
-        <Styled.h3 sx={{ my: 0, justifySelf: "start" }}>{datestring}</Styled.h3>
+        <Styled.h1 sx={{ justifySelf: "start", mb: 2, mx: 3 }}>
+          {news.title}
+        </Styled.h1>
+        <Styled.h3 sx={{ my: 0, justifySelf: "start", mx: 3 }}>
+          {datestring}
+        </Styled.h3>
 
         <div
           sx={{
             width: "100%",
-            border: "solid 2px",
-            borderColor: "muted",
-            borderRadius: 4,
+            mx: 0,
           }}
         >
-          <Image
-            sx={{ width: "100%", borderRadius: 4 }}
-            fluid={news.image.asset.fluid}
-          />
+          <Image sx={{ width: "100%" }} fluid={news.image.asset.fluid} />
         </div>
-        <Styled.h2>{news.intro}</Styled.h2>
-        <BlockContent blocks={news._rawBody} serializers={serializers} />
-        <Styled.h2 sx={{ justifySelf: "start" }}>
-          <a
-            style={{ textDecoration: "none" }}
-            href={news.source}
-            target="_blank"
-            rel="noopener noreferrer"
+        <Styled.h2 sx={{ mx: 3, justifySelf: "start" }}>{news.intro}</Styled.h2>
+        <BlockContent
+          sx={{ mx: 3 }}
+          blocks={news._rawBody}
+          serializers={serializers}
+        />
+        <a
+          sx={{ justifySelf: "end" }}
+          style={{ textDecoration: "none" }}
+          href={news.source}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Styled.h2
+            sx={{
+              justifySelf: "end",
+              mx: 4,
+              color: "text",
+              textDecoration: "underline",
+            }}
           >
             Källa
-          </a>
-        </Styled.h2>
+          </Styled.h2>
+        </a>
+        <Divider></Divider>
         <div
           sx={{
             display: "flex",
@@ -113,6 +126,7 @@ const NewsTemplate = ({ data }) => {
             </div>
           </div>
         </div>
+        <Divider></Divider>
         {allNews.edges.map(({ node }, index) => (
           <News key={index} content={node} />
         ))}

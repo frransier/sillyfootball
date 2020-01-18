@@ -60,8 +60,6 @@ const Play = ({ entries, register, deadline }) => {
             px: 6,
             py: 4,
             bg: "primary",
-            border: "solid 1px",
-            borderColor: "darkgrey",
             color: "background",
             borderRadius: 4,
             fontFamily: "heading",

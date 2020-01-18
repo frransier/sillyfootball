@@ -114,6 +114,8 @@ const Players = ({ players, logos }) => {
                   textAlign: "center",
                   height: 40,
                   cursor: "pointer",
+                  color: selected ? "background" : "text",
+                  bg: selected ? "primary" : "background",
                 }}
                 onClick={() => toggleSelected(x, selected, img)}
               >
@@ -163,7 +165,7 @@ const Players = ({ players, logos }) => {
                 <td
                   sx={{
                     fontSize: selected ? 5 : 4,
-                    color: selected ? "primary" : "text",
+                    color: selected ? "background" : "background",
                     pt: 4,
                     borderBottom: selected ? "solid 1px" : "solid 2px",
                     borderBottomColor: selected ? "primary" : "muted",

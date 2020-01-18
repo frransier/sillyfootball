@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
 import News from "../components/index/news"
 import Card from "../components/index/card"
@@ -67,8 +67,7 @@ const IndexPage = props => {
           alignItems: "center",
         }}
       >
-        <Styled.h1 sx={{ textAlign: "center" }}>Nyheter</Styled.h1>
-        <div sx={{ mx: "auto" }}>
+        <div sx={{ mx: 0 }}>
           {news.map((content, index) => (
             <News key={index} content={content} />
           ))}

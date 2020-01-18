@@ -98,8 +98,6 @@ const AuthPage = () => {
                   px: 6,
                   py: 4,
                   bg: "primary",
-                  border: "solid 4px",
-                  borderColor: "secondary",
                   opacity: name.length > 3 ? 1 : 0.5,
                   color: "background",
                   borderRadius: 8,

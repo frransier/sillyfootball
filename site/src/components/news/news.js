@@ -25,14 +25,10 @@ const News = ({ content }) => {
           sx={{
             width: 110,
             height: 80,
-            border: "solid 2px",
-            borderColor: "muted",
-            borderRadius: 4,
           }}
         >
           <Image
             sx={{
-              borderRadius: 3,
               height: 80,
               width: 110,
             }}
@@ -43,11 +39,7 @@ const News = ({ content }) => {
 
       <div
         sx={{
-          border: "solid 2px",
-          borderColor: "muted",
           height: 80,
-          borderRadius: 4,
-          ml: 3,
 
           width: "100%",
         }}

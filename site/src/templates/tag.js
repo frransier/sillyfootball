@@ -60,7 +60,6 @@ const TagTemplate = ({ data }) => {
           display: "grid",
           alignItems: "center",
           justifyItems: "center",
-          mx: 3,
         }}
       >
         <Styled.h1>Nyheter {tag.title}</Styled.h1>

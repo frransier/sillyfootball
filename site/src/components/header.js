@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { Link, navigate } from "gatsby"
-import icon from "../images/icon.svg"
-import iconDark from "../images/icon-dark.svg"
+import icon from "../images/icon-v1.svg"
+import iconDark from "../images/icon-v1-dark.svg"
 import { useColorMode } from "theme-ui"
 import { useAuth } from "react-use-auth"
 import { FaUserAlt, FaUserCheck } from "react-icons/fa"
@@ -27,24 +27,26 @@ const Header = () => {
       sx={{
         display: "grid",
         gridTemplateColumns: "1fr 1fr 1fr",
-        height: 38,
+        height: 42,
         alignItems: "center",
         justifyItems: "center",
         zIndex: 1000,
-        bg: "background",
+        bg: "primary",
         position: "sticky",
         top: 0,
         pt: 5,
         pb: 5,
+        mb: -3,
       }}
     >
       <button
         sx={{
-          bg: "background",
-          color: "primary",
+          bg: "primary",
+          color: "background",
           border: "none",
           fontSize: 4,
           mx: 4,
+          pointer: "cursor",
         }}
         aria-label="Color Mode"
         onClick={() =>
@@ -56,7 +58,7 @@ const Header = () => {
       {/* <div sx={{ mx: "auto" }}></div> */}
       <Link to="/">
         <img
-          sx={{ height: 40, mx: "auto" }}
+          sx={{ height: 45, mx: "auto" }}
           src={colorMode === "default" ? icon : iconDark}
           alt="Sillyfootball Logo"
         />
@@ -64,11 +66,12 @@ const Header = () => {
       {/* <div sx={{ mx: "auto" }}></div> */}
       <button
         sx={{
-          bg: "background",
-          color: userState && userState.name ? "primary" : "text",
+          bg: "primary",
+          color: userState && userState.name ? "background" : "background",
           border: "none",
           fontSize: 4,
           mx: 4,
+          pointer: "cursor",
         }}
         aria-label="Login"
         onClick={() => Login()}

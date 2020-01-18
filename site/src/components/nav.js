@@ -16,7 +16,7 @@ const Nav = () => {
       <Styled.h3
         sx={{
           mx: [8, 9],
-          fontWeight: "body",
+          fontWeight: "heading",
           fontFamily: "body",
         }}
       >
@@ -30,8 +30,6 @@ const Nav = () => {
             paddingTop: 2,
             paddingBottom: 2,
             fontWeight: 700,
-            border: "solid 1px",
-            borderColor: "darkgrey",
           }}
           to="/nyheter/"
           style={{
@@ -50,7 +48,7 @@ const Nav = () => {
       <div sx={{ mx: 6 }}>
         <Styled.h3
           sx={{
-            fontWeight: "body",
+            fontWeight: "heading",
             fontFamily: "body",
           }}
         >
@@ -63,8 +61,6 @@ const Nav = () => {
               paddingRight: 8,
               paddingTop: 2,
               paddingBottom: 2,
-              border: "solid 1px",
-              borderColor: "darkgrey",
               fontWeight: 700,
             }}
             to="/livescore/"
@@ -85,7 +81,7 @@ const Nav = () => {
       <Styled.h3
         sx={{
           mx: [8, 9],
-          fontWeight: "body",
+          fontWeight: "heading",
           fontFamily: "body",
         }}
       >
@@ -99,8 +95,6 @@ const Nav = () => {
             paddingRight: 8,
             paddingTop: 2,
             paddingBottom: 2,
-            border: "solid 1px",
-            borderColor: "darkgrey",
             fontWeight: 700,
           }}
           style={{

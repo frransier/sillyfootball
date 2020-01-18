@@ -36,8 +36,10 @@ const Portrait = ({ player }) => {
         </div>
         <div
           sx={{
-            borderBottom: "solid 3px",
-            borderBottomColor: "primary",
+            bg: "background",
+            color: "primary",
+            borderBottomColor: "text",
+            borderBottom: "solid 1px",
             p: 2,
             mt: 4,
             width: [90, 100, 110],
@@ -45,8 +47,8 @@ const Portrait = ({ player }) => {
         >
           <Styled.h4
             sx={{
-              fontWeight: "body",
-              fontFamily: "heading",
+              fontWeight: "heading",
+              fontFamily: "body",
               fontSize: [2, 3],
               py: 2,
               my: 0,

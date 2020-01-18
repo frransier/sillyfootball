@@ -7,8 +7,6 @@ import News from "../components/news/news"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
 import Footer from "../components/footer"
 import Nav from "../components/nav"
-import newsImg from "../images/news.svg"
-import newsDark from "../images/news-dark.svg"
 import Card from "../components/index/card"
 import { GiMining, GiDiamondHard } from "react-icons/gi"
 import fantasy from "../images/fantasy.svg"
@@ -25,19 +23,8 @@ const NewsPage = ({ data }) => {
           display: "grid",
           alignItems: "center",
           justifyItems: "center",
-          mx: 3,
         }}
       >
-        <img
-          sx={{
-            width: 230,
-            height: 40,
-            my: 3,
-          }}
-          src={colorMode === "default" ? newsImg : newsDark}
-          alt="Fantasy Football"
-        />
-
         {news.map((n, index) => (
           <News key={index} content={n}></News>
         ))}

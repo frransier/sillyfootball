@@ -12,7 +12,7 @@ const News = ({ content }) => {
         alignItems: "center",
         justifyItems: "center",
         height: 90,
-        width: "99%",
+        width: "100%",
       }}
     >
       <Link
@@ -25,14 +25,12 @@ const News = ({ content }) => {
           sx={{
             width: 110,
             height: 80,
-            border: "solid 2px",
-            borderColor: "muted",
             borderRadius: 4,
           }}
         >
           <Image
             sx={{
-              borderRadius: 3,
+              // borderRadius: 3,
               height: 80,
               width: 110,
             }}
@@ -44,11 +42,9 @@ const News = ({ content }) => {
 
       <div
         sx={{
-          border: "solid 2px",
-          borderColor: "muted",
           height: 80,
           borderRadius: 4,
-          ml: 6,
+          // ml: 6,
           width: "100%",
         }}
       >
@@ -66,7 +62,7 @@ const News = ({ content }) => {
           {content.intro}
         </Styled.p>
 
-        <div sx={{ display: "flex" }}>
+        <div sx={{ display: "flex", mx: 3 }}>
           <div sx={{ mx: "auto" }} />
           <Link
             style={{ textDecoration: "none" }}

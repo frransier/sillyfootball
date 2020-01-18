@@ -85,7 +85,7 @@ const AccountPage = ({ data }) => {
     <Layout>
       <SEO title="Account" />
       {userState ? (
-        <div sx={{ display: "grid" }}>
+        <div sx={{ display: "grid", mx: 4 }}>
           <div
             sx={{
               display: "flex",
@@ -99,11 +99,10 @@ const AccountPage = ({ data }) => {
             <div sx={{ mx: "auto" }} />
             <button
               sx={{
+                border: "none",
                 appearance: "none",
-                border: "solid 1px",
-                borderColor: "primary",
-                bg: "background",
-                color: "text",
+                bg: "primary",
+                color: "background",
                 borderRadius: 4,
                 fontFamily: "body",
                 p: 3,

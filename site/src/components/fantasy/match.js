@@ -41,10 +41,11 @@ const Match = ({ match }) => {
       sx={{
         border: "none",
         appearance: "none",
-        bg: "background",
+        bg: selected ? "primary" : "background",
         height: 28,
         my: 2,
         cursor: "pointer",
+        borderRadius: 4,
       }}
       onClick={() => toggleSelected()}
     >
@@ -54,6 +55,7 @@ const Match = ({ match }) => {
           gridTemplateColumns: "10% 30% 20% 30% 10%",
           alignItems: "center",
           fontSize: 3,
+          bg: selected ? "primary" : "background",
           // borderBottom: selected ? "solid 1px" : "none",
           // borderBottomColor: "primary",
         }}
@@ -62,7 +64,8 @@ const Match = ({ match }) => {
           sx={{
             fontFamily: "body",
             fontWeight: "body",
-            color: selected ? "primary" : "darkgrey",
+            color: selected ? "background" : "primary",
+            mt: 2,
           }}
         >
           {selected ? <FaAngleDown size={20} /> : <FaAngleRight size={20} />}
@@ -72,7 +75,7 @@ const Match = ({ match }) => {
             fontFamily: "body",
             fontWeight: selected ? "heading" : "body",
             textAlign: "right",
-            color: "text",
+            color: selected ? "background" : "text",
           }}
         >
           {match.home.team.name || match.home.team.fullName}
@@ -82,7 +85,7 @@ const Match = ({ match }) => {
             fontFamily: "body",
             fontWeight: selected ? "heading" : "body",
             textAlign: "center",
-            color: "text",
+            color: selected ? "background" : "text",
           }}
         >
           <div sx={{ fontSize: 1 }}>{`${hours}:${minutes}`}</div>
@@ -93,7 +96,7 @@ const Match = ({ match }) => {
             fontFamily: "body",
             fontWeight: selected ? "heading" : "body",
             textAlign: "left",
-            color: "text",
+            color: selected ? "background" : "text",
           }}
         >
           {match.away.team.name || match.away.team.fullName}
