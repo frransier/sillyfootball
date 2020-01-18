@@ -56,7 +56,7 @@ const AuthPage = () => {
       .post("/.netlify/functions/sign-up", { user: user })
       .then(res => {
         res.data === "OK"
-          ? handleAuthentication({ postLoginRoute: "/account/" })
+          ? handleAuthentication({ postLoginRoute: "/fantasy/" })
           : navigate("/404/")
       })
       .catch(error => {

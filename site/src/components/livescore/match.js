@@ -12,7 +12,7 @@ const Match = ({ match }) => {
   const hours = `${date.getHours()}`
 
   return (
-    <div sx={{ my: -1 }}>
+    <div>
       <div
         sx={{
           display: "grid",
@@ -24,6 +24,9 @@ const Match = ({ match }) => {
           borderBottom: "solid 2px",
           borderBottomColor: "muted",
           fontWeight: selected ? "heading" : "body",
+          color: selected ? "background" : "text",
+          bg: selected ? "primary" : "background",
+          mb: 3,
         }}
         role="button"
         tabIndex="0"
@@ -34,7 +37,7 @@ const Match = ({ match }) => {
       >
         <div
           sx={{
-            py: 5,
+            py: 2,
             color: match.status ? "primary" : "muted",
             textAlign: "center",
           }}
@@ -90,7 +93,7 @@ const Match = ({ match }) => {
                   fontSize: 3,
                 }}
               >
-                <div sx={{ textAlign: "center" }}>
+                <div sx={{ textAlign: "center", color: "primary" }}>
                   {home ? `${x.elapsed} '` : ""}
                 </div>
                 <div sx={{ textAlign: "right" }}>
@@ -99,7 +102,7 @@ const Match = ({ match }) => {
                 <div
                   sx={{
                     textAlign: "center",
-                    pt: 4,
+                    pt: 2,
                     fontSize: 4,
                     color: "text",
                   }}
@@ -109,7 +112,7 @@ const Match = ({ match }) => {
                 <div sx={{ textAlign: "left" }}>
                   {home ? `` : `${x.player.name || x.player.fullName}`}
                 </div>
-                <div sx={{ textAlign: "center" }}>
+                <div sx={{ textAlign: "center", color: "primary" }}>
                   {" "}
                   {home ? `` : `${x.elapsed} '`}
                 </div>
@@ -122,9 +125,9 @@ const Match = ({ match }) => {
 
                   fontFamily: "body",
                   fontSize: 3,
-                  borderBottom: "solid 2px",
+                  borderBottom: "solid 3px",
                   borderBottomColor:
-                    i + 1 === match.events.length ? "primary" : "muted",
+                    i + 1 === match.events.length ? "text" : "muted",
                 }}
               >
                 <div sx={{ textAlign: "center" }}>{""}</div>
@@ -134,7 +137,7 @@ const Match = ({ match }) => {
                         "-"}`
                     : ""}
                 </div>
-                <div sx={{ textAlign: "center", pt: 3, fontSize: 5 }}>
+                <div sx={{ textAlign: "center", fontSize: 5 }}>
                   {home ? <IoIosReturnLeft /> : <IoIosReturnRight />}
                 </div>
                 <div sx={{ textAlign: "left" }}>
