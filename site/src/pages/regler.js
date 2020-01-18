@@ -23,7 +23,7 @@ const WhitePaperPage = ({ data }) => {
           display: "grid",
           alignItems: "center",
           justifyItems: "center",
-          mx: 3,
+          mx: 5,
         }}
       >
         <img
