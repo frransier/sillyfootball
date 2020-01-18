@@ -35,11 +35,11 @@ const Match = ({ match }) => {
         <div
           sx={{
             py: 5,
-            color: match.elapsed ? "primary" : "muted",
+            color: match.status ? "primary" : "muted",
             textAlign: "center",
           }}
         >
-          {match.elapsed && selected ? <FaAngleDown /> : <FaAngleRight />}
+          {match.status && selected ? <FaAngleDown /> : <FaAngleRight />}
         </div>
         <div>
           <div sx={{ textAlign: "right", my: 3, fontSize: 3 }}>
