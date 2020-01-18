@@ -12,8 +12,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import logo from "../images/metaImage.png"
 
 const SEO = ({ description, meta, title, image }) => {
-  console.log(image)
-
   const { site } = useStaticQuery(
     graphql`
       query {

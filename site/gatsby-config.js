@@ -2,9 +2,10 @@ require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` })
 
 module.exports = {
   siteMetadata: {
-    title: `Sillyfootball`,
-    description: `Addera lite spänning till din fotbollsvardag, helt gratis.`,
-    author: `@sillyfootballse`,
+    title: "Sillyfootball",
+    description: "Addera spänning till din fotbollsvardag, helt gratis.",
+    author: "@sillyfootballse",
+    siteUrl: "https://www.sillyfootball.se",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -42,19 +43,36 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        // The property ID; the tracking code won't be generated without it
         trackingId: "UA-156458502-1",
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
         head: false,
-        // Avoids sending pageview hits from custom paths
       },
     },
     {
       resolve: "gatsby-plugin-intercom-spa",
       options: {
         app_id: "entknhmw",
-        include_in_development: true,
+        include_in_development: false,
         delay_timeout: 0,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        exclude: [`/account/`, `/auth0_callback/`, `/thanks/`],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://www.sillyfootball.se",
+        sitemap: "https://www.sillyfootball.se/sitemap.xml",
+        policy: [
+          {
+            userAgent: "*",
+            allow: "/",
+            disallow: ["/account/", `/auth0_callback/`, `/thanks/`],
+          },
+        ],
       },
     },
   ],
