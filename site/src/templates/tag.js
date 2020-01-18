@@ -18,7 +18,7 @@ export const query = graphql`
         current
       }
     }
-    allNews: allSanityNews {
+    allNews: allSanityNews(sort: { fields: sort, order: DESC }) {
       edges {
         node {
           _createdAt

@@ -83,7 +83,7 @@ export default IndexPage
 
 export const query = graphql`
   query IndexPageQuery {
-    news: allSanityNews {
+    news: allSanityNews(sort: { fields: sort, order: DESC }) {
       edges {
         node {
           _createdAt

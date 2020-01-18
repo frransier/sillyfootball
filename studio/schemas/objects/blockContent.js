@@ -47,6 +47,10 @@ export default {
           }
         ]
       }
+    },
+    {
+      title: "Video",
+      type: "video"
     }
   ],
   preview: {

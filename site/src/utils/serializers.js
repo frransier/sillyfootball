@@ -1,9 +1,11 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import BlockContent from "@sanity/block-content-to-react"
+import Video from "../components/video"
 
 export const serializers = {
   types: {
+    video: props => <Video value={props.node} />,
     block: props => {
       if (props.node.style === "h1") {
         return (

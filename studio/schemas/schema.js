@@ -9,6 +9,7 @@ import news from "./documents/news";
 import tag from "./documents/tag";
 import page from "./documents/page";
 
+import video from "./objects/video";
 import event from "./objects/event";
 import score from "./objects/score";
 import entry from "./objects/entry";
@@ -21,6 +22,7 @@ import blockContent from "./objects/blockContent";
 export default createSchema({
   name: "default",
   types: schemaTypes.concat([
+    video,
     page,
     tag,
     news,

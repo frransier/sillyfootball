@@ -77,7 +77,7 @@ export default NewsPage
 
 export const query = graphql`
   query NewsPageQuery {
-    news: allSanityNews {
+    news: allSanityNews(sort: { fields: sort, order: DESC }) {
       edges {
         node {
           _createdAt

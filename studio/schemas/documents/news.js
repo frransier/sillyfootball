@@ -7,6 +7,11 @@ export default {
   icon: GiPapers,
   fields: [
     {
+      name: "sort",
+      title: "Index",
+      type: "number"
+    },
+    {
       name: "title",
       title: "Title",
       type: "string"
