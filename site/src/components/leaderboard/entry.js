@@ -11,6 +11,8 @@ import { FaAngleDown, FaAngleRight } from "react-icons/fa"
 const Entry = ({ x, scores, start }) => {
   const [show, setShow] = useState(false)
 
+  // console.log(x.points)
+
   return (
     <div
       sx={{

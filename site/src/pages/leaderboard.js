@@ -43,16 +43,17 @@ const LeaderboardPage = () => {
           })),
           points: x.players
             .map(p => {
-              if (
+              const total =
                 p.scores &&
-                p.scores.find(q => q.matchday._ref === matchday[0]._id) &&
-                p.scores.points
-              ) {
-                return p.scores.points
+                p.scores.find(q => q.matchday._ref === matchday[0]._id)
+
+              if (p.scores && total && total.points) {
+                return total.points
               } else {
                 return 0
               }
             })
+            .filter(Boolean)
             .reduce((a, b) => a + b, 0),
         }))
         .sort((a, b) => (b.points > a.points ? 1 : -1))
