@@ -36,6 +36,7 @@ const LeaderboardPage = () => {
           user: { _id: x.user.id, name: x.user.name },
           players: x.players.map(y => ({
             name: y.name,
+            fullName: y.fullName,
             score:
               y.scores &&
               y.scores.find(z => z.matchday._ref === matchday[0]._id),
@@ -167,7 +168,7 @@ export default LeaderboardPage
 const sanityQuery = `*[_type == "matchday" && status == 'current']{_id, index, start, entries[]
     {..., 
     user->{"name": name, "id": _id},    
-    players[]->{"name": fullName, "scores": scores}}
+    players[]->{"fullName": fullName, "name": name, "scores": scores}}
   }`
 
 export const query = graphql`

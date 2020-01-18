@@ -17,7 +17,7 @@ const Hero = ({ content }) => {
           width: "100%",
           border: "solid 2px",
           borderColor: "muted",
-          borderRadius: 4,
+          borderRadius: 2,
         }}
       >
         <Image

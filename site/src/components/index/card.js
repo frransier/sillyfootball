@@ -12,7 +12,7 @@ const Card = ({ icon, title, body, cta, action }) => {
         alignItems: "center",
         mx: [0, 8],
         my: 7,
-        borderRadius: 4,
+        borderRadius: 2,
       }}
     >
       <div sx={{ fontSize: 7, pt: 6, textAlign: "center", color: "darkgrey" }}>

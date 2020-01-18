@@ -103,7 +103,7 @@ const AccountPage = ({ data }) => {
                 appearance: "none",
                 bg: "primary",
                 color: "background",
-                borderRadius: 4,
+                borderRadius: 2,
                 fontFamily: "body",
                 p: 3,
               }}

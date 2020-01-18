@@ -224,7 +224,7 @@ const FantasyPage = props => {
                     border: "solid 2px",
                     borderColor: "primary",
                     color: "background",
-                    borderRadius: 4,
+                    borderRadius: 2,
                     fontFamily: "heading",
                     fontWeight: "heading",
                     appearance: "none",

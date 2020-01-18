@@ -61,7 +61,7 @@ const Play = ({ entries, register, deadline }) => {
             py: 4,
             bg: "primary",
             color: "background",
-            borderRadius: 4,
+            borderRadius: 2,
             fontFamily: "heading",
             fontWeight: "heading",
             appearance: "none",

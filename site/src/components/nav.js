@@ -24,7 +24,7 @@ const Nav = () => {
           activeStyle={{
             background: colorMode === "default" ? "#FF5252" : "#67FFBF",
             color: colorMode === "default" ? "#fff" : "#2F2F2F",
-            borderRadius: 4,
+            borderRadius: 2,
             paddingLeft: 8,
             paddingRight: 8,
             paddingTop: 2,
@@ -56,7 +56,7 @@ const Nav = () => {
             activeStyle={{
               background: colorMode === "default" ? "#FF5252" : "#67FFBF",
               color: colorMode === "default" ? "#fff" : "#2F2F2F",
-              borderRadius: 4,
+              borderRadius: 2,
               paddingLeft: 8,
               paddingRight: 8,
               paddingTop: 2,
@@ -90,7 +90,7 @@ const Nav = () => {
           activeStyle={{
             background: colorMode === "default" ? "#FF5252" : "#67FFBF",
             color: colorMode === "default" ? "#fff" : "#2F2F2F",
-            borderRadius: 4,
+            borderRadius: 2,
             paddingLeft: 8,
             paddingRight: 8,
             paddingTop: 2,

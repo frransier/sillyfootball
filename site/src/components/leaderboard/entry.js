@@ -122,7 +122,7 @@ const Entry = ({ x, scores, start }) => {
               {x.score && (x.score.goals || x.score.assists) ? <FaStar /> : ""}
             </div>
             <Styled.p sx={{ textAlign: "left", mx: 4, my: 0 }}>
-              {x.name}
+              {x.name || x.fullName}
             </Styled.p>
             <Styled.p sx={{ textAlign: "center", my: 0 }}>
               {(x.score && x.score.goals) || ""}
