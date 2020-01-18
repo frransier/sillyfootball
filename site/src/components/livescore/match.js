@@ -130,7 +130,8 @@ const Match = ({ match }) => {
                 <div sx={{ textAlign: "center" }}>{""}</div>
                 <div sx={{ textAlign: "right" }}>
                   {home
-                    ? `${x.assist && (x.assist.name || x.assist.fullName)}`
+                    ? `${(x.assist && (x.assist.name || x.assist.fullName)) ||
+                        "-"}`
                     : ""}
                 </div>
                 <div sx={{ textAlign: "center", pt: 3, fontSize: 5 }}>

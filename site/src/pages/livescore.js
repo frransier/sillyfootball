@@ -45,7 +45,7 @@ const query = `*[_type == "matchday" && index == 1]{..., matches[]
     away{team->{"fullName": fullName,"name": name, "id": _id}, goals}, 
     home{team->{"fullName": fullName,"name": name, "id": _id}, goals},
     events[]{...,
-    player->{"fullName": fullName, "name": name,}, assist->{"fullName": fullName, "name": name}}}
+    player->{"fullName": fullName, "name": name,}, assist->{"fullName": fullName, "name": name,}}}
   }`
 
 const LivescorePage = () => {
