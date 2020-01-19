@@ -25,10 +25,10 @@ const Entry = ({ x, scores, start }) => {
           display: "grid",
           gridTemplateColumns: "10% 59% 10% 10% 10%",
           alignItems: "center",
-          my: 2,
+          mb: 2,
         }}
       >
-        <div sx={{ textAlign: "center", fontSize: 5 }}>
+        <div sx={{ textAlign: "center", fontSize: 4 }}>
           {x.points === scores[0] ? (
             <img sx={{ width: "50%", mx: "auto" }} src={gold} alt="Gold" />
           ) : x.points === scores[1] ? (
@@ -52,7 +52,7 @@ const Entry = ({ x, scores, start }) => {
           <div
             sx={{
               textAlign: "left",
-              fontSize: 5,
+
               display: "flex",
               alignItems: "center",
               color: "text",
@@ -61,9 +61,11 @@ const Entry = ({ x, scores, start }) => {
             <Styled.h2
               sx={{
                 textAlign: "left",
-                my: 0,
                 fontSize: 4,
+                mt: 4,
+                mb: 3,
                 fontWeight: show ? "heading" : "body",
+                fontFamily: "body",
               }}
             >
               {x.user.name}
@@ -72,7 +74,7 @@ const Entry = ({ x, scores, start }) => {
               sx={{
                 color: start ? "text" : "darkgrey",
                 mx: 4,
-                mt: 1,
+                pt: 4,
                 fontSize: 3,
               }}
             >
@@ -89,7 +91,7 @@ const Entry = ({ x, scores, start }) => {
           {show && "Ass"}
         </Styled.p>
 
-        <Styled.h3 sx={{ textAlign: "center", my: 0, pt: 2, fontSize: 5 }}>
+        <Styled.h3 sx={{ textAlign: "center", my: 0, fontSize: 5 }}>
           {x.points}p
         </Styled.h3>
       </div>

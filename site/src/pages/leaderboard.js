@@ -103,8 +103,6 @@ const LeaderboardPage = () => {
             <Styled.h1
               sx={{
                 textAlign: "center",
-                borderBottom: "solid 2px",
-                borderBottomColor: "primary",
               }}
             >
               Omgång {matchday.index} av 3 | Säsong 1
@@ -114,12 +112,11 @@ const LeaderboardPage = () => {
                 sx={{
                   appearance: "none",
                   border: "none",
+                  borderRadius: 2,
+                  py: 3,
                   bg: "primary",
                   color: "background",
-                  ":after": {
-                    color: "primary",
-                    bg: "background",
-                  },
+
                   ":active, :after": {
                     color: "primary",
                     bg: "background",

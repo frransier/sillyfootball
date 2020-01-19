@@ -36,23 +36,18 @@ const NewsTemplate = ({ data }) => {
           display: "grid",
           alignItems: "center",
           justifyItems: "center",
+          mx: 5,
         }}
       >
-        <Styled.h1 sx={{ justifySelf: "start", mb: 2, mx: 3 }}>
-          {news.title}
-        </Styled.h1>
-        <Styled.h3 sx={{ my: 0, justifySelf: "start", mx: 3 }}>
+        <Styled.h1 sx={{ justifySelf: "start", mb: 2 }}>{news.title}</Styled.h1>
+        <Styled.h3 sx={{ my: 2, justifySelf: "start", color: "darkgrey" }}>
           {datestring}
         </Styled.h3>
 
-        <Image sx={{ width: "98%" }} fluid={news.image.asset.fluid} />
+        <Image sx={{ width: "100%" }} fluid={news.image.asset.fluid} />
 
-        <Styled.h2 sx={{ mx: 3, justifySelf: "start" }}>{news.intro}</Styled.h2>
-        <BlockContent
-          sx={{ mx: 3 }}
-          blocks={news._rawBody}
-          serializers={serializers}
-        />
+        <Styled.h2 sx={{ justifySelf: "start" }}>{news.intro}</Styled.h2>
+        <BlockContent blocks={news._rawBody} serializers={serializers} />
         <a
           sx={{ justifySelf: "end" }}
           style={{ textDecoration: "none" }}
@@ -71,59 +66,58 @@ const NewsTemplate = ({ data }) => {
             Källa
           </Styled.h2>
         </a>
-        <Divider></Divider>
+      </div>
+      <Divider></Divider>
+      <div
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <div
           sx={{
-            display: "flex",
+            display: "grid",
+            width: "100%",
             alignItems: "center",
-            justifyContent: "center",
+            justifyItems: "center",
           }}
         >
+          <img
+            sx={{
+              width: 250,
+              height: 35,
+            }}
+            src={colorMode === "default" ? fantasy : fantasyDark}
+            alt="Fantasy Football"
+          />
           <div
             sx={{
               display: "grid",
-              width: "100%",
-              alignItems: "center",
-              justifyItems: "center",
+              gridTemplateColumns: "50% 50%",
+              mx: "auto",
             }}
           >
-            <img
-              sx={{
-                width: 250,
-                height: 35,
-              }}
-              src={colorMode === "default" ? fantasy : fantasyDark}
-              alt="Fantasy Football"
+            <Card
+              icon={<GiMining />}
+              title="Easy to learn"
+              body="Välj 5 spelare från 10 matcher. Få 1 poäng per mål/assist."
+              cta="Spela"
+              action="fantasy"
             />
-            <div
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "50% 50%",
-                mx: "auto",
-              }}
-            >
-              <Card
-                icon={<GiMining />}
-                title="Easy to learn"
-                body="Välj 5 spelare från 10 matcher. Få 1 poäng per mål/assist."
-                cta="Spela"
-                action="fantasy"
-              />
-              <Card
-                icon={<GiDiamondHard />}
-                title="Hard to master"
-                body="Bli ensam vinnare och plocka hem 500 kronor."
-                cta="Läs mer"
-                action="white-paper"
-              />
-            </div>
+            <Card
+              icon={<GiDiamondHard />}
+              title="Hard to master"
+              body="Bli ensam vinnare och plocka hem 500 kronor."
+              cta="Läs mer"
+              action="white-paper"
+            />
           </div>
         </div>
-        <Divider></Divider>
-        {allNews.edges.map(({ node }, index) => (
-          <News key={index} content={node} />
-        ))}
       </div>
+      {allNews.edges.map(({ node }, index) => (
+        <News key={index} content={node} />
+      ))}
 
       <Footer />
     </Layout>

@@ -21,21 +21,14 @@ const News = ({ content }) => {
           content.slug.current
         }/${content._createdAt.substr(0, 10)}`}
       >
-        <div
+        <Image
           sx={{
-            width: 100,
             height: 75,
+            width: 100,
           }}
-        >
-          <Image
-            sx={{
-              height: 75,
-              width: 100,
-            }}
-            fixed={content.thumbnail.asset.fixed}
-            alt={`Nyheter ${content.tags[0].title}`}
-          />
-        </div>
+          fixed={content.thumbnail.asset.fixed}
+          alt={`Nyheter ${content.tags[0].title}`}
+        />
       </Link>
 
       <div

@@ -27,15 +27,14 @@ const Header = () => {
       sx={{
         display: "grid",
         gridTemplateColumns: "1fr 1fr 1fr",
-        height: 42,
+        height: 50,
         alignItems: "center",
         justifyItems: "center",
         zIndex: 1000,
         bg: "primary",
         position: "sticky",
         top: 0,
-        pt: 5,
-        pb: 5,
+
         mb: -3,
       }}
     >
@@ -55,7 +54,7 @@ const Header = () => {
       >
         {colorMode === "default" ? <IoMdMoon></IoMdMoon> : <FiSun></FiSun>}
       </button>
-      {/* <div sx={{ mx: "auto" }}></div> */}
+
       <Link to="/">
         <img
           sx={{ height: 45, mx: "auto" }}

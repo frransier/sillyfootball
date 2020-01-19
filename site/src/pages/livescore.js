@@ -118,12 +118,10 @@ const LivescorePage = () => {
         >
           {matches.length > 0 &&
             dates.map((d, i) => (
-              <div key={i} sx={{ display: "grid" }}>
+              <div key={i} sx={{ display: "grid", mt: -4 }}>
                 <div sx={{ mx: "auto" }}>
                   <Styled.h2
                     sx={{
-                      borderBottom: "solid 2px",
-                      borderBottomColor: "primary",
                       textAlign: "center",
                     }}
                   >
@@ -146,10 +144,8 @@ const LivescorePage = () => {
                 border: "none",
                 bg: "primary",
                 color: "background",
-                ":after": {
-                  color: "primary",
-                  bg: "background",
-                },
+                borderRadius: 2,
+                py: 3,
                 ":active, :after": {
                   color: "primary",
                   bg: "background",

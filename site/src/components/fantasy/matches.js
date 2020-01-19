@@ -14,11 +14,10 @@ const Matches = ({ matches }) => {
             return null
           })
         : matches.map((x, i) => <Match index={i} match={x} key={i} />)}
+
       <div sx={{ mx: "auto" }}>
         <Styled.h2
           sx={{
-            textAlign: "center",
-
             my: 3,
             fontSize: 3,
           }}

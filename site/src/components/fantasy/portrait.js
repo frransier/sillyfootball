@@ -27,9 +27,10 @@ const Portrait = ({ player }) => {
       >
         <div
           sx={{
-            maxWidth: 35,
+            maxWidth: 40,
             mx: "auto",
             py: 2,
+            minHeight: 40,
           }}
         >
           <Image fluid={player.logo} />
