@@ -1,10 +1,13 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx, Styled, useColorMode } from "theme-ui"
 import { graphql, Link, navigate } from "gatsby"
 import { useUserState, useUserDispatch, useGameDispatch } from "../state"
 import { useEffect, useState } from "react"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
 import { motion } from "framer-motion"
+
+import { FiSun } from "react-icons/fi"
+import { IoMdMoon } from "react-icons/io"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Entry from "../components/account/entry"
@@ -21,6 +24,7 @@ const client = sanityClient({
 })
 
 const AccountPage = ({ data }) => {
+  const [colorMode, setColorMode] = useColorMode()
   const userState = useUserState()
   const userDispatch = useUserDispatch()
   const gameDispatch = useGameDispatch()
@@ -95,7 +99,8 @@ const AccountPage = ({ data }) => {
               width: "100%",
             }}
           >
-            <Styled.h1>Välkommen {userState.name}</Styled.h1>
+            <Styled.h1 sx={{ my: 2 }}>Välkommen {userState.name}</Styled.h1>
+
             <div sx={{ mx: "auto" }} />
             <button
               sx={{
@@ -105,7 +110,8 @@ const AccountPage = ({ data }) => {
                 color: "background",
                 borderRadius: 2,
                 fontFamily: "body",
-                p: 3,
+                py: 3,
+                px: 5,
               }}
               onClick={() => Logout()}
             >
@@ -126,7 +132,7 @@ const AccountPage = ({ data }) => {
                 </Styled.h2>
               </Link>
             </div>
-            <div sx={{ mx: 7, mb: 6 }}>
+            <div sx={{ mx: 7 }}>
               <Link to="/leaderboard/" style={{ textDecoration: "none" }}>
                 <Styled.h2
                   sx={{
@@ -139,6 +145,29 @@ const AccountPage = ({ data }) => {
                 </Styled.h2>
               </Link>
             </div>
+            <button
+              sx={{
+                bg: "primary",
+                color: "background",
+                border: "none",
+                borderRadius: 2,
+                fontSize: 3,
+                pt: 4,
+                pb: 3,
+                pointer: "cursor",
+                appearance: "none",
+              }}
+              aria-label="Color Mode"
+              onClick={() =>
+                setColorMode(colorMode === "default" ? "dark" : "default")
+              }
+            >
+              {colorMode === "default" ? (
+                <IoMdMoon></IoMdMoon>
+              ) : (
+                <FiSun></FiSun>
+              )}
+            </button>
           </div>
 
           <div sx={{ height: 220, display: "grid" }}>

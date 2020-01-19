@@ -24,10 +24,10 @@ const Play = ({ entries, register, deadline }) => {
           Nästa omgång kommer ut efter denna.
         </Styled.h3>
         <div sx={{ display: "flex" }}>
-          <div sx={{ mx: 2 }}>
+          <div sx={{ mx: 5 }}>
             <Button text="Livescore" action="livescore" />
           </div>
-          <div sx={{ mx: 2 }}>
+          <div sx={{ mx: 5 }}>
             <Button text="Leaderboard" action="leaderboard" />
           </div>
         </div>

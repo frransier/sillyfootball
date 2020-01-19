@@ -6,8 +6,6 @@ import iconDark from "../images/icon-v1-dark.svg"
 import { useColorMode } from "theme-ui"
 import { useAuth } from "react-use-auth"
 import { FaUserAlt, FaUserCheck } from "react-icons/fa"
-import { FiSun } from "react-icons/fi"
-import { IoMdMoon } from "react-icons/io"
 import { useUserState } from "../state"
 
 const Header = () => {
@@ -26,7 +24,7 @@ const Header = () => {
     <div
       sx={{
         display: "grid",
-        gridTemplateColumns: "20% 20% 20% 20% 12% 8%",
+        gridTemplateColumns: "20% 20% 20% 20% 20%",
         height: 60,
         alignItems: "center",
         justifyItems: "center",
@@ -118,7 +116,7 @@ const Header = () => {
         </Link>
       </Styled.h3>
 
-      <div sx={{ justifySelf: "end" }}>
+      <div sx={{ justifySelf: "center" }}>
         <button
           sx={{
             bg: "primary",
@@ -138,25 +136,6 @@ const Header = () => {
           ) : (
             <FaUserAlt></FaUserAlt>
           )}
-        </button>
-      </div>
-      <div sx={{ justifySelf: "end", mx: 2 }}>
-        <button
-          sx={{
-            bg: "primary",
-            color: "background",
-            border: "none",
-            fontSize: 3,
-            pointer: "cursor",
-            mt: 2,
-            appearance: "none",
-          }}
-          aria-label="Color Mode"
-          onClick={() =>
-            setColorMode(colorMode === "default" ? "dark" : "default")
-          }
-        >
-          {colorMode === "default" ? <IoMdMoon></IoMdMoon> : <FiSun></FiSun>}
         </button>
       </div>
     </div>

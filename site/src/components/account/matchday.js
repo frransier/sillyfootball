@@ -43,27 +43,24 @@ const Matchday = ({
         <Styled.h2>{current ? "Aktuell omgång" : `Omgång ${index}`}</Styled.h2>
         <div sx={{ mx: "auto" }} />
         <div sx={{ mx: 3 }}>
-          <button
-            sx={{
-              appearance: "none",
-              border: "none",
-              bg: "primary",
-              color: "background",
-              ":after": {
-                color: "primary",
-                bg: "background",
-              },
-              ":active, :after": {
-                color: "primary",
-                bg: "background",
-                opacity: 1,
-                transition: `0s`,
-              },
-            }}
-            onClick={refresh}
-          >
-            <IoIosRefresh size={20} />
-          </button>
+          {refresh && (
+            <button
+              sx={{
+                appearance: "none",
+                border: "none",
+                bg: "primary",
+                color: "background",
+                pt: 2,
+                ":active, :after": {
+                  color: "primary",
+                  bg: "background",
+                },
+              }}
+              onClick={refresh}
+            >
+              <IoIosRefresh size={20} />
+            </button>
+          )}
         </div>
       </div>
       <div

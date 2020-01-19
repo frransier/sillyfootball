@@ -71,6 +71,7 @@ const NewsTemplate = ({ data }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          my: 9,
         }}
       >
         <div
