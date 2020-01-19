@@ -7,8 +7,8 @@ const News = ({ content }) => {
   return (
     <div
       sx={{
-        display: "flex",
-
+        display: "grid",
+        gridTemplateColumns: "110px auto",
         alignItems: "center",
         justifyItems: "center",
         height: 90,
@@ -23,16 +23,17 @@ const News = ({ content }) => {
       >
         <div
           sx={{
-            width: 110,
-            height: 80,
+            width: 100,
+            height: 75,
           }}
         >
           <Image
             sx={{
-              height: 80,
-              width: 110,
+              height: 75,
+              width: 100,
             }}
             fixed={content.thumbnail.asset.fixed}
+            alt={`Nyheter ${content.tags[0].title}`}
           />
         </div>
       </Link>
@@ -40,7 +41,6 @@ const News = ({ content }) => {
       <div
         sx={{
           height: 80,
-
           width: "100%",
         }}
       >
@@ -50,30 +50,30 @@ const News = ({ content }) => {
             content.slug.current
           }/${content._createdAt.substr(0, 10)}`}
         >
-          <Styled.h3 sx={{ fontSize: [3, 4], mx: 5, mt: 4, mb: 0 }}>
+          <Styled.h3 sx={{ fontSize: [3, 3, 4], mt: 3, mb: 0 }}>
             {content.title}
           </Styled.h3>
         </Link>
-        <Styled.p sx={{ fontFamily: "body", fontSize: [2, 3], mx: 5, my: 1 }}>
+        <Styled.p sx={{ fontFamily: "body", fontSize: 2, my: 1, mr: 4 }}>
           {content.intro}
         </Styled.p>
 
-        <div sx={{ display: "flex" }}>
+        <div sx={{ display: "flex", mx: 3 }}>
           <div sx={{ mx: "auto" }} />
           <Link
             style={{ textDecoration: "none" }}
             to={`/${content.tags[0].slug.current}/`}
           >
-            <Styled.h4 sx={{ px: 2, my: 0, mr: 2, textAlign: "right" }}>
+            <Styled.h4 sx={{ px: 2, my: 2, mx: 2, textAlign: "right" }}>
               {content.tags[0].title}
             </Styled.h4>
           </Link>
-          <Styled.h4 sx={{ px: 2, my: 0, textAlign: "right" }}>|</Styled.h4>
+          <Styled.h4 sx={{ px: 2, my: 2, textAlign: "right" }}>|</Styled.h4>
           <Link
             style={{ textDecoration: "none" }}
             to={`/${content.tags[1].slug.current}/`}
           >
-            <Styled.h4 sx={{ px: 2, my: 0, mr: 4, ml: 2, textAlign: "right" }}>
+            <Styled.h4 sx={{ px: 2, my: 2, ml: 2, mr: 2, textAlign: "right" }}>
               {content.tags[1].title}
             </Styled.h4>
           </Link>

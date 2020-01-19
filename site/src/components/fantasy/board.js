@@ -44,8 +44,6 @@ const Board = () => {
                 <Styled.h2
                   sx={{
                     textAlign: "center",
-                    borderBottom: "solid 1px",
-                    borderBottomColor: "primary",
                   }}
                 >
                   Så funkar det
@@ -58,8 +56,6 @@ const Board = () => {
                 <Styled.h2
                   sx={{
                     textAlign: "center",
-                    borderBottom: "solid 1px",
-                    borderBottomColor: "primary",
                   }}
                 >
                   Leaderboard

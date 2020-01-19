@@ -25,15 +25,12 @@ const Entry = ({ x, scores, start }) => {
           display: "grid",
           gridTemplateColumns: "10% 59% 10% 10% 10%",
           alignItems: "center",
+          my: 2,
         }}
       >
-        <div sx={{ textAlign: "center", pt: 3, fontSize: 5 }}>
+        <div sx={{ textAlign: "center", fontSize: 5 }}>
           {x.points === scores[0] ? (
-            <img
-              sx={{ width: "50%", mx: "auto", my: 5 }}
-              src={gold}
-              alt="Gold"
-            />
+            <img sx={{ width: "50%", mx: "auto" }} src={gold} alt="Gold" />
           ) : x.points === scores[1] ? (
             <img sx={{ width: "50%", mx: "auto" }} src={silver} alt="Silver" />
           ) : x.points === scores[2] ? (
@@ -64,29 +61,24 @@ const Entry = ({ x, scores, start }) => {
             <Styled.h2
               sx={{
                 textAlign: "left",
-                my: 5,
-                fontSize: 5,
+                my: 0,
+                fontSize: 4,
                 fontWeight: show ? "heading" : "body",
               }}
             >
               {x.user.name}
             </Styled.h2>
-            <div sx={{ color: start ? "text" : "darkgrey", mt: 4 }}>
+            <div
+              sx={{
+                color: start ? "text" : "darkgrey",
+                mx: 4,
+                mt: 1,
+                fontSize: 3,
+              }}
+            >
               {show ? <FaAngleDown /> : <FaAngleRight />}
             </div>
           </div>
-          {/* <Styled.h3
-            sx={{
-              textAlign: "left",
-              mx: 4,
-              my: 0,
-              pt: 3,
-              fontSize: 4,
-              fontWeight: show ? "heading" : "body",
-            }}
-          >
-            {x.user.name}
-          </Styled.h3> */}
         </button>
 
         <Styled.p sx={{ textAlign: "center", my: 0, fontSize: 3 }}>
@@ -97,7 +89,7 @@ const Entry = ({ x, scores, start }) => {
           {show && "Ass"}
         </Styled.p>
 
-        <Styled.h3 sx={{ textAlign: "center", my: 0, pt: 2, fontSize: 4 }}>
+        <Styled.h3 sx={{ textAlign: "center", my: 0, pt: 2, fontSize: 5 }}>
           {x.points}p
         </Styled.h3>
       </div>

@@ -19,8 +19,9 @@ const Play = ({ entries, register, deadline }) => {
   if (deadline) {
     return (
       <div sx={{ display: "grid", justifyItems: "center" }}>
+        <Styled.h3 sx={{ mb: 2, mt: 7 }}>Deadline har passerat.</Styled.h3>
         <Styled.h3 sx={{ mb: 2, mt: 7 }}>
-          Deadline har passerat. Nästa omgång kommer ut inom 36h.
+          Nästa omgång kommer ut efter denna.
         </Styled.h3>
         <Button text="Livescore" action="livescore" />
         <Button text="Leaderboard" action="leaderboard" />

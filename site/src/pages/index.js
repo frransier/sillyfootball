@@ -108,7 +108,7 @@ export const query = graphql`
           }
           thumbnail: image {
             asset {
-              fixed(width: 110, height: 80) {
+              fixed(width: 100, height: 75) {
                 ...GatsbySanityImageFixed
               }
             }

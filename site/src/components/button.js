@@ -24,6 +24,9 @@ const Button = ({ text, action }) => {
       case "leaderboard":
         navigate(`/${action}/`)
         return
+      case "livescore":
+        navigate(`/${action}/`)
+        return
       case "reset":
         gameDispatch({ type: "reset" })
         navigate("/account/")

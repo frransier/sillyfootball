@@ -36,7 +36,6 @@ const NewsTemplate = ({ data }) => {
           display: "grid",
           alignItems: "center",
           justifyItems: "center",
-          mx: 0,
         }}
       >
         <Styled.h1 sx={{ justifySelf: "start", mb: 2, mx: 3 }}>
@@ -46,14 +45,8 @@ const NewsTemplate = ({ data }) => {
           {datestring}
         </Styled.h3>
 
-        <div
-          sx={{
-            width: "100%",
-            mx: 0,
-          }}
-        >
-          <Image sx={{ width: "100%" }} fluid={news.image.asset.fluid} />
-        </div>
+        <Image sx={{ width: "98%" }} fluid={news.image.asset.fluid} />
+
         <Styled.h2 sx={{ mx: 3, justifySelf: "start" }}>{news.intro}</Styled.h2>
         <BlockContent
           sx={{ mx: 3 }}
@@ -180,7 +173,7 @@ export const query = graphql`
           }
           thumbnail: image {
             asset {
-              fixed(width: 110, height: 80) {
+              fixed(width: 100, height: 75) {
                 ...GatsbySanityImageFixed
               }
             }
