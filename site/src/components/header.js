@@ -134,7 +134,7 @@ const Header = () => {
         onClick={() => Login()}
       >
         {userState && userState.id ? (
-          <FaUserCheck size={22}></FaUserCheck>
+          <FaUserCheck size={19}></FaUserCheck>
         ) : (
           <FaUserAlt></FaUserAlt>
         )}
