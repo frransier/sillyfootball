@@ -129,7 +129,7 @@ const Header = () => {
           justifySelf: "end",
           appearance: "none",
           width: 14,
-          mx: 4,
+          mx: 5,
         }}
         aria-label="Login"
         onClick={() => Login()}
