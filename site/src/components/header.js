@@ -27,7 +27,7 @@ const Header = () => {
       sx={{
         display: "grid",
         gridTemplateColumns: "15% 20% 20% 20% 13% 12%",
-        height: 50,
+        height: 60,
         alignItems: "center",
         justifyItems: "center",
         zIndex: 1000,
