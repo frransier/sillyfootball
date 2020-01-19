@@ -129,12 +129,13 @@ const Header = () => {
           justifySelf: "end",
           appearance: "none",
           width: 14,
+          mx: 4,
         }}
         aria-label="Login"
         onClick={() => Login()}
       >
         {userState && userState.id ? (
-          <FaUserCheck size={18}></FaUserCheck>
+          <FaUserCheck size={19}></FaUserCheck>
         ) : (
           <FaUserAlt></FaUserAlt>
         )}
