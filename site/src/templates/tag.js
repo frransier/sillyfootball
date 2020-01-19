@@ -4,7 +4,6 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { graphql } from "gatsby"
 import News from "../components/news/news"
-import Nav from "../components/nav"
 import Footer from "../components/footer"
 import Card from "../components/index/card"
 import { GiMining, GiDiamondHard } from "react-icons/gi"
@@ -54,7 +53,6 @@ const TagTemplate = ({ data }) => {
   return (
     <Layout>
       <SEO title={`Nyheter ${tag.title}`} />
-      <Nav />
       <div
         sx={{
           display: "grid",

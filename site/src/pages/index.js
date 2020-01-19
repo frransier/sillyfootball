@@ -11,7 +11,6 @@ import fantasy from "../images/fantasy.svg"
 import fantasyDark from "../images/fantasy-dark.svg"
 import { GiMining, GiDiamondHard } from "react-icons/gi"
 import Footer from "../components/footer"
-import Nav from "../components/nav"
 const IndexPage = props => {
   const [colorMode] = useColorMode()
   const news = mapEdgesToNodes(props.data.news)
@@ -19,7 +18,6 @@ const IndexPage = props => {
   return (
     <Layout>
       <SEO title="Fotboll, Nyheter, Fantasy, Livescore" />
-      <Nav />
       <div
         sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
       >

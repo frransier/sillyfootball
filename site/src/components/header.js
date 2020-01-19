@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 import { Link, navigate } from "gatsby"
 import icon from "../images/icon-v1.svg"
 import iconDark from "../images/icon-v1-dark.svg"
@@ -26,7 +26,7 @@ const Header = () => {
     <div
       sx={{
         display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr",
+        gridTemplateColumns: "15% 20% 20% 20% 13% 12%",
         height: 50,
         alignItems: "center",
         justifyItems: "center",
@@ -34,27 +34,9 @@ const Header = () => {
         bg: "primary",
         position: "sticky",
         top: 0,
-
-        mb: -3,
+        mb: 7,
       }}
     >
-      <button
-        sx={{
-          bg: "primary",
-          color: "background",
-          border: "none",
-          fontSize: 4,
-          mx: 4,
-          pointer: "cursor",
-        }}
-        aria-label="Color Mode"
-        onClick={() =>
-          setColorMode(colorMode === "default" ? "dark" : "default")
-        }
-      >
-        {colorMode === "default" ? <IoMdMoon></IoMdMoon> : <FiSun></FiSun>}
-      </button>
-
       <Link to="/">
         <img
           sx={{ height: 45, mx: "auto" }}
@@ -62,14 +44,87 @@ const Header = () => {
           alt="Sillyfootball Logo"
         />
       </Link>
-      {/* <div sx={{ mx: "auto" }}></div> */}
+      <Styled.h3
+        sx={{
+          mx: [8, 9],
+          fontWeight: "body",
+          fontFamily: "body",
+        }}
+      >
+        <Link
+          activeStyle={{
+            fontWeight: 700,
+          }}
+          to="/nyheter/"
+          style={{
+            textDecoration: "none",
+            color: colorMode === "default" ? "#fff" : "#2F2F2F",
+            paddingLeft: 8,
+            paddingRight: 8,
+            paddingTop: 2,
+            paddingBottom: 2,
+          }}
+        >
+          Nyheter
+        </Link>
+      </Styled.h3>
+
+      <Styled.h3
+        sx={{
+          fontWeight: "body",
+          fontFamily: "body",
+        }}
+      >
+        <Link
+          activeStyle={{
+            fontWeight: 700,
+          }}
+          to="/livescore/"
+          style={{
+            textDecoration: "none",
+            color: colorMode === "default" ? "#fff" : "#2F2F2F",
+            paddingLeft: 8,
+            paddingRight: 8,
+            paddingTop: 2,
+            paddingBottom: 2,
+          }}
+        >
+          Livescore
+        </Link>
+      </Styled.h3>
+
+      <Styled.h3
+        sx={{
+          mx: [8, 9],
+          fontWeight: "body",
+          fontFamily: "body",
+        }}
+      >
+        <Link
+          to="/fantasy/"
+          activeStyle={{
+            fontWeight: 700,
+          }}
+          style={{
+            textDecoration: "none",
+            color: colorMode === "default" ? "#fff" : "#2F2F2F",
+            paddingLeft: 8,
+            paddingRight: 8,
+            paddingTop: 2,
+            paddingBottom: 2,
+          }}
+        >
+          Fantasy
+        </Link>
+      </Styled.h3>
+
       <button
         sx={{
           bg: "primary",
           color: userState && userState.name ? "background" : "background",
           border: "none",
-          fontSize: 4,
-          mx: 4,
+          fontSize: 3,
+          mt: 2,
           pointer: "cursor",
         }}
         aria-label="Login"
@@ -80,6 +135,22 @@ const Header = () => {
         ) : (
           <FaUserAlt></FaUserAlt>
         )}
+      </button>
+      <button
+        sx={{
+          bg: "primary",
+          color: "background",
+          border: "none",
+          fontSize: 3,
+          pointer: "cursor",
+          mt: 2,
+        }}
+        aria-label="Color Mode"
+        onClick={() =>
+          setColorMode(colorMode === "default" ? "dark" : "default")
+        }
+      >
+        {colorMode === "default" ? <IoMdMoon></IoMdMoon> : <FiSun></FiSun>}
       </button>
     </div>
   )

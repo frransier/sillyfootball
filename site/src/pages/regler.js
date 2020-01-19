@@ -5,7 +5,6 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { graphql } from "gatsby"
 import { serializers } from "../utils/serializers"
-import Nav from "../components/nav"
 import Footer from "../components/footer"
 import icon from "../images/fantasy.svg"
 import iconDark from "../images/fantasy-dark.svg"
@@ -17,7 +16,6 @@ const WhitePaperPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Regler" />
-      <Nav />
       <div
         sx={{
           display: "grid",

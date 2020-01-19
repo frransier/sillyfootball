@@ -6,7 +6,6 @@ import { graphql } from "gatsby"
 import Image from "gatsby-image"
 import News from "../components/news/news"
 import BlockContent from "@sanity/block-content-to-react"
-import Nav from "../components/nav"
 import Footer from "../components/footer"
 import Card from "../components/index/card"
 import { serializers } from "../utils/serializers"
@@ -30,7 +29,6 @@ const NewsTemplate = ({ data }) => {
         description={news.intro}
         image={news.image.asset.fluid.src}
       />
-      <Nav />
       <div
         sx={{
           display: "grid",

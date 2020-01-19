@@ -2,7 +2,6 @@
 import { jsx, Styled } from "theme-ui"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Nav from "../components/nav"
 import Footer from "../components/footer"
 import Button from "../components/button"
 import { useUserState, useGameDispatch } from "../state"
@@ -17,7 +16,6 @@ const ThanksPage = () => {
   return (
     <Layout>
       <SEO title="Tack" />
-      <Nav />
       <div
         sx={{
           display: "grid",

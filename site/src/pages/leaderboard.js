@@ -5,7 +5,6 @@ import { motion } from "framer-motion"
 import { IoIosRefresh } from "react-icons/io"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Nav from "../components/nav"
 import Footer from "../components/footer"
 import { graphql } from "gatsby"
 import Entry from "../components/leaderboard/entry"
@@ -79,7 +78,6 @@ const LeaderboardPage = () => {
         title="Leaderboard"
         description="Följ omgången live på leaderboarden"
       />
-      <Nav />
       {loading ? (
         <div>
           <br></br>

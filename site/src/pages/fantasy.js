@@ -13,7 +13,6 @@ import Board from "../components/fantasy/board"
 import Matches from "../components/fantasy/matches"
 import Players from "../components/fantasy/players"
 import Footer from "../components/footer"
-import Nav from "../components/nav"
 import Play from "../components/fantasy/play"
 import full from "../images/full.svg"
 import tooLate from "../images/tooLate.svg"
@@ -125,7 +124,6 @@ const FantasyPage = props => {
   return (
     <Layout>
       <SEO title="Fantasy" description="Prova på ett annorlunda fantasy-spel" />
-      <Nav />
       {loading ? (
         <div
           sx={{

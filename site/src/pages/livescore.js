@@ -5,7 +5,6 @@ import { motion } from "framer-motion"
 import { IoIosRefresh } from "react-icons/io"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Nav from "../components/nav"
 import Footer from "../components/footer"
 import Match from "../components/livescore/match"
 const sanityClient = require("@sanity/client")
@@ -102,7 +101,6 @@ const LivescorePage = () => {
         title="Livescore"
         description="Följ Sillyfootball:s omgångar live."
       />
-      <Nav />
       {loading ? (
         <div>
           <br></br>
