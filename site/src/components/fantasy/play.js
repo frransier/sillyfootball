@@ -24,8 +24,12 @@ const Play = ({ entries, register, deadline }) => {
           Nästa omgång kommer ut efter denna.
         </Styled.h3>
         <div sx={{ display: "flex" }}>
-          <Button text="Livescore" action="livescore" />
-          <Button text="Leaderboard" action="leaderboard" />
+          <div sx={{ mx: 2 }}>
+            <Button text="Livescore" action="livescore" />
+          </div>
+          <div sx={{ mx: 2 }}>
+            <Button text="Leaderboard" action="leaderboard" />
+          </div>
         </div>
       </div>
     )

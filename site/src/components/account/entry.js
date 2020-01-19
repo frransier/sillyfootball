@@ -37,8 +37,8 @@ const Entry = ({ entry, scores }) => {
           sx={{
             textAlign: "left",
             mx: 4,
-            my: 0,
-            fontSize: 5,
+            my: 2,
+            fontSize: 4,
             fontWeight: "heading",
           }}
         >

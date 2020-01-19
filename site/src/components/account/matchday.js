@@ -73,7 +73,7 @@ const Matchday = ({
           alignItems: "center",
         }}
       >
-        <div sx={{ textAlign: "center", fontSize: 6 }}>
+        <div sx={{ textAlign: "center", fontSize: 6, mb: 4 }}>
           {points === gold ? (
             <img sx={{ width: "50%", mx: "auto" }} src={goldLogo} alt="Gold" />
           ) : points === silver ? (
