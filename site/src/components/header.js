@@ -126,6 +126,7 @@ const Header = () => {
           fontSize: 3,
           mt: 2,
           pointer: "cursor",
+          justifySelf: "end",
         }}
         aria-label="Login"
         onClick={() => Login()}

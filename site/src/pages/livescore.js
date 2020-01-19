@@ -117,15 +117,16 @@ const LivescorePage = () => {
           {matches.length > 0 &&
             dates.map((d, i) => (
               <div key={i} sx={{ display: "grid", mt: -4 }}>
-                <div sx={{ mx: "auto" }}>
-                  <Styled.h2
-                    sx={{
-                      textAlign: "center",
-                    }}
-                  >
-                    {d[0]} {d[1]} {d[2]}
-                  </Styled.h2>
-                </div>
+                {/* <div sx={{ mx: "auto" }}> */}
+                <Styled.h2
+                  sx={{
+                    textAlign: "left",
+                    mx: 6,
+                  }}
+                >
+                  {d[0]} {d[1]} {d[2]}
+                </Styled.h2>
+                {/* </div> */}
                 {matches.map((x, xi) => {
                   const xdate = new Date(x.start)
                   const day = xdate.getDate().toString()
