@@ -26,7 +26,7 @@ const Header = () => {
     <div
       sx={{
         display: "grid",
-        gridTemplateColumns: "20% 23% 20% 22% 7% 7%",
+        gridTemplateColumns: "20% 20% 20% 22% 6% 6%",
         height: 60,
         alignItems: "center",
         justifyItems: "center",
@@ -128,13 +128,13 @@ const Header = () => {
           pointer: "cursor",
           justifySelf: "end",
           appearance: "none",
-          width: "auto",
+          width: 14,
         }}
         aria-label="Login"
         onClick={() => Login()}
       >
         {userState && userState.id ? (
-          <FaUserCheck size={19}></FaUserCheck>
+          <FaUserCheck size={18}></FaUserCheck>
         ) : (
           <FaUserAlt></FaUserAlt>
         )}
@@ -148,7 +148,8 @@ const Header = () => {
           pointer: "cursor",
           mt: 2,
           appearance: "none",
-          width: "auto",
+          width: 14,
+          justifySelf: "end",
         }}
         aria-label="Color Mode"
         onClick={() =>
