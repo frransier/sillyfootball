@@ -26,7 +26,7 @@ const Header = () => {
     <div
       sx={{
         display: "grid",
-        gridTemplateColumns: "18% 20% 20% 22% 8% 12%",
+        gridTemplateColumns: "20% 20% 20% 20% 12% 8%",
         height: 60,
         alignItems: "center",
         justifyItems: "center",
@@ -118,7 +118,7 @@ const Header = () => {
         </Link>
       </Styled.h3>
 
-      <div>
+      <div sx={{ justifySelf: "end" }}>
         <button
           sx={{
             bg: "primary",
@@ -127,7 +127,7 @@ const Header = () => {
             fontSize: 3,
             mt: 2,
             pointer: "cursor",
-            justifySelf: "end",
+
             appearance: "none",
           }}
           aria-label="Login"
@@ -140,7 +140,7 @@ const Header = () => {
           )}
         </button>
       </div>
-      <div>
+      <div sx={{ justifySelf: "end" }}>
         <button
           sx={{
             bg: "primary",
@@ -150,7 +150,6 @@ const Header = () => {
             pointer: "cursor",
             mt: 2,
             appearance: "none",
-            justifySelf: "end",
           }}
           aria-label="Color Mode"
           onClick={() =>
