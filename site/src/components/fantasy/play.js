@@ -23,8 +23,10 @@ const Play = ({ entries, register, deadline }) => {
         <Styled.h3 sx={{ mb: 2, mt: 7 }}>
           Nästa omgång kommer ut efter denna.
         </Styled.h3>
-        <Button text="Livescore" action="livescore" />
-        <Button text="Leaderboard" action="leaderboard" />
+        <div sx={{ display: "flex" }}>
+          <Button text="Livescore" action="livescore" />
+          <Button text="Leaderboard" action="leaderboard" />
+        </div>
       </div>
     )
   }

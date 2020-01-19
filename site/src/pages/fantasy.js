@@ -139,6 +139,7 @@ const FantasyPage = props => {
         </div>
       ) : (
         <div>
+          <Board />
           <div
             sx={{
               display: "grid",
@@ -179,7 +180,6 @@ const FantasyPage = props => {
               </div>
             )}
           </div>
-          <Board />
           {gameState && gameState.length < 5 ? (
             <div sx={{ display: "grid", minHeight: 970 }}>
               <motion.div

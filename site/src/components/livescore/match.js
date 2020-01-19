@@ -127,7 +127,7 @@ const Match = ({ match }) => {
                   fontSize: 3,
                   borderBottom: "solid 3px",
                   borderBottomColor:
-                    i + 1 === match.events.length ? "text" : "muted",
+                    i + 1 === match.events.length ? "primary" : "muted",
                 }}
               >
                 <div sx={{ textAlign: "center" }}>{""}</div>
