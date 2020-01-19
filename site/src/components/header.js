@@ -127,6 +127,8 @@ const Header = () => {
           mt: 2,
           pointer: "cursor",
           justifySelf: "end",
+          appearance: "none",
+          width: "auto",
         }}
         aria-label="Login"
         onClick={() => Login()}
@@ -145,6 +147,8 @@ const Header = () => {
           fontSize: 3,
           pointer: "cursor",
           mt: 2,
+          appearance: "none",
+          width: "auto",
         }}
         aria-label="Color Mode"
         onClick={() =>
