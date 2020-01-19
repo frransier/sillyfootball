@@ -26,7 +26,7 @@ const Header = () => {
     <div
       sx={{
         display: "grid",
-        gridTemplateColumns: "20% 20% 20% 22% 6% 6%",
+        gridTemplateColumns: "18% 20% 20% 22% 8% 12%",
         height: 60,
         alignItems: "center",
         justifyItems: "center",
@@ -118,47 +118,48 @@ const Header = () => {
         </Link>
       </Styled.h3>
 
-      <button
-        sx={{
-          bg: "primary",
-          color: userState && userState.name ? "background" : "background",
-          border: "none",
-          fontSize: 3,
-          mt: 2,
-          pointer: "cursor",
-          justifySelf: "end",
-          appearance: "none",
-          width: 14,
-          mx: 5,
-        }}
-        aria-label="Login"
-        onClick={() => Login()}
-      >
-        {userState && userState.id ? (
-          <FaUserCheck size={19}></FaUserCheck>
-        ) : (
-          <FaUserAlt></FaUserAlt>
-        )}
-      </button>
-      <button
-        sx={{
-          bg: "primary",
-          color: "background",
-          border: "none",
-          fontSize: 3,
-          pointer: "cursor",
-          mt: 2,
-          appearance: "none",
-          width: 14,
-          justifySelf: "end",
-        }}
-        aria-label="Color Mode"
-        onClick={() =>
-          setColorMode(colorMode === "default" ? "dark" : "default")
-        }
-      >
-        {colorMode === "default" ? <IoMdMoon></IoMdMoon> : <FiSun></FiSun>}
-      </button>
+      <div>
+        <button
+          sx={{
+            bg: "primary",
+            color: userState && userState.name ? "background" : "background",
+            border: "none",
+            fontSize: 3,
+            mt: 2,
+            pointer: "cursor",
+            justifySelf: "end",
+            appearance: "none",
+          }}
+          aria-label="Login"
+          onClick={() => Login()}
+        >
+          {userState && userState.id ? (
+            <FaUserCheck size={19}></FaUserCheck>
+          ) : (
+            <FaUserAlt></FaUserAlt>
+          )}
+        </button>
+      </div>
+      <div>
+        <button
+          sx={{
+            bg: "primary",
+            color: "background",
+            border: "none",
+            fontSize: 3,
+            pointer: "cursor",
+            mt: 2,
+            appearance: "none",
+            justifySelf: "end",
+          }}
+          aria-label="Color Mode"
+          onClick={() =>
+            setColorMode(colorMode === "default" ? "dark" : "default")
+          }
+        >
+          {colorMode === "default" ? <IoMdMoon></IoMdMoon> : <FiSun></FiSun>}
+        </button>
+      </div>
     </div>
   )
 }
