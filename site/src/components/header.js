@@ -140,7 +140,7 @@ const Header = () => {
           )}
         </button>
       </div>
-      <div sx={{ justifySelf: "end" }}>
+      <div sx={{ justifySelf: "end", mx: 2 }}>
         <button
           sx={{
             bg: "primary",
