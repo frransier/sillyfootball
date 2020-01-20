@@ -4,10 +4,10 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { IoIosRefresh } from "react-icons/io"
 import { Link } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Footer from "../components/footer"
-import Entry from "../components/leaderboard/entry"
+import Layout from "../../components/layout"
+import SEO from "../../components/seo"
+import Footer from "../../components/footer"
+import Entry from "../../components/leaderboard/entry"
 
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
@@ -16,7 +16,7 @@ const client = sanityClient({
   useCdn: true,
 })
 
-const LeaderboardPage = () => {
+const LeaderboardLastPage = () => {
   const [matchday, setMatchday] = useState({})
   const [entries, setEntries] = useState([])
   const [scores, setScores] = useState([])
@@ -133,14 +133,14 @@ const LeaderboardPage = () => {
                   <IoIosRefresh size={40} />
                 </button>
               </div>
-              <Link to="/leaderboard/last/" style={{ textDecoration: "none" }}>
+              <Link to="/leaderboard/" style={{ textDecoration: "none" }}>
                 <Styled.h2
                   sx={{
                     textAlign: "center",
                     mx: 6,
                   }}
                 >
-                  Förra omgången
+                  Nästa omgång
                 </Styled.h2>
               </Link>
             </div>
@@ -176,9 +176,9 @@ const LeaderboardPage = () => {
   )
 }
 
-export default LeaderboardPage
+export default LeaderboardLastPage
 
-const sanityQuery = `*[_type == "matchday" && status == 'current']{_id, index, start, entries[]
+const sanityQuery = `*[_type == "matchday" && status == 'last']{_id, index, start, entries[]
     {..., 
     user->{"name": name, "id": _id},    
     players[]->{"fullName": fullName, "name": name, "scores": scores}}

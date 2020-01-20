@@ -4,10 +4,10 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { IoIosRefresh } from "react-icons/io"
 import { Link } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Footer from "../components/footer"
-import Match from "../components/livescore/match"
+import Layout from "../../components/layout"
+import SEO from "../../components/seo"
+import Footer from "../../components/footer"
+import Match from "../../components/livescore/match"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
@@ -40,7 +40,7 @@ const months = [
   "november",
   "december",
 ]
-const query = `*[_type == "matchday" && status == "current"]{..., matches[]
+const query = `*[_type == "matchday" && status == "next"]{..., matches[]
     {..., 
     away{team->{"fullName": fullName,"name": name, "id": _id}, goals}, 
     home{team->{"fullName": fullName,"name": name, "id": _id}, goals},
@@ -48,7 +48,7 @@ const query = `*[_type == "matchday" && status == "current"]{..., matches[]
     player->{"fullName": fullName, "name": name,}, assist->{"fullName": fullName, "name": name,}}}
   }`
 
-const LivescorePage = () => {
+const LivescoreNextPage = () => {
   const [matches, setMatches] = useState([])
   const [dates, setDates] = useState([])
   const [loading, setLoading] = useState(false)
@@ -122,7 +122,7 @@ const LivescorePage = () => {
               justifyContent: "center",
             }}
           >
-            <Link to="/livescore/last/" style={{ textDecoration: "none" }}>
+            <Link to="/livescore/" style={{ textDecoration: "none" }}>
               <Styled.h3
                 sx={{
                   textAlign: "center",
@@ -135,18 +135,6 @@ const LivescorePage = () => {
               </Styled.h3>
             </Link>
             <div sx={{ mx: "auto" }}></div>
-            <Link to="/livescore/next/" style={{ textDecoration: "none" }}>
-              <Styled.h3
-                sx={{
-                  textAlign: "center",
-                  mx: 6,
-                  mt: -2,
-                  mb: -6,
-                }}
-              >
-                Nästa omgång
-              </Styled.h3>
-            </Link>
           </div>
           {matches.length > 0 &&
             dates.map((d, i) => (
@@ -207,4 +195,4 @@ const LivescorePage = () => {
   )
 }
 
-export default LivescorePage
+export default LivescoreNextPage
