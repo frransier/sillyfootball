@@ -15,27 +15,29 @@ const Matches = ({ matches }) => {
           })
         : matches.map((x, i) => <Match index={i} match={x} key={i} />)}
 
-      <div sx={{ mx: "auto" }}>
+      <div sx={{ display: "grid" }}>
         <Styled.h2
           sx={{
             my: 3,
             fontSize: 3,
+            alignSelf: "end",
+            justifySelf: "end",
           }}
           onClick={() => setShow(!show)}
         >
           {show ? (
             <div sx={{ display: "flex", cursor: "pointer" }}>
+              Alla matcher
               <div sx={{ mt: 1, mx: 2 }}>
                 <FaAngleDown></FaAngleDown>
               </div>
-              Alla matcher
             </div>
           ) : (
             <div sx={{ display: "flex", cursor: "pointer" }}>
+              Klicka på en match för att filtrera
               <div sx={{ mt: 1, mx: 2 }}>
                 <FaAngleUp />
               </div>
-              Klicka på en match för att filtrera
             </div>
           )}
         </Styled.h2>

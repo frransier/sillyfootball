@@ -88,8 +88,7 @@ const Match = ({ match }) => {
             color: selected ? "background" : "text",
           }}
         >
-          <div sx={{ fontSize: 1 }}>{`${hours}:${minutes}`}</div>
-          <div sx={{ fontSize: 1 }}>{weekday}</div>
+          <div sx={{ fontSize: 2 }}>{`${hours}:${minutes}`}</div>
         </div>
         <div
           sx={{
@@ -101,7 +100,9 @@ const Match = ({ match }) => {
         >
           {match.away.team.name || match.away.team.fullName}
         </div>
-        <div></div>
+        <div sx={{ fontSize: 1, color: selected ? "background" : "text" }}>
+          {weekday}
+        </div>
       </div>
     </button>
     // <tr
