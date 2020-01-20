@@ -1,6 +1,7 @@
 import React, { useReducer, useContext, createContext } from "react"
 import { navigate } from "gatsby"
 import { AuthProvider } from "react-use-auth"
+import { CookiesProvider } from "react-cookie"
 
 var initialUser = []
 typeof window !== "undefined"
@@ -36,7 +37,7 @@ function Provider(props) {
             <FilterDispatchContext.Provider value={filterDispatch}>
               <GameStateContext.Provider value={game}>
                 <GameDispatchContext.Provider value={gameDispatch}>
-                  {props.children}
+                  <CookiesProvider>{props.children}</CookiesProvider>
                 </GameDispatchContext.Provider>
               </GameStateContext.Provider>
             </FilterDispatchContext.Provider>
