@@ -52,7 +52,7 @@ const News = ({ content }) => {
             content.slug.current
           }/${content._createdAt.substr(0, 10)}`}
         >
-          <Styled.h3 sx={{ fontSize: [3, 3, 4], mt: 3, mb: 0 }}>
+          <Styled.h3 sx={{ fontSize: [3], mt: 3, mb: 0 }}>
             {content.title}
           </Styled.h3>
         </Link>

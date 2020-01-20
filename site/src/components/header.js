@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { Link, navigate } from "gatsby"
-import icon from "../images/icon-v1.svg"
-import iconDark from "../images/icon-v1-dark.svg"
+import icon from "../images/icon.svg"
+import iconDark from "../images/icon-dark.svg"
 import { useColorMode } from "theme-ui"
 import { useAuth } from "react-use-auth"
 import { FaUserAlt, FaUserCheck } from "react-icons/fa"
@@ -10,7 +10,7 @@ import { useUserState } from "../state"
 
 const Header = () => {
   const userState = useUserState()
-  const [colorMode, setColorMode] = useColorMode()
+  const [colorMode] = useColorMode()
   const { login } = useAuth()
 
   function Login() {
@@ -29,10 +29,10 @@ const Header = () => {
         alignItems: "center",
         justifyItems: "center",
         zIndex: 1000,
-        bg: "primary",
+        bg: "background",
         position: "sticky",
         top: 0,
-        mb: 7,
+        mb: 3,
       }}
     >
       <Link to="/">
@@ -52,15 +52,19 @@ const Header = () => {
         <Link
           activeStyle={{
             fontWeight: 700,
+            borderRadius: 2,
+            background: colorMode === "default" ? "#FF5252" : "#67FFBF",
+            color: colorMode === "default" ? "#fff" : "#2F2F2F",
           }}
           to="/nyheter/"
           style={{
             textDecoration: "none",
-            color: colorMode === "default" ? "#fff" : "#2F2F2F",
+            color: colorMode === "default" ? "#2F2F2F" : "#fff",
             paddingLeft: 8,
             paddingRight: 8,
             paddingTop: 2,
             paddingBottom: 2,
+            fontWeight: 700,
           }}
         >
           Nyheter
@@ -76,15 +80,19 @@ const Header = () => {
         <Link
           activeStyle={{
             fontWeight: 700,
+            borderRadius: 2,
+            background: colorMode === "default" ? "#FF5252" : "#67FFBF",
+            color: colorMode === "default" ? "#fff" : "#2F2F2F",
           }}
           to="/livescore/"
           style={{
             textDecoration: "none",
-            color: colorMode === "default" ? "#fff" : "#2F2F2F",
+            color: colorMode === "default" ? "#2F2F2F" : "#fff",
             paddingLeft: 8,
             paddingRight: 8,
             paddingTop: 2,
             paddingBottom: 2,
+            fontWeight: 700,
           }}
         >
           Livescore
@@ -102,14 +110,18 @@ const Header = () => {
           to="/fantasy/"
           activeStyle={{
             fontWeight: 700,
+            borderRadius: 2,
+            background: colorMode === "default" ? "#FF5252" : "#67FFBF",
+            color: colorMode === "default" ? "#fff" : "#2F2F2F",
           }}
           style={{
             textDecoration: "none",
-            color: colorMode === "default" ? "#fff" : "#2F2F2F",
+            color: colorMode === "default" ? "#2F2F2F" : "#fff",
             paddingLeft: 8,
             paddingRight: 8,
             paddingTop: 2,
             paddingBottom: 2,
+            fontWeight: 700,
           }}
         >
           Fantasy
@@ -119,8 +131,8 @@ const Header = () => {
       <div sx={{ justifySelf: "center" }}>
         <button
           sx={{
-            bg: "primary",
-            color: userState && userState.name ? "background" : "background",
+            bg: "background",
+            color: "text",
             border: "none",
             fontSize: 3,
             mt: 2,

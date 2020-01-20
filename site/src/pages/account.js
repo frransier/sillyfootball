@@ -1,13 +1,10 @@
 /** @jsx jsx */
-import { jsx, Styled, useColorMode } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 import { graphql, Link, navigate } from "gatsby"
 import { useUserState, useUserDispatch, useGameDispatch } from "../state"
 import { useEffect, useState } from "react"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
 import { motion } from "framer-motion"
-
-import { FiSun } from "react-icons/fi"
-import { IoMdMoon } from "react-icons/io"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Entry from "../components/account/entry"
@@ -24,7 +21,6 @@ const client = sanityClient({
 })
 
 const AccountPage = ({ data }) => {
-  const [colorMode, setColorMode] = useColorMode()
   const userState = useUserState()
   const userDispatch = useUserDispatch()
   const gameDispatch = useGameDispatch()
@@ -145,29 +141,6 @@ const AccountPage = ({ data }) => {
                 </Styled.h2>
               </Link>
             </div>
-            <button
-              sx={{
-                bg: "primary",
-                color: "background",
-                border: "none",
-                borderRadius: 2,
-                fontSize: 3,
-                pt: 4,
-                pb: 3,
-                pointer: "cursor",
-                appearance: "none",
-              }}
-              aria-label="Color Mode"
-              onClick={() =>
-                setColorMode(colorMode === "default" ? "dark" : "default")
-              }
-            >
-              {colorMode === "default" ? (
-                <IoMdMoon></IoMdMoon>
-              ) : (
-                <FiSun></FiSun>
-              )}
-            </button>
           </div>
 
           <div sx={{ height: 220, display: "grid" }}>
