@@ -2,7 +2,7 @@
 import { jsx, Styled } from "theme-ui"
 import Button from "../button"
 
-const Card = ({ icon, title, body, cta, action }) => {
+const Card = ({ icon, title, body1, body2, cta, action }) => {
   return (
     <div
       sx={{
@@ -10,7 +10,7 @@ const Card = ({ icon, title, body, cta, action }) => {
         gridTemplateColumns: "100%",
         justifyItems: "center",
         alignItems: "center",
-        mx: [0, 8],
+        mx: [8, 8],
         my: 7,
         borderRadius: 2,
       }}
@@ -27,8 +27,11 @@ const Card = ({ icon, title, body, cta, action }) => {
       >
         {title}
       </Styled.h2>
-      <div sx={{ fontSize: 2, ml: 6, mr: 4, minHeight: [0, 45] }}>
-        <Styled.p sx={{ my: 3 }}>{body}</Styled.p>
+      <div sx={{ fontSize: 2, minHeight: [10], mt: 4, textAlign: "center" }}>
+        <Styled.p sx={{ my: 1 }}>{body1}</Styled.p>
+      </div>
+      <div sx={{ fontSize: 2, minHeight: [10], textAlign: "center" }}>
+        <Styled.p sx={{ my: 1 }}>{body2}</Styled.p>
       </div>
       <Button text={cta} action={action} />
     </div>

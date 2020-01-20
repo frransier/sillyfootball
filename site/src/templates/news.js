@@ -100,14 +100,16 @@ const NewsTemplate = ({ data }) => {
             <Card
               icon={<GiMining />}
               title="Easy to learn"
-              body="Välj 5 spelare från 10 matcher. Få 1 poäng per mål/assist."
+              body1="Välj 5 spelare."
+              body2="1 poäng per mål/assist."
               cta="Spela"
               action="fantasy"
             />
             <Card
               icon={<GiDiamondHard />}
               title="Hard to master"
-              body="Bli ensam vinnare och plocka hem 500 kronor."
+              body1="Bli ensam vinnare."
+              body2="Vinn 500 kronor."
               cta="Läs mer"
               action="white-paper"
             />
