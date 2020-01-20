@@ -39,7 +39,7 @@ const months = [
   "november",
   "december",
 ]
-const query = `*[_type == "matchday" && index == 1]{..., matches[]
+const query = `*[_type == "matchday" && status == "current"]{..., matches[]
     {..., 
     away{team->{"fullName": fullName,"name": name, "id": _id}, goals}, 
     home{team->{"fullName": fullName,"name": name, "id": _id}, goals},

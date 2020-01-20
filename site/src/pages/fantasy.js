@@ -63,7 +63,6 @@ const FantasyPage = props => {
   const now = Date.now()
   const start = Date.parse(props.data.matchday.start)
   const deadlineDay = now > start ? true : false
-  // const deadlineDay = true
 
   useEffect(() => {
     setPlayers(initSlice)
@@ -137,7 +136,7 @@ const FantasyPage = props => {
         </div>
       ) : (
         <div>
-          <Board />
+          <Board deadline={deadline} />
           <div
             sx={{
               display: "grid",
@@ -295,6 +294,7 @@ export const query = graphql`
             _id
             name
             fullName
+            active
           }
         }
       }

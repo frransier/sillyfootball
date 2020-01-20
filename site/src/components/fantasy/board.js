@@ -8,7 +8,7 @@ import winDark from "../../images/win-dark.svg"
 import win from "../../images/win.svg"
 import { Link } from "gatsby"
 
-const Board = () => {
+const Board = ({ deadline }) => {
   const gameState = useGameState()
   const [colorMode] = useColorMode()
 
@@ -92,7 +92,7 @@ const Board = () => {
                 my: 3,
               }}
             >
-              Lör 18 jan kl 15:30
+              {deadline}
             </Styled.h1>
           </div>
         </div>

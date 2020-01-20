@@ -1,0 +1,98 @@
+{"_type":"team","_id":"89-team","fullName":"Dijon","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/89.png"},"id":89}
+{"_type":"team","_id":"1063-team","fullName":"Saint Etienne","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/1063.png"},"id":1063}
+{"_type":"team","_id":"81-team","fullName":"Marseille","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/81.png"},"id":81}
+{"_type":"team","_id":"93-team","fullName":"Reims","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/93.png"},"id":93}
+{"_type":"team","_id":"84-team","fullName":"Nice","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/84.png"},"id":84}
+{"_type":"team","_id":"87-team","fullName":"Amiens","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/87.png"},"id":87}
+{"_type":"team","_id":"95-team","fullName":"Strasbourg","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/95.png"},"id":95}
+{"_type":"team","_id":"112-team","fullName":"Metz","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/112.png"},"id":112}
+{"_type":"team","_id":"82-team","fullName":"Montpellier","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/82.png"},"id":82}
+{"_type":"team","_id":"94-team","fullName":"Rennes","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/94.png"},"id":94}
+{"_type":"team","_id":"77-team","fullName":"Angers","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/77.png"},"id":77}
+{"_type":"team","_id":"78-team","fullName":"Bordeaux","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/78.png"},"id":78}
+{"_type":"team","_id":"79-team","fullName":"Lille","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/79.png"},"id":79}
+{"_type":"team","_id":"83-team","fullName":"Nantes","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/83.png"},"id":83}
+{"_type":"team","_id":"85-team","fullName":"Paris Saint Germain","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/85.png"},"id":85}
+{"_type":"team","_id":"92-team","fullName":"Nimes","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/92.png"},"id":92}
+{"_type":"team","_id":"106-team","fullName":"Stade Brestois 29","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/106.png"},"id":106}
+{"_type":"team","_id":"96-team","fullName":"Toulouse","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/96.png"},"id":96}
+{"_type":"team","_id":"91-team","fullName":"Monaco","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/91.png"},"id":91}
+{"_type":"team","_id":"80-team","fullName":"Lyon","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/80.png"},"id":80}
+{"_type":"team","_id":"490-team","fullName":"Cagliari","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/490.png"},"id":490}
+{"_type":"team","_id":"518-team","fullName":"Brescia","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/518.png"},"id":518}
+{"_type":"team","_id":"502-team","fullName":"Fiorentina","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/502.png"},"id":502}
+{"_type":"team","_id":"492-team","fullName":"Napoli","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/492.png"},"id":492}
+{"_type":"team","_id":"504-team","fullName":"Verona","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/504.png"},"id":504}
+{"_type":"team","_id":"500-team","fullName":"Bologna","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/500.png"},"id":500}
+{"_type":"team","_id":"505-team","fullName":"Inter","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/505.png"},"id":505}
+{"_type":"team","_id":"867-team","fullName":"Lecce","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/867.png"},"id":867}
+{"_type":"team","_id":"523-team","fullName":"Parma","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/523.png"},"id":523}
+{"_type":"team","_id":"496-team","fullName":"Juventus","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/496.png"},"id":496}
+{"_type":"team","_id":"497-team","fullName":"AS Roma","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/497.png"},"id":497}
+{"_type":"team","_id":"495-team","fullName":"Genoa","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/495.png"},"id":495}
+{"_type":"team","_id":"498-team","fullName":"Sampdoria","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/498.png"},"id":498}
+{"_type":"team","_id":"487-team","fullName":"Lazio","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/487.png"},"id":487}
+{"_type":"team","_id":"493-team","fullName":"Spal","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/493.png"},"id":493}
+{"_type":"team","_id":"499-team","fullName":"Atalanta","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/499.png"},"id":499}
+{"_type":"team","_id":"503-team","fullName":"Torino","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/503.png"},"id":503}
+{"_type":"team","_id":"488-team","fullName":"Sassuolo","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/488.png"},"id":488}
+{"_type":"team","_id":"494-team","fullName":"Udinese","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/494.png"},"id":494}
+{"_type":"team","_id":"489-team","fullName":"AC Milan","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/489.png"},"id":489}
+{"_type":"team","_id":"40-team","fullName":"Liverpool","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/40.png"},"id":40}
+{"_type":"team","_id":"71-team","fullName":"Norwich","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/71.png"},"id":71}
+{"_type":"team","_id":"48-team","fullName":"West Ham","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/48.png"},"id":48}
+{"_type":"team","_id":"50-team","fullName":"Manchester City","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/50.png"},"id":50}
+{"_type":"team","_id":"35-team","fullName":"Bournemouth","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/35.png"},"id":35}
+{"_type":"team","_id":"62-team","fullName":"Sheffield Utd","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/62.png"},"id":62}
+{"_type":"team","_id":"44-team","fullName":"Burnley","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/44.png"},"id":44}
+{"_type":"team","_id":"41-team","fullName":"Southampton","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/41.png"},"id":41}
+{"_type":"team","_id":"52-team","fullName":"Crystal Palace","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/52.png"},"id":52}
+{"_type":"team","_id":"45-team","fullName":"Everton","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/45.png"},"id":45}
+{"_type":"team","_id":"46-team","fullName":"Leicester","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/46.png"},"id":46}
+{"_type":"team","_id":"39-team","fullName":"Wolves","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/39.png"},"id":39}
+{"_type":"team","_id":"38-team","fullName":"Watford","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/38.png"},"id":38}
+{"_type":"team","_id":"51-team","fullName":"Brighton","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/51.png"},"id":51}
+{"_type":"team","_id":"47-team","fullName":"Tottenham","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/47.png"},"id":47}
+{"_type":"team","_id":"66-team","fullName":"Aston Villa","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/66.png"},"id":66}
+{"_type":"team","_id":"34-team","fullName":"Newcastle","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/34.png"},"id":34}
+{"_type":"team","_id":"42-team","fullName":"Arsenal","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/42.png"},"id":42}
+{"_type":"team","_id":"33-team","fullName":"Manchester United","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/33.png"},"id":33}
+{"_type":"team","_id":"49-team","fullName":"Chelsea","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/49.png"},"id":49}
+{"_type":"team","_id":"531-team","fullName":"Athletic Club","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/531.png"},"id":531}
+{"_type":"team","_id":"529-team","fullName":"Barcelona","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/529.png"},"id":529}
+{"_type":"team","_id":"538-team","fullName":"Celta Vigo","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/538.png"},"id":538}
+{"_type":"team","_id":"541-team","fullName":"Real Madrid","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/541.png"},"id":541}
+{"_type":"team","_id":"532-team","fullName":"Valencia","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/532.png"},"id":532}
+{"_type":"team","_id":"548-team","fullName":"Real Sociedad","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/548.png"},"id":548}
+{"_type":"team","_id":"537-team","fullName":"Leganes","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/537.png"},"id":537}
+{"_type":"team","_id":"727-team","fullName":"Osasuna","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/727.png"},"id":727}
+{"_type":"team","_id":"533-team","fullName":"Villarreal","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/533.png"},"id":533}
+{"_type":"team","_id":"715-team","fullName":"Granada CF","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/715.png"},"id":715}
+{"_type":"team","_id":"542-team","fullName":"Alaves","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/542.png"},"id":542}
+{"_type":"team","_id":"539-team","fullName":"Levante","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/539.png"},"id":539}
+{"_type":"team","_id":"540-team","fullName":"Espanyol","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/540.png"},"id":540}
+{"_type":"team","_id":"536-team","fullName":"Sevilla","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/536.png"},"id":536}
+{"_type":"team","_id":"530-team","fullName":"Atletico Madrid","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/530.png"},"id":530}
+{"_type":"team","_id":"546-team","fullName":"Getafe","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/546.png"},"id":546}
+{"_type":"team","_id":"798-team","fullName":"Mallorca","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/798.png"},"id":798}
+{"_type":"team","_id":"545-team","fullName":"Eibar","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/545.png"},"id":545}
+{"_type":"team","_id":"543-team","fullName":"Real Betis","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/543.png"},"id":543}
+{"_type":"team","_id":"720-team","fullName":"Valladolid","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/720.png"},"id":720}
+{"_type":"team","_id":"157-team","fullName":"Bayern Munich","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/157.png"},"id":157}
+{"_type":"team","_id":"159-team","fullName":"Hertha Berlin","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/159.png"},"id":159}
+{"_type":"team","_id":"165-team","fullName":"Borussia Dortmund","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/165.png"},"id":165}
+{"_type":"team","_id":"170-team","fullName":"FC Augsburg","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/170.png"},"id":170}
+{"_type":"team","_id":"168-team","fullName":"Bayer Leverkusen","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/168.png"},"id":168}
+{"_type":"team","_id":"185-team","fullName":"SC Paderborn 07","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/185.png"},"id":185}
+{"_type":"team","_id":"161-team","fullName":"VfL Wolfsburg","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/161.png"},"id":161}
+{"_type":"team","_id":"192-team","fullName":"FC Koln","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/192.png"},"id":192}
+{"_type":"team","_id":"162-team","fullName":"Werder Bremen","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/162.png"},"id":162}
+{"_type":"team","_id":"158-team","fullName":"Fortuna Dusseldorf","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/158.png"},"id":158}
+{"_type":"team","_id":"160-team","fullName":"SC Freiburg","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/160.png"},"id":160}
+{"_type":"team","_id":"164-team","fullName":"FSV Mainz 05","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/164.png"},"id":164}
+{"_type":"team","_id":"163-team","fullName":"Borussia Monchengladbach","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/163.png"},"id":163}
+{"_type":"team","_id":"174-team","fullName":"FC Schalke 04","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/174.png"},"id":174}
+{"_type":"team","_id":"169-team","fullName":"Eintracht Frankfurt","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/169.png"},"id":169}
+{"_type":"team","_id":"167-team","fullName":"1899 Hoffenheim","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/167.png"},"id":167}
+{"_type":"team","_id":"182-team","fullName":"Union Berlin","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/182.png"},"id":182}
+{"_type":"team","_id":"173-team","fullName":"RB Leipzig","logo":{"_type":"image","_sanityAsset":"image@https://media.api-football.com/teams/173.png"},"id":173}
