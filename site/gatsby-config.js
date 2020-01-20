@@ -58,7 +58,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        exclude: [`/account/`, `/auth0_callback/`, `/thanks/`],
+        exclude: [`/account/`, `/auth0_callback/`, `/thanks/`, `repair`],
       },
     },
     {
@@ -70,7 +70,7 @@ module.exports = {
           {
             userAgent: "*",
             allow: "/",
-            disallow: ["/account/", `/auth0_callback/`, `/thanks/`],
+            disallow: ["/account/", `/auth0_callback/`, `/thanks/`, `/repair/`],
           },
         ],
       },
