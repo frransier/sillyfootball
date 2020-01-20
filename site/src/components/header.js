@@ -37,7 +37,7 @@ const Header = () => {
     >
       <Link to="/">
         <img
-          sx={{ height: 45, mx: "auto" }}
+          sx={{ height: 35, mx: "auto" }}
           src={colorMode === "default" ? icon : iconDark}
           alt="Sillyfootball Logo"
         />
