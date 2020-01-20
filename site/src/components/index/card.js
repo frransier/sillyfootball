@@ -10,8 +10,8 @@ const Card = ({ icon, title, body1, body2, cta, action }) => {
         gridTemplateColumns: "100%",
         justifyItems: "center",
         alignItems: "center",
-        mx: [8, 8],
-        my: 7,
+        mx: [9, 10],
+        my: 5,
         borderRadius: 2,
       }}
     >
