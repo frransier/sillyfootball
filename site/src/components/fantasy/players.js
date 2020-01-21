@@ -121,14 +121,15 @@ const Players = ({ players, logos }) => {
               >
                 <td
                   sx={{
-                    textAlign: "center",
+                    textAlign: "left",
                     py: 3,
+
                     borderBottom: selected ? "solid 1px" : "solid 2px",
                     borderBottomColor: selected ? "primary" : "muted",
                   }}
                 >
-                  <div sx={{ mx: "auto", maxWidth: 25 }}>
-                    <Image fluid={img}></Image>
+                  <div sx={{ mx: [4, 7], maxWidth: 30 }}>
+                    <Image sx={{ ml: [1, 2] }} fluid={img}></Image>
                   </div>
                 </td>
                 <td

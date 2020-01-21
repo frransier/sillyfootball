@@ -66,6 +66,8 @@ const Match = ({ match }) => {
             fontWeight: "body",
             color: selected ? "background" : "primary",
             mt: 2,
+            justifySelf: "start",
+            mx: [4, 7],
           }}
         >
           {selected ? <FaAngleDown size={20} /> : <FaAngleRight size={20} />}
@@ -100,64 +102,18 @@ const Match = ({ match }) => {
         >
           {match.away.team.name || match.away.team.fullName}
         </div>
-        <div sx={{ fontSize: 1, color: selected ? "background" : "text" }}>
+        <div
+          sx={{
+            fontSize: 1,
+            color: selected ? "background" : "text",
+            justifySelf: "end",
+            mx: [4, 6],
+          }}
+        >
           {weekday}
         </div>
       </div>
     </button>
-    // <tr
-    //   sx={{
-    //     fontWeight: "body",
-    //     fontFamily: "body",
-    //     textAlign: "center",
-    //     borderBottom: "solid 1px",
-    //     borderBottomColor: "muted",
-    //     height: 30,
-    //   }}
-    //   onClick={() => toggleSelected()}
-    // >
-    //   <td
-    //     sx={{
-    //       width: "40%",
-    //       fontSize: 3,
-    //       textAlign: "right",
-    //       mx: "auto",
-    //       fontWeight: selected ? "heading" : "body",
-    //       borderBottom: selected ? "solid 1px" : "solid 2px",
-    //       borderBottomColor: selected ? "primary" : "muted",
-    //     }}
-    //   >
-    //     {match.home.team.name || match.home.team.fullName}
-    //   </td>
-    //   <td
-    //     sx={{
-    //       width: "20%",
-    //       textAlign: "center",
-    //       fontFamily: "heading",
-    //       fontWeight: "heading",
-    //       borderBottom: selected ? "solid 1px" : "solid 2px",
-    //       borderBottomColor: selected ? "primary" : "muted",
-    //     }}
-    //   >
-    //     <div>
-    //       <div sx={{ fontSize: 2 }}>{`${hours}:${minutes}`}</div>
-    //       <div sx={{ fontSize: 1 }}>{weekday}</div>
-    //     </div>
-    //   </td>
-    //   <td
-    //     sx={{
-    //       width: "40%",
-    //       fontSize: 3,
-    //       textAlign: "left",
-    //       mx: "auto",
-    //       fontWeight: selected ? "heading" : "body",
-    //       borderBottom: selected ? "solid 1px" : "solid 2px",
-    //       borderBottomColor: selected ? "primary" : "muted",
-    //     }}
-    //   >
-    //     {match.away.team.name || match.away.team.fullName}
-    //   </td>
-    // </tr>
   )
 }
 

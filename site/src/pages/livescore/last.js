@@ -3,6 +3,7 @@ import { jsx, Styled } from "theme-ui"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { IoIosRefresh } from "react-icons/io"
+import { FaAngleRight } from "react-icons/fa"
 import { Link } from "gatsby"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
@@ -125,9 +126,7 @@ const LivescoreLastPage = () => {
                     justifyContent: "center",
                   }}
                 >
-                  {i === 0 && (
-                    <div sx={{ color: "background" }}>Nästa omgången</div>
-                  )}
+                  {i === 0 && <div sx={{ color: "background", mx: 6 }}></div>}
 
                   <Styled.h2
                     sx={{
@@ -139,14 +138,9 @@ const LivescoreLastPage = () => {
                   </Styled.h2>
                   {i === 0 && (
                     <Link to="/livescore/" style={{ textDecoration: "none" }}>
-                      <Styled.h3
-                        sx={{
-                          textAlign: "center",
-                          mx: 6,
-                        }}
-                      >
-                        Nästa omgång
-                      </Styled.h3>
+                      <div sx={{ color: "text" }}>
+                        <FaAngleRight size={25} />
+                      </div>
                     </Link>
                   )}
                 </div>
