@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { Link, navigate } from "gatsby"
-import icon from "../images/icon.svg"
+import icon from "../images/icon-v1.svg"
 import iconDark from "../images/icon-dark.svg"
 import { useColorMode } from "theme-ui"
 import { useAuth } from "react-use-auth"
