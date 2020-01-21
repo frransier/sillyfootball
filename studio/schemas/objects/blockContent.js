@@ -51,6 +51,10 @@ export default {
     {
       title: "Video",
       type: "video"
+    },
+    {
+      title: "Tweet",
+      type: "tweet"
     }
   ],
   preview: {

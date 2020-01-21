@@ -1,10 +1,20 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
+import { TwitterTweetEmbed } from "react-twitter-embed"
 import BlockContent from "@sanity/block-content-to-react"
 import Video from "../components/video"
 
 export const serializers = {
   types: {
+    tweet: props => (
+      <TwitterTweetEmbed
+        tweetId={props.node.tweetId}
+        options={{
+          width: "100%",
+          height: "100%",
+        }}
+      />
+    ),
     video: props => <Video value={props.node} />,
     block: props => {
       if (props.node.style === "h1") {

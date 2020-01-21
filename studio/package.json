@@ -25,7 +25,8 @@
     "prop-types": "^15.6",
     "react": "^16.2",
     "react-dom": "^16.2",
-    "react-icons": "^3.8.0"
+    "react-icons": "^3.8.0",
+    "react-twitter-embed": "^3.0.3"
   },
   "devDependencies": {}
 }
