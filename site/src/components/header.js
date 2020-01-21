@@ -52,7 +52,7 @@ const Header = () => {
         <Link
           activeStyle={{
             fontWeight: 400,
-            borderRadius: 2,
+            borderRadius: 6,
             background: colorMode === "default" ? "#FF5252" : "#67FFBF",
             color: colorMode === "default" ? "#fff" : "#2F2F2F",
           }}
@@ -60,10 +60,10 @@ const Header = () => {
           style={{
             textDecoration: "none",
             color: colorMode === "default" ? "#2F2F2F" : "#fff",
-            paddingLeft: 8,
-            paddingRight: 8,
+            paddingLeft: 12,
+            paddingRight: 12,
             paddingTop: 2,
-            paddingBottom: 2,
+            paddingBottom: 3,
             fontWeight: 700,
           }}
         >
@@ -80,7 +80,7 @@ const Header = () => {
         <Link
           activeStyle={{
             fontWeight: 400,
-            borderRadius: 2,
+            borderRadius: 6,
             background: colorMode === "default" ? "#FF5252" : "#67FFBF",
             color: colorMode === "default" ? "#fff" : "#2F2F2F",
           }}
@@ -88,10 +88,10 @@ const Header = () => {
           style={{
             textDecoration: "none",
             color: colorMode === "default" ? "#2F2F2F" : "#fff",
-            paddingLeft: 8,
-            paddingRight: 8,
+            paddingLeft: 12,
+            paddingRight: 12,
             paddingTop: 2,
-            paddingBottom: 2,
+            paddingBottom: 3,
             fontWeight: 700,
           }}
         >
@@ -107,20 +107,20 @@ const Header = () => {
         }}
       >
         <Link
-          to="/fantasy/"
           activeStyle={{
             fontWeight: 400,
-            borderRadius: 2,
+            borderRadius: 6,
             background: colorMode === "default" ? "#FF5252" : "#67FFBF",
             color: colorMode === "default" ? "#fff" : "#2F2F2F",
           }}
+          to="/fantasy/"
           style={{
             textDecoration: "none",
             color: colorMode === "default" ? "#2F2F2F" : "#fff",
-            paddingLeft: 8,
-            paddingRight: 8,
+            paddingLeft: 12,
+            paddingRight: 12,
             paddingTop: 2,
-            paddingBottom: 2,
+            paddingBottom: 3,
             fontWeight: 700,
           }}
         >
