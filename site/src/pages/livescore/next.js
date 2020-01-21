@@ -115,31 +115,9 @@ const LivescoreNextPage = () => {
             duration: 0.3,
           }}
         >
-          <div
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Link to="/livescore/" style={{ textDecoration: "none" }}>
-              <Styled.h3
-                sx={{
-                  textAlign: "center",
-                  mx: 6,
-                  mt: -2,
-                  mb: -6,
-                }}
-              >
-                Förra omgången
-              </Styled.h3>
-            </Link>
-            <div sx={{ mx: "auto" }}></div>
-          </div>
           {matches.length > 0 &&
             dates.map((d, i) => (
               <div key={i} sx={{ display: "grid", mt: -4 }}>
-                {/* <div sx={{ mx: "auto" }}> */}
                 <div
                   sx={{
                     display: "flex",
@@ -147,6 +125,18 @@ const LivescoreNextPage = () => {
                     justifyContent: "center",
                   }}
                 >
+                  {i === 0 && (
+                    <Link to="/livescore/" style={{ textDecoration: "none" }}>
+                      <Styled.h3
+                        sx={{
+                          textAlign: "center",
+                          mx: 5,
+                        }}
+                      >
+                        Förra omgången
+                      </Styled.h3>
+                    </Link>
+                  )}
                   <Styled.h2
                     sx={{
                       textAlign: "center",
@@ -155,6 +145,9 @@ const LivescoreNextPage = () => {
                   >
                     {d[0]} {d[1]} {d[2]}
                   </Styled.h2>
+                  {i === 0 && (
+                    <div sx={{ color: "background" }}>Förra omgången</div>
+                  )}
                 </div>
                 {/* </div> */}
                 {matches.map((x, xi) => {

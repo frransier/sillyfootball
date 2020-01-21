@@ -44,7 +44,7 @@ const IndexPage = props => {
               icon={<GiMining />}
               title="Easy to learn"
               body1="Välj 5 spelare."
-              body2="1 poäng per mål/assist."
+              body2="1p per mål/assist."
               cta="Spela"
               action="fantasy"
             />

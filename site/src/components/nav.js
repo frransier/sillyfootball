@@ -81,7 +81,7 @@ const Nav = () => {
       <Styled.h3
         sx={{
           mx: [8, 9],
-          fontWeight: "heading",
+          fontWeight: "body",
           fontFamily: "body",
         }}
       >
@@ -95,7 +95,6 @@ const Nav = () => {
             paddingRight: 8,
             paddingTop: 2,
             paddingBottom: 2,
-            fontWeight: 700,
           }}
           style={{
             textDecoration: "none",

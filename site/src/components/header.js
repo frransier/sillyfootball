@@ -51,7 +51,7 @@ const Header = () => {
       >
         <Link
           activeStyle={{
-            fontWeight: 700,
+            fontWeight: 400,
             borderRadius: 2,
             background: colorMode === "default" ? "#FF5252" : "#67FFBF",
             color: colorMode === "default" ? "#fff" : "#2F2F2F",
@@ -79,7 +79,7 @@ const Header = () => {
       >
         <Link
           activeStyle={{
-            fontWeight: 700,
+            fontWeight: 400,
             borderRadius: 2,
             background: colorMode === "default" ? "#FF5252" : "#67FFBF",
             color: colorMode === "default" ? "#fff" : "#2F2F2F",
@@ -109,7 +109,7 @@ const Header = () => {
         <Link
           to="/fantasy/"
           activeStyle={{
-            fontWeight: 700,
+            fontWeight: 400,
             borderRadius: 2,
             background: colorMode === "default" ? "#FF5252" : "#67FFBF",
             color: colorMode === "default" ? "#fff" : "#2F2F2F",
