@@ -44,7 +44,6 @@ const Header = () => {
       </Link>
       <Styled.h3
         sx={{
-          mx: [8, 9],
           fontWeight: "body",
           fontFamily: "body",
         }}
@@ -60,10 +59,10 @@ const Header = () => {
           style={{
             textDecoration: "none",
             color: colorMode === "default" ? "#2F2F2F" : "#fff",
-            paddingLeft: 12,
-            paddingRight: 12,
+            paddingLeft: 11,
+            paddingRight: 11,
             paddingTop: 2,
-            paddingBottom: 3,
+            paddingBottom: 2,
             fontWeight: 700,
           }}
         >
@@ -88,10 +87,10 @@ const Header = () => {
           style={{
             textDecoration: "none",
             color: colorMode === "default" ? "#2F2F2F" : "#fff",
-            paddingLeft: 12,
-            paddingRight: 12,
+            paddingLeft: 11,
+            paddingRight: 11,
             paddingTop: 2,
-            paddingBottom: 3,
+            paddingBottom: 2,
             fontWeight: 700,
           }}
         >
@@ -117,10 +116,10 @@ const Header = () => {
           style={{
             textDecoration: "none",
             color: colorMode === "default" ? "#2F2F2F" : "#fff",
-            paddingLeft: 12,
-            paddingRight: 12,
+            paddingLeft: 11,
+            paddingRight: 11,
             paddingTop: 2,
-            paddingBottom: 3,
+            paddingBottom: 2,
             fontWeight: 700,
           }}
         >

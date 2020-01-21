@@ -47,8 +47,22 @@ const Players = ({ players, logos }) => {
           <tr>
             <th
               sx={{
+                textAlign: "center",
+                width: "12%",
+                borderBottom: "solid 1px",
+                borderBottomColor: "lightgrey",
+                pt: 3,
+                fontWeight: "body",
+                fontSize: 4,
+                color: "primary",
+              }}
+            >
+              <FaStar />
+            </th>
+            <th
+              sx={{
                 textAlign: "left",
-                width: "15%",
+                width: "11%",
                 borderBottom: "solid 1px",
                 borderBottomColor: "lightgrey",
               }}
@@ -56,7 +70,7 @@ const Players = ({ players, logos }) => {
             <th
               sx={{
                 textAlign: "left",
-                width: "62%",
+                width: "59%",
                 borderBottom: "solid 1px",
                 borderBottomColor: "lightgrey",
               }}
@@ -64,7 +78,7 @@ const Players = ({ players, logos }) => {
             <th
               sx={{
                 textAlign: "center",
-                width: "7%",
+                width: "9%",
                 borderBottom: "solid 1px",
                 borderBottomColor: "lightgrey",
                 fontWeight: "body",
@@ -76,7 +90,7 @@ const Players = ({ players, logos }) => {
             <th
               sx={{
                 textAlign: "center",
-                width: "7%",
+                width: "9%",
                 borderBottom: "solid 1px",
                 borderBottomColor: "lightgrey",
                 fontWeight: "body",
@@ -84,20 +98,6 @@ const Players = ({ players, logos }) => {
               }}
             >
               Ass
-            </th>
-            <th
-              sx={{
-                textAlign: "center",
-                width: "9%",
-                borderBottom: "solid 1px",
-                borderBottomColor: "lightgrey",
-                pt: 3,
-                fontWeight: "body",
-                fontSize: 4,
-                color: "primary",
-              }}
-            >
-              <FaStar />
             </th>
           </tr>
         </thead>
@@ -121,15 +121,24 @@ const Players = ({ players, logos }) => {
               >
                 <td
                   sx={{
-                    textAlign: "left",
-                    py: 3,
-
+                    fontSize: 4,
+                    color: selected ? "background" : "background",
+                    pt: 4,
                     borderBottom: selected ? "solid 1px" : "solid 2px",
                     borderBottomColor: selected ? "primary" : "muted",
                   }}
                 >
-                  <div sx={{ mx: [4, 7], maxWidth: 30 }}>
-                    <Image sx={{ ml: [1, 2] }} fluid={img}></Image>
+                  {selected ? <FaStar></FaStar> : <FaRegStar />}
+                </td>
+                <td
+                  sx={{
+                    py: 3,
+                    borderBottom: selected ? "solid 1px" : "solid 2px",
+                    borderBottomColor: selected ? "primary" : "muted",
+                  }}
+                >
+                  <div sx={{ maxWidth: 30 }}>
+                    <Image fluid={img}></Image>
                   </div>
                 </td>
                 <td
@@ -162,17 +171,6 @@ const Players = ({ players, logos }) => {
                   }}
                 >
                   {x.assists}
-                </td>
-                <td
-                  sx={{
-                    fontSize: 4,
-                    color: selected ? "background" : "background",
-                    pt: 4,
-                    borderBottom: selected ? "solid 1px" : "solid 2px",
-                    borderBottomColor: selected ? "primary" : "muted",
-                  }}
-                >
-                  {selected ? <FaStar></FaStar> : <FaRegStar />}
                 </td>
               </tr>
             )
