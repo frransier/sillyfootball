@@ -70,7 +70,7 @@ const Players = ({ players, logos }) => {
             <th
               sx={{
                 textAlign: "left",
-                width: "59%",
+                width: "55%",
                 borderBottom: "solid 1px",
                 borderBottomColor: "lightgrey",
               }}
@@ -78,7 +78,7 @@ const Players = ({ players, logos }) => {
             <th
               sx={{
                 textAlign: "center",
-                width: "9%",
+                width: "11%",
                 borderBottom: "solid 1px",
                 borderBottomColor: "lightgrey",
                 fontWeight: "body",
@@ -90,7 +90,7 @@ const Players = ({ players, logos }) => {
             <th
               sx={{
                 textAlign: "center",
-                width: "9%",
+                width: "11%",
                 borderBottom: "solid 1px",
                 borderBottomColor: "lightgrey",
                 fontWeight: "body",

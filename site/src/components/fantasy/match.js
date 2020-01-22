@@ -56,8 +56,6 @@ const Match = ({ match }) => {
           alignItems: "center",
           fontSize: 3,
           bg: selected ? "primary" : "background",
-          // borderBottom: selected ? "solid 1px" : "none",
-          // borderBottomColor: "primary",
         }}
       >
         <div
@@ -67,7 +65,7 @@ const Match = ({ match }) => {
             color: selected ? "background" : "primary",
             mt: 2,
             justifySelf: "start",
-            mx: [2, 6],
+            mx: [4, 6],
           }}
         >
           {selected ? <FaAngleDown size={20} /> : <FaAngleRight size={20} />}
