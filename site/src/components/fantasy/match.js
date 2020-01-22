@@ -65,7 +65,7 @@ const Match = ({ match }) => {
             color: selected ? "background" : "primary",
             mt: 2,
             justifySelf: "start",
-            mx: [4, 6],
+            mx: [-2, 6],
           }}
         >
           {selected ? <FaAngleDown size={20} /> : <FaAngleRight size={20} />}
