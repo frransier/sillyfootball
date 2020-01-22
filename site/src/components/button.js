@@ -51,6 +51,7 @@ const Button = ({ text, action }) => {
         fontWeight: "heading",
         appearance: "none",
         cursor: "pointer",
+        outline: "none",
 
         ":after": {
           color: "background",

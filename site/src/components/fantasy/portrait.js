@@ -22,6 +22,7 @@ const Portrait = ({ player }) => {
           border: "none",
           mx: [3, 6, 8],
           cursor: "pointer",
+          outline: "none",
         }}
         aria-label="Player Avatar"
       >

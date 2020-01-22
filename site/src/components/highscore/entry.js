@@ -46,6 +46,7 @@ const Entry = ({ x, scores, start }) => {
             appearance: "none",
             bg: "background",
             cursor: "pointer",
+            outline: "none",
           }}
           onClick={() => (start ? setShow(!show) : setShow(false))}
         >

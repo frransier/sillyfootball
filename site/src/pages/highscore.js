@@ -117,6 +117,7 @@ const HighscorePage = () => {
                     py: 3,
                     bg: "primary",
                     color: "background",
+                    outline: "none",
 
                     ":active, :after": {
                       color: "primary",

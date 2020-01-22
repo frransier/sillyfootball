@@ -27,6 +27,7 @@ const Match = ({ match }) => {
           color: selected ? "background" : "text",
           bg: selected ? "primary" : "background",
           mb: 3,
+          outline: "none",
         }}
         role="button"
         tabIndex="0"

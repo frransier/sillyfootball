@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { Link, navigate } from "gatsby"
-import icon from "../images/icon-v1.svg"
-import iconDark from "../images/icon-dark.svg"
+import icon from "../images/icon-v2.svg"
+import iconDark from "../images/icon-v2-dark.svg"
 import { useColorMode } from "theme-ui"
 import { useAuth } from "react-use-auth"
 import { FaUserAlt, FaUserCheck } from "react-icons/fa"
@@ -37,7 +37,7 @@ const Header = () => {
     >
       <Link to="/">
         <img
-          sx={{ height: 35, mx: "auto" }}
+          sx={{ height: 40, mx: "auto" }}
           src={colorMode === "default" ? icon : iconDark}
           alt="Sillyfootball Logo"
         />

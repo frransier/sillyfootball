@@ -46,6 +46,7 @@ const Match = ({ match }) => {
         my: 2,
         cursor: "pointer",
         borderRadius: 2,
+        outline: "none",
       }}
       onClick={() => toggleSelected()}
     >
