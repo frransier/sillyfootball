@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { IoIosRefresh } from "react-icons/io"
 import { Link } from "gatsby"
+import { FaAngleRight } from "react-icons/fa"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 import Footer from "../../components/footer"
@@ -104,10 +105,15 @@ const HighscoreLast = () => {
             </Styled.h1>
             <div
               sx={{
-                display: "grid",
+                display: "flex",
                 my: 3,
               }}
             >
+              <div
+                sx={{ color: "background", mt: 2, mx: 5, display: "hidden" }}
+              >
+                <FaAngleRight size={45} />
+              </div>
               <div sx={{ mx: "auto" }}>
                 <button
                   sx={{
@@ -117,6 +123,7 @@ const HighscoreLast = () => {
                     py: 3,
                     bg: "primary",
                     color: "background",
+                    outline: "none",
 
                     ":active, :after": {
                       color: "primary",
@@ -131,14 +138,9 @@ const HighscoreLast = () => {
                 </button>
               </div>
               <Link to="/highscore/" style={{ textDecoration: "none" }}>
-                <Styled.h2
-                  sx={{
-                    textAlign: "center",
-                    mx: 6,
-                  }}
-                >
-                  Nästa omgång
-                </Styled.h2>
+                <div sx={{ color: "text", mt: 2, mx: 5 }}>
+                  <FaAngleRight size={45} />
+                </div>
               </Link>
             </div>
           </div>

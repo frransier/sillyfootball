@@ -3,6 +3,7 @@ import { jsx, Styled } from "theme-ui"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { IoIosRefresh } from "react-icons/io"
+import { FaAngleLeft } from "react-icons/fa"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -104,10 +105,15 @@ const HighscorePage = () => {
             </Styled.h1>
             <div
               sx={{
-                display: "grid",
+                display: "flex",
                 my: 3,
               }}
             >
+              <Link to="/highscore/last/" style={{ textDecoration: "none" }}>
+                <div sx={{ color: "text", mt: 2, mx: 5 }}>
+                  <FaAngleLeft size={45} />
+                </div>
+              </Link>
               <div sx={{ mx: "auto" }}>
                 <button
                   sx={{
@@ -131,16 +137,11 @@ const HighscorePage = () => {
                   <IoIosRefresh size={40} />
                 </button>
               </div>
-              <Link to="/highscore/last/" style={{ textDecoration: "none" }}>
-                <Styled.h2
-                  sx={{
-                    textAlign: "center",
-                    mx: 6,
-                  }}
-                >
-                  Förra omgången
-                </Styled.h2>
-              </Link>
+              <div
+                sx={{ color: "background", mt: 2, mx: 5, display: "hidden" }}
+              >
+                <FaAngleLeft size={45} />
+              </div>
             </div>
           </div>
           <div

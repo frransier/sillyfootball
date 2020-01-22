@@ -24,7 +24,7 @@ const Header = () => {
     <div
       sx={{
         display: "grid",
-        gridTemplateColumns: "20% 20% 20% 20% 20%",
+        gridTemplateColumns: "17% 22% 22% 22% 17%",
         height: 60,
         alignItems: "center",
         justifyItems: "center",
@@ -44,26 +44,23 @@ const Header = () => {
       </Link>
       <Styled.h3
         sx={{
-          fontWeight: "body",
-          fontFamily: "body",
+          letterSpacing: 0.75,
         }}
       >
         <Link
           activeStyle={{
-            fontWeight: 400,
             borderRadius: 6,
-            background: colorMode === "default" ? "#FF5252" : "#67FFBF",
-            color: colorMode === "default" ? "#fff" : "#2F2F2F",
+            border: "solid 1px",
+            borderColor: colorMode === "default" ? "#FF5252" : "#67FFBF",
           }}
           to="/highscore/"
           style={{
             textDecoration: "none",
             color: colorMode === "default" ? "#2F2F2F" : "#fff",
-            paddingLeft: 11,
-            paddingRight: 11,
+            paddingLeft: 9,
+            paddingRight: 9,
             paddingTop: 2,
             paddingBottom: 2,
-            fontWeight: 700,
           }}
         >
           Highscore
@@ -72,26 +69,23 @@ const Header = () => {
 
       <Styled.h3
         sx={{
-          fontWeight: "body",
-          fontFamily: "body",
+          letterSpacing: 0.75,
         }}
       >
         <Link
           activeStyle={{
-            fontWeight: 400,
             borderRadius: 6,
-            background: colorMode === "default" ? "#FF5252" : "#67FFBF",
-            color: colorMode === "default" ? "#fff" : "#2F2F2F",
+            border: "solid 1px",
+            borderColor: colorMode === "default" ? "#FF5252" : "#67FFBF",
           }}
           to="/livescore/"
           style={{
             textDecoration: "none",
             color: colorMode === "default" ? "#2F2F2F" : "#fff",
-            paddingLeft: 11,
-            paddingRight: 11,
+            paddingLeft: 9,
+            paddingRight: 9,
             paddingTop: 2,
             paddingBottom: 2,
-            fontWeight: 700,
           }}
         >
           Livescore
@@ -100,27 +94,23 @@ const Header = () => {
 
       <Styled.h3
         sx={{
-          mx: [8, 9],
-          fontWeight: "body",
-          fontFamily: "body",
+          letterSpacing: 0.75,
         }}
       >
         <Link
           activeStyle={{
-            fontWeight: 400,
             borderRadius: 6,
-            background: colorMode === "default" ? "#FF5252" : "#67FFBF",
-            color: colorMode === "default" ? "#fff" : "#2F2F2F",
+            border: "solid 1px",
+            borderColor: colorMode === "default" ? "#FF5252" : "#67FFBF",
           }}
           to="/fantasy/"
           style={{
             textDecoration: "none",
             color: colorMode === "default" ? "#2F2F2F" : "#fff",
-            paddingLeft: 11,
-            paddingRight: 11,
+            paddingLeft: 12,
+            paddingRight: 12,
             paddingTop: 2,
             paddingBottom: 2,
-            fontWeight: 700,
           }}
         >
           Fantasy
