@@ -128,7 +128,7 @@ const LivescoreNextPage = () => {
                 >
                   {i === 0 && (
                     <Link to="/livescore/" style={{ textDecoration: "none" }}>
-                      <div sx={{ color: "text", mt: 2 }}>
+                      <div sx={{ color: "darkgrey", mt: 2 }}>
                         <FaAngleLeft size={25} />
                       </div>
                     </Link>

@@ -132,7 +132,7 @@ const LivescorePage = () => {
                       to="/livescore/last/"
                       style={{ textDecoration: "none" }}
                     >
-                      <div sx={{ color: "text", mt: 2 }}>
+                      <div sx={{ color: "darkgrey", mt: 2 }}>
                         <FaAngleLeft size={25} />
                       </div>
                     </Link>
@@ -150,7 +150,7 @@ const LivescorePage = () => {
                       to="/livescore/next/"
                       style={{ textDecoration: "none" }}
                     >
-                      <div sx={{ color: "text", mt: 2 }}>
+                      <div sx={{ mt: 2, color: "darkgrey" }}>
                         <FaAngleRight size={25} />
                       </div>
                     </Link>

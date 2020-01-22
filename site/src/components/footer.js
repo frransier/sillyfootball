@@ -33,13 +33,13 @@ const Footer = () => {
         >
           <Styled.h2 sx={{ my: 4 }}>Så funkar det</Styled.h2>
           <Styled.h2 sx={{ mx: 2, my: 4 }}>
-            <div sx={{ mt: 2 }}>
+            <div sx={{ mt: 3 }}>
               <FaAngleRight />
             </div>
           </Styled.h2>
         </div>
       </Link>
-      <div sx={{ textAlign: "center", my: 5 }}>
+      <div sx={{ textAlign: "center", mb: 8, mt: 5 }}>
         <button
           sx={{
             bg: "primary",
@@ -51,6 +51,7 @@ const Footer = () => {
             pb: 3,
             pointer: "cursor",
             appearance: "none",
+            outline: "none",
           }}
           aria-label="Color Mode"
           onClick={() =>

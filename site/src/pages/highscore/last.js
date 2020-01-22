@@ -138,7 +138,7 @@ const HighscoreLast = () => {
                 </button>
               </div>
               <Link to="/highscore/" style={{ textDecoration: "none" }}>
-                <div sx={{ color: "text", mt: 2, mx: 5 }}>
+                <div sx={{ color: "darkgrey", mt: 2, mx: 5 }}>
                   <FaAngleRight size={45} />
                 </div>
               </Link>

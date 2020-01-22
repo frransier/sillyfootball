@@ -110,7 +110,7 @@ const HighscorePage = () => {
               }}
             >
               <Link to="/highscore/last/" style={{ textDecoration: "none" }}>
-                <div sx={{ color: "text", mt: 2, mx: 5 }}>
+                <div sx={{ color: "darkgrey", mt: 2, mx: 5 }}>
                   <FaAngleLeft size={45} />
                 </div>
               </Link>
