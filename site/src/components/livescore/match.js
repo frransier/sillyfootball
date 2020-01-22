@@ -23,7 +23,7 @@ const Match = ({ match }) => {
           fontSize: 4,
           borderBottom: "solid 2px",
           borderBottomColor: "muted",
-          fontWeight: selected ? "heading" : "body",
+          fontWeight: "body",
           color: selected ? "background" : "text",
           bg: selected ? "primary" : "background",
           mb: 3,
