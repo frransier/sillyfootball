@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { graphql, Link, navigate } from "gatsby"
+import { graphql, navigate } from "gatsby"
 import { useUserState, useUserDispatch, useGameDispatch } from "../state"
 import { useEffect, useState } from "react"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
@@ -113,34 +113,6 @@ const AccountPage = ({ data }) => {
             >
               Logga ut
             </button>
-          </div>
-          <div sx={{ display: "flex", mx: "auto", width: "100%" }}>
-            <div sx={{}}>
-              <Link to="/livescore/" style={{ textDecoration: "none" }}>
-                <Styled.h2
-                  sx={{
-                    borderBottom: "solid 1px",
-                    borderBottomColor: "primary",
-                    my: 1,
-                  }}
-                >
-                  Livescore
-                </Styled.h2>
-              </Link>
-            </div>
-            <div sx={{ mx: 7 }}>
-              <Link to="/highscore/" style={{ textDecoration: "none" }}>
-                <Styled.h2
-                  sx={{
-                    borderBottom: "solid 1px",
-                    borderBottomColor: "primary",
-                    my: 1,
-                  }}
-                >
-                  Highscore
-                </Styled.h2>
-              </Link>
-            </div>
           </div>
 
           <div sx={{ height: 220, display: "grid" }}>
