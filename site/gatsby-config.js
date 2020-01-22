@@ -52,7 +52,7 @@ module.exports = {
       options: {
         app_id: "entknhmw",
         include_in_development: false,
-        delay_timeout: 0,
+        delay_timeout: 4,
       },
     },
     {

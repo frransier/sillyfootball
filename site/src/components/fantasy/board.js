@@ -99,7 +99,7 @@ const Board = ({ deadline }) => {
               {gameState.map((x, i) => {
                 if (i > 2)
                   return (
-                    <div key={i} sx={{ my: 6 }}>
+                    <div key={i} sx={{ my: 4 }}>
                       <Portrait player={x} />
                     </div>
                   )
