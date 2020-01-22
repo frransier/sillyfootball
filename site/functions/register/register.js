@@ -53,7 +53,7 @@ exports.handler = (event, _, callback) => {
         <li>${data.squad[4].name}</li>
       </ul>
       <h2>
-        Följ omgången live på <a href="https://www.sillyfootball.se/leaderboard/">Leaderboard</a>
+        Följ omgången live på <a href="https://www.sillyfootball.se/highscore/">Highscore</a>
       </h2>
       <h2>
         Och via <a href="https://www.sillyfootball.se/livescore/">Livescore</a>

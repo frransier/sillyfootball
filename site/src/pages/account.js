@@ -129,7 +129,7 @@ const AccountPage = ({ data }) => {
               </Link>
             </div>
             <div sx={{ mx: 7 }}>
-              <Link to="/leaderboard/" style={{ textDecoration: "none" }}>
+              <Link to="/highscore/" style={{ textDecoration: "none" }}>
                 <Styled.h2
                   sx={{
                     borderBottom: "solid 1px",
@@ -137,7 +137,7 @@ const AccountPage = ({ data }) => {
                     my: 1,
                   }}
                 >
-                  Leaderboard
+                  Highscore
                 </Styled.h2>
               </Link>
             </div>

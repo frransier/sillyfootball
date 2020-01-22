@@ -7,7 +7,7 @@ import { Link } from "gatsby"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 import Footer from "../../components/footer"
-import Entry from "../../components/leaderboard/entry"
+import Entry from "../../components/highscore/entry"
 
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
@@ -16,7 +16,7 @@ const client = sanityClient({
   useCdn: true,
 })
 
-const LeaderboardLastPage = () => {
+const HighscoreLast = () => {
   const [matchday, setMatchday] = useState({})
   const [entries, setEntries] = useState([])
   const [scores, setScores] = useState([])
@@ -74,10 +74,7 @@ const LeaderboardLastPage = () => {
 
   return (
     <Layout>
-      <SEO
-        title="Leaderboard"
-        description="Följ omgången live på leaderboarden"
-      />
+      <SEO title="Highscore" description="Highscore: Följ omgången live" />
       {loading ? (
         <div>
           <br></br>
@@ -133,7 +130,7 @@ const LeaderboardLastPage = () => {
                   <IoIosRefresh size={40} />
                 </button>
               </div>
-              <Link to="/leaderboard/" style={{ textDecoration: "none" }}>
+              <Link to="/highscore/" style={{ textDecoration: "none" }}>
                 <Styled.h2
                   sx={{
                     textAlign: "center",
@@ -176,7 +173,7 @@ const LeaderboardLastPage = () => {
   )
 }
 
-export default LeaderboardLastPage
+export default HighscoreLast
 
 const sanityQuery = `*[_type == "matchday" && status == 'last']{_id, index, start, entries[]
     {..., 

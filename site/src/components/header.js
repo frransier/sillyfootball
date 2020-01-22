@@ -55,7 +55,7 @@ const Header = () => {
             background: colorMode === "default" ? "#FF5252" : "#67FFBF",
             color: colorMode === "default" ? "#fff" : "#2F2F2F",
           }}
-          to="/nyheter/"
+          to="/highscore/"
           style={{
             textDecoration: "none",
             color: colorMode === "default" ? "#2F2F2F" : "#fff",
@@ -66,7 +66,7 @@ const Header = () => {
             fontWeight: 700,
           }}
         >
-          Nyheter
+          Highscore
         </Link>
       </Styled.h3>
 

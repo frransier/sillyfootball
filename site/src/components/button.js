@@ -21,7 +21,7 @@ const Button = ({ text, action }) => {
       case "fantasy":
         navigate(`/${action}/`)
         return
-      case "leaderboard":
+      case "highscore":
         navigate(`/${action}/`)
         return
       case "livescore":

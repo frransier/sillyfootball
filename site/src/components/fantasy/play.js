@@ -28,7 +28,7 @@ const Play = ({ entries, register, deadline }) => {
             <Button text="Livescore" action="livescore" />
           </div>
           <div sx={{ mx: 5 }}>
-            <Button text="Leaderboard" action="leaderboard" />
+            <Button text="Highscore" action="highscore" />
           </div>
         </div>
       </div>

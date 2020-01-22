@@ -81,5 +81,6 @@ module.exports = {
         lang: "sv",
       },
     },
+    `gatsby-plugin-netlify`,
   ],
 }

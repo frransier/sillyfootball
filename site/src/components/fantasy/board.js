@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled, useColorMode } from "theme-ui"
 import { useGameState } from "../../state"
+import { FaAngleRight } from "react-icons/fa"
 import Portrait from "./portrait"
 import pick from "../../images/pick.svg"
 import pickDark from "../../images/pick-dark.svg"
@@ -31,38 +32,6 @@ const Board = ({ deadline }) => {
             justifyItems: "center",
           }}
         >
-          <div
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              mb: 6,
-            }}
-          >
-            <div sx={{ mx: [8, 9] }}>
-              <Link to="/regler/" style={{ textDecoration: "none" }}>
-                <Styled.h2
-                  sx={{
-                    textAlign: "center",
-                  }}
-                >
-                  Så funkar det
-                </Styled.h2>
-              </Link>
-            </div>
-
-            <div sx={{ mx: [8, 9] }}>
-              <Link to="/leaderboard/" style={{ textDecoration: "none" }}>
-                <Styled.h2
-                  sx={{
-                    textAlign: "center",
-                  }}
-                >
-                  Leaderboard
-                </Styled.h2>
-              </Link>
-            </div>
-          </div>
           <img
             sx={{
               width: 250,
@@ -78,7 +47,7 @@ const Board = ({ deadline }) => {
               width: 250,
               height: 20,
               mx: "auto",
-              mt: 4,
+              mt: 7,
             }}
             src={colorMode === "default" ? win : winDark}
             alt="Fantasy Football"
@@ -95,6 +64,14 @@ const Board = ({ deadline }) => {
               {deadline}
             </Styled.h1>
           </div>
+          <Link to="/regler/" style={{ textDecoration: "none" }}>
+            <div sx={{ display: "flex", cursor: "pointer" }}>
+              <Styled.h2 sx={{ my: 6 }}>Så funkar det</Styled.h2>
+              <Styled.h2 sx={{ mx: 2 }}>
+                <FaAngleRight />
+              </Styled.h2>
+            </div>
+          </Link>
         </div>
       ) : (
         gameState && (
