@@ -41,7 +41,7 @@ const months = [
   "november",
   "december",
 ]
-const query = `*[_type == "matchday" && status == "recent"]{..., matches[]
+const query = `*[_type == "matchday" && status == "finished"]{..., matches[]
     {..., 
     away{team->{"fullName": fullName,"name": name, "id": _id}, goals}, 
     home{team->{"fullName": fullName,"name": name, "id": _id}, goals},
@@ -85,7 +85,7 @@ const LivescoreLastPage = () => {
       setTimeout(async function() {
         const matches = await client.fetch(query)
         setMatches(matches[0].matches)
-      }, 1000)
+      }, 3000)
     })
     return () => {
       subscription.unsubscribe()

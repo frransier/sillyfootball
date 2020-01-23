@@ -79,6 +79,7 @@ site/yarn.lock
 .vscode/
 
 studio/yarn.lock
+studio/livescore.js
 site/package-lock.json
 # Local Netlify folder
 .netlify
