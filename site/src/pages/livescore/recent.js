@@ -3,7 +3,7 @@ import { jsx, Styled } from "theme-ui"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { IoIosRefresh } from "react-icons/io"
-import { FaAngleRight, FaAngleLeft } from "react-icons/fa"
+import { FaAngleRight } from "react-icons/fa"
 import { Link } from "gatsby"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
@@ -41,7 +41,7 @@ const months = [
   "november",
   "december",
 ]
-const query = `*[_type == "matchday" && status == "last"]{..., matches[]
+const query = `*[_type == "matchday" && status == "recent"]{..., matches[]
     {..., 
     away{team->{"fullName": fullName,"name": name, "id": _id}, goals}, 
     home{team->{"fullName": fullName,"name": name, "id": _id}, goals},
@@ -126,16 +126,7 @@ const LivescoreLastPage = () => {
                     justifyContent: "center",
                   }}
                 >
-                  {i === 0 && (
-                    <Link
-                      to="/livescore/recent/"
-                      style={{ textDecoration: "none" }}
-                    >
-                      <div sx={{ color: "darkgrey", mt: 2 }}>
-                        <FaAngleLeft size={25} />
-                      </div>
-                    </Link>
-                  )}
+                  {i === 0 && <div sx={{ color: "background", mx: 6 }}></div>}
 
                   <Styled.h2
                     sx={{
@@ -146,7 +137,10 @@ const LivescoreLastPage = () => {
                     {d[0]} {d[1]} {d[2]}
                   </Styled.h2>
                   {i === 0 && (
-                    <Link to="/livescore/" style={{ textDecoration: "none" }}>
+                    <Link
+                      to="/livescore/last/"
+                      style={{ textDecoration: "none" }}
+                    >
                       <div sx={{ color: "darkgrey", mt: 2 }}>
                         <FaAngleRight size={25} />
                       </div>

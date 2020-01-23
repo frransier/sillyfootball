@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { IoIosRefresh } from "react-icons/io"
 import { Link } from "gatsby"
-import { FaAngleRight, FaAngleLeft } from "react-icons/fa"
+import { FaAngleRight } from "react-icons/fa"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 import Footer from "../../components/footer"
@@ -109,11 +109,11 @@ const HighscoreLast = () => {
                 my: 3,
               }}
             >
-              <Link to="/highscore/recent/" style={{ textDecoration: "none" }}>
-                <div sx={{ color: "darkgrey", mt: 2, mx: 5 }}>
-                  <FaAngleLeft size={45} />
-                </div>
-              </Link>
+              <div
+                sx={{ color: "background", mt: 2, mx: 5, display: "hidden" }}
+              >
+                <FaAngleRight size={45} />
+              </div>
               <div sx={{ mx: "auto" }}>
                 <button
                   sx={{
@@ -137,7 +137,7 @@ const HighscoreLast = () => {
                   <IoIosRefresh size={40} />
                 </button>
               </div>
-              <Link to="/highscore/" style={{ textDecoration: "none" }}>
+              <Link to="/highscore/last/" style={{ textDecoration: "none" }}>
                 <div sx={{ color: "darkgrey", mt: 2, mx: 5 }}>
                   <FaAngleRight size={45} />
                 </div>
@@ -177,7 +177,7 @@ const HighscoreLast = () => {
 
 export default HighscoreLast
 
-const sanityQuery = `*[_type == "matchday" && status == 'last']{_id, index, start, entries[]
+const sanityQuery = `*[_type == "matchday" && status == 'recent']{_id, index, start, entries[]
     {..., 
     user->{"name": name, "id": _id},    
     players[]->{"fullName": fullName, "name": name, "scores": scores}}
