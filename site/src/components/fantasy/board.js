@@ -18,9 +18,13 @@ const Board = ({ deadline }) => {
       sx={{
         height: ["170px", "180px", "180px"],
         width: ["100%"],
-        borderBottom: "solid 2px",
+        borderBottom: "solid 4px",
         borderBottomColor: "muted",
         mb: 2,
+        bg: "background",
+        position: "sticky",
+        top: 60,
+        zIndex: 1000,
       }}
     >
       {gameState && gameState.length === 0 ? (
