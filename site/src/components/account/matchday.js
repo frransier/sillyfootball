@@ -51,6 +51,7 @@ const Matchday = ({
                 bg: "primary",
                 color: "background",
                 pt: 2,
+                outline: "none",
                 ":active, :after": {
                   color: "primary",
                   bg: "background",
@@ -96,6 +97,7 @@ const Matchday = ({
             appearance: "none",
             bg: "background",
             cursor: "pointer",
+            outline: "none",
           }}
           onClick={() => setShow(!show)}
         >
