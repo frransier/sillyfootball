@@ -39,7 +39,7 @@ const Match = ({ match }) => {
         <div
           sx={{
             py: 2,
-            color: match.status ? "primary" : "muted",
+            color: match.status !== "ns" ? "primary" : "muted",
             textAlign: "center",
           }}
         >
@@ -54,10 +54,10 @@ const Match = ({ match }) => {
           sx={{
             textAlign: "center",
             fontWeight: "bold",
-            fontSize: match.status ? 4 : 2,
+            fontSize: match.status !== "ns" ? 4 : 2,
           }}
         >
-          {match.status
+          {match.status !== "ns"
             ? `${match.home.goals || 0} - ${match.away.goals || 0}`
             : `${hours}:${minutes}`}
         </div>

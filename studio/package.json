@@ -23,6 +23,7 @@
     "@sanity/vision": "^0.147.9",
     "axios": "^0.19.0",
     "nanoid": "^2.1.10",
+    "node-cron": "^2.0.3",
     "prop-types": "^15.6",
     "react": "^16.2",
     "react-dom": "^16.2",
