@@ -44,14 +44,15 @@ const Header = () => {
       </Link>
       <Styled.h3
         sx={{
-          letterSpacing: 0.75,
+          letterSpacing: 0.5,
         }}
       >
         <Link
           activeStyle={{
-            borderRadius: 6,
-            border: "solid 1px",
-            borderColor: colorMode === "default" ? "#FF5252" : "#67FFBF",
+            borderRadius: 4,
+            backgroundColor: colorMode === "default" ? "#FF5252" : "#67FFBF",
+            color: colorMode === "default" ? "#fff" : "#2F2F2F",
+            fontWeight: 400,
           }}
           to="/highscore/"
           style={{
@@ -59,8 +60,8 @@ const Header = () => {
             color: colorMode === "default" ? "#2F2F2F" : "#fff",
             paddingLeft: 9,
             paddingRight: 9,
-            paddingTop: 2,
-            paddingBottom: 2,
+            paddingTop: 4,
+            paddingBottom: 4,
           }}
         >
           Highscore
@@ -69,14 +70,15 @@ const Header = () => {
 
       <Styled.h3
         sx={{
-          letterSpacing: 0.75,
+          letterSpacing: 0.5,
         }}
       >
         <Link
           activeStyle={{
-            borderRadius: 6,
-            border: "solid 1px",
-            borderColor: colorMode === "default" ? "#FF5252" : "#67FFBF",
+            borderRadius: 4,
+            backgroundColor: colorMode === "default" ? "#FF5252" : "#67FFBF",
+            color: colorMode === "default" ? "#fff" : "#2F2F2F",
+            fontWeight: 400,
           }}
           to="/livescore/"
           style={{
@@ -84,8 +86,8 @@ const Header = () => {
             color: colorMode === "default" ? "#2F2F2F" : "#fff",
             paddingLeft: 9,
             paddingRight: 9,
-            paddingTop: 2,
-            paddingBottom: 2,
+            paddingTop: 4,
+            paddingBottom: 4,
           }}
         >
           Livescore
@@ -94,14 +96,16 @@ const Header = () => {
 
       <Styled.h3
         sx={{
-          letterSpacing: 0.75,
+          letterSpacing: 0.5,
         }}
       >
         <Link
           activeStyle={{
-            borderRadius: 6,
+            borderRadius: 4,
             border: "solid 1px",
-            borderColor: colorMode === "default" ? "#FF5252" : "#67FFBF",
+            backgroundColor: colorMode === "default" ? "#FF5252" : "#67FFBF",
+            color: colorMode === "default" ? "#fff" : "#2F2F2F",
+            fontWeight: 400,
           }}
           to="/fantasy/"
           style={{
@@ -109,8 +113,8 @@ const Header = () => {
             color: colorMode === "default" ? "#2F2F2F" : "#fff",
             paddingLeft: 12,
             paddingRight: 12,
-            paddingTop: 2,
-            paddingBottom: 2,
+            paddingTop: 4,
+            paddingBottom: 4,
           }}
         >
           Fantasy
