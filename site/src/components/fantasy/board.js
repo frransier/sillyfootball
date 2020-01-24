@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled, useColorMode } from "theme-ui"
 import { useGameState } from "../../state"
-import { FaAngleRight } from "react-icons/fa"
 import Portrait from "./portrait"
 import pick from "../../images/pick.svg"
 import pickDark from "../../images/pick-dark.svg"

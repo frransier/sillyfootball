@@ -2,7 +2,7 @@
 import { jsx, Styled } from "theme-ui"
 import Match from "./match"
 import { useState } from "react"
-import { FaAngleDown, FaAngleUp } from "react-icons/fa"
+import { FaAngleUp } from "react-icons/fa"
 
 const Matches = ({ matches }) => {
   const [show, setShow] = useState(true)
