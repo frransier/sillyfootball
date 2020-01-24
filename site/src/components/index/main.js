@@ -18,7 +18,7 @@ const Main = ({ deadline }) => {
         border: "solid 2px",
         borderColor: "muted",
         borderRadius: 8,
-        mt: 0,
+        width: "92%",
       }}
     >
       <div
@@ -73,7 +73,8 @@ const Main = ({ deadline }) => {
         sx={{
           display: "flex",
 
-          mx: "auto",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <Card
