@@ -65,6 +65,7 @@ const Match = ({ match }) => {
             fontSize: 1,
             color: selected ? "background" : "text",
             justifySelf: "start",
+            mx: 3,
           }}
         >
           {weekday}
@@ -106,6 +107,7 @@ const Match = ({ match }) => {
             color: selected ? "background" : "primary",
             pt: 2,
             justifySelf: "end",
+            mx: 3,
           }}
         >
           {selected ? <FaAngleDown size={18} /> : <FaAngleRight size={18} />}
