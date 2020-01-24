@@ -70,9 +70,8 @@ const Board = ({ deadline }) => {
           </div>
           <Link to="/regler/" style={{ textDecoration: "none" }}>
             <div sx={{ display: "flex", cursor: "pointer" }}>
-              <Styled.h2 sx={{ my: 6 }}>Så funkar det</Styled.h2>
-              <Styled.h2 sx={{ mx: 2 }}>
-                <FaAngleRight />
+              <Styled.h2 sx={{ my: 6, textDecoration: "underline" }}>
+                Så funkar det
               </Styled.h2>
             </div>
           </Link>

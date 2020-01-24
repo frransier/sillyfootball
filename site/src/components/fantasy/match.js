@@ -56,20 +56,17 @@ const Match = ({ match }) => {
           gridTemplateColumns: "10% 30% 20% 30% 10%",
           alignItems: "center",
           fontSize: 3,
+          my: 2,
           bg: selected ? "primary" : "background",
         }}
       >
         <div
           sx={{
-            fontFamily: "body",
-            fontWeight: "body",
-            color: selected ? "background" : "primary",
-            mt: 2,
-            justifySelf: "start",
-            mx: [0, 6],
+            fontSize: 1,
+            color: selected ? "background" : "text",
           }}
         >
-          {selected ? <FaAngleDown size={20} /> : <FaAngleRight size={20} />}
+          {weekday}
         </div>
         <div
           sx={{
@@ -103,13 +100,13 @@ const Match = ({ match }) => {
         </div>
         <div
           sx={{
-            fontSize: 1,
-            color: selected ? "background" : "text",
-            justifySelf: "end",
-            mx: [4, 7],
+            fontFamily: "body",
+            fontWeight: "body",
+            color: selected ? "background" : "primary",
+            pt: 2,
           }}
         >
-          {weekday}
+          {selected ? <FaAngleDown size={18} /> : <FaAngleRight size={18} />}
         </div>
       </div>
     </button>

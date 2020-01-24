@@ -27,12 +27,7 @@ const Matches = ({ matches }) => {
           onClick={() => setShow(!show)}
         >
           {show ? (
-            <div sx={{ display: "flex", cursor: "pointer" }}>
-              Alla matcher
-              <div sx={{ mt: 1, mx: 2 }}>
-                <FaAngleDown></FaAngleDown>
-              </div>
-            </div>
+            <div sx={{ display: "flex", cursor: "pointer" }}>Alla matcher</div>
           ) : (
             <div sx={{ display: "flex", cursor: "pointer" }}>
               Klicka på en match för att filtrera
