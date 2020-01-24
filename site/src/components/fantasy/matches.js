@@ -10,10 +10,10 @@ const Matches = ({ matches }) => {
     <div sx={{ display: "grid" }}>
       {show
         ? matches.map((x, i) => {
-            if (i < 3) return <Match index={i} match={x} />
+            if (i < 3) return <Match key={i} match={x} />
             return null
           })
-        : matches.map((x, i) => <Match index={i} match={x} key={i} />)}
+        : matches.map((x, i) => <Match match={x} key={i} />)}
 
       <div sx={{ display: "grid" }}>
         <Styled.h2

@@ -13,8 +13,6 @@ const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
   dataset: "main",
-  token:
-    "skOF1yeYoyyIByB5w6hnEcVaoLJuV0rLEx9Q1v3l9XNf9esFO5luIfqOoBEQs3eRV4I6y6KBtjh9e7oyAhHXZBg1nt0SfQ4hFN2YiMMDCoGjgl1QPudZnLbBNOVomLKIxUjUOZEexb3msY4RxOA0myvxN5AlL5M7TpkquciOP0BCjWiEqpb2",
   useCdn: false,
 })
 
@@ -80,16 +78,6 @@ const LivescoreLastPage = () => {
       setMatches(matches[0].matches)
       setLoading(false)
     })
-
-    const subscription = client.listen(query).subscribe(updater => {
-      setTimeout(async function() {
-        const matches = await client.fetch(query)
-        setMatches(matches[0].matches)
-      }, 1000)
-    })
-    return () => {
-      subscription.unsubscribe()
-    }
   }, [refresh])
 
   function hack() {
