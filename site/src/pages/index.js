@@ -2,18 +2,46 @@
 import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
 import News from "../components/index/news"
-import Card from "../components/index/card"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
-import { useColorMode } from "theme-ui"
-import fantasy from "../images/fantasy.svg"
-import fantasyDark from "../images/fantasy-dark.svg"
-import { GiMining, GiDiamondHard } from "react-icons/gi"
 import Footer from "../components/footer"
+import Main from "../components/index/main"
+
+const months = [
+  "januari",
+  "februari",
+  "mars",
+  "april",
+  "maj",
+  "juni",
+  "juli",
+  "augusti",
+  "september",
+  "oktober",
+  "november",
+  "december",
+]
+const weekdays = [
+  "Söndag",
+  "Måndag",
+  "Tisdag",
+  "Onsdag",
+  "Torsdag",
+  "Fredag",
+  "Lördag",
+]
+
 const IndexPage = props => {
-  const [colorMode] = useColorMode()
   const news = mapEdgesToNodes(props.data.news)
+
+  const date = new Date(props.data.matchday.start)
+  const minutes = date.getMinutes() === 0 ? "00" : `${date.getMinutes()}`
+  const hours = `${date.getHours()}`
+  const day = `${date.getDate()}`
+  const weekday = weekdays[date.getDay()]
+  const month = months[date.getMonth()]
+  const deadline = `${weekday} ${day} ${month} kl ${hours}:${minutes}`
 
   return (
     <Layout>
@@ -29,34 +57,7 @@ const IndexPage = props => {
             justifyItems: "center",
           }}
         >
-          <img
-            sx={{
-              width: 290,
-              height: 35,
-            }}
-            src={colorMode === "default" ? fantasy : fantasyDark}
-            alt="Fantasy Football"
-          />
-          <div
-            sx={{ display: "grid", gridTemplateColumns: "50% 50%", mx: "auto" }}
-          >
-            <Card
-              icon={<GiMining />}
-              title="Easy to learn"
-              body1="Välj 5 spelare."
-              body2="1p per mål/assist."
-              cta="Spela"
-              action="fantasy"
-            />
-            <Card
-              icon={<GiDiamondHard />}
-              title="Hard to master"
-              body1="Bli ensam vinnare."
-              body2="Vinn 500 kronor."
-              cta="Läs mer"
-              action="white-paper"
-            />
-          </div>
+          <Main deadline={deadline} />
         </div>
       </div>
 

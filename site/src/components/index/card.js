@@ -8,7 +8,7 @@ const Card = ({ icon, title, body1, body2, cta, action }) => {
       sx={{
         minWidth: [175, 225],
         mx: [4, 6],
-        my: 5,
+        my: 0,
         borderRadius: 2,
       }}
     >
