@@ -65,7 +65,7 @@ const Match = ({ match }) => {
             fontSize: 1,
             color: selected ? "background" : "text",
             justifySelf: "start",
-            mx: 3,
+            mx: 2,
           }}
         >
           {weekday}
