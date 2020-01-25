@@ -22,7 +22,7 @@ const Board = ({ deadline }) => {
         mb: 2,
         bg: "background",
         position: "sticky",
-        top: 60,
+        top: 50,
         zIndex: 1000,
       }}
     >
