@@ -6,7 +6,12 @@ import { Link } from "gatsby"
 const News = ({ content }) => {
   return (
     <div
-      sx={{ display: "grid", gridTemplateColumns: "110px auto", py: 3, px: 5 }}
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "110px auto",
+        py: 3,
+        px: [5, 7],
+      }}
     >
       <Link
         style={{ textDecoration: "none" }}
