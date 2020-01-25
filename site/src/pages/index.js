@@ -49,32 +49,11 @@ const IndexPage = props => {
       <div
         sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
       >
-        <div
-          sx={{
-            display: "grid",
-            width: "100%",
-            alignItems: "center",
-            justifyItems: "center",
-          }}
-        >
-          <Main deadline={deadline} />
-        </div>
+        <Main deadline={deadline} />
       </div>
-
-      <div
-        sx={{
-          display: "grid",
-          gridTemplateColumns: "100%",
-          alignItems: "center",
-        }}
-      >
-        <div sx={{ mx: 0 }}>
-          {news.map((content, index) => (
-            <News key={index} content={content} />
-          ))}
-        </div>
-      </div>
-
+      {news.map((content, index) => (
+        <News key={index} content={content} />
+      ))}
       <Footer />
     </Layout>
   )

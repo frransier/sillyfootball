@@ -6,8 +6,7 @@ const Card = ({ icon, title, body1, body2, cta, action }) => {
   return (
     <div
       sx={{
-        minWidth: [175, 225],
-        mx: [4, 6],
+        mx: [7, 10],
         my: 0,
         borderRadius: 2,
       }}

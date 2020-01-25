@@ -18,7 +18,9 @@ const Main = ({ deadline }) => {
         border: "solid 2px",
         borderColor: "muted",
         borderRadius: 8,
-        width: "92%",
+        width: "95%",
+        py: 8,
+        mb: 7,
       }}
     >
       <div
