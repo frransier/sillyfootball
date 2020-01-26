@@ -34,7 +34,7 @@ const AccountPage = ({ data }) => {
 
   useEffect(() => {
     if (userState._id && loading) {
-      const query = `*[_type == "matchday"]{ status, index, _id, gold, silver, bronze, entries[]{user, players[]->{"fullName": fullName,"name": name, "_id": _id, "scores": scores}, }}`
+      const query = `*[_type == "matchday"]{ status, index, start, _id, gold, silver, bronze, entries[]{user, players[]->{"fullName": fullName,"name": name, "_id": _id, "scores": scores}, }}`
 
       client.fetch(query).then(matchdays => {
         const results = matchdays
@@ -48,6 +48,7 @@ const AccountPage = ({ data }) => {
             const silver = matchday.silver
             const bronze = matchday.bronze
             const status = matchday.status
+            const start = matchday.start
 
             if (result)
               return {
@@ -58,6 +59,7 @@ const AccountPage = ({ data }) => {
                 silver: silver,
                 bronze: bronze,
                 status: status,
+                start: start,
               }
             else return null
           })
@@ -152,6 +154,8 @@ const AccountPage = ({ data }) => {
                   bronze={currentMatchday.bronze}
                   current={true}
                   refresh={refresh}
+                  status={currentMatchday.status}
+                  start={currentMatchday.start}
                 />
               </motion.div>
             )}

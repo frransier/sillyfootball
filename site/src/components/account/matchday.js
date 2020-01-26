@@ -8,6 +8,7 @@ import { useUserState } from "../../state"
 import goldLogo from "../../images/gold.svg"
 import silverLogo from "../../images/silver.svg"
 import bronzeLogo from "../../images/bronze.svg"
+import { navigate } from "gatsby"
 
 const Matchday = ({
   matchday,
@@ -18,9 +19,14 @@ const Matchday = ({
   bronze,
   current,
   refresh,
+  status,
+  start,
 }) => {
   const userState = useUserState()
   const [show, setShow] = useState(current ? true : false)
+  const now = new Date()
+  const startt = new Date(start)
+
   const scores = matchday.players
     .map(p => {
       const pt = (p.scores && p.scores.find(q => q.matchday._ref === id)) || []
@@ -41,6 +47,31 @@ const Matchday = ({
     >
       <div sx={{ display: "flex", alignItems: "center" }}>
         <Styled.h2>{current ? "Aktuell omgång" : `Omgång ${index}`}</Styled.h2>
+
+        {status === "current" && now < startt && (
+          <button
+            sx={{
+              appearance: "none",
+              border: "none",
+              bg: "primary",
+              color: "background",
+              py: 3,
+              px: 5,
+              mx: 6,
+              borderRadius: 2,
+              fontSize: 3,
+              fontFamily: "heading",
+              outline: "none",
+              ":active, :after": {
+                color: "primary",
+                bg: "background",
+              },
+            }}
+            onClick={() => navigate("/delete/")}
+          >
+            Ta bort
+          </button>
+        )}
         <div sx={{ mx: "auto" }} />
         <div sx={{ mx: 3 }}>
           {refresh && (
@@ -49,6 +80,7 @@ const Matchday = ({
                 appearance: "none",
                 border: "none",
                 bg: "primary",
+                borderRadius: 2,
                 color: "background",
                 pt: 2,
                 outline: "none",
