@@ -30,6 +30,7 @@ const HighscorePage = () => {
         _id: matchday[0]._id,
         index: matchday[0].index,
         start: matchday[0].start,
+        title: matchday[0].title,
       })
       const entries = matchday[0].entries
         .map(x => ({
@@ -101,7 +102,7 @@ const HighscorePage = () => {
                 textAlign: "center",
               }}
             >
-              Omgång {matchday.index} av 3 | Säsong 1
+              Omgång {matchday.index} av 3 | Säsong {matchday.title}
             </Styled.h1>
             <div
               sx={{
@@ -177,7 +178,7 @@ const HighscorePage = () => {
 
 export default HighscorePage
 
-const sanityQuery = `*[_type == "matchday" && status == 'current']{_id, index, start, entries[]
+const sanityQuery = `*[_type == "matchday" && status == 'current']{_id, index, start, title, entries[]
     {..., 
     user->{"name": name, "id": _id},    
     players[]->{"fullName": fullName, "name": name, "scores": scores}}
