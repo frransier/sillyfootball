@@ -64,7 +64,7 @@ const Header = () => {
           {userState && userState.id ? (
             <FaUserCheck size={20}></FaUserCheck>
           ) : (
-            <FaUserAlt></FaUserAlt>
+            <FaUserAlt size={20}></FaUserAlt>
           )}
         </button>
       </div>
