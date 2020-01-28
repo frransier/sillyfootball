@@ -20,9 +20,9 @@ const Matches = ({ matches }) => {
           sx={{
             my: 3,
             fontSize: 3,
-
-            alignSelf: "center",
-            justifySelf: "center",
+            mx: 4,
+            alignSelf: "start",
+            justifySelf: "start",
           }}
           onClick={() => setShow(!show)}
         >

@@ -57,10 +57,10 @@ const TagTemplate = ({ data }) => {
         sx={{
           display: "grid",
           alignItems: "center",
-          justifyItems: "center",
+          justifyItems: "start",
         }}
       >
-        <Styled.h1>Nyheter {tag.title}</Styled.h1>
+        <Styled.h1 sx={{ mx: 4 }}>Nyheter {tag.title}</Styled.h1>
         {allNews.edges.map(({ node }, index) => (
           <News key={index} content={node}></News>
         ))}

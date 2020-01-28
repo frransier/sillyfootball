@@ -1,13 +1,9 @@
 /** @jsx jsx */
 import { jsx, Styled, useColorMode } from "theme-ui"
-import pick from "../../images/pick.svg"
-import pickDark from "../../images/pick-dark.svg"
-import winDark from "../../images/win-dark.svg"
-import win from "../../images/win.svg"
-import Card from "./card"
-import { GiMining, GiDiamondHard } from "react-icons/gi"
-import fantasy from "../../images/fantasy.svg"
-import fantasyDark from "../../images/fantasy-dark.svg"
+import main from "../../images/main.svg"
+import mainDark from "../../images/main-dark.svg"
+import Button from "../button"
+import { motion } from "framer-motion"
 
 const Main = ({ deadline }) => {
   const [colorMode] = useColorMode()
@@ -19,82 +15,48 @@ const Main = ({ deadline }) => {
         // borderColor: "muted",
         // borderRadius: 8,
         width: "95%",
-        py: 8,
+        py: 4,
         mb: 7,
       }}
     >
       <div
         sx={{
           display: "grid",
-          gridTemplateRows: "20% 30% 30% 20%",
-          alignItems: "center",
-          justifyItems: "center",
+          justifyItems: "start",
           my: 0,
         }}
       >
         <img
           sx={{
-            width: 290,
-            height: 35,
-          }}
-          src={colorMode === "default" ? fantasy : fantasyDark}
-          alt="Fantasy Football"
-        />
-        <img
-          sx={{
-            width: 250,
-            height: 23,
-            mx: "auto",
+            width: "90%",
             my: 8,
           }}
-          src={colorMode === "default" ? pick : pickDark}
-          alt="Fantasy Football"
-        />
-        <img
-          sx={{
-            width: 250,
-            height: 20,
-            mx: "auto",
-            my: 8,
-          }}
-          src={colorMode === "default" ? win : winDark}
+          src={colorMode === "default" ? main : mainDark}
           alt="Fantasy Football"
         />
 
-        <Styled.h1
-          sx={{
-            borderBottom: "solid 3px",
-            borderBottomColor: "primary",
-            my: 3,
-          }}
-        >
-          {deadline}
-        </Styled.h1>
-      </div>
-      <div
-        sx={{
-          display: "flex",
-
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Card
-          icon={<GiMining />}
-          title="Easy to learn"
-          body1="Välj 5 spelare."
-          body2="1p per mål/assist."
-          cta="Spela"
-          action="fantasy"
-        />
-        <Card
-          icon={<GiDiamondHard />}
-          title="Hard to master"
-          body1="Bli ensam vinnare."
-          body2="Vinn 500 kronor."
-          cta="Läs mer"
-          action="white-paper"
-        />
+        <div sx={{ display: "flex", alignItems: "center", my: 7 }}>
+          <motion.div
+            initial={{ opacity: 0, scale: 1.2 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.5,
+            }}
+          >
+            <Button text="Spela" action="fantasy" />
+          </motion.div>
+          <Styled.h1
+            sx={{
+              my: 0,
+              ml: 7,
+            }}
+          >
+            {deadline}
+          </Styled.h1>
+          {/* <div sx={{ mx: 5 }}> */}
+          {/* </div> */}
+        </div>
       </div>
     </div>
   )

@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { Link, navigate } from "gatsby"
-import icon from "../images/icon-v2.svg"
-import iconDark from "../images/icon-v2-dark.svg"
+import icon from "../images/sillyfootball.svg"
+import iconDark from "../images/sillyfootball-dark.svg"
 import { useColorMode } from "theme-ui"
 import { useAuth } from "react-use-auth"
 import { FaUserAlt, FaUserCheck } from "react-icons/fa"
@@ -23,125 +23,138 @@ const Header = () => {
   return (
     <div
       sx={{
-        display: "grid",
-        gridTemplateColumns: "17% 22% 22% 20% 15%",
-        height: 50,
-        alignItems: "center",
-        justifyItems: "center",
+        my: 3,
         zIndex: 1000,
         bg: "background",
         position: "sticky",
         top: 0,
-        mb: 3,
       }}
     >
-      <Link to="/">
-        <img
-          sx={{ height: 40, mx: "auto" }}
-          src={colorMode === "default" ? icon : iconDark}
-          alt="Sillyfootball Logo"
-        />
-      </Link>
-      <Styled.h3
+      <div
         sx={{
-          letterSpacing: 0.5,
+          display: "grid",
+          gridTemplateColumns: "80% 20%",
+          height: 30,
+          alignItems: "end",
+
+          // justifyItems: "center",
         }}
       >
-        <Link
-          activeStyle={{
-            borderRadius: 4,
-            backgroundColor: colorMode === "default" ? "#FF5252" : "#67FFBF",
-            color: colorMode === "default" ? "#fff" : "#2F2F2F",
-            fontWeight: 400,
-          }}
-          to="/highscore/"
-          style={{
-            textDecoration: "none",
-            color: colorMode === "default" ? "#2F2F2F" : "#fff",
-            paddingLeft: 9,
-            paddingRight: 9,
-            paddingTop: 4,
-            paddingBottom: 4,
-          }}
-        >
-          Highscore
+        <Link to="/">
+          <img
+            sx={{ width: "auto", height: 24, mx: 5 }}
+            src={colorMode === "default" ? icon : iconDark}
+            alt="Sillyfootball Logo"
+          />
         </Link>
-      </Styled.h3>
 
-      <Styled.h3
-        sx={{
-          letterSpacing: 0.5,
-        }}
-      >
-        <Link
-          activeStyle={{
-            borderRadius: 4,
-            backgroundColor: colorMode === "default" ? "#FF5252" : "#67FFBF",
-            color: colorMode === "default" ? "#fff" : "#2F2F2F",
-            fontWeight: 400,
-          }}
-          to="/livescore/"
-          style={{
-            textDecoration: "none",
-            color: colorMode === "default" ? "#2F2F2F" : "#fff",
-            paddingLeft: 9,
-            paddingRight: 9,
-            paddingTop: 4,
-            paddingBottom: 4,
-          }}
-        >
-          Livescore
-        </Link>
-      </Styled.h3>
-
-      <Styled.h3
-        sx={{
-          letterSpacing: 0.5,
-        }}
-      >
-        <Link
-          activeStyle={{
-            borderRadius: 4,
-            border: "solid 1px",
-            backgroundColor: colorMode === "default" ? "#FF5252" : "#67FFBF",
-            color: colorMode === "default" ? "#fff" : "#2F2F2F",
-            fontWeight: 400,
-          }}
-          to="/fantasy/"
-          style={{
-            textDecoration: "none",
-            color: colorMode === "default" ? "#2F2F2F" : "#fff",
-            paddingLeft: 12,
-            paddingRight: 12,
-            paddingTop: 4,
-            paddingBottom: 4,
-          }}
-        >
-          Fantasy
-        </Link>
-      </Styled.h3>
-
-      <div sx={{ justifySelf: "center" }}>
         <button
           sx={{
             bg: "background",
             color: "text",
             border: "none",
-            fontSize: 3,
-            mt: 2,
             pointer: "cursor",
-
+            justifySelf: "end",
+            mx: 5,
             appearance: "none",
           }}
           aria-label="Login"
           onClick={() => Login()}
         >
           {userState && userState.id ? (
-            <FaUserCheck size={19}></FaUserCheck>
+            <FaUserCheck size={20}></FaUserCheck>
           ) : (
             <FaUserAlt></FaUserAlt>
           )}
         </button>
+      </div>
+      <div sx={{ display: "flex", mx: 0, mb: 7 }}>
+        <Styled.h3
+          sx={{
+            letterSpacing: 0.5,
+            my: 3,
+          }}
+        >
+          <Link
+            activeStyle={{
+              // backgroundColor: colorMode === "default" ? "#FD2F2F" : "#67FFBF",
+              borderBottom: "solid 2px",
+              borderBottomColor:
+                colorMode === "default" ? "#FD2F2F" : "#67FFBF",
+              color: colorMode === "default" ? "#2F2F2F" : "#fff",
+              // fontWeight: 400,
+            }}
+            to="/highscore/"
+            style={{
+              textDecoration: "none",
+              color: colorMode === "default" ? "#2F2F2F" : "#fff",
+              paddingLeft: 8,
+              paddingRight: 8,
+              paddingTop: 4,
+              paddingBottom: 4,
+            }}
+          >
+            Highscore
+          </Link>
+        </Styled.h3>
+
+        <Styled.h3
+          sx={{
+            letterSpacing: 0.5,
+            my: 3,
+          }}
+        >
+          <Link
+            activeStyle={{
+              // backgroundColor: colorMode === "default" ? "#FD2F2F" : "#67FFBF",
+              borderBottom: "solid 2px",
+              borderBottomColor:
+                colorMode === "default" ? "#FD2F2F" : "#67FFBF",
+              color: colorMode === "default" ? "#2F2F2F" : "#fff",
+              // fontWeight: 400,
+            }}
+            to="/livescore/"
+            style={{
+              textDecoration: "none",
+              color: colorMode === "default" ? "#2F2F2F" : "#fff",
+              paddingLeft: 9,
+              paddingRight: 9,
+              paddingTop: 4,
+              paddingBottom: 4,
+            }}
+          >
+            Livescore
+          </Link>
+        </Styled.h3>
+
+        <Styled.h3
+          sx={{
+            letterSpacing: 0.5,
+            my: 3,
+          }}
+        >
+          <Link
+            activeStyle={{
+              // backgroundColor: colorMode === "default" ? "#FD2F2F" : "#67FFBF",
+              borderBottom: "solid 2px",
+              borderBottomColor:
+                colorMode === "default" ? "#FD2F2F" : "#67FFBF",
+              color: colorMode === "default" ? "#2F2F2F" : "#fff",
+              // fontWeight: 400,
+            }}
+            to="/fantasy/"
+            style={{
+              textDecoration: "none",
+              color: colorMode === "default" ? "#2F2F2F" : "#fff",
+              paddingLeft: 11,
+              paddingRight: 11,
+              paddingTop: 4,
+              paddingBottom: 4,
+            }}
+          >
+            Fantasy
+          </Link>
+        </Styled.h3>
       </div>
     </div>
   )

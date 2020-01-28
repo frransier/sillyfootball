@@ -53,7 +53,7 @@ const Match = ({ match }) => {
       <div
         sx={{
           display: "grid",
-          gridTemplateColumns: "10% 30% 20% 30% 10%",
+          gridTemplateColumns: "10% 32% 15% 30% 13%",
           alignItems: "center",
           fontSize: 3,
           my: 2,
@@ -74,7 +74,7 @@ const Match = ({ match }) => {
           sx={{
             fontFamily: "body",
             fontWeight: selected ? "heading" : "body",
-            textAlign: "right",
+            textAlign: "left",
             color: selected ? "background" : "text",
           }}
         >
@@ -84,7 +84,7 @@ const Match = ({ match }) => {
           sx={{
             fontFamily: "body",
             fontWeight: selected ? "heading" : "body",
-            textAlign: "center",
+            textAlign: "left",
             color: selected ? "background" : "text",
           }}
         >

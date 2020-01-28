@@ -48,20 +48,6 @@ const Players = ({ players, logos }) => {
             <th
               sx={{
                 textAlign: "center",
-                width: "12%",
-                borderBottom: "solid 1px",
-                borderBottomColor: "lightgrey",
-                pt: 3,
-                fontWeight: "body",
-                fontSize: 4,
-                color: "primary",
-              }}
-            >
-              <FaStar />
-            </th>
-            <th
-              sx={{
-                textAlign: "left",
                 width: "11%",
                 borderBottom: "solid 1px",
                 borderBottomColor: "lightgrey",
@@ -70,14 +56,14 @@ const Players = ({ players, logos }) => {
             <th
               sx={{
                 textAlign: "left",
-                width: "55%",
+                width: "59%",
                 borderBottom: "solid 1px",
                 borderBottomColor: "lightgrey",
               }}
             ></th>
             <th
               sx={{
-                textAlign: "center",
+                textAlign: "right",
                 width: "9%",
                 borderBottom: "solid 1px",
                 borderBottomColor: "lightgrey",
@@ -89,8 +75,8 @@ const Players = ({ players, logos }) => {
             </th>
             <th
               sx={{
-                textAlign: "center",
-                width: "13%",
+                textAlign: "right",
+                width: "9%",
                 borderBottom: "solid 1px",
                 borderBottomColor: "lightgrey",
                 fontWeight: "body",
@@ -98,6 +84,20 @@ const Players = ({ players, logos }) => {
               }}
             >
               Ass
+            </th>
+            <th
+              sx={{
+                textAlign: "center",
+                width: "12%",
+                borderBottom: "solid 1px",
+                borderBottomColor: "lightgrey",
+                pt: 3,
+                fontWeight: "body",
+                fontSize: 4,
+                color: "primary",
+              }}
+            >
+              <FaStar />
             </th>
           </tr>
         </thead>
@@ -121,23 +121,12 @@ const Players = ({ players, logos }) => {
               >
                 <td
                   sx={{
-                    fontSize: 4,
-                    color: selected ? "background" : "background",
-                    pt: 4,
-                    borderBottom: selected ? "solid 1px" : "solid 2px",
-                    borderBottomColor: selected ? "primary" : "muted",
-                  }}
-                >
-                  {selected ? <FaStar></FaStar> : <FaRegStar />}
-                </td>
-                <td
-                  sx={{
                     py: 3,
                     borderBottom: selected ? "solid 1px" : "solid 2px",
                     borderBottomColor: selected ? "primary" : "muted",
                   }}
                 >
-                  <div sx={{ maxWidth: 30 }}>
+                  <div sx={{ maxWidth: 27, mx: 2 }}>
                     <Image fluid={img}></Image>
                   </div>
                 </td>
@@ -158,6 +147,7 @@ const Players = ({ players, logos }) => {
                 </td>
                 <td
                   sx={{
+                    textAlign: "right",
                     borderBottom: selected ? "solid 1px" : "solid 2px",
                     borderBottomColor: selected ? "primary" : "muted",
                   }}
@@ -166,11 +156,23 @@ const Players = ({ players, logos }) => {
                 </td>
                 <td
                   sx={{
+                    textAlign: "right",
                     borderBottom: selected ? "solid 1px" : "solid 2px",
                     borderBottomColor: selected ? "primary" : "muted",
                   }}
                 >
                   {x.assists}
+                </td>
+                <td
+                  sx={{
+                    fontSize: 4,
+                    color: selected ? "background" : "background",
+                    pt: 4,
+                    borderBottom: selected ? "solid 1px" : "solid 2px",
+                    borderBottomColor: selected ? "primary" : "muted",
+                  }}
+                >
+                  {selected ? <FaStar></FaStar> : <FaRegStar />}
                 </td>
               </tr>
             )

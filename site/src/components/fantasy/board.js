@@ -2,10 +2,9 @@
 import { jsx, Styled, useColorMode } from "theme-ui"
 import { useGameState } from "../../state"
 import Portrait from "./portrait"
-import pick from "../../images/pick.svg"
-import pickDark from "../../images/pick-dark.svg"
-import winDark from "../../images/win-dark.svg"
-import win from "../../images/win.svg"
+import fantasy from "../../images/fantasy.svg"
+import fantasyDark from "../../images/fantasy-dark.svg"
+import { FaAngleRight } from "react-icons/fa"
 import { Link } from "gatsby"
 
 const Board = ({ deadline }) => {
@@ -22,7 +21,7 @@ const Board = ({ deadline }) => {
         mb: 2,
         bg: "background",
         position: "sticky",
-        top: 50,
+        top: 53,
         zIndex: 1000,
       }}
     >
@@ -30,47 +29,45 @@ const Board = ({ deadline }) => {
         <div
           sx={{
             display: "grid",
-            gridTemplateRows: "20% 30% 30% 20%",
-            alignItems: "center",
-            justifyItems: "center",
+            justifyItems: "start",
+            my: 0,
+            mx: 5,
           }}
         >
           <img
             sx={{
-              width: 250,
-              height: 23,
-              mx: "auto",
-              mt: 6,
+              width: "60%",
+              my: 5,
             }}
-            src={colorMode === "default" ? pick : pickDark}
-            alt="Fantasy Football"
-          />
-          <img
-            sx={{
-              width: 250,
-              height: 20,
-              mx: "auto",
-              mt: 7,
-            }}
-            src={colorMode === "default" ? win : winDark}
+            src={colorMode === "default" ? fantasy : fantasyDark}
             alt="Fantasy Football"
           />
 
-          <div sx={{ mx: "auto", my: 0 }}>
+          <div sx={{ display: "flex", alignItems: "center", my: 7 }}>
             <Styled.h1
               sx={{
-                borderBottom: "solid 3px",
-                borderBottomColor: "primary",
-                my: 3,
+                my: 0,
               }}
             >
               {deadline}
             </Styled.h1>
+            {/* <div sx={{ mx: 5 }}> */}
+            {/* </div> */}
           </div>
           <Link to="/regler/" style={{ textDecoration: "none" }}>
-            <div sx={{ display: "flex", cursor: "pointer" }}>
-              <Styled.h2 sx={{ my: 6, textDecoration: "underline" }}>
-                Så funkar det
+            <div
+              sx={{
+                display: "flex",
+                cursor: "pointer",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Styled.h2 sx={{ my: 4 }}>Så funkar det</Styled.h2>
+              <Styled.h2 sx={{ mx: 2, my: 4 }}>
+                <div sx={{ mt: 3 }}>
+                  <FaAngleRight />
+                </div>
               </Styled.h2>
             </div>
           </Link>

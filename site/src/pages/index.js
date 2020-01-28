@@ -7,6 +7,8 @@ import SEO from "../components/seo"
 import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
 import Footer from "../components/footer"
 import Main from "../components/index/main"
+import Card from "../components/index/card"
+import { GiMining, GiDiamondHard } from "react-icons/gi"
 
 const months = [
   "januari",
@@ -54,6 +56,31 @@ const IndexPage = props => {
       {news.map((content, index) => (
         <News key={index} content={content} />
       ))}
+      <div
+        sx={{
+          display: "flex",
+
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Card
+          icon={<GiMining />}
+          title="Easy to learn"
+          body1="Välj 5 spelare."
+          body2="1p per mål/assist."
+          cta="Spela"
+          action="fantasy"
+        />
+        <Card
+          icon={<GiDiamondHard />}
+          title="Hard to master"
+          body1="Bli ensam vinnare."
+          body2="Vinn 500 kronor."
+          cta="Läs mer"
+          action="white-paper"
+        />
+      </div>
       <Footer />
     </Layout>
   )

@@ -6,7 +6,7 @@ const Card = ({ icon, title, body1, body2, cta, action }) => {
   return (
     <div
       sx={{
-        mx: [7, 10],
+        mx: [8, 10],
         my: 0,
         borderRadius: 2,
       }}
