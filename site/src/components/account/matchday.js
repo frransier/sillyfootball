@@ -62,7 +62,7 @@ const Matchday = ({
               px: 5,
               mx: 6,
               borderRadius: 2,
-              fontSize: 3,
+              fontSize: 2,
               fontFamily: "heading",
               outline: "none",
               ":active, :after": {

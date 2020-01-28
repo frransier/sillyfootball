@@ -53,13 +53,23 @@ const Match = ({ match }) => {
       <div
         sx={{
           display: "grid",
-          gridTemplateColumns: "10% 32% 15% 30% 13%",
+          gridTemplateColumns: "9% 7% 34% 6% 34% 10%",
           alignItems: "center",
           fontSize: 3,
           my: 2,
           bg: selected ? "primary" : "background",
         }}
       >
+        <div
+          sx={{
+            fontFamily: "body",
+            fontWeight: selected ? "heading" : "body",
+            textAlign: "left",
+            color: selected ? "background" : "text",
+          }}
+        >
+          <div sx={{ fontSize: 2 }}>{`${hours}:${minutes}`}</div>
+        </div>
         <div
           sx={{
             fontSize: 1,
@@ -82,13 +92,13 @@ const Match = ({ match }) => {
         </div>
         <div
           sx={{
-            fontFamily: "body",
-            fontWeight: selected ? "heading" : "body",
-            textAlign: "left",
+            fontSize: 1,
             color: selected ? "background" : "text",
+            justifySelf: "start",
+            mx: 0,
           }}
         >
-          <div sx={{ fontSize: 2 }}>{`${hours}:${minutes}`}</div>
+          vs
         </div>
         <div
           sx={{
@@ -107,7 +117,7 @@ const Match = ({ match }) => {
             color: selected ? "background" : "primary",
             pt: 2,
             justifySelf: "end",
-            mx: 3,
+            // mx: 3,
           }}
         >
           {selected ? <FaAngleDown size={18} /> : <FaAngleRight size={18} />}

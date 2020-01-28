@@ -96,17 +96,11 @@ const HighscoreLast = () => {
               justifyItems: "center",
             }}
           >
-            <Styled.h1
-              sx={{
-                textAlign: "center",
-              }}
-            >
-              Omgång {matchday.index} av 3 | Säsong 1
-            </Styled.h1>
             <div
               sx={{
                 display: "flex",
-                my: 3,
+                mt: 6,
+                mb: 8,
               }}
             >
               <Link to="/highscore/recent/" style={{ textDecoration: "none" }}>
@@ -152,12 +146,22 @@ const HighscoreLast = () => {
               borderBottomColor: "primary",
             }}
           >
+            <Styled.h1
+              sx={{
+                textAlign: "left",
+                gridColumn: "span 2",
+                my: 1,
+                mx: 3,
+              }}
+            >
+              Omgång {matchday.index} av 3 | Säsong {matchday.title}
+            </Styled.h1>
             <Styled.p
               sx={{
                 textAlign: "right",
                 my: 1,
                 mx: [0, 4],
-                gridColumn: "span 5",
+                gridColumn: "span 3",
                 fontWeight: "heading",
               }}
             >

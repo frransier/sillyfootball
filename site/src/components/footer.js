@@ -14,7 +14,7 @@ const Footer = () => {
       <div sx={{ textAlign: "center", mt: 5 }}>
         <Link to="/">
           <img
-            height={50}
+            height={40}
             src={colorMode === "default" ? logo : logoDark}
             alt="Sillyfootball icon"
           ></img>
