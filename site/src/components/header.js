@@ -34,7 +34,7 @@ const Header = () => {
         sx={{
           display: "grid",
           gridTemplateColumns: "80% 20%",
-          height: 30,
+          height: 40,
           alignItems: "end",
 
           // justifyItems: "center",
@@ -64,7 +64,7 @@ const Header = () => {
           {userState && userState.id ? (
             <FaUserCheck size={20}></FaUserCheck>
           ) : (
-            <FaUserAlt size={16}></FaUserAlt>
+            <FaUserAlt size={15}></FaUserAlt>
           )}
         </button>
       </div>
