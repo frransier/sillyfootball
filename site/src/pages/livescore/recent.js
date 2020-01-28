@@ -13,7 +13,7 @@ const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
   dataset: "main",
-  useCdn: false,
+  useCdn: true,
 })
 
 const weekdays = [
