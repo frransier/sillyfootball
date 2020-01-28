@@ -23,7 +23,7 @@ const Header = () => {
   return (
     <div
       sx={{
-        my: 3,
+        my: 5,
         zIndex: 1000,
         bg: "background",
         position: "sticky",
@@ -64,7 +64,7 @@ const Header = () => {
           {userState && userState.id ? (
             <FaUserCheck size={20}></FaUserCheck>
           ) : (
-            <FaUserAlt size={18}></FaUserAlt>
+            <FaUserAlt size={16}></FaUserAlt>
           )}
         </button>
       </div>
