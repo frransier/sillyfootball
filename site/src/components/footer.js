@@ -35,11 +35,11 @@ const Footer = () => {
       <div sx={{ textAlign: "center", mb: 8, mt: 5 }}>
         <button
           sx={{
-            bg: "primary",
-            color: "background",
+            color: "primary",
+            bg: "background",
             border: "none",
             borderRadius: 2,
-            fontSize: 3,
+            fontSize: 4,
             p: 4,
             pointer: "cursor",
             appearance: "none",

@@ -106,7 +106,7 @@ const HighscoreLast = () => {
               <div
                 sx={{ color: "background", mt: 2, mx: 5, display: "hidden" }}
               >
-                <FaAngleRight size={45} />
+                <FaAngleRight size={35} />
               </div>
               <div sx={{ mx: "auto" }}>
                 <button
@@ -114,16 +114,14 @@ const HighscoreLast = () => {
                     appearance: "none",
                     border: "none",
                     borderRadius: 2,
-                    p: 2,
-                    bg: "primary",
-                    color: "background",
+                    p: 4,
                     outline: "none",
+                    color: "text",
+                    bg: "background",
 
                     ":active, :after": {
                       color: "primary",
                       bg: "background",
-                      opacity: 1,
-                      transition: `0s`,
                     },
                   }}
                   onClick={() => hack()}
@@ -132,8 +130,8 @@ const HighscoreLast = () => {
                 </button>
               </div>
               <Link to="/highscore/last/" style={{ textDecoration: "none" }}>
-                <div sx={{ color: "darkgrey", mt: 2, mx: 5 }}>
-                  <FaAngleRight size={45} />
+                <div sx={{ color: "darkgrey", mt: 6, mx: 5 }}>
+                  <FaAngleRight size={35} />
                 </div>
               </Link>
             </div>

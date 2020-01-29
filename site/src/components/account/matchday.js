@@ -3,7 +3,6 @@ import { jsx, Styled } from "theme-ui"
 import { useState } from "react"
 import { AiOutlineMeh } from "react-icons/ai"
 import { FaStar, FaAngleDown, FaAngleRight } from "react-icons/fa"
-import { IoIosRefresh } from "react-icons/io"
 import { useUserState } from "../../state"
 import goldLogo from "../../images/gold.svg"
 import silverLogo from "../../images/silver.svg"
@@ -76,28 +75,6 @@ const Matchday = ({
           </button>
         )}
         <div sx={{ mx: "auto" }} />
-        <div sx={{ mx: 3 }}>
-          {refresh && (
-            <button
-              sx={{
-                appearance: "none",
-                border: "none",
-                bg: "primary",
-                borderRadius: 2,
-                color: "background",
-                pt: 2,
-                outline: "none",
-                ":active, :after": {
-                  color: "primary",
-                  bg: "background",
-                },
-              }}
-              onClick={refresh}
-            >
-              <IoIosRefresh size={20} />
-            </button>
-          )}
-        </div>
       </div>
       <div
         sx={{

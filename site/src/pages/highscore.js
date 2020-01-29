@@ -105,8 +105,8 @@ const HighscorePage = () => {
               }}
             >
               <Link to="/highscore/last/" style={{ textDecoration: "none" }}>
-                <div sx={{ color: "darkgrey", mt: 2, mx: 5 }}>
-                  <FaAngleLeft size={45} />
+                <div sx={{ color: "darkgrey", mt: 6, mx: 5 }}>
+                  <FaAngleLeft size={35} />
                 </div>
               </Link>
               <div sx={{ mx: "auto" }}>
@@ -115,16 +115,14 @@ const HighscorePage = () => {
                     appearance: "none",
                     border: "none",
                     borderRadius: 2,
-                    p: 2,
-                    bg: "primary",
-                    color: "background",
+                    p: 4,
+                    bg: "background",
+                    color: "text",
                     outline: "none",
 
                     ":active, :after": {
                       color: "primary",
                       bg: "background",
-                      opacity: 1,
-                      transition: `0s`,
                     },
                   }}
                   onClick={() => hack()}
@@ -135,7 +133,7 @@ const HighscorePage = () => {
               <div
                 sx={{ color: "background", mt: 2, mx: 5, display: "hidden" }}
               >
-                <FaAngleLeft size={45} />
+                <FaAngleLeft size={35} />
               </div>
             </div>
           </div>

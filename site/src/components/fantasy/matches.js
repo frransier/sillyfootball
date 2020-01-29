@@ -9,7 +9,7 @@ const Matches = ({ matches }) => {
         sx={{
           display: "grid",
 
-          gridTemplateColumns: ["50% 50%", "33% 33% 33%"],
+          gridTemplateColumns: ["48% 48%", "32% 32% 32%"],
         }}
       >
         {matches.map((x, i) => (

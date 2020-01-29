@@ -37,86 +37,89 @@ const Match = ({ match, index }) => {
     }
   }
   return (
-    <button
-      sx={{
-        appearance: "none",
-        bg: selected ? "primary" : "background",
-        height: 45,
-        my: 2,
-        mx: 2,
-        cursor: "pointer",
-        border: "solid 3px",
-        borderColor: "muted",
-        borderRadius: 4,
-        outline: "none",
-      }}
-      onClick={() => toggleSelected()}
-    >
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          delay: index / 12,
-          duration: 0.2,
+    <div sx={{ mx: 2 }}>
+      <button
+        sx={{
+          appearance: "none",
+          bg: selected ? "primary" : "background",
+          height: 45,
+          my: 2,
+          mx: 5,
+          width: "100%",
+          cursor: "pointer",
+          border: "solid 3px",
+          borderColor: "muted",
+          borderRadius: 4,
+          outline: "none",
         }}
+        onClick={() => toggleSelected()}
       >
-        <div
-          sx={{
-            display: "grid",
-            gridTemplateColumns: "80% 20%",
-
-            // alignItems: "center",
-            fontSize: 3,
-
-            bg: selected ? "primary" : "background",
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            delay: index / 12,
+            duration: 0.2,
           }}
         >
           <div
             sx={{
-              fontFamily: "body",
-              fontWeight: "body",
-              textAlign: "left",
-              color: selected ? "background" : "text",
-            }}
-          >
-            <div>{match.home.team.name || match.home.team.fullName}</div>
-            <div>{match.away.team.name || match.away.team.fullName}</div>
-          </div>
-          <div
-            sx={{
-              fontFamily: "body",
-              fontWeight: "body",
-              textAlign: "right",
-              color: selected ? "background" : "text",
+              display: "grid",
+              gridTemplateColumns: "80% 20%",
+
+              // alignItems: "center",
               fontSize: 2,
-              alignSelf: "center",
+
+              bg: selected ? "primary" : "background",
             }}
           >
             <div
               sx={{
+                fontFamily: "body",
+                fontWeight: "body",
+                textAlign: "left",
                 color: selected ? "background" : "text",
               }}
             >
-              {weekday}
+              <div>{match.home.team.name || match.home.team.fullName}</div>
+              <div>{match.away.team.name || match.away.team.fullName}</div>
             </div>
-            <div sx={{}}>{`${hours}:${minutes}`}</div>
-          </div>
+            <div
+              sx={{
+                fontFamily: "body",
+                fontWeight: "body",
+                textAlign: "right",
+                color: selected ? "background" : "text",
+                fontSize: 2,
+                alignSelf: "center",
+              }}
+            >
+              <div
+                sx={{
+                  color: selected ? "background" : "text",
+                }}
+              >
+                {weekday}
+              </div>
+              <div sx={{}}>{`${hours}:${minutes}`}</div>
+            </div>
 
-          {/* <div
-            sx={{
-              fontFamily: "body",
-              fontWeight: "body",
-              color: selected ? "background" : "primary",
-              pt: 2,
-              justifySelf: "end",
-              // mx: 3,
-            }}
-          >
-            {selected ? <FaAngleDown size={18} /> : <FaAngleRight size={18} />}
-          </div> */}
-        </div>
-      </motion.div>
-    </button>
+            {/* <div
+              sx={{
+                fontFamily: "body",
+                fontWeight: "body",
+                color: selected ? "background" : "primary",
+                pt: 2,
+                justifySelf: "end",
+                // mx: 3,
+              }}
+            >
+              {selected ? <FaAngleDown size={18} /> : <FaAngleRight size={18} />}
+            </div> */}
+          </div>
+        </motion.div>
+      </button>
+    </div>
   )
 }
 
