@@ -39,7 +39,6 @@ const Match = ({ match, index }) => {
   return (
     <button
       sx={{
-        border: "none",
         appearance: "none",
         bg: selected ? "primary" : "background",
         height: 45,
