@@ -163,7 +163,7 @@ const LivescorePage = () => {
                 bg: "primary",
                 color: "background",
                 borderRadius: 2,
-                py: 3,
+                p: 2,
                 ":active, :after": {
                   color: "primary",
                   bg: "background",

@@ -115,7 +115,7 @@ const HighscorePage = () => {
                     appearance: "none",
                     border: "none",
                     borderRadius: 2,
-                    py: 3,
+                    p: 2,
                     bg: "primary",
                     color: "background",
                     outline: "none",

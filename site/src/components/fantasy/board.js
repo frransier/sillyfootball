@@ -36,7 +36,7 @@ const Board = ({ deadline }) => {
         >
           <img
             sx={{
-              width: "60%",
+              width: "69%",
               my: 5,
             }}
             src={colorMode === "default" ? fantasy : fantasyDark}

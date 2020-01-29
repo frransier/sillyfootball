@@ -1,42 +1,25 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import Match from "./match"
-import { useState } from "react"
-import { FaAngleUp } from "react-icons/fa"
 
 const Matches = ({ matches }) => {
-  const [show, setShow] = useState(true)
   return (
-    <div sx={{ display: "grid" }}>
-      {show
-        ? matches.map((x, i) => {
-            if (i < 3) return <Match key={i} match={x} />
-            return null
-          })
-        : matches.map((x, i) => <Match match={x} key={i} />)}
+    <div sx={{}}>
+      <div
+        sx={{
+          display: "grid",
 
-      <div sx={{ display: "grid" }}>
-        <Styled.h2
-          sx={{
-            my: 3,
-            fontSize: 3,
-            mx: 4,
-            alignSelf: "start",
-            justifySelf: "start",
-          }}
-          onClick={() => setShow(!show)}
-        >
-          {show ? (
-            <div sx={{ display: "flex", cursor: "pointer" }}>Alla matcher</div>
-          ) : (
-            <div sx={{ display: "flex", cursor: "pointer" }}>
-              Klicka på en match för att filtrera
-              <div sx={{ mt: 1, mx: 2 }}>
-                <FaAngleUp />
-              </div>
-            </div>
-          )}
-        </Styled.h2>
+          gridTemplateColumns: ["50% 50%", "33% 33% 33%"],
+        }}
+      >
+        {matches.map((x, i) => (
+          <Match match={x} key={i} index={i} />
+        ))}
+      </div>
+      <div>
+        <Styled.h3 sx={{ mx: 4, my: 3, display: "flex" }}>
+          Välj en match för att filtrera
+        </Styled.h3>
       </div>
     </div>
   )
