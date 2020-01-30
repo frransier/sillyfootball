@@ -30,6 +30,7 @@ const HighscoreLast = () => {
         _id: matchday[0]._id,
         index: matchday[0].index,
         start: matchday[0].start,
+        title: matchday[0].title,
       })
       const entries = matchday[0].entries
         .map(x => ({
@@ -178,7 +179,7 @@ const HighscoreLast = () => {
 
 export default HighscoreLast
 
-const sanityQuery = `*[_type == "matchday" && status == 'last']{_id, index, start, entries[]
+const sanityQuery = `*[_type == "matchday" && status == 'last']{_id, index, start, title, entries[]
     {..., 
     user->{"name": name, "id": _id},    
     players[]->{"fullName": fullName, "name": name, "scores": scores}}
