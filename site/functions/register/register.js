@@ -39,7 +39,7 @@ exports.handler = (event, _, callback) => {
    <html>
     <body>
       <h1>
-        <b> Omgång ${matchday.index} </b>
+        <b> Omgång ${matchday.index} | Säsong 2 </b>
       </h1>
       <h1>
         <b> Start: <mark>${matchday.date}</mark> </b>
@@ -93,7 +93,7 @@ exports.handler = (event, _, callback) => {
       .catch(err => console.log(err.body.errors[0]))
     intercom.tags
       .tag({
-        name: `s01m0${matchday.index}`,
+        name: `s02m0${matchday.index}`,
         users: [{ user_id: data.user.id }],
       })
       .catch(e => console.log(e))

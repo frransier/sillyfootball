@@ -82,7 +82,7 @@ studio/yarn.lock
 studio/livescore.js
 studio/matches.js
 studio/teams.js
-studio/test.js
+studio/players.js
 site/package-lock.json
 # Local Netlify folder
 .netlify
