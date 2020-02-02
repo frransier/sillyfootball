@@ -26,10 +26,18 @@ const AccountPage = ({ data }) => {
   const [matchdays, setMatchdays] = useState([])
   const [loading, setLoading] = useState(true)
   const [currentMatchday, setCurrentMatchday] = useState()
+
   const users = mapEdgesToNodes(data.users).sort((a, b) =>
-    b.season[0].points > a.season[0].points ? 1 : -1
+    b.season[1].points > a.season[1].points ? 1 : -1
   )
-  const scores = [...new Set(users.map(x => x.season[0].points))]
+  const scores = [
+    ...new Set(
+      users.map(x => {
+        const season = x.season.findIndex(season => season.index === 2)
+        return x.season[season].points
+      })
+    ),
+  ]
 
   useEffect(() => {
     if (userState._id && loading) {
@@ -164,10 +172,10 @@ const AccountPage = ({ data }) => {
           </div>
 
           <div sx={{ mt: 8 }}>
-            <Heading />
+            <Heading currentSeason={2} />
           </div>
           {users.map((node, i) => (
-            <Entry key={i} entry={node} scores={scores} />
+            <Entry key={i} entry={node} scores={scores} currentSeason={2} />
           ))}
           <div sx={{ minHeight: 93 }}>
             <Styled.h1 sx={{ mt: 8 }}>Tidigare omgångar</Styled.h1>
@@ -209,7 +217,7 @@ export const query = graphql`
   query AccountPageQuery {
     users: allSanityUser(
       filter: {
-        season: { elemMatch: { index: { eq: 1 }, points: { ne: null } } }
+        season: { elemMatch: { index: { eq: 2 }, points: { ne: null } } }
       }
     ) {
       edges {
@@ -217,6 +225,7 @@ export const query = graphql`
           name
           _id
           season {
+            index
             gold
             silver
             bronze

@@ -4,7 +4,7 @@ import gold from "../../images/gold.svg"
 import silver from "../../images/silver.svg"
 import bronze from "../../images/bronze.svg"
 
-const Heading = () => {
+const Heading = ({ currentSeason }) => {
   return (
     <div
       sx={{
@@ -18,7 +18,7 @@ const Heading = () => {
           gridColumn: "span 2",
         }}
       >
-        <Styled.h2 sx={{ my: 0 }}>Säsong 1</Styled.h2>
+        <Styled.h2 sx={{ my: 0 }}>Säsong {currentSeason}</Styled.h2>
       </div>
 
       <div
