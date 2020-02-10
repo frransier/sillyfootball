@@ -56,7 +56,7 @@ const Entry = ({ entry, scores, currentSeason }) => {
         <Styled.p sx={{ textAlign: "center", my: 0, fontSize: 4 }}>
           {entry.season[season].silver}
         </Styled.p>
-        <Styled.p sx={{ textAlign: "center", my: 0, fontSize: 3 }}>
+        <Styled.p sx={{ textAlign: "center", my: 0, fontSize: 4 }}>
           {entry.season[season].bronze}
         </Styled.p>
 

@@ -28,7 +28,10 @@ const AccountPage = ({ data }) => {
   const [currentMatchday, setCurrentMatchday] = useState()
 
   const users = mapEdgesToNodes(data.users).sort((a, b) =>
-    b.season[1].points > a.season[1].points ? 1 : -1
+    b.season[b.season.findIndex(season => season.index === 2)].points >
+    a.season[a.season.findIndex(season => season.index === 2)].points
+      ? 1
+      : -1
   )
   const scores = [
     ...new Set(
