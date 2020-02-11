@@ -46,9 +46,7 @@ const Matchday = ({
       }}
     >
       <div sx={{ display: "flex", alignItems: "center" }}>
-        <Styled.h2>
-          {current ? "Aktuell omgång" : `Omgång ${index} | Säsong ${title}`}
-        </Styled.h2>
+        <Styled.h2>{current ? "Aktuell omgång" : title}</Styled.h2>
 
         {status === "current" && now < startt && (
           <button

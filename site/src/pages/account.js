@@ -76,7 +76,7 @@ const AccountPage = ({ data }) => {
             else return null
           })
           .filter(Boolean)
-          .sort((a, b) => (a.index < b.index ? 1 : -1))
+          .sort((a, b) => (a.title < b.title ? 1 : -1))
 
         setCurrentMatchday(results.find(x => x.status === "current"))
         setLoading(false)
