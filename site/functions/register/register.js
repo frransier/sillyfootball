@@ -39,7 +39,7 @@ exports.handler = (event, _, callback) => {
    <html>
     <body>
       <h1>
-        <b> Omgång ${matchday.index} | Säsong 2 </b>
+        <b> Omgång ${matchday.index} | Säsong 3 </b>
       </h1>
       <h1>
         <b> Start: <mark>${matchday.date}</mark> </b>
@@ -82,9 +82,9 @@ exports.handler = (event, _, callback) => {
       .commit()
       .then(x => console.log("Entry registered in Sanity"))
       .catch(e => console.log(e.message))
-    intercom.tags
-      .create({ name: `s01m0${matchday.index}` })
-      .catch(e => console.log(e))
+    // intercom.tags
+    //   .create({ name: `s01m0${matchday.index}` })
+    //   .catch(e => console.log(e))
     intercom.messages
       .create(msg)
       .then(() => {
@@ -93,7 +93,7 @@ exports.handler = (event, _, callback) => {
       .catch(err => console.log(err.body.errors[0]))
     intercom.tags
       .tag({
-        name: `s02m0${matchday.index}`,
+        name: `s03m0${matchday.index}`,
         users: [{ user_id: data.user.id }],
       })
       .catch(e => console.log(e))
