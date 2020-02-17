@@ -154,7 +154,7 @@ const HighscorePage = () => {
                 mx: 3,
               }}
             >
-              Omgång {matchday.index} av 3 | Säsong {matchday.title}
+              {matchday.title}
             </Styled.h1>
             <Styled.p
               sx={{
