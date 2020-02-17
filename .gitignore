@@ -83,6 +83,7 @@ studio/livescore.js
 studio/matches.js
 studio/teams.js
 studio/players.js
+studio/matchday.js
 site/package-lock.json
 # Local Netlify folder
 .netlify
