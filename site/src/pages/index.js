@@ -35,8 +35,6 @@ const weekdays = [
 ]
 
 const IndexPage = props => {
-  const news = mapEdgesToNodes(props.data.news)
-
   const date = new Date(props.data.matchday.start)
   const minutes = date.getMinutes() === 0 ? "00" : `${date.getMinutes()}`
   const hours = `${date.getHours()}`
@@ -53,13 +51,10 @@ const IndexPage = props => {
       >
         <Main deadline={deadline} />
       </div>
-      {news.map((content, index) => (
-        <News key={index} content={content} />
-      ))}
+
       <div
         sx={{
           display: "flex",
-
           alignItems: "center",
           justifyContent: "center",
         }}
@@ -69,7 +64,7 @@ const IndexPage = props => {
           title="Easy to learn"
           body1="Välj 5 spelare."
           body2="1p per mål/assist."
-          cta="Spela"
+          // cta="Spela"
           action="fantasy"
         />
         <Card
@@ -77,7 +72,7 @@ const IndexPage = props => {
           title="Hard to master"
           body1="Bli ensam vinnare."
           body2="Vinn 500 kronor."
-          cta="Läs mer"
+          // cta="Läs mer"
           action="white-paper"
         />
       </div>
@@ -90,39 +85,6 @@ export default IndexPage
 
 export const query = graphql`
   query IndexPageQuery {
-    news: allSanityNews(sort: { fields: sort, order: DESC }) {
-      edges {
-        node {
-          _createdAt
-          _updatedAt
-          title
-          intro
-          tags {
-            title
-            slug {
-              current
-            }
-          }
-          slug {
-            current
-          }
-          image {
-            asset {
-              fluid(maxWidth: 700) {
-                ...GatsbySanityImageFluid
-              }
-            }
-          }
-          thumbnail: image {
-            asset {
-              fixed(width: 100, height: 75) {
-                ...GatsbySanityImageFixed
-              }
-            }
-          }
-        }
-      }
-    }
     matchday: sanityMatchday(status: { eq: "current" }) {
       start
       prize
