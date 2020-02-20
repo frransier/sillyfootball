@@ -1,10 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
-import News from "../components/index/news"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
 import Footer from "../components/footer"
 import Main from "../components/index/main"
 import Card from "../components/index/card"
