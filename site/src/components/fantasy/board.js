@@ -2,8 +2,8 @@
 import { jsx, Styled, useColorMode } from "theme-ui"
 import { useGameState } from "../../state"
 import Portrait from "./portrait"
-import fantasy from "../../images/fantasy.svg"
-import fantasyDark from "../../images/fantasy-dark.svg"
+import fantasy from "../../images/cl.svg"
+import fantasyDark from "../../images/cl-dark.svg"
 import { FaAngleRight } from "react-icons/fa"
 import { Link } from "gatsby"
 
