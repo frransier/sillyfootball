@@ -175,7 +175,7 @@ const AccountPage = ({ data }) => {
           </div>
 
           <div sx={{ mt: 8 }}>
-            <Heading currentSeason={2} />
+            <Heading currentSeason={3} />
           </div>
           {users.map((node, i) => (
             <Entry key={i} entry={node} scores={scores} currentSeason={3} />
