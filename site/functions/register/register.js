@@ -93,7 +93,7 @@ exports.handler = (event, _, callback) => {
       .catch(err => console.log(err.body.errors[0]))
     intercom.tags
       .tag({
-        name: `s03m0${matchday.index}`,
+        name: `s04m0${matchday.index}`,
         users: [{ user_id: data.user.id }],
       })
       .catch(e => console.log(e))
