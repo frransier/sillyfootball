@@ -84,6 +84,7 @@ studio/matches.js
 studio/teams.js
 studio/players.js
 studio/matchday.js
+studio/importNew.js
 site/package-lock.json
 # Local Netlify folder
 .netlify
