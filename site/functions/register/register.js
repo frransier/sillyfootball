@@ -48,9 +48,6 @@ exports.handler = (event, _, callback) => {
       <ul>
         <li>${data.squad[0].name}</li>
         <li>${data.squad[1].name}</li>
-        <li>${data.squad[2].name}</li>
-        <li>${data.squad[3].name}</li>
-        <li>${data.squad[4].name}</li>
       </ul>
       <h2>
         Följ omgången live på <a href="https://www.sillyfootball.se/highscore/">Highscore</a>

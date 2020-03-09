@@ -142,7 +142,7 @@ const FantasyPage = props => {
               display: "grid",
             }}
           >
-            {gameState && gameState.length !== 5 ? null : deadlineDay ? (
+            {gameState && gameState.length !== 2 ? null : deadlineDay ? (
               <img
                 sx={{
                   width: 200,
@@ -177,7 +177,7 @@ const FantasyPage = props => {
               </div>
             )}
           </div>
-          {gameState && gameState.length < 5 ? (
+          {gameState && gameState.length < 2 ? (
             <div sx={{ display: "grid", minHeight: 970 }}>
               <motion.div
                 initial={{ opacity: 0 }}
@@ -202,7 +202,7 @@ const FantasyPage = props => {
           {filters &&
             filters.length === 0 &&
             gameState &&
-            gameState.length < 5 && (
+            gameState.length < 2 && (
               <div
                 sx={{
                   display: "flex",
