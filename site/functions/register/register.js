@@ -39,7 +39,7 @@ exports.handler = (event, _, callback) => {
    <html>
     <body>
       <h1>
-        <b> Omgång ${matchday.index} | Säsong 4 </b>
+        <b> Omgång ${matchday.index} | Säsong 5 </b>
       </h1>
       <h1>
         <b> Start: <mark>${matchday.date}</mark> </b>
@@ -48,6 +48,7 @@ exports.handler = (event, _, callback) => {
       <ul>
         <li>${data.squad[0].name}</li>
         <li>${data.squad[1].name}</li>
+        <li>${data.squad[2].name}</li>
       </ul>
       <h2>
         Följ omgången live på <a href="https://www.sillyfootball.se/highscore/">Highscore</a>
@@ -90,7 +91,7 @@ exports.handler = (event, _, callback) => {
       .catch(err => console.log(err.body.errors[0]))
     intercom.tags
       .tag({
-        name: `s04m0${matchday.index}`,
+        name: `s05m0${matchday.index}`,
         users: [{ user_id: data.user.id }],
       })
       .catch(e => console.log(e))
