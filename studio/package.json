@@ -21,7 +21,7 @@
     "@sanity/default-login": "^0.147.0",
     "@sanity/desk-tool": "^0.147.9",
     "@sanity/vision": "^0.147.9",
-    "axios": "^0.19.0",
+    "axios": "^0.19.2",
     "nanoid": "^2.1.10",
     "node-cron": "^2.0.3",
     "p-queue": "^6.2.1",

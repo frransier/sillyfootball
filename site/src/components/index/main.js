@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled, useColorMode } from "theme-ui"
-import main from "../../images/cl.svg"
-import mainDark from "../../images/cl-dark.svg"
+import main from "../../images/silly3.svg"
+import mainDark from "../../images/silly3-dark.svg"
 import Button from "../button"
 import { motion } from "framer-motion"
 
