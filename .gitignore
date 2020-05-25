@@ -70,21 +70,21 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
-studio/dist/
-studio/node_modules/
+cms/dist/
+cms/node_modules/
 yarn.lock
 site/.env.development
 site/.env.production
 site/yarn.lock
 .vscode/
 
-studio/yarn.lock
-studio/livescore.js
-studio/matches.js
-studio/teams.js
-studio/players.js
-studio/matchday.js
-studio/importNew.js
+cms/yarn.lock
+cms/livescore.js
+cms/matches.js
+cms/teams.js
+cms/players.js
+cms/matchday.js
+cms/importNew.js
 site/package-lock.json
 # Local Netlify folder
 .netlify
