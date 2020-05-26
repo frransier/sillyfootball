@@ -1,8 +1,10 @@
+require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` })
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Silly Football`,
+    description: `Fantasy Football`,
+    author: `@sillyfootballse`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -13,8 +15,16 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: "gatsby-source-sanity",
+      options: {
+        projectId: "0jt5x7hu",
+        dataset: "production",
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-theme-ui`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -24,11 +34,8 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/silly.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }
