@@ -19,7 +19,7 @@ const Slot = ({ player, dispatch }) => {
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: 0,
         borderBottom: player ? "solid 3px" : "none",
-        borderBottomColor: "red",
+        borderBottomColor: "red"
       }}
       onClick={dispatch}
     >
@@ -27,7 +27,7 @@ const Slot = ({ player, dispatch }) => {
         sx={{
           display: "flex",
           alignItems: "center",
-          flexDirection: "column",
+          flexDirection: "column"
         }}
       >
         {player && (
@@ -39,7 +39,7 @@ const Slot = ({ player, dispatch }) => {
           {player ? (
             player.name || player.fullName
           ) : (
-            <RiUserStarLine size={30} />
+            <RiUserStarLine size={20} />
           )}
         </Styled.h6>
       </div>

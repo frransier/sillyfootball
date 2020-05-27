@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Ticket from "../components/molecules/ticket"
 import Heading from "../components/molecules/heading"
-import ReactLoading from "react-loading"
+import Loading from "../components/molecules/loading"
 import { useUserDispatch, useUserState } from "../state"
 import { useAuth } from "react-use-auth"
 import dayjs from "dayjs"
@@ -14,7 +14,7 @@ const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
   dataset: "production",
-  useCdn: false,
+  useCdn: false
 })
 
 const AccountPage = () => {
@@ -104,7 +104,7 @@ const AccountPage = () => {
     setLoading(true)
     const params = {
       user: userState._id,
-      friend: friend,
+      friend: friend
     }
     if (add === "invite") {
       axios
@@ -139,25 +139,14 @@ const AccountPage = () => {
   return (
     <Layout>
       <SEO title="Account" />
-      <button
-        sx={{
-          cursor: "pointer",
-          height: 30,
-          appearance: "none",
-          outline: "none",
-          my: 1,
-        }}
-        onClick={() => Logout()}
-      >
-        <Styled.h6 sx={{ m: 0 }}>Logout</Styled.h6>
-      </button>
+
       {friends === "play" ? (
         <div
           sx={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            height: "50vh",
+            height: "50vh"
           }}
         >
           {/* <h2>{userState.name}</h2> */}
@@ -175,7 +164,7 @@ const AccountPage = () => {
               boxShadow: "4px 4px 4px darkgrey",
               my: 4,
               py: 2,
-              px: 3,
+              px: 3
             }}
           >
             <Styled.h2 sx={{ m: 0, textShadow: "2px 2px 2px black" }}>
@@ -184,16 +173,7 @@ const AccountPage = () => {
           </button>
         </div>
       ) : friends === null ? (
-        <div
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "50vh",
-          }}
-        >
-          <ReactLoading type="bars" color="red" height={35} width={35} />
-        </div>
+        <Loading />
       ) : (
         <Fragment>
           <Styled.h2>Personal Leaderboard</Styled.h2>
@@ -219,7 +199,7 @@ const AccountPage = () => {
               alignItems: "center",
               justifyItems: "center",
               width: "100%",
-              my: 3,
+              my: 3
             }}
           >
             <div
@@ -228,7 +208,7 @@ const AccountPage = () => {
                 width: "100%",
                 alignItems: "center",
                 justifyContent: "start",
-                mt: 4,
+                mt: 4
               }}
             >
               <Styled.h1 sx={{ my: 2 }}>Play With Friends</Styled.h1>
@@ -245,7 +225,7 @@ const AccountPage = () => {
                   borderColor: "darkgrey",
                   boxShadow: "4px 4px 4px darkgrey",
                   px: 2,
-                  mx: 2,
+                  mx: 2
                 }}
                 onClick={() => setAdd("add")}
               >
@@ -263,7 +243,7 @@ const AccountPage = () => {
                   borderColor: "darkgrey",
                   boxShadow: "4px 4px 4px darkgrey",
                   px: 2,
-                  mx: 2,
+                  mx: 2
                 }}
                 onClick={() => setAdd("invite")}
               >
@@ -275,7 +255,7 @@ const AccountPage = () => {
                 display: "flex",
                 width: "100%",
                 alignItems: "center",
-                justifyContent: "center",
+                justifyContent: "center"
               }}
             >
               {add && (
@@ -294,8 +274,8 @@ const AccountPage = () => {
                       borderColor: "black",
                       fontSize: 3,
                       ":focus": {
-                        border: "solid 2px red",
-                      },
+                        border: "solid 2px red"
+                      }
                     }}
                     placeholder={
                       add === "add" ? "Enter Username" : "Enter e-mail"
@@ -315,17 +295,12 @@ const AccountPage = () => {
                       my: 2,
                       py: 2,
                       px: 2,
-                      mx: 2,
+                      mx: 2
                     }}
                     onClick={() => AddFriend()}
                   >
                     {loading ? (
-                      <ReactLoading
-                        type="bars"
-                        color="white"
-                        height={18}
-                        width={24}
-                      />
+                      <Loading />
                     ) : (
                       <Styled.h3 sx={{ m: 0, fontWeight: "heading" }}>
                         {add === "add" ? "Add" : "Invite"}
@@ -342,7 +317,7 @@ const AccountPage = () => {
               height: 30,
               appearance: "none",
               outline: "none",
-              my: 1,
+              my: 1
             }}
             onClick={() => Logout()}
           >

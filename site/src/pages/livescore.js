@@ -7,13 +7,17 @@ import LiveMatch from "../components/molecules/liveMatch"
 import Score from "../components/molecules/score"
 import Ticket from "../components/molecules/ticket"
 import Heading from "../components/molecules/heading"
+import Loading from "../components/molecules/loading"
+import Centered from "../components/atoms/centered"
 import dayjs from "dayjs"
-import ReactLoading from "react-loading"
+
+import { motion } from "framer-motion"
+import { useLoadingState, useLoadingDispatch } from "../state"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
   dataset: "production",
-  useCdn: false,
+  useCdn: false
 })
 
 const LivescorePage = () => {
@@ -22,7 +26,16 @@ const LivescorePage = () => {
   const [tickets, setTickets] = useState(null)
   const [deadline, setDeadline] = useState(null)
   const [live, setLive] = useState(false)
+  const [init, setInit] = useState(false)
+  const loading = useLoadingState()
+  const loadingDispatch = useLoadingDispatch()
 
+  useEffect(() => {
+    if (matches && scores && tickets) {
+      setInit(true)
+      loadingDispatch({ type: "set", loading: false })
+    }
+  }, [matches, scores, tickets, loadingDispatch])
   useEffect(() => {
     const matchesQuery = `*[_type == 'match' &&
       matchday->status == "current"]
@@ -114,49 +127,47 @@ const LivescorePage = () => {
   return (
     <Layout>
       <SEO title="Livescore" />
-      {!tickets && (
-        <div
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "50vh",
-          }}
-        >
-          <ReactLoading type="bars" color="red" height={35} width={35} />
-        </div>
-      )}
-      {tickets && scores && matches && (
-        <Fragment>
-          <div sx={{ my: 3 }}>
-            <Heading main={matches[0].matchday.title} sub1={deadline} />
-          </div>
-          {matches.map((x, i) => (
-            <LiveMatch key={i} match={x} />
-          ))}
-          <div sx={{ my: 4 }}>
-            <Heading
-              main="Highscore"
-              sub1="Goals"
-              sub2="Assists"
-              sub3="Points"
-            />
-            {scores.map((x, i) => (
-              <Score key={i} player={x} />
+      {init === false ? (
+        <Loading />
+      ) : (
+        loading === false && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              duration: 0.5
+            }}
+          >
+            <div sx={{ my: 3 }}>
+              <Heading main={matches[0].matchday.title} sub1={deadline} />
+            </div>
+            {matches.map((x, i) => (
+              <LiveMatch key={i} match={x} />
             ))}
-          </div>
-          <div sx={{ my: 4 }}>
-            <Heading main="Leaderboard" sub3="Points" />
-            {tickets.map((x, i) => (
-              <Ticket
-                key={i}
-                ticket={x}
-                winner={x.score === tickets[0].score}
-                disabled={!live}
+            <div sx={{ my: 4 }}>
+              <Heading
+                main="Highscore"
+                sub1="Goals"
+                sub2="Assists"
+                sub3="Points"
               />
-            ))}
-          </div>
-        </Fragment>
+              {scores.map((x, i) => (
+                <Score key={i} player={x} />
+              ))}
+            </div>
+            <div sx={{ my: 4 }}>
+              <Heading main="Leaderboard" sub3="Points" />
+              {tickets.map((x, i) => (
+                <Ticket
+                  key={i}
+                  ticket={x}
+                  winner={x.score === tickets[0].score}
+                  disabled={!live}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )
       )}
     </Layout>
   )

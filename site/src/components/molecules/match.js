@@ -8,23 +8,23 @@ const Match = ({ match, dispatch, selected, disabled }) => {
     <button
       sx={{
         height: 45,
-        width: "97%",
+        width: "100%",
         cursor: "pointer",
-        my: 1,
-        mx: 1,
+        my: 2,
         py: 1,
         px: 2,
         appearance: "none",
         outline: "none",
         display: "flex",
         bg: "background",
-        borderRadius: 5,
+        borderRadius: 0,
         borderBottomLeftRadius: 0,
         borderTopRightRadius: 2,
+        borderTopLeftRadius: 5,
         border: disabled ? "none" : selected ? "solid 1px" : "none",
         borderBottom: disabled ? "none" : selected ? "solid 3px" : "solid 1px",
-        borderColor: selected ? "red" : "darkgrey",
-        boxShadow: "0px 2px 2px darkgrey",
+        borderColor: selected ? "red" : "darkgrey"
+        // boxShadow: "0px 2px 2px darkgrey"
       }}
       disabled={disabled}
       onClick={dispatch}
@@ -33,7 +33,7 @@ const Match = ({ match, dispatch, selected, disabled }) => {
         <Styled.p
           sx={{
             fontFamily: "heading",
-            fontWeight: selected ? "heading" : "body",
+            fontWeight: selected ? "heading" : "body"
           }}
         >
           {match.home.name || match.home.fullName}

@@ -22,13 +22,13 @@ const LiveMatch = ({ match, disabled, selected }) => {
           width: "100%",
           height: 30,
           bg: "background",
-          borderRadius: 5,
+          borderRadius: 0,
           borderBottomLeftRadius: 0,
           borderTopRightRadius: 2,
+          borderTopLeftRadius: 5,
           border: disabled ? "none" : show ? "solid 1px" : "none",
           borderBottom: disabled ? "none" : show ? "solid 3px" : "solid 1px",
-          borderColor: show ? "red" : "darkgrey",
-          boxShadow: "0px 2px 2px darkgrey",
+          borderColor: show ? "red" : "darkgrey"
         }}
         onClick={() => match.events.length > 0 && setShow(!show)}
       >
@@ -36,13 +36,11 @@ const LiveMatch = ({ match, disabled, selected }) => {
           sx={{
             display: "grid",
             gridTemplateColumns: "6% 38% 12% 38% 6%",
-            fontWeight: "heading",
+            fontWeight: "heading"
           }}
         >
           <Styled.p sx={{}}>{day}</Styled.p>
-          <Styled.p
-            sx={{ textAlign: "right", mr: 1, ml: 2, fontWeight: "heading" }}
-          >
+          <Styled.p sx={{ textAlign: "right", mr: 1, ml: 2 }}>
             {match.home.name || match.home.fullName}
           </Styled.p>
           <Styled.p sx={{}}>
@@ -50,9 +48,7 @@ const LiveMatch = ({ match, disabled, selected }) => {
               ? `${match.homeGoals || 0} - ${match.awayGoals || 0}`
               : time}
           </Styled.p>
-          <Styled.p
-            sx={{ textAlign: "left", mr: 2, ml: 1, fontWeight: "heading" }}
-          >
+          <Styled.p sx={{ textAlign: "left", mr: 2, ml: 1 }}>
             {match.away.name || match.away.fullName}
           </Styled.p>
           <Styled.p sx={{}}>{match.elapsed || "ns"}</Styled.p>
@@ -65,7 +61,7 @@ const LiveMatch = ({ match, disabled, selected }) => {
             p: 1,
             display: "grid",
             gridTemplateColumns: "44% 12% 44%",
-            width: "100%",
+            width: "100%"
           }}
         >
           <div sx={{ textAlign: "right", mr: 2, ml: 0 }}>
@@ -89,7 +85,7 @@ const LiveMatch = ({ match, disabled, selected }) => {
             sx={{
               textAlign: "left",
               mr: 2,
-              ml: 0,
+              ml: 0
             }}
           >
             {match.events

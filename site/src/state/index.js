@@ -27,7 +27,7 @@ function Provider(props) {
             <LoadingDispatchContext.Provider value={loadingDispatch}>
               {props.children}
             </LoadingDispatchContext.Provider>
-          </LoadingStateContext>
+          </LoadingStateContext.Provider>
         </UserDispatchContext.Provider>
       </UserStateContext.Provider>
     </AuthProvider>
@@ -44,7 +44,7 @@ export {
   useUserState,
   useUserDispatch,
   useLoadingState,
-  useLoadingDispatch,
+  useLoadingDispatch
 }
 
 function userReducer(state, action) {

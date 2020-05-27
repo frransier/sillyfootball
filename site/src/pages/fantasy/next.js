@@ -14,7 +14,7 @@ import { graphql, navigate } from "gatsby"
 import axios from "axios"
 import { useUserState } from "../../state"
 
-const FantasyPage = ({ data }) => {
+const NextFantasyPage = ({ data }) => {
   const [players, setPlayers] = useState(data.players.edges.slice(0, 30))
   const [slots, setSlots] = useState([null, null])
   const [filters, setFilters] = useState(null)
@@ -69,20 +69,20 @@ const FantasyPage = ({ data }) => {
       name: player.name || player.fullName,
       goals: 0,
       assists: 0,
-      rate: player.rate,
+      rate: player.rate
     }))
     // console.log(squad)
 
     const user = {
-      _id: userState._id,
+      _id: userState._id
     }
     const matchday = {
-      _id: data.matchday._id,
+      _id: data.matchday._id
     }
     const ticket = {
       user: user,
       squad: squad,
-      matchday: matchday,
+      matchday: matchday
     }
 
     axios
@@ -114,7 +114,7 @@ const FantasyPage = ({ data }) => {
               justifySelf: "start",
               textTransform: "capitalize",
               fontWeight: "display",
-              fontSize: 2,
+              fontSize: 2
             }}
           >
             Rules ->
@@ -126,7 +126,7 @@ const FantasyPage = ({ data }) => {
               alignSelf: "end",
               justifySelf: "start",
               textTransform: "capitalize",
-              fontWeight: "display",
+              fontWeight: "display"
             }}
           >
             Deadline {data.matchday.deadline}
@@ -160,7 +160,7 @@ const FantasyPage = ({ data }) => {
               mx: 3,
               my: 2,
               py: 2,
-              px: 4,
+              px: 4
             }}
           >
             {loading ? (
@@ -192,7 +192,7 @@ const FantasyPage = ({ data }) => {
   )
 }
 
-export default FantasyPage
+export default NextFantasyPage
 
 export const query = graphql`
   query PlayerQuery {

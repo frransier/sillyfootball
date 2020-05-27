@@ -6,27 +6,27 @@ const PlayersHeading = ({ main, sub1, sub2, sub3 }) => {
     <div
       sx={{
         display: "grid",
-        gridTemplateColumns: "14% 58% 14% 14%",
+        gridTemplateColumns: "14% 58% 14% 14%"
       }}
     >
-      <Styled.h2
+      <Styled.h1
         sx={{
           mb: 1,
           mt: 2,
           gridColumn: "1 / span 2",
           alignSelf: "start",
-          justifySelf: "start",
-          color: "red",
+          justifySelf: "start"
+          // color: "red"
         }}
       >
         {main}
-      </Styled.h2>
+      </Styled.h1>
 
       <Styled.p
         sx={{
           alignSelf: "end",
           justifySelf: "center",
-          fontWeight: "heading",
+          fontWeight: "heading"
         }}
       >
         {sub1}
@@ -35,7 +35,7 @@ const PlayersHeading = ({ main, sub1, sub2, sub3 }) => {
         sx={{
           alignSelf: "end",
           justifySelf: "center",
-          fontWeight: "heading",
+          fontWeight: "heading"
         }}
       >
         {sub2}
@@ -44,7 +44,7 @@ const PlayersHeading = ({ main, sub1, sub2, sub3 }) => {
         sx={{
           alignSelf: "end",
           justifySelf: "center",
-          fontWeight: "heading",
+          fontWeight: "heading"
         }}
       >
         {sub3}

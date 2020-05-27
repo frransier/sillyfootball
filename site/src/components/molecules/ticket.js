@@ -20,13 +20,13 @@ const Ticket = ({ ticket, disabled, winner }) => {
           bg: "background",
           outline: "none",
           width: "100%",
-          borderRadius: 5,
+          borderRadius: 0,
           borderBottomLeftRadius: 0,
           borderTopRightRadius: 2,
+          borderTopLeftRadius: 5,
           border: disabled ? "none" : show ? "solid 1px" : "none",
           borderBottom: disabled ? "none" : show ? "solid 3px" : "solid 1px",
-          borderColor: winner ? "red" : "darkgrey",
-          boxShadow: "0px 2px 2px darkgrey",
+          borderColor: winner ? "red" : "darkgrey"
         }}
         disabled={disabled}
         onClick={() => setShow(!show)}
@@ -35,7 +35,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
           <Styled.h5
             sx={{
               textAlign: "left",
-              m: 2,
+              m: 2
             }}
           >
             <FaUser sx={{}} /> {ticket.user.name}
@@ -46,7 +46,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
               textAlign: "right",
               alignSelf: "center",
               justifySelf: "center",
-              fontWeight: "heading",
+              fontWeight: "heading"
             }}
           >
             {show ? "Goals" : ""}
@@ -56,7 +56,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
               textAlign: "right",
               alignSelf: "center",
               justifySelf: "center",
-              fontWeight: "heading",
+              fontWeight: "heading"
             }}
           >
             {show ? "Assists" : ""}
@@ -66,7 +66,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
               textAlign: "right",
               alignSelf: "center",
               justifySelf: "center",
-              fontWeight: "heading",
+              fontWeight: "heading"
             }}
           >
             {ticket.score}
