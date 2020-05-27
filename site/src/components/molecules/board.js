@@ -10,6 +10,7 @@ const Board = ({ children }) => (
       alignItems: "center",
       justifyItems: "center",
       border: "solid 1px",
+      borderBottom: "none",
       borderRadius: 5,
       borderBottomLeftRadius: 0,
       borderBottomRightRadius: 0,

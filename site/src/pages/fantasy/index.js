@@ -130,7 +130,6 @@ const FantasyPage = ({ data }) => {
           </Container>
           <Container>
             <Matches>
-              <Rules deadline={data.matchday.deadline} />
               {data.matches.edges.map(({ node }, i) => (
                 <Match
                   key={i}
@@ -142,9 +141,10 @@ const FantasyPage = ({ data }) => {
                   dispatch={() => filter([node.home._id, node.away._id])}
                 />
               ))}
+              <Rules deadline={data.matchday.deadline} />
             </Matches>
             {slots.length !== 3 && (
-              <Styled.p sx={{ textAlign: "right" }}>
+              <Styled.p sx={{ textAlign: "left" }}>
                 Select A Match To Filter Players
               </Styled.p>
             )}

@@ -30,12 +30,14 @@ const Header = () => {
           // display: "flex",
           textDecoration: "none",
           alignSelf: "center",
+          // bg: "red",
           color: "text",
-          border: "solid 5px red",
+          border: "solid 3px red",
           borderBottom: "none",
           borderRadius: 8,
           borderBottomLeftRadius: 0,
           borderBottomRightRadius: 0,
+          borderTopRightRadius: 0,
           p: 1,
           pb: 0
         }}
@@ -47,7 +49,7 @@ const Header = () => {
       </Link>
 
       <div
-        sx={{ display: "grid", gridTemplateColumns: ["60% 40%", "80% 20%"] }}
+        sx={{ display: "grid", gridTemplateColumns: ["70% 30%", "80% 20%"] }}
       >
         <Link
           to="/livescore/"
@@ -74,9 +76,9 @@ const Header = () => {
             sx={{
               textDecoration: "none",
               color: "text",
-              mr: [0, 2],
+              mr: [1, 2],
               alignSelf: "end",
-              justifySelf: ["center", "end"],
+              justifySelf: ["end", "end"],
 
               "&.active": {
                 color: "red"

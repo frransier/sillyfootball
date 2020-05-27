@@ -51,7 +51,9 @@ const LiveMatch = ({ match, disabled, selected }) => {
           <Styled.p sx={{ textAlign: "left", mr: 2, ml: 1 }}>
             {match.away.name || match.away.fullName}
           </Styled.p>
-          <Styled.p sx={{}}>{match.elapsed || "ns"}</Styled.p>
+          <Styled.p sx={{ justifySelf: "end", mx: 1 }}>
+            {match.elapsed || "ns"}
+          </Styled.p>
         </div>
       </button>
       {show && (

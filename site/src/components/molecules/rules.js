@@ -3,7 +3,7 @@ import { jsx, Styled } from "theme-ui"
 
 const Rules = ({ deadline }) => {
   return (
-    <div sx={{}}>
+    <div sx={{ mx: 2 }}>
       <Styled.p
         sx={{
           mb: 2,

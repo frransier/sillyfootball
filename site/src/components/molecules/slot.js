@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { RiUserStarLine } from "react-icons/ri"
+import { FaUser } from "react-icons/fa"
 import Image from "gatsby-image"
 
 const Slot = ({ player, dispatch }) => {
@@ -36,11 +36,7 @@ const Slot = ({ player, dispatch }) => {
         <Styled.h6
           sx={{ fontSize: 1, width: "100%", my: 1, alignSelf: "center" }}
         >
-          {player ? (
-            player.name || player.fullName
-          ) : (
-            <RiUserStarLine size={20} />
-          )}
+          {player ? player.name || player.fullName : <FaUser size={20} />}
         </Styled.h6>
       </div>
     </button>

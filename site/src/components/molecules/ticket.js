@@ -45,7 +45,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
             sx={{
               textAlign: "right",
               alignSelf: "center",
-              justifySelf: "center",
+              justifySelf: "end",
               fontWeight: "heading"
             }}
           >
@@ -55,7 +55,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
             sx={{
               textAlign: "right",
               alignSelf: "center",
-              justifySelf: "center",
+              justifySelf: "end",
               fontWeight: "heading"
             }}
           >
@@ -65,8 +65,9 @@ const Ticket = ({ ticket, disabled, winner }) => {
             sx={{
               textAlign: "right",
               alignSelf: "center",
-              justifySelf: "center",
-              fontWeight: "heading"
+              justifySelf: "end",
+              fontWeight: "heading",
+              mx: 2
             }}
           >
             {ticket.score}
