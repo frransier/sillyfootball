@@ -11,7 +11,7 @@ const Score = ({ player }) => {
         gridTemplateColumns: "55% 15% 15% 15%",
         my: 2,
         borderBottom: "solid 1px",
-        borderBottomColor: "red"
+        borderBottomColor: "#E8E8E8"
       }}
     >
       <div sx={{ ml: 3, alignSelf: "center", display: "flex" }}>
