@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import React, { useState } from "react"
+import { useState, useEffect, Fragment } from "react"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 import Matches from "../../components/molecules/matches"
@@ -12,13 +12,11 @@ import Player from "../../components/molecules/player"
 import Rules from "../../components/molecules/rules"
 import Loading from "../../components/molecules/loading"
 import { graphql, navigate } from "gatsby"
-import { motion } from "framer-motion"
 import axios from "axios"
 import { useUserState, useLoadingState, useLoadingDispatch } from "../../state"
 import Container from "../../components/atoms/container"
 import Centered from "../../components/atoms/centered"
 import AltButton from "../../components/atoms/altButton"
-import { useEffect } from "react"
 
 const FantasyPage = ({ data }) => {
   const [players, setPlayers] = useState(data.players.edges.slice(0, 30))
@@ -114,13 +112,14 @@ const FantasyPage = ({ data }) => {
       {loading ? (
         <Loading />
       ) : (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 0.5
-          }}
-        >
+        // <motion.div
+        //   initial={{ opacity: 1 }}
+        //   animate={{ opacity: 1 }}
+        //   transition={{
+        //     duration: 0.5
+        //   }}
+        // >
+        <Fragment>
           <Container>
             <Board>
               <Slot player={slots[0]} dispatch={() => slot(slots[0])} />
@@ -145,7 +144,7 @@ const FantasyPage = ({ data }) => {
             </Matches>
             {slots.length !== 3 && (
               <Styled.p sx={{ textAlign: "left" }}>
-                Select A Match To Filter Players
+                Select Match To Filter Players
               </Styled.p>
             )}
           </Container>
@@ -184,7 +183,7 @@ const FantasyPage = ({ data }) => {
               })}
             </div>
           </div>
-        </motion.div>
+        </Fragment>
       )}
     </Layout>
   )

@@ -1,15 +1,20 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { useState, useEffect, Fragment } from "react"
-import axios from "axios"
+import { useState, useEffect } from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Ticket from "../components/molecules/ticket"
-import Heading from "../components/molecules/heading"
+import Matchday from "../components/molecules/matchday"
 import Loading from "../components/molecules/loading"
-import { useUserDispatch, useUserState } from "../state"
-import { useAuth } from "react-use-auth"
-import dayjs from "dayjs"
+import User from "../components/molecules/user"
+import UsersHeading from "../components/molecules/usersHeading"
+import Container from "../components/atoms/container"
+import {
+  // useUserDispatch,
+  useUserState,
+  useLoadingState,
+  useLoadingDispatch
+} from "../state"
+// import { useAuth } from "react-use-auth"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
@@ -17,23 +22,35 @@ const client = sanityClient({
   useCdn: false
 })
 
-const AccountPage = () => {
-  const [friends, setFriends] = useState(null)
-  const [friend, setFriend] = useState("")
-  const [add, setAdd] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const userDispatch = useUserDispatch()
+const AccountPage = props => {
+  const [current, setCurrent] = useState(null)
+  const [previous, setPrevious] = useState(null)
+  const [init, setInit] = useState(false)
+  // const userDispatch = useUserDispatch()
   const userState = useUserState()
-  const { logout } = useAuth()
+  const loading = useLoadingState()
+  const loadingDispatch = useLoadingDispatch()
+  // const { logout } = useAuth()
 
   useEffect(() => {
-    if (userState.auth0Id) {
-      const query = `*[_type == 'ticket' && user->auth0Id == '${userState.auth0Id}' && matchday->status == "current"][0]
+    loadingDispatch({ type: "set", loading: true })
+    if (current && previous) {
+      setInit(true)
+      loadingDispatch({ type: "set", loading: false })
+    }
+  }, [current, previous, loadingDispatch])
+
+  useEffect(() => {
+    if (loading) {
+      const currentQuery = `*[_type == 'ticket' && user->auth0Id == '${userState.auth0Id}' && matchday->status == "current"][0]
         {
           _id,
           matchday->{index, start},
           user->{
             name,
+            average,
+            high,
+            wins,
             friends[]->
           },
           scores[]->{
@@ -51,9 +68,9 @@ const AccountPage = () => {
                   ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
                   ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
         }`
-      client.fetch(query).then(ticket => {
+      client.fetch(currentQuery).then(ticket => {
         if (ticket && ticket._id) {
-          const friendsHelper =
+          const currentFriendsHelper =
             ticket.user.friends.length > 0 &&
             ticket.user.friends
               .map(
@@ -64,11 +81,13 @@ const AccountPage = () => {
               )
               .join(" ")
 
-          const friendsQuery = `*[_type == 'ticket' && ${friendsHelper} && matchday->status == "current"]
+          const currentFriendsQuery = `*[_type == 'ticket' && ${currentFriendsHelper} && matchday->status == "current"]
               {
                 user->{
                   name,
-                  friends[]->
+                  average,
+                  high,
+                  wins,          
                 },
                 scores[]->{
                   _id,
@@ -85,245 +104,133 @@ const AccountPage = () => {
                         ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
                         ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
               } | order(score desc)[0...10]`
-          client.fetch(friendsQuery).then(frnds => {
-            setFriends([ticket, ...frnds])
+          client.fetch(currentFriendsQuery).then(frnds => {
+            setCurrent([ticket, ...frnds])
+            loadingDispatch({ type: "set", loading: false })
           })
         } else {
-          setFriends("play")
+          setCurrent("play")
+          loadingDispatch({ type: "set", loading: false })
+        }
+      })
+      const previousQuery = `*[_type == 'ticket' && user->auth0Id == '${userState.auth0Id}' && matchday->status == "previous"][0]
+        {
+          _id,
+          matchday->{index, start},
+          user->{
+            name,
+            average,
+            high,
+            wins,
+            friends[]->          
+          },
+          scores[]->{
+            _id,
+            "name": player->name,
+            "fullName": player->fullName,
+            "teamFullName": player->team->fullName,
+            "teamName": player->team->name,
+            goals,
+            assists,
+            rate,
+            "points": (goals + assists) * rate,
+          },
+          "score": ((scores[0]->.goals + scores[0]->.assists) * scores[0]->.rate) +
+                  ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
+                  ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
+        }`
+      client.fetch(previousQuery).then(ticket => {
+        if (ticket && ticket._id) {
+          const previousFriendsHelper =
+            ticket.user.friends.length > 0 &&
+            ticket.user.friends
+              .map(
+                (x, i) =>
+                  `user->_id == "${x._id}" ${
+                    ticket.user.friends.length - 1 > i ? "||" : ""
+                  }`
+              )
+              .join(" ")
+
+          const previousFriendsQuery = `*[_type == 'ticket' && ${previousFriendsHelper} && matchday->status == "previous"]
+              {
+                user->{
+                  name,
+                  average,
+                  high,
+                  wins,
+                },
+                scores[]->{
+                  _id,
+                  "name": player->name,
+                  "fullName": player->fullName,
+                  "teamFullName": player->team->fullName,
+                  "teamName": player->team->name,
+                  goals,
+                  assists,
+                  rate,
+                  "points": (goals + assists) * rate,
+                },
+                "score": ((scores[0]->.goals + scores[0]->.assists) * scores[0]->.rate) +
+                        ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
+                        ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
+              } | order(score desc)[0...10]`
+          client.fetch(previousFriendsQuery).then(frnds => {
+            setPrevious([ticket, ...frnds])
+          })
+        } else {
+          setPrevious("no hits")
         }
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userState, loading])
-  function Logout() {
-    userDispatch({ type: "reset" })
-    logout()
-  }
+  }, [loading, loadingDispatch])
 
-  function AddFriend() {
-    setLoading(true)
-    const params = {
-      user: userState._id,
-      friend: friend
-    }
-    if (add === "invite") {
-      axios
-        .post("/.netlify/functions/invite", params)
-        .then(res => {
-          res.data === "OK" ? setLoading(false) : console.log("nay")
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    }
-    if (add === "add") {
-      const query = `*[_type == 'user' && lower(name) == '${friend}'][0]{_id}`
-      client.fetch(query).then(x => {
-        console.log(x)
+  // function Logout() {
+  //   userDispatch({ type: "reset" })
+  //   logout()
+  // }
 
-        if (x._id)
-          axios
-            .post("/.netlify/functions/add", params)
-            .then(res => {
-              res.data === "OK" ? setLoading(false) : console.log("nay")
-            })
-            .catch(error => {
-              console.log(error)
-            })
-        else {
-          setLoading(false)
-        }
-      })
-    }
-  }
   return (
     <Layout>
       <SEO title="Account" />
+      {loading && <Loading />}
 
-      {friends === "play" ? (
-        <div
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "50vh"
-          }}
-        >
-          {/* <h2>{userState.name}</h2> */}
-          <button
-            sx={{
-              cursor: "pointer",
-              appearance: "none",
-              outline: "none",
-              bg: "red",
-              color: "white",
-              border: "none",
-              borderRadius: 0,
-              borderBottom: "solid 4px",
-              borderBottomColor: "red",
-              boxShadow: "4px 4px 4px darkgrey",
-              my: 4,
-              py: 2,
-              px: 3
-            }}
-          >
-            <Styled.h2 sx={{ m: 0, textShadow: "2px 2px 2px black" }}>
-              Play Matchday #X
-            </Styled.h2>
-          </button>
-        </div>
-      ) : friends === null ? (
-        <Loading />
-      ) : (
-        <Fragment>
-          <Styled.h2>Personal Leaderboard</Styled.h2>
-          <Heading
-            main={`Matchday #${friends[0].matchday.index}`}
-            sub3="Points"
-          />
-          {friends.map((x, i) => (
-            <Ticket
-              key={i}
-              ticket={x}
-              index={i}
-              disabled={
-                i === 0 || dayjs() > dayjs(friends[0].matchday.start)
-                  ? false
-                  : true
-              }
-            />
+      {init && (
+        <Matchday
+          matchday={current}
+          status="Next"
+          deadline={props.data.current.deadline}
+        />
+      )}
+      {init && current !== "play" && previous !== "no hits" && (
+        <Matchday
+          matchday={previous}
+          status="Previous"
+          deadline={props.data.previous.deadline}
+        />
+      )}
+      {init && current !== "play" && (
+        <Container>
+          <Styled.h1 sx={{ textAlign: "right" }}>
+            Personal Leaderboard
+          </Styled.h1>
+          <UsersHeading />
+          {current
+            .sort((a, b) => (a.user.average < b.user.average ? 1 : -1))
+            .map((x, i) => (
+              <User user={x.user} key={i} />
+            ))}
+        </Container>
+      )}
+      {init && (
+        <Container>
+          <Styled.h1 sx={{ textAlign: "right" }}>Top 20</Styled.h1>
+          <UsersHeading />
+          {props.data.top50.edges.map(({ node }, i) => (
+            <User user={node} key={i} />
           ))}
-          <div
-            sx={{
-              display: "grid",
-              alignItems: "center",
-              justifyItems: "center",
-              width: "100%",
-              my: 3
-            }}
-          >
-            <div
-              sx={{
-                display: "flex",
-                width: "100%",
-                alignItems: "center",
-                justifyContent: "start",
-                mt: 4
-              }}
-            >
-              <Styled.h1 sx={{ my: 2 }}>Play With Friends</Styled.h1>
-              <div sx={{ mx: "auto" }} />
-              <button
-                sx={{
-                  cursor: "pointer",
-                  appearance: "none",
-                  outline: "none",
-                  bg: "white",
-                  color: "text",
-                  borderRadius: 3,
-                  border: "solid 1px",
-                  borderColor: "darkgrey",
-                  boxShadow: "4px 4px 4px darkgrey",
-                  px: 2,
-                  mx: 2
-                }}
-                onClick={() => setAdd("add")}
-              >
-                <Styled.p sx={{ m: 0, fontWeight: "heading" }}>Add</Styled.p>
-              </button>
-              <button
-                sx={{
-                  cursor: "pointer",
-                  appearance: "none",
-                  outline: "none",
-                  bg: "white",
-                  color: "text",
-                  borderRadius: 3,
-                  border: "solid 1px",
-                  borderColor: "darkgrey",
-                  boxShadow: "4px 4px 4px darkgrey",
-                  px: 2,
-                  mx: 2
-                }}
-                onClick={() => setAdd("invite")}
-              >
-                <Styled.p sx={{ m: 0, fontWeight: "heading" }}>Invite</Styled.p>
-              </button>
-            </div>
-            <div
-              sx={{
-                display: "flex",
-                width: "100%",
-                alignItems: "center",
-                justifyContent: "center"
-              }}
-            >
-              {add && (
-                <Fragment>
-                  <input
-                    sx={{
-                      appearance: "none",
-                      outline: "none",
-                      width: "80%",
-                      py: 3,
-                      px: 1,
-                      height: 30,
-                      my: 2,
-                      border: "solid 1px",
-                      borderRadius: 5,
-                      borderColor: "black",
-                      fontSize: 3,
-                      ":focus": {
-                        border: "solid 2px red"
-                      }
-                    }}
-                    placeholder={
-                      add === "add" ? "Enter Username" : "Enter e-mail"
-                    }
-                    onChange={e => setFriend(e.target.value.toLowerCase())}
-                  />
-                  <button
-                    sx={{
-                      cursor: "pointer",
-                      appearance: "none",
-                      outline: "none",
-                      bg: "red",
-                      color: "white",
-                      border: "solid 0.05px black",
-                      borderRadius: 0,
-                      boxShadow: "4px 4px 4px darkgrey",
-                      my: 2,
-                      py: 2,
-                      px: 2,
-                      mx: 2
-                    }}
-                    onClick={() => AddFriend()}
-                  >
-                    {loading ? (
-                      <Loading />
-                    ) : (
-                      <Styled.h3 sx={{ m: 0, fontWeight: "heading" }}>
-                        {add === "add" ? "Add" : "Invite"}
-                      </Styled.h3>
-                    )}
-                  </button>
-                </Fragment>
-              )}
-            </div>
-          </div>
-          <button
-            sx={{
-              cursor: "pointer",
-              height: 30,
-              appearance: "none",
-              outline: "none",
-              my: 1
-            }}
-            onClick={() => Logout()}
-          >
-            <Styled.h6 sx={{ m: 0 }}>Logout</Styled.h6>
-          </button>
-        </Fragment>
+        </Container>
       )}
     </Layout>
   )
@@ -331,6 +238,33 @@ const AccountPage = () => {
 
 export default AccountPage
 
-// export const query = graphql`
-
-// `
+export const query = graphql`
+  query AccountQuery {
+    current: sanityMatchday(status: { eq: "current" }) {
+      _id
+      prize
+      deadline(formatString: "dddd MMM Do")
+      start: deadline
+    }
+    previous: sanityMatchday(status: { eq: "previous" }) {
+      _id
+      prize
+      deadline(formatString: "dddd MMM Do")
+      start: deadline
+    }
+    top50: allSanityUser(
+      filter: { high: { gt: 0 } }
+      limit: 50
+      sort: { fields: average, order: DESC }
+    ) {
+      edges {
+        node {
+          name
+          wins
+          high
+          average
+        }
+      }
+    }
+  }
+`

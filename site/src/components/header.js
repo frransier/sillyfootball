@@ -4,8 +4,6 @@ import { Link } from "gatsby"
 import { useAuth } from "react-use-auth"
 import { useUserState, useLoadingDispatch } from "../state"
 import { FaHome } from "react-icons/fa"
-import silly from "../images/silly-alt.png"
-// import { useEffect } from "react"
 
 const Header = () => {
   const { login } = useAuth()
@@ -27,10 +25,8 @@ const Header = () => {
       <Link
         to="/"
         sx={{
-          // display: "flex",
           textDecoration: "none",
           alignSelf: "center",
-          // bg: "red",
           color: "text",
           border: "solid 3px red",
           borderBottom: "none",
@@ -45,7 +41,6 @@ const Header = () => {
         <Styled.h1 sx={{ my: 0, textAlign: "center" }}>
           SILLY FOOTBALL
         </Styled.h1>
-        {/* <Styled.h1 sx={{ my: 0, mx: 3 }}>FOOTBALL</Styled.h1> */}
       </Link>
 
       <div
@@ -76,7 +71,7 @@ const Header = () => {
             sx={{
               textDecoration: "none",
               color: "text",
-              mr: [1, 2],
+              mr: [1, 0],
               alignSelf: "end",
               justifySelf: ["end", "end"],
 
@@ -84,6 +79,7 @@ const Header = () => {
                 color: "red"
               }
             }}
+            onClick={() => loadingDispatch({ type: "set", loading: true })}
           >
             <FaHome size={20} />
           </Link>

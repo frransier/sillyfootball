@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useState, useEffect, Fragment } from "react"
+import { useState, useEffect } from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import LiveMatch from "../components/molecules/liveMatch"
@@ -8,11 +8,9 @@ import Score from "../components/molecules/score"
 import Ticket from "../components/molecules/ticket"
 import Heading from "../components/molecules/heading"
 import Loading from "../components/molecules/loading"
-import Centered from "../components/atoms/centered"
 import dayjs from "dayjs"
-
-import { motion } from "framer-motion"
 import { useLoadingState, useLoadingDispatch } from "../state"
+import { Fragment } from "react"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
@@ -31,143 +29,137 @@ const LivescorePage = () => {
   const loadingDispatch = useLoadingDispatch()
 
   useEffect(() => {
+    loadingDispatch({ type: "set", loading: true })
     if (matches && scores && tickets) {
       setInit(true)
       loadingDispatch({ type: "set", loading: false })
     }
   }, [matches, scores, tickets, loadingDispatch])
   useEffect(() => {
-    const matchesQuery = `*[_type == 'match' &&
-      matchday->status == "current"]
-      {
-        matchday->{title, deadline},
-        home->{
-          _id,
-          name,
-          fullName
-        },
-        away->{
-          _id,
-          name,
-          fullName
-        },
-        homeGoals,
-        awayGoals,
-        elapsed,
-        status,
-        start,
-        events[]{
-          goal->{
+    if (loading) {
+      const matchesQuery = `*[_type == 'match' &&
+        matchday->status == "current"]
+        {
+          matchday->{title, deadline},
+          home->{
+            _id,
             name,
-            fullName,
-            team->{
-              _id
-            },
+            fullName
           },
-          assist->{
+          away->{
+            _id,
             name,
-            fullName,
+            fullName
+          },
+          homeGoals,
+          awayGoals,
+          elapsed,
+          status,
+          start,
+          events[]{
+            goal->{
+              name,
+              fullName,
+              team->{
+                _id
+              },
+            },
+            assist->{
+              name,
+              fullName,
+              team->{
+                _id
+              }
+            },
+            elapsed,
             team->{
               _id
             }
           },
-          elapsed,
-          team->{
-            _id
-          }
-        },
-      }| order(start asc)`
-    const scoresQuery = `*[_type == 'score' &&
-      matchday->status == "current"]
-      {
-        "name": player->name,
-        "fullName": player->fullName,
-        "team": player->team->fullName,
-        goals,
-        assists,
-        "points": (goals + assists) * rate
-      } | order(points desc)[0...4]`
-    const ticketsQuery = `*[_type == 'ticket' &&
-      matchday->status == "current"]
-      {
-        user->{
-          name
-        },
-        scores[]->{
-          _id,
+        }| order(start asc)`
+      const scoresQuery = `*[_type == 'score' &&
+        matchday->status == "current"]
+        {
           "name": player->name,
           "fullName": player->fullName,
-          "teamFullName": player->team->fullName,
-          "teamName": player->team->name,
+          "team": player->team->fullName,
           goals,
           assists,
-          rate,
-          "points": (goals + assists) * rate,
-        },
-        "score": ((scores[0]->.goals + scores[0]->.assists) * scores[0]->.rate) +
-                 ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
-                 ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
-      } | order(score desc)[0...50]`
-    client.fetch(matchesQuery).then(x => {
-      const deadlineDay = dayjs(x[0].matchday.deadline).format(
-        "ddd MMM D HH:mm"
+          "points": (goals + assists) * rate
+        } | order(points desc)[0...4]`
+      const ticketsQuery = `*[_type == 'ticket' &&
+        matchday->status == "current"]
+        {
+          user->{
+            name
+          },
+          scores[]->{
+            _id,
+            "name": player->name,
+            "fullName": player->fullName,
+            "teamFullName": player->team->fullName,
+            "teamName": player->team->name,
+            goals,
+            assists,
+            rate,
+            "points": (goals + assists) * rate,
+          },
+          "score": ((scores[0]->.goals + scores[0]->.assists) * scores[0]->.rate) +
+                   ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
+                   ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
+        } | order(score desc)[0...50]`
+      client.fetch(matchesQuery).then(x => {
+        const deadlineDay = dayjs(x[0].matchday.deadline).format(
+          "ddd MMM D HH:mm"
+        )
+        setDeadline(deadlineDay)
+        setLive(dayjs() > dayjs(x[0].matchday.deadline))
+        setMatches(x)
+      })
+      client.fetch(scoresQuery).then(x => setScores(x))
+      client.fetch(ticketsQuery).then(x =>
+        setTimeout(() => {
+          setTickets(x)
+        }, 300)
       )
-      setDeadline(deadlineDay)
-      setLive(dayjs() > dayjs(x[0].matchday.deadline))
-      setMatches(x)
-    })
-    client.fetch(scoresQuery).then(x => setScores(x))
-    client.fetch(ticketsQuery).then(x =>
-      setTimeout(() => {
-        setTickets(x)
-      }, 300)
-    )
-  }, [])
+    }
+  }, [loading])
 
   return (
     <Layout>
       <SEO title="Livescore" />
-      {init === false ? (
-        <Loading />
-      ) : (
-        loading === false && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 0.5
-            }}
-          >
-            <div sx={{ my: 3 }}>
-              <Heading main={matches[0].matchday.title} sub1={deadline} />
-            </div>
-            {matches.map((x, i) => (
-              <LiveMatch key={i} match={x} />
+      {loading && <Loading />}
+      {init && (
+        <Fragment>
+          <div sx={{ my: 3 }}>
+            <Heading main={matches[0].matchday.title} sub1={deadline} />
+          </div>
+          {matches.map((x, i) => (
+            <LiveMatch key={i} match={x} />
+          ))}
+          <div sx={{ my: 4 }}>
+            <Heading
+              main="Highscore"
+              sub1="Goals"
+              sub2="Assists"
+              sub3="Points"
+            />
+            {scores.map((x, i) => (
+              <Score key={i} player={x} />
             ))}
-            <div sx={{ my: 4 }}>
-              <Heading
-                main="Highscore"
-                sub1="Goals"
-                sub2="Assists"
-                sub3="Points"
+          </div>
+          <div sx={{ my: 4 }}>
+            <Heading main="Leaderboard" sub3="Points" />
+            {tickets.map((x, i) => (
+              <Ticket
+                key={i}
+                ticket={x}
+                winner={x.score === tickets[0].score}
+                disabled={!live}
               />
-              {scores.map((x, i) => (
-                <Score key={i} player={x} />
-              ))}
-            </div>
-            <div sx={{ my: 4 }}>
-              <Heading main="Leaderboard" sub3="Points" />
-              {tickets.map((x, i) => (
-                <Ticket
-                  key={i}
-                  ticket={x}
-                  winner={x.score === tickets[0].score}
-                  disabled={!live}
-                />
-              ))}
-            </div>
-          </motion.div>
-        )
+            ))}
+          </div>
+        </Fragment>
       )}
     </Layout>
   )

@@ -2,7 +2,6 @@
 import { jsx, Styled } from "theme-ui"
 import Score from "./score"
 import { useState, Fragment } from "react"
-import { FaUser } from "react-icons/fa"
 
 const Ticket = ({ ticket, disabled, winner }) => {
   const [show, setShow] = useState(false)
@@ -32,21 +31,23 @@ const Ticket = ({ ticket, disabled, winner }) => {
         onClick={() => setShow(!show)}
       >
         <div sx={{ display: "grid", gridTemplateColumns: "55% 15% 15% 15%" }}>
-          <Styled.h5
+          <Styled.p
             sx={{
               textAlign: "left",
-              m: 2
+              fontWeight: show ? 700 : 500,
+              m: 1,
+              fontSize: 2
             }}
           >
-            <FaUser sx={{}} /> {ticket.user.name}
-          </Styled.h5>
+            {ticket.user.name}
+          </Styled.p>
 
           <Styled.p
             sx={{
               textAlign: "right",
               alignSelf: "center",
-              justifySelf: "end",
-              fontWeight: "heading"
+              justifySelf: "end"
+              // fontWeight: "heading"
             }}
           >
             {show ? "Goals" : ""}
@@ -55,8 +56,8 @@ const Ticket = ({ ticket, disabled, winner }) => {
             sx={{
               textAlign: "right",
               alignSelf: "center",
-              justifySelf: "end",
-              fontWeight: "heading"
+              justifySelf: "end"
+              // fontWeight: "heading"
             }}
           >
             {show ? "Assists" : ""}

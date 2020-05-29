@@ -1,16 +1,14 @@
 /** @jsx jsx */
-import React from "react"
 import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
 import ReactLoading from "react-loading"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { FaStar } from "react-icons/fa"
-import Button from "../components/atoms/button"
 import Container from "../components/atoms/container"
 import { useLoadingState, useLoadingDispatch } from "../state"
 import Centered from "../components/atoms/centered"
-import { useEffect } from "react"
+import { useEffect, Fragment } from "react"
 import AltButton from "../components/atoms/altButton"
 
 const IndexPage = () => {
@@ -19,7 +17,7 @@ const IndexPage = () => {
 
   useEffect(() => {
     loadingDispatch({ type: "set", loading: false })
-  }, [])
+  }, [loadingDispatch])
 
   return (
     <Layout>
@@ -29,7 +27,7 @@ const IndexPage = () => {
           <ReactLoading type="bars" color="red" height={35} width={35} />
         </Centered>
       ) : (
-        <>
+        <Fragment>
           <Container />
           <Container columns="70% 30%">
             {/* <div sx={{ alignSelf: "center", justifySelf: "center" }}> */}
@@ -87,7 +85,7 @@ const IndexPage = () => {
               </AltButton>
             </Link>
           </Container>
-        </>
+        </Fragment>
       )}
     </Layout>
   )

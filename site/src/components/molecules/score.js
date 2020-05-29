@@ -27,7 +27,7 @@ const Score = ({ player }) => {
       <Styled.p sx={{ alignSelf: "center", justifySelf: "end", mx: 1 }}>
         {player.assists}
       </Styled.p>
-      <Styled.p sx={{ alignSelf: "center", justifySelf: "end", mx: 2 }}>
+      <Styled.p sx={{ alignSelf: "center", justifySelf: "end", mx: "9px" }}>
         {player.points}
       </Styled.p>
     </div>

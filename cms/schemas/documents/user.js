@@ -9,15 +9,30 @@ export default {
       title: "Name",
     },
     {
-      name: "auth0Id",
-      title: "Auth0 Id",
-      type: "string",
+      name: "average",
+      type: "number",
+      title: "Average",
+    },
+    {
+      name: "high",
+      type: "number",
+      title: "High",
+    },
+    {
+      name: "wins",
+      type: "number",
+      title: "Wins",
     },
     {
       name: "friends",
       title: "Friends",
       type: "array",
       of: [{ type: "reference", to: [{ type: "user" }] }],
+    },
+    {
+      name: "auth0Id",
+      title: "Auth0 Id",
+      type: "string",
     },
   ],
   preview: {

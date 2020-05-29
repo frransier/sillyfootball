@@ -21,7 +21,7 @@ export default {
         list: [
           { title: "Current", value: "current" },
           { title: "Next", value: "next" },
-          { title: "Last", value: "last" },
+          { title: "Previous", value: "previous" },
           { title: "Archived", value: "archived" },
         ],
         layout: "radio",
