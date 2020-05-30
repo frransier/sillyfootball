@@ -4,26 +4,17 @@ import { AuthProvider } from "react-use-auth"
 
 var initialUser = []
 typeof window !== "undefined"
-  ? (initialUser =
-      JSON.parse(localStorage.getItem("sillyfootball-user-1")) || [])
-  : (initialUser = [])
-var initialGame = []
-typeof window !== "undefined"
-  ? (initialGame =
-      JSON.parse(localStorage.getItem("sillyfootball-game-1")) || [])
-  : (initialGame = [])
+  ? (initialUser = JSON.parse(localStorage.getItem("sillyfootball")) || null)
+  : (initialUser = null)
 
-const FilterStateContext = createContext()
 const UserStateContext = createContext()
-const GameStateContext = createContext()
-const FilterDispatchContext = createContext()
+const LoadingStateContext = createContext()
 const UserDispatchContext = createContext()
-const GameDispatchContext = createContext()
+const LoadingDispatchContext = createContext()
 
 function Provider(props) {
-  const [filters, filterDispatch] = useReducer(filterReducer, [])
-  const [game, gameDispatch] = useReducer(gameReducer, initialGame)
   const [user, userDispatch] = useReducer(userReducer, initialUser)
+  const [loading, loadingDispatch] = useReducer(loadingReducer, false)
   return (
     <AuthProvider
       navigate={navigate}
@@ -32,91 +23,52 @@ function Provider(props) {
     >
       <UserStateContext.Provider value={user}>
         <UserDispatchContext.Provider value={userDispatch}>
-          <FilterStateContext.Provider value={filters}>
-            <FilterDispatchContext.Provider value={filterDispatch}>
-              <GameStateContext.Provider value={game}>
-                <GameDispatchContext.Provider value={gameDispatch}>
-                  {props.children}
-                </GameDispatchContext.Provider>
-              </GameStateContext.Provider>
-            </FilterDispatchContext.Provider>
-          </FilterStateContext.Provider>
+          <LoadingStateContext.Provider value={loading}>
+            <LoadingDispatchContext.Provider value={loadingDispatch}>
+              {props.children}
+            </LoadingDispatchContext.Provider>
+          </LoadingStateContext.Provider>
         </UserDispatchContext.Provider>
       </UserStateContext.Provider>
     </AuthProvider>
   )
 }
 
-const useFilterState = () => useContext(FilterStateContext)
-const useGameState = () => useContext(GameStateContext)
 const useUserState = () => useContext(UserStateContext)
+const useLoadingState = () => useContext(LoadingStateContext)
 const useUserDispatch = () => useContext(UserDispatchContext)
-const useFilterDispatch = () => useContext(FilterDispatchContext)
-const useGameDispatch = () => useContext(GameDispatchContext)
+const useLoadingDispatch = () => useContext(LoadingDispatchContext)
 
 export {
   Provider,
-  useFilterState,
-  useFilterDispatch,
-  useGameState,
-  useGameDispatch,
   useUserState,
   useUserDispatch,
-}
-
-function filterReducer(state, action) {
-  switch (action.type) {
-    case "init":
-      return action.players
-    case "filter":
-      return [action.homeTeamId, action.awayTeamId]
-    case "reset":
-      return []
-    default:
-      return state
-  }
-}
-function gameReducer(state, action) {
-  switch (action.type) {
-    case "add":
-      if (state.length < 5) {
-        const player = {
-          name: action.player.name || action.player.fullName,
-          id: action.player._id,
-          team: action.player.team._id,
-          logo: action.img,
-        }
-        localStorage.setItem(
-          "sillyfootball-game-1",
-          JSON.stringify([...state, player])
-        )
-        return [...state, player]
-      }
-      return state
-    case "remove":
-      const filter = state.filter(x => x.id !== action.player)
-      localStorage.setItem("sillyfootball-game-1", JSON.stringify(filter))
-      return filter
-    case "reset":
-      localStorage.setItem("sillyfootball-game-1", JSON.stringify([]))
-      return []
-    default:
-      return state
-  }
+  useLoadingState,
+  useLoadingDispatch
 }
 
 function userReducer(state, action) {
   switch (action.type) {
     case "init":
-      if (action.user)
-        localStorage.setItem(
-          "sillyfootball-user-1",
-          JSON.stringify(action.user[0])
-        )
-      return action.user[0]
+      if (action.user) {
+        localStorage.removeItem("sillyfootball-user-1")
+        localStorage.setItem("sillyfootball", JSON.stringify(action.user))
+      }
+      return action.user
     case "reset":
-      localStorage.setItem("sillyfootball-user-1", JSON.stringify([]))
-      return []
+      localStorage.removeItem("sillyfootball-user-1")
+      localStorage.removeItem("sillyfootball")
+      return null
+    default:
+      return state
+  }
+}
+function loadingReducer(state, action) {
+  switch (action.type) {
+    case "set":
+      return action.loading
+    case "reset":
+      return false
     default:
       return state
   }

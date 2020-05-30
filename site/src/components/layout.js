@@ -1,29 +1,29 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
 /** @jsx jsx */
 import { jsx } from "theme-ui"
+import PropTypes from "prop-types"
+
 import Header from "./header"
-import { Global, css } from "@emotion/core"
+import Footer from "./footer"
 
 const Layout = ({ children }) => {
   return (
-    <div sx={{ mx: "auto", maxWidth: 500 }}>
-      <Global
-        styles={css`
-          html {
-            overflow-y: scroll;
-          }
-        `}
-      />
-      <Header />
-
-      <div sx={{ width: ["100%"], mx: "auto" }}>{children}</div>
+    <div
+      sx={{
+        maxWidth: "100%",
+        minHeight: "100vh"
+      }}
+    >
+      <main sx={{ mx: "auto", maxWidth: 700, px: 2, py: 3 }}>
+        <Header />
+        {children}
+        <Footer />
+      </main>
     </div>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 export default Layout

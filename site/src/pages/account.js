@@ -1,229 +1,237 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { graphql, Link, navigate } from "gatsby"
-import { useUserState, useUserDispatch, useGameDispatch } from "../state"
-import { useEffect, useState } from "react"
-import { mapEdgesToNodes } from "../utils/mapEdgesToNodes"
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Entry from "../components/account/entry"
-import Heading from "../components/account/heading"
-import Matchday from "../components/account/matchday"
-import Button from "../components/button"
-import Footer from "../components/footer"
+import Matchday from "../components/molecules/matchday"
+import Loading from "../components/molecules/loading"
+import User from "../components/molecules/user"
+import UsersHeading from "../components/molecules/usersHeading"
+import Container from "../components/atoms/container"
+import {
+  // useUserDispatch,
+  useUserState,
+  useLoadingState,
+  useLoadingDispatch
+} from "../state"
+// import { useAuth } from "react-use-auth"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
-  dataset: "main",
-  token: process.env.SANITY,
-  useCdn: false,
+  dataset: "production",
+  useCdn: false
 })
 
-const AccountPage = ({ data }) => {
+const AccountPage = props => {
+  const [current, setCurrent] = useState(null)
+  const [previous, setPrevious] = useState(null)
+  const [init, setInit] = useState(false)
+  // const userDispatch = useUserDispatch()
   const userState = useUserState()
-  const userDispatch = useUserDispatch()
-  const gameDispatch = useGameDispatch()
-  const [matchdays, setMatchdays] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [currentMatchday, setCurrentMatchday] = useState()
-  const users = mapEdgesToNodes(data.users).sort((a, b) =>
-    b.season[0].points > a.season[0].points ? 1 : -1
-  )
-  const scores = [...new Set(users.map(x => x.season[0].points))]
+  const loading = useLoadingState()
+  const loadingDispatch = useLoadingDispatch()
+  // const { logout } = useAuth()
 
   useEffect(() => {
-    if (userState._id && loading) {
-      const query = `*[_type == "matchday"]{ status, index, _id, gold, silver, bronze, entries[]{user, players[]->{"fullName": fullName,"name": name, "_id": _id, "scores": scores}, }}`
+    loadingDispatch({ type: "set", loading: true })
+    if (current && previous) {
+      setInit(true)
+      loadingDispatch({ type: "set", loading: false })
+    }
+  }, [current, previous, loadingDispatch])
 
-      client.fetch(query).then(matchdays => {
-        const results = matchdays
-          .map(matchday => {
-            const result = matchday.entries.find(
-              entry => entry.user._ref === userState._id
-            )
-            const id = matchday._id
-            const index = matchday.index
-            const gold = matchday.gold
-            const silver = matchday.silver
-            const bronze = matchday.bronze
-            const status = matchday.status
+  useEffect(() => {
+    if (loading) {
+      const currentQuery = `*[_type == 'ticket' && user->auth0Id == '${userState.auth0Id}' && matchday->status == "current"][0]
+        {
+          _id,
+          matchday->{index, start},
+          user->{
+            name,
+            average,
+            high,
+            wins,
+            friends[]->
+          },
+          scores[]->{
+            _id,
+            "name": player->name,
+            "fullName": player->fullName,
+            "teamFullName": player->team->fullName,
+            "teamName": player->team->name,
+            goals,
+            assists,
+            rate,
+            "points": (goals + assists) * rate,
+          },
+          "score": ((scores[0]->.goals + scores[0]->.assists) * scores[0]->.rate) +
+                  ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
+                  ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
+        }`
+      client.fetch(currentQuery).then(ticket => {
+        if (ticket && ticket._id) {
+          const currentFriendsHelper =
+            ticket.user.friends.length > 0 &&
+            ticket.user.friends
+              .map(
+                (x, i) =>
+                  `user->_id == "${x._id}" ${
+                    ticket.user.friends.length - 1 > i ? "||" : ""
+                  }`
+              )
+              .join(" ")
 
-            if (result)
-              return {
-                entry: result,
-                id: id,
-                index: index,
-                gold: gold,
-                silver: silver,
-                bronze: bronze,
-                status: status,
-              }
-            else return null
+          const currentFriendsQuery = `*[_type == 'ticket' && ${currentFriendsHelper} && matchday->status == "current"]
+              {
+                user->{
+                  name,
+                  average,
+                  high,
+                  wins,          
+                },
+                scores[]->{
+                  _id,
+                  "name": player->name,
+                  "fullName": player->fullName,
+                  "teamFullName": player->team->fullName,
+                  "teamName": player->team->name,
+                  goals,
+                  assists,
+                  rate,
+                  "points": (goals + assists) * rate,
+                },
+                "score": ((scores[0]->.goals + scores[0]->.assists) * scores[0]->.rate) +
+                        ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
+                        ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
+              } | order(score desc)[0...10]`
+          client.fetch(currentFriendsQuery).then(frnds => {
+            setCurrent([ticket, ...frnds])
+            loadingDispatch({ type: "set", loading: false })
           })
-          .filter(Boolean)
+        } else {
+          setCurrent("play")
+          loadingDispatch({ type: "set", loading: false })
+        }
+      })
+      const previousQuery = `*[_type == 'ticket' && user->auth0Id == '${userState.auth0Id}' && matchday->status == "previous"][0]
+        {
+          _id,
+          matchday->{index, start},
+          user->{
+            name,
+            average,
+            high,
+            wins,
+            friends[]->          
+          },
+          scores[]->{
+            _id,
+            "name": player->name,
+            "fullName": player->fullName,
+            "teamFullName": player->team->fullName,
+            "teamName": player->team->name,
+            goals,
+            assists,
+            rate,
+            "points": (goals + assists) * rate,
+          },
+          "score": ((scores[0]->.goals + scores[0]->.assists) * scores[0]->.rate) +
+                  ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
+                  ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
+        }`
+      client.fetch(previousQuery).then(ticket => {
+        if (ticket && ticket._id) {
+          const previousFriendsHelper =
+            ticket.user.friends.length > 0 &&
+            ticket.user.friends
+              .map(
+                (x, i) =>
+                  `user->_id == "${x._id}" ${
+                    ticket.user.friends.length - 1 > i ? "||" : ""
+                  }`
+              )
+              .join(" ")
 
-        setCurrentMatchday(results.find(x => x.status === "current"))
-        setLoading(false)
-        setMatchdays(results)
+          const previousFriendsQuery = `*[_type == 'ticket' && ${previousFriendsHelper} && matchday->status == "previous"]
+              {
+                user->{
+                  name,
+                  average,
+                  high,
+                  wins,
+                },
+                scores[]->{
+                  _id,
+                  "name": player->name,
+                  "fullName": player->fullName,
+                  "teamFullName": player->team->fullName,
+                  "teamName": player->team->name,
+                  goals,
+                  assists,
+                  rate,
+                  "points": (goals + assists) * rate,
+                },
+                "score": ((scores[0]->.goals + scores[0]->.assists) * scores[0]->.rate) +
+                        ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
+                        ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
+              } | order(score desc)[0...10]`
+          client.fetch(previousFriendsQuery).then(frnds => {
+            setPrevious([ticket, ...frnds])
+          })
+        } else {
+          setPrevious("no hits")
+        }
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading, userState])
+  }, [loading, loadingDispatch])
 
-  function Logout() {
-    userDispatch({ type: "reset" })
-    gameDispatch({ type: "reset" })
-    navigate("/")
-  }
-
-  function refresh() {
-    setLoading(true)
-  }
+  // function Logout() {
+  //   userDispatch({ type: "reset" })
+  //   logout()
+  // }
 
   return (
     <Layout>
       <SEO title="Account" />
-      {userState ? (
-        <div sx={{ display: "grid" }}>
-          <div
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              mx: "auto",
-              width: "100%",
-            }}
-          >
-            <Styled.h1>Välkommen {userState.name}</Styled.h1>
-            <div sx={{ mx: "auto" }} />
-            <button
-              sx={{
-                appearance: "none",
-                border: "solid 1px",
-                borderColor: "primary",
-                bg: "background",
-                color: "text",
-                borderRadius: 4,
-                fontFamily: "body",
-                p: 3,
-              }}
-              onClick={() => Logout()}
-            >
-              Logga ut
-            </button>
-          </div>
-          <div sx={{ display: "flex", mx: "auto", width: "100%" }}>
-            <div sx={{}}>
-              <Link to="/livescore/" style={{ textDecoration: "none" }}>
-                <Styled.h2
-                  sx={{
-                    borderBottom: "solid 1px",
-                    borderBottomColor: "primary",
-                    my: 1,
-                  }}
-                >
-                  Livescore
-                </Styled.h2>
-              </Link>
-            </div>
-            <div sx={{ mx: 7, mb: 6 }}>
-              <Link to="/leaderboard/" style={{ textDecoration: "none" }}>
-                <Styled.h2
-                  sx={{
-                    borderBottom: "solid 1px",
-                    borderBottomColor: "primary",
-                    my: 1,
-                  }}
-                >
-                  Leaderboard
-                </Styled.h2>
-              </Link>
-            </div>
-          </div>
+      {loading && <Loading />}
 
-          <div sx={{ height: 220, display: "grid" }}>
-            {!currentMatchday ? (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  delay: 0.5,
-                  duration: 0.2,
-                }}
-              >
-                <div sx={{ mx: "auto", my: 10 }}>
-                  <div sx={{ textAlign: "center" }}>
-                    <Button text="Spela" action="fantasy" />
-                  </div>
-                </div>
-              </motion.div>
-            ) : loading ? (
-              <div>
-                <br></br>
-              </div>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  duration: 0.2,
-                }}
-              >
-                <Matchday
-                  matchday={currentMatchday.entry}
-                  id={currentMatchday.id}
-                  index={currentMatchday.index}
-                  gold={currentMatchday.gold}
-                  silver={currentMatchday.silver}
-                  bronze={currentMatchday.bronze}
-                  current={true}
-                  refresh={refresh}
-                />
-              </motion.div>
-            )}
-          </div>
-
-          <div sx={{ mt: 8 }}>
-            <Heading />
-          </div>
-          {users.map((node, i) => (
-            <Entry key={i} entry={node} scores={scores} />
-          ))}
-          <div sx={{ minHeight: 93 }}>
-            <Styled.h1 sx={{ mt: 8 }}>Tidigare omgångar</Styled.h1>
-            {matchdays &&
-              matchdays.length > 0 &&
-              matchdays.map((matchday, i) => {
-                if (matchday.status !== "current") {
-                  return (
-                    <Matchday
-                      matchday={matchday.entry}
-                      id={matchday.id}
-                      index={matchday.index}
-                      gold={matchday.gold}
-                      silver={matchday.silver}
-                      bronze={matchday.bronze}
-                      key={i}
-                    />
-                  )
-                } else {
-                  return (
-                    <Styled.p key={i} sx={{ my: 2 }}>
-                      Inga träffar
-                    </Styled.p>
-                  )
-                }
-              })}
-          </div>
-        </div>
-      ) : (
-        <div>
-          Hmm. Nånting är fel. Prova att refresh:a sidan eller logga in igen. Om
-          problemet kvarstår kontakta hello@sillyfootball.se{" "}
-        </div>
+      {init && (
+        <Matchday
+          matchday={current}
+          status="Next"
+          deadline={props.data.current.deadline}
+        />
       )}
-      <Footer />
+      {init && current !== "play" && previous !== "no hits" && (
+        <Matchday
+          matchday={previous}
+          status="Previous"
+          deadline={props.data.previous.deadline}
+        />
+      )}
+      {init && current !== "play" && (
+        <Container>
+          <Styled.h1 sx={{ textAlign: "right" }}>
+            Personal Leaderboard
+          </Styled.h1>
+          <UsersHeading />
+          {current
+            .sort((a, b) => (a.user.average < b.user.average ? 1 : -1))
+            .map((x, i) => (
+              <User user={x.user} key={i} />
+            ))}
+        </Container>
+      )}
+      {init && (
+        <Container>
+          <Styled.h1 sx={{ textAlign: "right" }}>Top 20</Styled.h1>
+          <UsersHeading />
+          {props.data.top50.edges.map(({ node }, i) => (
+            <User user={node} key={i} />
+          ))}
+        </Container>
+      )}
     </Layout>
   )
 }
@@ -231,22 +239,30 @@ const AccountPage = ({ data }) => {
 export default AccountPage
 
 export const query = graphql`
-  query AccountPageQuery {
-    users: allSanityUser(
-      filter: {
-        season: { elemMatch: { index: { eq: 1 }, points: { ne: null } } }
-      }
+  query AccountQuery {
+    current: sanityMatchday(status: { eq: "current" }) {
+      _id
+      prize
+      deadline(formatString: "dddd MMM Do")
+      start: deadline
+    }
+    previous: sanityMatchday(status: { eq: "previous" }) {
+      _id
+      prize
+      deadline(formatString: "dddd MMM Do")
+      start: deadline
+    }
+    top50: allSanityUser(
+      filter: { high: { gt: 0 } }
+      limit: 50
+      sort: { fields: average, order: DESC }
     ) {
       edges {
         node {
           name
-          _id
-          season {
-            gold
-            silver
-            bronze
-            points
-          }
+          wins
+          high
+          average
         }
       }
     }

@@ -1,7 +1,4 @@
 import React from "react"
-import "typeface-alfa-slab-one"
-import "typeface-cabin"
-import "typeface-roboto-condensed"
 
 import { Provider } from "./src/state/"
 

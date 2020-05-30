@@ -1,9 +1,0 @@
-[build]
-
-  functions = "site/functions"
-  publish = "site/public"
-  command = "gatsby build"
-
- [dev]
-    command = "yarn start"
-    port = 8000

@@ -1,85 +1,109 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
-import { Link, navigate } from "gatsby"
-import icon from "../images/icon.svg"
-import iconDark from "../images/icon-dark.svg"
-import { useColorMode } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
+import { Link } from "gatsby"
 import { useAuth } from "react-use-auth"
-import { FaUserAlt, FaUserCheck } from "react-icons/fa"
-import { FiSun } from "react-icons/fi"
-import { IoMdMoon } from "react-icons/io"
-import { useUserState } from "../state"
+import { useUserState, useLoadingDispatch } from "../state"
+import { FaHome } from "react-icons/fa"
 
 const Header = () => {
-  const userState = useUserState()
-  const [colorMode, setColorMode] = useColorMode()
   const { login } = useAuth()
+  const userState = useUserState()
+  const loadingDispatch = useLoadingDispatch()
 
-  function Login() {
-    if (userState.length === 0) {
-      login()
-    } else {
-      navigate("/account/")
-    }
-  }
+  // useEffect(() => {
+  //   console.log(userState)
+  // }, [userState])
   return (
-    <div
+    <header
       sx={{
         display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr",
-        height: 38,
-        alignItems: "center",
-        justifyItems: "center",
-        zIndex: 1000,
-        bg: "background",
-        position: "sticky",
-        top: 0,
-        pt: 5,
-        pb: 5,
+        gridTemplateColumns: ["60% 40%", "37% 63%"]
+
+        // boxShadow: "0px 2px 0px lightgrey"
       }}
     >
-      <button
+      <Link
+        to="/"
         sx={{
-          bg: "background",
-          color: "primary",
-          border: "none",
-          fontSize: 4,
-          mx: 4,
+          textDecoration: "none",
+          alignSelf: "center",
+          color: "text",
+          border: "solid 3px red",
+          borderBottom: "none",
+          borderRadius: 8,
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0,
+          borderTopRightRadius: 0,
+          p: 1,
+          pb: 0
         }}
-        aria-label="Color Mode"
-        onClick={() =>
-          setColorMode(colorMode === "default" ? "dark" : "default")
-        }
       >
-        {colorMode === "default" ? <IoMdMoon></IoMdMoon> : <FiSun></FiSun>}
-      </button>
-      {/* <div sx={{ mx: "auto" }}></div> */}
-      <Link to="/">
-        <img
-          sx={{ height: 40, mx: "auto" }}
-          src={colorMode === "default" ? icon : iconDark}
-          alt="Sillyfootball Logo"
-        />
+        <Styled.h1 sx={{ my: 0, textAlign: "center" }}>
+          SILLY FOOTBALL
+        </Styled.h1>
       </Link>
-      {/* <div sx={{ mx: "auto" }}></div> */}
-      <button
-        sx={{
-          bg: "background",
-          color: userState && userState.name ? "primary" : "text",
-          border: "none",
-          fontSize: 4,
-          mx: 4,
-        }}
-        aria-label="Login"
-        onClick={() => Login()}
+
+      <div
+        sx={{ display: "grid", gridTemplateColumns: ["70% 30%", "80% 20%"] }}
       >
-        {userState && userState.id ? (
-          <FaUserCheck size={22}></FaUserCheck>
-        ) : (
-          <FaUserAlt></FaUserAlt>
+        <Link
+          to="/livescore/"
+          activeClassName="active"
+          sx={{
+            textDecoration: "none",
+            color: "text",
+
+            alignSelf: "end",
+            justifySelf: "end",
+
+            "&.active": {
+              color: "red"
+            }
+          }}
+          onClick={() => loadingDispatch({ type: "set", loading: true })}
+        >
+          <Styled.h6 sx={{ my: 2, mx: 0 }}>Livescore</Styled.h6>
+        </Link>
+        {userState && (
+          <Link
+            to="/account/"
+            activeClassName="active"
+            sx={{
+              textDecoration: "none",
+              color: "text",
+              mr: [1, 0],
+              alignSelf: "end",
+              justifySelf: ["end", "end"],
+
+              "&.active": {
+                color: "red"
+              }
+            }}
+            onClick={() => loadingDispatch({ type: "set", loading: true })}
+          >
+            <FaHome size={20} />
+          </Link>
         )}
-      </button>
-    </div>
+        {!userState && (
+          <button
+            sx={{
+              cursor: "pointer",
+              appearance: "none",
+              outline: "none",
+              bg: "background",
+              border: "none",
+              p: 0,
+              alignSelf: "center",
+              justifySelf: "center"
+            }}
+            aria-label="Login"
+            onClick={login}
+          >
+            <Styled.h4 sx={{ m: 2 }}>Login</Styled.h4>
+          </button>
+        )}
+      </div>
+    </header>
   )
 }
 

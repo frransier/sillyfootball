@@ -1,166 +1,165 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx } from "theme-ui"
 import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { IoIosRefresh } from "react-icons/io"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Nav from "../components/nav"
-import Footer from "../components/footer"
-import Match from "../components/livescore/match"
+import LiveMatch from "../components/molecules/liveMatch"
+import Score from "../components/molecules/score"
+import Ticket from "../components/molecules/ticket"
+import Heading from "../components/molecules/heading"
+import Loading from "../components/molecules/loading"
+import dayjs from "dayjs"
+import { useLoadingState, useLoadingDispatch } from "../state"
+import { Fragment } from "react"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
-  dataset: "main",
-  token:
-    "skOF1yeYoyyIByB5w6hnEcVaoLJuV0rLEx9Q1v3l9XNf9esFO5luIfqOoBEQs3eRV4I6y6KBtjh9e7oyAhHXZBg1nt0SfQ4hFN2YiMMDCoGjgl1QPudZnLbBNOVomLKIxUjUOZEexb3msY4RxOA0myvxN5AlL5M7TpkquciOP0BCjWiEqpb2",
-  useCdn: false,
+  dataset: "production",
+  useCdn: false
 })
 
-const weekdays = [
-  "Söndag",
-  "Måndag",
-  "Tisdag",
-  "Onsdag",
-  "Torsdag",
-  "Fredag",
-  "Lördag",
-]
-const months = [
-  "januari",
-  "februari",
-  "mars",
-  "april",
-  "maj",
-  "juni",
-  "juli",
-  "augusti",
-  "september",
-  "oktober",
-  "november",
-  "december",
-]
-const query = `*[_type == "matchday" && index == 1]{..., matches[]
-    {..., 
-    away{team->{"fullName": fullName,"name": name, "id": _id}, goals}, 
-    home{team->{"fullName": fullName,"name": name, "id": _id}, goals},
-    events[]{...,
-    player->{"fullName": fullName, "name": name,}, assist->{"name": fullName}}}
-  }`
-
 const LivescorePage = () => {
-  const [matches, setMatches] = useState([])
-  const [dates, setDates] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [refresh, setRefresh] = useState(false)
+  const [matches, setMatches] = useState(null)
+  const [scores, setScores] = useState(null)
+  const [tickets, setTickets] = useState(null)
+  const [deadline, setDeadline] = useState(null)
+  const [live, setLive] = useState(false)
+  const [init, setInit] = useState(false)
+  const loading = useLoadingState()
+  const loadingDispatch = useLoadingDispatch()
 
   useEffect(() => {
-    client.fetch(query).then(matches => {
-      const start = new Date(matches[0].start)
-      const end = new Date(matches[0].end)
-      if (start.getDate() === end.getDate()) {
-        setDates([
-          [
-            weekdays[start.getDay()],
-            `${start.getDate()}`,
-            months[start.getMonth()],
-          ],
-        ])
-      } else {
-        setDates([
-          [
-            weekdays[start.getDay()],
-            `${start.getDate()}`,
-            months[start.getMonth()],
-          ],
-          [weekdays[end.getDay()], `${end.getDate()}`, months[end.getMonth()]],
-        ])
-      }
-      setMatches(matches[0].matches)
-      setLoading(false)
-    })
-
-    const subscription = client.listen(query).subscribe(updater => {
-      setTimeout(async function() {
-        const matches = await client.fetch(query)
-        setMatches(matches[0].matches)
-      }, 1000)
-    })
-    return () => {
-      subscription.unsubscribe()
+    loadingDispatch({ type: "set", loading: true })
+    if (matches && scores && tickets) {
+      setInit(true)
+      loadingDispatch({ type: "set", loading: false })
     }
-  }, [refresh])
-
-  function hack() {
-    setLoading(true)
-    setRefresh(!refresh)
-  }
+  }, [matches, scores, tickets, loadingDispatch])
+  useEffect(() => {
+    if (loading) {
+      const matchesQuery = `*[_type == 'match' &&
+        matchday->status == "current"]
+        {
+          matchday->{title, deadline},
+          home->{
+            _id,
+            name,
+            fullName
+          },
+          away->{
+            _id,
+            name,
+            fullName
+          },
+          homeGoals,
+          awayGoals,
+          elapsed,
+          status,
+          start,
+          events[]{
+            goal->{
+              name,
+              fullName,
+              team->{
+                _id
+              },
+            },
+            assist->{
+              name,
+              fullName,
+              team->{
+                _id
+              }
+            },
+            elapsed,
+            team->{
+              _id
+            }
+          },
+        }| order(start asc)`
+      const scoresQuery = `*[_type == 'score' &&
+        matchday->status == "current"]
+        {
+          "name": player->name,
+          "fullName": player->fullName,
+          "team": player->team->fullName,
+          goals,
+          assists,
+          "points": (goals + assists) * rate
+        } | order(points desc)[0...4]`
+      const ticketsQuery = `*[_type == 'ticket' &&
+        matchday->status == "current"]
+        {
+          user->{
+            name
+          },
+          scores[]->{
+            _id,
+            "name": player->name,
+            "fullName": player->fullName,
+            "teamFullName": player->team->fullName,
+            "teamName": player->team->name,
+            goals,
+            assists,
+            rate,
+            "points": (goals + assists) * rate,
+          },
+          "score": ((scores[0]->.goals + scores[0]->.assists) * scores[0]->.rate) +
+                   ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
+                   ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
+        } | order(score desc)[0...50]`
+      client.fetch(matchesQuery).then(x => {
+        const deadlineDay = dayjs(x[0].matchday.deadline).format(
+          "ddd MMM D HH:mm"
+        )
+        setDeadline(deadlineDay)
+        setLive(dayjs() > dayjs(x[0].matchday.deadline))
+        setMatches(x)
+      })
+      client.fetch(scoresQuery).then(x => setScores(x))
+      client.fetch(ticketsQuery).then(x =>
+        setTimeout(() => {
+          setTickets(x)
+        }, 300)
+      )
+    }
+  }, [loading])
 
   return (
     <Layout>
       <SEO title="Livescore" />
-      <Nav />
-      {loading ? (
-        <div>
-          <br></br>
-        </div>
-      ) : (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            delay: 0.2,
-            duration: 0.3,
-          }}
-        >
-          {matches.length > 0 &&
-            dates.map((d, i) => (
-              <div key={i} sx={{ display: "grid" }}>
-                <div sx={{ mx: "auto" }}>
-                  <Styled.h2
-                    sx={{
-                      borderBottom: "solid 2px",
-                      borderBottomColor: "primary",
-                      textAlign: "center",
-                    }}
-                  >
-                    {d[0]} {d[1]} {d[2]}
-                  </Styled.h2>
-                </div>
-                {matches.map((x, xi) => {
-                  const xdate = new Date(x.start)
-                  const day = xdate.getDate().toString()
-                  if (d[1] === day)
-                    return <Match key={xi} index={xi} match={x} />
-                  return null
-                })}
-              </div>
-            ))}
-          <div sx={{ textAlign: "center", my: 7 }}>
-            <button
-              sx={{
-                appearance: "none",
-                border: "none",
-                bg: "primary",
-                color: "background",
-                ":after": {
-                  color: "primary",
-                  bg: "background",
-                },
-                ":active, :after": {
-                  color: "primary",
-                  bg: "background",
-                  opacity: 1,
-                  transition: `0s`,
-                },
-              }}
-              onClick={() => hack()}
-            >
-              <IoIosRefresh size={40} />
-            </button>
+      {loading && <Loading />}
+      {init && (
+        <Fragment>
+          <div sx={{ my: 3 }}>
+            <Heading main={matches[0].matchday.title} sub1={deadline} />
           </div>
-          {matches.length > 0 && <Footer />}
-        </motion.div>
+          {matches.map((x, i) => (
+            <LiveMatch key={i} match={x} />
+          ))}
+          <div sx={{ my: 4 }}>
+            <Heading
+              main="Highscore"
+              sub1="Goals"
+              sub2="Assists"
+              sub3="Points"
+            />
+            {scores.map((x, i) => (
+              <Score key={i} player={x} />
+            ))}
+          </div>
+          <div sx={{ my: 4 }}>
+            <Heading main="Leaderboard" sub3="Points" />
+            {tickets.map((x, i) => (
+              <Ticket
+                key={i}
+                ticket={x}
+                winner={x.score === tickets[0].score}
+                disabled={!live}
+              />
+            ))}
+          </div>
+        </Fragment>
       )}
     </Layout>
   )
