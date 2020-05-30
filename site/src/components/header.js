@@ -99,7 +99,7 @@ const Header = () => {
             aria-label="Login"
             onClick={login}
           >
-            <Styled.h4 sx={{ m: 2 }}>Login</Styled.h4>
+            <FaHome size={20} />
           </button>
         )}
       </div>
