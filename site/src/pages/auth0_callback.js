@@ -7,13 +7,13 @@ import { useEffect } from "react"
 import { useAuth } from "react-use-auth"
 import { navigate } from "gatsby"
 import axios from "axios"
-import { useUserDispatch } from "../state"
+import { useUserDispatch, useLoadingDispatch } from "../state"
 
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
   dataset: "production",
-  useCdn: false,
+  useCdn: false
 })
 
 const AuthPage = () => {
@@ -22,6 +22,7 @@ const AuthPage = () => {
 
   const { user, handleAuthentication } = useAuth()
   const userDispatch = useUserDispatch()
+  const loadingDispatch = useLoadingDispatch()
 
   useEffect(() => {
     if (user.sub) {
@@ -30,7 +31,7 @@ const AuthPage = () => {
       client.fetch(query, params).then(x => {
         if (x) {
           userDispatch({ type: "init", user: x })
-          // handleAuthentication({ postLoginRoute: "/account/" })
+          handleAuthentication({ postLoginRoute: "/account/" })
         } else {
           setShow(true)
         }
@@ -45,7 +46,7 @@ const AuthPage = () => {
       name: name,
       firstName: user.given_name || "Fix",
       lastName: user.family_name || "Me",
-      email: user.email,
+      email: user.email
     }
 
     axios
@@ -65,6 +66,7 @@ const AuthPage = () => {
 
       if (x) {
         userDispatch({ type: "init", user: x })
+        loadingDispatch({ type: "set", loading: true })
         handleAuthentication({ postLoginRoute: "/fantasy/current/" })
       }
     })
