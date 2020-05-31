@@ -222,7 +222,7 @@ const AccountPage = props => {
             sub1="Wins"
             sub2="High"
             sub3="Average"
-            columns="40% 22% 22% 16%"
+            columns="40% 21% 21% 18%"
             justify="center"
           />
           {current
@@ -239,7 +239,7 @@ const AccountPage = props => {
             sub1="Wins"
             sub2="High"
             sub3="Average"
-            columns="40% 22% 22% 16%"
+            columns="40% 21% 21% 18%"
             justify="center"
           />
           {props.data.top50.edges.map(({ node }, i) => (

@@ -3,12 +3,13 @@ import { jsx, Styled } from "theme-ui"
 
 const User = ({ user }) => {
   return (
-    <div sx={{ display: "grid", gridTemplateColumns: "40% 22% 22% 16%" }}>
+    <div sx={{ display: "grid", gridTemplateColumns: "40% 21% 21% 18%" }}>
       <Styled.p
         sx={{
           textAlign: "left",
           fontWeight: 700,
-          m: 1,
+          mx: 2,
+          my: 1,
           fontSize: 2
         }}
       >
@@ -17,7 +18,6 @@ const User = ({ user }) => {
 
       <Styled.p
         sx={{
-          textAlign: "right",
           alignSelf: "center",
           justifySelf: "center"
           // fontWeight: "heading"
@@ -27,7 +27,6 @@ const User = ({ user }) => {
       </Styled.p>
       <Styled.p
         sx={{
-          textAlign: "right",
           alignSelf: "center",
           justifySelf: "center"
           // fontWeight: "heading"
@@ -37,7 +36,6 @@ const User = ({ user }) => {
       </Styled.p>
       <Styled.p
         sx={{
-          textAlign: "right",
           alignSelf: "center",
           justifySelf: "center",
           fontWeight: "heading",

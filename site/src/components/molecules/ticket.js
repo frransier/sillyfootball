@@ -2,6 +2,7 @@
 import { jsx, Styled } from "theme-ui"
 import Score from "./score"
 import { useState, Fragment } from "react"
+import { FaTrophy } from "react-icons/fa"
 
 const Ticket = ({ ticket, disabled, winner }) => {
   const [show, setShow] = useState(false)
@@ -30,7 +31,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
         disabled={disabled}
         onClick={() => setShow(!show)}
       >
-        <div sx={{ display: "grid", gridTemplateColumns: "55% 15% 15% 15%" }}>
+        <div sx={{ display: "grid", gridTemplateColumns: "58% 14% 14% 14%" }}>
           <Styled.p
             sx={{
               textAlign: "left",
@@ -39,6 +40,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
               fontSize: 2
             }}
           >
+            {winner && <FaTrophy sx={{ mx: 2, color: "red" }} />}{" "}
             {ticket.user.name}
           </Styled.p>
 
@@ -46,7 +48,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
             sx={{
               textAlign: "right",
               alignSelf: "center",
-              justifySelf: "end",
+              justifySelf: "center",
               mx: -2,
               fontWeight: "heading"
             }}
@@ -57,7 +59,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
             sx={{
               textAlign: "right",
               alignSelf: "center",
-              justifySelf: "end",
+              justifySelf: "center",
               mx: -2,
               fontWeight: "heading"
             }}
@@ -68,9 +70,8 @@ const Ticket = ({ ticket, disabled, winner }) => {
             sx={{
               textAlign: "right",
               alignSelf: "center",
-              justifySelf: "end",
-              fontWeight: "heading",
-              mx: 2
+              justifySelf: "center",
+              fontWeight: "heading"
             }}
           >
             {ticket.score}

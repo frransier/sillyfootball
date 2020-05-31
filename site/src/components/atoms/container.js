@@ -1,14 +1,14 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-const Container = ({ children, columns, rows }) => {
+const Container = ({ children, columns, rows, mt }) => {
   return (
     <div
       sx={{
         display: "grid",
         gridTemplateColumns: columns,
         gridTemplateRows: rows,
-        mt: 4,
+        mt: mt || 4,
         mx: 2
       }}
     >

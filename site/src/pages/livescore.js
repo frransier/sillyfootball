@@ -147,7 +147,8 @@ const LivescorePage = ({ data }) => {
               sub1="Goals"
               sub2="Assists"
               sub3="Points"
-              columns="55% 15% 15% 15%"
+              columns="58% 14% 14% 14%"
+              justify="center"
             />
             {scores.map((x, i) => (
               <Score key={i} player={x} />
@@ -158,7 +159,8 @@ const LivescorePage = ({ data }) => {
               main="Leaderboard"
               sub1={`${tickets[0].count} participants`}
               sub3="Points"
-              columns="50% 25% 25%"
+              columns="50% 36% 14%"
+              justify="center"
             />
             {tickets.map((x, i) => (
               <Ticket

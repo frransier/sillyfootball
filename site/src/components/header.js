@@ -17,7 +17,7 @@ const Header = () => {
     <header
       sx={{
         display: "grid",
-        gridTemplateColumns: ["50% 50%", "37% 63%"]
+        gridTemplateColumns: ["59% 41%", "37% 63%"]
 
         // boxShadow: "0px 2px 0px lightgrey"
       }}
@@ -38,7 +38,7 @@ const Header = () => {
           pb: 0
         }}
       >
-        <Styled.h1 sx={{ my: 0, textAlign: "center", fontSize: [4, 5] }}>
+        <Styled.h1 sx={{ my: 0, textAlign: "center", fontSize: [5, 6] }}>
           SILLY FOOTBALL
         </Styled.h1>
       </Link>

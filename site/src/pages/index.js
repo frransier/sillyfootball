@@ -1,18 +1,17 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
-import ReactLoading from "react-loading"
 import Layout from "../components/layout"
 import Footer from "../components/footer"
 import SEO from "../components/seo"
 import { FaStar } from "react-icons/fa"
 import Container from "../components/atoms/container"
 import { useLoadingState, useLoadingDispatch, useUserState } from "../state"
-import Centered from "../components/atoms/centered"
 import { useEffect, Fragment } from "react"
 import { FaHome } from "react-icons/fa"
 import { useAuth } from "react-use-auth"
 import AltButton from "../components/atoms/altButton"
+import Loading from "../components/molecules/loading"
 
 const IndexPage = () => {
   const loading = useLoadingState()
@@ -28,9 +27,7 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Fantasy Football" />
       {loading ? (
-        <Centered height="50vh">
-          <ReactLoading type="bars" color="red" height={35} width={35} />
-        </Centered>
+        <Loading />
       ) : (
         <Fragment>
           <Container />

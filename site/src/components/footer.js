@@ -2,110 +2,99 @@
 import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
 import { FaHome } from "react-icons/fa"
-import { useLoadingDispatch } from "../state"
+import { useLoadingDispatch, useUserState } from "../state"
+import { useAuth } from "react-use-auth"
+import Container from "../components/atoms/container"
 
 const Footer = () => {
   const loadingDispatch = useLoadingDispatch()
+  const userState = useUserState()
+  const { login } = useAuth()
   return (
-    <footer
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        alignItems: "center",
-        p: 2,
-        mt: 4,
-        color: "lightgrey"
-      }}
-    >
+    <Container columns={["50% 50%", "37% 63%"]}>
       <Link
-        to="/fantasy/"
-        activeClassName="active"
+        to="/"
         sx={{
           textDecoration: "none",
-          color: "lightgrey",
-
           alignSelf: "center",
-          justifySelf: "end"
+          color: "lightgrey",
+          border: "solid 3px lightgrey",
+          borderBottom: "none",
+          borderRadius: 8,
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0,
+          borderTopRightRadius: 0,
+          p: 1,
+          pb: 0
         }}
-        onClick={() => loadingDispatch({ type: "set", loading: true })}
       >
-        <Styled.h1 sx={{ mx: 1, my: 0 }}>SILLY FOOTBALL</Styled.h1>
+        <Styled.h1 sx={{ my: 0, textAlign: "center", fontSize: [4, 5] }}>
+          SILLY FOOTBALL
+        </Styled.h1>
       </Link>
 
-      <div sx={{ mx: "auto" }} />
-      {/* <Link
-        to="/blog/"
-        activeClassName="active"
-        sx={{
-          textDecoration: "none",
-          color: "lightgrey",
-
-          alignSelf: "end",
-          justifySelf: "end",
-
-          "&.active": {
-            color: "red"
-          }
-        }}
-        // onClick={() => loadingDispatch({ type: "set", loading: true })}
+      <div
+        sx={{ display: "grid", gridTemplateColumns: ["70% 30%", "80% 20%"] }}
       >
-        <Styled.h3 sx={{ mx: 1 }}>Blog</Styled.h3>
-      </Link>
-      <Link
-        to="/about/"
-        activeClassName="active"
-        sx={{
-          textDecoration: "none",
-          color: "lightgrey",
+        <Link
+          to="/livescore/"
+          activeClassName="active"
+          sx={{
+            textDecoration: "none",
+            color: "lightgrey",
 
-          alignSelf: "end",
-          justifySelf: "end",
+            alignSelf: "end",
+            justifySelf: "end",
 
-          "&.active": {
-            color: "red"
-          }
-        }}
-        // onClick={() => loadingDispatch({ type: "set", loading: true })}
-      >
-        <Styled.h3 sx={{ ml: 3 }}>About</Styled.h3>
-      </Link> */}
-      <Link
-        to="/livescore/"
-        activeClassName="active"
-        sx={{
-          textDecoration: "none",
-          color: "lightgrey",
-
-          alignSelf: "end",
-          justifySelf: "end",
-
-          "&.active": {
-            color: "red"
-          }
-        }}
-        onClick={() => loadingDispatch({ type: "set", loading: true })}
-      >
-        <Styled.h3 sx={{ ml: 3 }}>Livescore</Styled.h3>
-      </Link>
-      <Link
-        to="/account/"
-        activeClassName="active"
-        sx={{
-          textDecoration: "none",
-          color: "lightgrey",
-
-          alignSelf: "center",
-          justifySelf: "end",
-
-          "&.active": {
-            color: "red"
-          }
-        }}
-        onClick={() => loadingDispatch({ type: "set", loading: true })}
-      >
-        <FaHome sx={{ ml: 3 }} size={22} />
-      </Link>
-    </footer>
+            "&.active": {
+              color: "red"
+            }
+          }}
+          onClick={() => loadingDispatch({ type: "set", loading: true })}
+        >
+          <Styled.h2 sx={{ my: 0, mx: 0, fontSize: [1, 2] }}>
+            Livescore
+          </Styled.h2>
+        </Link>
+        {userState && (
+          <Link
+            to="/account/"
+            activeClassName="active"
+            sx={{
+              textDecoration: "none",
+              color: "lightgrey",
+              height: "20px",
+              justifySelf: ["center", "end"],
+              alignSelf: "end",
+              "&.active": {
+                color: "red"
+              }
+            }}
+            onClick={() => loadingDispatch({ type: "set", loading: true })}
+          >
+            <FaHome size={20} />
+          </Link>
+        )}
+        {!userState && (
+          <button
+            sx={{
+              cursor: "pointer",
+              appearance: "none",
+              outline: "none",
+              bg: "background",
+              border: "none",
+              p: 0,
+              alignSelf: "end",
+              justifySelf: "center"
+            }}
+            aria-label="Login"
+            onClick={login}
+          >
+            <FaHome size={20} />
+          </button>
+        )}
+      </div>
+    </Container>
   )
 }
 
