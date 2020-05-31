@@ -12,6 +12,7 @@ import Loading from "../components/molecules/loading"
 import dayjs from "dayjs"
 import { useLoadingState, useLoadingDispatch } from "../state"
 import { Fragment } from "react"
+import Container from "../components/atoms/container"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
@@ -19,12 +20,11 @@ const client = sanityClient({
   useCdn: false
 })
 
-const LivescorePage = () => {
+const LivescorePage = ({ data }) => {
   const [matches, setMatches] = useState(null)
   const [scores, setScores] = useState(null)
   const [tickets, setTickets] = useState(null)
-  const [deadline, setDeadline] = useState(null)
-  const [live, setLive] = useState(false)
+  const [live] = useState(data.matchday.deadline)
   const [init, setInit] = useState(false)
   const loading = useLoadingState()
   const loadingDispatch = useLoadingDispatch()
@@ -107,14 +107,10 @@ const LivescorePage = () => {
           },
           "score": ((scores[0]->.goals + scores[0]->.assists) * scores[0]->.rate) +
                    ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
-                   ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
+                   ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate),
+          "count": count(*[_type == 'ticket' && matchday->status == "current"])
         } | order(score desc)[0...50]`
       client.fetch(matchesQuery).then(x => {
-        const deadlineDay = dayjs(x[0].matchday.deadline).format(
-          "ddd MMM D HH:mm"
-        )
-        setDeadline(deadlineDay)
-        setLive(dayjs() > dayjs(x[0].matchday.deadline))
         setMatches(x)
       })
       client.fetch(scoresQuery).then(x => setScores(x))
@@ -132,25 +128,38 @@ const LivescorePage = () => {
       {loading && <Loading />}
       {init && (
         <Fragment>
-          <div sx={{ my: 3 }}>
-            <Heading main={matches[0].matchday.title} sub1={deadline} />
-          </div>
-          {matches.map((x, i) => (
-            <LiveMatch key={i} match={x} />
-          ))}
-          <div sx={{ my: 4 }}>
+          <Container>
+            <Heading
+              main={matches[0].matchday.title}
+              sub1={data.matchday.deadline}
+              columns="50% 50%"
+            />
+
+            <Container>
+              {matches.map((x, i) => (
+                <LiveMatch key={i} match={x} />
+              ))}
+            </Container>
+          </Container>
+          <Container>
             <Heading
               main="Highscore"
               sub1="Goals"
               sub2="Assists"
               sub3="Points"
+              columns="55% 15% 15% 15%"
             />
             {scores.map((x, i) => (
               <Score key={i} player={x} />
             ))}
-          </div>
-          <div sx={{ my: 4 }}>
-            <Heading main="Leaderboard" sub3="Points" />
+          </Container>
+          <Container>
+            <Heading
+              main="Leaderboard"
+              sub1={`${tickets[0].count} participants`}
+              sub3="Points"
+              columns="50% 25% 25%"
+            />
             {tickets.map((x, i) => (
               <Ticket
                 key={i}
@@ -159,7 +168,8 @@ const LivescorePage = () => {
                 disabled={!live}
               />
             ))}
-          </div>
+          </Container>
+
           <Footer />
         </Fragment>
       )}
@@ -168,3 +178,12 @@ const LivescorePage = () => {
 }
 
 export default LivescorePage
+
+export const query = graphql`
+  query LivescoreQuery {
+    matchday: sanityMatchday(status: { eq: "current" }) {
+      deadline(formatString: "dddd MMM Do")
+      start: deadline
+    }
+  }
+`

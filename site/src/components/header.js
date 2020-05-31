@@ -28,7 +28,7 @@ const Header = () => {
           textDecoration: "none",
           alignSelf: "center",
           color: "text",
-          border: "solid 1px red",
+          border: "solid 3px red",
           borderBottom: "none",
           borderRadius: 8,
           borderBottomLeftRadius: 0,
@@ -38,7 +38,7 @@ const Header = () => {
           pb: 0
         }}
       >
-        <Styled.h1 sx={{ my: 0, textAlign: "center", fontSize: [3, 5] }}>
+        <Styled.h1 sx={{ my: 0, textAlign: "center", fontSize: [4, 5] }}>
           SILLY FOOTBALL
         </Styled.h1>
       </Link>
@@ -53,7 +53,7 @@ const Header = () => {
             textDecoration: "none",
             color: "text",
 
-            alignSelf: "center",
+            alignSelf: "end",
             justifySelf: "end",
 
             "&.active": {
@@ -73,11 +73,9 @@ const Header = () => {
             sx={{
               textDecoration: "none",
               color: "text",
-              pt: 1,
-              mr: [1, 0],
+              height: "20px",
+              justifySelf: ["center", "end"],
               alignSelf: "end",
-              justifySelf: "end",
-
               "&.active": {
                 color: "red"
               }

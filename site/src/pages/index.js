@@ -7,14 +7,18 @@ import Footer from "../components/footer"
 import SEO from "../components/seo"
 import { FaStar } from "react-icons/fa"
 import Container from "../components/atoms/container"
-import { useLoadingState, useLoadingDispatch } from "../state"
+import { useLoadingState, useLoadingDispatch, useUserState } from "../state"
 import Centered from "../components/atoms/centered"
 import { useEffect, Fragment } from "react"
+import { FaHome } from "react-icons/fa"
+import { useAuth } from "react-use-auth"
 import AltButton from "../components/atoms/altButton"
 
 const IndexPage = () => {
   const loading = useLoadingState()
   const loadingDispatch = useLoadingDispatch()
+  const userState = useUserState()
+  const { login } = useAuth()
 
   useEffect(() => {
     loadingDispatch({ type: "set", loading: false })
@@ -30,16 +34,20 @@ const IndexPage = () => {
       ) : (
         <Fragment>
           <Container />
-          <Container columns="70% 30%">
-            {/* <div sx={{ alignSelf: "center", justifySelf: "center" }}> */}
-            {/* </div> */}
-
-            <Styled.h1 sx={{ alignSelf: "center", justifySelf: "start" }}>
+          <Container columns={["72% 28%", "60% 40%"]}>
+            <Styled.h1
+              sx={{
+                alignSelf: "center",
+                justifySelf: "start",
+                fontSize: [5, 6]
+              }}
+            >
               FANTASY FOOTBALL
             </Styled.h1>
             <Link sx={{ justifySelf: "start" }} to="/fantasy/">
               <AltButton
                 dispatch={() => loadingDispatch({ type: "set", loading: true })}
+                fontSize={[5, 6]}
               >
                 PLAY
               </AltButton>
@@ -74,15 +82,20 @@ const IndexPage = () => {
             <Link
               sx={{
                 alignSelf: "center",
-                justifySelf: ["center", "start"],
+                justifySelf: ["center", "center"],
                 mx: [4, 0]
               }}
-              to="/fantasy/"
+              to={userState._id ? "/account/" : "/"}
             >
               <AltButton
-                dispatch={() => loadingDispatch({ type: "set", loading: true })}
+                dispatch={
+                  userState._id
+                    ? () => loadingDispatch({ type: "set", loading: true })
+                    : () => login()
+                }
+                fontSize={[5, 6]}
               >
-                PLAY
+                {!userState._id ? <FaHome size={25} /> : "JOIN NOW"}
               </AltButton>
             </Link>
           </Container>

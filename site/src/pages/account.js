@@ -7,7 +7,7 @@ import Footer from "../components/footer"
 import Matchday from "../components/molecules/matchday"
 import Loading from "../components/molecules/loading"
 import User from "../components/molecules/user"
-import UsersHeading from "../components/molecules/usersHeading"
+import Heading from "../components/molecules/heading"
 import Container from "../components/atoms/container"
 import {
   // useUserDispatch,
@@ -198,25 +198,33 @@ const AccountPage = props => {
       {loading && <Loading />}
 
       {init && (
-        <Matchday
-          matchday={current}
-          status="Next"
-          deadline={props.data.current.deadline}
-        />
+        <Container>
+          <Matchday
+            matchday={current}
+            status="Next"
+            deadline={props.data.current.deadline}
+          />
+        </Container>
       )}
       {init && current !== "play" && previous !== "no hits" && (
-        <Matchday
-          matchday={previous}
-          status="Previous"
-          deadline={props.data.previous.deadline}
-        />
+        <Container>
+          <Matchday
+            matchday={previous}
+            status="Previous"
+            deadline={props.data.previous.deadline}
+          />
+        </Container>
       )}
       {init && current !== "play" && (
         <Container>
-          <Styled.h1 sx={{ textAlign: "right" }}>
-            Personal Leaderboard
-          </Styled.h1>
-          <UsersHeading />
+          <Styled.h1 sx={{}}>Personal Leaderboard</Styled.h1>
+          <Heading
+            sub1="Wins"
+            sub2="High"
+            sub3="Average"
+            columns="40% 22% 22% 16%"
+            justify="center"
+          />
           {current
             .sort((a, b) => (a.user.average < b.user.average ? 1 : -1))
             .map((x, i) => (
@@ -226,8 +234,14 @@ const AccountPage = props => {
       )}
       {init && (
         <Container>
-          <Styled.h1 sx={{ textAlign: "right" }}>Top 20</Styled.h1>
-          <UsersHeading />
+          <Styled.h1 sx={{}}>Top 20</Styled.h1>
+          <Heading
+            sub1="Wins"
+            sub2="High"
+            sub3="Average"
+            columns="40% 22% 22% 16%"
+            justify="center"
+          />
           {props.data.top50.edges.map(({ node }, i) => (
             <User user={node} key={i} />
           ))}

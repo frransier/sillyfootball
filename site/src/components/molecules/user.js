@@ -39,7 +39,7 @@ const User = ({ user }) => {
         sx={{
           textAlign: "right",
           alignSelf: "center",
-          justifySelf: "end",
+          justifySelf: "center",
           fontWeight: "heading",
           mx: 1
         }}

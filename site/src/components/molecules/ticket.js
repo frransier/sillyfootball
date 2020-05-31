@@ -46,8 +46,9 @@ const Ticket = ({ ticket, disabled, winner }) => {
             sx={{
               textAlign: "right",
               alignSelf: "center",
-              justifySelf: "end"
-              // fontWeight: "heading"
+              justifySelf: "end",
+              mx: -2,
+              fontWeight: "heading"
             }}
           >
             {show ? "Goals" : ""}
@@ -56,8 +57,9 @@ const Ticket = ({ ticket, disabled, winner }) => {
             sx={{
               textAlign: "right",
               alignSelf: "center",
-              justifySelf: "end"
-              // fontWeight: "heading"
+              justifySelf: "end",
+              mx: -2,
+              fontWeight: "heading"
             }}
           >
             {show ? "Assists" : ""}

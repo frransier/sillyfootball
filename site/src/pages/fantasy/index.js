@@ -6,7 +6,7 @@ import Footer from "../../components/footer"
 import SEO from "../../components/seo"
 import Matches from "../../components/molecules/matches"
 import Match from "../../components/molecules/match"
-import PlayersHeading from "../../components/molecules/playersHeading"
+import Heading from "../../components/molecules/heading"
 import Board from "../../components/molecules/board"
 import Slot from "../../components/molecules/slot"
 import Player from "../../components/molecules/player"
@@ -113,13 +113,6 @@ const FantasyPage = ({ data }) => {
       {loading ? (
         <Loading />
       ) : (
-        // <motion.div
-        //   initial={{ opacity: 1 }}
-        //   animate={{ opacity: 1 }}
-        //   transition={{
-        //     duration: 0.5
-        //   }}
-        // >
         <Fragment>
           <Container>
             <Board>
@@ -152,7 +145,7 @@ const FantasyPage = ({ data }) => {
           <Container>
             <Centered>
               {slots.length === 3 && (
-                <AltButton dispatch={() => post()} fontSize={7}>
+                <AltButton dispatch={() => post()} fontSize={6}>
                   PLAY
                 </AltButton>
               )}
@@ -165,10 +158,12 @@ const FantasyPage = ({ data }) => {
             }}
           >
             <div sx={{ display: slots.length < 3 ? "" : "none" }}>
-              <PlayersHeading
+              <Heading
                 main="Pick 3 Players"
                 sub1="Goals"
                 sub2="Assists"
+                columns="72% 14% 14%"
+                justify="center"
               />
               {players.map(({ node }, i) => {
                 return (

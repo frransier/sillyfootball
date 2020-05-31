@@ -10,7 +10,7 @@ const headers = {
   "X-RapidAPI-Key": "",
   "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
 };
-// set current matchdays's status to "last"
+
 const currentMatchday = `*[_type == "matchday" && status == "current"][0]{_id, index}`;
 const lastMatchday = `*[_type == "matchday" && status == "last"][0]{_id, index}`;
 const nextMatchday = `*[_type == "matchday" && status == "next"][0]{_id}`;

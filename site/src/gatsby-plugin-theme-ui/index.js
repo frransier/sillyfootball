@@ -63,7 +63,7 @@ export default {
     },
     h1: {
       variant: "textStyles.display",
-      fontSize: [5, 6]
+      fontSize: [4, 5]
     },
     h2: {
       variant: "textStyles.heading",
