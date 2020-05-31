@@ -10,7 +10,7 @@ import { useLoadingState, useLoadingDispatch, useUserState } from "../state"
 import { useEffect, Fragment } from "react"
 import { FaHome } from "react-icons/fa"
 import { useAuth } from "react-use-auth"
-import AltButton from "../components/atoms/altButton"
+import Button from "../components/atoms/button"
 import Loading from "../components/molecules/loading"
 
 const IndexPage = () => {
@@ -42,12 +42,12 @@ const IndexPage = () => {
               FANTASY FOOTBALL
             </Styled.h1>
             <Link sx={{ justifySelf: "start" }} to="/fantasy/">
-              <AltButton
+              <Button
                 dispatch={() => loadingDispatch({ type: "set", loading: true })}
                 fontSize={[5, 6]}
               >
                 PLAY
-              </AltButton>
+              </Button>
             </Link>
           </Container>
 
@@ -84,7 +84,7 @@ const IndexPage = () => {
               }}
               to={userState && userState._id ? "/account/" : "/"}
             >
-              <AltButton
+              <Button
                 dispatch={
                   userState && userState._id
                     ? () => loadingDispatch({ type: "set", loading: true })
@@ -93,7 +93,7 @@ const IndexPage = () => {
                 fontSize={[5, 6]}
               >
                 {userState && userState._id ? <FaHome size={25} /> : "JOIN NOW"}
-              </AltButton>
+              </Button>
             </Link>
           </Container>
           <Footer />

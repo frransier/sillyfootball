@@ -11,7 +11,7 @@ const Footer = () => {
   const userState = useUserState()
   const { login } = useAuth()
   return (
-    <Container columns={["50% 50%", "37% 63%"]}>
+    <Container mb={5} columns={["50% 50%", "37% 63%"]}>
       <Link
         to="/"
         sx={{

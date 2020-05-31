@@ -15,6 +15,7 @@ import {
   useLoadingState,
   useLoadingDispatch
 } from "../state"
+import { FaTrophy } from "react-icons/fa"
 // import { useAuth } from "react-use-auth"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
@@ -219,7 +220,7 @@ const AccountPage = props => {
         <Container>
           <Styled.h1 sx={{}}>Personal Leaderboard</Styled.h1>
           <Heading
-            sub1="Wins"
+            sub1={<FaTrophy sx={{ mx: 2, color: "red" }} size={15} />}
             sub2="High"
             sub3="Average"
             columns="40% 21% 21% 18%"
@@ -236,7 +237,7 @@ const AccountPage = props => {
         <Container>
           <Styled.h1 sx={{}}>Top 20</Styled.h1>
           <Heading
-            sub1="Wins"
+            sub1={<FaTrophy sx={{ mx: 2, color: "red" }} size={15} />}
             sub2="High"
             sub3="Average"
             columns="40% 21% 21% 18%"

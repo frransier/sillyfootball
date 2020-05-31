@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { navigate } from "gatsby"
-import AltButton from "../atoms/altButton"
+import Button from "../atoms/button"
 import Container from "../atoms/container"
 import Ticket from "./ticket"
 import { useLoadingDispatch } from "../../state"
@@ -31,9 +31,7 @@ const Matchday = ({ matchday, status, deadline }) => {
           {deadline}
         </Styled.h6>
       </div>
-      {matchday === "play" && (
-        <AltButton dispatch={() => Play()}>PLAY NOW</AltButton>
-      )}
+      {matchday === "play" && <Button dispatch={() => Play()}>PLAY NOW</Button>}
       {matchday !== "play" &&
         matchday !== "no hits" &&
         matchday.map((x, i) => <Ticket key={i} ticket={x} index={i} />)}

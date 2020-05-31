@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 
-const Button = ({ children, dispatch }) => {
+const Button = ({ children, dispatch, fontSize }) => {
   return (
     <button
       sx={{
@@ -10,7 +10,6 @@ const Button = ({ children, dispatch }) => {
         outline: "none",
         bg: "red",
         color: "white",
-        border: "solid 6px white",
         borderRadius: 6,
         // borderBottom: "solid 4px",
         // borderBottomColor: "red",
@@ -21,9 +20,7 @@ const Button = ({ children, dispatch }) => {
       }}
       onClick={dispatch}
     >
-      <Styled.h2 sx={{ my: 1, textShadow: "1.5px 1.5px 1.5px black" }}>
-        {children}
-      </Styled.h2>
+      <Styled.h1 sx={{ my: 1, fontSize: fontSize }}>{children}</Styled.h1>
     </button>
   )
 }

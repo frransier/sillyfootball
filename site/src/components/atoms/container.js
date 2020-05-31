@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-const Container = ({ children, columns, rows, mt }) => {
+const Container = ({ children, columns, rows, mt, mb }) => {
   return (
     <div
       sx={{
@@ -9,7 +9,8 @@ const Container = ({ children, columns, rows, mt }) => {
         gridTemplateColumns: columns,
         gridTemplateRows: rows,
         mt: mt || 4,
-        mx: 2
+        mb: mb || 0,
+        mx: 1
       }}
     >
       {children}

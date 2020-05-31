@@ -17,7 +17,7 @@ import axios from "axios"
 import { useUserState, useLoadingState, useLoadingDispatch } from "../../state"
 import Container from "../../components/atoms/container"
 import Centered from "../../components/atoms/centered"
-import AltButton from "../../components/atoms/altButton"
+import Button from "../../components/atoms/button"
 
 const FantasyPage = ({ data }) => {
   const [players, setPlayers] = useState(data.players.edges.slice(0, 30))
@@ -145,9 +145,9 @@ const FantasyPage = ({ data }) => {
           <Container>
             <Centered>
               {slots.length === 3 && (
-                <AltButton dispatch={() => post()} fontSize={6}>
+                <Button dispatch={() => post()} fontSize={6}>
                   PLAY
-                </AltButton>
+                </Button>
               )}
             </Centered>
           </Container>
