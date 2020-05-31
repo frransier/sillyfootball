@@ -85,17 +85,17 @@ const IndexPage = () => {
                 justifySelf: ["center", "center"],
                 mx: [4, 0]
               }}
-              to={userState._id ? "/account/" : "/"}
+              to={userState && userState._id ? "/account/" : "/"}
             >
               <AltButton
                 dispatch={
-                  userState._id
+                  userState && userState._id
                     ? () => loadingDispatch({ type: "set", loading: true })
                     : () => login()
                 }
                 fontSize={[5, 6]}
               >
-                {!userState._id ? <FaHome size={25} /> : "JOIN NOW"}
+                {userState && userState._id ? <FaHome size={25} /> : "JOIN NOW"}
               </AltButton>
             </Link>
           </Container>
