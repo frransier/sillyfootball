@@ -2,6 +2,7 @@
 import { jsx, Styled } from "theme-ui"
 import { useState, useEffect, Fragment } from "react"
 import Layout from "../../components/layout"
+import Footer from "../../components/footer"
 import SEO from "../../components/seo"
 import Matches from "../../components/molecules/matches"
 import Match from "../../components/molecules/match"
@@ -151,7 +152,9 @@ const FantasyPage = ({ data }) => {
           <Container>
             <Centered>
               {slots.length === 3 && (
-                <AltButton dispatch={() => post()}>PLAY</AltButton>
+                <AltButton dispatch={() => post()} fontSize={7}>
+                  PLAY
+                </AltButton>
               )}
             </Centered>
           </Container>
@@ -185,6 +188,7 @@ const FantasyPage = ({ data }) => {
           </div>
         </Fragment>
       )}
+      <Footer />
     </Layout>
   )
 }

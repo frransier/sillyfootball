@@ -3,6 +3,7 @@ import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
 import ReactLoading from "react-loading"
 import Layout from "../components/layout"
+import Footer from "../components/footer"
 import SEO from "../components/seo"
 import { FaStar } from "react-icons/fa"
 import Container from "../components/atoms/container"
@@ -73,7 +74,7 @@ const IndexPage = () => {
             <Link
               sx={{
                 alignSelf: "center",
-                justifySelf: ["center", "center"],
+                justifySelf: ["center", "start"],
                 mx: [4, 0]
               }}
               to="/fantasy/"
@@ -85,6 +86,7 @@ const IndexPage = () => {
               </AltButton>
             </Link>
           </Container>
+          <Footer />
         </Fragment>
       )}
     </Layout>

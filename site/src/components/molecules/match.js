@@ -10,7 +10,7 @@ const Match = ({ match, dispatch, selected, disabled }) => {
         height: 45,
         width: "100%",
         cursor: "pointer",
-        my: 2,
+        my: 1,
         py: 1,
         px: 2,
         appearance: "none",

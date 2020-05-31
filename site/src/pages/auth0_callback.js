@@ -85,64 +85,6 @@ const AuthPage = () => {
           <button onClick={() => register()}>Spara</button>
         </div>
       )}
-      {/* {show ? (
-        <div sx={{ display: "grid" }}>
-          <div sx={{ mx: "auto" }}>
-            <Styled.h1
-              sx={{
-                textAlign: "center",
-              }}
-            >
-              Välj ett användarnamn
-            </Styled.h1>
-            <div sx={{ mx: "auto", width: "70%" }}>
-              <Styled.p sx={{ textAlign: "center" }}>Minst 4 tecken.</Styled.p>
-            </div>
-          </div>
-
-          <div sx={{ width: "50%", mx: "auto", fontSize: 5 }}>
-            <Input onChange={e => setName(e.target.value)} />
-          </div>
-          {loading ? (
-            <div sx={{ mx: "auto", my: 6 }}>
-              <Spinner size={60} />
-            </div>
-          ) : (
-            <div sx={{ mx: " auto" }}>
-              <button
-                sx={{
-                  fontSize: 5,
-                  my: 7,
-                  px: 6,
-                  py: 4,
-                  bg: "primary",
-                  opacity: name.length > 3 ? 1 : 0.5,
-                  color: "background",
-                  borderRadius: 8,
-                  fontFamily: "heading",
-                  fontWeight: "heading",
-                }}
-                onClick={() =>
-                  register(
-                    user.sub,
-                    name,
-                    user.given_name,
-                    user.family_name,
-                    user.email
-                  )
-                }
-                disabled={name.length > 3 ? false : true}
-              >
-                Slutför registrering
-              </button>
-            </div>
-          )}
-        </div>
-      ) : (
-        <div sx={{ textAlign: "center", my: 11 }}>
-          <Spinner size={60} />
-        </div>
-      )} */}
     </Layout>
   )
 }

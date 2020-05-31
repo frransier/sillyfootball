@@ -2,6 +2,7 @@
 import { jsx } from "theme-ui"
 import { useState, useEffect } from "react"
 import Layout from "../components/layout"
+import Footer from "../components/footer"
 import SEO from "../components/seo"
 import LiveMatch from "../components/molecules/liveMatch"
 import Score from "../components/molecules/score"
@@ -159,6 +160,7 @@ const LivescorePage = () => {
               />
             ))}
           </div>
+          <Footer />
         </Fragment>
       )}
     </Layout>

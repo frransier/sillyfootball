@@ -3,6 +3,7 @@ import { jsx, Styled } from "theme-ui"
 import { useState, useEffect } from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Footer from "../components/footer"
 import Matchday from "../components/molecules/matchday"
 import Loading from "../components/molecules/loading"
 import User from "../components/molecules/user"
@@ -87,7 +88,7 @@ const AccountPage = props => {
                   name,
                   average,
                   high,
-                  wins,          
+                  wins,
                 },
                 scores[]->{
                   _id,
@@ -122,7 +123,7 @@ const AccountPage = props => {
             average,
             high,
             wins,
-            friends[]->          
+            friends[]->
           },
           scores[]->{
             _id,
@@ -232,6 +233,7 @@ const AccountPage = props => {
           ))}
         </Container>
       )}
+      {init && <Footer />}
     </Layout>
   )
 }

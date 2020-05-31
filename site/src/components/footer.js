@@ -25,15 +25,11 @@ const Footer = () => {
           color: "lightgrey",
 
           alignSelf: "center",
-          justifySelf: "end",
-
-          "&.active": {
-            color: "red"
-          }
+          justifySelf: "end"
         }}
         onClick={() => loadingDispatch({ type: "set", loading: true })}
       >
-        <Styled.h1 sx={{ mx: 1, my: 0 }}>FANTASY</Styled.h1>
+        <Styled.h1 sx={{ mx: 1, my: 0 }}>SILLY FOOTBALL</Styled.h1>
       </Link>
 
       <div sx={{ mx: "auto" }} />
@@ -105,7 +101,7 @@ const Footer = () => {
             color: "red"
           }
         }}
-        // onClick={() => loadingDispatch({ type: "set", loading: true })}
+        onClick={() => loadingDispatch({ type: "set", loading: true })}
       >
         <FaHome sx={{ ml: 3 }} size={22} />
       </Link>

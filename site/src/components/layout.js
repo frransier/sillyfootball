@@ -3,7 +3,6 @@ import { jsx } from "theme-ui"
 import PropTypes from "prop-types"
 
 import Header from "./header"
-import Footer from "./footer"
 
 const Layout = ({ children }) => {
   return (
@@ -16,7 +15,6 @@ const Layout = ({ children }) => {
       <main sx={{ mx: "auto", maxWidth: 700, px: 2, py: 3 }}>
         <Header />
         {children}
-        <Footer />
       </main>
     </div>
   )

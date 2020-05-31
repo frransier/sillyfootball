@@ -17,7 +17,7 @@ const Header = () => {
     <header
       sx={{
         display: "grid",
-        gridTemplateColumns: ["60% 40%", "37% 63%"]
+        gridTemplateColumns: ["50% 50%", "37% 63%"]
 
         // boxShadow: "0px 2px 0px lightgrey"
       }}
@@ -28,7 +28,7 @@ const Header = () => {
           textDecoration: "none",
           alignSelf: "center",
           color: "text",
-          border: "solid 3px red",
+          border: "solid 1px red",
           borderBottom: "none",
           borderRadius: 8,
           borderBottomLeftRadius: 0,
@@ -38,7 +38,7 @@ const Header = () => {
           pb: 0
         }}
       >
-        <Styled.h1 sx={{ my: 0, textAlign: "center" }}>
+        <Styled.h1 sx={{ my: 0, textAlign: "center", fontSize: [3, 5] }}>
           SILLY FOOTBALL
         </Styled.h1>
       </Link>
@@ -53,7 +53,7 @@ const Header = () => {
             textDecoration: "none",
             color: "text",
 
-            alignSelf: "end",
+            alignSelf: "center",
             justifySelf: "end",
 
             "&.active": {
@@ -62,7 +62,9 @@ const Header = () => {
           }}
           onClick={() => loadingDispatch({ type: "set", loading: true })}
         >
-          <Styled.h6 sx={{ my: 2, mx: 0 }}>Livescore</Styled.h6>
+          <Styled.h2 sx={{ my: 0, mx: 0, fontSize: [2, 3] }}>
+            Livescore
+          </Styled.h2>
         </Link>
         {userState && (
           <Link
@@ -71,9 +73,10 @@ const Header = () => {
             sx={{
               textDecoration: "none",
               color: "text",
+              pt: 1,
               mr: [1, 0],
               alignSelf: "end",
-              justifySelf: ["end", "end"],
+              justifySelf: "end",
 
               "&.active": {
                 color: "red"

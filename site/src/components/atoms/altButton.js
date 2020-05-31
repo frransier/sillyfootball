@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 
-const AltButton = ({ children, dispatch }) => {
+const AltButton = ({ children, dispatch, fontSize }) => {
   return (
     <button
       sx={{
@@ -10,7 +10,7 @@ const AltButton = ({ children, dispatch }) => {
         outline: "none",
         bg: "white",
         color: "black",
-        border: "solid 2px black",
+        border: "solid 1px black",
         borderRadius: 6,
         // borderBottom: "solid 4px",
         // borderBottomColor: "red",
@@ -21,7 +21,7 @@ const AltButton = ({ children, dispatch }) => {
       }}
       onClick={dispatch}
     >
-      <Styled.h1 sx={{ my: 1 }}>{children}</Styled.h1>
+      <Styled.h1 sx={{ my: 1, fontSize: fontSize }}>{children}</Styled.h1>
     </button>
   )
 }

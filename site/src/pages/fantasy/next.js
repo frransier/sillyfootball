@@ -3,6 +3,7 @@ import { jsx, Styled } from "theme-ui"
 import { useState } from "react"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
+import Footer from "../../components/footer"
 import Matches from "../../components/molecules/matches"
 import Match from "../../components/molecules/match"
 import PlayersHeading from "../../components/molecules/playersHeading"
@@ -188,6 +189,7 @@ const NextFantasyPage = ({ data }) => {
           )
         })}
       </div>
+      <Footer />
     </Layout>
   )
 }
