@@ -9,14 +9,15 @@ const Board = ({ children }) => (
       gridTemplateColumns: "33% 34% 33%",
       alignItems: "center",
       justifyItems: "center",
-      border: "solid 1px lightgrey",
-      borderBottom: "none",
+      // border: "solid 1px lightgrey",
+      // borderBottom: "none",
+      // bg: "lightgrey",
       borderRadius: 5,
       borderBottomLeftRadius: 0,
       borderBottomRightRadius: 0,
-      borderTopRightRadius: 0
+      borderTopRightRadius: 0,
       // pt: 2
-      // boxShadow: "0px 2px 2px darkgrey"
+      boxShadow: "0px 2px 5px darkgrey"
     }}
   >
     {children}

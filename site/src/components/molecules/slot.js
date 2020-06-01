@@ -15,11 +15,11 @@ const Slot = ({ player, dispatch }) => {
         outline: "none",
         bg: "background",
         border: "none",
-        borderRadius: 5,
+        // borderRadius: 5,
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: 0,
-        borderBottom: player ? "solid 3px" : "none",
-        borderBottomColor: "red"
+        borderTop: player ? "solid 3px" : "none",
+        borderTopColor: "red"
       }}
       onClick={dispatch}
     >

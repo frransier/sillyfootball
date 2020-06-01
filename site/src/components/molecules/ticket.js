@@ -25,7 +25,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
           borderTopRightRadius: 2,
           borderTopLeftRadius: 5,
           border: disabled ? "none" : show ? "solid 1px" : "none",
-          borderBottom: disabled ? "none" : show ? "solid 3px" : "solid 1px",
+          borderBottom: "solid 1px",
           borderColor: winner ? "red" : "darkgrey"
         }}
         disabled={disabled}
@@ -35,7 +35,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
           <Styled.p
             sx={{
               textAlign: "left",
-              fontWeight: show ? 700 : 500,
+              fontWeight: show ? 700 : 400,
               m: 1,
               fontSize: 2
             }}
@@ -49,8 +49,8 @@ const Ticket = ({ ticket, disabled, winner }) => {
               textAlign: "right",
               alignSelf: "center",
               justifySelf: "center",
-              mx: -2,
-              fontWeight: "heading"
+              mx: -2
+              // fontWeight: "heading"
             }}
           >
             {show ? "Goals" : ""}
@@ -60,8 +60,8 @@ const Ticket = ({ ticket, disabled, winner }) => {
               textAlign: "right",
               alignSelf: "center",
               justifySelf: "center",
-              mx: -2,
-              fontWeight: "heading"
+              mx: -2
+              // fontWeight: "heading"
             }}
           >
             {show ? "Assists" : ""}

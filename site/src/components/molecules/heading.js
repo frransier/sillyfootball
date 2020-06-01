@@ -9,7 +9,7 @@ const Heading = ({ main, sub1, sub2, sub3, columns, justify }) => {
         gridTemplateColumns: columns
       }}
     >
-      <Styled.h1 sx={{ mb: 0, mt: 2 }}>{main}</Styled.h1>
+      <Styled.h2 sx={{ mb: 0, mt: 2 }}>{main}</Styled.h2>
 
       {sub1 && (
         <Styled.p

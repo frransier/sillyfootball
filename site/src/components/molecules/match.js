@@ -22,9 +22,9 @@ const Match = ({ match, dispatch, selected, disabled }) => {
         borderTopRightRadius: 2,
         borderTopLeftRadius: 5,
         border: disabled ? "none" : selected ? "solid 1px" : "none",
-        borderBottom: disabled ? "none" : selected ? "solid 3px" : "solid 1px",
-        borderColor: selected ? "red" : "lightgrey"
-        // boxShadow: "0px 2px 2px darkgrey"
+        // borderBottom: disabled ? "none" : selected ? "solid 3px" : "solid 1px",
+        borderColor: selected ? "red" : "lightgrey",
+        boxShadow: "0px 1px 4px darkgrey"
       }}
       disabled={disabled}
       onClick={dispatch}
@@ -32,15 +32,13 @@ const Match = ({ match, dispatch, selected, disabled }) => {
       <div sx={{ textAlign: "left" }}>
         <Styled.p
           sx={{
-            fontFamily: "heading",
-            fontWeight: selected ? "heading" : "body"
+            fontFamily: "heading"
+            // fontWeight: selected ? "heading" : "body"
           }}
         >
           {match.home.name || match.home.fullName}
         </Styled.p>
-        <Styled.p sx={{ fontWeight: selected ? "heading" : "body" }}>
-          {match.away.name || match.away.fullName}
-        </Styled.p>
+        <Styled.p sx={{}}>{match.away.name || match.away.fullName}</Styled.p>
       </div>
       <div sx={{ mx: "auto" }} />
       <div sx={{ textAlign: "right" }}>

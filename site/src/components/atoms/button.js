@@ -11,10 +11,10 @@ const Button = ({ children, dispatch, fontSize }) => {
         bg: "red",
         color: "white",
         borderRadius: 6,
-        border: "solid 2px red",
+        border: "solid 0.5px black",
         // borderBottom: "solid 4px",
         // borderBottomColor: "red",
-        boxShadow: "4px 4px 4px darkgrey",
+        boxShadow: "2px 2px 7px darkgrey",
         py: 0,
         px: 3,
         my: 3
@@ -22,7 +22,7 @@ const Button = ({ children, dispatch, fontSize }) => {
       onClick={dispatch}
     >
       <Styled.h1
-        sx={{ my: 1, fontSize: fontSize, textShadow: "2px 2px 0px  black" }}
+        sx={{ my: 1, fontSize: fontSize, textShadow: "1px 1px 4px  black" }}
       >
         {children}
       </Styled.h1>

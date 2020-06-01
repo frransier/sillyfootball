@@ -218,7 +218,7 @@ const AccountPage = props => {
       )}
       {init && current !== "play" && (
         <Container>
-          <Styled.h1 sx={{}}>Personal Leaderboard</Styled.h1>
+          <Styled.h2 sx={{}}>Personal Leaderboard</Styled.h2>
           <Heading
             sub1={<FaTrophy sx={{ mx: 2, color: "red" }} size={15} />}
             sub2="High"
@@ -235,7 +235,7 @@ const AccountPage = props => {
       )}
       {init && (
         <Container>
-          <Styled.h1 sx={{}}>Top 20</Styled.h1>
+          <Styled.h2 sx={{}}>Top 20</Styled.h2>
           <Heading
             sub1={<FaTrophy sx={{ mx: 2, color: "red" }} size={15} />}
             sub2="High"

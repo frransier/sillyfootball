@@ -18,16 +18,16 @@ const Header = () => {
       sx={{
         display: "grid",
         gridTemplateColumns: ["59% 41%", "37% 63%"],
-        bg: "red",
-        border: "solid 3px red",
-        borderBottom: "none",
+        bg: "bg",
+        // border: "solid 3px lightgrey",
+        // borderBottom: "solid 1px lightgrey",
         borderRadius: 8,
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: 0,
         borderTopRightRadius: 0,
         px: 1,
         py: 2,
-        boxShadow: "4px 4px 4px darkgrey"
+        boxShadow: "1px 1px 7px darkgrey"
 
         // boxShadow: "0px 2px 0px lightgrey"
       }}
@@ -53,10 +53,10 @@ const Header = () => {
         <Styled.h1
           sx={{
             my: 0,
-            color: "white",
+            color: "text",
             textAlign: "center",
-            fontSize: [5],
-            textShadow: "2px 2px 0px  black"
+            fontSize: [5]
+            // textShadow: "2px 2px 0px  black"
           }}
         >
           SILLY FOOTBALL
@@ -71,11 +71,11 @@ const Header = () => {
           activeClassName="active"
           sx={{
             textDecoration: "none",
-            color: "white",
+            color: "text",
             pb: 1,
             alignSelf: "end",
-            justifySelf: "end",
-            textShadow: "1px 1px 0px  black"
+            justifySelf: "end"
+            // textShadow: "1px 1px 0px  black"
 
             // "&.active": {
             //   color: "red"
@@ -93,7 +93,7 @@ const Header = () => {
             activeClassName="active"
             sx={{
               textDecoration: "none",
-              color: "white",
+              color: "text",
               height: "24px",
 
               justifySelf: ["center", "center"],
