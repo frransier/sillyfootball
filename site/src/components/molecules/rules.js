@@ -11,21 +11,21 @@ const Rules = ({ deadline }) => {
           alignSelf: "end",
           justifySelf: "start",
           textTransform: "capitalize",
-          fontWeight: "display",
-          fontSize: 2
+          fontWeight: "display"
         }}
       >
-        Rules
+        Deadline {deadline}
       </Styled.p>
       <Styled.p
         sx={{
           alignSelf: "end",
           justifySelf: "start",
           textTransform: "capitalize",
-          fontWeight: "display"
+          fontWeight: "display",
+          fontSize: 2
         }}
       >
-        Deadline {deadline}
+        Rules
       </Styled.p>
     </div>
   )

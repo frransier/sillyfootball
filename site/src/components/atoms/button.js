@@ -21,11 +21,7 @@ const Button = ({ children, dispatch, fontSize }) => {
       }}
       onClick={dispatch}
     >
-      <Styled.h1
-        sx={{ my: 1, fontSize: fontSize, textShadow: "2px 2px 9px  black" }}
-      >
-        {children}
-      </Styled.h1>
+      <Styled.h1 sx={{ my: 1, fontSize: fontSize }}>{children}</Styled.h1>
     </button>
   )
 }

@@ -26,8 +26,8 @@ const Header = () => {
         borderBottomRightRadius: 0,
         borderTopRightRadius: 0,
         px: 1,
-        py: 2,
-        boxShadow: "1px 1px 7px darkgrey"
+        py: 2
+        // boxShadow: "1px 1px 7px darkgrey"
 
         // boxShadow: "0px 2px 0px lightgrey"
       }}
