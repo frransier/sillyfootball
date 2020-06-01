@@ -40,9 +40,13 @@ const LiveMatch = ({ match, disabled, selected }) => {
           }}
         >
           <Styled.p sx={{}}>
-            {match.elapsed ? `${match.elapsed}'` : day}
+            {match.status === "ft"
+              ? match.status
+              : match.elapsed
+              ? `${match.elapsed}'`
+              : day}
           </Styled.p>
-          <Styled.p sx={{ textAlign: "right", mr: 1, ml: 2 }}>
+          <Styled.p sx={{ textAlign: "right" }}>
             {match.home.name || match.home.fullName}
           </Styled.p>
           <Styled.p sx={{}}>
@@ -50,7 +54,7 @@ const LiveMatch = ({ match, disabled, selected }) => {
               ? `${match.homeGoals || 0} - ${match.awayGoals || 0}`
               : time}
           </Styled.p>
-          <Styled.p sx={{ textAlign: "left", mr: 2, ml: 1 }}>
+          <Styled.p sx={{ textAlign: "left" }}>
             {match.away.name || match.away.fullName}
           </Styled.p>
           <div
@@ -76,52 +80,49 @@ const LiveMatch = ({ match, disabled, selected }) => {
       {show && (
         <div
           sx={{
-            mx: 1,
             p: 1,
             display: "grid",
-            gridTemplateColumns: "44% 12% 44%",
+            // gridTemplateColumns: ["7% 37% 12% 37% 7%", "18% 28% 14% 28% 12%"],
+            gridTemplateColumns: ["7% 37% 12% 37% 7%", "18% 28% 14% 28% 12%"],
             width: "100%"
           }}
         >
-          <div sx={{ textAlign: "right", mr: 2, ml: 0 }}>
-            {match.events
-              .filter(x => x.team._id === match.home._id)
-              .map((x, i) => (
-                <div key={i} sx={{ my: 0 }}>
-                  <div sx={{ display: "flex" }}>
-                    <Styled.p sx={{ mr: 0 }}>{x.elapsed}' </Styled.p>
-                    <div sx={{ mx: "auto" }} />
-                    <Styled.p>{x.goal.fullName}</Styled.p>
-                  </div>
+          {match.events
+            .filter(x => x.team._id === match.home._id)
+            .map((x, i) => (
+              <Fragment>
+                <Styled.p sx={{ justifySelf: "center" }}>{x.elapsed}'</Styled.p>
+
+                <div sx={{ justifySelf: "end" }}>
+                  <Styled.p sx={{ fontWeight: "heading", textAlign: "right" }}>
+                    {x.goal.fullName}
+                  </Styled.p>
+
                   <Styled.p sx={{ color: "darkgrey" }}>
                     {x.assist.fullName}
                   </Styled.p>
                 </div>
-              ))}
-          </div>
+              </Fragment>
+            ))}
+
           <div sx={{}} />
-          <div
-            sx={{
-              textAlign: "left",
-              mr: 2,
-              ml: 0
-            }}
-          >
-            {match.events
-              .filter(x => x.team._id === match.away._id)
-              .map((x, i) => (
-                <div key={i} sx={{ my: 0 }}>
-                  <div sx={{ display: "flex" }}>
-                    <Styled.p>{x.goal.fullName}</Styled.p>
-                    <div sx={{ mx: "auto" }} />
-                    <Styled.p sx={{ mr: 0 }}>{x.elapsed}' </Styled.p>
-                  </div>
+
+          {match.events
+            .filter(x => x.team._id === match.home._id)
+            .map((x, i) => (
+              <Fragment>
+                <div sx={{ justifySelf: "start" }}>
+                  <Styled.p sx={{ fontWeight: "heading", textAlign: "left" }}>
+                    {x.goal.fullName}
+                  </Styled.p>
+
                   <Styled.p sx={{ color: "darkgrey" }}>
                     {x.assist.fullName}
                   </Styled.p>
                 </div>
-              ))}
-          </div>
+                <Styled.p sx={{ justifySelf: "center" }}>{x.elapsed}'</Styled.p>
+              </Fragment>
+            ))}
         </div>
       )}
     </Fragment>
