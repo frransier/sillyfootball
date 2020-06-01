@@ -44,7 +44,7 @@ const IndexPage = () => {
             <Link sx={{ justifySelf: "start" }} to="/fantasy/">
               <Button
                 dispatch={() => loadingDispatch({ type: "set", loading: true })}
-                fontSize={[5, 6]}
+                fontSize={[5]}
               >
                 PLAY
               </Button>
@@ -90,7 +90,7 @@ const IndexPage = () => {
                     ? () => loadingDispatch({ type: "set", loading: true })
                     : () => login()
                 }
-                fontSize={[5, 6]}
+                fontSize={[5]}
               >
                 {userState && userState._id ? "HOME" : "JOIN NOW"}
               </Button>

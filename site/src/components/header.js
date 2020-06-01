@@ -55,7 +55,7 @@ const Header = () => {
             my: 0,
             color: "white",
             textAlign: "center",
-            fontSize: [5, 6],
+            fontSize: [5],
             textShadow: "2px 2px 0px  black"
           }}
         >
