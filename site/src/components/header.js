@@ -25,7 +25,8 @@ const Header = () => {
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: 0,
         borderTopRightRadius: 0,
-        p: 1,
+        px: 1,
+        py: 2,
         boxShadow: "4px 4px 4px darkgrey"
 
         // boxShadow: "0px 2px 0px lightgrey"
@@ -73,7 +74,8 @@ const Header = () => {
             color: "white",
             pb: 1,
             alignSelf: "end",
-            justifySelf: "end"
+            justifySelf: "end",
+            textShadow: "2px 2px 0px  black"
 
             // "&.active": {
             //   color: "red"
@@ -111,11 +113,14 @@ const Header = () => {
               cursor: "pointer",
               appearance: "none",
               outline: "none",
-              bg: "background",
               border: "none",
-              p: 0,
-              alignSelf: "center",
-              justifySelf: "center"
+              bg: "red",
+              textDecoration: "none",
+              color: "white",
+              height: "26px",
+
+              justifySelf: ["center", "center"],
+              alignSelf: "end"
             }}
             aria-label="Login"
             onClick={login}
