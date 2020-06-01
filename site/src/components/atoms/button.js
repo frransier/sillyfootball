@@ -15,14 +15,14 @@ const Button = ({ children, dispatch, fontSize }) => {
         // borderBottom: "solid 4px",
         // borderBottomColor: "red",
         boxShadow: "2px 2px 7px darkgrey",
-        py: 0,
+        py: 1,
         px: 3,
         my: 3
       }}
       onClick={dispatch}
     >
       <Styled.h1
-        sx={{ my: 1, fontSize: fontSize, textShadow: "1px 1px 4px  black" }}
+        sx={{ my: 1, fontSize: fontSize, textShadow: "2px 2px 9px  black" }}
       >
         {children}
       </Styled.h1>

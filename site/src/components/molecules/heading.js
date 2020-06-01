@@ -17,7 +17,7 @@ const Heading = ({ main, sub1, sub2, sub3, columns, justify }) => {
             alignSelf: "end",
             mx: 0,
             justifySelf: justify || "end",
-            fontWeight: "heading",
+            // fontWeight: "heading",
             mb: 0,
             mt: 2
           }}
@@ -30,7 +30,7 @@ const Heading = ({ main, sub1, sub2, sub3, columns, justify }) => {
           sx={{
             alignSelf: "end",
             justifySelf: justify || "end",
-            fontWeight: "heading",
+            // fontWeight: "heading",
             mb: 0,
             mt: 2
           }}
@@ -43,7 +43,7 @@ const Heading = ({ main, sub1, sub2, sub3, columns, justify }) => {
           sx={{
             alignSelf: "end",
             justifySelf: justify || "end",
-            fontWeight: "heading",
+            // fontWeight: "heading",
             mb: 0,
             mt: 2
           }}
