@@ -75,7 +75,7 @@ const Header = () => {
             pb: 1,
             alignSelf: "end",
             justifySelf: "end",
-            textShadow: "2px 2px 0px  black"
+            textShadow: "1px 1px 0px  black"
 
             // "&.active": {
             //   color: "red"
