@@ -22,7 +22,7 @@ const Button = ({ children, dispatch, fontSize }) => {
       onClick={dispatch}
     >
       <Styled.h1
-        sx={{ my: 1, fontSize: fontSize, textShadow: "3px 3px 0px  black" }}
+        sx={{ my: 1, fontSize: fontSize, textShadow: "2px 2px 0px  black" }}
       >
         {children}
       </Styled.h1>

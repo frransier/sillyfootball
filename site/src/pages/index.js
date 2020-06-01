@@ -92,7 +92,7 @@ const IndexPage = () => {
                 }
                 fontSize={[5, 6]}
               >
-                {userState && userState._id ? <FaHome size={25} /> : "JOIN NOW"}
+                {userState && userState._id ? "HOME" : "JOIN NOW"}
               </Button>
             </Link>
           </Container>

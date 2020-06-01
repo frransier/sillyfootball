@@ -29,7 +29,7 @@ const Score = ({ player }) => {
         {player.assists}
       </Styled.p>
       <Styled.p sx={{ alignSelf: "center", justifySelf: "center" }}>
-        {player.points}
+        {player.points.toFixed(1)}
       </Styled.p>
     </div>
   )

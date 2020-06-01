@@ -64,7 +64,7 @@ const Footer = () => {
               textDecoration: "none",
               color: "lightgrey",
               height: "20px",
-              justifySelf: ["center", "end"],
+              justifySelf: ["center", "center"],
               alignSelf: "end",
               "&.active": {
                 color: "red"

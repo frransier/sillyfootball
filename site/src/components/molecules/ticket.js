@@ -74,7 +74,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
               fontWeight: "heading"
             }}
           >
-            {ticket.score}
+            {ticket.score.toFixed(1)}
           </Styled.p>
         </div>
       </button>

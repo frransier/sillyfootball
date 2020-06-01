@@ -82,7 +82,6 @@ const LiveMatch = ({ match, disabled, selected }) => {
           sx={{
             p: 1,
             display: "grid",
-            // gridTemplateColumns: ["7% 37% 12% 37% 7%", "18% 28% 14% 28% 12%"],
             gridTemplateColumns: ["7% 37% 12% 37% 7%", "18% 28% 14% 28% 12%"],
             width: "100%"
           }}
@@ -120,7 +119,9 @@ const LiveMatch = ({ match, disabled, selected }) => {
                     {x.assist.fullName}
                   </Styled.p>
                 </div>
-                <Styled.p sx={{ justifySelf: "center" }}>{x.elapsed}'</Styled.p>
+                <Styled.p sx={{ justifySelf: ["start", "center"] }}>
+                  {x.elapsed}'
+                </Styled.p>
               </Fragment>
             ))}
         </div>

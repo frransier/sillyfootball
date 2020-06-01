@@ -17,7 +17,16 @@ const Header = () => {
     <header
       sx={{
         display: "grid",
-        gridTemplateColumns: ["59% 41%", "37% 63%"]
+        gridTemplateColumns: ["59% 41%", "37% 63%"],
+        bg: "red",
+        border: "solid 3px red",
+        borderBottom: "none",
+        borderRadius: 8,
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0,
+        borderTopRightRadius: 0,
+        p: 1,
+        boxShadow: "4px 4px 4px darkgrey"
 
         // boxShadow: "0px 2px 0px lightgrey"
       }}
@@ -27,18 +36,28 @@ const Header = () => {
         sx={{
           textDecoration: "none",
           alignSelf: "center",
-          color: "text",
-          border: "solid 3px red",
-          borderBottom: "none",
-          borderRadius: 8,
-          borderBottomLeftRadius: 0,
-          borderBottomRightRadius: 0,
-          borderTopRightRadius: 0,
-          p: 1,
-          pb: 0
+          color: "white"
+          // bg: "red",
+          // border: "solid 3px red",
+          // borderBottom: "none",
+          // borderRadius: 8,
+          // borderBottomLeftRadius: 0,
+          // borderBottomRightRadius: 0,
+          // borderTopRightRadius: 0,
+          // p: 1,
+          // boxShadow: "4px 4px 4px darkgrey"
+          // pb: 0
         }}
       >
-        <Styled.h1 sx={{ my: 0, textAlign: "center", fontSize: [5, 6] }}>
+        <Styled.h1
+          sx={{
+            my: 0,
+            color: "white",
+            textAlign: "center",
+            fontSize: [5, 6],
+            textShadow: "2px 2px 0px  black"
+          }}
+        >
           SILLY FOOTBALL
         </Styled.h1>
       </Link>
@@ -51,14 +70,14 @@ const Header = () => {
           activeClassName="active"
           sx={{
             textDecoration: "none",
-            color: "text",
-
+            color: "white",
+            pb: 1,
             alignSelf: "end",
-            justifySelf: "end",
+            justifySelf: "end"
 
-            "&.active": {
-              color: "red"
-            }
+            // "&.active": {
+            //   color: "red"
+            // }
           }}
           onClick={() => loadingDispatch({ type: "set", loading: true })}
         >
@@ -72,17 +91,18 @@ const Header = () => {
             activeClassName="active"
             sx={{
               textDecoration: "none",
-              color: "text",
-              height: "20px",
-              justifySelf: ["center", "end"],
-              alignSelf: "end",
-              "&.active": {
-                color: "red"
-              }
+              color: "white",
+              height: "24px",
+
+              justifySelf: ["center", "center"],
+              alignSelf: "end"
+              // "&.active": {
+              //   color: "red"
+              // }
             }}
             onClick={() => loadingDispatch({ type: "set", loading: true })}
           >
-            <FaHome size={20} />
+            <FaHome sx={{}} size={20} />
           </Link>
         )}
         {!userState && (
