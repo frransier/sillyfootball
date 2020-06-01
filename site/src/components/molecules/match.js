@@ -23,7 +23,7 @@ const Match = ({ match, dispatch, selected, disabled }) => {
         borderTopLeftRadius: 5,
         border: disabled ? "none" : selected ? "solid 1px" : "none",
         borderBottom: disabled ? "none" : selected ? "solid 3px" : "solid 1px",
-        borderColor: selected ? "red" : "darkgrey"
+        borderColor: selected ? "red" : "lightgrey"
         // boxShadow: "0px 2px 2px darkgrey"
       }}
       disabled={disabled}

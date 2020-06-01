@@ -15,24 +15,24 @@ const Player = ({ player, dispatch, selected }) => (
         bg: "background",
         p: 0,
         m: 0,
-        py: 2,
+        py: 2
       }}
       onClick={dispatch}
     >
       <div
         sx={{
           display: "grid",
-          gridTemplateColumns: "10% 62% 14% 14%",
+          gridTemplateColumns: "10% 62% 14% 14%"
         }}
       >
         <div
           sx={{
-            color: selected ? "red" : "",
+            color: selected ? "red" : "lightgrey",
             alignSelf: "center",
             justifySelf: "start",
             mx: 2,
             bg: "background",
-            border: "none",
+            border: "none"
           }}
         >
           {selected ? <FaCheckCircle size={20} /> : <FaRegCircle size={20} />}
@@ -43,7 +43,7 @@ const Player = ({ player, dispatch, selected }) => (
             display: "flex",
             ml: 2,
             alignSelf: "center",
-            justifySelf: "start",
+            justifySelf: "start"
           }}
         >
           {player.rate === 1 && <FaStar sx={{ mr: 1 }} />}

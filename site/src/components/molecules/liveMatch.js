@@ -28,18 +28,20 @@ const LiveMatch = ({ match, disabled, selected }) => {
           borderTopLeftRadius: 5,
           border: disabled ? "none" : show ? "solid 1px" : "none",
           borderBottom: disabled ? "none" : show ? "solid 3px" : "solid 1px",
-          borderColor: show ? "red" : "darkgrey"
+          borderColor: show ? "red" : "lightgrey"
         }}
         onClick={() => match.events.length > 0 && setShow(!show)}
       >
         <div
           sx={{
             display: "grid",
-            gridTemplateColumns: "6% 38% 12% 38% 6%",
+            gridTemplateColumns: ["7% 37% 12% 37% 7%", "18% 28% 14% 28% 12%"],
             fontWeight: "heading"
           }}
         >
-          <Styled.p sx={{}}>{day}</Styled.p>
+          <Styled.p sx={{}}>
+            {match.elapsed ? `${match.elapsed}'` : day}
+          </Styled.p>
           <Styled.p sx={{ textAlign: "right", mr: 1, ml: 2 }}>
             {match.home.name || match.home.fullName}
           </Styled.p>
@@ -51,9 +53,24 @@ const LiveMatch = ({ match, disabled, selected }) => {
           <Styled.p sx={{ textAlign: "left", mr: 2, ml: 1 }}>
             {match.away.name || match.away.fullName}
           </Styled.p>
-          <Styled.p sx={{ justifySelf: "end", mx: 1 }}>
-            {match.elapsed || "ns"}
-          </Styled.p>
+          <div
+            sx={{
+              width: 10,
+              height: 10,
+              borderRadius: 999,
+              border: "solid 0.1px white",
+              mx: 0,
+              bg:
+                match.status === "ft"
+                  ? "red"
+                  : match.status === "ns"
+                  ? "lightgrey"
+                  : "lime",
+              alignSelf: "center",
+              justifySelf: ["start", "center"]
+              // boxShadow: "1px 1px 0px black"
+            }}
+          />
         </div>
       </button>
       {show && (

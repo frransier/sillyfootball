@@ -14,8 +14,8 @@ const Board = ({ children }) => (
       borderRadius: 5,
       borderBottomLeftRadius: 0,
       borderBottomRightRadius: 0,
-      borderTopRightRadius: 0,
-      pt: 2
+      borderTopRightRadius: 0
+      // pt: 2
       // boxShadow: "0px 2px 2px darkgrey"
     }}
   >
