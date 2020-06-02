@@ -8,14 +8,15 @@ const Button = ({ children, dispatch, fontSize }) => {
         cursor: "pointer",
         appearance: "none",
         outline: "none",
-        bg: "secondary",
-        // color: "white",
-        borderRadius: 0,
-        // border: "solid 1px #596275",
+        bg: "background",
+        color: "secondary",
+        borderRadius: 5,
+        border: "solid 2px",
+        borderColor: "primary",
         // borderBottom: "solid 4px",
         // borderBottomColor: "red",
         // boxShadow: "2px 2px 4px #596275",
-        py: 1,
+        py: 0,
         px: 3,
         my: 3
         // opacity: 0.7
@@ -25,9 +26,9 @@ const Button = ({ children, dispatch, fontSize }) => {
       <Styled.h1
         sx={{
           my: 1,
-          fontSize: fontSize,
-          color: "primary",
-          textShadow: "1px 1px 3px black"
+          fontSize: fontSize
+          // color: "primary",
+          // textShadow: "1px 1px 0px darkgrey"
         }}
       >
         {children}

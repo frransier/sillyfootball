@@ -28,7 +28,7 @@ const Player = ({ player, dispatch, selected }) => (
       >
         <div
           sx={{
-            color: selected ? "primary" : "lightgrey",
+            color: selected ? "secondary" : "lightgrey",
             alignSelf: "center",
             justifySelf: "start",
             mx: 2,

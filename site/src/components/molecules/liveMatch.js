@@ -90,7 +90,7 @@ const LiveMatch = ({ match, disabled, selected }) => {
           {match.events
             .filter(x => x.team._id === match.home._id)
             .map((x, i) => (
-              <Fragment>
+              <Fragment key={i}>
                 <Styled.p sx={{ justifySelf: "center" }}>{x.elapsed}'</Styled.p>
 
                 <div sx={{ justifySelf: "end" }}>

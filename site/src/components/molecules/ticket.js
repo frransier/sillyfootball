@@ -36,7 +36,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
           <Styled.p
             sx={{
               textAlign: "left",
-              fontWeight: show ? 700 : 400,
+              fontWeight: show ? 700 : 500,
               m: 1,
               fontSize: 2
             }}

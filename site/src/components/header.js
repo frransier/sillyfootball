@@ -3,7 +3,7 @@ import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
 import { useAuth } from "react-use-auth"
 import { useUserState, useLoadingDispatch } from "../state"
-import { FaHome } from "react-icons/fa"
+import { FaHome, FaTrophy, FaSuperpowers } from "react-icons/fa"
 
 const Header = () => {
   const { login } = useAuth()
@@ -38,7 +38,7 @@ const Header = () => {
           textDecoration: "none",
           alignSelf: "start",
           justifySelf: "start",
-
+          display: "flex",
           color: "white"
           // bg: "red",
           // border: "solid 3px red",
@@ -52,12 +52,26 @@ const Header = () => {
           // pb: 0
         }}
       >
+        <div
+          sx={{
+            bg: "secondary",
+            color: "primary",
+            width: 25,
+            height: 25,
+            mr: 2,
+            display: "grid",
+            flexDirection: "column",
+            borderRadius: 9
+          }}
+        >
+          <FaSuperpowers sx={{ height: 25, justifySelf: "center" }} />
+        </div>
         <Styled.h1
           sx={{
-            my: 0,
-            color: "text",
-            textAlign: "center",
-            fontSize: [5]
+            my: [1, 0],
+            color: "secondary",
+            textAlign: "start",
+            fontSize: [4]
             // textShadow: "2px 2px 0px  black"
           }}
         >
@@ -73,7 +87,7 @@ const Header = () => {
           activeClassName="active"
           sx={{
             textDecoration: "none",
-            color: "text",
+            color: "secondary",
             pb: 1,
             alignSelf: "end",
             justifySelf: "end"
@@ -95,7 +109,7 @@ const Header = () => {
             activeClassName="active"
             sx={{
               textDecoration: "none",
-              color: "text",
+              color: "secondary",
               height: "24px",
 
               justifySelf: ["center", "center"],
@@ -116,10 +130,10 @@ const Header = () => {
               appearance: "none",
               outline: "none",
               border: "none",
-              bg: "primary",
+              bg: "white",
               textDecoration: "none",
-              color: "white",
-              height: "26px",
+              color: "secondary",
+              height: "24px",
 
               justifySelf: ["center", "center"],
               alignSelf: "end"

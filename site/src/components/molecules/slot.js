@@ -10,7 +10,7 @@ const Slot = ({ player, dispatch }) => {
         cursor: "pointer",
         p: 0,
         width: "100%",
-        height: 60,
+        height: 70,
         appearance: "none",
         outline: "none",
         bg: "background",
@@ -39,7 +39,7 @@ const Slot = ({ player, dispatch }) => {
             width: "100%",
             my: 1,
             alignSelf: "center",
-            color: "text"
+            color: "secondary"
           }}
         >
           {player ? player.name || player.fullName : <FaUser size={20} />}

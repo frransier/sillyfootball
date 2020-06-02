@@ -11,19 +11,20 @@ const Match = ({ match, dispatch, selected, disabled }) => {
         width: "100%",
         cursor: "pointer",
         my: 1,
-        py: 1,
+        pt: selected ? 2 : 2,
         px: 2,
         appearance: "none",
         outline: "none",
         display: "flex",
-        bg: "background",
+        bg: selected ? "white" : "secondary",
+        color: disabled ? "darkgrey" : selected ? "secondary" : "white",
         borderRadius: 0,
         borderBottomLeftRadius: 0,
         borderTopRightRadius: 2,
         borderTopLeftRadius: 5,
-        border: disabled ? "none" : selected ? "solid 1px" : "none",
+        border: "solid 1px",
         // borderBottom: disabled ? "none" : selected ? "solid 3px" : "solid 1px",
-        borderColor: selected ? "primary" : "lightgrey",
+        borderColor: disabled ? "darkgrey" : selected ? "primary" : "primary",
         boxShadow: "0px 1px 4px darkgrey"
       }}
       disabled={disabled}
@@ -32,13 +33,16 @@ const Match = ({ match, dispatch, selected, disabled }) => {
       <div sx={{ textAlign: "left" }}>
         <Styled.p
           sx={{
-            fontFamily: "heading"
+            fontFamily: "heading",
+            fontWeight: 500
             // fontWeight: selected ? "heading" : "body"
           }}
         >
           {match.home.name || match.home.fullName}
         </Styled.p>
-        <Styled.p sx={{}}>{match.away.name || match.away.fullName}</Styled.p>
+        <Styled.p sx={{ fontFamily: "heading", fontWeight: 500 }}>
+          {match.away.name || match.away.fullName}
+        </Styled.p>
       </div>
       <div sx={{ mx: "auto" }} />
       <div sx={{ textAlign: "right" }}>
