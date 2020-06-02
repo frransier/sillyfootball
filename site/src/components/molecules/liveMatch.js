@@ -22,6 +22,7 @@ const LiveMatch = ({ match, disabled, selected }) => {
           width: "100%",
           height: 30,
           bg: "background",
+          color: "text",
           borderRadius: 0,
           borderBottomLeftRadius: 0,
           borderTopRightRadius: 2,
@@ -109,7 +110,7 @@ const LiveMatch = ({ match, disabled, selected }) => {
           {match.events
             .filter(x => x.team._id === match.home._id)
             .map((x, i) => (
-              <Fragment>
+              <Fragment key={i}>
                 <div sx={{ justifySelf: "start" }}>
                   <Styled.p sx={{ fontWeight: "heading", textAlign: "left" }}>
                     {x.goal.fullName}

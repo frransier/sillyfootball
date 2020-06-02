@@ -220,7 +220,7 @@ const AccountPage = props => {
         <Container>
           <Styled.h2 sx={{}}>Personal Leaderboard</Styled.h2>
           <Heading
-            sub1={<FaTrophy sx={{ mx: 2, color: "red" }} size={15} />}
+            sub1={<FaTrophy sx={{ mx: 2, color: "primary" }} size={15} />}
             sub2="High"
             sub3="Average"
             columns="40% 21% 21% 18%"
@@ -237,7 +237,7 @@ const AccountPage = props => {
         <Container>
           <Styled.h2 sx={{}}>Top 20</Styled.h2>
           <Heading
-            sub1={<FaTrophy sx={{ mx: 2, color: "red" }} size={15} />}
+            sub1={<FaTrophy sx={{ mx: 2, color: "primary" }} size={15} />}
             sub2="High"
             sub3="Average"
             columns="40% 21% 21% 18%"

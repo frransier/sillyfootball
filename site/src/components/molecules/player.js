@@ -22,12 +22,13 @@ const Player = ({ player, dispatch, selected }) => (
       <div
         sx={{
           display: "grid",
-          gridTemplateColumns: "10% 62% 14% 14%"
+          gridTemplateColumns: "10% 62% 14% 14%",
+          color: "text"
         }}
       >
         <div
           sx={{
-            color: selected ? "red" : "lightgrey",
+            color: selected ? "primary" : "lightgrey",
             alignSelf: "center",
             justifySelf: "start",
             mx: 2,
@@ -46,11 +47,13 @@ const Player = ({ player, dispatch, selected }) => (
             justifySelf: "start"
           }}
         >
-          {player.rate === 1 && <FaStar sx={{ mr: 1 }} />}
-          <Styled.p sx={{ textAlign: "left", fontWeight: "heading" }}>
+          {player.rate === 1 && <FaStar sx={{ mr: 1, color: "text" }} />}
+          <Styled.p
+            sx={{ textAlign: "left", fontWeight: "heading", color: "text" }}
+          >
             {player.name || player.fullName}
           </Styled.p>
-          <Styled.p sx={{ mx: 2 }}>
+          <Styled.p sx={{ mx: 2, color: "darkgrey" }}>
             {player.team.name || player.team.fullName}
           </Styled.p>
         </div>

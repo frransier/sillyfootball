@@ -18,6 +18,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
           px: 0,
           appearance: "none",
           bg: "background",
+          color: "text",
           outline: "none",
           width: "100%",
           borderRadius: 0,
@@ -26,7 +27,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
           borderTopLeftRadius: 5,
           border: disabled ? "none" : show ? "solid 1px" : "none",
           borderBottom: "solid 1px",
-          borderColor: winner ? "red" : "darkgrey"
+          borderColor: winner ? "primary" : "darkgrey"
         }}
         disabled={disabled}
         onClick={() => setShow(!show)}
@@ -40,7 +41,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
               fontSize: 2
             }}
           >
-            {winner && <FaTrophy sx={{ mx: 2, color: "red" }} />}{" "}
+            {winner && <FaTrophy sx={{ mx: 2, color: "primary" }} />}{" "}
             {ticket.user.name}
           </Styled.p>
 

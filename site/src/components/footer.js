@@ -47,7 +47,7 @@ const Footer = () => {
             justifySelf: "end",
 
             "&.active": {
-              color: "red"
+              color: "primary"
             }
           }}
           onClick={() => loadingDispatch({ type: "set", loading: true })}
@@ -67,7 +67,7 @@ const Footer = () => {
               justifySelf: ["center", "center"],
               alignSelf: "end",
               "&.active": {
-                color: "red"
+                color: "primary"
               }
             }}
             onClick={() => loadingDispatch({ type: "set", loading: true })}

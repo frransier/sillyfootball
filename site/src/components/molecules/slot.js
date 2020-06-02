@@ -19,7 +19,7 @@ const Slot = ({ player, dispatch }) => {
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: 0,
         borderTop: player ? "solid 3px" : "none",
-        borderTopColor: "red"
+        borderTopColor: "primary"
       }}
       onClick={dispatch}
     >
@@ -34,7 +34,13 @@ const Slot = ({ player, dispatch }) => {
           <Image sx={{ mt: 1, mb: 0 }} fixed={player.team.logo.asset.fixed} />
         )}
         <Styled.h6
-          sx={{ fontSize: 1, width: "100%", my: 1, alignSelf: "center" }}
+          sx={{
+            fontSize: 1,
+            width: "100%",
+            my: 1,
+            alignSelf: "center",
+            color: "text"
+          }}
         >
           {player ? player.name || player.fullName : <FaUser size={20} />}
         </Styled.h6>

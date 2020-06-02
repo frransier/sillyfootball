@@ -25,10 +25,10 @@ const Header = () => {
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: 0,
         borderTopRightRadius: 0,
-        px: 1,
-        py: 2
+        // px: 1,
+        py: 2,
         // boxShadow: "1px 1px 7px darkgrey"
-
+        mx: 1
         // boxShadow: "0px 2px 0px lightgrey"
       }}
     >
@@ -36,7 +36,9 @@ const Header = () => {
         to="/"
         sx={{
           textDecoration: "none",
-          alignSelf: "center",
+          alignSelf: "start",
+          justifySelf: "start",
+
           color: "white"
           // bg: "red",
           // border: "solid 3px red",
@@ -114,7 +116,7 @@ const Header = () => {
               appearance: "none",
               outline: "none",
               border: "none",
-              bg: "red",
+              bg: "primary",
               textDecoration: "none",
               color: "white",
               height: "26px",

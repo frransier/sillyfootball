@@ -7,7 +7,7 @@ const Loading = () => {
   return (
     <Centered height="100vh">
       <div sx={{ height: "50%" }}>
-        <ReactLoading type="bars" color="red" height={35} width={35} />
+        <ReactLoading type="bars" color="#33d9b2" height={35} width={35} />
       </div>
     </Centered>
   )
