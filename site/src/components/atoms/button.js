@@ -7,7 +7,8 @@ const Button = ({ children, dispatch, fontSize }) => {
       sx={{
         p: "3px",
         bg: "secondary",
-        borderTopLeftRadius: 3
+        // borderTopLeftRadius: 3,
+        boxShadow: "2px 2px 4px #596275"
         // transform: "rotate(1deg)"
       }}
     >
@@ -16,14 +17,13 @@ const Button = ({ children, dispatch, fontSize }) => {
           cursor: "pointer",
           appearance: "none",
           outline: "none",
-          bg: "background",
-          color: "secondary",
+          bg: "secondary",
+          color: "background",
           borderRadius: 0,
           border: "solid 2px",
           borderColor: "primary",
           // borderBottom: "solid 4px",
           // borderBottomColor: "red",
-          // boxShadow: "2px 2px 4px #596275",
           // transform: "rotate(-0.5deg)",
           py: 0,
           px: 3
