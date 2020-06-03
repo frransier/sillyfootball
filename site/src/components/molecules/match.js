@@ -9,10 +9,11 @@ const Match = ({ match, dispatch, selected, disabled }) => {
       sx={{
         p: "2px",
         bg: disabled ? "background" : "secondary",
-        borderTopLeftRadius: 4,
+        // borderTopLeftRadius: 4,
         // height: 50,
         width: "100%",
         my: 1,
+        ml: -1,
         display: "grid",
         boxShadow: "2px 2px 4px darkgrey"
         // transform: "rotate(0.5deg)"
@@ -23,19 +24,21 @@ const Match = ({ match, dispatch, selected, disabled }) => {
         sx={{
           alignSelf: "center",
           justifySelf: "center",
+
           // height: 45,
           width: "100%",
           cursor: "pointer",
           // my: 1,
-          pt: selected ? 1 : 1,
+          py: selected ? 1 : 1,
           px: 2,
           appearance: "none",
           outline: "none",
           display: "flex",
+          alignItems: "center",
           bg: selected ? "secondary" : "background",
           color: disabled ? "darkgrey" : selected ? "background" : "secondary",
 
-          borderTopLeftRadius: 2,
+          // borderTopLeftRadius: 2,
           // borderBottomLeftRadius: 0,
           // borderTopRightRadius: 2,
           // borderTopLeftRadius: 5,

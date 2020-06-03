@@ -7,8 +7,8 @@ const Board = ({ children }) => (
       mt: 4,
       p: "3px",
       bg: "secondary",
-      boxShadow: "0px 2px 5px darkgrey",
-      borderTopLeftRadius: 4
+      boxShadow: "0px 2px 5px darkgrey"
+      // borderTopLeftRadius: 4
     }}
   >
     <div

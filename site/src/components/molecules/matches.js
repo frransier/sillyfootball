@@ -5,11 +5,12 @@ const Matches = ({ children }) => (
   <div
     sx={{
       display: "grid",
-      gridTemplateColumns: "50% 48%",
+      gridTemplateColumns: "50% 50%",
       alignItems: "center",
-      justifyItems: "start",
+      justifyItems: "center",
       columnGap: 1,
-      my: 2
+      // my: 2,
+      px: 1
       // height: 150
     }}
   >
