@@ -75,27 +75,33 @@ const IndexPage = () => {
               Play for free against others and your friends.
             </Styled.p>
           </Container>
-          <Container>
-            <Link
-              sx={{
-                alignSelf: "center",
-                justifySelf: ["center", "center"],
-                mx: [4, 0]
-              }}
-              to={userState && userState._id ? "/account/" : "/"}
-            >
-              <Button
-                dispatch={
-                  userState && userState._id
-                    ? () => loadingDispatch({ type: "set", loading: true })
-                    : () => login()
-                }
-                fontSize={[5]}
+          {!userState && (
+            <Container>
+              <Link
+                sx={{
+                  alignSelf: "center",
+                  justifySelf: ["center", "center"],
+                  mx: [4, 0]
+                }}
+                to={userState && userState._id ? "/account/" : "/"}
               >
-                {userState && userState._id ? "HOME" : "JOIN NOW"}
-              </Button>
-            </Link>
-          </Container>
+                <Button
+                  dispatch={
+                    userState && userState._id
+                      ? () => loadingDispatch({ type: "set", loading: true })
+                      : () => login()
+                  }
+                  fontSize={[5]}
+                >
+                  {userState && userState._id ? (
+                    <FaHome size={25} />
+                  ) : (
+                    "JOIN NOW"
+                  )}
+                </Button>
+              </Link>
+            </Container>
+          )}
           <Footer />
         </Fragment>
       )}

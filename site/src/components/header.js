@@ -88,9 +88,9 @@ const Header = () => {
           sx={{
             textDecoration: "none",
             color: "secondary",
-            pb: 1,
-            alignSelf: "end",
-            justifySelf: "end"
+            // pb: 1,
+            alignSelf: "center",
+            justifySelf: ["center", "end"]
             // textShadow: "1px 1px 0px  black"
 
             // "&.active": {
@@ -110,7 +110,7 @@ const Header = () => {
             sx={{
               textDecoration: "none",
               color: "secondary",
-              height: "24px",
+              height: "25px",
 
               justifySelf: ["center", "center"],
               alignSelf: "end"

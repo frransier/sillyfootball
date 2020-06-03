@@ -114,13 +114,12 @@ const FantasyPage = ({ data }) => {
         <Loading />
       ) : (
         <Fragment>
-          <Container>
-            <Board>
-              <Slot player={slots[0]} dispatch={() => slot(slots[0])} />
-              <Slot player={slots[1]} dispatch={() => slot(slots[1])} />
-              <Slot player={slots[2]} dispatch={() => slot(slots[2])} />
-            </Board>
-          </Container>
+          <Board>
+            <Slot player={slots[0]} dispatch={() => slot(slots[0])} />
+            <Slot player={slots[1]} dispatch={() => slot(slots[1])} />
+            <Slot player={slots[2]} dispatch={() => slot(slots[2])} />
+          </Board>
+
           <Container>
             <Matches>
               {data.matches.edges.map(({ node }, i) => (

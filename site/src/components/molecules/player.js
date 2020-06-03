@@ -31,8 +31,9 @@ const Player = ({ player, dispatch, selected }) => (
             color: selected ? "secondary" : "lightgrey",
             alignSelf: "center",
             justifySelf: "start",
+            borderRadius: 999,
             mx: 2,
-            bg: "background",
+            bg: selected ? "primary" : "background",
             border: "none"
           }}
         >

@@ -7,44 +7,46 @@ const Slot = ({ player, dispatch }) => {
   return (
     <button
       sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
         cursor: "pointer",
         p: 0,
         width: "100%",
         height: 70,
         appearance: "none",
         outline: "none",
-        bg: "background",
+        bg: player ? "secondary" : "background",
         border: "none",
-        // borderRadius: 5,
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: 0,
-        borderTop: player ? "solid 3px" : "none",
+        // borderTop: player ? "solid 3px" : "none",
         borderTopColor: "primary"
       }}
       onClick={dispatch}
     >
-      <div
+      {/* <div
         sx={{
           display: "flex",
           alignItems: "center",
           flexDirection: "column"
         }}
+      > */}
+      {player && (
+        <Image sx={{ mt: 1, mb: 0 }} fixed={player.team.logo.asset.fixed} />
+      )}
+      <Styled.p
+        sx={{
+          fontSize: 1,
+          fontWeight: 600,
+          width: "100%",
+          my: 1,
+          alignSelf: "center",
+          color: player ? "background" : "secondary"
+        }}
       >
-        {player && (
-          <Image sx={{ mt: 1, mb: 0 }} fixed={player.team.logo.asset.fixed} />
-        )}
-        <Styled.h6
-          sx={{
-            fontSize: 1,
-            width: "100%",
-            my: 1,
-            alignSelf: "center",
-            color: "secondary"
-          }}
-        >
-          {player ? player.name || player.fullName : <FaUser size={20} />}
-        </Styled.h6>
-      </div>
+        {player ? player.name || player.fullName : <FaUser size={18} />}
+      </Styled.p>
+      {/* </div> */}
     </button>
   )
 }
