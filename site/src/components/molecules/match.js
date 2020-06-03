@@ -7,7 +7,8 @@ const Match = ({ match, dispatch, selected, disabled }) => {
   return (
     <div
       sx={{
-        p: "2px",
+        py: "2px",
+        px: "3px",
         bg: disabled ? "background" : "secondary",
         // borderTopLeftRadius: 4,
         // height: 50,
