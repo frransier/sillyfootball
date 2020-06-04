@@ -8,8 +8,8 @@ const Matches = ({ children }) => (
       gridTemplateColumns: "50% 50%",
       alignItems: "center",
       justifyItems: "center",
-      columnGap: 1,
-      // my: 2,
+      columnGap: 4,
+      mx: 4,
       px: 1
       // height: 150
     }}

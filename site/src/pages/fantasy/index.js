@@ -115,9 +115,9 @@ const FantasyPage = ({ data }) => {
       ) : (
         <Fragment>
           <Board>
-            <Slot player={slots[0]} dispatch={() => slot(slots[0])} />
-            <Slot player={slots[1]} dispatch={() => slot(slots[1])} />
-            <Slot player={slots[2]} dispatch={() => slot(slots[2])} />
+            <Slot player={slots[0]} dispatch={() => slot(slots[0])} index={1} />
+            <Slot player={slots[1]} dispatch={() => slot(slots[1])} index={2} />
+            <Slot player={slots[2]} dispatch={() => slot(slots[2])} index={3} />
           </Board>
 
           <Container>
@@ -182,7 +182,6 @@ const FantasyPage = ({ data }) => {
           </div>
         </Fragment>
       )}
-      <Footer />
     </Layout>
   )
 }

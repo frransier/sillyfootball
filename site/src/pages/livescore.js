@@ -171,8 +171,6 @@ const LivescorePage = ({ data }) => {
               />
             ))}
           </Container>
-
-          <Footer />
         </Fragment>
       )}
     </Layout>

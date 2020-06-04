@@ -12,6 +12,7 @@ import { FaHome } from "react-icons/fa"
 import { useAuth } from "react-use-auth"
 import Button from "../components/atoms/button"
 import Loading from "../components/molecules/loading"
+import Frame from "../components/atoms/frame"
 
 const IndexPage = () => {
   const loading = useLoadingState()
@@ -41,10 +42,13 @@ const IndexPage = () => {
             >
               FANTASY FOOTBALL
             </Styled.h1>
-            <Link sx={{ justifySelf: "start" }} to="/fantasy/">
+            <Link
+              sx={{ justifySelf: "start", textDecoration: "none" }}
+              to="/fantasy/"
+            >
               <Button
                 dispatch={() => loadingDispatch({ type: "set", loading: true })}
-                fontSize={[5]}
+                fontSize={5}
               >
                 PLAY
               </Button>
@@ -102,7 +106,6 @@ const IndexPage = () => {
               </Link>
             </Container>
           )}
-          <Footer />
         </Fragment>
       )}
     </Layout>

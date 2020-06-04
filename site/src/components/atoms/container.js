@@ -8,9 +8,9 @@ const Container = ({ children, columns, rows, mt, mb }) => {
         display: "grid",
         gridTemplateColumns: columns,
         gridTemplateRows: rows,
-        mt: mt || 4,
+        mt: mt || 6,
         mb: mb || 0,
-        mx: 1
+        mx: 4
       }}
     >
       {children}

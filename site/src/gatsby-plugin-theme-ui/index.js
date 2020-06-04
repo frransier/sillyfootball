@@ -1,18 +1,15 @@
 export default {
+  space: [0, 1, 2, 4, 8, 16, 32],
   colors: {
     text: "black",
     background: "white",
     primary: "#66fcf1",
     secondary: "#1f2833",
-    muted: "#191919",
-    highlight: "#29112c",
-    gray: "#999",
-    purple: "#c0f"
+    muted: "lightgrey"
   },
   fonts: {
     body: "system-ui, sans-serif",
-    heading: '"Avenir Next", sans-serif',
-    monospace: "Menlo, monospace"
+    heading: '"Avenir Next", sans-serif'
   },
   fontSizes: [9, 10, 12, 14, 16, 20, 24, 32, 48, 64, 72],
   fontWeights: {
@@ -95,38 +92,6 @@ export default {
       variant: "textStyles.text",
       m: 0
     },
-    code: {
-      fontFamily: "monospace",
-      color: "secondary",
-      fontSize: 1
-    },
-    inlineCode: {
-      fontFamily: "monospace",
-      color: "secondary",
-      bg: "muted"
-    },
-    table: {
-      width: "100%",
-      my: 4,
-      borderCollapse: "separate",
-      borderSpacing: 0,
-      "th,td": {
-        textAlign: "left",
-        py: "4px",
-        pr: "4px",
-        pl: 0,
-        borderColor: "muted",
-        borderBottomStyle: "solid"
-      }
-    },
-    th: {
-      verticalAlign: "bottom",
-      borderBottomWidth: "2px"
-    },
-    td: {
-      verticalAlign: "top",
-      borderBottomWidth: "1px"
-    },
     hr: {
       border: 0,
       borderBottom: "1px solid",
@@ -134,23 +99,6 @@ export default {
     },
     img: {
       maxWidth: "100%"
-    }
-  },
-  prism: {
-    ".comment,.prolog,.doctype,.cdata,.punctuation,.operator,.entity,.url": {
-      color: "gray"
-    },
-    ".comment": {
-      fontStyle: "italic"
-    },
-    ".property,.tag,.boolean,.number,.constant,.symbol,.deleted,.function,.class-name,.regex,.important,.variable": {
-      color: "purple"
-    },
-    ".atrule,.attr-value,.keyword": {
-      color: "primary"
-    },
-    ".selector,.attr-name,.string,.char,.builtin,.inserted": {
-      color: "secondary"
     }
   }
 }

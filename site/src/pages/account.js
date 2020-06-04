@@ -248,7 +248,6 @@ const AccountPage = props => {
           ))}
         </Container>
       )}
-      {init && <Footer />}
     </Layout>
   )
 }
