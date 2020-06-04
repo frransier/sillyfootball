@@ -11,12 +11,13 @@ const Match = ({ match, dispatch, selected, disabled }) => {
         // px: ["2px", "3px"],
         // bg: disabled ? "background" : "secondary",
         // borderTopLeftRadius: 4,
-        // height: 50,
+        height: 50,
         width: "100%",
         my: 1,
         ml: -1,
         display: "grid",
-        boxShadow: "2px 2px 4px darkgrey"
+        boxShadow: "2px 2px 4px darkgrey",
+        borderRadius: 4
         // transform: "rotate(0.5deg)"
         // transform: "rotate(1deg)"
       }}
@@ -25,6 +26,7 @@ const Match = ({ match, dispatch, selected, disabled }) => {
         sx={{
           border: "solid 2.5px",
           borderRadius: 4,
+          height: 49,
           // borderBottom: disabled ? "none" : selected ? "solid 3px" : "solid 1px",
           borderColor: disabled
             ? "background"
@@ -40,7 +42,8 @@ const Match = ({ match, dispatch, selected, disabled }) => {
             alignSelf: "center",
             justifySelf: "center",
             bg: selected ? "secondary" : "background",
-            borderRadius: 4,
+            height: 40,
+            // borderRadius: 2,
             // p: 1,
             color: disabled
               ? "darkgrey"
@@ -51,10 +54,11 @@ const Match = ({ match, dispatch, selected, disabled }) => {
             width: "100%",
             cursor: "pointer",
             // my: 1,
-            py: selected ? 1 : 1,
-            px: 2,
+            // py: selected ? 1 : 1,
+            // px: 2,
             appearance: "none",
             outline: "none",
+            border: "none",
             display: "flex",
             alignItems: "center"
             // bg: selected ? "secondary" : "background",
