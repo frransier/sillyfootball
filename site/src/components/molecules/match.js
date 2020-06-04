@@ -7,9 +7,9 @@ const Match = ({ match, dispatch, selected, disabled }) => {
   return (
     <div
       sx={{
-        py: "2px",
-        px: "3px",
-        bg: disabled ? "background" : "secondary",
+        // py: ["2px", "3px"],
+        // px: ["2px", "3px"],
+        // bg: disabled ? "background" : "secondary",
         // borderTopLeftRadius: 4,
         // height: 50,
         width: "100%",
@@ -21,62 +21,88 @@ const Match = ({ match, dispatch, selected, disabled }) => {
         // transform: "rotate(1deg)"
       }}
     >
-      <button
+      <div
         sx={{
-          alignSelf: "center",
-          justifySelf: "center",
-
-          // height: 45,
-          width: "100%",
-          cursor: "pointer",
-          // my: 1,
-          py: selected ? 1 : 1,
-          px: 2,
-          appearance: "none",
-          outline: "none",
-          display: "flex",
-          alignItems: "center",
-          bg: selected ? "secondary" : "background",
-          color: disabled ? "darkgrey" : selected ? "background" : "secondary",
-
-          // borderTopLeftRadius: 2,
-          // borderBottomLeftRadius: 0,
-          // borderTopRightRadius: 2,
-          // borderTopLeftRadius: 5,
-          border: "solid 1px",
+          border: "solid 2.5px",
+          borderRadius: 4,
           // borderBottom: disabled ? "none" : selected ? "solid 3px" : "solid 1px",
           borderColor: disabled
             ? "background"
             : selected
-            ? "primary"
-            : "primary"
-          // boxShadow: "0px 1px 4px darkgrey"
+            ? "secondary"
+            : "secondary",
+          p: "1.5px",
+          bg: "primary"
         }}
-        disabled={disabled}
-        onClick={dispatch}
       >
-        <div sx={{ textAlign: "left" }}>
-          <Styled.p
-            sx={{
-              fontFamily: "body",
-              fontWeight: 600
-              // fontWeight: selected ? "heading" : "body"
-            }}
-          >
-            {match.home.name || match.home.fullName}
-          </Styled.p>
-          <Styled.p sx={{ fontFamily: "body", fontWeight: 600 }}>
-            {match.away.name || match.away.fullName}
-          </Styled.p>
-        </div>
-        <div sx={{ mx: "auto" }} />
-        <div sx={{ textAlign: "right" }}>
-          <Styled.p sx={{ textTransform: "capitalize" }}>
-            {match.day.substr(0, 3)}
-          </Styled.p>
-          <Styled.p sx={{}}>{time}</Styled.p>
-        </div>
-      </button>
+        <button
+          sx={{
+            alignSelf: "center",
+            justifySelf: "center",
+            bg: selected ? "secondary" : "background",
+            borderRadius: 4,
+            // p: 1,
+            color: disabled
+              ? "darkgrey"
+              : selected
+              ? "background"
+              : "secondary",
+            // height: 45,
+            width: "100%",
+            cursor: "pointer",
+            // my: 1,
+            py: selected ? 1 : 1,
+            px: 2,
+            appearance: "none",
+            outline: "none",
+            display: "flex",
+            alignItems: "center"
+            // bg: selected ? "secondary" : "background",
+            // color: disabled
+            //   ? "darkgrey"
+            //   : selected
+            //   ? "background"
+            //   : "secondary",
+
+            // borderTopLeftRadius: 2,
+            // borderBottomLeftRadius: 0,
+            // borderTopRightRadius: 2,
+            // borderTopLeftRadius: 5,
+            // border: "solid 1px",
+            // // borderBottom: disabled ? "none" : selected ? "solid 3px" : "solid 1px",
+            // borderColor: disabled
+            //   ? "background"
+            //   : selected
+            //   ? "primary"
+            //   : "primary"
+            // boxShadow: "0px 1px 4px darkgrey"
+          }}
+          disabled={disabled}
+          onClick={dispatch}
+        >
+          <div sx={{ textAlign: "left" }}>
+            <Styled.p
+              sx={{
+                fontFamily: "body",
+                fontWeight: 600
+                // fontWeight: selected ? "heading" : "body"
+              }}
+            >
+              {match.home.name || match.home.fullName}
+            </Styled.p>
+            <Styled.p sx={{ fontFamily: "body", fontWeight: 600 }}>
+              {match.away.name || match.away.fullName}
+            </Styled.p>
+          </div>
+          <div sx={{ mx: "auto" }} />
+          <div sx={{ textAlign: "right" }}>
+            <Styled.p sx={{ textTransform: "capitalize" }}>
+              {match.day.substr(0, 3)}
+            </Styled.p>
+            <Styled.p sx={{}}>{time}</Styled.p>
+          </div>
+        </button>
+      </div>
     </div>
   )
 }

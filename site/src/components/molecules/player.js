@@ -32,6 +32,7 @@ const Player = ({ player, dispatch, selected }) => (
             alignSelf: "center",
             justifySelf: "start",
             borderRadius: 999,
+            height: 16,
             mx: 2,
             bg: selected ? "primary" : "background",
             border: "none"
