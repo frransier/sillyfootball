@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
       <main sx={{ mx: "auto", maxWidth: 700, px: 2, py: 3 }}>
         <Header />
         {children}
-        <Header />
+        {/* <Header /> */}
       </main>
     </div>
   )
