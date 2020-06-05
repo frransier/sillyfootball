@@ -117,7 +117,7 @@ const FantasyPage = ({ data }) => {
             <Styled.h1 sx={{ textAlign: "center", fontSize: 5, mb: 5, mt: 0 }}>
               {slots.length === 3 ? "READY" : "PICK 3 PLAYERS"}
             </Styled.h1>
-            <Frame columns="1fr 1fr 1fr">
+            <Frame columns="1fr 1fr 1fr" bg="secondary">
               <Slot
                 player={slots[0]}
                 dispatch={() => slot(slots[0])}

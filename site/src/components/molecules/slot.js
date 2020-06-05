@@ -6,13 +6,15 @@ const Slot = ({ player, dispatch, index }) => {
   return (
     <button
       sx={{
-        cursor: "pointer",
-        p: 0,
-        width: "100%",
-        height: 70,
         appearance: "none",
         outline: "none",
         border: "none",
+
+        cursor: "pointer",
+        bg: "secondary",
+        p: 0,
+        width: "100%",
+        height: 70,
         borderTop: player ? "solid 1.5px" : "none",
         borderTopColor: "primary"
       }}
@@ -20,7 +22,7 @@ const Slot = ({ player, dispatch, index }) => {
     >
       <div
         sx={{
-          bg: "secondary",
+          // bg: "secondary",
           height: "100%",
           width: "100%",
           display: "grid"
@@ -32,14 +34,6 @@ const Slot = ({ player, dispatch, index }) => {
             fixed={player.team.logo.asset.fixed}
           />
         ) : (
-          // <FaUser
-          //   sx={{
-          //     alignSelf: "end",
-          //     justifySelf: "center",
-          //     color: "background"
-          //   }}
-          //   size={18}
-          // />
           <Styled.h1
             sx={{
               fontSize: 5,

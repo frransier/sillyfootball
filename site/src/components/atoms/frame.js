@@ -8,6 +8,7 @@ const Frame = ({
   borderRadius,
   borderWidth,
   width,
+  bg,
   columns
 }) => {
   return (
@@ -19,7 +20,7 @@ const Frame = ({
         boxShadow: "2px 2px 6px darkgrey",
         border: "solid",
         borderColor: "secondary",
-        // bg: "primary",
+        bg: bg || "background",
         my: my,
         ml: ml,
         borderRadius: borderRadius,

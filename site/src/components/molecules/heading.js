@@ -11,7 +11,20 @@ const Heading = ({ main, sub1, sub2, sub3, columns, justify }) => {
     >
       <Styled.h2 sx={{ mb: 0, mt: 2 }}>{main}</Styled.h2>
 
-      {sub1 && (
+      {sub1 && typeof sub1 !== String ? (
+        <div
+          sx={{
+            alignSelf: "end",
+            mx: 0,
+            justifySelf: justify || "end",
+            fontWeight: 500,
+            mb: 0,
+            mt: 2
+          }}
+        >
+          {sub1}
+        </div>
+      ) : (
         <Styled.p
           sx={{
             alignSelf: "end",

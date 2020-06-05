@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { Fragment } from "react"
 import { FaRegCircle, FaCheckCircle, FaStar } from "react-icons/fa"
 
 const Player = ({ player, dispatch, selected }) => (

@@ -1,19 +1,19 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
+import Container from "../atoms/container"
 
-const User = ({ user }) => {
+const User = ({ user, index }) => {
   return (
-    <div sx={{ display: "grid", gridTemplateColumns: "40% 21% 21% 18%" }}>
+    <Container mt={3} columns={["54% 17% 17% 12%", "54% 15% 15% 16%"]}>
       <Styled.p
         sx={{
           textAlign: "left",
           fontWeight: 500,
-          mx: 2,
           my: 1,
           fontSize: 2
         }}
       >
-        {user.name}
+        {index}. {user.name}
       </Styled.p>
 
       <Styled.p
@@ -37,14 +37,13 @@ const User = ({ user }) => {
       <Styled.p
         sx={{
           alignSelf: "center",
-          justifySelf: "center",
+          justifySelf: "center"
           // fontWeight: "heading",
-          mx: 1
         }}
       >
         {user.average.toFixed(2) || 0}
       </Styled.p>
-    </div>
+    </Container>
   )
 }
 

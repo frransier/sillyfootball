@@ -15,6 +15,7 @@ import {
   useLoadingDispatch
 } from "../state"
 import { FaTrophy } from "react-icons/fa"
+import Frame from "../components/atoms/frame"
 // import { useAuth } from "react-use-auth"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
@@ -218,17 +219,26 @@ const AccountPage = props => {
       {init && current !== "play" && (
         <Container>
           <Styled.h2 sx={{}}>Personal Leaderboard</Styled.h2>
+
           <Heading
-            sub1={<FaTrophy sx={{ mx: 2, color: "primary" }} size={15} />}
+            main=""
+            sub1={
+              <Frame borderRadius={2}>
+                <FaTrophy
+                  sx={{ color: "primary", bg: "secondary" }}
+                  size={15}
+                />
+              </Frame>
+            }
             sub2="High"
             sub3="Average"
-            columns="40% 21% 21% 18%"
+            columns={["54% 16% 16% 14%", "53% 16% 14% 17%"]}
             justify="center"
           />
           {current
             .sort((a, b) => (a.user.average < b.user.average ? 1 : -1))
             .map((x, i) => (
-              <User user={x.user} key={i} />
+              <User user={x.user} key={i} index={i + 1} />
             ))}
         </Container>
       )}
@@ -236,14 +246,21 @@ const AccountPage = props => {
         <Container>
           <Styled.h2 sx={{}}>Top 20</Styled.h2>
           <Heading
-            sub1={<FaTrophy sx={{ mx: 2, color: "primary" }} size={15} />}
+            sub1={
+              <Frame borderRadius={2}>
+                <FaTrophy
+                  sx={{ color: "primary", bg: "secondary" }}
+                  size={15}
+                />
+              </Frame>
+            }
             sub2="High"
             sub3="Average"
-            columns="40% 21% 21% 18%"
+            columns={["54% 16% 16% 14%", "53% 16% 14% 17%"]}
             justify="center"
           />
           {props.data.top50.edges.map(({ node }, i) => (
-            <User user={node} key={i} />
+            <User user={node} key={i} index={i + 1} />
           ))}
         </Container>
       )}

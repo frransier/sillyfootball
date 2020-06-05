@@ -2,12 +2,12 @@
 import { jsx, Styled } from "theme-ui"
 import Frame from "./frame"
 
-const Button = ({ children, dispatch, fontSize }) => {
+const Button = ({ children, dispatch, fontSize, p }) => {
   return (
     <Frame borderWidth={1}>
       <button
         sx={{
-          height: 40,
+          // height: 40,
           width: "100%",
           cursor: "pointer",
           appearance: "none",
@@ -16,8 +16,7 @@ const Button = ({ children, dispatch, fontSize }) => {
           bg: "secondary",
           color: "background",
           // borderRadius: 4,
-          py: 4,
-          px: 4
+          p: p || 4
         }}
         onClick={dispatch}
       >
