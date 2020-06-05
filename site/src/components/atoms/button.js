@@ -7,6 +7,7 @@ const Button = ({ children, dispatch, fontSize }) => {
     <Frame borderWidth={2} borderRadius={6}>
       <button
         sx={{
+          height: 40,
           cursor: "pointer",
           appearance: "none",
           outline: "none",
