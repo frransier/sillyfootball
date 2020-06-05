@@ -8,6 +8,7 @@ const Button = ({ children, dispatch, fontSize }) => {
       <button
         sx={{
           height: 40,
+          width: "100%",
           cursor: "pointer",
           appearance: "none",
           outline: "none",
