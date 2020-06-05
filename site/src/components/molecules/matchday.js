@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { navigate, Link } from "gatsby"
+import { navigate } from "gatsby"
 import Button from "../atoms/button"
 import Container from "../atoms/container"
 import Ticket from "./ticket"
