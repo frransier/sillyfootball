@@ -4,7 +4,7 @@ import Frame from "./frame"
 
 const Button = ({ children, dispatch, fontSize }) => {
   return (
-    <Frame borderWidth={2} borderRadius={6}>
+    <Frame borderWidth={1}>
       <button
         sx={{
           height: 40,
@@ -15,7 +15,7 @@ const Button = ({ children, dispatch, fontSize }) => {
           border: "none",
           bg: "secondary",
           color: "background",
-          borderRadius: 4,
+          // borderRadius: 4,
           py: 4,
           px: 4
         }}

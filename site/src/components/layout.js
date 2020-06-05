@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
         minHeight: "100vh"
       }}
     >
-      <main sx={{ mx: "auto", maxWidth: 700, px: 2, py: 3 }}>
+      <main sx={{ mx: "auto", maxWidth: 600, px: 2, py: 3 }}>
         <Header />
         {children}
         {/* <Header /> */}

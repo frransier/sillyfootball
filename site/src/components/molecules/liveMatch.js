@@ -2,6 +2,7 @@
 import { jsx, Styled } from "theme-ui"
 import dayjs from "dayjs"
 import { useState, Fragment } from "react"
+import Frame from "../atoms/frame"
 
 const LiveMatch = ({ match, disabled, selected }) => {
   const [show, setShow] = useState(false)
@@ -11,123 +12,142 @@ const LiveMatch = ({ match, disabled, selected }) => {
     .format("dddd")
     .substr(0, 3)
   return (
-    <Fragment>
-      <button
-        sx={{
-          cursor: "pointer",
-          my: 1,
-          p: 1,
-          appearance: "none",
-          outline: "none",
-          width: "100%",
-          height: 30,
-          bg: "background",
-          color: "text",
-          borderRadius: 0,
-          borderBottomLeftRadius: 0,
-          borderTopRightRadius: 2,
-          borderTopLeftRadius: 5,
-          border: disabled ? "none" : show ? "solid 1px" : "none",
-          borderBottom: disabled ? "none" : show ? "solid 3px" : "solid 1px",
-          borderColor: show ? "red" : "lightgrey"
-        }}
-        onClick={() => match.events.length > 0 && setShow(!show)}
-      >
-        <div
+    <div sx={{ my: 3 }}>
+      <Frame borderWidth={0}>
+        <button
           sx={{
-            display: "grid",
-            gridTemplateColumns: ["7% 37% 12% 37% 7%", "18% 28% 14% 28% 12%"],
-            fontWeight: "heading"
+            cursor: "pointer",
+            border: "none",
+            p: 1,
+            appearance: "none",
+            outline: "none",
+            width: "100%",
+            height: 30,
+            bg: show ? "secondary" : "background",
+            color: show ? "background" : "text"
           }}
+          onClick={() => match.events.length > 0 && setShow(!show)}
         >
-          <Styled.p sx={{}}>
-            {match.status === "ft"
-              ? match.status
-              : match.elapsed
-              ? `${match.elapsed}'`
-              : day}
-          </Styled.p>
-          <Styled.p sx={{ textAlign: "right" }}>
-            {match.home.name || match.home.fullName}
-          </Styled.p>
-          <Styled.p sx={{}}>
-            {started
-              ? `${match.homeGoals || 0} - ${match.awayGoals || 0}`
-              : time}
-          </Styled.p>
-          <Styled.p sx={{ textAlign: "left" }}>
-            {match.away.name || match.away.fullName}
-          </Styled.p>
           <div
             sx={{
-              width: 10,
-              height: 10,
-              borderRadius: 999,
-              border: "solid 0.1px white",
-              mx: 0,
-              bg:
-                match.status === "ft"
-                  ? "red"
-                  : match.status === "ns"
-                  ? "lightgrey"
-                  : "lime",
-              alignSelf: "center",
-              justifySelf: ["start", "center"]
-              // boxShadow: "1px 1px 0px black"
+              display: "grid",
+              gridTemplateColumns: ["9% 35% 12% 35% 9%", "15% 28% 14% 28% 15%"],
+              fontWeight: "heading"
             }}
-          />
-        </div>
-      </button>
-      {show && (
-        <div
-          sx={{
-            p: 1,
-            display: "grid",
-            gridTemplateColumns: ["7% 37% 12% 37% 7%", "18% 28% 14% 28% 12%"],
-            width: "100%"
-          }}
-        >
-          {match.events
-            .filter(x => x.team._id === match.home._id)
-            .map((x, i) => (
-              <Fragment key={i}>
-                <Styled.p sx={{ justifySelf: "center" }}>{x.elapsed}'</Styled.p>
+          >
+            <div
+              sx={{
+                width: 10,
+                height: 10,
+                borderRadius: 999,
+                border: "solid 0.1px white",
+                mx: 4,
+                bg:
+                  match.status === "ft"
+                    ? "red"
+                    : match.status === "ns"
+                    ? "muted"
+                    : "primary",
+                alignSelf: "center",
+                justifySelf: ["start", "center"]
+              }}
+            />
+            <Styled.p sx={{ textAlign: "right" }}>
+              {match.home.name || match.home.fullName}
+            </Styled.p>
+            <Styled.p sx={{}}>
+              {started
+                ? `${match.homeGoals || 0} - ${match.awayGoals || 0}`
+                : time}
+            </Styled.p>
+            <Styled.p sx={{ textAlign: "left" }}>
+              {match.away.name || match.away.fullName}
+            </Styled.p>
 
-                <div sx={{ justifySelf: "end" }}>
-                  <Styled.p sx={{ fontWeight: "heading", textAlign: "right" }}>
-                    {x.goal.fullName}
-                  </Styled.p>
+            <Styled.p sx={{}}>
+              {match.status === "ft"
+                ? match.status
+                : match.elapsed
+                ? `${match.elapsed}'`
+                : day}
+            </Styled.p>
+          </div>
+        </button>
+        {show && (
+          <div
+            sx={{
+              p: 1,
+              display: "grid",
+              gridTemplateColumns: ["9% 35% 12% 35% 9%", "15% 28% 14% 28% 15%"],
+              width: "100%"
+            }}
+          >
+            <div sx={{ gridColumn: "1 / span 2" }}>
+              {match.events
+                .filter(x => x.team._id === match.home._id)
+                .map((x, i) => (
+                  <Fragment key={i}>
+                    <div
+                      sx={{
+                        my: 2,
+                        display: "grid",
+                        gridTemplateColumns: ["20% 80%", "35% 65%"]
+                      }}
+                      key={i}
+                    >
+                      <Styled.p sx={{ justifySelf: "center" }}>
+                        {x.elapsed}'
+                      </Styled.p>
 
-                  <Styled.p sx={{ color: "darkgrey" }}>
-                    {x.assist.fullName}
-                  </Styled.p>
-                </div>
-              </Fragment>
-            ))}
+                      <Styled.p
+                        sx={{ fontWeight: "heading", textAlign: "right" }}
+                      >
+                        {x.goal.fullName}
+                      </Styled.p>
+                    </div>
 
-          <div sx={{}} />
+                    <Styled.p sx={{ color: "darkgrey", textAlign: "right" }}>
+                      {x.assist.fullName}
+                    </Styled.p>
+                  </Fragment>
+                ))}
+            </div>
 
-          {match.events
-            .filter(x => x.team._id === match.home._id)
-            .map((x, i) => (
-              <Fragment key={i}>
-                <div sx={{ justifySelf: "start" }}>
-                  <Styled.p sx={{ fontWeight: "heading", textAlign: "left" }}>
-                    {x.goal.fullName}
-                  </Styled.p>
+            <div sx={{}} />
 
-                  <Styled.p sx={{ color: "darkgrey" }}>
-                    {x.assist.fullName}
-                  </Styled.p>
-                </div>
-                <Styled.p sx={{ justifySelf: ["start", "center"] }}>
-                  {x.elapsed}'
-                </Styled.p>
-              </Fragment>
-            ))}
-        </div>
-      )}
-    </Fragment>
+            <div sx={{ gridColumn: "4 / span 2" }}>
+              {match.events
+                .filter(x => x.team._id === match.away._id)
+                .map((x, i) => (
+                  <Fragment key={i}>
+                    <div
+                      sx={{
+                        my: 2,
+                        display: "grid",
+                        gridTemplateColumns: ["80% 20%", "65% 35%"]
+                      }}
+                      key={i}
+                    >
+                      <Styled.p
+                        sx={{ fontWeight: "heading", textAlign: "left" }}
+                      >
+                        {x.goal.fullName}
+                      </Styled.p>
+                      <Styled.p sx={{ justifySelf: "center" }}>
+                        {x.elapsed}'
+                      </Styled.p>
+                    </div>
+
+                    <Styled.p sx={{ color: "darkgrey", textAlign: "left" }}>
+                      {x.assist.fullName}
+                    </Styled.p>
+                  </Fragment>
+                ))}
+            </div>
+          </div>
+        )}
+      </Frame>
+    </div>
   )
 }
 

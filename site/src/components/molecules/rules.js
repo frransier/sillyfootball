@@ -3,15 +3,17 @@ import { jsx, Styled } from "theme-ui"
 
 const Rules = ({ deadline }) => {
   return (
-    <div sx={{ mx: 2, justifySelf: "start" }}>
+    <div sx={{ mx: 2, textAlign: "center" }}>
       <Styled.p
         sx={{
           mb: 2,
           mt: 0,
-          alignSelf: "end",
-          justifySelf: "start",
+          // alignSelf: "end",
+          // justifySelf: "start",
           textTransform: "capitalize",
-          fontWeight: "display"
+          fontWeight: 500,
+          textAlign: "center",
+          fontSize: 2
         }}
       >
         Deadline {deadline}
@@ -19,9 +21,10 @@ const Rules = ({ deadline }) => {
       <Styled.p
         sx={{
           alignSelf: "end",
-          justifySelf: "start",
+          justifySelf: "center",
           textTransform: "capitalize",
-          fontWeight: "display",
+          fontWeight: 500,
+          textAlign: "center",
           fontSize: 2
         }}
       >

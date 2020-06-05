@@ -2,7 +2,6 @@
 import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
-import Footer from "../components/footer"
 import SEO from "../components/seo"
 import { FaStar } from "react-icons/fa"
 import Container from "../components/atoms/container"
@@ -12,7 +11,6 @@ import { FaHome } from "react-icons/fa"
 import { useAuth } from "react-use-auth"
 import Button from "../components/atoms/button"
 import Loading from "../components/molecules/loading"
-import Frame from "../components/atoms/frame"
 
 const IndexPage = () => {
   const loading = useLoadingState()

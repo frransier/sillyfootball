@@ -2,14 +2,12 @@
 import { jsx } from "theme-ui"
 import { useState, useEffect } from "react"
 import Layout from "../components/layout"
-import Footer from "../components/footer"
 import SEO from "../components/seo"
 import LiveMatch from "../components/molecules/liveMatch"
 import Score from "../components/molecules/score"
 import Ticket from "../components/molecules/ticket"
 import Heading from "../components/molecules/heading"
 import Loading from "../components/molecules/loading"
-import dayjs from "dayjs"
 import { useLoadingState, useLoadingDispatch } from "../state"
 import { Fragment } from "react"
 import Container from "../components/atoms/container"
@@ -83,7 +81,8 @@ const LivescorePage = ({ data }) => {
         {
           "name": player->name,
           "fullName": player->fullName,
-          "team": player->team->fullName,
+          "teamName": player->team->name,
+          "teamFullName": player->team->fullName,
           goals,
           assists,
           "points": (goals + assists) * rate
@@ -135,7 +134,7 @@ const LivescorePage = ({ data }) => {
               columns="50% 50%"
             />
 
-            <Container>
+            <Container mt={4}>
               {matches.map((x, i) => (
                 <LiveMatch key={i} match={x} />
               ))}
@@ -147,29 +146,33 @@ const LivescorePage = ({ data }) => {
               sub1="Goals"
               sub2="Assists"
               sub3="Points"
-              columns="58% 14% 14% 14%"
+              columns={["56% 15% 15% 14%", "55% 14% 14% 17%"]}
               justify="center"
             />
-            {scores.map((x, i) => (
-              <Score key={i} player={x} />
-            ))}
+            <Container mt={4}>
+              {scores.map((x, i) => (
+                <Score key={i} player={x} />
+              ))}
+            </Container>
           </Container>
           <Container>
             <Heading
               main="Leaderboard"
               sub1={`${tickets[0].count} participants`}
               sub3="Points"
-              columns="50% 36% 14%"
+              columns={["54% 32% 14%", "55% 28% 17%"]}
               justify="center"
             />
-            {tickets.map((x, i) => (
-              <Ticket
-                key={i}
-                ticket={x}
-                winner={x.score === tickets[0].score}
-                disabled={!live}
-              />
-            ))}
+            <Container mt={4}>
+              {tickets.map((x, i) => (
+                <Ticket
+                  key={i}
+                  ticket={x}
+                  winner={x.score === tickets[0].score}
+                  disabled={!live}
+                />
+              ))}
+            </Container>
           </Container>
         </Fragment>
       )}

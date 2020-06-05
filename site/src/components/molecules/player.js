@@ -30,12 +30,9 @@ const Player = ({ player, dispatch, selected }) => (
           sx={{
             color: selected ? "secondary" : "lightgrey",
             alignSelf: "center",
-            justifySelf: "start",
+            justifySelf: "center",
             borderRadius: 999,
-            height: 16,
-            mx: 2,
-            bg: selected ? "primary" : "background",
-            border: "none"
+            height: 20
           }}
         >
           {selected ? <FaCheckCircle size={20} /> : <FaRegCircle size={20} />}
@@ -44,18 +41,26 @@ const Player = ({ player, dispatch, selected }) => (
         <div
           sx={{
             display: "flex",
-            ml: 2,
+
             alignSelf: "center",
-            justifySelf: "start"
+            justifySelf: "start",
+            alignItems: "center"
           }}
         >
-          {player.rate === 1 && <FaStar sx={{ mr: 1, color: "text" }} />}
+          {player.rate === 1 && (
+            <FaStar sx={{ mr: 3, color: "text" }} size={12} />
+          )}
           <Styled.p
-            sx={{ textAlign: "left", fontWeight: "heading", color: "text" }}
+            sx={{
+              textAlign: "left",
+              fontWeight: "heading",
+              color: "text",
+              ml: player.rate !== 1 && 3
+            }}
           >
             {player.name || player.fullName}
           </Styled.p>
-          <Styled.p sx={{ mx: 2, color: "darkgrey" }}>
+          <Styled.p sx={{ ml: 4, color: "darkgrey" }}>
             {player.team.name || player.team.fullName}
           </Styled.p>
         </div>

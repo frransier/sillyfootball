@@ -31,7 +31,7 @@ const Header = () => {
           // justifySelf: "start"
         }}
       >
-        <Frame borderWidth={2} borderRadius={9}>
+        <Frame borderWidth={1} borderRadius={6}>
           <div
             sx={{
               display: "grid",
@@ -39,7 +39,7 @@ const Header = () => {
               color: "primary",
               width: 25,
               height: 25,
-              borderRadius: 7
+              borderRadius: 4
             }}
           >
             <FaSuperpowers
@@ -59,7 +59,7 @@ const Header = () => {
           // textShadow: "1px 1px 0px primary"
         }}
       >
-        SILLY
+        SILLY FOOTBALL
       </Styled.h1>
 
       <Link

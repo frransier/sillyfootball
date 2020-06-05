@@ -13,37 +13,53 @@ const Ticket = ({ ticket, disabled, winner }) => {
       <button
         sx={{
           cursor: "pointer",
-          my: 1,
-          py: 0,
+          my: 3,
+          py: 3,
           px: 0,
           appearance: "none",
           bg: "background",
           color: "text",
           outline: "none",
           width: "100%",
-          borderRadius: 0,
-          borderBottomLeftRadius: 0,
-          borderTopRightRadius: 2,
-          borderTopLeftRadius: 5,
-          border: disabled ? "none" : show ? "solid 1px" : "none",
+          border: "none",
           borderBottom: "solid 1px",
-          borderColor: winner ? "primary" : "darkgrey"
+          borderColor: "darkgrey"
         }}
         disabled={disabled}
         onClick={() => setShow(!show)}
       >
-        <div sx={{ display: "grid", gridTemplateColumns: "58% 14% 14% 14%" }}>
-          <Styled.p
+        <div
+          sx={{
+            display: "grid",
+            gridTemplateColumns: ["56% 17% 17% 10%", "55% 15% 15% 15%"]
+          }}
+        >
+          <div
             sx={{
+              display: "flex",
               textAlign: "left",
-              fontWeight: show ? 700 : 500,
               m: 1,
               fontSize: 2
             }}
           >
-            {winner && <FaTrophy sx={{ mx: 2, color: "primary" }} />}{" "}
-            {ticket.user.name}
-          </Styled.p>
+            {winner && (
+              <div
+                sx={{
+                  bg: "secondary",
+                  display: "grid",
+                  alignItems: "center",
+                  borderRadius: 3,
+                  p: 2,
+                  mr: 4
+                }}
+              >
+                <FaTrophy sx={{ mx: 2, color: "primary", height: 15 }} />
+              </div>
+            )}{" "}
+            <Styled.p sx={{ fontWeight: show ? 700 : 500, p: 2 }}>
+              {ticket.user.name}
+            </Styled.p>
+          </div>
 
           <Styled.p
             sx={{
@@ -79,10 +95,15 @@ const Ticket = ({ ticket, disabled, winner }) => {
           </Styled.p>
         </div>
       </button>
-      {show &&
-        ticket.scores
-          .sort((a, b) => (a.points < b.points ? 1 : -1))
-          .map((x, i) => <Score key={i} player={x} />)}
+      {show && (
+        <div sx={{ mt: 2 }}>
+          {ticket.scores
+            .sort((a, b) => (a.points < b.points ? 1 : -1))
+            .map((x, i) => (
+              <Score key={i} player={x} />
+            ))}
+        </div>
+      )}
     </Fragment>
   )
 }

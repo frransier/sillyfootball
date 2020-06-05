@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { FaUser } from "react-icons/fa"
 import Image from "gatsby-image"
-import Frame from "../atoms/frame"
 
 const Slot = ({ player, dispatch, index }) => {
   return (
@@ -14,56 +12,59 @@ const Slot = ({ player, dispatch, index }) => {
         height: 70,
         appearance: "none",
         outline: "none",
-        bg: player ? "secondary" : "background",
         border: "none",
-        // borderTop: player ? "solid 3px" : "none",
+        borderTop: player ? "solid 1.5px" : "none",
         borderTopColor: "primary"
       }}
       onClick={dispatch}
     >
-      {/* <div
+      <div
         sx={{
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column"
+          bg: "secondary",
+          height: "100%",
+          width: "100%",
+          display: "grid"
         }}
-      > */}
-      {player ? (
-        <Image sx={{ mt: 1, mb: 0 }} fixed={player.team.logo.asset.fixed} />
-      ) : (
-        // <Frame borderWidth={2} borderRadius={6}>
-        <div
-          sx={{
-            bg: "secondary",
-            height: "100%",
-            width: "100%",
-            // borderRadius: 2,
-            display: "grid"
-          }}
-        >
-          <FaUser
+      >
+        {player ? (
+          <Image
+            sx={{ alignSelf: "center", justifySelf: "center", mt: 4 }}
+            fixed={player.team.logo.asset.fixed}
+          />
+        ) : (
+          // <FaUser
+          //   sx={{
+          //     alignSelf: "end",
+          //     justifySelf: "center",
+          //     color: "background"
+          //   }}
+          //   size={18}
+          // />
+          <Styled.h1
             sx={{
-              alignSelf: "center",
+              fontSize: 5,
+              mt: "22px",
+              alignSelf: "end",
               justifySelf: "center",
               color: "background"
             }}
-            size={18}
-          />
-        </div>
-        // </Frame>
-      )}
-      <Styled.p
-        sx={{
-          fontSize: 1,
-          fontWeight: 600,
-          width: "100%",
-          my: 3,
-          alignSelf: "center",
-          color: player ? "background" : "secondary"
-        }}
-      >
-        {player ? player.name || player.fullName : ""}
-      </Styled.p>
+          >
+            {index}
+          </Styled.h1>
+        )}
+        <Styled.p
+          sx={{
+            fontSize: 1,
+            fontWeight: 600,
+            width: "100%",
+            my: 3,
+            alignSelf: "center",
+            color: player ? "background" : "secondary"
+          }}
+        >
+          {player ? player.name || player.fullName : null}
+        </Styled.p>
+      </div>
     </button>
   )
 }

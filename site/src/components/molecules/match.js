@@ -6,14 +6,13 @@ const Match = ({ match, dispatch, selected, disabled }) => {
   const time = dayjs(match.start).format("HH:mm")
 
   return (
-    <Frame my={3} ml={-4} borderWidth={2} width="100%" borderRadius={4}>
+    <Frame my={3} ml={-3} borderWidth={0} width="100%">
       <button
         sx={{
           alignSelf: "center",
           justifySelf: "center",
           bg: selected ? "secondary" : "background",
-          height: 35,
-          borderRadius: 2,
+          height: 40,
           color: disabled ? "darkgrey" : selected ? "background" : "secondary",
           width: "100%",
           cursor: "pointer",

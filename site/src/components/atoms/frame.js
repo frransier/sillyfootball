@@ -19,12 +19,12 @@ const Frame = ({
         boxShadow: "2px 2px 6px darkgrey",
         border: "solid",
         borderColor: "secondary",
-        bg: "primary",
+        // bg: "primary",
         my: my,
         ml: ml,
         borderRadius: borderRadius,
         borderWidth: borderWidth,
-        p: borderWidth - 1,
+        // p: borderWidth - 1,
         width: width,
         gridTemplateColumns: columns
       }}

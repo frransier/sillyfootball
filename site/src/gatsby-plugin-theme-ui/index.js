@@ -5,7 +5,8 @@ export default {
     background: "white",
     primary: "#66fcf1",
     secondary: "#1f2833",
-    muted: "lightgrey"
+    muted: "lightgrey",
+    red: "#FC427B"
   },
   fonts: {
     body: "system-ui, sans-serif",

@@ -2,12 +2,11 @@
 import { jsx, Styled } from "theme-ui"
 import { useState, useEffect, Fragment } from "react"
 import Layout from "../../components/layout"
-import Footer from "../../components/footer"
 import SEO from "../../components/seo"
 import Matches from "../../components/molecules/matches"
 import Match from "../../components/molecules/match"
 import Heading from "../../components/molecules/heading"
-import Board from "../../components/molecules/board"
+import Frame from "../../components/atoms/frame"
 import Slot from "../../components/molecules/slot"
 import Player from "../../components/molecules/player"
 import Rules from "../../components/molecules/rules"
@@ -114,11 +113,28 @@ const FantasyPage = ({ data }) => {
         <Loading />
       ) : (
         <Fragment>
-          <Board>
-            <Slot player={slots[0]} dispatch={() => slot(slots[0])} index={1} />
-            <Slot player={slots[1]} dispatch={() => slot(slots[1])} index={2} />
-            <Slot player={slots[2]} dispatch={() => slot(slots[2])} index={3} />
-          </Board>
+          <Container>
+            <Styled.h1 sx={{ textAlign: "center", fontSize: 5, mb: 5, mt: 0 }}>
+              {slots.length === 3 ? "READY" : "PICK 3 PLAYERS"}
+            </Styled.h1>
+            <Frame columns="1fr 1fr 1fr">
+              <Slot
+                player={slots[0]}
+                dispatch={() => slot(slots[0])}
+                index={1}
+              />
+              <Slot
+                player={slots[1]}
+                dispatch={() => slot(slots[1])}
+                index={2}
+              />
+              <Slot
+                player={slots[2]}
+                dispatch={() => slot(slots[2])}
+                index={3}
+              />
+            </Frame>
+          </Container>
 
           <Container>
             <Matches>
@@ -136,29 +152,24 @@ const FantasyPage = ({ data }) => {
               <Rules deadline={data.matchday.deadline} />
             </Matches>
             {slots.length !== 3 && (
-              <Styled.p sx={{ textAlign: "left" }}>
+              <Styled.p sx={{ textAlign: "left", mx: 4, mt: 3 }}>
                 Select Match To Filter Players
               </Styled.p>
             )}
           </Container>
-          <Container>
-            <Centered>
-              {slots.length === 3 && (
-                <Button dispatch={() => post()} fontSize={6}>
+          {slots.length === 3 && (
+            <Container>
+              <Centered>
+                <Button dispatch={() => post()} fontSize={5}>
                   PLAY
                 </Button>
-              )}
-            </Centered>
-          </Container>
-          <div
-            sx={{
-              mt: 2,
-              mx: 2
-            }}
-          >
+              </Centered>
+            </Container>
+          )}
+          <Container>
             <div sx={{ display: slots.length < 3 ? "" : "none" }}>
               <Heading
-                main="Pick 3 Players"
+                main=""
                 sub1="Goals"
                 sub2="Assists"
                 columns="72% 14% 14%"
@@ -179,7 +190,7 @@ const FantasyPage = ({ data }) => {
                 )
               })}
             </div>
-          </div>
+          </Container>
         </Fragment>
       )}
     </Layout>
