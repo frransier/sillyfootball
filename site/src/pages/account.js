@@ -16,6 +16,7 @@ import {
 } from "../state"
 import { FaTrophy } from "react-icons/fa"
 import Frame from "../components/atoms/frame"
+import { Link } from "gatsby"
 // import { useAuth } from "react-use-auth"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
@@ -240,6 +241,11 @@ const AccountPage = props => {
             .map((x, i) => (
               <User user={x.user} key={i} index={i + 1} />
             ))}
+          <Link to="/fantasy/" sx={{ textDecoration: "none" }}>
+            <Styled.h5 sx={{ m: 4, color: "red", fontWeight: "heading" }}>
+              Manage Friends >
+            </Styled.h5>
+          </Link>
         </Container>
       )}
       {init && (

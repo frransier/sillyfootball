@@ -43,7 +43,7 @@ const Header = () => {
             }}
           >
             <FaSuperpowers
-              sx={{ height: 25, justifySelf: "center", color: "background" }}
+              sx={{ height: 25, justifySelf: "center", color: "primary" }}
             />
           </div>
         </Frame>

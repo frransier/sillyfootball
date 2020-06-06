@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { navigate } from "gatsby"
+import { navigate, Link } from "gatsby"
 import Button from "../atoms/button"
 import Container from "../atoms/container"
 import Ticket from "./ticket"
@@ -46,11 +46,12 @@ const Matchday = ({ matchday, status, deadline }) => {
             ))}
           {status === "Next" && (
             <div sx={{ display: "flex", alignItems: "center" }}>
-              <Styled.h5>Need to make changes?</Styled.h5>
-              <div sx={{ mx: "auto" }} />
-              <Button fontSize={3} p={3} dispatch={() => Play()}>
-                PLAY AGAIN
-              </Button>
+              <Styled.h5 sx={{ m: 3 }}>Need to make changes?</Styled.h5>
+              <Link to="/fantasy/" sx={{ textDecoration: "none" }}>
+                <Styled.h5 sx={{ m: 2, color: "red", fontWeight: "heading" }}>
+                  Play Again >
+                </Styled.h5>
+              </Link>
             </div>
           )}
         </Container>

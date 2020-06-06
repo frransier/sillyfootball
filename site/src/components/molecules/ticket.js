@@ -3,6 +3,7 @@ import { jsx, Styled } from "theme-ui"
 import Score from "./score"
 import { useState, Fragment } from "react"
 import { FaTrophy } from "react-icons/fa"
+import Frame from "../atoms/frame"
 
 const Ticket = ({ ticket, disabled, winner }) => {
   const [show, setShow] = useState(false)
@@ -39,23 +40,18 @@ const Ticket = ({ ticket, disabled, winner }) => {
               display: "flex",
               textAlign: "left",
               m: 1,
-              fontSize: 2
+              fontSize: 2,
+              alignItems: "center"
             }}
           >
             {winner && (
-              <div
-                sx={{
-                  bg: "secondary",
-                  display: "grid",
-                  alignItems: "center",
-                  borderRadius: 3,
-                  p: 2,
-                  mr: 4
-                }}
-              >
-                <FaTrophy sx={{ mx: 2, color: "primary", height: 15 }} />
-              </div>
-            )}{" "}
+              <Frame borderRadius={2} mr={4}>
+                <FaTrophy
+                  sx={{ color: "primary", bg: "secondary" }}
+                  size={15}
+                />
+              </Frame>
+            )}
             <Styled.p sx={{ fontWeight: show ? 700 : 500, p: 2 }}>
               {ticket.user.name}
             </Styled.p>
