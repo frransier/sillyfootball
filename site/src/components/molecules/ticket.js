@@ -45,7 +45,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
             }}
           >
             {winner && (
-              <Frame borderRadius={2} mr={4}>
+              <Frame borderRadius={0} mr={4}>
                 <FaTrophy
                   sx={{ color: "primary", bg: "secondary" }}
                   size={15}

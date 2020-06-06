@@ -224,7 +224,7 @@ const AccountPage = props => {
           <Heading
             main=""
             sub1={
-              <Frame borderRadius={2}>
+              <Frame borderRadius={0}>
                 <FaTrophy
                   sx={{ color: "primary", bg: "secondary" }}
                   size={15}
@@ -253,7 +253,7 @@ const AccountPage = props => {
           <Styled.h2 sx={{}}>Top 20</Styled.h2>
           <Heading
             sub1={
-              <Frame borderRadius={2}>
+              <Frame borderRadius={0}>
                 <FaTrophy
                   sx={{ color: "primary", bg: "secondary" }}
                   size={15}

@@ -5,6 +5,7 @@ import { useAuth } from "react-use-auth"
 import { useUserState, useLoadingDispatch } from "../state"
 import { FaHome, FaSuperpowers } from "react-icons/fa"
 import Frame from "./atoms/frame"
+import { FaUser } from "react-icons/fa"
 
 const Header = () => {
   const { login } = useAuth()
@@ -31,7 +32,7 @@ const Header = () => {
           // justifySelf: "start"
         }}
       >
-        <Frame borderWidth={1} borderRadius={6}>
+        <Frame borderWidth={1} borderRadius={0}>
           <div
             sx={{
               display: "grid",
@@ -39,11 +40,12 @@ const Header = () => {
               color: "primary",
               width: 25,
               height: 25,
-              borderRadius: 4
+              borderRadius: 0
             }}
           >
             <FaSuperpowers
-              sx={{ height: 25, justifySelf: "center", color: "primary" }}
+              sx={{ height: 25, justifySelf: "center", color: "background" }}
+              size={15}
             />
           </div>
         </Frame>
@@ -69,7 +71,8 @@ const Header = () => {
           textDecoration: "none",
           color: "secondary",
           alignSelf: "center",
-          justifySelf: "center"
+          mx: ["", 4],
+          justifySelf: ["center", "end"]
 
           // "&.active": {
           //   color: "red"
@@ -85,15 +88,30 @@ const Header = () => {
           activeClassName="active"
           sx={{
             textDecoration: "none",
-            color: "secondary",
-            height: "24px"
+            color: "secondary"
             // "&.active": {
             //   color: "red"
             // }
           }}
           onClick={() => loadingDispatch({ type: "set", loading: true })}
         >
-          <FaHome sx={{}} size={20} />
+          <Frame borderWidth={1} borderRadius={0}>
+            <div
+              sx={{
+                display: "grid",
+                bg: "secondary",
+                color: "primary",
+                width: 25,
+                height: 25,
+                borderRadius: 0
+              }}
+            >
+              <FaUser
+                sx={{ height: 25, justifySelf: "center", color: "background" }}
+                size={13}
+              />
+            </div>
+          </Frame>
         </Link>
       )}
       {!userState && (
