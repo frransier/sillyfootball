@@ -101,18 +101,18 @@ const Header = () => {
                 display: "grid",
                 bg: "secondary",
                 color: "primary",
-                width: 22,
-                height: 22,
+                width: 23,
+                height: 23,
                 borderRadius: 999
               }}
             >
               <FaUser
                 sx={{
-                  height: 22,
+                  height: 21,
                   justifySelf: "center",
                   color: "background"
                 }}
-                size={12}
+                size={13}
               />
             </div>
           </Frame>
