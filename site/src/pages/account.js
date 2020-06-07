@@ -219,7 +219,7 @@ const AccountPage = props => {
       )}
       {init && current !== "play" && (
         <Container>
-          <Styled.h2 sx={{}}>Personal Leaderboard</Styled.h2>
+          <Styled.h3 sx={{ mx: 4, m: 0 }}>My Leaderboard</Styled.h3>
 
           <Heading
             main=""
@@ -250,7 +250,7 @@ const AccountPage = props => {
       )}
       {init && (
         <Container>
-          <Styled.h2 sx={{}}>Top 20</Styled.h2>
+          <Styled.h3 sx={{ mx: 4, m: 0 }}>Top 20</Styled.h3>
           <Heading
             sub1={
               <Frame borderRadius={0}>

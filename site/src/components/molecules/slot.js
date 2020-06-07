@@ -11,7 +11,7 @@ const Slot = ({ player, dispatch, index }) => {
         border: "none",
 
         cursor: "pointer",
-        bg: "secondary",
+        bg: player ? "secondary" : "background",
         p: 0,
         width: "100%",
         height: 70,
@@ -40,7 +40,7 @@ const Slot = ({ player, dispatch, index }) => {
               mt: "22px",
               alignSelf: "end",
               justifySelf: "center",
-              color: "background"
+              color: player ? "background" : "secondary"
             }}
           >
             {index}

@@ -2,7 +2,6 @@
 import { jsx, Styled } from "theme-ui"
 import dayjs from "dayjs"
 import { useState, Fragment } from "react"
-import Frame from "../atoms/frame"
 
 const LiveMatch = ({ match, disabled, selected }) => {
   const [show, setShow] = useState(false)
@@ -12,141 +11,139 @@ const LiveMatch = ({ match, disabled, selected }) => {
     .format("dddd")
     .substr(0, 3)
   return (
-    <div sx={{ my: 3 }}>
-      <Frame borderWidth={0}>
-        <button
+    <div sx={{ my: 3, borderBottom: "solid 1px", borderBottomColor: "muted" }}>
+      {/* <Frame borderWidth={0}> */}
+      <button
+        sx={{
+          cursor: "pointer",
+          border: "none",
+          p: 1,
+          appearance: "none",
+          outline: "none",
+          width: "100%",
+          height: 30,
+          bg: show ? "secondary" : "background",
+          color: show ? "background" : "text"
+        }}
+        onClick={() => match.events.length > 0 && setShow(!show)}
+      >
+        <div
           sx={{
-            cursor: "pointer",
-            border: "none",
-            p: 1,
-            appearance: "none",
-            outline: "none",
-            width: "100%",
-            height: 30,
-            bg: show ? "secondary" : "background",
-            color: show ? "background" : "text"
+            display: "grid",
+            gridTemplateColumns: ["9% 35% 12% 35% 9%", "15% 28% 14% 28% 15%"],
+            fontWeight: "heading"
           }}
-          onClick={() => match.events.length > 0 && setShow(!show)}
         >
           <div
             sx={{
-              display: "grid",
-              gridTemplateColumns: ["9% 35% 12% 35% 9%", "15% 28% 14% 28% 15%"],
-              fontWeight: "heading"
+              width: 10,
+              height: 10,
+              borderRadius: 999,
+              border: "solid 0.1px white",
+              mx: 4,
+              bg:
+                match.status === "ft"
+                  ? "red"
+                  : match.status === "ns"
+                  ? "muted"
+                  : "primary",
+              alignSelf: "center",
+              justifySelf: ["start", "center"]
             }}
-          >
-            <div
-              sx={{
-                width: 10,
-                height: 10,
-                borderRadius: 999,
-                border: "solid 0.1px white",
-                mx: 4,
-                bg:
-                  match.status === "ft"
-                    ? "red"
-                    : match.status === "ns"
-                    ? "muted"
-                    : "primary",
-                alignSelf: "center",
-                justifySelf: ["start", "center"]
-              }}
-            />
-            <Styled.p sx={{ textAlign: "right" }}>
-              {match.home.name || match.home.fullName}
-            </Styled.p>
-            <Styled.p sx={{}}>
-              {started
-                ? `${match.homeGoals || 0} - ${match.awayGoals || 0}`
-                : time}
-            </Styled.p>
-            <Styled.p sx={{ textAlign: "left" }}>
-              {match.away.name || match.away.fullName}
-            </Styled.p>
+          />
+          <Styled.p sx={{ textAlign: "right" }}>
+            {match.home.name || match.home.fullName}
+          </Styled.p>
+          <Styled.p sx={{}}>
+            {started
+              ? `${match.homeGoals || 0} - ${match.awayGoals || 0}`
+              : time}
+          </Styled.p>
+          <Styled.p sx={{ textAlign: "left" }}>
+            {match.away.name || match.away.fullName}
+          </Styled.p>
 
-            <Styled.p sx={{}}>
-              {match.status === "ft"
-                ? match.status
-                : match.elapsed
-                ? `${match.elapsed}'`
-                : day}
-            </Styled.p>
-          </div>
-        </button>
-        {show && (
-          <div
-            sx={{
-              p: 1,
-              display: "grid",
-              gridTemplateColumns: ["9% 35% 12% 35% 9%", "15% 28% 14% 28% 15%"],
-              width: "100%"
-            }}
-          >
-            <div sx={{ gridColumn: "1 / span 2" }}>
-              {match.events
-                .filter(x => x.team._id === match.home._id)
-                .map((x, i) => (
-                  <Fragment key={i}>
-                    <div
-                      sx={{
-                        my: 2,
-                        display: "grid",
-                        gridTemplateColumns: ["20% 80%", "35% 65%"]
-                      }}
-                      key={i}
-                    >
-                      <Styled.p sx={{ justifySelf: "center" }}>
-                        {x.elapsed}'
-                      </Styled.p>
-
-                      <Styled.p
-                        sx={{ fontWeight: "heading", textAlign: "right" }}
-                      >
-                        {x.goal.fullName}
-                      </Styled.p>
-                    </div>
-
-                    <Styled.p sx={{ color: "darkgrey", textAlign: "right" }}>
-                      {x.assist.fullName}
+          <Styled.p sx={{}}>
+            {match.status === "ft"
+              ? match.status
+              : match.elapsed
+              ? `${match.elapsed}'`
+              : day}
+          </Styled.p>
+        </div>
+      </button>
+      {show && (
+        <div
+          sx={{
+            p: 1,
+            display: "grid",
+            gridTemplateColumns: ["9% 35% 12% 35% 9%", "15% 28% 14% 28% 15%"],
+            width: "100%"
+          }}
+        >
+          <div sx={{ gridColumn: "1 / span 2" }}>
+            {match.events
+              .filter(x => x.team._id === match.home._id)
+              .map((x, i) => (
+                <Fragment key={i}>
+                  <div
+                    sx={{
+                      my: 2,
+                      display: "grid",
+                      gridTemplateColumns: ["20% 80%", "35% 65%"]
+                    }}
+                    key={i}
+                  >
+                    <Styled.p sx={{ justifySelf: "center" }}>
+                      {x.elapsed}'
                     </Styled.p>
-                  </Fragment>
-                ))}
-            </div>
 
-            <div sx={{}} />
-
-            <div sx={{ gridColumn: "4 / span 2" }}>
-              {match.events
-                .filter(x => x.team._id === match.away._id)
-                .map((x, i) => (
-                  <Fragment key={i}>
-                    <div
-                      sx={{
-                        my: 2,
-                        display: "grid",
-                        gridTemplateColumns: ["80% 20%", "65% 35%"]
-                      }}
-                      key={i}
+                    <Styled.p
+                      sx={{ fontWeight: "heading", textAlign: "right" }}
                     >
-                      <Styled.p
-                        sx={{ fontWeight: "heading", textAlign: "left" }}
-                      >
-                        {x.goal.fullName}
-                      </Styled.p>
-                      <Styled.p sx={{ justifySelf: "center" }}>
-                        {x.elapsed}'
-                      </Styled.p>
-                    </div>
-
-                    <Styled.p sx={{ color: "darkgrey", textAlign: "left" }}>
-                      {x.assist.fullName}
+                      {x.goal.fullName}
                     </Styled.p>
-                  </Fragment>
-                ))}
-            </div>
+                  </div>
+
+                  <Styled.p sx={{ color: "darkgrey", textAlign: "right" }}>
+                    {x.assist.fullName}
+                  </Styled.p>
+                </Fragment>
+              ))}
           </div>
-        )}
-      </Frame>
+
+          <div sx={{}} />
+
+          <div sx={{ gridColumn: "4 / span 2" }}>
+            {match.events
+              .filter(x => x.team._id === match.away._id)
+              .map((x, i) => (
+                <Fragment key={i}>
+                  <div
+                    sx={{
+                      my: 2,
+                      display: "grid",
+                      gridTemplateColumns: ["80% 20%", "65% 35%"]
+                    }}
+                    key={i}
+                  >
+                    <Styled.p sx={{ fontWeight: "heading", textAlign: "left" }}>
+                      {x.goal.fullName}
+                    </Styled.p>
+                    <Styled.p sx={{ justifySelf: "center" }}>
+                      {x.elapsed}'
+                    </Styled.p>
+                  </div>
+
+                  <Styled.p sx={{ color: "darkgrey", textAlign: "left" }}>
+                    {x.assist.fullName}
+                  </Styled.p>
+                </Fragment>
+              ))}
+          </div>
+        </div>
+      )}
+      {/* </Frame> */}
     </div>
   )
 }

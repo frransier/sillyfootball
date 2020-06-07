@@ -14,7 +14,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
       <button
         sx={{
           cursor: "pointer",
-          my: 3,
+          my: 2,
           py: 3,
           px: 0,
           appearance: "none",
@@ -23,8 +23,8 @@ const Ticket = ({ ticket, disabled, winner }) => {
           outline: "none",
           width: "100%",
           border: "none",
-          borderBottom: "solid 1px",
-          borderColor: "darkgrey"
+          borderBottom: "solid 0.5px",
+          borderColor: "muted"
         }}
         disabled={disabled}
         onClick={() => setShow(!show)}

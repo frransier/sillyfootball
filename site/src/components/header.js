@@ -32,7 +32,7 @@ const Header = () => {
           // justifySelf: "start"
         }}
       >
-        <Frame borderWidth={1} borderRadius={0}>
+        <Frame borderWidth={1} borderRadius={999}>
           <div
             sx={{
               display: "grid",
@@ -40,7 +40,7 @@ const Header = () => {
               color: "primary",
               width: 25,
               height: 25,
-              borderRadius: 0
+              borderRadius: 999
             }}
           >
             <FaSuperpowers
@@ -95,20 +95,24 @@ const Header = () => {
           }}
           onClick={() => loadingDispatch({ type: "set", loading: true })}
         >
-          <Frame borderWidth={1} borderRadius={0}>
+          <Frame borderWidth={1} borderRadius={999}>
             <div
               sx={{
                 display: "grid",
                 bg: "secondary",
                 color: "primary",
-                width: 25,
-                height: 25,
-                borderRadius: 0
+                width: 22,
+                height: 22,
+                borderRadius: 999
               }}
             >
               <FaUser
-                sx={{ height: 25, justifySelf: "center", color: "background" }}
-                size={13}
+                sx={{
+                  height: 22,
+                  justifySelf: "center",
+                  color: "background"
+                }}
+                size={12}
               />
             </div>
           </Frame>

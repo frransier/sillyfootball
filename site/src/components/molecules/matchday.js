@@ -16,11 +16,11 @@ const Matchday = ({ matchday, status, deadline }) => {
   return (
     <Fragment>
       <div sx={{ display: "flex", alignItems: "center" }}>
-        <Styled.h2
+        <Styled.h3
           sx={{ m: 0, color: status === "Next" ? "text" : "darkgrey" }}
         >
           {status}
-        </Styled.h2>
+        </Styled.h3>
         <div sx={{ mx: "auto" }} />
         <Styled.h6
           sx={{
@@ -46,7 +46,7 @@ const Matchday = ({ matchday, status, deadline }) => {
             ))}
           {status === "Next" && (
             <div sx={{ display: "flex", alignItems: "center" }}>
-              <Styled.h5 sx={{ m: 3 }}>Need to make changes?</Styled.h5>
+              <Styled.p sx={{ m: 2 }}>Need to make changes?</Styled.p>
               <Link to="/fantasy/" sx={{ textDecoration: "none" }}>
                 <Styled.h5 sx={{ m: 2, color: "red", fontWeight: "heading" }}>
                   Play Again >

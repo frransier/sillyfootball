@@ -1,12 +1,20 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import dayjs from "dayjs"
-import Frame from "../atoms/frame"
 const Match = ({ match, dispatch, selected, disabled }) => {
   const time = dayjs(match.start).format("HH:mm")
 
   return (
-    <Frame my={3} ml={-3} borderWidth={0} width="100%">
+    <div
+      sx={{
+        width: "100%",
+        my: 3,
+        ml: -3,
+        // boxShadow: "0px 2px 3px darkgrey"
+        borderBottom: "solid 1px",
+        borderBottomColor: "muted"
+      }}
+    >
       <button
         sx={{
           alignSelf: "center",
@@ -46,7 +54,8 @@ const Match = ({ match, dispatch, selected, disabled }) => {
           <Styled.p sx={{}}>{time}</Styled.p>
         </div>
       </button>
-    </Frame>
+    </div> // <Frame my={3} ml={-3} borderWidth={0} width="100%">
+    // </Frame>
   )
 }
 

@@ -18,7 +18,7 @@ const Frame = ({
         display: "grid",
         alignItems: "center",
         justifyItems: "center",
-        boxShadow: "2px 2px 6px darkgrey",
+        boxShadow: "1px 1px 4px darkgrey",
         border: "solid",
         borderColor: "secondary",
         bg: bg || "background",

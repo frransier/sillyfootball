@@ -114,7 +114,14 @@ const FantasyPage = ({ data }) => {
       ) : (
         <Fragment>
           <Container>
-            <Styled.h1 sx={{ textAlign: "center", fontSize: 5, mb: 5, mt: 0 }}>
+            <Styled.h1
+              sx={{
+                textAlign: slots.length === 3 ? "right" : "left",
+                fontSize: 5,
+                mb: 5,
+                mt: 0
+              }}
+            >
               {slots.length === 3 ? "READY" : "PICK 3 PLAYERS"}
             </Styled.h1>
             <Frame columns="1fr 1fr 1fr" bg="secondary">
