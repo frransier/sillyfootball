@@ -17,7 +17,7 @@ const Score = ({ player }) => {
     >
       <div
         sx={{
-          ml: 2,
+          ml: [2, 4],
           justifySelf: "start",
           display: "flex"
         }}

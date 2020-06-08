@@ -48,13 +48,13 @@ const LiveMatch = ({ match, disabled, selected }) => {
                   ? "muted"
                   : "primary",
               alignSelf: "center",
-              justifySelf: ["start", "center"]
+              justifySelf: "start"
             }}
           />
           <Styled.p sx={{ textAlign: "right" }}>
             {match.home.name || match.home.fullName}
           </Styled.p>
-          <Styled.p sx={{}}>
+          <Styled.p sx={{ fontWeight: "heading" }}>
             {started
               ? `${match.homeGoals || 0} - ${match.awayGoals || 0}`
               : time}
@@ -63,7 +63,7 @@ const LiveMatch = ({ match, disabled, selected }) => {
             {match.away.name || match.away.fullName}
           </Styled.p>
 
-          <Styled.p sx={{}}>
+          <Styled.p sx={{ fontWeight: 600 }}>
             {match.status === "ft"
               ? match.status
               : match.elapsed
@@ -94,7 +94,7 @@ const LiveMatch = ({ match, disabled, selected }) => {
                     }}
                     key={i}
                   >
-                    <Styled.p sx={{ justifySelf: "center" }}>
+                    <Styled.p sx={{ justifySelf: "start", ml: 4 }}>
                       {x.elapsed}'
                     </Styled.p>
 

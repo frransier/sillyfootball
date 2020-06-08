@@ -45,7 +45,14 @@ const Matchday = ({ matchday, status, deadline }) => {
               <Ticket key={i} ticket={x} index={i} />
             ))}
           {status === "Next" && (
-            <div sx={{ display: "flex", alignItems: "center" }}>
+            <div
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                mt: 3
+              }}
+            >
+              <div sx={{ mx: "auto" }} />
               <Styled.p sx={{ m: 2 }}>Need to make changes?</Styled.p>
               <Link to="/fantasy/" sx={{ textDecoration: "none" }}>
                 <Styled.h5 sx={{ m: 2, color: "red", fontWeight: "heading" }}>

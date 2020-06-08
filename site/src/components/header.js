@@ -95,27 +95,27 @@ const Header = () => {
           }}
           onClick={() => loadingDispatch({ type: "set", loading: true })}
         >
-          <Frame borderWidth={1} borderRadius={999}>
-            <div
+          {/* <Frame borderWidth={1} borderRadius={999}> */}
+          <div
+            sx={{
+              display: "grid",
+              bg: "background",
+              color: "primary",
+              width: 23,
+              height: 23,
+              borderRadius: 0
+            }}
+          >
+            <FaUser
               sx={{
-                display: "grid",
-                bg: "secondary",
-                color: "primary",
-                width: 23,
-                height: 23,
-                borderRadius: 999
+                height: 21,
+                justifySelf: "center",
+                color: "secondary"
               }}
-            >
-              <FaUser
-                sx={{
-                  height: 21,
-                  justifySelf: "center",
-                  color: "background"
-                }}
-                size={13}
-              />
-            </div>
-          </Frame>
+              size={12}
+            />
+          </div>
+          {/* </Frame> */}
         </Link>
       )}
       {!userState && (

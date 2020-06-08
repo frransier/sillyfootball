@@ -10,6 +10,7 @@ const User = ({ user, index }) => {
           textAlign: "left",
           fontWeight: 500,
           my: 1,
+          ml: [0, 4],
           fontSize: 2
         }}
       >
@@ -19,7 +20,8 @@ const User = ({ user, index }) => {
       <Styled.p
         sx={{
           alignSelf: "center",
-          justifySelf: "center"
+          justifySelf: "center",
+          mr: [0, 2]
           // fontWeight: "heading"
         }}
       >

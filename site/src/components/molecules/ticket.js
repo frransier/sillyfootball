@@ -40,6 +40,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
               display: "flex",
               textAlign: "left",
               m: 1,
+              ml: [0, 4],
               fontSize: 2,
               alignItems: "center"
             }}

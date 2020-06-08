@@ -241,7 +241,10 @@ const AccountPage = props => {
             .map((x, i) => (
               <User user={x.user} key={i} index={i + 1} />
             ))}
-          <Link to="/fantasy/" sx={{ textDecoration: "none" }}>
+          <Link
+            to="/fantasy/"
+            sx={{ textDecoration: "none", textAlign: "right", mt: 3 }}
+          >
             <Styled.h5 sx={{ m: 4, color: "red", fontWeight: "heading" }}>
               Manage Friends >
             </Styled.h5>
