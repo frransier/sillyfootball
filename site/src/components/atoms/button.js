@@ -4,7 +4,7 @@ import Frame from "./frame"
 
 const Button = ({ children, dispatch, fontSize, p, height, color, bg }) => {
   return (
-    <Frame borderWidth={1}>
+    <Frame borderWidth={0}>
       <button
         sx={{
           height: height || 40,

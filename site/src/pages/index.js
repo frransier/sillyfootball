@@ -65,7 +65,7 @@ const IndexPage = () => {
             <Styled.h3 sx={{ textAlign: "center", mt: 6, mb: 0 }}>
               3 easy steps to success
             </Styled.h3>
-            <Container columns="1fr 1fr 1fr">
+            <Container columns="1fr 1fr 1fr" mt={5}>
               <div sx={{ textAlign: "center" }}>
                 <FaUserEdit
                   sx={{
