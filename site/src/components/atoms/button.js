@@ -2,7 +2,7 @@
 import { jsx, Styled } from "theme-ui"
 import Frame from "./frame"
 
-const Button = ({ children, dispatch, fontSize, p, height }) => {
+const Button = ({ children, dispatch, fontSize, p, height, color, bg }) => {
   return (
     <Frame borderWidth={1}>
       <button
@@ -13,8 +13,8 @@ const Button = ({ children, dispatch, fontSize, p, height }) => {
           appearance: "none",
           outline: "none",
           border: "none",
-          bg: "secondary",
-          color: "background",
+          bg: bg || "secondary",
+          color: color || "background",
           // borderRadius: 4,
           p: p || 4
         }}

@@ -3,7 +3,14 @@ import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { FaStar } from "react-icons/fa"
+import {
+  FaStar,
+  FaUserEdit,
+  FaTrophy,
+  FaRocket,
+  FaTicketAlt,
+  FaPlay
+} from "react-icons/fa"
 import Container from "../components/atoms/container"
 import { useLoadingState, useLoadingDispatch } from "../state"
 import { useEffect } from "react"
@@ -32,15 +39,15 @@ const IndexPage = () => {
                 fontSize: [6]
               }}
             >
-              In Silly Football, two things matter
+              Silly Footballers care about two things
             </Styled.h1>
 
             <Styled.h2
               sx={{
                 fontSize: [5],
                 fontWeight: 500,
-                textDecoration: "underline",
-                textDecorationColor: "red",
+                bg: "primary",
+                p: 4,
                 mx: 4,
                 mt: [0, 5],
                 mb: 0
@@ -62,12 +69,53 @@ const IndexPage = () => {
                 Get the highest score to win.
               </Styled.p>
             </Container>
+            <Styled.h3 sx={{ textAlign: "center", mt: 6, mb: 0 }}>
+              3 easy steps to success
+            </Styled.h3>
+            <Container columns="1fr 1fr 1fr">
+              <div sx={{ textAlign: "center" }}>
+                <FaUserEdit
+                  sx={{
+                    // bg: "secondary",
+                    // color: "background",
+                    // p: 4,
+                    height: 20,
+                    width: 20
+                  }}
+                />
+                <Styled.h5 sx={{ m: 2 }}>Register</Styled.h5>
+              </div>
+              <div sx={{ textAlign: "center" }}>
+                <FaRocket
+                  sx={{
+                    // bg: "secondary",
+                    // color: "background",
+                    // p: 4,
+                    height: 20,
+                    width: 20
+                  }}
+                />
+                <Styled.h5 sx={{ m: 2 }}>Pick 3 players</Styled.h5>
+              </div>
+              <div sx={{ textAlign: "center" }}>
+                <FaTrophy
+                  sx={{
+                    // bg: "secondary",
+                    // color: "background",
+                    // p: 4,
+                    height: 20,
+                    width: 20
+                  }}
+                />
+                <Styled.h5 sx={{ m: 2 }}>Win</Styled.h5>
+              </div>
+            </Container>
             <Link
               sx={{
-                justifySelf: "start",
+                justifySelf: "center",
                 textDecoration: "none",
                 mx: 4,
-                mt: 6
+                mt: 5
               }}
               to="/fantasy/"
             >
@@ -75,24 +123,19 @@ const IndexPage = () => {
                 dispatch={() => loadingDispatch({ type: "set", loading: true })}
                 fontSize={6}
                 height={45}
+                color="text"
+                bg="primary"
               >
                 PLAY
               </Button>
             </Link>
             <Container>
               <Styled.h2>
-                All competitions in one fantasy football game
+                The best leagues in one fantasy football game
               </Styled.h2>
               <Styled.p sx={{ fontSize: 3 }}>
-                Each round of Silly Football consists of carefully selected top
-                matches from Premier League, Bundesliga, La Liga, Serie A and
-                more.
-              </Styled.p>
-            </Container>
-            <Container>
-              <Styled.h2>Not like other fantasy football games</Styled.h2>
-              <Styled.p sx={{ fontSize: 3 }}>
-                Traditional fantasy games are played over a season.
+                Each round of Silly Football consists of the best matches from
+                Premier League, Bundesliga, La Liga, Serie A and more.
               </Styled.p>
             </Container>
           </Container>
