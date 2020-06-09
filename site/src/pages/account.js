@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { useState, useEffect } from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Matchday from "../components/molecules/matchday"

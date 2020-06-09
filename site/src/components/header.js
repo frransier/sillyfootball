@@ -54,10 +54,11 @@ const Header = () => {
         sx={{
           m: 0,
           mx: 3,
-          color: "secondary",
+          color: ["background", "background"],
           fontSize: 4,
           justifySelf: "start",
           alignSelf: "center"
+
           // textShadow: "1px 1px 0px primary"
         }}
       >

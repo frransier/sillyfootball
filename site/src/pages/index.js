@@ -5,18 +5,14 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { FaStar } from "react-icons/fa"
 import Container from "../components/atoms/container"
-import { useLoadingState, useLoadingDispatch, useUserState } from "../state"
-import { useEffect, Fragment } from "react"
-import { FaHome } from "react-icons/fa"
-import { useAuth } from "react-use-auth"
+import { useLoadingState, useLoadingDispatch } from "../state"
+import { useEffect } from "react"
 import Button from "../components/atoms/button"
 import Loading from "../components/molecules/loading"
 
 const IndexPage = () => {
   const loading = useLoadingState()
   const loadingDispatch = useLoadingDispatch()
-  const userState = useUserState()
-  const { login } = useAuth()
 
   useEffect(() => {
     loadingDispatch({ type: "set", loading: false })
@@ -28,83 +24,79 @@ const IndexPage = () => {
       {loading ? (
         <Loading />
       ) : (
-        <Fragment>
-          <Container />
-          <Container columns={["72% 28%", "60% 40%"]}>
+        <Container>
+          <Container>
             <Styled.h1
               sx={{
-                alignSelf: "center",
-                justifySelf: "start",
-                fontSize: [5, 6]
+                mx: 4,
+                fontSize: [6]
               }}
             >
-              FANTASY FOOTBALL
+              In Silly Football, two things matter
             </Styled.h1>
+
+            <Styled.h2
+              sx={{
+                fontSize: [5],
+                fontWeight: 500,
+                textDecoration: "underline",
+                textDecorationColor: "red",
+                mx: 4,
+                mt: [0, 5],
+                mb: 0
+              }}
+            >
+              Who scores the goals and who makes the assists
+            </Styled.h2>
+
+            <Container mt={5}>
+              <Styled.h2>The rules are super simple</Styled.h2>
+              <Styled.p sx={{ fontSize: 3 }}>
+                Pick 3 players from the available matches.
+                <br />
+                <br />
+                <FaStar /> players generate 1 point per goal or assist. <br />
+                All other players generate 1.5 points per goal or assist.
+                <br />
+                <br />
+                Get the highest score to win.
+              </Styled.p>
+            </Container>
             <Link
-              sx={{ justifySelf: "start", textDecoration: "none" }}
+              sx={{
+                justifySelf: "start",
+                textDecoration: "none",
+                mx: 4,
+                mt: 6
+              }}
               to="/fantasy/"
             >
               <Button
                 dispatch={() => loadingDispatch({ type: "set", loading: true })}
-                fontSize={5}
+                fontSize={6}
+                height={45}
               >
                 PLAY
               </Button>
             </Link>
-          </Container>
-
-          <Container>
-            <Styled.h2 sx={{}}>Simple Rules</Styled.h2>
-            <Styled.p sx={{ fontSize: 2 }}>
-              Pick 3 players from the available matches.
-              <br />
-              <br />
-              <FaStar /> players generate 1 point per goal or assist.
-              <br />
-              All other players generate 1.5 points per goal or assist.
-              <br />
-              <br />
-              Get the highest score to win.
-            </Styled.p>
-          </Container>
-          <Container>
-            <Styled.h2 sx={{}}>What is Silly Football?</Styled.h2>
-            <Styled.p sx={{ fontSize: 2 }}>
-              Silly Football is an online fantasy football game that covers the
-              best matches from Premier League, La Liga, Bundesliga, Serie A and
-              Champions League. <br />
-              <br />
-              Play for free against others and your friends.
-            </Styled.p>
-          </Container>
-          {!userState && (
             <Container>
-              <Link
-                sx={{
-                  alignSelf: "center",
-                  justifySelf: ["center", "center"],
-                  mx: [4, 0]
-                }}
-                to={userState && userState._id ? "/account/" : "/"}
-              >
-                <Button
-                  dispatch={
-                    userState && userState._id
-                      ? () => loadingDispatch({ type: "set", loading: true })
-                      : () => login()
-                  }
-                  fontSize={[5]}
-                >
-                  {userState && userState._id ? (
-                    <FaHome size={25} />
-                  ) : (
-                    "JOIN NOW"
-                  )}
-                </Button>
-              </Link>
+              <Styled.h2>
+                All competitions in one fantasy football game
+              </Styled.h2>
+              <Styled.p sx={{ fontSize: 3 }}>
+                Each round of Silly Football consists of carefully selected top
+                matches from Premier League, Bundesliga, La Liga, Serie A and
+                more.
+              </Styled.p>
             </Container>
-          )}
-        </Fragment>
+            <Container>
+              <Styled.h2>Not like other fantasy football games</Styled.h2>
+              <Styled.p sx={{ fontSize: 3 }}>
+                Traditional fantasy games are played over a season.
+              </Styled.p>
+            </Container>
+          </Container>
+        </Container>
       )}
     </Layout>
   )
