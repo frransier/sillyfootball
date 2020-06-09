@@ -25,7 +25,7 @@ const IndexPage = () => {
         <Loading />
       ) : (
         <Container>
-          <Container>
+          <Container mt={1}>
             <Styled.h1
               sx={{
                 mx: 4,
