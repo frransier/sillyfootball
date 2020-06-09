@@ -3,14 +3,7 @@ import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import {
-  FaStar,
-  FaUserEdit,
-  FaTrophy,
-  FaRocket,
-  FaTicketAlt,
-  FaPlay
-} from "react-icons/fa"
+import { FaStar, FaUserEdit, FaTrophy, FaRocket } from "react-icons/fa"
 import Container from "../components/atoms/container"
 import { useLoadingState, useLoadingDispatch } from "../state"
 import { useEffect } from "react"
