@@ -147,7 +147,7 @@ const LivescorePage = ({ data }) => {
               sub1="Goals"
               sub2="Assists"
               sub3="Points"
-              columns={["56% 15% 15% 14%", "55% 14% 14% 17%"]}
+              columns={["56% 18% 15% 11%", "55% 14% 14% 17%"]}
               justify="center"
             />
             <Container mt={4}>

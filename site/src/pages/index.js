@@ -3,13 +3,13 @@ import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { FaStar, FaUserEdit, FaTrophy, FaRocket } from "react-icons/fa"
 import Container from "../components/atoms/container"
 import { useLoadingState, useLoadingDispatch } from "../state"
 import { useEffect } from "react"
 import Button from "../components/atoms/button"
 import Loading from "../components/molecules/loading"
-
+import Blurb from "../components/molecules/blurb"
+import Centered from "../components/atoms/centered"
 const IndexPage = () => {
   const loading = useLoadingState()
   const loadingDispatch = useLoadingDispatch()
@@ -25,113 +25,64 @@ const IndexPage = () => {
         <Loading />
       ) : (
         <Container>
-          <Container mt={1}>
-            <Styled.h1
-              sx={{
-                mx: 4,
-                fontSize: [6]
-              }}
-            >
-              Silly Footballers care about two things
-            </Styled.h1>
+          <Styled.h5 sx={{ textAlign: "center" }}>
+            Two things are equally important
+          </Styled.h5>
 
-            <Styled.h2
-              sx={{
-                fontSize: [5],
-                fontWeight: 500,
-                bg: "primary",
-                p: 4,
-                mx: 4,
-                mt: [0, 5],
-                mb: 0
-              }}
+          <Centered>
+            <Styled.h4 sx={{ bg: "primary" }}>Who scores the goals</Styled.h4>
+          </Centered>
+          <Styled.h3 sx={{ textAlign: "center", my: 0 }}>&</Styled.h3>
+          <Centered>
+            <Styled.h4 sx={{ bg: "primary" }}>Who makes the assists</Styled.h4>
+          </Centered>
+          <Styled.h5 sx={{ textAlign: "center" }}>
+            Fantasy Football without all the noise
+          </Styled.h5>
+          <div
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr",
+              alignItems: "center",
+              justifyItems: "center",
+              // boxShadow: "1px 1px 4px darkgrey",
+              height: 70,
+              // bg: "secondary",
+              p: 3,
+              my: 4
+            }}
+          >
+            <Blurb text="Register" />
+            <Blurb text="Pick 3 Players" />
+            <Blurb text="Get Hooked" />
+          </div>
+          {/* <Styled.p sx={{ fontSize: 2, textAlign: "center", mt: 5 }}>
+            <FaStar /> players generate 1 point per goal or assist. <br />
+            <br />
+            All other players generate 1.5 points per goal or assist.
+            <br />
+            <br />
+            Get the highest score to win.
+          </Styled.p> */}
+          <Link
+            sx={{
+              justifySelf: "center",
+              textDecoration: "none",
+              mx: 4,
+              mt: 5
+            }}
+            to="/fantasy/"
+          >
+            <Button
+              dispatch={() => loadingDispatch({ type: "set", loading: true })}
+              fontSize={4}
+              height={45}
+              color="primary"
+              // bg="primary"
             >
-              Who scores the goals and who makes the assists
-            </Styled.h2>
-
-            <Container mt={5}>
-              <Styled.h2>The rules are super simple</Styled.h2>
-              <Styled.p sx={{ fontSize: 3 }}>
-                Pick 3 players from the available matches.
-                <br />
-                <br />
-                <FaStar /> players generate 1 point per goal or assist. <br />
-                All other players generate 1.5 points per goal or assist.
-                <br />
-                <br />
-                Get the highest score to win.
-              </Styled.p>
-            </Container>
-            <Styled.h3 sx={{ textAlign: "center", mt: 6, mb: 0 }}>
-              3 easy steps to success
-            </Styled.h3>
-            <Container columns="1fr 1fr 1fr" mt={5}>
-              <div sx={{ textAlign: "center" }}>
-                <FaUserEdit
-                  sx={{
-                    // bg: "secondary",
-                    // color: "background",
-                    // p: 4,
-                    height: 20,
-                    width: 20
-                  }}
-                />
-                <Styled.h5 sx={{ m: 2 }}>Register</Styled.h5>
-              </div>
-              <div sx={{ textAlign: "center" }}>
-                <FaRocket
-                  sx={{
-                    // bg: "secondary",
-                    // color: "background",
-                    // p: 4,
-                    height: 20,
-                    width: 20
-                  }}
-                />
-                <Styled.h5 sx={{ m: 2 }}>Pick 3 players</Styled.h5>
-              </div>
-              <div sx={{ textAlign: "center" }}>
-                <FaTrophy
-                  sx={{
-                    // bg: "secondary",
-                    // color: "background",
-                    // p: 4,
-                    height: 20,
-                    width: 20
-                  }}
-                />
-                <Styled.h5 sx={{ m: 2 }}>Win</Styled.h5>
-              </div>
-            </Container>
-            <Link
-              sx={{
-                justifySelf: "center",
-                textDecoration: "none",
-                mx: 4,
-                mt: 5
-              }}
-              to="/fantasy/"
-            >
-              <Button
-                dispatch={() => loadingDispatch({ type: "set", loading: true })}
-                fontSize={6}
-                height={45}
-                color="text"
-                bg="primary"
-              >
-                PLAY
-              </Button>
-            </Link>
-            <Container>
-              <Styled.h2>
-                The best leagues in one fantasy football game
-              </Styled.h2>
-              <Styled.p sx={{ fontSize: 3 }}>
-                Each round of Silly Football consists of the best matches from
-                Premier League, Bundesliga, La Liga, Serie A and more.
-              </Styled.p>
-            </Container>
-          </Container>
+              PLAY
+            </Button>
+          </Link>
         </Container>
       )}
     </Layout>

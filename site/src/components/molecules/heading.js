@@ -6,7 +6,8 @@ const Heading = ({ main, sub1, sub2, sub3, columns, justify }) => {
     <div
       sx={{
         display: "grid",
-        gridTemplateColumns: columns
+        gridTemplateColumns: columns,
+        mx: 4
       }}
     >
       <Styled.h3 sx={{ mb: 0, mt: 2 }}>{main}</Styled.h3>

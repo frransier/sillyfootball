@@ -9,6 +9,7 @@ const Frame = ({
   borderRadius,
   borderWidth,
   width,
+  height,
   bg,
   columns
 }) => {
@@ -25,10 +26,12 @@ const Frame = ({
         my: my,
         ml: ml,
         mr: mr,
+        // p: p,
         borderRadius: borderRadius,
         borderWidth: borderWidth,
-        // p: borderWidth - 1,
+        p: borderWidth - 1,
         width: width,
+        height: height,
         gridTemplateColumns: columns
       }}
     >
