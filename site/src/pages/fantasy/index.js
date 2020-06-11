@@ -160,14 +160,14 @@ const FantasyPage = ({ data }) => {
             </Matches>
             {slots.length !== 3 && (
               <Styled.p sx={{ textAlign: "left", mx: 4, mt: 3 }}>
-                Select Match To Filter Players
+                Select match to filter players
               </Styled.p>
             )}
           </Container>
           {slots.length === 3 && (
             <Container>
               <Centered>
-                <Button dispatch={() => post()} fontSize={5}>
+                <Button dispatch={() => post()} fontSize={4} color="primary">
                   PLAY
                 </Button>
               </Centered>

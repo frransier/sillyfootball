@@ -16,7 +16,8 @@ const Button = ({ children, dispatch, fontSize, p, height, color, bg }) => {
           bg: bg || "secondary",
           color: color || "background",
           // borderRadius: 4,
-          p: p || 4
+          p: p || 4,
+          px: 5
         }}
         onClick={dispatch}
       >
