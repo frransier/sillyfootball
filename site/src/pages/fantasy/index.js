@@ -114,17 +114,32 @@ const FantasyPage = ({ data }) => {
       ) : (
         <Fragment>
           <Container>
-            <Styled.h1
+            <div
               sx={{
-                textAlign: slots.length === 3 ? "right" : "left",
-                fontSize: 5,
-                mb: 5,
-                mt: 0
+                display: "grid",
+                justifyItems: "center"
               }}
             >
-              {slots.length === 3 ? "READY" : "PICK 3 PLAYERS"}
-            </Styled.h1>
-            <Frame columns="1fr 1fr 1fr" bg="secondary">
+              <Styled.h3
+                sx={{
+                  // textAlign: slots.length === 3 ? "right" : "left",
+                  fontSize: 3,
+                  bg: slots.length === 3 ? "primary" : null,
+                  // color: slots.length === 3 ? "background" : "text",
+                  px: 2,
+
+                  mb: 5,
+                  mt: 0
+                }}
+              >
+                Pick 3 Players
+              </Styled.h3>
+            </div>
+            <Frame
+              columns="1fr 1fr 1fr"
+              bg={slots.length < 3 ? "backgorund" : "secondary"}
+              borderWidth={0}
+            >
               <Slot
                 player={slots[0]}
                 dispatch={() => slot(slots[0])}

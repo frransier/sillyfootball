@@ -179,8 +179,10 @@ const AccountPage = props => {
                         ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
                         ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
               } | order(score desc)[0...10]`
-          client.fetch(previousFriendsQuery).then(frnds => {
-            setPrevious([ticket, ...frnds])
+          client.fetch(previousFriendsQuery).then(frndz => {
+            console.log(frndz)
+
+            setPrevious([ticket, ...frndz])
           })
         } else {
           setPrevious("no hits")

@@ -25,20 +25,19 @@ const IndexPage = () => {
         <Loading />
       ) : (
         <Container>
-          <Styled.h5 sx={{ textAlign: "center" }}>
-            Two things are equally important
-          </Styled.h5>
-
           <Centered>
-            <Styled.h4 sx={{ bg: "primary" }}>Who scores the goals</Styled.h4>
+            <Styled.h3 sx={{ bg: "primary" }}>Who scores the goals</Styled.h3>
           </Centered>
           <Styled.h3 sx={{ textAlign: "center", my: 0 }}>&</Styled.h3>
           <Centered>
-            <Styled.h4 sx={{ bg: "primary" }}>Who makes the assists</Styled.h4>
+            <Styled.h3 sx={{ bg: "primary" }}>Who makes the assists</Styled.h3>
           </Centered>
           <Styled.h5 sx={{ textAlign: "center" }}>
-            Fantasy Football without all the noise
+            Nothing else matters
           </Styled.h5>
+          {/* <Styled.h5 sx={{ textAlign: "center" }}>
+            Fantasy Football without the noise
+          </Styled.h5> */}
           <div
             sx={{
               display: "grid",
@@ -64,25 +63,48 @@ const IndexPage = () => {
             <br />
             Get the highest score to win.
           </Styled.p> */}
-          <Link
-            sx={{
-              justifySelf: "center",
-              textDecoration: "none",
-              mx: 4,
-              mt: 5
-            }}
-            to="/fantasy/"
-          >
-            <Button
-              dispatch={() => loadingDispatch({ type: "set", loading: true })}
-              fontSize={4}
-              height={45}
-              color="primary"
-              // bg="primary"
+          <Centered>
+            <Link
+              sx={{
+                justifySelf: "center",
+                textDecoration: "none",
+                mx: 4,
+                mt: 5
+              }}
+              to="/fantasy/"
             >
-              PLAY
-            </Button>
-          </Link>
+              <Button
+                dispatch={() => loadingDispatch({ type: "set", loading: true })}
+                fontSize={3}
+                height={40}
+                color="background"
+                bg="red"
+                // bg="primary"
+              >
+                REGISTER
+              </Button>
+            </Link>
+            <Link
+              sx={{
+                justifySelf: "center",
+                textDecoration: "none",
+                mx: 4,
+                mt: 5
+              }}
+              to="/fantasy/"
+            >
+              <Button
+                dispatch={() => loadingDispatch({ type: "set", loading: true })}
+                fontSize={2}
+                height={35}
+                color="primary"
+                bg="secondary"
+                // bg="primary"
+              >
+                PLAY
+              </Button>
+            </Link>
+          </Centered>
         </Container>
       )}
     </Layout>

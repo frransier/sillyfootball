@@ -15,8 +15,10 @@ const Slot = ({ player, dispatch, index }) => {
         p: 0,
         width: "100%",
         height: 70,
-        borderTop: player ? "solid 1.5px" : "none",
-        borderTopColor: "primary"
+        borderTop: "solid 1.5px",
+        borderTopColor: player ? "primary" : "background"
+        // borderBottom: "solid 0.5px",
+        // borderBottomColor: "darkgrey"
       }}
       onClick={dispatch}
     >
@@ -34,17 +36,25 @@ const Slot = ({ player, dispatch, index }) => {
             fixed={player.team.logo.asset.fixed}
           />
         ) : (
-          <Styled.h1
+          <Styled.h2
             sx={{
               fontSize: 5,
-              mt: "22px",
+              bg: "secondary",
+              width: 50,
+              height: 50,
+              pl: 2,
+              mt: 4,
+              boxShadow: "2px 2px 4px darkgrey",
               alignSelf: "end",
               justifySelf: "center",
-              color: player ? "background" : "secondary"
+              display: "grid",
+              alignItems: "center",
+              borderRadius: 999,
+              color: player ? "background" : "primary"
             }}
           >
-            {index}
-          </Styled.h1>
+            {index.toString()}
+          </Styled.h2>
         )}
         <Styled.p
           sx={{

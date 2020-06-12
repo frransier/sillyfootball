@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: `Silly Football`,
     description: `Fantasy Football`,
-    author: `@sillyfootballse`,
+    author: `@sillyfootballse`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -12,15 +12,15 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+        path: `${__dirname}/src/images`
+      }
     },
     {
       resolve: "gatsby-source-sanity",
       options: {
         projectId: "0jt5x7hu",
-        dataset: "production",
-      },
+        dataset: "production"
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -35,8 +35,8 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/silly.png`, // This path is relative to the root of the site.
-      },
-    },
-  ],
+        icon: `src/images/primary.png` // This path is relative to the root of the site.
+      }
+    }
+  ]
 }

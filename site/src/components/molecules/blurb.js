@@ -12,9 +12,9 @@ const Blurb = ({ text }) => (
       color: "text",
       width: "100%",
       height: "100%",
-      py: 5,
-      borderTop: "solid 1.5px",
-      borderTopColor: "primary"
+      py: 4
+      //   borderTop: "solid 1.5px",
+      //   borderTopColor: "primary"
 
       // borderRadius: 13
     }}
