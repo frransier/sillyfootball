@@ -6,7 +6,6 @@ const Button = ({ children, dispatch, fontSize, p, height, color, bg }) => {
     <button
       sx={{
         height: height || 40,
-
         width: "100%",
         cursor: "pointer",
         appearance: "none",
