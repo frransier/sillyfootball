@@ -16,7 +16,7 @@ import axios from "axios"
 import { useGlobalState, useGlobalDispatch } from "../../state"
 import Container from "../../components/atoms/container"
 import Button from "../../components/atoms/button"
-// import { login, register } from "../../utils/auth"
+import { login, register } from "../../utils/auth"
 
 const FantasyPage = ({ data }) => {
   const [players, setPlayers] = useState(data.players.edges.slice(0, 30))
@@ -196,7 +196,7 @@ const FantasyPage = ({ data }) => {
             <Container>
               <div sx={{ width: [180, 240], justifySelf: "center" }}>
                 <Button
-                  // dispatch={() => register()}
+                  dispatch={() => register()}
                   fontSize={[2, 3]}
                   bg="red"
                   color="background"
@@ -207,7 +207,7 @@ const FantasyPage = ({ data }) => {
               <Styled.h5 sx={{ textAlign: "center" }}>Or</Styled.h5>
               <div sx={{ width: 105, justifySelf: "center" }}>
                 <Button
-                  // dispatch={() => login()}
+                  dispatch={() => login()}
                   fontSize={[2, 3]}
                   color="background"
                 >

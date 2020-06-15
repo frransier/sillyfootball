@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 import Container from "../components/atoms/container"
 import { useGlobalState, useGlobalDispatch } from "../state"
 import { useEffect } from "react"
-// import { register } from "../utils/auth"
+import { register } from "../utils/auth"
 import Button from "../components/atoms/button"
 import Loading from "../components/molecules/loading"
 import Blurb from "../components/molecules/blurb"
@@ -90,7 +90,7 @@ const IndexPage = () => {
             {state && !state.user && (
               <div sx={{ justifySelf: "center", width: [110, 150], my: 4 }}>
                 <Button
-                  // dispatch={() => register()}
+                  dispatch={() => register()}
                   fontSize={[2, 3]}
                   height={40}
                   color="background"
