@@ -5,12 +5,10 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "@auth0/auth0-spa-js": "^1.9.0",
     "@sanity/client": "^1.149.13",
     "auth0-js": "^9.13.2",
     "axios": "^0.19.2",
     "dayjs": "^1.8.27",
-    "framer-motion": "^1.11.0",
     "gatsby": "^2.20.12",
     "gatsby-image": "^2.3.1",
     "gatsby-plugin-manifest": "^2.3.3",
@@ -28,7 +26,6 @@
     "react-helmet": "^5.2.1",
     "react-icons": "^3.9.0",
     "react-loading": "^2.0.3",
-    "react-use-auth": "^0.6.1",
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {
