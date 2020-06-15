@@ -1,5 +1,4 @@
 import React, { useReducer, useContext, createContext } from "react"
-import { navigate } from "gatsby"
 import { Auth0Provider } from "./auth0"
 
 var initialUser = []

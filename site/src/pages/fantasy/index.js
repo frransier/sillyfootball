@@ -15,7 +15,6 @@ import { graphql, navigate } from "gatsby"
 import axios from "axios"
 import { useGlobalState, useGlobalDispatch } from "../../state"
 import Container from "../../components/atoms/container"
-import Centered from "../../components/atoms/centered"
 import Button from "../../components/atoms/button"
 import { useAuth0 } from "../../state/auth0"
 

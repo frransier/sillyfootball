@@ -1,22 +1,12 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import Frame from "./frame"
 
-const Button = ({
-  children,
-  dispatch,
-  fontSize,
-  p,
-  height,
-  width,
-  color,
-  bg
-}) => {
+const Button = ({ children, dispatch, fontSize, p, height, color, bg }) => {
   return (
     <button
       sx={{
         height: height || 40,
-        width: 105,
+
         width: "100%",
         cursor: "pointer",
         appearance: "none",

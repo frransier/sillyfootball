@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { RiUserAddLine, RiTeamLine, RiThumbUpLine } from "react-icons/ri"
+import { RiTeamLine, RiThumbUpLine } from "react-icons/ri"
 import { MdLiveTv } from "react-icons/md"
 
 const Blurb = ({ text }) => (

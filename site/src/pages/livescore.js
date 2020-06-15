@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -9,7 +9,7 @@ import Score from "../components/molecules/score"
 import Ticket from "../components/molecules/ticket"
 import Heading from "../components/molecules/heading"
 import Loading from "../components/molecules/loading"
-import { useGlobalState, useGlobalDispatch } from "../state"
+import { useGlobalState } from "../state"
 import { Fragment } from "react"
 import Container from "../components/atoms/container"
 const sanityClient = require("@sanity/client")
@@ -23,11 +23,11 @@ const LivescorePage = ({ data }) => {
   const [livescore, setLivescore] = useState(null)
   const [live] = useState(data.matchday.deadline)
   const state = useGlobalState()
-  const dispatch = useGlobalDispatch()
 
   useEffect(() => {
     if (livescore) setLivescore(null)
     Livescore()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state])
 
   async function Livescore() {
