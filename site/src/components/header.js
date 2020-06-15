@@ -2,7 +2,7 @@
 import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
 import { useGlobalDispatch, useGlobalState } from "../state"
-import { login } from "../utils/auth"
+// import { login } from "../utils/auth"
 import { RiHome2Line } from "react-icons/ri"
 import logo from "../images/primary.png"
 import Frame from "./atoms/frame"
@@ -135,7 +135,7 @@ const Header = () => {
             color: "secondary"
           }}
           aria-label="Login"
-          onClick={() => login()}
+          // onClick={() => login()}
         >
           <div
             sx={{
