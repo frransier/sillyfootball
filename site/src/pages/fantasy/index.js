@@ -16,7 +16,7 @@ import axios from "axios"
 import { useGlobalState, useGlobalDispatch } from "../../state"
 import Container from "../../components/atoms/container"
 import Button from "../../components/atoms/button"
-import { useAuth0 } from "../../state/auth0"
+import { login, register } from "../../utils/auth"
 
 const FantasyPage = ({ data }) => {
   const [players, setPlayers] = useState(data.players.edges.slice(0, 30))
@@ -24,7 +24,6 @@ const FantasyPage = ({ data }) => {
   const [filters, setFilters] = useState(null)
   const state = useGlobalState()
   const dispatch = useGlobalDispatch()
-  const { loginWithRedirect } = useAuth0()
 
   useEffect(() => {
     setTimeout(() => {
@@ -109,7 +108,7 @@ const FantasyPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Play" />
-      {state.loading ? (
+      {state && state.loading ? (
         <Loading />
       ) : (
         <Fragment>
@@ -197,12 +196,7 @@ const FantasyPage = ({ data }) => {
             <Container>
               <div sx={{ width: [180, 240], justifySelf: "center" }}>
                 <Button
-                  dispatch={() =>
-                    loginWithRedirect({
-                      prompt: "login",
-                      screen_hint: "signup"
-                    })
-                  }
+                  dispatch={() => register()}
                   fontSize={[2, 3]}
                   bg="red"
                   color="background"
@@ -213,7 +207,7 @@ const FantasyPage = ({ data }) => {
               <Styled.h5 sx={{ textAlign: "center" }}>Or</Styled.h5>
               <div sx={{ width: 105, justifySelf: "center" }}>
                 <Button
-                  dispatch={() => loginWithRedirect({})}
+                  dispatch={() => login()}
                   fontSize={[2, 3]}
                   color="background"
                 >

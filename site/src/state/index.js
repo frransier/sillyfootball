@@ -1,5 +1,4 @@
 import React, { useReducer, useContext, createContext } from "react"
-import { Auth0Provider } from "./auth0"
 
 var initialUser = []
 typeof window !== "undefined"
@@ -9,9 +8,8 @@ typeof window !== "undefined"
 var initialState = {
   user:
     typeof window !== "undefined"
-      ? (initialUser =
-          JSON.parse(localStorage.getItem("sillyfootball")) || null)
-      : (initialUser = null),
+      ? JSON.parse(localStorage.getItem("sillyfootball")) || null
+      : null,
   loading: false,
   live: false
 }
@@ -29,25 +27,19 @@ function Provider(props) {
   const [loading, loadingDispatch] = useReducer(loadingReducer, false)
   const [global, globalDispatch] = useReducer(globalReducer, initialState)
   return (
-    <Auth0Provider
-      domain="dev-h964wuhp.eu.auth0.com"
-      client_id="OoBQxwqQpTL7KW38wKH0t0bFDwwXvXYs"
-      redirect_uri="http://localhost:8000/auth0_callback"
-    >
-      <GlobalStateContext.Provider value={global}>
-        <GlobalDispatchContext.Provider value={globalDispatch}>
-          <UserStateContext.Provider value={user}>
-            <UserDispatchContext.Provider value={userDispatch}>
-              <LoadingStateContext.Provider value={loading}>
-                <LoadingDispatchContext.Provider value={loadingDispatch}>
-                  {props.children}
-                </LoadingDispatchContext.Provider>
-              </LoadingStateContext.Provider>
-            </UserDispatchContext.Provider>
-          </UserStateContext.Provider>
-        </GlobalDispatchContext.Provider>
-      </GlobalStateContext.Provider>
-    </Auth0Provider>
+    <GlobalStateContext.Provider value={global}>
+      <GlobalDispatchContext.Provider value={globalDispatch}>
+        <UserStateContext.Provider value={user}>
+          <UserDispatchContext.Provider value={userDispatch}>
+            <LoadingStateContext.Provider value={loading}>
+              <LoadingDispatchContext.Provider value={loadingDispatch}>
+                {props.children}
+              </LoadingDispatchContext.Provider>
+            </LoadingStateContext.Provider>
+          </UserDispatchContext.Provider>
+        </UserStateContext.Provider>
+      </GlobalDispatchContext.Provider>
+    </GlobalStateContext.Provider>
   )
 }
 

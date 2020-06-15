@@ -1,14 +1,13 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
-import { useAuth0 } from "../state/auth0"
 import { useGlobalDispatch, useGlobalState } from "../state"
+import { login } from "../utils/auth"
 import { RiHome2Line } from "react-icons/ri"
 import logo from "../images/primary.png"
 import Frame from "./atoms/frame"
 
 const Header = () => {
-  const { loginWithRedirect } = useAuth0()
   const state = useGlobalState()
   const dispatch = useGlobalDispatch()
 
@@ -89,7 +88,7 @@ const Header = () => {
       >
         <Styled.h5 sx={{ m: 0, fontWeight: 700 }}>Livescore</Styled.h5>
       </Link>
-      {state.user && (
+      {state && state.user && (
         <Link
           to="/account/"
           activeClassName="active"
@@ -124,7 +123,7 @@ const Header = () => {
           </div>
         </Link>
       )}
-      {!state.user && (
+      {state && !state.user && (
         <button
           sx={{
             cursor: "pointer",
@@ -136,7 +135,7 @@ const Header = () => {
             color: "secondary"
           }}
           aria-label="Login"
-          onClick={() => loginWithRedirect({})}
+          onClick={() => login()}
         >
           <div
             sx={{

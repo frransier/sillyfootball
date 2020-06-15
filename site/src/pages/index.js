@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 import Container from "../components/atoms/container"
 import { useGlobalState, useGlobalDispatch } from "../state"
 import { useEffect } from "react"
-import { useAuth0 } from "../state/auth0"
+import { register } from "../utils/auth"
 import Button from "../components/atoms/button"
 import Loading from "../components/molecules/loading"
 import Blurb from "../components/molecules/blurb"
@@ -15,7 +15,6 @@ const IndexPage = () => {
   // const loadingDispatch = useLoadingDispatch()
   const state = useGlobalState()
   const dispatch = useGlobalDispatch()
-  const { loginWithRedirect } = useAuth0()
 
   // useEffect(() => {
   //   console.log(state)
@@ -27,7 +26,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Fantasy Football" />
-      {state.loading ? (
+      {state && state.loading ? (
         <Loading />
       ) : (
         <Container>
@@ -88,15 +87,10 @@ const IndexPage = () => {
               }}
               to="/fantasy/"
             > */}
-            {!state.user && (
+            {state && !state.user && (
               <div sx={{ justifySelf: "center", width: [110, 150], my: 4 }}>
                 <Button
-                  dispatch={() =>
-                    loginWithRedirect({
-                      prompt: "login",
-                      screen_hint: "signup"
-                    })
-                  }
+                  dispatch={() => register()}
                   fontSize={[2, 3]}
                   height={40}
                   color="background"

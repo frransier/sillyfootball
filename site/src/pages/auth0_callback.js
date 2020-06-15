@@ -7,7 +7,7 @@ import { useEffect } from "react"
 import { navigate } from "gatsby"
 import axios from "axios"
 import { useUserDispatch, useLoadingDispatch } from "../state"
-import { useAuth0 } from "../state/auth0"
+import { getProfile, handleAuthentication } from "../utils/auth"
 
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
@@ -19,18 +19,28 @@ const client = sanityClient({
 const AuthPage = () => {
   const [show, setShow] = useState(false)
   const [name, setName] = useState("")
-
-  const { user, handleAuthentication } = useAuth0()
+  const [user, setUser] = useState(null)
+  const [init, setInit] = useState(false)
   const userDispatch = useUserDispatch()
   const loadingDispatch = useLoadingDispatch()
 
   useEffect(() => {
-    console.log(user)
+    handleAuthentication()
+    setTimeout(() => {
+      setInit(true)
+    }, 500)
+  }, [])
 
-    if (user) {
+  useEffect(() => {
+    const usr = getProfile()
+    setUser(usr)
+
+    if (usr.sub) {
       const query = `*[_type == "user" && auth0Id == $auth0Id][0]`
-      const params = { auth0Id: user.sub }
+      const params = { auth0Id: usr.sub }
       client.fetch(query, params).then(x => {
+        console.log(x)
+
         if (x) {
           userDispatch({ type: "init", user: x })
           navigate("/account/")
@@ -41,7 +51,7 @@ const AuthPage = () => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user])
+  }, [init])
   function register() {
     const usr = {
       auth0Id: user.sub,
@@ -54,13 +64,13 @@ const AuthPage = () => {
     axios
       .post("/.netlify/functions/register", { user: usr })
       .then(res => {
-        res.data === "OK" ? setUser() : navigate("/404/")
+        res.data === "OK" ? getUser() : navigate("/404/")
       })
       .catch(error => {
         console.log(error)
       })
   }
-  function setUser() {
+  function getUser() {
     const query = `*[_type == "user" && auth0Id == $auth0Id][0]`
     const params = { auth0Id: user.sub }
     client.fetch(query, params).then(x => {
