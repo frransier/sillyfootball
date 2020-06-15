@@ -1,17 +1,16 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
-import { useAuth } from "react-use-auth"
-import { useUserState, useLoadingDispatch } from "../state"
-import { FaHome } from "react-icons/fa"
+import { useAuth0 } from "../state/auth0"
+import { useGlobalDispatch, useGlobalState } from "../state"
 import { RiHome2Line } from "react-icons/ri"
 import logo from "../images/primary.png"
 import Frame from "./atoms/frame"
 
 const Header = () => {
-  const { login } = useAuth()
-  const userState = useUserState()
-  const loadingDispatch = useLoadingDispatch()
+  const { loginWithRedirect } = useAuth0()
+  const state = useGlobalState()
+  const dispatch = useGlobalDispatch()
 
   return (
     <header
@@ -57,7 +56,7 @@ const Header = () => {
           m: 0,
           mx: 3,
           // color: ["background", "background"],
-          fontSize: 4,
+          fontSize: 3,
           justifySelf: "start",
           alignSelf: "center"
 
@@ -86,28 +85,22 @@ const Header = () => {
           //   color: "red"
           // }
         }}
-        onClick={() => loadingDispatch({ type: "set", loading: true })}
+        onClick={() => dispatch({ type: "set-loading", payload: true })}
       >
         <Styled.h5 sx={{ m: 0, fontWeight: 700 }}>Livescore</Styled.h5>
       </Link>
-      {userState && (
+      {state.user && (
         <Link
           to="/account/"
           activeClassName="active"
           sx={{
             textDecoration: "none",
-            // textAlign: "center",
             color: "text"
-            // bg: "background",
-            // p: 3,
-
-            // borderRadius: 3,
-            // width: "95%"
             // "&.active": {
             //   color: "red"
             // }
           }}
-          onClick={() => loadingDispatch({ type: "set", loading: true })}
+          // onClick={() => dispatch({ type: "set-loading", payload: true })}
         >
           <div
             sx={{
@@ -131,7 +124,7 @@ const Header = () => {
           </div>
         </Link>
       )}
-      {!userState && (
+      {!state.user && (
         <button
           sx={{
             cursor: "pointer",
@@ -140,13 +133,31 @@ const Header = () => {
             border: "none",
             bg: "white",
             textDecoration: "none",
-            color: "secondary",
-            height: "25px"
+            color: "secondary"
           }}
           aria-label="Login"
-          onClick={login}
+          onClick={() => loginWithRedirect({})}
         >
-          <FaHome size={20} />
+          <div
+            sx={{
+              display: "grid",
+              bg: "secondary",
+              color: "primary",
+              boxShadow: "1px 1px 4px darkgrey",
+              width: 28,
+              height: 28,
+              borderRadius: 999
+            }}
+          >
+            <RiHome2Line
+              sx={{
+                alignSelf: "center",
+                // mx: [4],
+                justifySelf: ["center"]
+              }}
+              size={20}
+            />
+          </div>
         </button>
       )}
     </header>

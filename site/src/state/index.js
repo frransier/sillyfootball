@@ -1,11 +1,24 @@
 import React, { useReducer, useContext, createContext } from "react"
 import { navigate } from "gatsby"
-import { AuthProvider } from "react-use-auth"
+import { Auth0Provider } from "./auth0"
 
 var initialUser = []
 typeof window !== "undefined"
   ? (initialUser = JSON.parse(localStorage.getItem("sillyfootball")) || null)
   : (initialUser = null)
+
+var initialState = {
+  user:
+    typeof window !== "undefined"
+      ? (initialUser =
+          JSON.parse(localStorage.getItem("sillyfootball")) || null)
+      : (initialUser = null),
+  loading: false,
+  live: false
+}
+
+const GlobalStateContext = createContext()
+const GlobalDispatchContext = createContext()
 
 const UserStateContext = createContext()
 const LoadingStateContext = createContext()
@@ -15,22 +28,27 @@ const LoadingDispatchContext = createContext()
 function Provider(props) {
   const [user, userDispatch] = useReducer(userReducer, initialUser)
   const [loading, loadingDispatch] = useReducer(loadingReducer, false)
+  const [global, globalDispatch] = useReducer(globalReducer, initialState)
   return (
-    <AuthProvider
-      navigate={navigate}
-      auth0_domain="dev-h964wuhp.eu.auth0.com"
-      auth0_client_id="OoBQxwqQpTL7KW38wKH0t0bFDwwXvXYs"
+    <Auth0Provider
+      domain="dev-h964wuhp.eu.auth0.com"
+      client_id="OoBQxwqQpTL7KW38wKH0t0bFDwwXvXYs"
+      redirect_uri="http://localhost:8000/auth0_callback"
     >
-      <UserStateContext.Provider value={user}>
-        <UserDispatchContext.Provider value={userDispatch}>
-          <LoadingStateContext.Provider value={loading}>
-            <LoadingDispatchContext.Provider value={loadingDispatch}>
-              {props.children}
-            </LoadingDispatchContext.Provider>
-          </LoadingStateContext.Provider>
-        </UserDispatchContext.Provider>
-      </UserStateContext.Provider>
-    </AuthProvider>
+      <GlobalStateContext.Provider value={global}>
+        <GlobalDispatchContext.Provider value={globalDispatch}>
+          <UserStateContext.Provider value={user}>
+            <UserDispatchContext.Provider value={userDispatch}>
+              <LoadingStateContext.Provider value={loading}>
+                <LoadingDispatchContext.Provider value={loadingDispatch}>
+                  {props.children}
+                </LoadingDispatchContext.Provider>
+              </LoadingStateContext.Provider>
+            </UserDispatchContext.Provider>
+          </UserStateContext.Provider>
+        </GlobalDispatchContext.Provider>
+      </GlobalStateContext.Provider>
+    </Auth0Provider>
   )
 }
 
@@ -38,13 +56,17 @@ const useUserState = () => useContext(UserStateContext)
 const useLoadingState = () => useContext(LoadingStateContext)
 const useUserDispatch = () => useContext(UserDispatchContext)
 const useLoadingDispatch = () => useContext(LoadingDispatchContext)
+const useGlobalState = () => useContext(GlobalStateContext)
+const useGlobalDispatch = () => useContext(GlobalDispatchContext)
 
 export {
   Provider,
   useUserState,
   useUserDispatch,
   useLoadingState,
-  useLoadingDispatch
+  useLoadingDispatch,
+  useGlobalState,
+  useGlobalDispatch
 }
 
 function userReducer(state, action) {
@@ -68,6 +90,18 @@ function loadingReducer(state, action) {
     case "set":
       return action.loading
     case "reset":
+      return false
+    default:
+      return state
+  }
+}
+function globalReducer(state, action) {
+  switch (action.type) {
+    case "set-loading":
+      return { ...state, loading: action.payload }
+    case "set-live":
+      return false
+    case "set-user":
       return false
     default:
       return state

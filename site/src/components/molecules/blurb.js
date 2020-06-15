@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { RiUserAddLine, RiTeamLine, RiThumbUpLine } from "react-icons/ri"
+import { MdLiveTv } from "react-icons/md"
 
 const Blurb = ({ text }) => (
   <div
@@ -19,7 +20,7 @@ const Blurb = ({ text }) => (
       // borderRadius: 13
     }}
   >
-    {text === "Register" && <RiUserAddLine size={25} />}
+    {text === "Follow Live" && <MdLiveTv size={25} />}
     {text === "Pick 3 Players" && <RiTeamLine size={25} />}
     {text === "Get Hooked" && <RiThumbUpLine size={25} />}
     <Styled.p sx={{ my: 4 }}>{text}</Styled.p>

@@ -4,37 +4,52 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Container from "../components/atoms/container"
-import { useLoadingState, useLoadingDispatch } from "../state"
+import { useGlobalState, useGlobalDispatch } from "../state"
 import { useEffect } from "react"
+import { useAuth0 } from "../state/auth0"
 import Button from "../components/atoms/button"
 import Loading from "../components/molecules/loading"
 import Blurb from "../components/molecules/blurb"
 import Centered from "../components/atoms/centered"
 const IndexPage = () => {
-  const loading = useLoadingState()
-  const loadingDispatch = useLoadingDispatch()
+  // const loadingDispatch = useLoadingDispatch()
+  const state = useGlobalState()
+  const dispatch = useGlobalDispatch()
+  const { loginWithRedirect } = useAuth0()
 
+  // useEffect(() => {
+  //   console.log(state)
+  // }, [state])
   useEffect(() => {
-    loadingDispatch({ type: "set", loading: false })
-  }, [loadingDispatch])
+    dispatch({ type: "set-loading", payload: false })
+  }, [dispatch])
 
   return (
     <Layout>
       <SEO title="Fantasy Football" />
-      {loading ? (
+      {state.loading ? (
         <Loading />
       ) : (
         <Container>
+          <Styled.h4 sx={{ textAlign: "center", fontWeight: 500 }}>
+            Two Things Are Important
+          </Styled.h4>
           <Centered>
-            <Styled.h3 sx={{ bg: "primary" }}>Who scores the goals</Styled.h3>
+            <Styled.h4 sx={{ bg: "primary", textTransform: "uppercase" }}>
+              Who Scores The Goals
+            </Styled.h4>
           </Centered>
-          <Styled.h3 sx={{ textAlign: "center", my: 0 }}>&</Styled.h3>
           <Centered>
-            <Styled.h3 sx={{ bg: "primary" }}>Who makes the assists</Styled.h3>
+            <Styled.h4 sx={{ my: 0 }}>&</Styled.h4>
           </Centered>
-          <Styled.h5 sx={{ textAlign: "center" }}>
-            Nothing else matters
-          </Styled.h5>
+          <Centered>
+            <Styled.h4 sx={{ bg: "primary", textTransform: "uppercase" }}>
+              Who makes the assists
+            </Styled.h4>
+          </Centered>
+          <Styled.h4 sx={{ textAlign: "center", fontWeight: 500 }}>
+            Play Hassle-Free Fantasy Football
+          </Styled.h4>
           {/* <Styled.h5 sx={{ textAlign: "center" }}>
             Fantasy Football without the noise
           </Styled.h5> */}
@@ -51,8 +66,8 @@ const IndexPage = () => {
               my: 4
             }}
           >
-            <Blurb text="Register" />
             <Blurb text="Pick 3 Players" />
+            <Blurb text="Follow Live" />
             <Blurb text="Get Hooked" />
           </div>
           {/* <Styled.p sx={{ fontSize: 2, textAlign: "center", mt: 5 }}>
@@ -63,8 +78,8 @@ const IndexPage = () => {
             <br />
             Get the highest score to win.
           </Styled.p> */}
-          <Centered>
-            <Link
+          <Container mt={4}>
+            {/* <Link
               sx={{
                 justifySelf: "center",
                 textDecoration: "none",
@@ -72,39 +87,53 @@ const IndexPage = () => {
                 mt: 5
               }}
               to="/fantasy/"
+            > */}
+            {!state.user && (
+              <div sx={{ justifySelf: "center", width: [110, 150], my: 4 }}>
+                <Button
+                  dispatch={() =>
+                    loginWithRedirect({
+                      prompt: "login",
+                      screen_hint: "signup"
+                    })
+                  }
+                  fontSize={[2, 3]}
+                  height={40}
+                  color="background"
+                  bg="red"
+                  // bg="primary"
+                >
+                  REGISTER
+                </Button>
+              </div>
+            )}
+            {/* </Link> */}
+            <Link
+              sx={{
+                justifySelf: "center",
+                width: [105, 150],
+                my: 4,
+                textDecoration: "none"
+
+                // mt: 5
+              }}
+              to="/fantasy/"
             >
               <Button
-                dispatch={() => loadingDispatch({ type: "set", loading: true })}
-                fontSize={3}
+                dispatch={() =>
+                  dispatch({ type: "set-loading", payload: true })
+                }
+                fontSize={[2, 3]}
                 height={40}
+                width={105}
                 color="background"
-                bg="red"
-                // bg="primary"
-              >
-                REGISTER
-              </Button>
-            </Link>
-            <Link
-              sx={{
-                justifySelf: "center",
-                textDecoration: "none",
-                mx: 4,
-                mt: 5
-              }}
-              to="/fantasy/"
-            >
-              <Button
-                dispatch={() => loadingDispatch({ type: "set", loading: true })}
-                fontSize={2}
-                height={35}
-                color="primary"
                 bg="secondary"
                 // bg="primary"
               >
                 PLAY
               </Button>
             </Link>
-          </Centered>
+          </Container>
         </Container>
       )}
     </Layout>

@@ -3,32 +3,29 @@ import { jsx, Styled } from "theme-ui"
 
 const Rules = ({ deadline }) => {
   return (
-    <div sx={{ justifySelf: "start", mx: 3 }}>
+    <div sx={{ mx: 3, display: "flex" }}>
       <Styled.h5
         sx={{
-          m: 0,
-          mb: 2,
           mt: 0,
           textTransform: "capitalize",
-          color: "red",
-          fontWeight: 500,
+          // color: "red",
+          fontWeight: 500
           // textAlign: "center",
-          fontSize: [1, 2]
+          // fontSize: [1, 2]
         }}
       >
         Deadline {deadline}
       </Styled.h5>
+      <div sx={{ mx: "auto" }} />
       <Styled.h5
         sx={{
           // alignSelf: "end",
           // justifySelf: "start",
-          m: 0,
-          mt: 3,
+          mt: 0,
           textTransform: "capitalize",
           color: "red",
           fontWeight: 500,
-          textAlign: "left",
-          fontSize: [1, 2]
+          textAlign: "left"
         }}
       >
         Rules >

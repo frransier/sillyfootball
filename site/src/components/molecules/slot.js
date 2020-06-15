@@ -38,7 +38,7 @@ const Slot = ({ player, dispatch, index }) => {
         ) : (
           <Styled.h2
             sx={{
-              fontSize: 5,
+              fontSize: 3,
               bg: "secondary",
               width: 50,
               height: 50,

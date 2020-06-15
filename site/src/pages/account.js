@@ -27,8 +27,7 @@ const client = sanityClient({
 })
 
 const AccountPage = props => {
-  const [current, setCurrent] = useState(null)
-  const [previous, setPrevious] = useState(null)
+  const [tickets, setTickets] = useState(null)
   const [init, setInit] = useState(false)
   // const userDispatch = useUserDispatch()
   const userState = useUserState()
@@ -37,19 +36,32 @@ const AccountPage = props => {
   // const { logout } = useAuth()
 
   useEffect(() => {
+    // console.log(userState)
+    // console.log(props.data)
+
     loadingDispatch({ type: "set", loading: true })
-    if (current && previous) {
+    if (tickets) {
       setInit(true)
       loadingDispatch({ type: "set", loading: false })
     }
-  }, [current, previous, loadingDispatch])
+  }, [tickets, loadingDispatch])
 
   useEffect(() => {
-    if (loading) {
-      const currentQuery = `*[_type == 'ticket' && user->auth0Id == '${userState.auth0Id}' && matchday->status == "current"][0]
+    if (loading && userState) {
+      const test =
+        userState.friends.length > 0 &&
+        userState.friends
+          .map(
+            (x, i) =>
+              `user->_id == "${x._ref}" ${
+                userState.friends.length - 1 > i ? "||" : ""
+              }`
+          )
+          .join(" ")
+      const ticketsQuery = `*[_type == 'ticket' && (matchday->status == "current" || matchday->status == "previous") && user->auth0Id == '${userState.auth0Id}' || ${test}  ]
         {
           _id,
-          matchday->{index, start},
+          matchday->{index, start, status},
           user->{
             name,
             average,
@@ -72,120 +84,15 @@ const AccountPage = props => {
                   ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
                   ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
         }`
-      client.fetch(currentQuery).then(ticket => {
-        if (ticket && ticket._id) {
-          const currentFriendsHelper =
-            ticket.user.friends.length > 0 &&
-            ticket.user.friends
-              .map(
-                (x, i) =>
-                  `user->_id == "${x._id}" ${
-                    ticket.user.friends.length - 1 > i ? "||" : ""
-                  }`
-              )
-              .join(" ")
+      client.fetch(ticketsQuery).then(ticket => {
+        // console.log(ticket)
 
-          const currentFriendsQuery = `*[_type == 'ticket' && ${currentFriendsHelper} && matchday->status == "current"]
-              {
-                user->{
-                  name,
-                  average,
-                  high,
-                  wins,
-                },
-                scores[]->{
-                  _id,
-                  "name": player->name,
-                  "fullName": player->fullName,
-                  "teamFullName": player->team->fullName,
-                  "teamName": player->team->name,
-                  goals,
-                  assists,
-                  rate,
-                  "points": (goals + assists) * rate,
-                },
-                "score": ((scores[0]->.goals + scores[0]->.assists) * scores[0]->.rate) +
-                        ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
-                        ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
-              } | order(score desc)[0...10]`
-          client.fetch(currentFriendsQuery).then(frnds => {
-            setCurrent([ticket, ...frnds])
-            loadingDispatch({ type: "set", loading: false })
-          })
-        } else {
-          setCurrent("play")
+        if (ticket && ticket.length > 0) {
+          setTickets(ticket)
           loadingDispatch({ type: "set", loading: false })
-        }
-      })
-      const previousQuery = `*[_type == 'ticket' && user->auth0Id == '${userState.auth0Id}' && matchday->status == "previous"][0]
-        {
-          _id,
-          matchday->{index, start},
-          user->{
-            name,
-            average,
-            high,
-            wins,
-            friends[]->
-          },
-          scores[]->{
-            _id,
-            "name": player->name,
-            "fullName": player->fullName,
-            "teamFullName": player->team->fullName,
-            "teamName": player->team->name,
-            goals,
-            assists,
-            rate,
-            "points": (goals + assists) * rate,
-          },
-          "score": ((scores[0]->.goals + scores[0]->.assists) * scores[0]->.rate) +
-                  ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
-                  ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
-        }`
-      client.fetch(previousQuery).then(ticket => {
-        if (ticket && ticket._id) {
-          const previousFriendsHelper =
-            ticket.user.friends.length > 0 &&
-            ticket.user.friends
-              .map(
-                (x, i) =>
-                  `user->_id == "${x._id}" ${
-                    ticket.user.friends.length - 1 > i ? "||" : ""
-                  }`
-              )
-              .join(" ")
-
-          const previousFriendsQuery = `*[_type == 'ticket' && ${previousFriendsHelper} && matchday->status == "previous"]
-              {
-                user->{
-                  name,
-                  average,
-                  high,
-                  wins,
-                },
-                scores[]->{
-                  _id,
-                  "name": player->name,
-                  "fullName": player->fullName,
-                  "teamFullName": player->team->fullName,
-                  "teamName": player->team->name,
-                  goals,
-                  assists,
-                  rate,
-                  "points": (goals + assists) * rate,
-                },
-                "score": ((scores[0]->.goals + scores[0]->.assists) * scores[0]->.rate) +
-                        ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
-                        ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
-              } | order(score desc)[0...10]`
-          client.fetch(previousFriendsQuery).then(frndz => {
-            console.log(frndz)
-
-            setPrevious([ticket, ...frndz])
-          })
         } else {
-          setPrevious("no hits")
+          setTickets("play")
+          loadingDispatch({ type: "set", loading: false })
         }
       })
     }
@@ -205,22 +112,22 @@ const AccountPage = props => {
       {init && (
         <Container>
           <Matchday
-            matchday={current}
+            matchday={tickets.filter(x => x.matchday.status === "current")}
             status="Next"
             deadline={props.data.current.deadline}
           />
         </Container>
       )}
-      {init && current !== "play" && previous !== "no hits" && (
+      {init && tickets !== "play" && (
         <Container>
           <Matchday
-            matchday={previous}
+            matchday={tickets.filter(x => x.matchday.status === "previous")}
             status="Previous"
             deadline={props.data.previous.deadline}
           />
         </Container>
       )}
-      {init && current !== "play" && (
+      {init && tickets !== "play" && (
         <Container>
           <Styled.h3 sx={{ mx: 4, m: 0 }}>My Leaderboard</Styled.h3>
 
@@ -239,7 +146,7 @@ const AccountPage = props => {
             columns={["54% 16% 16% 14%", "53% 16% 14% 17%"]}
             justify="center"
           />
-          {current
+          {tickets
             .sort((a, b) => (a.user.average < b.user.average ? 1 : -1))
             .map((x, i) => (
               <User user={x.user} key={i} index={i + 1} />

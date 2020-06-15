@@ -13,24 +13,25 @@ import Rules from "../../components/molecules/rules"
 import Loading from "../../components/molecules/loading"
 import { graphql, navigate } from "gatsby"
 import axios from "axios"
-import { useUserState, useLoadingState, useLoadingDispatch } from "../../state"
+import { useGlobalState, useGlobalDispatch } from "../../state"
 import Container from "../../components/atoms/container"
 import Centered from "../../components/atoms/centered"
 import Button from "../../components/atoms/button"
+import { useAuth0 } from "../../state/auth0"
 
 const FantasyPage = ({ data }) => {
   const [players, setPlayers] = useState(data.players.edges.slice(0, 30))
   const [slots, setSlots] = useState([null, null])
   const [filters, setFilters] = useState(null)
-  const userState = useUserState()
-  const loading = useLoadingState()
-  const loadingDispatch = useLoadingDispatch()
+  const state = useGlobalState()
+  const dispatch = useGlobalDispatch()
+  const { loginWithRedirect } = useAuth0()
 
   useEffect(() => {
     setTimeout(() => {
-      loadingDispatch({ type: "set", loading: false })
+      dispatch({ type: "set-loading", payload: false })
     }, 400)
-  }, [loadingDispatch])
+  }, [dispatch])
 
   function filter(teams) {
     if (filters === null) {
@@ -69,7 +70,7 @@ const FantasyPage = ({ data }) => {
     return
   }
   function post() {
-    loadingDispatch({ type: "set", loading: true })
+    dispatch({ type: "set-loading", payload: true })
     const squad = slots.map(player => ({
       _id: `${player._id}-${data.matchday._id}`,
       _playerRef: player._id,
@@ -85,7 +86,7 @@ const FantasyPage = ({ data }) => {
     // console.log(squad)
 
     const user = {
-      _id: userState._id
+      _id: state.user._id
     }
     const matchday = {
       _id: data.matchday._id
@@ -109,7 +110,7 @@ const FantasyPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Play" />
-      {loading ? (
+      {state.loading ? (
         <Loading />
       ) : (
         <Fragment>
@@ -117,7 +118,7 @@ const FantasyPage = ({ data }) => {
             <div
               sx={{
                 display: "grid",
-                justifyItems: "center"
+                justifyItems: "start"
               }}
             >
               <Styled.h3
@@ -126,7 +127,8 @@ const FantasyPage = ({ data }) => {
                   fontSize: 3,
                   bg: slots.length === 3 ? "primary" : null,
                   // color: slots.length === 3 ? "background" : "text",
-                  px: 2,
+
+                  mx: 3,
 
                   mb: 5,
                   mt: 0
@@ -135,6 +137,7 @@ const FantasyPage = ({ data }) => {
                 Pick 3 Players
               </Styled.h3>
             </div>
+            <Rules deadline={data.matchday.deadline} />
             <Frame
               columns="1fr 1fr 1fr"
               bg={slots.length < 3 ? "backgorund" : "secondary"}
@@ -171,7 +174,6 @@ const FantasyPage = ({ data }) => {
                   dispatch={() => filter([node.home._id, node.away._id])}
                 />
               ))}
-              <Rules deadline={data.matchday.deadline} />
             </Matches>
             {slots.length !== 3 && (
               <Styled.p sx={{ textAlign: "left", mx: 4, mt: 3 }}>
@@ -179,13 +181,48 @@ const FantasyPage = ({ data }) => {
               </Styled.p>
             )}
           </Container>
-          {slots.length === 3 && (
+          {slots.length === 3 && state.user && (
             <Container>
-              <Centered>
-                <Button dispatch={() => post()} fontSize={4} color="primary">
+              <div sx={{ width: 105, justifySelf: "center" }}>
+                <Button
+                  dispatch={() => post()}
+                  fontSize={[2, 3]}
+                  color="primary"
+                >
                   PLAY
                 </Button>
-              </Centered>
+              </div>
+            </Container>
+          )}
+          {slots.length === 3 && !state.user && (
+            <Container>
+              <div sx={{ width: [180, 240], justifySelf: "center" }}>
+                <Button
+                  dispatch={() =>
+                    loginWithRedirect({
+                      prompt: "login",
+                      screen_hint: "signup"
+                    })
+                  }
+                  fontSize={[2, 3]}
+                  bg="red"
+                  color="background"
+                >
+                  REGISTER FREE
+                </Button>
+              </div>
+              <Styled.h5 sx={{ textAlign: "center" }}>Or</Styled.h5>
+              <div sx={{ width: 105, justifySelf: "center" }}>
+                <Button
+                  dispatch={() => loginWithRedirect({})}
+                  fontSize={[2, 3]}
+                  color="background"
+                >
+                  LOGIN
+                </Button>
+              </div>
+
+              <Styled.h5 sx={{ textAlign: "center" }}>To Continue</Styled.h5>
             </Container>
           )}
           <Container>
@@ -275,7 +312,7 @@ export const query = graphql`
     matchday: sanityMatchday(status: { eq: "current" }) {
       _id
       prize
-      deadline(formatString: "ddd MMM Do")
+      deadline(formatString: "dddd MMM Do")
       start: deadline
     }
   }

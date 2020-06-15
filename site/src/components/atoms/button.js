@@ -2,35 +2,43 @@
 import { jsx, Styled } from "theme-ui"
 import Frame from "./frame"
 
-const Button = ({ children, dispatch, fontSize, p, height, color, bg }) => {
+const Button = ({
+  children,
+  dispatch,
+  fontSize,
+  p,
+  height,
+  width,
+  color,
+  bg
+}) => {
   return (
-    <Frame borderWidth={0}>
-      <button
+    <button
+      sx={{
+        height: height || 40,
+        width: 105,
+        width: "100%",
+        cursor: "pointer",
+        appearance: "none",
+        outline: "none",
+        border: "none",
+        bg: bg || "secondary",
+        color: color || "background",
+        // borderRadius: 4,
+        p: p || 4,
+        px: 5
+      }}
+      onClick={dispatch}
+    >
+      <Styled.h1
         sx={{
-          height: height || 40,
-          width: "100%",
-          cursor: "pointer",
-          appearance: "none",
-          outline: "none",
-          border: "none",
-          bg: bg || "secondary",
-          color: color || "background",
-          // borderRadius: 4,
-          p: p || 4,
-          px: 5
+          m: 0,
+          fontSize: fontSize
         }}
-        onClick={dispatch}
       >
-        <Styled.h1
-          sx={{
-            m: 0,
-            fontSize: fontSize
-          }}
-        >
-          {children}
-        </Styled.h1>
-      </button>
-    </Frame>
+        {children}
+      </Styled.h1>
+    </button>
   )
 }
 

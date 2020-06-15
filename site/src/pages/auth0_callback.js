@@ -4,10 +4,10 @@ import { useState } from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { useEffect } from "react"
-import { useAuth } from "react-use-auth"
 import { navigate } from "gatsby"
 import axios from "axios"
 import { useUserDispatch, useLoadingDispatch } from "../state"
+import { useAuth0 } from "../state/auth0"
 
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
@@ -20,18 +20,20 @@ const AuthPage = () => {
   const [show, setShow] = useState(false)
   const [name, setName] = useState("")
 
-  const { user, handleAuthentication } = useAuth()
+  const { user, handleAuthentication } = useAuth0()
   const userDispatch = useUserDispatch()
   const loadingDispatch = useLoadingDispatch()
 
   useEffect(() => {
-    if (user.sub) {
+    console.log(user)
+
+    if (user) {
       const query = `*[_type == "user" && auth0Id == $auth0Id][0]`
       const params = { auth0Id: user.sub }
       client.fetch(query, params).then(x => {
         if (x) {
           userDispatch({ type: "init", user: x })
-          handleAuthentication({ postLoginRoute: "/account/" })
+          navigate("/account/")
         } else {
           setShow(true)
         }
