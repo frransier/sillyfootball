@@ -123,7 +123,7 @@ const Header = () => {
           </div>
         </Link>
       )}
-      {state && !state.user && (
+      {state && state.user !== null && (
         <button
           sx={{
             cursor: "pointer",
