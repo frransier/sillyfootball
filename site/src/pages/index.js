@@ -27,7 +27,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Fantasy Football" />
-      {state.loading ? (
+      {state && state.loading ? (
         <Loading />
       ) : (
         <Container>
@@ -88,7 +88,7 @@ const IndexPage = () => {
               }}
               to="/fantasy/"
             > */}
-            {!state.user && (
+            {state && !state.user && (
               <div sx={{ justifySelf: "center", width: [110, 150], my: 4 }}>
                 <Button
                   dispatch={() =>

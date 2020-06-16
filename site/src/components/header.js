@@ -89,7 +89,7 @@ const Header = () => {
       >
         <Styled.h5 sx={{ m: 0, fontWeight: 700 }}>Livescore</Styled.h5>
       </Link>
-      {state.user && (
+      {state && state.user && (
         <Link
           to="/account/"
           activeClassName="active"
@@ -124,7 +124,7 @@ const Header = () => {
           </div>
         </Link>
       )}
-      {!state.user && (
+      {state && !state.user && (
         <button
           sx={{
             cursor: "pointer",

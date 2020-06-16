@@ -109,7 +109,7 @@ const FantasyPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Play" />
-      {state.loading ? (
+      {state && state.loading ? (
         <Loading />
       ) : (
         <Fragment>
