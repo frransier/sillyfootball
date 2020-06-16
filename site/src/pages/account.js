@@ -129,10 +129,8 @@ const AccountPage = props => {
       )}
       {init && tickets !== "play" && (
         <Container>
-          <Styled.h3 sx={{ mx: 4, m: 0 }}>My Leaderboard</Styled.h3>
-
           <Heading
-            main=""
+            main="My League"
             sub1={
               <Frame borderRadius={0}>
                 <FaTrophy
@@ -142,8 +140,8 @@ const AccountPage = props => {
               </Frame>
             }
             sub2="High"
-            sub3="Average"
-            columns={["54% 16% 16% 14%", "53% 16% 14% 17%"]}
+            sub3="Avg"
+            columns={["58.7% 13% 13% 13%", "53.8% 15% 15% 15%"]}
             justify="center"
           />
           {tickets
@@ -163,8 +161,8 @@ const AccountPage = props => {
       )}
       {init && (
         <Container>
-          <Styled.h3 sx={{ mx: 4, m: 0 }}>Top 20</Styled.h3>
           <Heading
+            main="Silly Football League"
             sub1={
               <Frame borderRadius={0}>
                 <FaTrophy
@@ -174,8 +172,8 @@ const AccountPage = props => {
               </Frame>
             }
             sub2="High"
-            sub3="Average"
-            columns={["54% 16% 16% 14%", "53% 16% 14% 17%"]}
+            sub3="Avg"
+            columns={["58.7% 13% 13% 13%", "53.8% 15% 15% 15%"]}
             justify="center"
           />
           {props.data.top50.edges.map(({ node }, i) => (

@@ -4,13 +4,13 @@ import Container from "../atoms/container"
 
 const User = ({ user, index }) => {
   return (
-    <Container mt={3} columns={["54% 17% 17% 12%", "54% 15% 15% 16%"]}>
+    <Container mt={3} columns={["58.8% 13% 13% 13%", "53.8% 15% 15% 15%"]}>
       <Styled.p
         sx={{
           textAlign: "left",
           fontWeight: 500,
           my: 1,
-          ml: [0, 4],
+          ml: [0, 2],
           fontSize: 2
         }}
       >
@@ -20,8 +20,8 @@ const User = ({ user, index }) => {
       <Styled.p
         sx={{
           alignSelf: "center",
-          justifySelf: "center",
-          mr: [0, 2]
+          justifySelf: "center"
+
           // fontWeight: "heading"
         }}
       >
@@ -30,7 +30,8 @@ const User = ({ user, index }) => {
       <Styled.p
         sx={{
           alignSelf: "center",
-          justifySelf: "center"
+          justifySelf: "end",
+          mx: 3
           // fontWeight: "heading"
         }}
       >
@@ -39,7 +40,8 @@ const User = ({ user, index }) => {
       <Styled.p
         sx={{
           alignSelf: "center",
-          justifySelf: "center"
+          justifySelf: "end",
+          mx: -2
           // fontWeight: "heading",
         }}
       >

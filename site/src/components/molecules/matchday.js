@@ -4,6 +4,7 @@ import { navigate, Link } from "gatsby"
 import Button from "../atoms/button"
 import Container from "../atoms/container"
 import Ticket from "./ticket"
+import Heading from "./heading"
 import { useLoadingDispatch } from "../../state"
 import { Fragment } from "react"
 
@@ -15,23 +16,13 @@ const Matchday = ({ matchday, status, deadline }) => {
   }
   return (
     <Fragment>
-      <div sx={{ display: "flex", alignItems: "center" }}>
-        <Styled.h3
-          sx={{ m: 0, color: status === "Next" ? "text" : "darkgrey" }}
-        >
-          {status}
-        </Styled.h3>
-        <div sx={{ mx: "auto" }} />
-        <Styled.h6
-          sx={{
-            m: 0,
-            fontWeight: 600,
-            color: status === "Next" ? "text" : "darkgrey"
-          }}
-        >
-          {deadline}
-        </Styled.h6>
-      </div>
+      <Heading
+        main={status}
+        sub3={deadline}
+        columns={["40% 20% 40%"]}
+        // justify="center"
+      />
+
       {matchday === "play" && (
         <Container>
           <Button dispatch={() => Play()}>PLAY NOW</Button>

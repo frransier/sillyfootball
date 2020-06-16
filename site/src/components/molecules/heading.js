@@ -29,7 +29,6 @@ const Heading = ({ main, sub1, sub2, sub3, columns, justify }) => {
         <Styled.p
           sx={{
             alignSelf: "end",
-            mx: 0,
             justifySelf: "end",
             mx: 3,
             fontWeight: 500,
