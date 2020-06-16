@@ -30,7 +30,7 @@ const LiveMatch = ({ match, disabled, selected }) => {
         <div
           sx={{
             display: "grid",
-            gridTemplateColumns: ["9% 35% 12% 35% 9%", "15% 28% 14% 28% 15%"],
+            gridTemplateColumns: ["13% 31% 12% 31% 13%", "15% 28% 14% 28% 15%"],
             fontWeight: "heading"
           }}
         >
@@ -63,9 +63,16 @@ const LiveMatch = ({ match, disabled, selected }) => {
             {match.away.name || match.away.fullName}
           </Styled.p>
 
-          <Styled.p sx={{ fontWeight: 600 }}>
+          <Styled.p
+            sx={{
+              fontWeight: 600,
+              alignSelf: "center",
+              justifySelf: "end",
+              mx: [4, 3]
+            }}
+          >
             {match.status === "ft"
-              ? match.status
+              ? ""
               : match.elapsed
               ? `${match.elapsed}'`
               : day}
@@ -77,7 +84,7 @@ const LiveMatch = ({ match, disabled, selected }) => {
           sx={{
             p: 1,
             display: "grid",
-            gridTemplateColumns: ["9% 35% 12% 35% 9%", "15% 28% 14% 28% 15%"],
+            gridTemplateColumns: ["13% 31% 12% 31% 13%", "15% 28% 14% 28% 15%"],
             width: "100%"
           }}
         >
@@ -130,7 +137,7 @@ const LiveMatch = ({ match, disabled, selected }) => {
                     <Styled.p sx={{ fontWeight: "heading", textAlign: "left" }}>
                       {x.goal.fullName}
                     </Styled.p>
-                    <Styled.p sx={{ justifySelf: "center" }}>
+                    <Styled.p sx={{ justifySelf: "end", mx: 4 }}>
                       {x.elapsed}'
                     </Styled.p>
                   </div>

@@ -111,7 +111,7 @@ const IndexPage = () => {
             <Link
               sx={{
                 justifySelf: "center",
-                width: [105, 150],
+
                 my: 4,
                 textDecoration: "none"
 
@@ -125,7 +125,7 @@ const IndexPage = () => {
                 }
                 fontSize={[2, 3]}
                 height={40}
-                width={105}
+                width={[80]}
                 color="background"
                 bg="secondary"
                 // bg="primary"

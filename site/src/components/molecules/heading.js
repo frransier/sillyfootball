@@ -30,7 +30,8 @@ const Heading = ({ main, sub1, sub2, sub3, columns, justify }) => {
           sx={{
             alignSelf: "end",
             mx: 0,
-            justifySelf: justify || "end",
+            justifySelf: "end",
+            mx: 3,
             fontWeight: 500,
             mb: 0,
             mt: 2
@@ -43,7 +44,8 @@ const Heading = ({ main, sub1, sub2, sub3, columns, justify }) => {
         <Styled.p
           sx={{
             alignSelf: "end",
-            justifySelf: justify || "end",
+            justifySelf: "end",
+            // mx: 4,
             fontWeight: 500,
             mb: 0,
             mt: 2
@@ -56,7 +58,8 @@ const Heading = ({ main, sub1, sub2, sub3, columns, justify }) => {
         <Styled.p
           sx={{
             alignSelf: "end",
-            justifySelf: justify || "end",
+            justifySelf: "end",
+            // mx: 4,
             fontWeight: 500,
             mb: 0,
             mt: 2

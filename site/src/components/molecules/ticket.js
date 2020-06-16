@@ -32,7 +32,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
         <div
           sx={{
             display: "grid",
-            gridTemplateColumns: ["56% 17% 17% 10%", "55% 15% 15% 15%"]
+            gridTemplateColumns: ["61% 13% 13% 13%", "55% 15% 15% 15%"]
           }}
         >
           <div
@@ -62,8 +62,8 @@ const Ticket = ({ ticket, disabled, winner }) => {
             sx={{
               textAlign: "right",
               alignSelf: "center",
-              justifySelf: "center",
-              mx: -2
+              justifySelf: "end",
+              mx: 3
               // fontWeight: "heading"
             }}
           >
@@ -73,8 +73,8 @@ const Ticket = ({ ticket, disabled, winner }) => {
             sx={{
               textAlign: "right",
               alignSelf: "center",
-              justifySelf: "center",
-              mx: -2
+              justifySelf: "end",
+              mx: -1
               // fontWeight: "heading"
             }}
           >
@@ -82,9 +82,10 @@ const Ticket = ({ ticket, disabled, winner }) => {
           </Styled.p>
           <Styled.p
             sx={{
-              textAlign: "right",
+              // textAlign: "center",
               alignSelf: "center",
-              justifySelf: "center",
+              justifySelf: "end",
+              mr: ["10px", 4],
               fontWeight: "heading"
             }}
           >

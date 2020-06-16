@@ -8,7 +8,7 @@ const Score = ({ player }) => {
     <div
       sx={{
         display: "grid",
-        gridTemplateColumns: ["56% 17% 17% 10%", "55% 15% 15% 15%"],
+        gridTemplateColumns: ["61% 13% 13% 13%", "55% 15% 15% 15%"],
         justifyItems: "center",
         my: 3,
         borderBottom: "solid 1px",
@@ -28,13 +28,29 @@ const Score = ({ player }) => {
         </Styled.p>
         <Styled.p>{player.rate === 1 && <FaStar />}</Styled.p>
       </div>
-      <Styled.p sx={{ alignSelf: "center", justifySelf: "center" }}>
+      <Styled.p
+        sx={{
+          alignSelf: "center",
+          justifySelf: ["center", "end"],
+          mx: [0, 5],
+          ml: [3, 0]
+        }}
+      >
         {player.goals}
       </Styled.p>
-      <Styled.p sx={{ alignSelf: "center", justifySelf: "center" }}>
+      <Styled.p
+        sx={{ alignSelf: "center", justifySelf: ["center", "end"], mx: [0, 5] }}
+      >
         {player.assists}
       </Styled.p>
-      <Styled.p sx={{ alignSelf: "center", justifySelf: "center" }}>
+      <Styled.p
+        sx={{
+          alignSelf: "center",
+          justifySelf: ["center", "end"],
+          mx: [0, 4],
+          ml: [4, 0]
+        }}
+      >
         {player.points.toFixed(1)}
       </Styled.p>
     </div>
