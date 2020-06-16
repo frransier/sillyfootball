@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 import { useEffect } from "react"
 import { navigate } from "gatsby"
 import axios from "axios"
-import { useUserDispatch, useLoadingDispatch } from "../state"
+import { useGlobalDispatch } from "../state"
 import { useAuth0 } from "../state/auth0"
 
 const sanityClient = require("@sanity/client")
@@ -19,10 +19,8 @@ const client = sanityClient({
 const AuthPage = () => {
   const [show, setShow] = useState(false)
   const [name, setName] = useState("")
-
   const { user, handleAuthentication } = useAuth0()
-  const userDispatch = useUserDispatch()
-  const loadingDispatch = useLoadingDispatch()
+  const dispatch = useGlobalDispatch()
 
   useEffect(() => {
     console.log(user)
@@ -30,9 +28,9 @@ const AuthPage = () => {
     if (user) {
       const query = `*[_type == "user" && auth0Id == $auth0Id][0]`
       const params = { auth0Id: user.sub }
-      client.fetch(query, params).then(x => {
-        if (x) {
-          userDispatch({ type: "init", user: x })
+      client.fetch(query, params).then(usr => {
+        if (usr) {
+          dispatch({ type: "set-user", payload: usr })
           navigate("/account/")
         } else {
           setShow(true)
@@ -63,12 +61,12 @@ const AuthPage = () => {
   function setUser() {
     const query = `*[_type == "user" && auth0Id == $auth0Id][0]`
     const params = { auth0Id: user.sub }
-    client.fetch(query, params).then(x => {
-      console.log(x)
+    client.fetch(query, params).then(usr => {
+      console.log(usr)
 
-      if (x) {
-        userDispatch({ type: "init", user: x })
-        loadingDispatch({ type: "set", loading: true })
+      if (usr) {
+        dispatch({ type: "set-user", payload: usr })
+        dispatch({ type: "set-loading", payload: true })
         handleAuthentication({ postLoginRoute: "/fantasy/current/" })
       }
     })

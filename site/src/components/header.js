@@ -100,7 +100,7 @@ const Header = () => {
             //   color: "red"
             // }
           }}
-          // onClick={() => dispatch({ type: "set-loading", payload: true })}
+          onClick={() => dispatch({ type: "set-loading", payload: true })}
         >
           <div
             sx={{

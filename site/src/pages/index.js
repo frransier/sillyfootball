@@ -12,14 +12,10 @@ import Loading from "../components/molecules/loading"
 import Blurb from "../components/molecules/blurb"
 import Centered from "../components/atoms/centered"
 const IndexPage = () => {
-  // const loadingDispatch = useLoadingDispatch()
   const state = useGlobalState()
   const dispatch = useGlobalDispatch()
   const { loginWithRedirect } = useAuth0()
 
-  // useEffect(() => {
-  //   console.log(state)
-  // }, [state])
   useEffect(() => {
     dispatch({ type: "set-loading", payload: false })
   }, [dispatch])
@@ -127,7 +123,7 @@ const IndexPage = () => {
                 height={40}
                 width={[80]}
                 color="background"
-                bg="secondary"
+                bg={state && state.user ? "red" : "secondary"}
                 // bg="primary"
               >
                 PLAY
