@@ -22,7 +22,7 @@ const Button = ({
         border: "none",
         bg: bg || "secondary",
         color: color || "background",
-        // borderRadius: 4,
+        boxShadow: "1px 1px 4px darkgrey",
         p: p || 4,
         px: 5
       }}

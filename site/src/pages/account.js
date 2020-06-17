@@ -13,6 +13,8 @@ import { useGlobalState } from "../state"
 import { FaTrophy } from "react-icons/fa"
 import Frame from "../components/atoms/frame"
 import { Link } from "gatsby"
+import uniqBy from "lodash.uniqby"
+import dayjs from "dayjs"
 
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
@@ -23,7 +25,9 @@ const client = sanityClient({
 
 const AccountPage = props => {
   const [tickets, setTickets] = useState(false)
+  const [previous, showPrevious] = useState(false)
   const state = useGlobalState()
+  const live = dayjs() > dayjs(props.data.current.start)
 
   useEffect(() => {
     if (tickets) setTickets(null)
@@ -49,6 +53,7 @@ const AccountPage = props => {
           _id,
           matchday->{index, start, status},
           user->{
+            _id,
             name,
             average,
             high,
@@ -71,7 +76,17 @@ const AccountPage = props => {
                   ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
         }`
     const ticks = await client.fetch(ticketsQuery)
-    setTickets(ticks)
+    const current = ticks
+      .filter(x => x.matchday.status === "current")
+      .sort((a, b) => (a.score < b.score ? 1 : -1))
+    const previous = ticks
+      .filter(x => x.matchday.status === "previous")
+      .sort((a, b) => (a.score < b.score ? 1 : -1))
+    const users = uniqBy(ticks, "user._id").sort((a, b) =>
+      a.user.average < b.user.average ? 1 : -1
+    )
+
+    setTickets({ current: current, previous: previous, users: users })
   }
   return (
     <Layout>
@@ -80,18 +95,23 @@ const AccountPage = props => {
       {tickets && (
         <Container>
           <Matchday
-            matchday={tickets.filter(x => x.matchday.status === "current")}
-            status="Upcoming"
+            matchday={tickets.current}
+            status="Current Round"
             deadline={props.data.current.deadline}
+            live={live}
+            dispatch={() => showPrevious(!previous)}
           />
-          <div sx={{ mt: 5 }}>
-            <Matchday
-              matchday={tickets.filter(x => x.matchday.status === "previous")}
-              status="Previous"
-              deadline={props.data.previous.deadline}
-            />
-          </div>
-          <div sx={{ mt: 5 }}>
+          {previous && (
+            <div sx={{ mt: 6 }}>
+              <Matchday
+                matchday={tickets.previous}
+                status="Previous"
+                live={true}
+                deadline={props.data.previous.deadline}
+              />
+            </div>
+          )}
+          <div sx={{ mt: 6 }}>
             <Heading
               main="My League"
               sub1={
@@ -107,21 +127,19 @@ const AccountPage = props => {
               columns={["58.7% 13% 13% 13%", "53.8% 15% 15% 15%"]}
               justify="center"
             />
-            {tickets
-              .sort((a, b) => (a.user.average < b.user.average ? 1 : -1))
-              .map((x, i) => (
-                <User user={x.user} key={i} index={i + 1} />
-              ))}
+            {tickets.users.map((x, i) => (
+              <User user={x.user} key={i} index={i + 1} />
+            ))}
             <Link
               to="/fantasy/"
               sx={{ textDecoration: "none", textAlign: "right", mt: 3 }}
             >
-              <Styled.h5 sx={{ m: 4, color: "red", fontWeight: "heading" }}>
+              <Styled.h6 sx={{ m: 4, color: "red", fontWeight: "heading" }}>
                 Add Friends >
-              </Styled.h5>
+              </Styled.h6>
             </Link>
           </div>
-          <div sx={{ mt: 5 }}>
+          <div sx={{ mt: 6 }}>
             <Heading
               main="Silly Football League"
               sub1={

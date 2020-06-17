@@ -4,10 +4,12 @@ import Score from "./score"
 import { useState, Fragment } from "react"
 import { FaTrophy } from "react-icons/fa"
 import Frame from "../atoms/frame"
+import { useGlobalState } from "../../state"
 
 const Ticket = ({ ticket, disabled, winner }) => {
   const [show, setShow] = useState(false)
-  // console.log(ticket)
+  const state = useGlobalState()
+  if (state.user && ticket.user._id === state.user._id) disabled = true
 
   return (
     <Fragment>
@@ -26,7 +28,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
           borderBottom: "solid 0.5px",
           borderColor: "muted"
         }}
-        disabled={disabled}
+        disabled={!disabled}
         onClick={() => setShow(!show)}
       >
         <div
@@ -45,7 +47,7 @@ const Ticket = ({ ticket, disabled, winner }) => {
               alignItems: "center"
             }}
           >
-            {winner && (
+            {winner && disabled && (
               <Frame borderRadius={0} mr={4}>
                 <FaTrophy
                   sx={{ color: "primary", bg: "secondary" }}

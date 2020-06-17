@@ -12,6 +12,7 @@ import Loading from "../components/molecules/loading"
 import { useGlobalState } from "../state"
 import { Fragment } from "react"
 import Container from "../components/atoms/container"
+import dayjs from "dayjs"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
@@ -21,7 +22,7 @@ const client = sanityClient({
 
 const LivescorePage = ({ data }) => {
   const [livescore, setLivescore] = useState(null)
-  const [live] = useState(data.matchday.deadline)
+  const live = dayjs() > dayjs(data.matchday.start)
   const state = useGlobalState()
 
   useEffect(() => {
@@ -86,6 +87,7 @@ const LivescorePage = ({ data }) => {
           matchday->status == "current"]
           {
             user->{
+              _id,
               name
             },
             scores[]->{
@@ -129,22 +131,24 @@ const LivescorePage = ({ data }) => {
               ))}
             </Container>
           </Container>
-          <Container>
-            <Heading
-              main="Highscore"
-              sub1="Goals"
-              sub2="Assists"
-              sub3="Points"
-              columns={["61% 13% 13% 13%", "55% 15% 15% 15%"]}
-              // ["11% 33% 12% 33% 11%", "15% 28% 14% 28% 15%"],
-              justify="center"
-            />
-            <Container mt={4}>
-              {livescore.scores.map((x, i) => (
-                <Score key={i} player={x} />
-              ))}
+          {live && (
+            <Container>
+              <Heading
+                main="Highscore"
+                sub1="Goals"
+                sub2="Assists"
+                sub3="Points"
+                columns={["61% 13% 13% 13%", "55% 15% 15% 15%"]}
+                // ["11% 33% 12% 33% 11%", "15% 28% 14% 28% 15%"],
+                justify="center"
+              />
+              <Container mt={4}>
+                {livescore.scores.map((x, i) => (
+                  <Score key={i} player={x} />
+                ))}
+              </Container>
             </Container>
-          </Container>
+          )}
           <Container>
             <Heading
               main="Leaderboard"
@@ -159,7 +163,7 @@ const LivescorePage = ({ data }) => {
                   key={i}
                   ticket={x}
                   winner={x.score === livescore.tickets[0].score}
-                  disabled={!live}
+                  disabled={live}
                 />
               ))}
             </Container>

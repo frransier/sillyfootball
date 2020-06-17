@@ -186,7 +186,8 @@ const FantasyPage = ({ data }) => {
                 <Button
                   dispatch={() => post()}
                   fontSize={[2, 3]}
-                  color="primary"
+                  color="text"
+                  bg="primary"
                 >
                   PLAY
                 </Button>

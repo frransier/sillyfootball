@@ -44,7 +44,7 @@ const IndexPage = () => {
             </Styled.h4>
           </Centered>
           <Styled.h4 sx={{ textAlign: "center", fontWeight: 500 }}>
-            Play Hassle-Free Fantasy Football
+            Easy To Learn, Hard To Master
           </Styled.h4>
           {/* <Styled.h5 sx={{ textAlign: "center" }}>
             Fantasy Football without the noise
@@ -122,8 +122,8 @@ const IndexPage = () => {
                 fontSize={[2, 3]}
                 height={40}
                 width={[80]}
-                color="background"
-                bg={state && state.user ? "red" : "secondary"}
+                color={state && state.user ? "text" : "background"}
+                bg={state && state.user ? "primary" : "secondary"}
                 // bg="primary"
               >
                 PLAY

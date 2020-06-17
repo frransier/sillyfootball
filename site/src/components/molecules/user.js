@@ -8,7 +8,7 @@ const User = ({ user, index }) => {
       <Styled.p
         sx={{
           textAlign: "left",
-          fontWeight: 500,
+          // fontWeight: 500,
           my: 1,
           ml: [0, 2],
           fontSize: 2

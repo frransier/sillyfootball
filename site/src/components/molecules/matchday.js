@@ -7,10 +7,7 @@ import Ticket from "./ticket"
 import Heading from "./heading"
 import { Fragment } from "react"
 
-const Matchday = ({ matchday, status, deadline }) => {
-  function Play() {
-    navigate("/fantasy/")
-  }
+const Matchday = ({ matchday, status, deadline, dispatch, live }) => {
   return (
     <Fragment>
       <Heading
@@ -22,32 +19,46 @@ const Matchday = ({ matchday, status, deadline }) => {
 
       {matchday.length === 0 && (
         <Container>
-          <Button dispatch={() => Play()}>PLAY NOW</Button>
+          <Button dispatch={() => navigate("/fantasy/")}>PLAY NOW</Button>
         </Container>
       )}
       {matchday.length !== 0 && (
         <Container mt={2}>
-          {matchday
-            .sort((a, b) => (a.score < b.score ? 1 : -1))
-            .map((x, i) => (
-              <Ticket key={i} ticket={x} index={i} />
-            ))}
-          {status === "Upcoming" && (
+          {matchday.map((x, i) => (
+            <Ticket key={i} ticket={x} index={i} disabled={live} />
+          ))}
+          {status === "Current Round" && (
             <div
               sx={{
-                // display: "flex",
-                // alignItems: "center",
+                display: "flex",
+                alignItems: "start",
                 mt: 3,
                 textAlign: "right"
               }}
             >
-              {/* <div sx={{ mx: "auto" }} /> */}
-              <Styled.p sx={{ m: 2 }}>Need to make changes?</Styled.p>
-              <Link to="/fantasy/" sx={{ textDecoration: "none" }}>
-                <Styled.h5 sx={{ m: 2, color: "red", fontWeight: "heading" }}>
-                  Play Again >
-                </Styled.h5>
-              </Link>
+              <button
+                onClick={dispatch}
+                sx={{
+                  appearance: "none",
+                  outline: "none",
+                  bg: "background",
+                  border: "none",
+                  p: 0
+                }}
+              >
+                <Styled.h6 sx={{ m: 2, color: "muted", fontWeight: "heading" }}>
+                  Show Previous Round
+                </Styled.h6>
+              </button>
+              <div sx={{ mx: "auto" }} />
+              <div>
+                <Styled.p sx={{ m: 2 }}>Need to make changes?</Styled.p>
+                <Link to="/fantasy/" sx={{ textDecoration: "none" }}>
+                  <Styled.h6 sx={{ m: 2, color: "red", fontWeight: "heading" }}>
+                    Play Again >
+                  </Styled.h6>
+                </Link>
+              </div>
             </div>
           )}
         </Container>
