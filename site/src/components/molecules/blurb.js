@@ -10,7 +10,7 @@ const Blurb = ({ text }) => (
       alignItems: "center",
       justifyItems: "center",
       //   bg: "secondary",
-      color: "text",
+      color: "red",
       width: "100%",
       height: "100%",
       py: 4
@@ -23,7 +23,7 @@ const Blurb = ({ text }) => (
     {text === "Follow Live" && <MdLiveTv size={25} />}
     {text === "Pick 3 Players" && <RiTeamLine size={25} />}
     {text === "Get Hooked" && <RiThumbUpLine size={25} />}
-    <Styled.p sx={{ my: 4 }}>{text}</Styled.p>
+    <Styled.p sx={{ my: 4, color: "text" }}>{text}</Styled.p>
   </div>
 )
 

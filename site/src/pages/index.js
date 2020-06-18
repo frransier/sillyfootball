@@ -43,9 +43,7 @@ const IndexPage = () => {
               Who makes the assists
             </Styled.h4>
           </Centered>
-          <Styled.h4 sx={{ textAlign: "center", fontWeight: 500 }}>
-            Easy To Learn, Hard To Master
-          </Styled.h4>
+
           {/* <Styled.h5 sx={{ textAlign: "center" }}>
             Fantasy Football without the noise
           </Styled.h5> */}
@@ -66,6 +64,9 @@ const IndexPage = () => {
             <Blurb text="Follow Live" />
             <Blurb text="Get Hooked" />
           </div>
+          <Styled.h4 sx={{ textAlign: "center", fontWeight: 500 }}>
+            Games Every Tuesday & Saturday
+          </Styled.h4>
           {/* <Styled.p sx={{ fontSize: 2, textAlign: "center", mt: 5 }}>
             <FaStar /> players generate 1 point per goal or assist. <br />
             <br />
@@ -122,8 +123,8 @@ const IndexPage = () => {
                 fontSize={[2, 3]}
                 height={40}
                 width={[80]}
-                color={state && state.user ? "text" : "background"}
-                bg={state && state.user ? "primary" : "secondary"}
+                color="background"
+                bg="secondary"
                 // bg="primary"
               >
                 PLAY

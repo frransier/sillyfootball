@@ -30,6 +30,8 @@ const AccountPage = props => {
   const live = dayjs() > dayjs(props.data.current.start)
 
   useEffect(() => {
+    console.log(state)
+
     if (tickets) setTickets(null)
     Account()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -131,7 +133,7 @@ const AccountPage = props => {
               <User user={x.user} key={i} index={i + 1} />
             ))}
             <Link
-              to="/fantasy/"
+              to="/manage/"
               sx={{ textDecoration: "none", textAlign: "right", mt: 3 }}
             >
               <Styled.h6 sx={{ m: 4, color: "red", fontWeight: "heading" }}>

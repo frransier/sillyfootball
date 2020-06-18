@@ -2,158 +2,127 @@
 import { jsx, Styled } from "theme-ui"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Fragment } from "react"
+import { useGlobalState, useGlobalDispatch } from "../state"
+import { useEffect, useState, Fragment } from "react"
+import Loading from "../components/molecules/loading"
+import Heading from "../components/molecules/heading"
+import Container from "../components/atoms/container"
+import { navigate } from "gatsby"
+import axios from "axios"
+
+const sanityClient = require("@sanity/client")
+const client = sanityClient({
+  projectId: "0jt5x7hu",
+  dataset: "production",
+  useCdn: false
+})
 
 const ManagePage = () => {
-  //   function AddFriend() {
-  //     setLoading(true)
-  //     const params = {
-  //       user: userState._id,
-  //       friend: friend
-  //     }
-  //     if (add === "invite") {
-  //       axios
-  //         .post("/.netlify/functions/invite", params)
-  //         .then(res => {
-  //           res.data === "OK" ? setLoading(false) : console.log("nay")
-  //         })
-  //         .catch(error => {
-  //           console.log(error)
-  //         })
-  //     }
-  //     if (add === "add") {
-  //       const query = `*[_type == 'user' && lower(name) == '${friend}'][0]{_id}`
-  //       client.fetch(query).then(x => {
-  //         console.log(x)
+  const [users, setUsers] = useState(null)
+  const [friends, setFriends] = useState(null)
+  const [hasChanged, setHasChanged] = useState(false)
+  const state = useGlobalState()
+  const dispatch = useGlobalDispatch()
 
-  //         if (x._id)
-  //           axios
-  //             .post("/.netlify/functions/add", params)
-  //             .then(res => {
-  //               res.data === "OK" ? setLoading(false) : console.log("nay")
-  //             })
-  //             .catch(error => {
-  //               console.log(error)
-  //             })
-  //         else {
-  //           setLoading(false)
-  //         }
-  //       })
-  //     }
-  //   }
+  // useEffect(() => {
+  //   console.log(friends)
+  // }, [friends])
+  useEffect(() => {
+    UpdateUser().then(() => GetUsers())
+  }, [])
+
+  async function UpdateUser() {
+    const query = `*[_type == "user" && auth0Id == $auth0Id][0]`
+    const params = { auth0Id: state.user.auth0Id }
+    const uzr = await client.fetch(query, params)
+    dispatch({ type: "set-user", payload: uzr })
+  }
+
+  async function GetUsers() {
+    if (state) {
+      const friendsQuery = `*[_type == 'user']{_id, name} | order(lower(name), desc)`
+      const res = await client.fetch(friendsQuery)
+      const frnds = state.user.friends.map(x => res.find(y => y._id === x._ref))
+      setUsers(res)
+      setFriends(frnds)
+    }
+  }
+
+  function AddFriend(usr) {
+    if (!hasChanged) setHasChanged(true)
+    setFriends([...friends, usr])
+  }
+  function RemoveFriend(frnd) {
+    if (!hasChanged) setHasChanged(true)
+    setFriends(friends.filter(x => x._id !== frnd._id))
+  }
+
+  function SetFriends() {
+    setUsers(null)
+    const params = {
+      user: state.user._id,
+      friends: friends
+    }
+
+    axios
+      .post("/.netlify/functions/set-friends", params)
+      .then(res => {
+        res.data === "OK"
+          ? UpdateUser().then(() => navigate("/account/"))
+          : console.log("nay")
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
   return (
     <Layout>
-      <SEO title="Manage Account" />;
-      <div
-        sx={{
-          display: "grid",
-          alignItems: "center",
-          justifyItems: "center",
-          width: "100%",
-          my: 3
-        }}
-      >
-        <div
-          sx={{
-            display: "flex",
-            width: "100%",
-            alignItems: "center",
-            justifyContent: "start",
-            mt: 4
-          }}
-        >
-          <Styled.h1 sx={{ my: 2 }}>Play With Friends</Styled.h1>
-          <div sx={{ mx: "auto" }} />
-          <button
-            sx={{
-              cursor: "pointer",
-              appearance: "none",
-              outline: "none",
-              bg: "white",
-              color: "text",
-              borderRadius: 3,
-              border: "solid 1px",
-              borderColor: "darkgrey",
-              boxShadow: "4px 4px 4px darkgrey",
-              px: 2,
-              mx: 2
-            }}
-            // onClick={() => setAdd("add")}
-          >
-            <Styled.p sx={{ m: 0, fontWeight: "heading" }}>Add</Styled.p>
-          </button>
-          <button
-            sx={{
-              cursor: "pointer",
-              appearance: "none",
-              outline: "none",
-              bg: "white",
-              color: "text",
-              borderRadius: 3,
-              border: "solid 1px",
-              borderColor: "darkgrey",
-              boxShadow: "4px 4px 4px darkgrey",
-              px: 2,
-              mx: 2
-            }}
-            // onClick={() => setAdd("invite")}
-          >
-            <Styled.p sx={{ m: 0, fontWeight: "heading" }}>Invite</Styled.p>
-          </button>
-        </div>
-        <div
-          sx={{
-            display: "flex",
-            width: "100%",
-            alignItems: "center",
-            justifyContent: "center"
-          }}
-        >
+      <SEO title="Manage Friends" />
+      {users === null && <Loading />}
+      <Container>
+        {users && friends && (
           <Fragment>
-            <input
-              sx={{
-                appearance: "none",
-                outline: "none",
-                width: "80%",
-                py: 3,
-                px: 1,
-                height: 30,
-                my: 2,
-                border: "solid 1px",
-                borderRadius: 5,
-                borderColor: "black",
-                fontSize: 3,
-                ":focus": {
-                  border: "solid 2px red"
-                }
-              }}
-              //   placeholder={add === "add" ? "Enter Username" : "Enter e-mail"}
-              //   onChange={e => setFriend(e.target.value.toLowerCase())}
-            />
-            <button
-              sx={{
-                cursor: "pointer",
-                appearance: "none",
-                outline: "none",
-                bg: "red",
-                color: "white",
-                border: "solid 0.05px black",
-                borderRadius: 0,
-                boxShadow: "4px 4px 4px darkgrey",
-                my: 2,
-                py: 2,
-                px: 2,
-                mx: 2
-              }}
-              //   onClick={() => AddFriend()}
-            >
-              <Styled.h3 sx={{ m: 0, fontWeight: "heading" }}>
-                {/* {add === "add" ? "Add" : "Invite"} */}Invite
-              </Styled.h3>
+            <button disabled={!hasChanged} onClick={() => SetFriends()}>
+              Save
             </button>
+
+            <Container columns="50% 50%">
+              <div>
+                <Heading main="Friends" />
+                {friends.map((friend, i) => (
+                  <div
+                    key={i}
+                    sx={{ mx: 4, my: 2, display: "flex", alignItems: "center" }}
+                  >
+                    <button onClick={() => RemoveFriend(friend)}>-</button>
+                    {/* <div sx={{ mx: "auto" }} /> */}
+                    <Styled.p>{friend.name}</Styled.p>
+                  </div>
+                ))}
+              </div>
+              <div>
+                <Heading main="Users" />
+                {users.map((user, i) => (
+                  <div
+                    key={i}
+                    sx={{ mx: 4, my: 2, display: "flex", alignItems: "center" }}
+                  >
+                    <button
+                      disabled={friends.find(x => x._id === user._id)}
+                      onClick={() => AddFriend(user)}
+                    >
+                      +
+                    </button>
+                    {/* <div sx={{ mx: "auto" }} /> */}
+                    <Styled.p>{user.name}</Styled.p>
+                  </div>
+                ))}
+              </div>
+            </Container>
           </Fragment>
-        </div>
-      </div>
+        )}
+      </Container>
     </Layout>
   )
 }

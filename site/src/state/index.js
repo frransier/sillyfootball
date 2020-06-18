@@ -19,7 +19,7 @@ function Provider(props) {
     <Auth0Provider
       domain="dev-h964wuhp.eu.auth0.com"
       client_id="OoBQxwqQpTL7KW38wKH0t0bFDwwXvXYs"
-      redirect_uri="https://stage.sillyfootball.se/auth0_callback"
+      redirect_uri="http://localhost:8000/auth0_callback"
     >
       <GlobalStateContext.Provider value={global}>
         <GlobalDispatchContext.Provider value={globalDispatch}>
@@ -42,6 +42,7 @@ function globalReducer(state, action) {
     case "set-live":
       return false
     case "set-user":
+      localStorage.setItem("sillyfootball", JSON.stringify(action.payload))
       return { ...state, user: action.payload }
     default:
       return state
