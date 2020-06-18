@@ -12,8 +12,8 @@ const Matchday = ({ matchday, status, deadline, dispatch, live }) => {
     <Fragment>
       <Heading
         main={status}
-        sub3={deadline}
-        columns={["40% 20% 40%"]}
+        sub3="Points"
+        columns={["40% 20% 39%", "40% 20% 40%"]}
         // justify="center"
       />
 

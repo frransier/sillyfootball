@@ -30,8 +30,6 @@ const AccountPage = props => {
   const live = dayjs() > dayjs(props.data.current.start)
 
   useEffect(() => {
-    console.log(state)
-
     if (tickets) setTickets(null)
     Account()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,6 +46,27 @@ const AccountPage = props => {
             }`
         )
         .join(" ")
+    const meh =
+      state.user.friends.length > 0 &&
+      state.user.friends
+        .map(
+          (x, i) =>
+            `_id == "${x._ref}" ${
+              state.user.friends.length - 1 > i ? "||" : ""
+            }`
+        )
+        .join(" ")
+
+    const friendsQuery = `*[_type == 'user' && auth0Id == '${
+      state.user.auth0Id
+    }' ${meh ? `|| ${meh}` : ""}]
+        {
+          _id,
+          name,
+          average,
+          high,
+          wins, 
+        }`
     const ticketsQuery = `*[_type == 'ticket' && (matchday->status == "current" || matchday->status == "previous") && user->auth0Id == '${
       state.user.auth0Id
     }' ${friends ? `|| ${friends}` : ""}]
@@ -78,17 +97,21 @@ const AccountPage = props => {
                   ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate)
         }`
     const ticks = await client.fetch(ticketsQuery)
+    const frndz = await client.fetch(friendsQuery)
+
     const current = ticks
       .filter(x => x.matchday.status === "current")
       .sort((a, b) => (a.score < b.score ? 1 : -1))
     const previous = ticks
       .filter(x => x.matchday.status === "previous")
       .sort((a, b) => (a.score < b.score ? 1 : -1))
-    const users = uniqBy(ticks, "user._id").sort((a, b) =>
-      a.user.average < b.user.average ? 1 : -1
-    )
+    const frnds = frndz.sort((a, b) => (a.average < b.average ? 1 : -1))
 
-    setTickets({ current: current, previous: previous, users: users })
+    setTickets({
+      current: current,
+      previous: previous,
+      friends: frnds
+    })
   }
   return (
     <Layout>
@@ -129,8 +152,8 @@ const AccountPage = props => {
               columns={["58.7% 13% 13% 13%", "53.8% 15% 15% 15%"]}
               justify="center"
             />
-            {tickets.users.map((x, i) => (
-              <User user={x.user} key={i} index={i + 1} />
+            {tickets.friends.map((x, i) => (
+              <User user={x} key={i} index={i + 1} />
             ))}
             <Link
               to="/manage/"

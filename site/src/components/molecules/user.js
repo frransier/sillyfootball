@@ -35,7 +35,7 @@ const User = ({ user, index }) => {
           // fontWeight: "heading"
         }}
       >
-        {user.high.toFixed(1) || 0}
+        {(user.high && user.high.toFixed(1)) || 0}
       </Styled.p>
       <Styled.p
         sx={{
@@ -45,7 +45,7 @@ const User = ({ user, index }) => {
           // fontWeight: "heading",
         }}
       >
-        {user.average.toFixed(2) || 0}
+        {(user.average && user.average.toFixed(2)) || 0}
       </Styled.p>
     </Container>
   )
