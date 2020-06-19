@@ -8,7 +8,9 @@ import Loading from "../components/molecules/loading"
 import Heading from "../components/molecules/heading"
 import Container from "../components/atoms/container"
 import { navigate } from "gatsby"
+import { FaCheckCircle, FaRegCircle, FaTimesCircle } from "react-icons/fa"
 import axios from "axios"
+import Button from "../components/atoms/button"
 
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
@@ -83,39 +85,133 @@ const ManagePage = () => {
       <Container>
         {users && friends && (
           <Fragment>
-            <button disabled={!hasChanged} onClick={() => SetFriends()}>
-              Save
-            </button>
+            <div sx={{ width: "50%", mx: "auto" }}>
+              <Button
+                disable={!hasChanged}
+                dispatch={() => SetFriends()}
+                fontSize={[2, 2]}
+              >
+                Save Changes
+              </Button>
+            </div>
 
             <Container columns="50% 50%">
-              <div>
-                <Heading main="Friends" />
-                {friends.map((friend, i) => (
-                  <div
-                    key={i}
-                    sx={{ mx: 4, my: 2, display: "flex", alignItems: "center" }}
-                  >
-                    <button onClick={() => RemoveFriend(friend)}>-</button>
-                    {/* <div sx={{ mx: "auto" }} /> */}
-                    <Styled.p>{friend.name}</Styled.p>
+              <div sx={{ justifySelf: "center" }}>
+                <Heading main="Users" />
+
+                {users.map((user, i) => (
+                  <div>
+                    <button
+                      key={i}
+                      sx={{
+                        cursor: "pointer",
+                        appearance: "none",
+                        outline: "none",
+                        border: "none",
+                        width: "100%",
+                        bg: "background",
+                        justifySelf: "center",
+                        my: 3
+                        // py: 2
+                      }}
+                      onClick={() => AddFriend(user)}
+                      disabled={friends.find(x => x._id === user._id)}
+                    >
+                      <div
+                        sx={{
+                          display: "grid",
+                          gridTemplateColumns: "20% 80%",
+                          color: "text",
+                          alignItems: "center",
+                          justifyItems: "center"
+                        }}
+                      >
+                        <div
+                          sx={{
+                            color: friends.find(x => x._id === user._id)
+                              ? "secondary"
+                              : "lightgrey",
+                            // alignSelf: "center",
+                            // justifySelf: "start"
+                            height: 16
+                          }}
+                        >
+                          {friends.find(x => x._id === user._id) ? (
+                            <FaCheckCircle size={16} />
+                          ) : (
+                            <FaRegCircle size={16} />
+                          )}
+                        </div>
+
+                        <Styled.p
+                          sx={{
+                            alignSelf: "center",
+                            justifySelf: "start",
+                            textAlign: "left",
+                            fontWeight: 500,
+                            mx: 2
+                          }}
+                        >
+                          {user.name}
+                        </Styled.p>
+                      </div>
+                    </button>
                   </div>
                 ))}
               </div>
-              <div>
-                <Heading main="Users" />
-                {users.map((user, i) => (
-                  <div
-                    key={i}
-                    sx={{ mx: 4, my: 2, display: "flex", alignItems: "center" }}
-                  >
+
+              <div sx={{ justifySelf: "center" }}>
+                <Heading main="Friends" />
+
+                {friends.map((friend, i) => (
+                  <div>
                     <button
-                      disabled={friends.find(x => x._id === user._id)}
-                      onClick={() => AddFriend(user)}
+                      key={i}
+                      sx={{
+                        cursor: "pointer",
+                        appearance: "none",
+                        outline: "none",
+                        border: "none",
+                        width: "100%",
+                        bg: "background",
+                        my: 3
+                        // py: 2
+                      }}
+                      onClick={() => RemoveFriend(friend)}
                     >
-                      +
+                      <div
+                        sx={{
+                          display: "grid",
+                          gridTemplateColumns: "20% 80%",
+                          color: "text",
+                          alignItems: "center",
+                          justifyItems: "center"
+                        }}
+                      >
+                        {/* <div
+                          sx={{
+                            color: "secondary",
+                            // alignSelf: "center",
+                            // justifySelf: "center",
+                            height: 16
+                          }}
+                        > */}
+                        <FaTimesCircle size={16} />
+                        {/* </div> */}
+
+                        <Styled.p
+                          sx={{
+                            alignSelf: "center",
+                            justifySelf: "start",
+                            textAlign: "left",
+                            fontWeight: 500,
+                            mx: 3
+                          }}
+                        >
+                          {friend.name}
+                        </Styled.p>
+                      </div>
                     </button>
-                    {/* <div sx={{ mx: "auto" }} /> */}
-                    <Styled.p>{user.name}</Styled.p>
                   </div>
                 ))}
               </div>

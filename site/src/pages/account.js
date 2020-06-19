@@ -57,9 +57,9 @@ const AccountPage = props => {
         )
         .join(" ")
 
-    const friendsQuery = `*[_type == 'user' && auth0Id == '${
-      state.user.auth0Id
-    }' ${meh ? `|| ${meh}` : ""}]
+    const friendsQuery = `*[_type == 'user' && _id == '${state.user._id}' ${
+      meh ? `|| ${meh}` : ""
+    }]
         {
           _id,
           name,
@@ -76,10 +76,6 @@ const AccountPage = props => {
           user->{
             _id,
             name,
-            average,
-            high,
-            wins,
-            friends[]->
           },
           scores[]->{
             _id,

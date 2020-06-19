@@ -4,6 +4,7 @@ import { jsx, Styled } from "theme-ui"
 const Button = ({
   children,
   dispatch,
+  disable,
   fontSize,
   p,
   height,
@@ -13,6 +14,7 @@ const Button = ({
 }) => {
   return (
     <button
+      disabled={disable}
       sx={{
         height: height || 40,
         width: width || "100%",
@@ -20,8 +22,8 @@ const Button = ({
         appearance: "none",
         outline: "none",
         border: "none",
-        bg: bg || "secondary",
-        color: color || "background",
+        bg: disable ? "background" : bg || "secondary",
+        color: disable ? "muted" : color || "background",
         boxShadow: "1px 1px 4px darkgrey",
         p: p || 4,
         px: 5
