@@ -13,7 +13,6 @@ import { useGlobalState } from "../state"
 import { FaTrophy } from "react-icons/fa"
 import Frame from "../components/atoms/frame"
 import { Link } from "gatsby"
-import uniqBy from "lodash.uniqby"
 import dayjs from "dayjs"
 
 const sanityClient = require("@sanity/client")

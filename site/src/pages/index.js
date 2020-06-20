@@ -64,9 +64,7 @@ const IndexPage = () => {
             <Blurb text="Follow Live" />
             <Blurb text="Get Hooked" />
           </div>
-          <Styled.h4 sx={{ textAlign: "center", fontWeight: 500 }}>
-            Games Every Tuesday & Saturday
-          </Styled.h4>
+
           {/* <Styled.p sx={{ fontSize: 2, textAlign: "center", mt: 5 }}>
             <FaStar /> players generate 1 point per goal or assist. <br />
             <br />
@@ -133,6 +131,9 @@ const IndexPage = () => {
           </Container>
         </Container>
       )}
+      <Styled.h4 sx={{ textAlign: "center", fontWeight: 500 }}>
+        Tuesdays & Saturdays
+      </Styled.h4>
     </Layout>
   )
 }

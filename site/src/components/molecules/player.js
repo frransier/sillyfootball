@@ -46,9 +46,7 @@ const Player = ({ player, dispatch, selected }) => (
           alignItems: "center"
         }}
       >
-        {player.rate === 1 && (
-          <FaStar sx={{ mr: 3, color: "text" }} size={12} />
-        )}
+        {player.rate === 1 && <FaStar sx={{ mr: 3, color: "red" }} size={12} />}
         <Styled.p
           sx={{
             textAlign: "left",

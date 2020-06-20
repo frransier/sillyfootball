@@ -31,6 +31,7 @@ const ManagePage = () => {
   // }, [friends])
   useEffect(() => {
     UpdateUser().then(() => GetUsers())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   async function UpdateUser() {
@@ -111,7 +112,7 @@ const ManagePage = () => {
                         width: "100%",
                         bg: "background",
                         justifySelf: "center",
-                        my: 3
+                        my: 4
                         // py: 2
                       }}
                       onClick={() => AddFriend(user)}
@@ -174,7 +175,7 @@ const ManagePage = () => {
                         border: "none",
                         width: "100%",
                         bg: "background",
-                        my: 3
+                        my: 4
                         // py: 2
                       }}
                       onClick={() => RemoveFriend(friend)}
