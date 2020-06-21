@@ -108,12 +108,12 @@ const LiveMatch = ({ match, disabled, selected }) => {
                     <Styled.p
                       sx={{ fontWeight: "heading", textAlign: "right" }}
                     >
-                      {x.goal.fullName}
+                      {x.goal}
                     </Styled.p>
                   </div>
 
                   <Styled.p sx={{ color: "darkgrey", textAlign: "right" }}>
-                    {x.assist.fullName}
+                    {x.assist}
                   </Styled.p>
                 </Fragment>
               ))}
@@ -135,7 +135,7 @@ const LiveMatch = ({ match, disabled, selected }) => {
                     key={i}
                   >
                     <Styled.p sx={{ fontWeight: "heading", textAlign: "left" }}>
-                      {x.goal.fullName}
+                      {x.goal}
                     </Styled.p>
                     <Styled.p sx={{ justifySelf: "end", mx: 4 }}>
                       {x.elapsed}'
@@ -143,7 +143,7 @@ const LiveMatch = ({ match, disabled, selected }) => {
                   </div>
 
                   <Styled.p sx={{ color: "darkgrey", textAlign: "left" }}>
-                    {x.assist.fullName}
+                    {x.assist}
                   </Styled.p>
                 </Fragment>
               ))}

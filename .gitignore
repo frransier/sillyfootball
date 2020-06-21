@@ -85,6 +85,7 @@ cms/teams.js
 cms/players.js
 cms/matchday.js
 cms/importNew.js
+cms/keys.js
 site/package-lock.json
 # Local Netlify folder
 .netlify

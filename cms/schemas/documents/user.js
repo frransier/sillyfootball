@@ -19,9 +19,9 @@ export default {
       title: "High",
     },
     {
-      name: "wins",
+      name: "trophies",
       type: "number",
-      title: "Wins",
+      title: "Trophies",
     },
     {
       name: "friends",

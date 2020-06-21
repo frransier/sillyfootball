@@ -25,7 +25,7 @@ const User = ({ user, index }) => {
           // fontWeight: "heading"
         }}
       >
-        {user.wins || 0}
+        {user.trophies}
       </Styled.p>
       <Styled.p
         sx={{
@@ -35,7 +35,7 @@ const User = ({ user, index }) => {
           // fontWeight: "heading"
         }}
       >
-        {(user.high && user.high.toFixed(1)) || 0}
+        {user.high.toFixed(1)}
       </Styled.p>
       <Styled.p
         sx={{
@@ -45,7 +45,7 @@ const User = ({ user, index }) => {
           // fontWeight: "heading",
         }}
       >
-        {(user.average && user.average.toFixed(2)) || 0}
+        {user.average.toFixed(2)}
       </Styled.p>
     </Container>
   )

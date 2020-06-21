@@ -10,26 +10,30 @@ export default {
     },
     {
       name: "goal",
-      type: "reference",
-      to: { type: "player" },
+      type: "string",
       title: "Goal",
     },
     {
       name: "assist",
-      type: "reference",
-      to: [{ type: "player" }],
+      type: "string",
       title: "Assist",
+    },
+    {
+      name: "detail",
+      type: "string",
+      title: "Detail",
     },
     { name: "team", type: "reference", to: [{ type: "team" }], title: "Team" },
   ],
   preview: {
     select: {
-      goal: "goal.fullName",
+      goal: "goal",
+      assist: "assist",
     },
     prepare(selection) {
-      const { goal } = selection;
+      const { goal, assist } = selection;
       return {
-        title: goal,
+        title: `${goal} | ${assist}`,
       };
     },
   },

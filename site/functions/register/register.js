@@ -4,7 +4,7 @@ const sanity = sanityClient({
   projectId: "0jt5x7hu",
   dataset: "production",
   token: process.env.SANITY,
-  useCdn: false,
+  useCdn: false
 })
 // const intercom = new Intercom.Client({
 //   token: process.env.INTERCOM,
@@ -18,7 +18,10 @@ exports.handler = (event, _, callback) => {
     _type: "user",
     name: user.name,
     auth0Id: user.auth0Id,
-    friends: [],
+    trophies: 0,
+    high: 0.0,
+    average: 0.0,
+    friends: []
   }
   //   const intercomUser = {
   //     email: user.email,
@@ -43,7 +46,7 @@ exports.handler = (event, _, callback) => {
 
     callback(null, {
       statusCode: 200,
-      body: `OK`,
+      body: `OK`
     })
   } catch (err) {
     callback(null, { statusCode: 500, body: err.toString() })

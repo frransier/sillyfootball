@@ -64,7 +64,7 @@ const AccountPage = props => {
           name,
           average,
           high,
-          wins, 
+          trophies, 
         }`
     const ticketsQuery = `*[_type == 'ticket' && (matchday->status == "current" || matchday->status == "previous") && user->auth0Id == '${
       state.user.auth0Id
@@ -209,7 +209,7 @@ export const query = graphql`
       edges {
         node {
           name
-          wins
+          trophies
           high
           average
         }

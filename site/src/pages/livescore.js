@@ -52,20 +52,8 @@ const LivescorePage = ({ data }) => {
             status,
             start,
             events[]{
-              goal->{
-                name,
-                fullName,
-                team->{
-                  _id
-                },
-              },
-              assist->{
-                name,
-                fullName,
-                team->{
-                  _id
-                }
-              },
+              goal,
+              assist,
               elapsed,
               team->{
                 _id
