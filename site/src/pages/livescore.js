@@ -141,7 +141,7 @@ const LivescorePage = ({ data }) => {
             <Heading
               main="Leaderboard"
               sub1={`${
-                livescore.tickets ? livescore.tickets[0].count : 0
+                livescore.tickets[0] ? livescore.tickets[0].count : 0
               } participants`}
               sub3="Points"
               columns={["54% 32% 14%", "55% 28% 17%"]}
