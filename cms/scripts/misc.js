@@ -10,18 +10,20 @@ const client = sanityClient({
 
 const queue = new PQueue({ concurrency: 10, interval: 1000 / 25 });
 
-const query = `*[_type == 'user']`;
+const query = `*[_type == 'match']`;
 
-client.fetch(query).then((users) => {
-  users.forEach((user) => {
+client.fetch(query).then((items) => {
+  items.forEach((item) => {
     queue.add(() =>
       client
-        .patch(user._id)
-        .set({
-          trophies: 0,
-        })
-        .unset(["wins"])
-        .commit()
+        // .patch(item._id)
+        .delete(item._id)
+        // .set({
+        //   current: false,
+        //   next: false,
+        // })
+        // .unset(["wins"])
+        // .commit()
         .then(() => console.log("Item updated"))
     );
   });

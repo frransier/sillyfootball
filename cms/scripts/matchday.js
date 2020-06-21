@@ -1,14 +1,15 @@
 const axios = require("axios");
 const sanityClient = require("@sanity/client");
+const keys = require("../keys.js");
 const client = sanityClient({
   projectId: "0jt5x7hu",
   dataset: "production",
-  token: "",
+  token: keys.sanity,
   useCdn: false,
 });
 const headers = {
-  "X-RapidAPI-Key": "",
-  "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+  "X-RapidAPI-Key": keys.rapidApiKey,
+  "X-RapidAPI-Host": keys.rapidApiHost,
 };
 
 const currentMatchday = `*[_type == "matchday" && status == "current"][0]{_id, index}`;
@@ -16,55 +17,14 @@ const lastMatchday = `*[_type == "matchday" && status == "last"][0]{_id, index}`
 const nextMatchday = `*[_type == "matchday" && status == "next"][0]{_id}`;
 const currentMatchdayTeams = `*[_type == "team" && current == true]{_id}`;
 const nextMatchdayTeams = `*[_type == "team" && next == true]{_id}`;
-const matches = [209148, 209149, 209150, 209152, 209153];
+const matches = [214334, 232796, 209218, 209214, 209211];
 
-setMatchdays().then(() => {
-  setTimeout(() => {
-    createMatches(matches);
-  }, 1000);
-});
-
-async function setMatchdays() {
-  await client
-    .fetch(currentMatchday)
-    .then((matchday) =>
-      client.patch(matchday._id).set({ status: "last" }).commit()
-    );
-  await client
-    .fetch(lastMatchday)
-    .then((matchday) =>
-      client.patch(matchday._id).set({ status: "archived" }).commit()
-    );
-  await client
-    .fetch(nextMatchday)
-    .then((matchday) =>
-      client.patch(matchday._id).set({ status: "current" }).commit()
-    );
-
-  await client.fetch(currentMatchdayTeams).then((teams) =>
-    teams.forEach((team) => {
-      client.patch(team._id).set({ current: false }).commit();
-    })
-  );
-
-  await client.fetch(nextMatchdayTeams).then((teams) =>
-    teams.forEach((team) => {
-      client.patch(team._id).set({ next: false, current: true }).commit();
-    })
-  );
-
-  await client.fetch(currentMatchday).then((matchday) => {
-    const nextMatchday = {
-      _id: `matchday-${matchday.index + 1}`,
-      _type: "matchday",
-      index: matchday.index + 1,
-      prize: 500,
-      status: "next",
-      title: `Match Day #${matchday.index + 1}`,
-    };
-    client.createOrReplace(nextMatchday);
-  });
-}
+// setMatchdays().then(() => {
+//   setTimeout(() => {
+//   }, 1000);
+// });
+createMatches(matches);
+// setMatchdays();
 
 function createMatches(matchIds) {
   const nextMatchday = `*[_type == 'matchday' && status == "next"][0]{_id}`;
@@ -112,4 +72,46 @@ function getFixture(fixtureId) {
     .then((response) => {
       return response.data;
     });
+}
+
+async function setMatchdays() {
+  await client
+    .fetch(currentMatchday)
+    .then((matchday) =>
+      client.patch(matchday._id).set({ status: "previous" }).commit()
+    );
+  // await client
+  //   .fetch(lastMatchday)
+  //   .then((matchday) =>
+  //     client.patch(matchday._id).set({ status: "archived" }).commit()
+  //   );
+  await client
+    .fetch(nextMatchday)
+    .then((matchday) =>
+      client.patch(matchday._id).set({ status: "current" }).commit()
+    );
+
+  // await client.fetch(currentMatchdayTeams).then((teams) =>
+  //   teams.forEach((team) => {
+  //     client.patch(team._id).set({ current: false }).commit();
+  //   })
+  // );
+
+  await client.fetch(nextMatchdayTeams).then((teams) =>
+    teams.forEach((team) => {
+      client.patch(team._id).set({ next: false, current: true }).commit();
+    })
+  );
+
+  await client.fetch(currentMatchday).then((matchday) => {
+    const nextMatchday = {
+      _id: `matchday-${matchday.index + 1}`,
+      _type: "matchday",
+      index: matchday.index + 1,
+      prize: 500,
+      status: "next",
+      title: `Day ${matchday.index + 1}`,
+    };
+    client.createOrReplace(nextMatchday);
+  });
 }
