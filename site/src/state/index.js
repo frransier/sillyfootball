@@ -19,7 +19,7 @@ function Provider(props) {
     <Auth0Provider
       domain="dev-h964wuhp.eu.auth0.com"
       client_id="OoBQxwqQpTL7KW38wKH0t0bFDwwXvXYs"
-      redirect_uri="https://www.sillyfootball.co/auth0_callback"
+      redirect_uri="https://www.sillyfootball.com/auth0_callback"
     >
       <GlobalStateContext.Provider value={global}>
         <GlobalDispatchContext.Provider value={globalDispatch}>
