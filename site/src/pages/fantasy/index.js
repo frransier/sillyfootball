@@ -126,12 +126,12 @@ const FantasyPage = ({ data }) => {
             sx={{
               display: "grid",
               position: "fixed",
-              top: ["19.5%", "18%"],
-              left: ["5%", "28%"],
-              width: ["90%", "44%"],
-              height: 500,
+              top: ["12%", "12%"],
+              left: ["3%", "25%"],
+              width: ["94%", "50%"],
+              height: [500, 600],
               p: 6,
-              bg: "background",
+              bg: "primary",
               color: "text",
               borderRadius: 7,
               border: "solid 4px",
@@ -145,16 +145,15 @@ const FantasyPage = ({ data }) => {
             </div>
             <div sx={{ mt: 4 }}>
               <Styled.p sx={{ fontSize: 2, my: 0 }}>
-                Points are awarded when your players score a goal or make an
-                assist.
+                Points are awarded when players score goals or make assists.
               </Styled.p>
             </div>
             <div sx={{ mt: 4 }}>
               <Styled.p sx={{ fontSize: 2, my: 0 }}>
-                The number of stars next to a players name determines how many
-                points he generates per goal or assist. Players who are more
-                likely to score generate less points than players who are
-                unlikely to score.
+                The stars next to players indicate how many points they generate
+                per goal or assist. <br />
+                <br /> Players who are unlikely to score generate more points
+                than players who are likely to score.
               </Styled.p>
             </div>
             <div sx={{ display: "flex", alignItems: "center", mt: 5 }}>
@@ -202,8 +201,9 @@ const FantasyPage = ({ data }) => {
             </div>
             <div>
               <Styled.p sx={{ fontSize: 2 }}>
-                <br /> It's up to you to decide how to combine your team to
-                maximise your final score.
+                <br />
+                You decide how to combine your team to maximise your final
+                score.
                 <br />
                 <br /> Get the highest score to win.
               </Styled.p>
