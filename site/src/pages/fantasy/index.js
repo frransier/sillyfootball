@@ -28,7 +28,7 @@ const FantasyPage = ({ data }) => {
   const state = useGlobalState()
   const dispatch = useGlobalDispatch()
   const { loginWithRedirect } = useAuth0()
-  const { Portal, isShow, show, hide } = usePortal({ defaultShow: false })
+  const { Portal, isShow, show, hide } = usePortal({ defaultShow: true })
   let live = dayjs() > dayjs(data.matchday.start)
 
   useEffect(() => {
@@ -127,8 +127,8 @@ const FantasyPage = ({ data }) => {
               display: "grid",
               position: "fixed",
               top: ["19.5%", "18%"],
-              left: ["5%", "30%"],
-              width: ["90%", "40%"],
+              left: ["5%", "28%"],
+              width: ["90%", "44%"],
               height: 500,
               p: 6,
               bg: "background",
@@ -143,13 +143,13 @@ const FantasyPage = ({ data }) => {
             <div>
               <Styled.h2 sx={{ my: 0 }}>The Rules Are Simple</Styled.h2>
             </div>
-            <div>
+            <div sx={{ mt: 4 }}>
               <Styled.p sx={{ fontSize: 2, my: 0 }}>
                 Points are awarded when your players score a goal or make an
                 assist.
               </Styled.p>
             </div>
-            <div>
+            <div sx={{ mt: 4 }}>
               <Styled.p sx={{ fontSize: 2, my: 0 }}>
                 The number of stars next to a players name determines how many
                 points he generates per goal or assist. Players who are more
@@ -157,7 +157,7 @@ const FantasyPage = ({ data }) => {
                 unlikely to score.
               </Styled.p>
             </div>
-            <div sx={{ display: "flex", alignItems: "center", mt: 4 }}>
+            <div sx={{ display: "flex", alignItems: "center", mt: 5 }}>
               <div
                 sx={{ display: "flex", width: 55, justifyContent: "center" }}
               >
@@ -195,15 +195,22 @@ const FantasyPage = ({ data }) => {
               </div>
               <Styled.p sx={{ fontSize: 2, my: 0 }}>3 points</Styled.p>
             </div>
+            <div sx={{ mt: 4 }}>
+              <Styled.p sx={{ fontSize: 2 }}>
+                Based on: goals + assists / 90min played
+              </Styled.p>
+            </div>
             <div>
               <Styled.p sx={{ fontSize: 2 }}>
-                <br /> It's up to you to decide how to combine your ticket to
+                <br /> It's up to you to decide how to combine your team to
                 maximise your final score.
                 <br />
                 <br /> Get the highest score to win.
               </Styled.p>
             </div>
-            <div sx={{ width: 80, alignSelf: "end", justifySelf: "center" }}>
+            <div
+              sx={{ width: 80, alignSelf: "end", justifySelf: "center", mt: 5 }}
+            >
               <Button bg="secondary" fontSize={[2, 2]} dispatch={hide}>
                 X
               </Button>
