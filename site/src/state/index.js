@@ -44,6 +44,9 @@ function globalReducer(state, action) {
     case "set-user":
       localStorage.setItem("sillyfootball", JSON.stringify(action.payload))
       return { ...state, user: action.payload }
+    case "reset":
+      localStorage.removeItem("sillyfootball")
+      return
     default:
       return state
   }
