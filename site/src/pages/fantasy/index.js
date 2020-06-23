@@ -129,7 +129,7 @@ const FantasyPage = ({ data }) => {
               top: ["19.5%", "18%"],
               left: ["5%", "30%"],
               width: ["90%", "40%"],
-              height: 400,
+              height: 500,
               p: 6,
               bg: "background",
               color: "text",
@@ -146,11 +146,18 @@ const FantasyPage = ({ data }) => {
             <div>
               <Styled.p sx={{ fontSize: 2, my: 0 }}>
                 Points are awarded when your players score a goal or make an
-                assist. <br />
-                <br /> Get the highest score to win.
+                assist.
               </Styled.p>
             </div>
-            <div sx={{ display: "flex", alignItems: "center" }}>
+            <div>
+              <Styled.p sx={{ fontSize: 2, my: 0 }}>
+                The number of stars next to a players name determines how many
+                points he generates per goal or assist. Players who are more
+                likely to score generate less points than players who are
+                unlikely to score.
+              </Styled.p>
+            </div>
+            <div sx={{ display: "flex", alignItems: "center", mt: 4 }}>
               <div
                 sx={{ display: "flex", width: 55, justifyContent: "center" }}
               >
@@ -187,6 +194,14 @@ const FantasyPage = ({ data }) => {
                 <FaStar sx={{ mr: 3, color: "red" }} size={14} />
               </div>
               <Styled.p sx={{ fontSize: 2, my: 0 }}>3 points</Styled.p>
+            </div>
+            <div>
+              <Styled.p sx={{ fontSize: 2 }}>
+                <br /> It's up to you to decide how to combine your ticket to
+                maximise your final score.
+                <br />
+                <br /> Get the highest score to win.
+              </Styled.p>
             </div>
             <div sx={{ width: 80, alignSelf: "end", justifySelf: "center" }}>
               <Button bg="secondary" fontSize={[2, 2]} dispatch={hide}>
