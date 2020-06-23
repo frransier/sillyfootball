@@ -15,12 +15,12 @@ const Heading = ({ main, sub1, sub2, sub3, columns, justify }) => {
       {sub1 && typeof sub1 !== "string" ? (
         <div
           sx={{
-            alignSelf: "end",
+            display: "grid",
             mx: 0,
             justifySelf: justify || "end",
             fontWeight: 500,
-            mb: 0,
-            mt: 2
+            mb: 0
+            // mt: 2
           }}
         >
           {sub1}

@@ -2,14 +2,17 @@
 import { jsx, Styled } from "theme-ui"
 import Score from "./score"
 import { useState, Fragment } from "react"
-import { FaTrophy } from "react-icons/fa"
+import { FaTrophy, FaLock } from "react-icons/fa"
 import Frame from "../atoms/frame"
 import { useGlobalState } from "../../state"
 
 const Ticket = ({ ticket, disabled, winner }) => {
   const [show, setShow] = useState(false)
   const state = useGlobalState()
-  if (state.user && ticket.user._id === state.user._id) disabled = true
+  if (state.user && ticket.user._id === state.user._id) {
+    disabled = true
+  }
+  if (disabled === false) winner = false
 
   return (
     <Fragment>
@@ -47,12 +50,17 @@ const Ticket = ({ ticket, disabled, winner }) => {
               alignItems: "center"
             }}
           >
-            {winner && disabled && (
+            {winner && (
               <Frame borderRadius={0} mr={4}>
                 <FaTrophy
                   sx={{ color: "primary", bg: "secondary" }}
                   size={15}
                 />
+              </Frame>
+            )}
+            {disabled === false && (
+              <Frame borderRadius={0} mr={4}>
+                <FaLock sx={{ color: "primary", bg: "secondary" }} size={15} />
               </Frame>
             )}
             <Styled.p sx={{ fontWeight: show ? 700 : 500, p: 2 }}>

@@ -101,9 +101,8 @@ const ManagePage = () => {
                 <Heading main="Users" />
 
                 {users.map((user, i) => (
-                  <div>
+                  <div key={i}>
                     <button
-                      key={i}
                       sx={{
                         cursor: "pointer",
                         appearance: "none",
@@ -165,9 +164,8 @@ const ManagePage = () => {
                 <Heading main="Friends" />
 
                 {friends.map((friend, i) => (
-                  <div>
+                  <div key={i}>
                     <button
-                      key={i}
                       sx={{
                         cursor: "pointer",
                         appearance: "none",

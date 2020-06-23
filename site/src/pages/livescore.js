@@ -143,8 +143,8 @@ const LivescorePage = ({ data }) => {
               sub1={`${
                 livescore.tickets[0] ? livescore.tickets[0].count : 0
               } participants`}
-              sub3="Points"
-              columns={["54% 32% 14%", "55% 28% 17%"]}
+              sub3="Score"
+              columns={["53% 32% 14%", "55% 28% 17%"]}
               justify="center"
             />
             <Container mt={4}>

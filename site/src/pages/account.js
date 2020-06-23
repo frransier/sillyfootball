@@ -11,7 +11,6 @@ import Heading from "../components/molecules/heading"
 import Container from "../components/atoms/container"
 import { useGlobalState } from "../state"
 import { FaTrophy } from "react-icons/fa"
-import Frame from "../components/atoms/frame"
 import { Link } from "gatsby"
 import dayjs from "dayjs"
 
@@ -135,12 +134,12 @@ const AccountPage = props => {
             <Heading
               main="My League"
               sub1={
-                <Frame borderRadius={0}>
-                  <FaTrophy
-                    sx={{ color: "primary", bg: "secondary" }}
-                    size={15}
-                  />
-                </Frame>
+                // <Frame borderRadius={0}>
+                <FaTrophy
+                  sx={{ color: "text", bg: "background", alignSelf: "center" }}
+                  size={15}
+                />
+                // </Frame>
               }
               sub2="High"
               sub3="Avg"
@@ -163,12 +162,10 @@ const AccountPage = props => {
             <Heading
               main="Silly Football League"
               sub1={
-                <Frame borderRadius={0}>
-                  <FaTrophy
-                    sx={{ color: "primary", bg: "secondary" }}
-                    size={15}
-                  />
-                </Frame>
+                <FaTrophy
+                  sx={{ color: "text", bg: "background", alignSelf: "center" }}
+                  size={15}
+                />
               }
               sub2="High"
               sub3="Avg"

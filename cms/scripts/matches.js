@@ -1,4 +1,5 @@
 const axios = require("axios");
+const dayjs = require("dayjs");
 const keys = require("../keys.js");
 const headers = {
   "X-RapidAPI-Key": keys.rapidApiKey,
@@ -13,12 +14,12 @@ const bundesliga = 754;
 Run();
 
 async function Run() {
-  const leagues = await getFixtures(bundesliga);
-  const matches = leagues.api.fixtures.map((x) => ({
+  const getMatches = await getFixtures(bundesliga);
+  const matches = getMatches.api.fixtures.map((x) => ({
     id: x.fixture_id,
     home: x.homeTeam.team_name,
     away: x.awayTeam.team_name,
-    date: x.event_date,
+    date: dayjs(x.event_date).format("dddd MMMM D HH:mm"),
   }));
   console.log(matches);
 }

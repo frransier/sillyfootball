@@ -1,5 +1,6 @@
 const { default: PQueue } = require("p-queue");
 const sanityClient = require("@sanity/client");
+const fs = require("fs");
 const client = sanityClient({
   projectId: "0jt5x7hu",
   dataset: "production",
@@ -10,21 +11,22 @@ const client = sanityClient({
 
 const queue = new PQueue({ concurrency: 10, interval: 1000 / 25 });
 
-const query = `*[_type == 'match']`;
+const query = `*[_type == 'player']`;
 
 client.fetch(query).then((items) => {
-  items.forEach((item) => {
-    queue.add(() =>
-      client
-        // .patch(item._id)
-        .delete(item._id)
-        // .set({
-        //   current: false,
-        //   next: false,
-        // })
-        // .unset(["wins"])
-        // .commit()
-        .then(() => console.log("Item updated"))
-    );
-  });
+  fs.writeFileSync("../data/players.json", JSON.stringify(items));
+  // items.forEach((item) => {
+  //   queue.add(() =>
+  //     client
+  //       // .patch(item._id)
+  //       .delete(item._id)
+  //       // .set({
+  //       //   current: false,
+  //       //   next: false,
+  //       // })
+  //       // .unset(["wins"])
+  //       // .commit()
+  //       .then(() => console.log("Item updated"))
+  //   );
+  // });
 });

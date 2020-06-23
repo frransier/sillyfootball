@@ -17,6 +17,9 @@ import { useGlobalState, useGlobalDispatch } from "../../state"
 import Container from "../../components/atoms/container"
 import Button from "../../components/atoms/button"
 import { useAuth0 } from "../../state/auth0"
+import dayjs from "dayjs"
+import usePortal from "react-cool-portal"
+import { FaStar, FaStarHalfAlt } from "react-icons/fa"
 
 const FantasyPage = ({ data }) => {
   const [players, setPlayers] = useState(data.players.edges.slice(0, 30))
@@ -25,6 +28,8 @@ const FantasyPage = ({ data }) => {
   const state = useGlobalState()
   const dispatch = useGlobalDispatch()
   const { loginWithRedirect } = useAuth0()
+  const { Portal, isShow, show, hide } = usePortal({ defaultShow: false })
+  let live = dayjs() > dayjs(data.matchday.start)
 
   useEffect(() => {
     setTimeout(() => {
@@ -69,46 +74,126 @@ const FantasyPage = ({ data }) => {
     return
   }
   function post() {
-    dispatch({ type: "set-loading", payload: true })
-    const squad = slots.map(player => ({
-      _id: `${player._id}-${data.matchday._id}`,
-      _playerRef: player._id,
-      _matchRef: data.matches.edges.find(
-        ({ node }) =>
-          node.home._id === player.team._id || node.away._id === player.team._id
-      ).node._id,
-      name: player.name || player.fullName,
-      goals: 0,
-      assists: 0,
-      rate: player.rate
-    }))
-    // console.log(squad)
+    if (dayjs() > dayjs(data.matchday.start)) live = true
+    else {
+      dispatch({ type: "set-loading", payload: true })
+      const squad = slots.map(player => ({
+        _id: `${player._id}-${data.matchday._id}`,
+        _playerRef: player._id,
+        _matchRef: data.matches.edges.find(
+          ({ node }) =>
+            node.home._id === player.team._id ||
+            node.away._id === player.team._id
+        ).node._id,
+        name: player.name || player.fullName,
+        goals: 0,
+        assists: 0,
+        rate: player.rate
+      }))
+      // console.log(squad)
 
-    const user = {
-      _id: state.user._id
-    }
-    const matchday = {
-      _id: data.matchday._id
-    }
-    const ticket = {
-      user: user,
-      squad: squad,
-      matchday: matchday
-    }
+      const user = {
+        _id: state.user._id
+      }
+      const matchday = {
+        _id: data.matchday._id
+      }
+      const ticket = {
+        user: user,
+        squad: squad,
+        matchday: matchday
+      }
 
-    axios
-      .post("/.netlify/functions/play", ticket)
-      .then(res => {
-        res.data === "OK" ? navigate("/account/") : console.log("nay")
-      })
-      .catch(error => {
-        console.log(error)
-      })
+      axios
+        .post("/.netlify/functions/play", ticket)
+        .then(res => {
+          res.data === "OK" ? navigate("/account/") : console.log("nay")
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
   }
 
   return (
     <Layout>
       <SEO title="Play" />
+      {isShow && (
+        <Portal>
+          <div
+            sx={{
+              display: "grid",
+              position: "fixed",
+              top: ["19.5%", "18%"],
+              left: ["5%", "30%"],
+              width: ["90%", "40%"],
+              height: 400,
+              p: 6,
+              bg: "background",
+              color: "text",
+              borderRadius: 7,
+              border: "solid 4px",
+              borderColor: "secondary",
+              boxShadow: "3px 3px 4px darkgrey"
+            }}
+            tabIndex={-1}
+          >
+            <div>
+              <Styled.h2 sx={{ my: 0 }}>The Rules Are Simple</Styled.h2>
+            </div>
+            <div>
+              <Styled.p sx={{ fontSize: 2, my: 0 }}>
+                Points are awarded when your players score a goal or make an
+                assist. <br />
+                <br /> Get the highest score to win.
+              </Styled.p>
+            </div>
+            <div sx={{ display: "flex", alignItems: "center" }}>
+              <div
+                sx={{ display: "flex", width: 55, justifyContent: "center" }}
+              >
+                <FaStar sx={{ mr: 3, color: "red" }} size={14} />
+              </div>
+              <Styled.p sx={{ fontSize: 2, my: 0 }}>
+                1 point per goal or assist
+              </Styled.p>
+            </div>
+            <div sx={{ display: "flex", alignItems: "center" }}>
+              <div
+                sx={{ display: "flex", width: 55, justifyContent: "center" }}
+              >
+                <FaStar sx={{ mr: 3, color: "red" }} size={14} />
+                <FaStarHalfAlt sx={{ mr: 3, color: "red" }} size={14} />
+              </div>
+              <Styled.p sx={{ fontSize: 2, my: 0 }}>1.5 points</Styled.p>
+            </div>
+            <div sx={{ display: "flex", alignItems: "center" }}>
+              <div
+                sx={{ display: "flex", width: 55, justifyContent: "center" }}
+              >
+                <FaStar sx={{ mr: 3, color: "red" }} size={14} />
+                <FaStar sx={{ mr: 3, color: "red" }} size={14} />
+              </div>
+              <Styled.p sx={{ fontSize: 2, my: 0 }}>2 points</Styled.p>
+            </div>
+            <div sx={{ display: "flex", alignItems: "center" }}>
+              <div
+                sx={{ display: "flex", width: 55, justifyContent: "center" }}
+              >
+                <FaStar sx={{ mr: 3, color: "red" }} size={14} />
+                <FaStar sx={{ mr: 3, color: "red" }} size={14} />
+                <FaStar sx={{ mr: 3, color: "red" }} size={14} />
+              </div>
+              <Styled.p sx={{ fontSize: 2, my: 0 }}>3 points</Styled.p>
+            </div>
+            <div sx={{ width: 80, alignSelf: "end", justifySelf: "center" }}>
+              <Button bg="secondary" fontSize={[2, 2]} dispatch={hide}>
+                X
+              </Button>
+            </div>
+          </div>
+        </Portal>
+      )}
       {state && state.loading ? (
         <Loading />
       ) : (
@@ -136,7 +221,7 @@ const FantasyPage = ({ data }) => {
                 Pick 3 Players
               </Styled.h3>
             </div>
-            <Rules deadline={data.matchday.deadline} />
+            <Rules deadline={data.matchday.deadline} dispatch={show} />
             <Frame
               columns="1fr 1fr 1fr"
               bg={slots.length < 3 ? "backgorund" : "secondary"}
@@ -225,31 +310,63 @@ const FantasyPage = ({ data }) => {
               <Styled.h5 sx={{ textAlign: "center" }}>To Continue</Styled.h5>
             </Container>
           )}
-          <Container>
-            <div sx={{ display: slots.length < 3 ? "" : "none" }}>
-              <Heading
-                main=""
-                sub1="Goals"
-                sub2="Assists"
-                columns="72% 14% 14%"
-                justify="center"
-              />
-              {players.map(({ node }, i) => {
-                return (
-                  <Player
-                    key={i}
-                    player={node}
-                    dispatch={() => slot(node)}
-                    selected={
-                      slots[0] !== null
-                        ? slots.find(x => x._id === node._id)
-                        : false
-                    }
-                  />
-                )
-              })}
-            </div>
-          </Container>
+          {live ? (
+            <Container mt={0}>
+              <div sx={{ width: [180, 240], justifySelf: "center" }}>
+                <Styled.h3 sx={{ textAlign: "center", mt: 0 }}>
+                  Deadline has passed
+                </Styled.h3>
+                <Button
+                  dispatch={() => navigate("/livescore/")}
+                  fontSize={[2, 3]}
+                  bg="red"
+                  color="background"
+                >
+                  Livescore
+                </Button>
+              </div>
+
+              <div sx={{ width: 150, justifySelf: "center", my: 5 }}>
+                <Button
+                  dispatch={() => navigate("/fantasy/next/")}
+                  fontSize={[2, 3]}
+                  color="background"
+                >
+                  Next Round
+                </Button>
+              </div>
+            </Container>
+          ) : (
+            <Container>
+              <div
+                sx={{
+                  display: slots.length < 3 ? "" : "none"
+                }}
+              >
+                <Heading
+                  main=""
+                  sub1="Goals"
+                  sub2="Assists"
+                  columns={["72% 14% 14%", "69% 14% 14%"]}
+                  justify="center"
+                />
+                {players.map(({ node }, i) => {
+                  return (
+                    <Player
+                      key={i}
+                      player={node}
+                      dispatch={() => slot(node)}
+                      selected={
+                        slots[0] !== null
+                          ? slots.find(x => x._id === node._id)
+                          : false
+                      }
+                    />
+                  )
+                })}
+              </div>
+            </Container>
+          )}
         </Fragment>
       )}
     </Layout>
@@ -262,7 +379,7 @@ export const query = graphql`
   query CurrentQuery {
     players: allSanityPlayer(
       filter: { team: { current: { eq: true } } }
-      sort: { fields: points, order: DESC }
+      sort: { fields: [rate, points], order: [ASC, DESC] }
     ) {
       edges {
         node {
@@ -312,7 +429,8 @@ export const query = graphql`
     matchday: sanityMatchday(status: { eq: "current" }) {
       _id
       prize
-      deadline(formatString: "dddd MMM Do")
+      title
+      deadline(formatString: "dddd MMMM Do")
       start: deadline
     }
   }

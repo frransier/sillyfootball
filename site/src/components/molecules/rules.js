@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 
-const Rules = ({ deadline }) => {
+const Rules = ({ deadline, dispatch }) => {
   return (
     <div sx={{ mx: 3, display: "flex" }}>
       <Styled.h5
@@ -27,6 +27,7 @@ const Rules = ({ deadline }) => {
           fontWeight: 500,
           textAlign: "left"
         }}
+        onClick={dispatch}
       >
         Rules >
       </Styled.h5>

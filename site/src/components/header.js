@@ -117,6 +117,7 @@ const Header = () => {
               sx={{
                 alignSelf: "center",
                 // mx: [4],
+                mb: 1,
                 justifySelf: ["center"]
               }}
               size={20}

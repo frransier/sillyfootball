@@ -132,7 +132,7 @@ const IndexPage = () => {
         </Container>
       )}
       <Styled.h4 sx={{ textAlign: "center", fontWeight: 500 }}>
-        Tuesdays & Saturdays
+        Football is more fun with skin in the game
       </Styled.h4>
     </Layout>
   )

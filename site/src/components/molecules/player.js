@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { FaRegCircle, FaCheckCircle, FaStar } from "react-icons/fa"
+import { FaRegCircle, FaCheckCircle } from "react-icons/fa"
+import Rate from "./rate"
 
 const Player = ({ player, dispatch, selected }) => (
   <button
@@ -46,13 +47,15 @@ const Player = ({ player, dispatch, selected }) => (
           alignItems: "center"
         }}
       >
-        {player.rate === 1 && <FaStar sx={{ mr: 3, color: "red" }} size={12} />}
+        <div sx={{ width: 48 }}>
+          <Rate rate={player.rate} />
+        </div>
         <Styled.p
           sx={{
             textAlign: "left",
             fontWeight: "heading",
-            color: "text",
-            ml: player.rate !== 1 && 3
+            color: "text"
+            // ml: player.rate !== 1 && 3
           }}
         >
           {player.name || player.fullName}

@@ -6,18 +6,21 @@ import Container from "../atoms/container"
 import Ticket from "./ticket"
 import Heading from "./heading"
 import { Fragment } from "react"
+import { useGlobalState } from "../../state"
 
 const Matchday = ({ matchday, status, deadline, dispatch, live }) => {
+  const state = useGlobalState()
+
   return (
     <Fragment>
       <Heading
         main={status}
-        sub3="Points"
+        sub3="Score"
         columns={["40% 20% 39%", "40% 20% 40%"]}
         // justify="center"
       />
 
-      {matchday.length === 0 && (
+      {matchday.length === 0 && status === "Current Round" && (
         <Container>
           <Button dispatch={() => navigate("/fantasy/")}>PLAY NOW</Button>
         </Container>
@@ -51,14 +54,24 @@ const Matchday = ({ matchday, status, deadline, dispatch, live }) => {
                 </Styled.h6>
               </button>
               <div sx={{ mx: "auto" }} />
-              <div>
-                <Styled.p sx={{ m: 2 }}>Need to make changes?</Styled.p>
+              {state && matchday.find(x => x.user._id === state.user._id) ? (
+                <div>
+                  <Styled.p sx={{ m: 2 }}>Need to make changes?</Styled.p>
+                  <Link to="/fantasy/" sx={{ textDecoration: "none" }}>
+                    <Styled.h6
+                      sx={{ m: 2, color: "red", fontWeight: "heading" }}
+                    >
+                      Play Again >
+                    </Styled.h6>
+                  </Link>
+                </div>
+              ) : (
                 <Link to="/fantasy/" sx={{ textDecoration: "none" }}>
                   <Styled.h6 sx={{ m: 2, color: "red", fontWeight: "heading" }}>
-                    Play Again >
+                    Play >
                   </Styled.h6>
                 </Link>
-              </div>
+              )}
             </div>
           )}
         </Container>

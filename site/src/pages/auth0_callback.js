@@ -22,7 +22,7 @@ const AuthPage = () => {
   const [show, setShow] = useState(false)
   const [taken, setTaken] = useState(false)
   const [name, setName] = useState("")
-  const { user, handleAuthentication } = useAuth0()
+  const { user } = useAuth0()
   const dispatch = useGlobalDispatch()
 
   useEffect(() => {
@@ -30,8 +30,6 @@ const AuthPage = () => {
   }, [name])
 
   useEffect(() => {
-    console.log(user)
-
     if (user) {
       const query = `*[_type == "user" && auth0Id == $auth0Id][0]`
       const params = { auth0Id: user.sub }
@@ -79,7 +77,7 @@ const AuthPage = () => {
       if (usr) {
         dispatch({ type: "set-user", payload: usr })
         dispatch({ type: "set-loading", payload: true })
-        handleAuthentication({ postLoginRoute: "/fantasy/current/" })
+        navigate("/fantasy/")
       }
     })
   }
@@ -90,6 +88,7 @@ const AuthPage = () => {
         <Container>
           <div sx={{ display: "grid", justifyItems: "center" }}>
             <Styled.h3 sx={{ my: 4 }}>Username</Styled.h3>
+            {/*eslint-disable-next-line */}
             <input
               sx={{
                 borderRadius: 4,
