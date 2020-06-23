@@ -26,6 +26,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-remove-serviceworker`,
+    `gatsby-plugin-netlify`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
