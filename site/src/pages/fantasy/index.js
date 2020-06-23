@@ -93,10 +93,12 @@ const FantasyPage = ({ data }) => {
       // console.log(squad)
 
       const user = {
-        _id: state.user._id
+        _id: state.user._id,
+        auth0Id: state.user.auth0Id
       }
       const matchday = {
-        _id: data.matchday._id
+        _id: data.matchday._id,
+        title: data.matchday.title
       }
       const ticket = {
         user: user,

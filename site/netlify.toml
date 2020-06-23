@@ -1,7 +1,7 @@
 [build]
   
-  functions = "site/functions"
-  publish = "site/public"
+  functions = "functions"
+  publish = "public"
   command = "gatsby build"
 
  [dev]
