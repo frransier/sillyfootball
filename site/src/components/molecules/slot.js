@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import Image from "gatsby-image"
+import { FaStar } from "react-icons/fa"
+import Rate from "./rate"
 
 const Slot = ({ player, dispatch, index }) => {
   return (
@@ -14,7 +16,7 @@ const Slot = ({ player, dispatch, index }) => {
         bg: player ? "secondary" : "background",
         p: 0,
         width: "100%",
-        height: 70,
+        height: 80,
         borderTop: "solid 1.5px",
         borderTopColor: player ? "primary" : "background"
         // borderBottom: "solid 0.5px",
@@ -36,25 +38,24 @@ const Slot = ({ player, dispatch, index }) => {
             fixed={player.team.logo.asset.fixed}
           />
         ) : (
-          <Styled.h2
+          <div
             sx={{
-              fontSize: 3,
               bg: "secondary",
+              mt: 4,
               width: 50,
               height: 50,
-              pl: 2,
-              mt: 4,
               boxShadow: "2px 2px 4px darkgrey",
               alignSelf: "end",
               justifySelf: "center",
               display: "grid",
               alignItems: "center",
+              justifyItems: "center",
               borderRadius: 999,
               color: player ? "background" : "primary"
             }}
           >
-            {index.toString()}
-          </Styled.h2>
+            <FaStar sx={{ color: "background" }} size={13} />
+          </div>
         )}
         <Styled.p
           sx={{
@@ -62,12 +63,17 @@ const Slot = ({ player, dispatch, index }) => {
             fontWeight: 600,
             width: "100%",
             my: 3,
-            alignSelf: "center",
+            alignSelf: "start",
             color: player ? "background" : "secondary"
           }}
         >
           {player ? player.name || player.fullName : null}
         </Styled.p>
+        {player && (
+          <div sx={{ ml: 3, mb: 4 }}>
+            <Rate rate={player.rate} />
+          </div>
+        )}
       </div>
     </button>
   )

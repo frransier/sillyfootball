@@ -10,6 +10,7 @@ const Button = ({
   height,
   width,
   color,
+  noShadow,
   bg
 }) => {
   return (
@@ -24,7 +25,7 @@ const Button = ({
         border: "none",
         bg: disable ? "background" : bg || "secondary",
         color: disable ? "muted" : color || "background",
-        boxShadow: "1px 1px 4px darkgrey",
+        boxShadow: noShadow ? "none" : "1px 1px 4px darkgrey",
         p: p || 4,
         px: 5
       }}

@@ -64,25 +64,10 @@ const IndexPage = () => {
             <Blurb text="Follow Live" />
             <Blurb text="Get Hooked" />
           </div>
-
-          {/* <Styled.p sx={{ fontSize: 2, textAlign: "center", mt: 5 }}>
-            <FaStar /> players generate 1 point per goal or assist. <br />
-            <br />
-            All other players generate 1.5 points per goal or assist.
-            <br />
-            <br />
-            Get the highest score to win.
-          </Styled.p> */}
+          <Styled.h4 sx={{ textAlign: "center", fontWeight: 500 }}>
+            Football is better with skin in the game
+          </Styled.h4>
           <Container mt={4}>
-            {/* <Link
-              sx={{
-                justifySelf: "center",
-                textDecoration: "none",
-                mx: 4,
-                mt: 5
-              }}
-              to="/fantasy/"
-            > */}
             {state && !state.user && (
               <div sx={{ justifySelf: "center", width: [110, 150], my: 4 }}>
                 <Button
@@ -131,9 +116,6 @@ const IndexPage = () => {
           </Container>
         </Container>
       )}
-      <Styled.h4 sx={{ textAlign: "center", fontWeight: 500 }}>
-        Football is more fun with skin in the game
-      </Styled.h4>
     </Layout>
   )
 }

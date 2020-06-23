@@ -129,10 +129,10 @@ const FantasyPage = ({ data }) => {
               top: ["12%", "12%"],
               left: ["3%", "25%"],
               width: ["94%", "50%"],
-              height: [500, 600],
+              height: [500, 500],
               p: 6,
-              bg: "primary",
-              color: "text",
+              bg: "secondary",
+              color: "background",
               borderRadius: 7,
               border: "solid 4px",
               borderColor: "secondary",
@@ -141,19 +141,18 @@ const FantasyPage = ({ data }) => {
             tabIndex={-1}
           >
             <div>
-              <Styled.h2 sx={{ my: 0 }}>The Rules Are Simple</Styled.h2>
+              <Styled.h2 sx={{ my: 0 }}>Rules</Styled.h2>
             </div>
             <div sx={{ mt: 4 }}>
               <Styled.p sx={{ fontSize: 2, my: 0 }}>
-                Points are awarded when players score goals or make assists.
+                Points are only awarded when players score goals or make
+                assists.
               </Styled.p>
             </div>
             <div sx={{ mt: 4 }}>
               <Styled.p sx={{ fontSize: 2, my: 0 }}>
-                The stars next to players indicate how many points they generate
-                per goal or assist. <br />
-                <br /> Players who are unlikely to score generate more points
-                than players who are likely to score.
+                The stars next to players indicate how many points they get per
+                goal or assist.
               </Styled.p>
             </div>
             <div sx={{ display: "flex", alignItems: "center", mt: 5 }}>
@@ -199,11 +198,16 @@ const FantasyPage = ({ data }) => {
                 Based on: goals + assists / 90min played
               </Styled.p>
             </div>
+            <div sx={{ mt: 5 }}>
+              <Styled.p sx={{ fontSize: 2, my: 0 }}>
+                Players who are unlikely to score generate more points than
+                players who are likely to score.
+              </Styled.p>
+            </div>
             <div>
               <Styled.p sx={{ fontSize: 2 }}>
                 <br />
-                You decide how to combine your team to maximise your final
-                score.
+                Decide how to combine your team to maximise your final score.
                 <br />
                 <br /> Get the highest score to win.
               </Styled.p>
@@ -211,7 +215,13 @@ const FantasyPage = ({ data }) => {
             <div
               sx={{ width: 80, alignSelf: "end", justifySelf: "center", mt: 5 }}
             >
-              <Button bg="secondary" fontSize={[2, 2]} dispatch={hide}>
+              <Button
+                noShadow
+                bg="primary"
+                color="text"
+                fontSize={[2, 2]}
+                dispatch={hide}
+              >
                 X
               </Button>
             </div>
@@ -295,8 +305,8 @@ const FantasyPage = ({ data }) => {
                 <Button
                   dispatch={() => post()}
                   fontSize={[2, 3]}
-                  color="text"
-                  bg="primary"
+                  color="background"
+                  bg="secondary"
                 >
                   PLAY
                 </Button>

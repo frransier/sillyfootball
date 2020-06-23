@@ -25,7 +25,8 @@ const Rules = ({ deadline, dispatch }) => {
           textTransform: "capitalize",
           color: "red",
           fontWeight: 500,
-          textAlign: "left"
+          textAlign: "left",
+          cursor: "pointer"
         }}
         onClick={dispatch}
       >
