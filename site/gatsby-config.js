@@ -28,6 +28,14 @@ module.exports = {
     `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-netlify`,
     {
+      resolve: "gatsby-plugin-intercom-spa",
+      options: {
+        app_id: "entknhmw",
+        include_in_development: false,
+        delay_timeout: 4
+      }
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,

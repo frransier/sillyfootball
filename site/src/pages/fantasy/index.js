@@ -151,8 +151,8 @@ const FantasyPage = ({ data }) => {
             </div>
             <div sx={{ mt: 4 }}>
               <Styled.p sx={{ fontSize: 2, my: 0 }}>
-                The stars next to players indicate how many points they get per
-                goal or assist.
+                The stars next to players indicate how many points they generate
+                per goal or assist.
               </Styled.p>
             </div>
             <div sx={{ display: "flex", alignItems: "center", mt: 5 }}>
