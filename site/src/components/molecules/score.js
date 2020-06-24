@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { FaStar } from "react-icons/fa"
 import Rate from "../molecules/rate"
 
 const Score = ({ player }) => {
