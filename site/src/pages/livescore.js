@@ -69,7 +69,8 @@ const LivescorePage = ({ data }) => {
             "teamFullName": player->team->fullName,
             goals,
             assists,
-            "points": (goals + assists) * rate
+            "points": (goals + assists) * rate,
+            rate
           } | order(points desc)[0...4]`
     const ticketsQuery = `*[_type == 'ticket' &&
           matchday->status == "current"]

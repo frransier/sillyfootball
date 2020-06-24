@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { FaStar } from "react-icons/fa"
+import Rate from "../molecules/rate"
 
 const Score = ({ player }) => {
-  // console.log(player)
+  console.log(player.rate)
   return (
     <div
       sx={{
@@ -19,14 +20,17 @@ const Score = ({ player }) => {
         sx={{
           ml: [2, 4],
           justifySelf: "start",
-          display: "flex"
+          display: "flex",
+          alignItems: "center"
         }}
       >
         <Styled.p sx={{}}>{player.name || player.fullName}</Styled.p>
         <Styled.p sx={{ mx: 4, color: "darkgrey", fontSize: "9px" }}>
           {player.teamName || player.teamFullName}
         </Styled.p>
-        <Styled.p>{player.rate === 1 && <FaStar />}</Styled.p>
+        <div sx={{ mb: 2 }}>
+          <Rate rate={player.rate} color="text" size={10} />
+        </div>
       </div>
       <Styled.p
         sx={{
