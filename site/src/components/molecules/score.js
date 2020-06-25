@@ -3,7 +3,6 @@ import { jsx, Styled } from "theme-ui"
 import Rate from "../molecules/rate"
 
 const Score = ({ player }) => {
-  console.log(player.rate)
   return (
     <div
       sx={{
