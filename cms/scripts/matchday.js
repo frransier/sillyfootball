@@ -13,18 +13,24 @@ const headers = {
 };
 
 const currentMatchday = `*[_type == "matchday" && status == "current"][0]{_id, index}`;
-const lastMatchday = `*[_type == "matchday" && status == "last"][0]{_id, index}`;
+const lastMatchday = `*[_type == "matchday" && status == "previous"][0]{_id, index}`;
 const nextMatchday = `*[_type == "matchday" && status == "next"][0]{_id}`;
 const currentMatchdayTeams = `*[_type == "team" && current == true]{_id}`;
 const nextMatchdayTeams = `*[_type == "team" && next == true]{_id}`;
-const matches = [214334, 232796, 209218, 209214, 209211];
+const matches = [157328, 214346, 214343, 232807, 232806];
 
-// setMatchdays().then(() => {
-//   setTimeout(() => {
-//   }, 1000);
-// });
-createMatches(matches);
-// setMatchdays();
+setMatchdays().then(() => {
+  setTimeout(() => {
+    client.fetch(nextMatchdayTeams).then((teams) => {
+      // console.log("next teams", teams);
+
+      teams.forEach((team) => {
+        client.patch(team._id).set({ next: false, current: true }).commit();
+      });
+    });
+    createMatches(matches);
+  }, 1000);
+});
 
 function createMatches(matchIds) {
   const nextMatchday = `*[_type == 'matchday' && status == "next"][0]{_id}`;
@@ -75,42 +81,41 @@ function getFixture(fixtureId) {
 }
 
 async function setMatchdays() {
-  await client
-    .fetch(currentMatchday)
-    .then((matchday) =>
-      client.patch(matchday._id).set({ status: "previous" }).commit()
-    );
-  // await client
-  //   .fetch(lastMatchday)
-  //   .then((matchday) =>
-  //     client.patch(matchday._id).set({ status: "archived" }).commit()
-  //   );
-  await client
-    .fetch(nextMatchday)
-    .then((matchday) =>
-      client.patch(matchday._id).set({ status: "current" }).commit()
-    );
+  await client.fetch(currentMatchday).then((matchday) => {
+    // console.log("current matchday", matchday);
 
-  // await client.fetch(currentMatchdayTeams).then((teams) =>
+    client.patch(matchday._id).set({ status: "previous" }).commit();
+  });
+  await client.fetch(lastMatchday).then((matchday) => {
+    // console.log("previous matchday", matchday);
+    client.patch(matchday._id).set({ status: "archived" }).commit();
+  });
+  await client.fetch(nextMatchday).then((matchday) => {
+    // console.log("next matchday", matchday);
+    client.patch(matchday._id).set({ status: "current" }).commit();
+  });
+
+  await client.fetch(currentMatchdayTeams).then((teams) => {
+    // console.log("current matchday teams", teams);
+    teams.forEach((team) => {
+      client.patch(team._id).set({ current: false }).commit();
+    });
+  });
+
+  // await client.fetch(nextMatchdayTeams).then((teams) =>
   //   teams.forEach((team) => {
-  //     client.patch(team._id).set({ current: false }).commit();
+  //     client.patch(team._id).set({ next: false, current: true }).commit();
   //   })
   // );
 
-  await client.fetch(nextMatchdayTeams).then((teams) =>
-    teams.forEach((team) => {
-      client.patch(team._id).set({ next: false, current: true }).commit();
-    })
-  );
-
   await client.fetch(currentMatchday).then((matchday) => {
     const nextMatchday = {
-      _id: `matchday-${matchday.index + 1}`,
+      _id: `matchday-${matchday.index + 2}`,
       _type: "matchday",
-      index: matchday.index + 1,
+      index: matchday.index + 2,
       prize: 500,
       status: "next",
-      title: `Day ${matchday.index + 1}`,
+      title: `Day ${matchday.index + 2}`,
     };
     client.createOrReplace(nextMatchday);
   });

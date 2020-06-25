@@ -11,6 +11,11 @@ const client = sanityClient({
 const players = JSON.parse(fs.readFileSync("../data/players.json"));
 const playerData = JSON.parse(fs.readFileSync("../data/playerData.json"));
 
+// playerData.forEach((p) => {
+//   const hm = players.find((x) => x._id === p._id);
+//   if (!hm) console.log(p);
+// });
+
 const queue = new PQueue({ concurrency: 10, interval: 1000 / 25 });
 
 players.forEach((item, index) => {

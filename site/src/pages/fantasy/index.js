@@ -22,7 +22,7 @@ import usePortal from "react-cool-portal"
 import { FaStar, FaStarHalfAlt } from "react-icons/fa"
 
 const FantasyPage = ({ data }) => {
-  const [players, setPlayers] = useState(data.players.edges.slice(0, 30))
+  const [players, setPlayers] = useState(data.players.edges.slice(0, 50))
   const [slots, setSlots] = useState([null, null])
   const [filters, setFilters] = useState(null)
   const state = useGlobalState()
@@ -45,7 +45,7 @@ const FantasyPage = ({ data }) => {
       setPlayers(filtered)
       setFilters(teams)
     } else if (filters[0] === teams[0]) {
-      setPlayers(data.players.edges.slice(0, 30))
+      setPlayers(data.players.edges.slice(0, 50))
       setFilters(null)
     } else {
       const filtered = data.players.edges.filter(

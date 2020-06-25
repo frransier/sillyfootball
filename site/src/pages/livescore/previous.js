@@ -1,26 +1,26 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 import { useState, useEffect } from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import LiveMatch from "../components/molecules/liveMatch"
-import Score from "../components/molecules/score"
-import Ticket from "../components/molecules/ticket"
-import Heading from "../components/molecules/heading"
-import Loading from "../components/molecules/loading"
-import { useGlobalState } from "../state"
+import { graphql, Link } from "gatsby"
+import Layout from "../../components/layout"
+import SEO from "../../components/seo"
+import LiveMatch from "../../components/molecules/liveMatch"
+import Score from "../../components/molecules/score"
+import Ticket from "../../components/molecules/ticket"
+import Heading from "../../components/molecules/heading"
+import Loading from "../../components/molecules/loading"
+import { useGlobalState } from "../../state"
 import { Fragment } from "react"
-import Container from "../components/atoms/container"
+import Container from "../../components/atoms/container"
 import dayjs from "dayjs"
 const sanityClient = require("@sanity/client")
 const client = sanityClient({
   projectId: "0jt5x7hu",
   dataset: "production",
-  useCdn: false
+  useCdn: true
 })
 
-const LivescorePage = ({ data }) => {
+const PreviousLivescorePage = ({ data }) => {
   const [livescore, setLivescore] = useState(null)
   const live = dayjs() > dayjs(data.matchday.start)
   const state = useGlobalState()
@@ -33,7 +33,7 @@ const LivescorePage = ({ data }) => {
 
   async function Livescore() {
     const matchesQuery = `*[_type == 'match' &&
-          matchday->status == "current"]
+          matchday->status == "previous"]
           {
             matchday->{title, deadline},
             home->{
@@ -61,7 +61,7 @@ const LivescorePage = ({ data }) => {
             },
           }| order(start asc)`
     const scoresQuery = `*[_type == 'score' &&
-          matchday->status == "current"]
+          matchday->status == "previous"]
           {
             "name": player->name,
             "fullName": player->fullName,
@@ -73,7 +73,7 @@ const LivescorePage = ({ data }) => {
             rate
           } | order(points desc)[0...4]`
     const ticketsQuery = `*[_type == 'ticket' &&
-          matchday->status == "current"]
+          matchday->status == "previous"]
           {
             user->{
               _id,
@@ -93,7 +93,7 @@ const LivescorePage = ({ data }) => {
             "score": ((scores[0]->.goals + scores[0]->.assists) * scores[0]->.rate) +
                      ((scores[1]->.goals + scores[1]->.assists) * scores[1]->.rate) +
                      ((scores[2]->.goals + scores[2]->.assists) * scores[2]->.rate),
-            "count": count(*[_type == 'ticket' && matchday->status == "current"])
+            "count": count(*[_type == 'ticket' && matchday->status == "previous"])
           } | order(score desc)[0...50]`
     const match = await client.fetch(matchesQuery)
     const score = await client.fetch(scoresQuery)
@@ -118,6 +118,12 @@ const LivescorePage = ({ data }) => {
               {livescore.matches.map((x, i) => (
                 <LiveMatch key={i} match={x} />
               ))}
+              <Link
+                to="/livescore/"
+                sx={{ textDecoration: "none", color: "red", my: 4 }}
+              >
+                <Styled.p>{`Current Round >`}</Styled.p>
+              </Link>
             </Container>
           </Container>
           {live && (
@@ -165,11 +171,11 @@ const LivescorePage = ({ data }) => {
   )
 }
 
-export default LivescorePage
+export default PreviousLivescorePage
 
 export const query = graphql`
-  query LivescoreQuery {
-    matchday: sanityMatchday(status: { eq: "current" }) {
+  query PreviousLivescoreQuery {
+    matchday: sanityMatchday(status: { eq: "previous" }) {
       deadline(formatString: "dddd MMM Do")
       start: deadline
     }
