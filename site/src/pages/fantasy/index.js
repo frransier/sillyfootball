@@ -15,6 +15,7 @@ import { graphql, navigate } from "gatsby"
 import axios from "axios"
 import { useGlobalState, useGlobalDispatch } from "../../state"
 import Container from "../../components/atoms/container"
+import Centered from "../../components/atoms/centered"
 import Button from "../../components/atoms/button"
 import { useAuth0 } from "../../state/auth0"
 import dayjs from "dayjs"
@@ -67,7 +68,7 @@ const FantasyPage = ({ data }) => {
         const newSlots = [...slots, player]
         setSlots(newSlots)
         if (newSlots.length === 3) {
-          setPlayers(data.players.edges.slice(0, 30))
+          setPlayers(data.players.edges.slice(0, 50))
           setFilters(null)
         }
       } else return
@@ -234,28 +235,6 @@ const FantasyPage = ({ data }) => {
       ) : (
         <Fragment>
           <Container>
-            <div
-              sx={{
-                display: "grid",
-                justifyItems: "start"
-              }}
-            >
-              <Styled.h3
-                sx={{
-                  // textAlign: slots.length === 3 ? "right" : "left",
-                  fontSize: 3,
-                  bg: slots.length === 3 ? "primary" : null,
-                  // color: slots.length === 3 ? "background" : "text",
-
-                  mx: 3,
-
-                  mb: 5,
-                  mt: 0
-                }}
-              >
-                Pick 3 Players
-              </Styled.h3>
-            </div>
             <Rules deadline={data.matchday.deadline} dispatch={show} />
             <Frame
               columns="1fr 1fr 1fr"
@@ -279,8 +258,23 @@ const FantasyPage = ({ data }) => {
               />
             </Frame>
           </Container>
+          <Centered>
+            <Styled.h2
+              sx={{
+                textAlign: "center",
+                fontSize: 4,
+                bg: slots.length === 3 ? "primary" : null
+                // color: slots.length === 3 ? "background" : "text",
 
-          <Container>
+                // mb: 5,
+                // mt: 0
+              }}
+            >
+              Pick 3 Players
+            </Styled.h2>
+          </Centered>
+
+          <Container mt={5}>
             <Matches>
               {data.matches.edges.map(({ node }, i) => (
                 <Match
@@ -372,35 +366,36 @@ const FantasyPage = ({ data }) => {
               </div>
             </Container>
           ) : (
-            <Container>
-              <div
-                sx={{
-                  display: slots.length < 3 ? "" : "none"
-                }}
-              >
-                <Heading
-                  main=""
-                  sub1="Goals"
-                  sub2="Assists"
-                  columns={["72% 14% 14%", "69% 14% 14%"]}
-                  justify="center"
-                />
-                {players.map(({ node }, i) => {
-                  return (
-                    <Player
-                      key={i}
-                      player={node}
-                      dispatch={() => slot(node)}
-                      selected={
-                        slots[0] !== null
-                          ? slots.find(x => x._id === node._id)
-                          : false
-                      }
-                    />
-                  )
-                })}
-              </div>
-            </Container>
+            // <Container>
+            <div
+              sx={{
+                display: slots.length < 3 ? "" : "none",
+                mt: 5
+              }}
+            >
+              <Heading
+                main=""
+                sub1="Goals"
+                sub2="Assists"
+                columns={["72% 14% 14%", "69% 14% 14%"]}
+                justify="center"
+              />
+              {players.map(({ node }, i) => {
+                return (
+                  <Player
+                    key={i}
+                    player={node}
+                    dispatch={() => slot(node)}
+                    selected={
+                      slots[0] !== null
+                        ? slots.find(x => x._id === node._id)
+                        : false
+                    }
+                  />
+                )
+              })}
+            </div>
+            // </Container>
           )}
         </Fragment>
       )}
