@@ -20,6 +20,7 @@ import { useAuth0 } from "../../state/auth0"
 import dayjs from "dayjs"
 import usePortal from "react-cool-portal"
 import { FaStar, FaStarHalfAlt } from "react-icons/fa"
+//m
 
 const FantasyPage = ({ data }) => {
   const [players, setPlayers] = useState(data.players.edges.slice(0, 50))
