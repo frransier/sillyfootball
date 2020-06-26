@@ -10,6 +10,7 @@ import { useAuth0 } from "../state/auth0"
 import Button from "../components/atoms/button"
 import Loading from "../components/molecules/loading"
 import Blurb from "../components/molecules/blurb"
+import Content from "../components/molecules/content"
 import Centered from "../components/atoms/centered"
 const IndexPage = () => {
   const state = useGlobalState()
@@ -114,6 +115,7 @@ const IndexPage = () => {
               </Button>
             </Link>
           </Container>
+          <Content />
         </Container>
       )}
     </Layout>
