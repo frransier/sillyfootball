@@ -5,24 +5,24 @@ import SEO from "../components/seo"
 import { useGlobalDispatch } from "../state"
 import { useEffect } from "react"
 import Loading from "../components/molecules/loading"
+import { useAuth0 } from "../state/auth0"
 
-import { navigate } from "gatsby"
-
-const RepairPage = () => {
+const LogoutPage = () => {
   const dispatch = useGlobalDispatch()
+  const { logout } = useAuth0()
 
   useEffect(() => {
     dispatch({ type: "reset" })
-    navigate("/")
+    logout()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <Layout>
-      <SEO title="Repair" />
+      <SEO title="Logout" />
       <Loading />
     </Layout>
   )
 }
 
-export default RepairPage
+export default LogoutPage

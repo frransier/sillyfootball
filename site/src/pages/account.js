@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { useState, useEffect } from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Matchday from "../components/molecules/matchday"
@@ -9,9 +9,9 @@ import Loading from "../components/molecules/loading"
 import User from "../components/molecules/user"
 import Heading from "../components/molecules/heading"
 import Container from "../components/atoms/container"
-import { useGlobalState } from "../state"
+import { useGlobalState, useGlobalDispatch } from "../state"
+import { useAuth0 } from "../state/auth0"
 import { FaTrophy } from "react-icons/fa"
-import { Link } from "gatsby"
 import dayjs from "dayjs"
 
 const sanityClient = require("@sanity/client")
@@ -25,6 +25,8 @@ const AccountPage = props => {
   const [tickets, setTickets] = useState(false)
   const [previous, showPrevious] = useState(false)
   const state = useGlobalState()
+  const dispatch = useGlobalDispatch()
+  const { logout } = useAuth0()
   const live = dayjs() > dayjs(props.data.current.start)
 
   useEffect(() => {
@@ -107,6 +109,10 @@ const AccountPage = props => {
       friends: frnds
     })
   }
+  function Logout() {
+    dispatch({ type: "reset" })
+    logout()
+  }
   return (
     <Layout>
       <SEO title="Account" />
@@ -175,6 +181,19 @@ const AccountPage = props => {
             {props.data.top50.edges.map(({ node }, i) => (
               <User user={node} key={i} index={i + 1} />
             ))}
+          </div>
+          <div>
+            <Styled.h6
+              sx={{
+                m: 4,
+                color: "red",
+                fontWeight: "heading",
+                textAlign: "right"
+              }}
+              onClick={() => Logout()}
+            >
+              Logout >
+            </Styled.h6>
           </div>
         </Container>
       )}
