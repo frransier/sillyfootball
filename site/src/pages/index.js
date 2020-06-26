@@ -28,21 +28,21 @@ const IndexPage = () => {
         <Loading />
       ) : (
         <Container>
-          <Styled.h4 sx={{ textAlign: "center", fontWeight: 500 }}>
+          <Styled.h2 sx={{ textAlign: "center" }}>
             Two Things Are Important
-          </Styled.h4>
+          </Styled.h2>
           <Centered>
-            <Styled.h4 sx={{ bg: "primary", textTransform: "uppercase" }}>
+            <Styled.h2 sx={{ bg: "primary", textTransform: "uppercase" }}>
               Who Scores The Goals
-            </Styled.h4>
+            </Styled.h2>
           </Centered>
           <Centered>
-            <Styled.h4 sx={{ my: 0 }}>&</Styled.h4>
+            <Styled.h2 sx={{ my: 0 }}>&</Styled.h2>
           </Centered>
           <Centered>
-            <Styled.h4 sx={{ bg: "primary", textTransform: "uppercase" }}>
+            <Styled.h2 sx={{ bg: "primary", textTransform: "uppercase" }}>
               Who makes the assists
-            </Styled.h4>
+            </Styled.h2>
           </Centered>
 
           {/* <Styled.h5 sx={{ textAlign: "center" }}>
@@ -65,9 +65,9 @@ const IndexPage = () => {
             <Blurb text="Follow Live" />
             <Blurb text="Get Hooked" />
           </div>
-          <Styled.h4 sx={{ textAlign: "center", fontWeight: 500 }}>
+          <Styled.h3 sx={{ textAlign: "center" }}>
             Football is better with skin in the game
-          </Styled.h4>
+          </Styled.h3>
           <Container mt={4}>
             {state && !state.user && (
               <div sx={{ justifySelf: "center", width: [110, 150], my: 4 }}>
