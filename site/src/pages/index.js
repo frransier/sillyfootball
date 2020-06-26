@@ -32,17 +32,17 @@ const IndexPage = () => {
             Two Things Are Important
           </Styled.h2>
           <Centered>
-            <Styled.h2 sx={{ bg: "primary", textTransform: "uppercase" }}>
+            <Styled.h3 sx={{ bg: "primary", textTransform: "uppercase" }}>
               Who Scores The Goals
-            </Styled.h2>
+            </Styled.h3>
           </Centered>
           <Centered>
-            <Styled.h2 sx={{ my: 0 }}>&</Styled.h2>
+            <Styled.h3 sx={{ my: 0 }}>&</Styled.h3>
           </Centered>
           <Centered>
-            <Styled.h2 sx={{ bg: "primary", textTransform: "uppercase" }}>
+            <Styled.h3 sx={{ bg: "primary", textTransform: "uppercase" }}>
               Who makes the assists
-            </Styled.h2>
+            </Styled.h3>
           </Centered>
 
           {/* <Styled.h5 sx={{ textAlign: "center" }}>
