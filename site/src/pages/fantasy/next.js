@@ -174,15 +174,15 @@ const NextFantasyPage = ({ data }) => {
             </Frame>
           </Container>
           <Centered>
-            <Styled.h2
+            <Styled.h3
               sx={{
                 textAlign: "center",
-                fontSize: 4,
+                fontSize: 3,
                 bg: slots.length === 3 ? "primary" : null
               }}
             >
-              Pick 3 Players
-            </Styled.h2>
+              Opens when current round has ended
+            </Styled.h3>
           </Centered>
 
           <Container mt={5}>
