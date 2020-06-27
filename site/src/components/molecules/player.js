@@ -3,7 +3,7 @@ import { jsx, Styled } from "theme-ui"
 import { FaRegCircle, FaCheckCircle } from "react-icons/fa"
 import Rate from "./rate"
 
-const Player = ({ player, dispatch, selected }) => (
+const Player = ({ player, dispatch, selected, disabled }) => (
   <button
     sx={{
       cursor: "pointer",
@@ -18,6 +18,7 @@ const Player = ({ player, dispatch, selected }) => (
       py: 2
     }}
     onClick={dispatch}
+    disabled={disabled}
   >
     <div
       sx={{
@@ -26,25 +27,28 @@ const Player = ({ player, dispatch, selected }) => (
         color: "text"
       }}
     >
-      <div
-        sx={{
-          color: selected ? "secondary" : "lightgrey",
-          alignSelf: "center",
-          justifySelf: "center",
-          borderRadius: 999,
-          height: 20
-        }}
-      >
-        {selected ? <FaCheckCircle size={20} /> : <FaRegCircle size={20} />}
-      </div>
+      {!disabled && (
+        <div
+          sx={{
+            color: selected ? "secondary" : "lightgrey",
+            alignSelf: "center",
+            justifySelf: "center",
+            borderRadius: 999,
+            height: 20
+          }}
+        >
+          {selected ? <FaCheckCircle size={20} /> : <FaRegCircle size={20} />}
+        </div>
+      )}
 
       <div
         sx={{
           display: "flex",
-
+          gridColumn: disabled && "1 / span 2",
           alignSelf: "center",
           justifySelf: "start",
-          alignItems: "center"
+          alignItems: "center",
+          mx: disabled && 4
         }}
       >
         <div sx={{ width: 48 }}>
@@ -71,7 +75,6 @@ const Player = ({ player, dispatch, selected }) => (
       <Styled.p sx={{ alignSelf: "center", justifySelf: "center" }}>
         {player.assists}
       </Styled.p>
-      {/* <Image sx={{ my: 2 }} fixed={player.team.logo.asset.fixed} /> */}
     </div>
   </button>
 )

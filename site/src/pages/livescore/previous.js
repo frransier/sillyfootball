@@ -122,7 +122,9 @@ const PreviousLivescorePage = ({ data }) => {
                 to="/livescore/"
                 sx={{ textDecoration: "none", color: "red", my: 4 }}
               >
-                <Styled.p>{`Current Round >`}</Styled.p>
+                <Styled.p
+                  sx={{ textAlign: "right" }}
+                >{`Current Round >`}</Styled.p>
               </Link>
             </Container>
           </Container>
@@ -176,7 +178,7 @@ export default PreviousLivescorePage
 export const query = graphql`
   query PreviousLivescoreQuery {
     matchday: sanityMatchday(status: { eq: "previous" }) {
-      deadline(formatString: "dddd MMM Do")
+      deadline(formatString: "dddd MMMM Do")
       start: deadline
     }
   }

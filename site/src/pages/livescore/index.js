@@ -118,12 +118,21 @@ const LivescorePage = ({ data }) => {
               {livescore.matches.map((x, i) => (
                 <LiveMatch key={i} match={x} />
               ))}
-              <Link
-                to="/livescore/previous/"
-                sx={{ textDecoration: "none", color: "red", my: 4 }}
-              >
-                <Styled.p>{`< Previous Round`}</Styled.p>
-              </Link>
+              <div sx={{ display: "flex" }}>
+                <Link
+                  to="/livescore/previous/"
+                  sx={{ textDecoration: "none", color: "red", my: 4 }}
+                >
+                  <Styled.p>{`< Previous Round`}</Styled.p>
+                </Link>
+                <div sx={{ mx: "auto" }} />
+                <Link
+                  to="/livescore/next/"
+                  sx={{ textDecoration: "none", color: "red", my: 4 }}
+                >
+                  <Styled.p>{`Next Round >`}</Styled.p>
+                </Link>
+              </div>
             </Container>
           </Container>
           {live && (
@@ -176,7 +185,7 @@ export default LivescorePage
 export const query = graphql`
   query LivescoreQuery {
     matchday: sanityMatchday(status: { eq: "current" }) {
-      deadline(formatString: "dddd MMM Do")
+      deadline(formatString: "dddd MMMM Do")
       start: deadline
     }
   }
