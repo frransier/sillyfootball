@@ -11,23 +11,25 @@ const client = sanityClient({
 
 const queue = new PQueue({ concurrency: 10, interval: 1000 / 25 });
 
-const query = `*[_type == 'user']`;
+const query = `*[_type == 'team' && next == true]`;
 
 client.fetch(query).then((items) => {
+  console.log(items);
+
   // fs.writeFileSync("../data/players.json", JSON.stringify(items));
-  items.forEach((item) => {
-    queue.add(() =>
-      client
-        .patch(item._id)
-        // .delete(item._id)
-        .setIfMissing({ friends: [] })
-        // .set({
-        //   current: false,
-        //   next: false,
-        // })
-        // .unset(["wins"])
-        .commit()
-        .then(() => console.log("Item updated"))
-    );
-  });
+  // items.forEach((item) => {
+  //   queue.add(() =>
+  //     client
+  //       .patch(item._id)
+  //       // .delete(item._id)
+  //       .setIfMissing({ friends: [] })
+  //       // .set({
+  //       //   current: false,
+  //       //   next: false,
+  //       // })
+  //       // .unset(["wins"])
+  //       .commit()
+  //       .then(() => console.log("Item updated"))
+  //   );
+  // });
 });

@@ -12,20 +12,26 @@ const users = JSON.parse(fs.readFileSync("../data/users.json"));
 const currentTickets = JSON.parse(
   fs.readFileSync("../data/currentTickets.json")
 );
+const last3Tickets = JSON.parse(fs.readFileSync("../data/last3Tickets.json"));
 const scores = currentTickets.map((x) => x.score);
 const highscore = Math.max(...scores);
 const trophyCount = Math.round(
   currentTickets.length / scores.filter((x) => x === highscore).length
 );
+// console.log(highscore);
+// console.log(trophyCount);
 
 const queue = new PQueue({ concurrency: 10, interval: 1000 / 25 });
 
 users.forEach((item, index) => {
   const hasPlayed = currentTickets.find((x) => x.user._id === item._id);
+  const last3 = last3Tickets
+    .filter((x) => x.user._id === item._id)
+    .map((y) => y.score)
+    .reduce((a, b) => a + b, 0);
 
   if (hasPlayed) {
-    //TODO sum up last 3 tickets
-    const average = hasPlayed.score / 3;
+    const average = last3 / 3;
     const high = hasPlayed.score > item.high ? hasPlayed.score : item.high;
     const trophies =
       hasPlayed.score === highscore ? trophyCount : item.trophies;
