@@ -118,6 +118,10 @@ const FantasyPage = ({ data }) => {
         })
     }
   }
+  function Navigate() {
+    dispatch({ type: "set-loading", payload: true })
+    navigate("/fantasy/next/")
+  }
 
   return (
     <Layout>
@@ -357,7 +361,7 @@ const FantasyPage = ({ data }) => {
 
               <div sx={{ width: 150, justifySelf: "center", my: 5 }}>
                 <Button
-                  dispatch={() => navigate("/fantasy/next/")}
+                  dispatch={() => Navigate()}
                   fontSize={[2, 3]}
                   color="background"
                 >
