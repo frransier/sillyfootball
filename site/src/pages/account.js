@@ -220,7 +220,7 @@ export const query = graphql`
     top50: allSanityUser(
       filter: { high: { gt: 0 } }
       limit: 50
-      sort: { fields: average, order: DESC }
+      sort: { fields: [average, trophies, high], order: [DESC, DESC, DESC] }
     ) {
       edges {
         node {
