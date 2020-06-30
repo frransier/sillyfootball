@@ -40,7 +40,6 @@ function CurrentTickets() {
 async function Last3Tickets() {
   const currentMatchdayQuery = `*[_type == 'matchday' && status == 'current'][0]{index}`;
   const currentMatchday = await client.fetch(currentMatchdayQuery);
-  console.log(currentMatchday);
 
   const last3TicketsQuery = `*[_type == 'ticket' && (matchday->index == ${
     currentMatchday.index
