@@ -55,6 +55,7 @@ const LivescorePage = ({ data }) => {
               goal,
               assist,
               elapsed,
+              detail,
               team->{
                 _id
               }

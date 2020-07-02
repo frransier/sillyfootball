@@ -55,6 +55,7 @@ const PreviousLivescorePage = ({ data }) => {
               goal,
               assist,
               elapsed,
+              detail,
               team->{
                 _id
               }

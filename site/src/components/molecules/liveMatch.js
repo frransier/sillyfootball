@@ -108,6 +108,11 @@ const LiveMatch = ({ match, disabled, selected }) => {
                     <Styled.p
                       sx={{ fontWeight: "heading", textAlign: "right" }}
                     >
+                      {x.detail === "Own Goal"
+                        ? "(og)"
+                        : x.detail === "Penalty"
+                        ? "(pen)"
+                        : null}{" "}
                       {x.goal}
                     </Styled.p>
                   </div>
@@ -135,7 +140,12 @@ const LiveMatch = ({ match, disabled, selected }) => {
                     key={i}
                   >
                     <Styled.p sx={{ fontWeight: "heading", textAlign: "left" }}>
-                      {x.goal}
+                      {x.goal}{" "}
+                      {x.detail === "Own Goal"
+                        ? "(og)"
+                        : x.detail === "Penalty"
+                        ? "(pen)"
+                        : null}
                     </Styled.p>
                     <Styled.p sx={{ justifySelf: "end", mx: 4 }}>
                       {x.elapsed}'

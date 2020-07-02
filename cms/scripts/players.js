@@ -8,7 +8,6 @@ const client = sanityClient({
   token: keys.sanity,
   useCdn: false,
 });
-const players = JSON.parse(fs.readFileSync("../data/players.json"));
 const playerData = JSON.parse(fs.readFileSync("../data/playerData.json"));
 
 // playerData.forEach((p) => {
@@ -18,22 +17,26 @@ const playerData = JSON.parse(fs.readFileSync("../data/playerData.json"));
 
 const queue = new PQueue({ concurrency: 10, interval: 1000 / 25 });
 
-players.forEach((item, index) => {
-  const fresh = playerData.find((x) => x._id === item._id);
-  const rate = getRate(fresh.pp90);
+const currentPlayers = `*[_type == 'player' && team->current == true]`;
 
-  queue.add(() =>
-    client
-      .patch(item._id)
-      .set({
-        goals: fresh.goals,
-        assists: fresh.assists,
-        points: fresh.points,
-        rate: fresh.points < 5 ? 3 : rate,
-      })
-      .commit()
-      .then(() => console.log(index))
-  );
+client.fetch(currentPlayers).then((players) => {
+  players.forEach((item, index) => {
+    const fresh = playerData.find((x) => x._id === item._id);
+    const rate = getRate(fresh.pp90);
+
+    queue.add(() =>
+      client
+        .patch(item._id)
+        .set({
+          goals: fresh.goals,
+          assists: fresh.assists,
+          points: fresh.points,
+          rate: fresh.points < 5 ? 3 : rate,
+        })
+        .commit()
+        .then(() => console.log(index))
+    );
+  });
 });
 
 function getRate(pp90) {

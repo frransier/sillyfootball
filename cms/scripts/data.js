@@ -36,7 +36,7 @@ function CurrentTickets() {
     fs.writeFileSync("../data/currentTickets.json", JSON.stringify(tickets));
   });
 }
-// TODO LAST 3 ROUNDS TICKETS
+
 async function Last3Tickets() {
   const currentMatchdayQuery = `*[_type == 'matchday' && status == 'current'][0]{index}`;
   const currentMatchday = await client.fetch(currentMatchdayQuery);
