@@ -50,6 +50,7 @@ const NextLivescorePage = ({ data }) => {
               goal,
               assist,
               elapsed,
+              detail,
               team->{
                 _id
               }
