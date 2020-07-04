@@ -30,7 +30,7 @@ users.forEach((item, index) => {
     .map((y) => y.score)
     .reduce((a, b) => a + b, 0);
 
-  const average = last3.length > 0 ? last3 / 3 : 0;
+  const average = last3 > 0 ? last3 / 3 : 0;
   const high =
     hasPlayed && hasPlayed.score > item.high ? hasPlayed.score : item.high;
   const trophies =
