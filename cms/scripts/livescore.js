@@ -64,7 +64,7 @@ async function Livescore(m) {
     })
     .commit();
 
-  if (match.statusShort !== "FT" && match.statusShort !== "HT" && events) {
+  if (match.statusShort !== "HT" && events) {
     const scoreEvents = match.events.filter(
       (x) =>
         x.type === "Goal" &&
@@ -116,7 +116,7 @@ async function Cleanup() {
           .commit()
           .then(() => console.log("Score corrected: ", score.player.fullName));
       } else {
-        console.log("All scores are correct");
+        console.log(score.player.fullName, " confirmed");
       }
     }
   });

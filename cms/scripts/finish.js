@@ -30,22 +30,20 @@ users.forEach((item, index) => {
     .map((y) => y.score)
     .reduce((a, b) => a + b, 0);
 
-  if (hasPlayed) {
-    const average = last3 / 3;
-    const high = hasPlayed.score > item.high ? hasPlayed.score : item.high;
-    const trophies =
-      hasPlayed.score === highscore ? trophyCount : item.trophies;
-
-    queue.add(() =>
-      client
-        .patch(item._id)
-        .set({
-          average: Number(average.toFixed(2)),
-          high: high,
-          trophies: trophies,
-        })
-        .commit()
-        .then(() => console.log(index))
-    );
-  }
+  const average = last3.length > 0 ? last3 / 3 : 0;
+  const high =
+    hasPlayed && hasPlayed.score > item.high ? hasPlayed.score : item.high;
+  const trophies =
+    hasPlayed && hasPlayed.score === highscore ? trophyCount : item.trophies;
+  queue.add(() =>
+    client
+      .patch(item._id)
+      .set({
+        average: Number(average.toFixed(2)),
+        high: high,
+        trophies: trophies,
+      })
+      .commit()
+      .then(() => console.log(index))
+  );
 });
