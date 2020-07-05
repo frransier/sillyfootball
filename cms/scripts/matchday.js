@@ -17,7 +17,7 @@ const lastMatchday = `*[_type == "matchday" && status == "previous"][0]{_id, ind
 const nextMatchday = `*[_type == "matchday" && status == "next"][0]{_id}`;
 const currentMatchdayTeams = `*[_type == "team" && current == true]{_id}`;
 const nextMatchdayTeams = `*[_type == "team" && next == true]{_id}`;
-const matches = [214365, 157349, 157346, 232828, 232827];
+const matches = [157351, 157352, 157354, 157348, 214363];
 
 setMatchdays().then(() => {
   setTimeout(() => {
