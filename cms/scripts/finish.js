@@ -34,7 +34,9 @@ users.forEach((item, index) => {
   const high =
     hasPlayed && hasPlayed.score > item.high ? hasPlayed.score : item.high;
   const trophies =
-    hasPlayed && hasPlayed.score === highscore ? trophyCount : item.trophies;
+    hasPlayed && hasPlayed.score === highscore
+      ? trophyCount + item.trophies
+      : item.trophies;
   queue.add(() =>
     client
       .patch(item._id)
