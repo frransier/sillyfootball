@@ -17,7 +17,8 @@ const lastMatchday = `*[_type == "matchday" && status == "previous"][0]{_id, ind
 const nextMatchday = `*[_type == "matchday" && status == "next"][0]{_id}`;
 const currentMatchdayTeams = `*[_type == "team" && current == true]{_id}`;
 const nextMatchdayTeams = `*[_type == "team" && next == true]{_id}`;
-const matches = [157351, 157352, 157354, 157348, 214363];
+
+const matches = [157358, 157361, 157357, 232841, 232834];
 
 setMatchdays().then(() => {
   setTimeout(() => {
@@ -29,7 +30,7 @@ setMatchdays().then(() => {
       });
     });
     createMatches(matches);
-  }, 1000);
+  }, 3000);
 });
 
 function createMatches(matchIds) {
@@ -81,19 +82,19 @@ function getFixture(fixtureId) {
 }
 
 async function setMatchdays() {
-  await client.fetch(currentMatchday).then((matchday) => {
-    // console.log("current matchday", matchday);
+  // await client.fetch(currentMatchday).then((matchday) => {
+  //   // console.log("current matchday", matchday);
 
-    client.patch(matchday._id).set({ status: "previous" }).commit();
-  });
-  await client.fetch(lastMatchday).then((matchday) => {
-    // console.log("previous matchday", matchday);
-    client.patch(matchday._id).set({ status: "archived" }).commit();
-  });
-  await client.fetch(nextMatchday).then((matchday) => {
-    // console.log("next matchday", matchday);
-    client.patch(matchday._id).set({ status: "current" }).commit();
-  });
+  //   client.patch(matchday._id).set({ status: "previous" }).commit();
+  // });
+  // await client.fetch(lastMatchday).then((matchday) => {
+  //   // console.log("previous matchday", matchday);
+  //   client.patch(matchday._id).set({ status: "archived" }).commit();
+  // });
+  // await client.fetch(nextMatchday).then((matchday) => {
+  //   // console.log("next matchday", matchday);
+  //   client.patch(matchday._id).set({ status: "current" }).commit();
+  // });
 
   await client.fetch(currentMatchdayTeams).then((teams) => {
     // console.log("current matchday teams", teams);
@@ -110,12 +111,12 @@ async function setMatchdays() {
 
   await client.fetch(currentMatchday).then((matchday) => {
     const nextMatchday = {
-      _id: `matchday-${matchday.index + 2}`,
+      _id: `matchday-${matchday.index + 1}`,
       _type: "matchday",
-      index: matchday.index + 2,
+      index: matchday.index + 1,
       prize: 500,
       status: "next",
-      title: `Day ${matchday.index + 2}`,
+      title: `Day ${matchday.index + 1}`,
     };
     client.createOrReplace(nextMatchday);
   });

@@ -11,7 +11,7 @@ const client = sanityClient({
 
 const queue = new PQueue({ concurrency: 10, interval: 1000 / 25 });
 
-const query = `*[_type == 'team' && next == true]`;
+const query = `*[_type == 'ticket' && user->name == 'frransi']{...,matchday->{index}}`;
 
 client.fetch(query).then((items) => {
   console.log(items);
