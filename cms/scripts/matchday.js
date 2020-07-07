@@ -105,7 +105,7 @@ async function setMatchdays() {
 
   // await client.fetch(nextMatchdayTeams).then((teams) =>
   //   teams.forEach((team) => {
-  //     client.patch(team._id).set({ next: false, current: true }).commit();
+  //     client.patch(team._id).set({ next: false, current: true }).commit() ;
   //   })
   // );
 
