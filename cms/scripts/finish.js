@@ -18,7 +18,7 @@ const highscore = Math.max(...scores);
 const trophyCount = Math.round(
   currentTickets.length / scores.filter((x) => x === highscore).length
 );
-// console.log(highscore.);
+// console.log(highscore);
 // console.log(trophyCount);
 
 const queue = new PQueue({ concurrency: 10, interval: 1000 / 25 });
@@ -37,6 +37,14 @@ users.forEach((item, index) => {
     hasPlayed && hasPlayed.score === highscore
       ? trophyCount + item.trophies
       : item.trophies;
+  // const user = {
+  //   name: item.name,
+  //   avg: average,
+  //   high: high,
+  //   trophies: trophies,
+  // };
+  // console.log(user);
+
   queue.add(() =>
     client
       .patch(item._id)
