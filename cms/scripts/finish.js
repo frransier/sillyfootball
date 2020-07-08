@@ -18,8 +18,8 @@ const highscore = Math.max(...scores);
 const trophyCount = Math.round(
   currentTickets.length / scores.filter((x) => x === highscore).length
 );
-// console.log(highscore);
-// console.log(trophyCount);
+console.log(highscore);
+console.log(trophyCount);
 
 const queue = new PQueue({ concurrency: 10, interval: 1000 / 25 });
 
