@@ -37,13 +37,13 @@ users.forEach((item, index) => {
     hasPlayed && hasPlayed.score === highscore
       ? trophyCount + item.trophies
       : item.trophies;
-  // const user = {
-  //   name: item.name,
-  //   avg: average,
-  //   high: high,
-  //   trophies: trophies,
-  // };
-  // console.log(user);
+  const user = {
+    name: item.name,
+    avg: average,
+    high: high,
+    trophies: trophies,
+  };
+  console.log(user);
 
   queue.add(() =>
     client

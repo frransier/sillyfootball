@@ -16,9 +16,10 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
+    },
+    "production": {
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
