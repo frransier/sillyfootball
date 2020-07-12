@@ -43,7 +43,7 @@ users.forEach((item, index) => {
     high: high,
     trophies: trophies,
   };
-  console.log(user);
+  // console.log(user);
 
   queue.add(() =>
     client

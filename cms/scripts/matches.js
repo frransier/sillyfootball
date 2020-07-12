@@ -10,11 +10,13 @@ const premierLeague = 524;
 const laLiga = 775;
 const serieA = 891;
 const bundesliga = 754;
+const faCup = 1063;
 
 Run();
-
 async function Run() {
-  const getMatches = await getFixtures(premierLeague);
+  // const bajs = await getLeagues("england");
+  // console.log(bajs.api.leagues);
+  const getMatches = await getFixtures(laLiga);
   const matches = getMatches.api.fixtures.map((x) => ({
     id: x.fixture_id,
     home: x.homeTeam.team_name,
@@ -27,7 +29,7 @@ async function Run() {
 function getFixtures(leagueId) {
   return axios
     .get(
-      `https://api-football-v1.p.rapidapi.com/v2/fixtures/league/${leagueId}/next/${20}
+      `https://api-football-v1.p.rapidapi.com/v2/fixtures/league/${leagueId}/next/${40}
     `,
       {
         headers: headers,

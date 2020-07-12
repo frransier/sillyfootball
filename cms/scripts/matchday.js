@@ -18,20 +18,21 @@ const nextMatchday = `*[_type == "matchday" && status == "next"][0]{_id}`;
 const currentMatchdayTeams = `*[_type == "team" && current == true]{_id}`;
 const nextMatchdayTeams = `*[_type == "team" && next == true]{_id}`;
 
-const matches = [232853, 232850, 157365, 157372, 157371];
+// const matches = [232853, 232850, 157365, 157372, 157371];
+const matches = [566503, 214392, 214393, 214396, 214399];
 
-// setMatchdays().then(() => {
-//   setTimeout(() => {
-//     client.fetch(nextMatchdayTeams).then((teams) => {
-//       // console.log("next teams", teams);
+setMatchdays().then(() => {
+  setTimeout(() => {
+    client.fetch(nextMatchdayTeams).then((teams) => {
+      // console.log("next teams", teams);
 
-//       teams.forEach((team) => {
-//         client.patch(team._id).set({ next: false, current: true }).commit();
-//       });
-//     });
-//   }, 3000);
-// });
-createMatches(matches);
+      teams.forEach((team) => {
+        client.patch(team._id).set({ next: false, current: true }).commit();
+      });
+      createMatches(matches);
+    });
+  }, 3000);
+});
 
 function createMatches(matchIds) {
   const nextMatchday = `*[_type == 'matchday' && status == "next"][0]{_id}`;
