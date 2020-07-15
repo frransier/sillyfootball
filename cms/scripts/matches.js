@@ -16,7 +16,7 @@ Run();
 async function Run() {
   // const bajs = await getLeagues("england");
   // console.log(bajs.api.leagues);
-  const getMatches = await getFixtures(laLiga);
+  const getMatches = await getFixtures(serieA);
   const matches = getMatches.api.fixtures.map((x) => ({
     id: x.fixture_id,
     home: x.homeTeam.team_name,
