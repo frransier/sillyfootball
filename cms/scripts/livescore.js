@@ -20,7 +20,7 @@ setInterval(() => {
   matches.forEach((x) => {
     const now = dayjs();
     const start = dayjs(x.start);
-    const end = dayjs(x.start).add(125, "minute");
+    const end = dayjs(x.start).add(126, "minute");
     if (end > now && now > start) {
       console.log("Livescore", x._id);
       Livescore(x);
