@@ -127,12 +127,12 @@ const LivescorePage = ({ data }) => {
                   <Styled.p>{`< Previous Round`}</Styled.p>
                 </Link>
                 <div sx={{ mx: "auto" }} />
-                <Link
+                {/* <Link
                   to="/livescore/next/"
                   sx={{ textDecoration: "none", color: "red", my: 4 }}
                 >
                   <Styled.p>{`Next Round >`}</Styled.p>
-                </Link>
+                </Link> */}
               </div>
             </Container>
           </Container>
