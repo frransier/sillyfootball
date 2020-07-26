@@ -17,14 +17,16 @@ const matches = JSON.parse(fs.readFileSync("../data/matches.json"));
 const scores = JSON.parse(fs.readFileSync("../data/scores.json"));
 
 setInterval(() => {
-  matches.forEach((x) => {
-    const now = dayjs();
-    const start = dayjs(x.start);
-    const end = dayjs(x.start).add(126, "minute");
-    if (end > now && now > start) {
-      console.log("Livescore", x._id);
-      Livescore(x);
-    }
+  matches.forEach((x, i) => {
+    setTimeout(() => {
+      const now = dayjs();
+      const start = dayjs(x.start);
+      const end = dayjs(x.start).add(126, "minute");
+      if (end > now && now > start) {
+        console.log("Livescore", x._id);
+        Livescore(x);
+      }
+    }, i * 1000);
   });
 }, 40000);
 
