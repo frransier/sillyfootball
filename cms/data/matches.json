@@ -1,1 +1,67 @@
-[{"_createdAt":"2020-07-15T21:21:53Z","_id":"157376-match","_rev":"0Ox5zGUPjTF8jIyPAsDa7d","_type":"match","_updatedAt":"2020-07-15T21:21:53Z","away":{"_ref":"42-team","_type":"reference"},"events":[],"home":{"_ref":"66-team","_type":"reference"},"matchday":{"_ref":"matchday-10","_type":"reference"},"start":"2020-07-21T19:15:00+00:00","status":"ns"},{"_createdAt":"2020-07-15T21:21:53Z","_id":"157378-match","_rev":"0Ox5zGUPjTF8jIyPAsDa4o","_type":"match","_updatedAt":"2020-07-15T21:21:53Z","away":{"_ref":"49-team","_type":"reference"},"events":[],"home":{"_ref":"40-team","_type":"reference"},"matchday":{"_ref":"matchday-10","_type":"reference"},"start":"2020-07-22T19:15:00+00:00","status":"ns"},{"_createdAt":"2020-07-15T21:21:53Z","_id":"157379-match","_rev":"hdLNN5HIlesjP4bPC8W8OP","_type":"match","_updatedAt":"2020-07-15T21:21:53Z","away":{"_ref":"48-team","_type":"reference"},"events":[],"home":{"_ref":"33-team","_type":"reference"},"matchday":{"_ref":"matchday-10","_type":"reference"},"start":"2020-07-22T17:00:00+00:00","status":"ns"},{"_createdAt":"2020-07-15T21:21:53Z","_id":"157383-match","_rev":"hdLNN5HIlesjP4bPC8W8MB","_type":"match","_updatedAt":"2020-07-15T21:21:53Z","away":{"_ref":"50-team","_type":"reference"},"events":[],"home":{"_ref":"38-team","_type":"reference"},"matchday":{"_ref":"matchday-10","_type":"reference"},"start":"2020-07-21T17:00:00+00:00","status":"ns"},{"_createdAt":"2020-07-15T21:21:53Z","_id":"232867-match","_rev":"0Ox5zGUPjTF8jIyPAsDa1z","_type":"match","_updatedAt":"2020-07-15T21:21:53Z","away":{"_ref":"502-team","_type":"reference"},"events":[],"home":{"_ref":"505-team","_type":"reference"},"matchday":{"_ref":"matchday-10","_type":"reference"},"start":"2020-07-22T19:45:00+00:00","status":"ns"}]
+[
+  {
+    "_createdAt": "2020-07-15T21:21:53Z",
+    "_id": "157376-match",
+    "_rev": "0Ox5zGUPjTF8jIyPAsDa7d",
+    "_type": "match",
+    "_updatedAt": "2020-07-15T21:21:53Z",
+    "away": { "_ref": "42-team", "_type": "reference" },
+    "events": [],
+    "home": { "_ref": "66-team", "_type": "reference" },
+    "matchday": { "_ref": "matchday-10", "_type": "reference" },
+    "start": "2020-07-21T19:15:00+00:00",
+    "status": "ns"
+  },
+  {
+    "_createdAt": "2020-07-15T21:21:53Z",
+    "_id": "157378-match",
+    "_rev": "0Ox5zGUPjTF8jIyPAsDa4o",
+    "_type": "match",
+    "_updatedAt": "2020-07-15T21:21:53Z",
+    "away": { "_ref": "49-team", "_type": "reference" },
+    "events": [],
+    "home": { "_ref": "40-team", "_type": "reference" },
+    "matchday": { "_ref": "matchday-10", "_type": "reference" },
+    "start": "2020-07-22T19:15:00+00:00",
+    "status": "ns"
+  },
+  {
+    "_createdAt": "2020-07-15T21:21:53Z",
+    "_id": "157379-match",
+    "_rev": "hdLNN5HIlesjP4bPC8W8OP",
+    "_type": "match",
+    "_updatedAt": "2020-07-15T21:21:53Z",
+    "away": { "_ref": "48-team", "_type": "reference" },
+    "events": [],
+    "home": { "_ref": "33-team", "_type": "reference" },
+    "matchday": { "_ref": "matchday-10", "_type": "reference" },
+    "start": "2020-07-22T17:00:00+00:00",
+    "status": "ns"
+  },
+  {
+    "_createdAt": "2020-07-15T21:21:53Z",
+    "_id": "157383-match",
+    "_rev": "hdLNN5HIlesjP4bPC8W8MB",
+    "_type": "match",
+    "_updatedAt": "2020-07-15T21:21:53Z",
+    "away": { "_ref": "50-team", "_type": "reference" },
+    "events": [],
+    "home": { "_ref": "38-team", "_type": "reference" },
+    "matchday": { "_ref": "matchday-10", "_type": "reference" },
+    "start": "2020-07-21T17:00:00+00:00",
+    "status": "ns"
+  },
+  {
+    "_createdAt": "2020-07-15T21:21:53Z",
+    "_id": "232867-match",
+    "_rev": "0Ox5zGUPjTF8jIyPAsDa1z",
+    "_type": "match",
+    "_updatedAt": "2020-07-15T21:21:53Z",
+    "away": { "_ref": "502-team", "_type": "reference" },
+    "events": [],
+    "home": { "_ref": "505-team", "_type": "reference" },
+    "matchday": { "_ref": "matchday-10", "_type": "reference" },
+    "start": "2020-07-22T19:45:00+00:00",
+    "status": "ns"
+  }
+]
